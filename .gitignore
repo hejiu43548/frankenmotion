@@ -44,3 +44,6 @@ deps/
 .env.*
 *.key
 *.pem
+
+# Local conda environment
+.conda/
