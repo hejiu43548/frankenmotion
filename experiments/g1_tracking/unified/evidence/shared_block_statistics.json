@@ -1,0 +1,297 @@
+{
+  "model": "unified_final",
+  "baseline": "routed_baseline_final",
+  "split": "final_test",
+  "columns": [
+    "semantic_E_all",
+    "completion_fraction",
+    "event_fraction"
+  ],
+  "direction": "model minus baseline; lower E_all is better, higher completion/event fractions are better",
+  "bootstrap_replicates": 10000,
+  "seed": 8104,
+  "method_version": "shared-block-v2",
+  "shared_prompt_noise_blocks": [
+    "0_s0",
+    "0_s1",
+    "0_s2",
+    "0_s3",
+    "1_s0",
+    "1_s1",
+    "1_s2",
+    "1_s3",
+    "2_s0",
+    "2_s1",
+    "2_s2",
+    "2_s3",
+    "3_s0",
+    "3_s1",
+    "3_s2",
+    "3_s3"
+  ],
+  "method": "Paired resampling of shared prompt/noise blocks, preserving all eleven tasks and all five commands together in each draw; eleven tasks equally weighted.",
+  "macro_mean_difference": [
+    0.01741322760689534,
+    -0.001136363636363636,
+    -0.01136363636363638
+  ],
+  "macro_percentile_95": [
+    [
+      0.005842905030873097,
+      0.029201719625861284
+    ],
+    [
+      -0.006818181818181817,
+      0.004545454545454545
+    ],
+    [
+      -0.02045454545454545,
+      -0.0022727272727272774
+    ]
+  ],
+  "per_task": {
+    "raise_hand": {
+      "sources": 16,
+      "mean_difference": [
+        0.01324513689381013,
+        0.0,
+        0.0
+      ],
+      "percentile_95": [
+        [
+          0.004097162299743893,
+          0.023223976674126838
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    "reach": {
+      "sources": 16,
+      "mean_difference": [
+        -0.062168663162107236,
+        0.05,
+        0.0625
+      ],
+      "percentile_95": [
+        [
+          -0.10727980833730826,
+          -0.019158920597749905
+        ],
+        [
+          0.0125,
+          0.09999999999999999
+        ],
+        [
+          0.025,
+          0.11249999999999999
+        ]
+      ]
+    },
+    "strike": {
+      "sources": 16,
+      "mean_difference": [
+        -0.10868428225474623,
+        0.0,
+        0.0
+      ],
+      "percentile_95": [
+        [
+          -0.13432295820268206,
+          -0.08365202178058512
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    "wave": {
+      "sources": 16,
+      "mean_difference": [
+        -0.0010211844183011295,
+        0.0,
+        0.0
+      ],
+      "percentile_95": [
+        [
+          -0.01106630323261868,
+          0.010927077966933492
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0
+        ]
+      ]
+    },
+    "turn": {
+      "sources": 16,
+      "mean_difference": [
+        0.1592992942239828,
+        0.0,
+        -0.0875
+      ],
+      "percentile_95": [
+        [
+          0.12142191221351108,
+          0.19920112037528617
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          -0.13749999999999998,
+          -0.037500000000000006
+        ]
+      ]
+    },
+    "sidestep": {
+      "sources": 16,
+      "mean_difference": [
+        -0.04135231272225295,
+        0.0,
+        0.05
+      ],
+      "percentile_95": [
+        [
+          -0.09662803057643393,
+          0.019334219043999724
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.09999999999999999
+        ]
+      ]
+    },
+    "back_walk": {
+      "sources": 16,
+      "mean_difference": [
+        -0.15227574427208593,
+        0.0,
+        0.13749999999999998
+      ],
+      "percentile_95": [
+        [
+          -0.19084272405222794,
+          -0.10793461712670582
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0875,
+          0.17500000000000002
+        ]
+      ]
+    },
+    "kick": {
+      "sources": 16,
+      "mean_difference": [
+        -0.0010073309405160095,
+        0.0,
+        0.025000000000000005
+      ],
+      "percentile_95": [
+        [
+          -0.06869958389919319,
+          0.05710594041596967
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          -0.025,
+          0.08750000000000001
+        ]
+      ]
+    },
+    "jump": {
+      "sources": 16,
+      "mean_difference": [
+        0.4101842264780533,
+        -0.0625,
+        -0.33750000000000013
+      ],
+      "percentile_95": [
+        [
+          0.39155839547042265,
+          0.43352209001404385
+        ],
+        [
+          -0.11249999999999999,
+          -0.025
+        ],
+        [
+          -0.3875000000000001,
+          -0.2750000000000001
+        ]
+      ]
+    },
+    "lean": {
+      "sources": 16,
+      "mean_difference": [
+        -0.009155745693313368,
+        0.0,
+        0.037500000000000006
+      ],
+      "percentile_95": [
+        [
+          -0.05027745826458822,
+          0.03091634479702746
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.075
+        ]
+      ]
+    },
+    "walk": {
+      "sources": 16,
+      "mean_difference": [
+        -0.015517890456674665,
+        0.0,
+        -0.0125
+      ],
+      "percentile_95": [
+        [
+          -0.04196693189753264,
+          0.010186591348979267
+        ],
+        [
+          0.0,
+          0.0
+        ],
+        [
+          -0.037500000000000006,
+          0.0
+        ]
+      ]
+    }
+  },
+  "limitations": "Conditional on this selected model, cached templates and simulator protocol; not uncertainty across independent training runs or a causal policy-only comparison. Development intervals are descriptive after model selection. The development cohort has only two shared blocks and cannot support reliable significance claims; 10,000 bootstrap draws do not increase the independent sample count."
+}

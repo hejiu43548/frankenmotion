@@ -1,0 +1,420 @@
+{
+  "raise_hand": {
+    "human": {
+      "planned": 80,
+      "measurable": 80,
+      "numeric_pass": 66,
+      "event_pass": 80,
+      "joint_pass": 66,
+      "mae_measurable": 0.012122600331182416,
+      "E_all": 0.03030650082795604,
+      "complete_five_level_sources": 16,
+      "median_source_slope": 1.0092066360089151,
+      "semantic_E_all": 0.03030650082795604
+    },
+    "g1": {
+      "planned": 80,
+      "measurable": 80,
+      "numeric_pass": 64,
+      "event_pass": 80,
+      "joint_pass": 64,
+      "mae_measurable": 0.012524995629579375,
+      "E_all": 0.03131248907394844,
+      "complete_five_level_sources": 16,
+      "median_source_slope": 0.9828767325403607,
+      "semantic_E_all": 0.03131248907394844
+    },
+    "actual": {
+      "planned": 80,
+      "measurable": 80,
+      "numeric_pass": 48,
+      "event_pass": 80,
+      "joint_pass": 48,
+      "mae_measurable": 0.019874329912017395,
+      "E_all": 0.049685824780043485,
+      "complete_five_level_sources": 16,
+      "median_source_slope": 0.9978225861685105,
+      "semantic_E_all": 0.049685824780043485
+    }
+  },
+  "reach": {
+    "human": {
+      "planned": 80,
+      "measurable": 80,
+      "numeric_pass": 46,
+      "event_pass": 80,
+      "joint_pass": 46,
+      "mae_measurable": 0.01859506833131546,
+      "E_all": 0.061983561104384854,
+      "complete_five_level_sources": 16,
+      "median_source_slope": 1.0442758111634887,
+      "semantic_E_all": 0.061983561104384854
+    },
+    "g1": {
+      "planned": 80,
+      "measurable": 80,
+      "numeric_pass": 46,
+      "event_pass": 77,
+      "joint_pass": 45,
+      "mae_measurable": 0.01932878771069798,
+      "E_all": 0.06442929236899327,
+      "complete_five_level_sources": 16,
+      "median_source_slope": 0.8093282198090347,
+      "semantic_E_all": 0.09882085565223536
+    },
+    "actual": {
+      "planned": 80,
+      "measurable": 80,
+      "numeric_pass": 40,
+      "event_pass": 80,
+      "joint_pass": 40,
+      "mae_measurable": 0.024402479710778545,
+      "E_all": 0.08134159903592848,
+      "complete_five_level_sources": 16,
+      "median_source_slope": 0.7497244065020721,
+      "semantic_E_all": 0.08134159903592848
+    }
+  },
+  "strike": {
+    "human": {
+      "planned": 80,
+      "measurable": 80,
+      "numeric_pass": 33,
+      "event_pass": 80,
+      "joint_pass": 33,
+      "mae_measurable": 0.1098245661536053,
+      "E_all": 0.1098245661536053,
+      "complete_five_level_sources": 16,
+      "median_source_slope": 1.0488168796605575,
+      "semantic_E_all": 0.1098245661536053
+    },
+    "g1": {
+      "planned": 80,
+      "measurable": 80,
+      "numeric_pass": 73,
+      "event_pass": 80,
+      "joint_pass": 73,
+      "mae_measurable": 0.05401247528915838,
+      "E_all": 0.05401247528915838,
+      "complete_five_level_sources": 16,
+      "median_source_slope": 0.930526306176455,
+      "semantic_E_all": 0.05401247528915838
+    },
+    "actual": {
+      "planned": 80,
+      "measurable": 80,
+      "numeric_pass": 18,
+      "event_pass": 80,
+      "joint_pass": 18,
+      "mae_measurable": 0.22069359770148575,
+      "E_all": 0.22069359770148575,
+      "complete_five_level_sources": 16,
+      "median_source_slope": 0.6632607926960631,
+      "semantic_E_all": 0.22069359770148575
+    }
+  },
+  "wave": {
+    "human": {
+      "planned": 80,
+      "measurable": 80,
+      "numeric_pass": 79,
+      "event_pass": 80,
+      "joint_pass": 79,
+      "mae_measurable": 0.005032245204105603,
+      "E_all": 0.03594460860075431,
+      "complete_five_level_sources": 16,
+      "median_source_slope": 1.0670808469251174,
+      "semantic_E_all": 0.03594460860075431
+    },
+    "g1": {
+      "planned": 80,
+      "measurable": 80,
+      "numeric_pass": 78,
+      "event_pass": 80,
+      "joint_pass": 78,
+      "mae_measurable": 0.006796506306755458,
+      "E_all": 0.04854647361968184,
+      "complete_five_level_sources": 16,
+      "median_source_slope": 0.9810635792497884,
+      "semantic_E_all": 0.04854647361968184
+    },
+    "actual": {
+      "planned": 80,
+      "measurable": 80,
+      "numeric_pass": 76,
+      "event_pass": 80,
+      "joint_pass": 76,
+      "mae_measurable": 0.004777050046227421,
+      "E_all": 0.03412178604448158,
+      "complete_five_level_sources": 16,
+      "median_source_slope": 0.9310148865484684,
+      "semantic_E_all": 0.03412178604448158
+    }
+  },
+  "turn": {
+    "human": {
+      "planned": 80,
+      "measurable": 80,
+      "numeric_pass": 80,
+      "event_pass": 80,
+      "joint_pass": 80,
+      "mae_measurable": 0.012737985034994275,
+      "E_all": 0.01213141431904217,
+      "complete_five_level_sources": 16,
+      "median_source_slope": 0.9700011774234274,
+      "semantic_E_all": 0.01213141431904217
+    },
+    "g1": {
+      "planned": 80,
+      "measurable": 80,
+      "numeric_pass": 80,
+      "event_pass": 80,
+      "joint_pass": 80,
+      "mae_measurable": 0.011144572673162382,
+      "E_all": 0.010613878736345124,
+      "complete_five_level_sources": 16,
+      "median_source_slope": 0.9773172908637439,
+      "semantic_E_all": 0.010613878736345124
+    },
+    "actual": {
+      "planned": 80,
+      "measurable": 80,
+      "numeric_pass": 0,
+      "event_pass": 73,
+      "joint_pass": 0,
+      "mae_measurable": 0.22855077324506629,
+      "E_all": 0.2176674030905393,
+      "complete_five_level_sources": 16,
+      "median_source_slope": 0.8456709550112433,
+      "semantic_E_all": 0.2916400153786444
+    }
+  },
+  "sidestep": {
+    "human": {
+      "planned": 80,
+      "measurable": 80,
+      "numeric_pass": 73,
+      "event_pass": 80,
+      "joint_pass": 73,
+      "mae_measurable": 0.02887895019722698,
+      "E_all": 0.03609868774653373,
+      "complete_five_level_sources": 16,
+      "median_source_slope": 1.0306943713619852,
+      "semantic_E_all": 0.03609868774653373
+    },
+    "g1": {
+      "planned": 80,
+      "measurable": 80,
+      "numeric_pass": 73,
+      "event_pass": 80,
+      "joint_pass": 73,
+      "mae_measurable": 0.02883710568487835,
+      "E_all": 0.03604638210609794,
+      "complete_five_level_sources": 16,
+      "median_source_slope": 1.0314664427835871,
+      "semantic_E_all": 0.03604638210609794
+    },
+    "actual": {
+      "planned": 80,
+      "measurable": 80,
+      "numeric_pass": 35,
+      "event_pass": 79,
+      "joint_pass": 35,
+      "mae_measurable": 0.08204308760377216,
+      "E_all": 0.10255385950471521,
+      "complete_five_level_sources": 16,
+      "median_source_slope": 1.006423651393465,
+      "semantic_E_all": 0.11346903082742513
+    }
+  },
+  "back_walk": {
+    "human": {
+      "planned": 80,
+      "measurable": 80,
+      "numeric_pass": 78,
+      "event_pass": 69,
+      "joint_pass": 67,
+      "mae_measurable": 0.024248531751989138,
+      "E_all": 0.044088239549071165,
+      "complete_five_level_sources": 16,
+      "median_source_slope": 1.0413736951049244,
+      "semantic_E_all": 0.17486529334261552
+    },
+    "g1": {
+      "planned": 80,
+      "measurable": 80,
+      "numeric_pass": 78,
+      "event_pass": 73,
+      "joint_pass": 71,
+      "mae_measurable": 0.024189209509455807,
+      "E_all": 0.04398038092628328,
+      "complete_five_level_sources": 16,
+      "median_source_slope": 1.0413796642128954,
+      "semantic_E_all": 0.12709912014767605
+    },
+    "actual": {
+      "planned": 80,
+      "measurable": 80,
+      "numeric_pass": 66,
+      "event_pass": 78,
+      "joint_pass": 64,
+      "mae_measurable": 0.03177744837810385,
+      "E_all": 0.05777717886927971,
+      "complete_five_level_sources": 16,
+      "median_source_slope": 1.0341148684378056,
+      "semantic_E_all": 0.0812135864586171
+    }
+  },
+  "kick": {
+    "human": {
+      "planned": 80,
+      "measurable": 80,
+      "numeric_pass": 46,
+      "event_pass": 76,
+      "joint_pass": 46,
+      "mae_measurable": 0.05509822276159617,
+      "E_all": 0.12244049502576929,
+      "complete_five_level_sources": 16,
+      "median_source_slope": 0.9671230515035989,
+      "semantic_E_all": 0.16434903411126162
+    },
+    "g1": {
+      "planned": 80,
+      "measurable": 80,
+      "numeric_pass": 56,
+      "event_pass": 76,
+      "joint_pass": 56,
+      "mae_measurable": 0.0463075296732225,
+      "E_all": 0.10290562149605001,
+      "complete_five_level_sources": 16,
+      "median_source_slope": 1.1044048609674806,
+      "semantic_E_all": 0.14448368955927157
+    },
+    "actual": {
+      "planned": 80,
+      "measurable": 80,
+      "numeric_pass": 40,
+      "event_pass": 75,
+      "joint_pass": 38,
+      "mae_measurable": 0.06396765311985765,
+      "E_all": 0.14215034026635034,
+      "complete_five_level_sources": 16,
+      "median_source_slope": 0.9112122726203666,
+      "semantic_E_all": 0.18714904819810793
+    }
+  },
+  "jump": {
+    "human": {
+      "planned": 80,
+      "measurable": 80,
+      "numeric_pass": 80,
+      "event_pass": 80,
+      "joint_pass": 80,
+      "mae_measurable": 0.006335746337821591,
+      "E_all": 0.0211191544594053,
+      "complete_five_level_sources": 16,
+      "median_source_slope": 1.0116882282493025,
+      "semantic_E_all": 0.0211191544594053
+    },
+    "g1": {
+      "planned": 80,
+      "measurable": 80,
+      "numeric_pass": 80,
+      "event_pass": 80,
+      "joint_pass": 80,
+      "mae_measurable": 0.01000898702506805,
+      "E_all": 0.03336329008356016,
+      "complete_five_level_sources": 16,
+      "median_source_slope": 0.9826132477465406,
+      "semantic_E_all": 0.03336329008356016
+    },
+    "actual": {
+      "planned": 80,
+      "measurable": 75,
+      "numeric_pass": 2,
+      "event_pass": 53,
+      "joint_pass": 2,
+      "mae_measurable": 0.13945209006088,
+      "E_all": 0.4706361247269218,
+      "complete_five_level_sources": 11,
+      "median_source_slope": 0.37546917830867205,
+      "semantic_E_all": 0.604710341013935
+    }
+  },
+  "lean": {
+    "human": {
+      "planned": 80,
+      "measurable": 80,
+      "numeric_pass": 68,
+      "event_pass": 79,
+      "joint_pass": 67,
+      "mae_measurable": 0.032926061406608316,
+      "E_all": 0.06585212281321663,
+      "complete_five_level_sources": 16,
+      "median_source_slope": 1.0199246376560007,
+      "semantic_E_all": 0.07722988013776266
+    },
+    "g1": {
+      "planned": 80,
+      "measurable": 80,
+      "numeric_pass": 68,
+      "event_pass": 79,
+      "joint_pass": 67,
+      "mae_measurable": 0.03305193902642515,
+      "E_all": 0.0661038780528503,
+      "complete_five_level_sources": 16,
+      "median_source_slope": 1.0198310675759372,
+      "semantic_E_all": 0.07748561937820168
+    },
+    "actual": {
+      "planned": 80,
+      "measurable": 80,
+      "numeric_pass": 55,
+      "event_pass": 80,
+      "joint_pass": 55,
+      "mae_measurable": 0.048420391664713555,
+      "E_all": 0.09684078332942711,
+      "complete_five_level_sources": 16,
+      "median_source_slope": 0.9314183800784739,
+      "semantic_E_all": 0.09684078332942711
+    }
+  },
+  "walk": {
+    "human": {
+      "planned": 80,
+      "measurable": 80,
+      "numeric_pass": 45,
+      "event_pass": 79,
+      "joint_pass": 44,
+      "mae_measurable": 0.05401332281247615,
+      "E_all": 0.09002220468746025,
+      "complete_five_level_sources": 16,
+      "median_source_slope": 1.1048307668286128,
+      "semantic_E_all": 0.10198153800979119
+    },
+    "g1": {
+      "planned": 80,
+      "measurable": 80,
+      "numeric_pass": 46,
+      "event_pass": 79,
+      "joint_pass": 45,
+      "mae_measurable": 0.053792465727056836,
+      "E_all": 0.08965410954509474,
+      "complete_five_level_sources": 16,
+      "median_source_slope": 1.1032157816016221,
+      "semantic_E_all": 0.10160457505038054
+    },
+    "actual": {
+      "planned": 80,
+      "measurable": 80,
+      "numeric_pass": 44,
+      "event_pass": 79,
+      "joint_pass": 44,
+      "mae_measurable": 0.054699594937833995,
+      "E_all": 0.09116599156305664,
+      "complete_five_level_sources": 16,
+      "median_source_slope": 1.149881060554478,
+      "semantic_E_all": 0.10161224056270735
+    }
+  }
+}

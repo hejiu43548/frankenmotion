@@ -1,0 +1,28 @@
+{
+  "controller": {
+    "checkpoint": "/home/pku/frankenmotion/outputs_amass/franken_unified_20261004/frozen_unified/policy.pt",
+    "checkpoint_sha256": "72218056174c917a064ccf2c0a15e24601f9ed8df17cded6841be8f73936c217",
+    "preview": true,
+    "task_routing": false,
+    "scope": "Frozen shared tracker",
+    "frozen_protocol_sha256": "3c86bbf8f3a84800ec82d77ffeb07934ca93a334102825b22ef03ed4eb59783d",
+    "preview_offsets": [
+      5,
+      10,
+      20
+    ]
+  },
+  "identical_controller": true,
+  "requests": [
+    {
+      "task": "wave",
+      "physical_complete": true,
+      "joint_pass": true
+    },
+    {
+      "task": "walk",
+      "physical_complete": true,
+      "joint_pass": true
+    }
+  ]
+}

@@ -1,0 +1,2174 @@
+{
+  "roles": {
+    "routed_baseline": "routed diagnostic control, not eligible for unified selection",
+    "official_dance_validation": "initial single-policy control",
+    "bm_native_routed_validation": "routed diagnostic control, not eligible for unified selection",
+    "joint_v1_validation": "trained unified candidate",
+    "joint_v2_plain_validation": "trained unified candidate",
+    "joint_v2_preview_validation": "trained unified candidate",
+    "joint_v3_pose_common_step1000_validation": "trained unified candidate",
+    "joint_v3_pose_common_validation": "trained unified candidate",
+    "joint_v4_tracking_step1000_validation": "trained unified candidate",
+    "joint_v4_tracking_step2000_validation": "trained unified candidate",
+    "joint_v4_tracking_step3000_validation": "trained unified candidate",
+    "joint_v4_tracking_step4000_validation": "trained unified candidate",
+    "joint_v4_tracking_validation": "trained unified candidate",
+    "joint_v5_root_short_step1000_validation": "trained unified candidate",
+    "joint_v5_root_short_step2000_validation": "trained unified candidate",
+    "joint_v5_root_short_step3000_validation": "trained unified candidate",
+    "joint_v5_root_short_step4000_validation": "trained unified candidate",
+    "joint_v5_root_short_validation": "trained unified candidate",
+    "joint_v5_root_long_step1000_validation": "trained unified candidate",
+    "joint_v5_root_long_step2000_validation": "trained unified candidate",
+    "joint_v5_root_long_step3000_validation": "trained unified candidate",
+    "joint_v5_root_long_step4000_validation": "trained unified candidate",
+    "joint_v5_root_long_validation": "trained unified candidate"
+  },
+  "scope": "Development-only model comparison; not final holdout",
+  "aggregate": {
+    "routed_baseline": {
+      "requests": 110,
+      "complete": 110,
+      "event": 107,
+      "joint": 55,
+      "macro_semantic_E_all": 0.14604205161857287
+    },
+    "official_dance_validation": {
+      "requests": 110,
+      "complete": 94,
+      "event": 69,
+      "joint": 18,
+      "macro_semantic_E_all": 0.5264319992666494
+    },
+    "bm_native_routed_validation": {
+      "requests": 110,
+      "complete": 96,
+      "event": 76,
+      "joint": 26,
+      "macro_semantic_E_all": 0.42945860835957284
+    },
+    "joint_v1_validation": {
+      "requests": 110,
+      "complete": 90,
+      "event": 63,
+      "joint": 13,
+      "macro_semantic_E_all": 0.6200508897759704
+    },
+    "joint_v2_plain_validation": {
+      "requests": 110,
+      "complete": 81,
+      "event": 58,
+      "joint": 15,
+      "macro_semantic_E_all": 0.585569118927686
+    },
+    "joint_v2_preview_validation": {
+      "requests": 110,
+      "complete": 86,
+      "event": 71,
+      "joint": 14,
+      "macro_semantic_E_all": 0.5587345259254877
+    },
+    "joint_v3_pose_common_step1000_validation": {
+      "requests": 110,
+      "complete": 103,
+      "event": 61,
+      "joint": 7,
+      "macro_semantic_E_all": 0.6523440506034975
+    },
+    "joint_v3_pose_common_validation": {
+      "requests": 110,
+      "complete": 95,
+      "event": 64,
+      "joint": 14,
+      "macro_semantic_E_all": 0.6010888691552718
+    },
+    "joint_v4_tracking_step1000_validation": {
+      "requests": 110,
+      "complete": 101,
+      "event": 88,
+      "joint": 30,
+      "macro_semantic_E_all": 0.32660534886890397
+    },
+    "joint_v4_tracking_step2000_validation": {
+      "requests": 110,
+      "complete": 108,
+      "event": 95,
+      "joint": 30,
+      "macro_semantic_E_all": 0.2682147445808243
+    },
+    "joint_v4_tracking_step3000_validation": {
+      "requests": 110,
+      "complete": 108,
+      "event": 98,
+      "joint": 36,
+      "macro_semantic_E_all": 0.2527842396456656
+    },
+    "joint_v4_tracking_step4000_validation": {
+      "requests": 110,
+      "complete": 106,
+      "event": 96,
+      "joint": 50,
+      "macro_semantic_E_all": 0.2281057109447594
+    },
+    "joint_v4_tracking_validation": {
+      "requests": 110,
+      "complete": 109,
+      "event": 97,
+      "joint": 34,
+      "macro_semantic_E_all": 0.24341886651980893
+    },
+    "joint_v5_root_short_step1000_validation": {
+      "requests": 110,
+      "complete": 106,
+      "event": 98,
+      "joint": 28,
+      "macro_semantic_E_all": 0.2723101736948434
+    },
+    "joint_v5_root_short_step2000_validation": {
+      "requests": 110,
+      "complete": 107,
+      "event": 98,
+      "joint": 55,
+      "macro_semantic_E_all": 0.20514503236771703
+    },
+    "joint_v5_root_short_step3000_validation": {
+      "requests": 110,
+      "complete": 108,
+      "event": 97,
+      "joint": 46,
+      "macro_semantic_E_all": 0.2430656917408803
+    },
+    "joint_v5_root_short_step4000_validation": {
+      "requests": 110,
+      "complete": 110,
+      "event": 105,
+      "joint": 54,
+      "macro_semantic_E_all": 0.16741946318148482
+    },
+    "joint_v5_root_short_validation": {
+      "requests": 110,
+      "complete": 109,
+      "event": 107,
+      "joint": 49,
+      "macro_semantic_E_all": 0.1593441166051264
+    },
+    "joint_v5_root_long_step1000_validation": {
+      "requests": 110,
+      "complete": 110,
+      "event": 96,
+      "joint": 38,
+      "macro_semantic_E_all": 0.2669197035385752
+    },
+    "joint_v5_root_long_step2000_validation": {
+      "requests": 110,
+      "complete": 108,
+      "event": 98,
+      "joint": 50,
+      "macro_semantic_E_all": 0.21577125173554174
+    },
+    "joint_v5_root_long_step3000_validation": {
+      "requests": 110,
+      "complete": 108,
+      "event": 97,
+      "joint": 41,
+      "macro_semantic_E_all": 0.2731458812613914
+    },
+    "joint_v5_root_long_step4000_validation": {
+      "requests": 110,
+      "complete": 110,
+      "event": 97,
+      "joint": 58,
+      "macro_semantic_E_all": 0.2155093298432657
+    },
+    "joint_v5_root_long_validation": {
+      "requests": 110,
+      "complete": 109,
+      "event": 105,
+      "joint": 48,
+      "macro_semantic_E_all": 0.17465917997810956
+    }
+  },
+  "per_task": {
+    "official_dance_validation": {
+      "raise_hand": {
+        "complete": 8,
+        "events": 8,
+        "joint": 1,
+        "semantic_E_all": 0.3748572426701147,
+        "baseline_semantic_E_all": 0.023502258459047326,
+        "slope": 0.8392636557701681
+      },
+      "reach": {
+        "complete": 10,
+        "events": 10,
+        "joint": 4,
+        "semantic_E_all": 0.08316275654099736,
+        "baseline_semantic_E_all": 0.087446122225616,
+        "slope": 1.1034060062352085
+      },
+      "strike": {
+        "complete": 10,
+        "events": 10,
+        "joint": 4,
+        "semantic_E_all": 0.3608185637049777,
+        "baseline_semantic_E_all": 0.34337644699524444,
+        "slope": 1.3026127199871012
+      },
+      "wave": {
+        "complete": 9,
+        "events": 9,
+        "joint": 7,
+        "semantic_E_all": 0.1531265589750304,
+        "baseline_semantic_E_all": 0.03602964051702788,
+        "slope": 0.7868486185469904
+      },
+      "turn": {
+        "complete": 10,
+        "events": 9,
+        "joint": 2,
+        "semantic_E_all": 0.28315403925568416,
+        "baseline_semantic_E_all": 0.14139892255682898,
+        "slope": 0.8026000466122785
+      },
+      "sidestep": {
+        "complete": 10,
+        "events": 5,
+        "joint": 0,
+        "semantic_E_all": 0.7278793978612957,
+        "baseline_semantic_E_all": 0.08533626224316097,
+        "slope": 0.9327104348867852
+      },
+      "back_walk": {
+        "complete": 10,
+        "events": 10,
+        "joint": 0,
+        "semantic_E_all": 0.3535033917744447,
+        "baseline_semantic_E_all": 0.3755560445118302,
+        "slope": 0.7031807364149945
+      },
+      "kick": {
+        "complete": 10,
+        "events": 3,
+        "joint": 0,
+        "semantic_E_all": 0.8822601747286962,
+        "baseline_semantic_E_all": 0.07897656850435567,
+        "slope": 0.8491222604892505
+      },
+      "jump": {
+        "complete": 9,
+        "events": 0,
+        "joint": 0,
+        "semantic_E_all": 1.0,
+        "baseline_semantic_E_all": 0.2333586545129062,
+        "slope": -0.03446814462939927
+      },
+      "lean": {
+        "complete": 0,
+        "events": 0,
+        "joint": 0,
+        "semantic_E_all": 1.0,
+        "baseline_semantic_E_all": 0.061046486485767194,
+        "slope": null
+      },
+      "walk": {
+        "complete": 8,
+        "events": 5,
+        "joint": 0,
+        "semantic_E_all": 0.5719898664219034,
+        "baseline_semantic_E_all": 0.14043516079251647,
+        "slope": null
+      }
+    },
+    "bm_native_routed_validation": {
+      "raise_hand": {
+        "complete": 8,
+        "events": 8,
+        "joint": 1,
+        "semantic_E_all": 0.36152294712462274,
+        "baseline_semantic_E_all": 0.023502258459047326,
+        "slope": 0.8665088723928985
+      },
+      "reach": {
+        "complete": 10,
+        "events": 10,
+        "joint": 4,
+        "semantic_E_all": 0.08706739415087172,
+        "baseline_semantic_E_all": 0.087446122225616,
+        "slope": 1.0869046336852466
+      },
+      "strike": {
+        "complete": 10,
+        "events": 10,
+        "joint": 4,
+        "semantic_E_all": 0.34631398781589795,
+        "baseline_semantic_E_all": 0.34337644699524444,
+        "slope": 1.2444350951346714
+      },
+      "wave": {
+        "complete": 9,
+        "events": 9,
+        "joint": 7,
+        "semantic_E_all": 0.1497010092698329,
+        "baseline_semantic_E_all": 0.03602964051702788,
+        "slope": 0.7860669465034538
+      },
+      "turn": {
+        "complete": 10,
+        "events": 9,
+        "joint": 1,
+        "semantic_E_all": 0.30801168881923796,
+        "baseline_semantic_E_all": 0.14139892255682898,
+        "slope": 0.7488406613170963
+      },
+      "sidestep": {
+        "complete": 10,
+        "events": 10,
+        "joint": 5,
+        "semantic_E_all": 0.08818310640017697,
+        "baseline_semantic_E_all": 0.08533626224316097,
+        "slope": 1.1929249898979977
+      },
+      "back_walk": {
+        "complete": 10,
+        "events": 7,
+        "joint": 1,
+        "semantic_E_all": 0.37389998231932947,
+        "baseline_semantic_E_all": 0.3755560445118302,
+        "slope": 0.994646373275173
+      },
+      "kick": {
+        "complete": 10,
+        "events": 3,
+        "joint": 0,
+        "semantic_E_all": 0.88247296701929,
+        "baseline_semantic_E_all": 0.07897656850435567,
+        "slope": 0.8480785156454351
+      },
+      "jump": {
+        "complete": 9,
+        "events": 0,
+        "joint": 0,
+        "semantic_E_all": 1.0,
+        "baseline_semantic_E_all": 0.2333586545129062,
+        "slope": -0.03816814568317236
+      },
+      "lean": {
+        "complete": 0,
+        "events": 0,
+        "joint": 0,
+        "semantic_E_all": 1.0,
+        "baseline_semantic_E_all": 0.061046486485767194,
+        "slope": null
+      },
+      "walk": {
+        "complete": 10,
+        "events": 10,
+        "joint": 3,
+        "semantic_E_all": 0.1268716090360414,
+        "baseline_semantic_E_all": 0.14043516079251647,
+        "slope": 1.1311369013147976
+      }
+    },
+    "joint_v1_validation": {
+      "raise_hand": {
+        "complete": 8,
+        "events": 8,
+        "joint": 1,
+        "semantic_E_all": 0.35287982079074337,
+        "baseline_semantic_E_all": 0.023502258459047326,
+        "slope": null
+      },
+      "reach": {
+        "complete": 9,
+        "events": 7,
+        "joint": 0,
+        "semantic_E_all": 0.5118890406989803,
+        "baseline_semantic_E_all": 0.087446122225616,
+        "slope": 0.4113404550016681
+      },
+      "strike": {
+        "complete": 10,
+        "events": 8,
+        "joint": 0,
+        "semantic_E_all": 0.8966518156587215,
+        "baseline_semantic_E_all": 0.34337644699524444,
+        "slope": 0.6040576507421522
+      },
+      "wave": {
+        "complete": 10,
+        "events": 10,
+        "joint": 0,
+        "semantic_E_all": 0.3463195231113596,
+        "baseline_semantic_E_all": 0.03602964051702788,
+        "slope": 0.5845872579876196
+      },
+      "turn": {
+        "complete": 10,
+        "events": 8,
+        "joint": 2,
+        "semantic_E_all": 0.5054113184771066,
+        "baseline_semantic_E_all": 0.14139892255682898,
+        "slope": 1.0312965082130034
+      },
+      "sidestep": {
+        "complete": 10,
+        "events": 5,
+        "joint": 3,
+        "semantic_E_all": 0.5437145266682547,
+        "baseline_semantic_E_all": 0.08533626224316097,
+        "slope": 1.378076513666852
+      },
+      "back_walk": {
+        "complete": 10,
+        "events": 7,
+        "joint": 2,
+        "semantic_E_all": 0.3830347238664814,
+        "baseline_semantic_E_all": 0.3755560445118302,
+        "slope": 0.9421862881531996
+      },
+      "kick": {
+        "complete": 5,
+        "events": 2,
+        "joint": 0,
+        "semantic_E_all": 0.9462694989549588,
+        "baseline_semantic_E_all": 0.07897656850435567,
+        "slope": null
+      },
+      "jump": {
+        "complete": 4,
+        "events": 0,
+        "joint": 0,
+        "semantic_E_all": 1.0,
+        "baseline_semantic_E_all": 0.2333586545129062,
+        "slope": null
+      },
+      "lean": {
+        "complete": 7,
+        "events": 1,
+        "joint": 0,
+        "semantic_E_all": 0.9812510493026145,
+        "baseline_semantic_E_all": 0.061046486485767194,
+        "slope": null
+      },
+      "walk": {
+        "complete": 7,
+        "events": 7,
+        "joint": 5,
+        "semantic_E_all": 0.35313847000645343,
+        "baseline_semantic_E_all": 0.14043516079251647,
+        "slope": null
+      }
+    },
+    "joint_v2_plain_validation": {
+      "raise_hand": {
+        "complete": 7,
+        "events": 7,
+        "joint": 0,
+        "semantic_E_all": 0.4470687798173997,
+        "baseline_semantic_E_all": 0.023502258459047326,
+        "slope": null
+      },
+      "reach": {
+        "complete": 7,
+        "events": 7,
+        "joint": 2,
+        "semantic_E_all": 0.4467571316504328,
+        "baseline_semantic_E_all": 0.087446122225616,
+        "slope": null
+      },
+      "strike": {
+        "complete": 10,
+        "events": 9,
+        "joint": 1,
+        "semantic_E_all": 0.3706993355604924,
+        "baseline_semantic_E_all": 0.34337644699524444,
+        "slope": 0.009885799194291906
+      },
+      "wave": {
+        "complete": 8,
+        "events": 3,
+        "joint": 3,
+        "semantic_E_all": 0.7161310590941914,
+        "baseline_semantic_E_all": 0.03602964051702788,
+        "slope": null
+      },
+      "turn": {
+        "complete": 10,
+        "events": 7,
+        "joint": 0,
+        "semantic_E_all": 0.5362043558796422,
+        "baseline_semantic_E_all": 0.14139892255682898,
+        "slope": 0.8759956688294368
+      },
+      "sidestep": {
+        "complete": 10,
+        "events": 6,
+        "joint": 2,
+        "semantic_E_all": 0.46284556811523664,
+        "baseline_semantic_E_all": 0.08533626224316097,
+        "slope": 1.5872747050177494
+      },
+      "back_walk": {
+        "complete": 10,
+        "events": 10,
+        "joint": 2,
+        "semantic_E_all": 0.17190828395654692,
+        "baseline_semantic_E_all": 0.3755560445118302,
+        "slope": 0.7173817678231311
+      },
+      "kick": {
+        "complete": 5,
+        "events": 2,
+        "joint": 0,
+        "semantic_E_all": 0.9429405090008899,
+        "baseline_semantic_E_all": 0.07897656850435567,
+        "slope": null
+      },
+      "jump": {
+        "complete": 5,
+        "events": 0,
+        "joint": 0,
+        "semantic_E_all": 1.0,
+        "baseline_semantic_E_all": 0.2333586545129062,
+        "slope": null
+      },
+      "lean": {
+        "complete": 2,
+        "events": 0,
+        "joint": 0,
+        "semantic_E_all": 1.0,
+        "baseline_semantic_E_all": 0.061046486485767194,
+        "slope": null
+      },
+      "walk": {
+        "complete": 7,
+        "events": 7,
+        "joint": 5,
+        "semantic_E_all": 0.346705285129714,
+        "baseline_semantic_E_all": 0.14043516079251647,
+        "slope": null
+      }
+    },
+    "joint_v2_preview_validation": {
+      "raise_hand": {
+        "complete": 10,
+        "events": 10,
+        "joint": 1,
+        "semantic_E_all": 0.373314058538052,
+        "baseline_semantic_E_all": 0.023502258459047326,
+        "slope": 1.2482352495048281
+      },
+      "reach": {
+        "complete": 10,
+        "events": 9,
+        "joint": 1,
+        "semantic_E_all": 0.27953368499012565,
+        "baseline_semantic_E_all": 0.087446122225616,
+        "slope": 0.7246734247731295
+      },
+      "strike": {
+        "complete": 10,
+        "events": 9,
+        "joint": 0,
+        "semantic_E_all": 0.5581174527848057,
+        "baseline_semantic_E_all": 0.34337644699524444,
+        "slope": 0.3228023858972615
+      },
+      "wave": {
+        "complete": 10,
+        "events": 10,
+        "joint": 0,
+        "semantic_E_all": 0.4460562967330352,
+        "baseline_semantic_E_all": 0.03602964051702788,
+        "slope": 0.6434476785867737
+      },
+      "turn": {
+        "complete": 10,
+        "events": 10,
+        "joint": 1,
+        "semantic_E_all": 0.28626153217105943,
+        "baseline_semantic_E_all": 0.14139892255682898,
+        "slope": 0.6175671088816621
+      },
+      "sidestep": {
+        "complete": 10,
+        "events": 7,
+        "joint": 1,
+        "semantic_E_all": 0.45997834969191287,
+        "baseline_semantic_E_all": 0.08533626224316097,
+        "slope": 1.1196288118828739
+      },
+      "back_walk": {
+        "complete": 10,
+        "events": 10,
+        "joint": 9,
+        "semantic_E_all": 0.06702551390127573,
+        "baseline_semantic_E_all": 0.3755560445118302,
+        "slope": 1.0180964434310376
+      },
+      "kick": {
+        "complete": 9,
+        "events": 3,
+        "joint": 0,
+        "semantic_E_all": 0.8734503952136923,
+        "baseline_semantic_E_all": 0.07897656850435567,
+        "slope": 0.6136757284541334
+      },
+      "jump": {
+        "complete": 0,
+        "events": 0,
+        "joint": 0,
+        "semantic_E_all": 1.0,
+        "baseline_semantic_E_all": 0.2333586545129062,
+        "slope": null
+      },
+      "lean": {
+        "complete": 7,
+        "events": 3,
+        "joint": 1,
+        "semantic_E_all": 0.8023425011564054,
+        "baseline_semantic_E_all": 0.061046486485767194,
+        "slope": null
+      },
+      "walk": {
+        "complete": 0,
+        "events": 0,
+        "joint": 0,
+        "semantic_E_all": 1.0,
+        "baseline_semantic_E_all": 0.14043516079251647,
+        "slope": null
+      }
+    },
+    "joint_v3_pose_common_step1000_validation": {
+      "raise_hand": {
+        "complete": 10,
+        "events": 10,
+        "joint": 0,
+        "semantic_E_all": 0.15750691743005887,
+        "baseline_semantic_E_all": 0.023502258459047326,
+        "slope": 0.6704733552356478
+      },
+      "reach": {
+        "complete": 10,
+        "events": 10,
+        "joint": 2,
+        "semantic_E_all": 0.16816633713141643,
+        "baseline_semantic_E_all": 0.087446122225616,
+        "slope": 0.5657146093985954
+      },
+      "strike": {
+        "complete": 10,
+        "events": 10,
+        "joint": 0,
+        "semantic_E_all": 0.9452902592758669,
+        "baseline_semantic_E_all": 0.34337644699524444,
+        "slope": 0.3110199764470314
+      },
+      "wave": {
+        "complete": 10,
+        "events": 10,
+        "joint": 2,
+        "semantic_E_all": 0.4552996782807647,
+        "baseline_semantic_E_all": 0.03602964051702788,
+        "slope": 0.10765655132938165
+      },
+      "turn": {
+        "complete": 10,
+        "events": 10,
+        "joint": 3,
+        "semantic_E_all": 0.12578742941859256,
+        "baseline_semantic_E_all": 0.14139892255682898,
+        "slope": 0.8404686995415063
+      },
+      "sidestep": {
+        "complete": 10,
+        "events": 0,
+        "joint": 0,
+        "semantic_E_all": 1.0,
+        "baseline_semantic_E_all": 0.08533626224316097,
+        "slope": 0.122741324157353
+      },
+      "back_walk": {
+        "complete": 10,
+        "events": 8,
+        "joint": 0,
+        "semantic_E_all": 0.5376115324053619,
+        "baseline_semantic_E_all": 0.3755560445118302,
+        "slope": 0.7591365203222229
+      },
+      "kick": {
+        "complete": 10,
+        "events": 0,
+        "joint": 0,
+        "semantic_E_all": 1.0,
+        "baseline_semantic_E_all": 0.07897656850435567,
+        "slope": 0.6730485312977341
+      },
+      "jump": {
+        "complete": 10,
+        "events": 0,
+        "joint": 0,
+        "semantic_E_all": 1.0,
+        "baseline_semantic_E_all": 0.2333586545129062,
+        "slope": -0.022465412826677925
+      },
+      "lean": {
+        "complete": 8,
+        "events": 0,
+        "joint": 0,
+        "semantic_E_all": 1.0,
+        "baseline_semantic_E_all": 0.061046486485767194,
+        "slope": 0.6504705458340553
+      },
+      "walk": {
+        "complete": 5,
+        "events": 3,
+        "joint": 0,
+        "semantic_E_all": 0.7861224026964114,
+        "baseline_semantic_E_all": 0.14043516079251647,
+        "slope": null
+      }
+    },
+    "joint_v3_pose_common_validation": {
+      "raise_hand": {
+        "complete": 10,
+        "events": 10,
+        "joint": 6,
+        "semantic_E_all": 0.09184341939038289,
+        "baseline_semantic_E_all": 0.023502258459047326,
+        "slope": 0.7935810596171701
+      },
+      "reach": {
+        "complete": 10,
+        "events": 10,
+        "joint": 2,
+        "semantic_E_all": 0.18640644857320382,
+        "baseline_semantic_E_all": 0.087446122225616,
+        "slope": 0.6188550861176338
+      },
+      "strike": {
+        "complete": 7,
+        "events": 7,
+        "joint": 2,
+        "semantic_E_all": 0.6554728924773635,
+        "baseline_semantic_E_all": 0.34337644699524444,
+        "slope": null
+      },
+      "wave": {
+        "complete": 10,
+        "events": 10,
+        "joint": 2,
+        "semantic_E_all": 0.26849052843480775,
+        "baseline_semantic_E_all": 0.03602964051702788,
+        "slope": 0.10461993292585985
+      },
+      "turn": {
+        "complete": 10,
+        "events": 8,
+        "joint": 2,
+        "semantic_E_all": 0.435229984898462,
+        "baseline_semantic_E_all": 0.14139892255682898,
+        "slope": 1.0642386584430432
+      },
+      "sidestep": {
+        "complete": 10,
+        "events": 6,
+        "joint": 0,
+        "semantic_E_all": 0.5915186995481654,
+        "baseline_semantic_E_all": 0.08533626224316097,
+        "slope": 0.9882277586054933
+      },
+      "back_walk": {
+        "complete": 10,
+        "events": 7,
+        "joint": 0,
+        "semantic_E_all": 0.7106132056211403,
+        "baseline_semantic_E_all": 0.3755560445118302,
+        "slope": 0.6450982189106986
+      },
+      "kick": {
+        "complete": 9,
+        "events": 1,
+        "joint": 0,
+        "semantic_E_all": 0.9698480553942967,
+        "baseline_semantic_E_all": 0.07897656850435567,
+        "slope": 0.6439443383560126
+      },
+      "jump": {
+        "complete": 10,
+        "events": 0,
+        "joint": 0,
+        "semantic_E_all": 1.0,
+        "baseline_semantic_E_all": 0.2333586545129062,
+        "slope": 0.015518255001751255
+      },
+      "lean": {
+        "complete": 2,
+        "events": 0,
+        "joint": 0,
+        "semantic_E_all": 1.0,
+        "baseline_semantic_E_all": 0.061046486485767194,
+        "slope": null
+      },
+      "walk": {
+        "complete": 7,
+        "events": 5,
+        "joint": 0,
+        "semantic_E_all": 0.7025543263701672,
+        "baseline_semantic_E_all": 0.14043516079251647,
+        "slope": null
+      }
+    },
+    "joint_v4_tracking_step1000_validation": {
+      "raise_hand": {
+        "complete": 10,
+        "events": 10,
+        "joint": 3,
+        "semantic_E_all": 0.10800180893183112,
+        "baseline_semantic_E_all": 0.023502258459047326,
+        "slope": 0.7913528226553341
+      },
+      "reach": {
+        "complete": 10,
+        "events": 10,
+        "joint": 2,
+        "semantic_E_all": 0.10026109534219055,
+        "baseline_semantic_E_all": 0.087446122225616,
+        "slope": 0.9299659875666755
+      },
+      "strike": {
+        "complete": 10,
+        "events": 10,
+        "joint": 5,
+        "semantic_E_all": 0.12748782699340697,
+        "baseline_semantic_E_all": 0.34337644699524444,
+        "slope": 0.7080041255780729
+      },
+      "wave": {
+        "complete": 10,
+        "events": 10,
+        "joint": 8,
+        "semantic_E_all": 0.052936114454552666,
+        "baseline_semantic_E_all": 0.03602964051702788,
+        "slope": 0.8614184063276936
+      },
+      "turn": {
+        "complete": 10,
+        "events": 8,
+        "joint": 0,
+        "semantic_E_all": 0.5298915468171728,
+        "baseline_semantic_E_all": 0.14139892255682898,
+        "slope": 0.8084305632907807
+      },
+      "sidestep": {
+        "complete": 10,
+        "events": 8,
+        "joint": 2,
+        "semantic_E_all": 0.300983500999635,
+        "baseline_semantic_E_all": 0.08533626224316097,
+        "slope": 1.1012575357114294
+      },
+      "back_walk": {
+        "complete": 10,
+        "events": 10,
+        "joint": 3,
+        "semantic_E_all": 0.09853121183956336,
+        "baseline_semantic_E_all": 0.3755560445118302,
+        "slope": 1.0095192154016397
+      },
+      "kick": {
+        "complete": 7,
+        "events": 7,
+        "joint": 0,
+        "semantic_E_all": 0.5160300152418744,
+        "baseline_semantic_E_all": 0.07897656850435567,
+        "slope": null
+      },
+      "jump": {
+        "complete": 8,
+        "events": 0,
+        "joint": 0,
+        "semantic_E_all": 1.0,
+        "baseline_semantic_E_all": 0.2333586545129062,
+        "slope": null
+      },
+      "lean": {
+        "complete": 9,
+        "events": 8,
+        "joint": 3,
+        "semantic_E_all": 0.3890025959177642,
+        "baseline_semantic_E_all": 0.061046486485767194,
+        "slope": 0.4063464505068533
+      },
+      "walk": {
+        "complete": 7,
+        "events": 7,
+        "joint": 4,
+        "semantic_E_all": 0.36953312101995295,
+        "baseline_semantic_E_all": 0.14043516079251647,
+        "slope": null
+      }
+    },
+    "joint_v4_tracking_step2000_validation": {
+      "raise_hand": {
+        "complete": 10,
+        "events": 10,
+        "joint": 4,
+        "semantic_E_all": 0.10598741207138795,
+        "baseline_semantic_E_all": 0.023502258459047326,
+        "slope": 1.238834047541827
+      },
+      "reach": {
+        "complete": 10,
+        "events": 10,
+        "joint": 4,
+        "semantic_E_all": 0.08812127752654866,
+        "baseline_semantic_E_all": 0.087446122225616,
+        "slope": 0.7423578220208362
+      },
+      "strike": {
+        "complete": 10,
+        "events": 10,
+        "joint": 3,
+        "semantic_E_all": 0.17881436732168904,
+        "baseline_semantic_E_all": 0.34337644699524444,
+        "slope": 0.4740320935969579
+      },
+      "wave": {
+        "complete": 10,
+        "events": 10,
+        "joint": 3,
+        "semantic_E_all": 0.11001020839724665,
+        "baseline_semantic_E_all": 0.03602964051702788,
+        "slope": 0.8864409709393779
+      },
+      "turn": {
+        "complete": 10,
+        "events": 10,
+        "joint": 2,
+        "semantic_E_all": 0.16458776689146828,
+        "baseline_semantic_E_all": 0.14139892255682898,
+        "slope": 0.7594060865746903
+      },
+      "sidestep": {
+        "complete": 10,
+        "events": 10,
+        "joint": 2,
+        "semantic_E_all": 0.10196437821348037,
+        "baseline_semantic_E_all": 0.08533626224316097,
+        "slope": 1.0485493053471104
+      },
+      "back_walk": {
+        "complete": 10,
+        "events": 7,
+        "joint": 7,
+        "semantic_E_all": 0.34075478063956666,
+        "baseline_semantic_E_all": 0.3755560445118302,
+        "slope": 0.9966577039537818
+      },
+      "kick": {
+        "complete": 10,
+        "events": 9,
+        "joint": 1,
+        "semantic_E_all": 0.3052751657264597,
+        "baseline_semantic_E_all": 0.07897656850435567,
+        "slope": 0.9302894563961415
+      },
+      "jump": {
+        "complete": 8,
+        "events": 0,
+        "joint": 0,
+        "semantic_E_all": 1.0,
+        "baseline_semantic_E_all": 0.2333586545129062,
+        "slope": null
+      },
+      "lean": {
+        "complete": 10,
+        "events": 9,
+        "joint": 0,
+        "semantic_E_all": 0.44317084616576546,
+        "baseline_semantic_E_all": 0.061046486485767194,
+        "slope": 0.7621243434171673
+      },
+      "walk": {
+        "complete": 10,
+        "events": 10,
+        "joint": 4,
+        "semantic_E_all": 0.1116759874354543,
+        "baseline_semantic_E_all": 0.14043516079251647,
+        "slope": 1.3083006647247404
+      }
+    },
+    "joint_v4_tracking_step3000_validation": {
+      "raise_hand": {
+        "complete": 10,
+        "events": 10,
+        "joint": 0,
+        "semantic_E_all": 0.1024021395442067,
+        "baseline_semantic_E_all": 0.023502258459047326,
+        "slope": 0.9811166930654507
+      },
+      "reach": {
+        "complete": 10,
+        "events": 10,
+        "joint": 4,
+        "semantic_E_all": 0.08262025663403601,
+        "baseline_semantic_E_all": 0.087446122225616,
+        "slope": 0.7457773843527206
+      },
+      "strike": {
+        "complete": 10,
+        "events": 10,
+        "joint": 1,
+        "semantic_E_all": 0.4069466243725097,
+        "baseline_semantic_E_all": 0.34337644699524444,
+        "slope": 0.3034050125392806
+      },
+      "wave": {
+        "complete": 10,
+        "events": 10,
+        "joint": 7,
+        "semantic_E_all": 0.08603919334959922,
+        "baseline_semantic_E_all": 0.03602964051702788,
+        "slope": 0.8488062366665033
+      },
+      "turn": {
+        "complete": 10,
+        "events": 9,
+        "joint": 0,
+        "semantic_E_all": 0.3825861249217811,
+        "baseline_semantic_E_all": 0.14139892255682898,
+        "slope": 0.6770390930202369
+      },
+      "sidestep": {
+        "complete": 10,
+        "events": 10,
+        "joint": 5,
+        "semantic_E_all": 0.07775956769539039,
+        "baseline_semantic_E_all": 0.08533626224316097,
+        "slope": 1.0736396145503537
+      },
+      "back_walk": {
+        "complete": 10,
+        "events": 9,
+        "joint": 9,
+        "semantic_E_all": 0.1601988722176053,
+        "baseline_semantic_E_all": 0.3755560445118302,
+        "slope": 0.9900655245484316
+      },
+      "kick": {
+        "complete": 10,
+        "events": 10,
+        "joint": 5,
+        "semantic_E_all": 0.11311380210935378,
+        "baseline_semantic_E_all": 0.07897656850435567,
+        "slope": 0.9413381756355524
+      },
+      "jump": {
+        "complete": 8,
+        "events": 0,
+        "joint": 0,
+        "semantic_E_all": 1.0,
+        "baseline_semantic_E_all": 0.2333586545129062,
+        "slope": null
+      },
+      "lean": {
+        "complete": 10,
+        "events": 10,
+        "joint": 2,
+        "semantic_E_all": 0.23217602386430197,
+        "baseline_semantic_E_all": 0.061046486485767194,
+        "slope": 0.7102469973459441
+      },
+      "walk": {
+        "complete": 10,
+        "events": 10,
+        "joint": 3,
+        "semantic_E_all": 0.1367840313935377,
+        "baseline_semantic_E_all": 0.14043516079251647,
+        "slope": 1.3846677310705084
+      }
+    },
+    "joint_v4_tracking_step4000_validation": {
+      "raise_hand": {
+        "complete": 10,
+        "events": 10,
+        "joint": 1,
+        "semantic_E_all": 0.13027126199143035,
+        "baseline_semantic_E_all": 0.023502258459047326,
+        "slope": 0.9192052657553335
+      },
+      "reach": {
+        "complete": 10,
+        "events": 10,
+        "joint": 4,
+        "semantic_E_all": 0.10945567539854843,
+        "baseline_semantic_E_all": 0.087446122225616,
+        "slope": 0.6741646218811367
+      },
+      "strike": {
+        "complete": 10,
+        "events": 10,
+        "joint": 5,
+        "semantic_E_all": 0.13190104671128763,
+        "baseline_semantic_E_all": 0.34337644699524444,
+        "slope": 0.6158381621692215
+      },
+      "wave": {
+        "complete": 10,
+        "events": 10,
+        "joint": 10,
+        "semantic_E_all": 0.03939439569949968,
+        "baseline_semantic_E_all": 0.03602964051702788,
+        "slope": 0.9707543646778272
+      },
+      "turn": {
+        "complete": 10,
+        "events": 8,
+        "joint": 0,
+        "semantic_E_all": 0.46447550270725146,
+        "baseline_semantic_E_all": 0.14139892255682898,
+        "slope": 0.8504550385089473
+      },
+      "sidestep": {
+        "complete": 10,
+        "events": 10,
+        "joint": 5,
+        "semantic_E_all": 0.06554019009290124,
+        "baseline_semantic_E_all": 0.08533626224316097,
+        "slope": 0.949116421601299
+      },
+      "back_walk": {
+        "complete": 10,
+        "events": 9,
+        "joint": 9,
+        "semantic_E_all": 0.16153378846341665,
+        "baseline_semantic_E_all": 0.3755560445118302,
+        "slope": 1.0055809161342242
+      },
+      "kick": {
+        "complete": 10,
+        "events": 10,
+        "joint": 8,
+        "semantic_E_all": 0.0753139577562479,
+        "baseline_semantic_E_all": 0.07897656850435567,
+        "slope": 0.9205325508498805
+      },
+      "jump": {
+        "complete": 7,
+        "events": 0,
+        "joint": 0,
+        "semantic_E_all": 1.0,
+        "baseline_semantic_E_all": 0.2333586545129062,
+        "slope": null
+      },
+      "lean": {
+        "complete": 10,
+        "events": 10,
+        "joint": 5,
+        "semantic_E_all": 0.12231615153376092,
+        "baseline_semantic_E_all": 0.061046486485767194,
+        "slope": 0.7750954295832966
+      },
+      "walk": {
+        "complete": 9,
+        "events": 9,
+        "joint": 3,
+        "semantic_E_all": 0.20896085003800896,
+        "baseline_semantic_E_all": 0.14043516079251647,
+        "slope": 1.2885553083212185
+      }
+    },
+    "joint_v4_tracking_validation": {
+      "raise_hand": {
+        "complete": 10,
+        "events": 10,
+        "joint": 4,
+        "semantic_E_all": 0.05502304327840193,
+        "baseline_semantic_E_all": 0.023502258459047326,
+        "slope": 0.9300955402409627
+      },
+      "reach": {
+        "complete": 10,
+        "events": 10,
+        "joint": 5,
+        "semantic_E_all": 0.07236309250668257,
+        "baseline_semantic_E_all": 0.087446122225616,
+        "slope": 0.7742214876614517
+      },
+      "strike": {
+        "complete": 10,
+        "events": 10,
+        "joint": 1,
+        "semantic_E_all": 0.2628658160578506,
+        "baseline_semantic_E_all": 0.34337644699524444,
+        "slope": 0.6528312367673286
+      },
+      "wave": {
+        "complete": 10,
+        "events": 10,
+        "joint": 5,
+        "semantic_E_all": 0.11485764802291494,
+        "baseline_semantic_E_all": 0.03602964051702788,
+        "slope": 0.9449440346071893
+      },
+      "turn": {
+        "complete": 10,
+        "events": 10,
+        "joint": 0,
+        "semantic_E_all": 0.21150238495692797,
+        "baseline_semantic_E_all": 0.14139892255682898,
+        "slope": 0.9077288593711459
+      },
+      "sidestep": {
+        "complete": 10,
+        "events": 10,
+        "joint": 6,
+        "semantic_E_all": 0.06638870823719599,
+        "baseline_semantic_E_all": 0.08533626224316097,
+        "slope": 1.0104453258339239
+      },
+      "back_walk": {
+        "complete": 10,
+        "events": 8,
+        "joint": 8,
+        "semantic_E_all": 0.25397983538467084,
+        "baseline_semantic_E_all": 0.3755560445118302,
+        "slope": 0.9961010136405438
+      },
+      "kick": {
+        "complete": 10,
+        "events": 10,
+        "joint": 1,
+        "semantic_E_all": 0.23917057016141227,
+        "baseline_semantic_E_all": 0.07897656850435567,
+        "slope": 1.1483184433965212
+      },
+      "jump": {
+        "complete": 10,
+        "events": 0,
+        "joint": 0,
+        "semantic_E_all": 1.0,
+        "baseline_semantic_E_all": 0.2333586545129062,
+        "slope": 0.027276829184563364
+      },
+      "lean": {
+        "complete": 9,
+        "events": 9,
+        "joint": 1,
+        "semantic_E_all": 0.28536388187008177,
+        "baseline_semantic_E_all": 0.061046486485767194,
+        "slope": 0.7488589836236332
+      },
+      "walk": {
+        "complete": 10,
+        "events": 10,
+        "joint": 3,
+        "semantic_E_all": 0.11609255124175946,
+        "baseline_semantic_E_all": 0.14043516079251647,
+        "slope": 1.3061313657385676
+      }
+    },
+    "joint_v5_root_short_step1000_validation": {
+      "raise_hand": {
+        "complete": 10,
+        "events": 10,
+        "joint": 0,
+        "semantic_E_all": 0.11493710121978284,
+        "baseline_semantic_E_all": 0.023502258459047326,
+        "slope": 0.9818048387297221
+      },
+      "reach": {
+        "complete": 10,
+        "events": 10,
+        "joint": 4,
+        "semantic_E_all": 0.10149297300052591,
+        "baseline_semantic_E_all": 0.087446122225616,
+        "slope": 0.6920880943188741
+      },
+      "strike": {
+        "complete": 10,
+        "events": 10,
+        "joint": 0,
+        "semantic_E_all": 0.41389381701709704,
+        "baseline_semantic_E_all": 0.34337644699524444,
+        "slope": 0.5130815265561876
+      },
+      "wave": {
+        "complete": 10,
+        "events": 10,
+        "joint": 1,
+        "semantic_E_all": 0.14030782350245746,
+        "baseline_semantic_E_all": 0.03602964051702788,
+        "slope": 0.9161348458394427
+      },
+      "turn": {
+        "complete": 10,
+        "events": 9,
+        "joint": 0,
+        "semantic_E_all": 0.3384845071017302,
+        "baseline_semantic_E_all": 0.14139892255682898,
+        "slope": 0.8693806816476175
+      },
+      "sidestep": {
+        "complete": 10,
+        "events": 10,
+        "joint": 5,
+        "semantic_E_all": 0.10187177184200247,
+        "baseline_semantic_E_all": 0.08533626224316097,
+        "slope": 0.9831249146308626
+      },
+      "back_walk": {
+        "complete": 10,
+        "events": 7,
+        "joint": 7,
+        "semantic_E_all": 0.34932832303460926,
+        "baseline_semantic_E_all": 0.3755560445118302,
+        "slope": 1.0021424158957999
+      },
+      "kick": {
+        "complete": 10,
+        "events": 10,
+        "joint": 0,
+        "semantic_E_all": 0.2277141032191267,
+        "baseline_semantic_E_all": 0.07897656850435567,
+        "slope": 0.9325210203196543
+      },
+      "jump": {
+        "complete": 7,
+        "events": 3,
+        "joint": 0,
+        "semantic_E_all": 0.90839054765888,
+        "baseline_semantic_E_all": 0.2333586545129062,
+        "slope": null
+      },
+      "lean": {
+        "complete": 10,
+        "events": 10,
+        "joint": 7,
+        "semantic_E_all": 0.09267574863111416,
+        "baseline_semantic_E_all": 0.061046486485767194,
+        "slope": 0.7513651556959811
+      },
+      "walk": {
+        "complete": 9,
+        "events": 9,
+        "joint": 4,
+        "semantic_E_all": 0.206315194415951,
+        "baseline_semantic_E_all": 0.14043516079251647,
+        "slope": 1.32710002727376
+      }
+    },
+    "joint_v5_root_short_step2000_validation": {
+      "raise_hand": {
+        "complete": 10,
+        "events": 10,
+        "joint": 5,
+        "semantic_E_all": 0.07778079889645391,
+        "baseline_semantic_E_all": 0.023502258459047326,
+        "slope": 1.1374309255553876
+      },
+      "reach": {
+        "complete": 10,
+        "events": 10,
+        "joint": 3,
+        "semantic_E_all": 0.09373461804569189,
+        "baseline_semantic_E_all": 0.087446122225616,
+        "slope": 0.7116491668773045
+      },
+      "strike": {
+        "complete": 10,
+        "events": 10,
+        "joint": 7,
+        "semantic_E_all": 0.11714171432604674,
+        "baseline_semantic_E_all": 0.34337644699524444,
+        "slope": 0.6845173526783155
+      },
+      "wave": {
+        "complete": 10,
+        "events": 10,
+        "joint": 9,
+        "semantic_E_all": 0.07997869970328726,
+        "baseline_semantic_E_all": 0.03602964051702788,
+        "slope": 0.9787644416806874
+      },
+      "turn": {
+        "complete": 10,
+        "events": 9,
+        "joint": 0,
+        "semantic_E_all": 0.319298529357888,
+        "baseline_semantic_E_all": 0.14139892255682898,
+        "slope": 0.8943909920409785
+      },
+      "sidestep": {
+        "complete": 10,
+        "events": 10,
+        "joint": 3,
+        "semantic_E_all": 0.14349958094760618,
+        "baseline_semantic_E_all": 0.08533626224316097,
+        "slope": 1.0390566757685749
+      },
+      "back_walk": {
+        "complete": 10,
+        "events": 9,
+        "joint": 9,
+        "semantic_E_all": 0.16456694472156147,
+        "baseline_semantic_E_all": 0.3755560445118302,
+        "slope": 0.9948897914242747
+      },
+      "kick": {
+        "complete": 10,
+        "events": 10,
+        "joint": 7,
+        "semantic_E_all": 0.07740708464681478,
+        "baseline_semantic_E_all": 0.07897656850435567,
+        "slope": 1.0202471099656811
+      },
+      "jump": {
+        "complete": 7,
+        "events": 0,
+        "joint": 0,
+        "semantic_E_all": 1.0,
+        "baseline_semantic_E_all": 0.2333586545129062,
+        "slope": null
+      },
+      "lean": {
+        "complete": 10,
+        "events": 10,
+        "joint": 8,
+        "semantic_E_all": 0.07134418840781356,
+        "baseline_semantic_E_all": 0.061046486485767194,
+        "slope": 0.8114392386841864
+      },
+      "walk": {
+        "complete": 10,
+        "events": 10,
+        "joint": 4,
+        "semantic_E_all": 0.11184319699172329,
+        "baseline_semantic_E_all": 0.14043516079251647,
+        "slope": 1.306345062784469
+      }
+    },
+    "joint_v5_root_short_step3000_validation": {
+      "raise_hand": {
+        "complete": 10,
+        "events": 10,
+        "joint": 4,
+        "semantic_E_all": 0.06941151937903703,
+        "baseline_semantic_E_all": 0.023502258459047326,
+        "slope": 1.160809160244535
+      },
+      "reach": {
+        "complete": 10,
+        "events": 10,
+        "joint": 5,
+        "semantic_E_all": 0.08227786964576177,
+        "baseline_semantic_E_all": 0.087446122225616,
+        "slope": 0.7329082847960035
+      },
+      "strike": {
+        "complete": 10,
+        "events": 10,
+        "joint": 5,
+        "semantic_E_all": 0.17424531365810886,
+        "baseline_semantic_E_all": 0.34337644699524444,
+        "slope": 0.6211410611687761
+      },
+      "wave": {
+        "complete": 10,
+        "events": 10,
+        "joint": 9,
+        "semantic_E_all": 0.061194264788595555,
+        "baseline_semantic_E_all": 0.03602964051702788,
+        "slope": 0.9459110429303299
+      },
+      "turn": {
+        "complete": 10,
+        "events": 8,
+        "joint": 0,
+        "semantic_E_all": 0.3819614112878475,
+        "baseline_semantic_E_all": 0.14139892255682898,
+        "slope": 0.8524142430168068
+      },
+      "sidestep": {
+        "complete": 10,
+        "events": 10,
+        "joint": 2,
+        "semantic_E_all": 0.17413388537382274,
+        "baseline_semantic_E_all": 0.08533626224316097,
+        "slope": 0.8068071666621005
+      },
+      "back_walk": {
+        "complete": 10,
+        "events": 6,
+        "joint": 6,
+        "semantic_E_all": 0.44338946453203354,
+        "baseline_semantic_E_all": 0.3755560445118302,
+        "slope": 1.0015303204923496
+      },
+      "kick": {
+        "complete": 10,
+        "events": 10,
+        "joint": 6,
+        "semantic_E_all": 0.10008997698310348,
+        "baseline_semantic_E_all": 0.07897656850435567,
+        "slope": 0.7539729181906016
+      },
+      "jump": {
+        "complete": 8,
+        "events": 3,
+        "joint": 0,
+        "semantic_E_all": 0.9356268456998471,
+        "baseline_semantic_E_all": 0.2333586545129062,
+        "slope": null
+      },
+      "lean": {
+        "complete": 10,
+        "events": 10,
+        "joint": 5,
+        "semantic_E_all": 0.13858455810545334,
+        "baseline_semantic_E_all": 0.061046486485767194,
+        "slope": 0.7451602285595338
+      },
+      "walk": {
+        "complete": 10,
+        "events": 10,
+        "joint": 4,
+        "semantic_E_all": 0.11280749969607244,
+        "baseline_semantic_E_all": 0.14043516079251647,
+        "slope": 1.3087623668414747
+      }
+    },
+    "joint_v5_root_short_step4000_validation": {
+      "raise_hand": {
+        "complete": 10,
+        "events": 10,
+        "joint": 2,
+        "semantic_E_all": 0.08557776411732901,
+        "baseline_semantic_E_all": 0.023502258459047326,
+        "slope": 0.9535994331633368
+      },
+      "reach": {
+        "complete": 10,
+        "events": 10,
+        "joint": 4,
+        "semantic_E_all": 0.09186916305830724,
+        "baseline_semantic_E_all": 0.087446122225616,
+        "slope": 0.7093596940943073
+      },
+      "strike": {
+        "complete": 10,
+        "events": 10,
+        "joint": 7,
+        "semantic_E_all": 0.10582849429378076,
+        "baseline_semantic_E_all": 0.34337644699524444,
+        "slope": 0.7220973887676394
+      },
+      "wave": {
+        "complete": 10,
+        "events": 10,
+        "joint": 10,
+        "semantic_E_all": 0.019638748866186495,
+        "baseline_semantic_E_all": 0.03602964051702788,
+        "slope": 0.9452722518704262
+      },
+      "turn": {
+        "complete": 10,
+        "events": 9,
+        "joint": 0,
+        "semantic_E_all": 0.30890532229937145,
+        "baseline_semantic_E_all": 0.14139892255682898,
+        "slope": 0.8788426478206774
+      },
+      "sidestep": {
+        "complete": 10,
+        "events": 10,
+        "joint": 2,
+        "semantic_E_all": 0.1440027073772308,
+        "baseline_semantic_E_all": 0.08533626224316097,
+        "slope": 0.894944096678929
+      },
+      "back_walk": {
+        "complete": 10,
+        "events": 9,
+        "joint": 9,
+        "semantic_E_all": 0.16393643551156753,
+        "baseline_semantic_E_all": 0.3755560445118302,
+        "slope": 1.0019830438013855
+      },
+      "kick": {
+        "complete": 10,
+        "events": 10,
+        "joint": 10,
+        "semantic_E_all": 0.06269511513290107,
+        "baseline_semantic_E_all": 0.07897656850435567,
+        "slope": 1.0234902461651758
+      },
+      "jump": {
+        "complete": 10,
+        "events": 7,
+        "joint": 0,
+        "semantic_E_all": 0.6477672730602448,
+        "baseline_semantic_E_all": 0.2333586545129062,
+        "slope": 0.1311881079170883
+      },
+      "lean": {
+        "complete": 10,
+        "events": 10,
+        "joint": 6,
+        "semantic_E_all": 0.09844322688094577,
+        "baseline_semantic_E_all": 0.061046486485767194,
+        "slope": 0.7566621245053554
+      },
+      "walk": {
+        "complete": 10,
+        "events": 10,
+        "joint": 4,
+        "semantic_E_all": 0.11294984439846809,
+        "baseline_semantic_E_all": 0.14043516079251647,
+        "slope": 1.3023624108116159
+      }
+    },
+    "joint_v5_root_short_validation": {
+      "raise_hand": {
+        "complete": 10,
+        "events": 10,
+        "joint": 2,
+        "semantic_E_all": 0.08716064502420003,
+        "baseline_semantic_E_all": 0.023502258459047326,
+        "slope": 0.9843009434715219
+      },
+      "reach": {
+        "complete": 10,
+        "events": 10,
+        "joint": 5,
+        "semantic_E_all": 0.0732425996734241,
+        "baseline_semantic_E_all": 0.087446122225616,
+        "slope": 0.7600069978553998
+      },
+      "strike": {
+        "complete": 10,
+        "events": 10,
+        "joint": 0,
+        "semantic_E_all": 0.31014793675142804,
+        "baseline_semantic_E_all": 0.34337644699524444,
+        "slope": 0.6607266022921632
+      },
+      "wave": {
+        "complete": 10,
+        "events": 10,
+        "joint": 10,
+        "semantic_E_all": 0.02309114915870633,
+        "baseline_semantic_E_all": 0.03602964051702788,
+        "slope": 0.9655393006297549
+      },
+      "turn": {
+        "complete": 10,
+        "events": 9,
+        "joint": 0,
+        "semantic_E_all": 0.30969146770637734,
+        "baseline_semantic_E_all": 0.14139892255682898,
+        "slope": 0.8506359322198183
+      },
+      "sidestep": {
+        "complete": 10,
+        "events": 10,
+        "joint": 4,
+        "semantic_E_all": 0.09791905503260373,
+        "baseline_semantic_E_all": 0.08533626224316097,
+        "slope": 1.044064547952973
+      },
+      "back_walk": {
+        "complete": 10,
+        "events": 10,
+        "joint": 10,
+        "semantic_E_all": 0.06981547337450147,
+        "baseline_semantic_E_all": 0.3755560445118302,
+        "slope": 1.0073918678998568
+      },
+      "kick": {
+        "complete": 10,
+        "events": 10,
+        "joint": 10,
+        "semantic_E_all": 0.04289470977797424,
+        "baseline_semantic_E_all": 0.07897656850435567,
+        "slope": 0.9052679821267069
+      },
+      "jump": {
+        "complete": 9,
+        "events": 8,
+        "joint": 0,
+        "semantic_E_all": 0.4967469682228538,
+        "baseline_semantic_E_all": 0.2333586545129062,
+        "slope": 0.3129351802446012
+      },
+      "lean": {
+        "complete": 10,
+        "events": 10,
+        "joint": 5,
+        "semantic_E_all": 0.12783407655224488,
+        "baseline_semantic_E_all": 0.061046486485767194,
+        "slope": 0.8007021634376661
+      },
+      "walk": {
+        "complete": 10,
+        "events": 10,
+        "joint": 3,
+        "semantic_E_all": 0.11424120138207669,
+        "baseline_semantic_E_all": 0.14043516079251647,
+        "slope": 1.3082696276299735
+      }
+    },
+    "joint_v5_root_long_step1000_validation": {
+      "raise_hand": {
+        "complete": 10,
+        "events": 10,
+        "joint": 1,
+        "semantic_E_all": 0.09054326035308462,
+        "baseline_semantic_E_all": 0.023502258459047326,
+        "slope": 1.043286434156586
+      },
+      "reach": {
+        "complete": 10,
+        "events": 10,
+        "joint": 4,
+        "semantic_E_all": 0.09897436416031533,
+        "baseline_semantic_E_all": 0.087446122225616,
+        "slope": 0.6979719084836182
+      },
+      "strike": {
+        "complete": 10,
+        "events": 10,
+        "joint": 0,
+        "semantic_E_all": 0.5687288844195798,
+        "baseline_semantic_E_all": 0.34337644699524444,
+        "slope": 0.42474103569514593
+      },
+      "wave": {
+        "complete": 10,
+        "events": 10,
+        "joint": 8,
+        "semantic_E_all": 0.07119894055493425,
+        "baseline_semantic_E_all": 0.03602964051702788,
+        "slope": 0.9308382863387752
+      },
+      "turn": {
+        "complete": 10,
+        "events": 10,
+        "joint": 0,
+        "semantic_E_all": 0.19066334172832017,
+        "baseline_semantic_E_all": 0.14139892255682898,
+        "slope": 0.8761190785451524
+      },
+      "sidestep": {
+        "complete": 10,
+        "events": 10,
+        "joint": 4,
+        "semantic_E_all": 0.09440896609189445,
+        "baseline_semantic_E_all": 0.08533626224316097,
+        "slope": 0.8478816560192988
+      },
+      "back_walk": {
+        "complete": 10,
+        "events": 9,
+        "joint": 9,
+        "semantic_E_all": 0.16315484135880096,
+        "baseline_semantic_E_all": 0.3755560445118302,
+        "slope": 0.9938396326905768
+      },
+      "kick": {
+        "complete": 10,
+        "events": 7,
+        "joint": 1,
+        "semantic_E_all": 0.45331739558733686,
+        "baseline_semantic_E_all": 0.07897656850435567,
+        "slope": 1.181639700893713
+      },
+      "jump": {
+        "complete": 10,
+        "events": 0,
+        "joint": 0,
+        "semantic_E_all": 1.0,
+        "baseline_semantic_E_all": 0.2333586545129062,
+        "slope": -0.025996601964064375
+      },
+      "lean": {
+        "complete": 10,
+        "events": 10,
+        "joint": 7,
+        "semantic_E_all": 0.08697141840750919,
+        "baseline_semantic_E_all": 0.061046486485767194,
+        "slope": 0.7573858088243244
+      },
+      "walk": {
+        "complete": 10,
+        "events": 10,
+        "joint": 4,
+        "semantic_E_all": 0.1181553262625514,
+        "baseline_semantic_E_all": 0.14043516079251647,
+        "slope": 1.308412444271515
+      }
+    },
+    "joint_v5_root_long_step2000_validation": {
+      "raise_hand": {
+        "complete": 10,
+        "events": 10,
+        "joint": 6,
+        "semantic_E_all": 0.06208756639842585,
+        "baseline_semantic_E_all": 0.023502258459047326,
+        "slope": 1.0936748574200377
+      },
+      "reach": {
+        "complete": 10,
+        "events": 10,
+        "joint": 4,
+        "semantic_E_all": 0.07928577509555025,
+        "baseline_semantic_E_all": 0.087446122225616,
+        "slope": 0.7451790713916008
+      },
+      "strike": {
+        "complete": 10,
+        "events": 10,
+        "joint": 0,
+        "semantic_E_all": 0.2957126720241937,
+        "baseline_semantic_E_all": 0.34337644699524444,
+        "slope": 0.6848568935800347
+      },
+      "wave": {
+        "complete": 10,
+        "events": 10,
+        "joint": 10,
+        "semantic_E_all": 0.025547729041367512,
+        "baseline_semantic_E_all": 0.03602964051702788,
+        "slope": 1.0471157337202066
+      },
+      "turn": {
+        "complete": 10,
+        "events": 10,
+        "joint": 0,
+        "semantic_E_all": 0.21402299647482032,
+        "baseline_semantic_E_all": 0.14139892255682898,
+        "slope": 0.876347228122895
+      },
+      "sidestep": {
+        "complete": 10,
+        "events": 10,
+        "joint": 5,
+        "semantic_E_all": 0.09023361391319344,
+        "baseline_semantic_E_all": 0.08533626224316097,
+        "slope": 0.8280133335767221
+      },
+      "back_walk": {
+        "complete": 10,
+        "events": 9,
+        "joint": 9,
+        "semantic_E_all": 0.15973714786459434,
+        "baseline_semantic_E_all": 0.3755560445118302,
+        "slope": 0.9904868571487944
+      },
+      "kick": {
+        "complete": 10,
+        "events": 10,
+        "joint": 5,
+        "semantic_E_all": 0.16027925899283196,
+        "baseline_semantic_E_all": 0.07897656850435567,
+        "slope": 0.9506896255819897
+      },
+      "jump": {
+        "complete": 8,
+        "events": 0,
+        "joint": 0,
+        "semantic_E_all": 1.0,
+        "baseline_semantic_E_all": 0.2333586545129062,
+        "slope": 0.1042820633380412
+      },
+      "lean": {
+        "complete": 10,
+        "events": 9,
+        "joint": 7,
+        "semantic_E_all": 0.17075052739219257,
+        "baseline_semantic_E_all": 0.061046486485767194,
+        "slope": 0.7970688021632697
+      },
+      "walk": {
+        "complete": 10,
+        "events": 10,
+        "joint": 4,
+        "semantic_E_all": 0.11582648189378975,
+        "baseline_semantic_E_all": 0.14043516079251647,
+        "slope": 1.3014574499836309
+      }
+    },
+    "joint_v5_root_long_step3000_validation": {
+      "raise_hand": {
+        "complete": 10,
+        "events": 10,
+        "joint": 0,
+        "semantic_E_all": 0.1462262408227917,
+        "baseline_semantic_E_all": 0.023502258459047326,
+        "slope": 1.0521466083644415
+      },
+      "reach": {
+        "complete": 10,
+        "events": 10,
+        "joint": 5,
+        "semantic_E_all": 0.08138459416014601,
+        "baseline_semantic_E_all": 0.087446122225616,
+        "slope": 0.7407545364116905
+      },
+      "strike": {
+        "complete": 10,
+        "events": 10,
+        "joint": 0,
+        "semantic_E_all": 0.5523194255087579,
+        "baseline_semantic_E_all": 0.34337644699524444,
+        "slope": 0.39427602160628533
+      },
+      "wave": {
+        "complete": 10,
+        "events": 10,
+        "joint": 10,
+        "semantic_E_all": 0.05604471076473179,
+        "baseline_semantic_E_all": 0.03602964051702788,
+        "slope": 0.9889487060117017
+      },
+      "turn": {
+        "complete": 10,
+        "events": 8,
+        "joint": 0,
+        "semantic_E_all": 0.4057774701706226,
+        "baseline_semantic_E_all": 0.14139892255682898,
+        "slope": 0.8419703790284117
+      },
+      "sidestep": {
+        "complete": 10,
+        "events": 10,
+        "joint": 4,
+        "semantic_E_all": 0.11366499009653297,
+        "baseline_semantic_E_all": 0.08533626224316097,
+        "slope": 1.0033044023803481
+      },
+      "back_walk": {
+        "complete": 10,
+        "events": 10,
+        "joint": 10,
+        "semantic_E_all": 0.0731991729051844,
+        "baseline_semantic_E_all": 0.3755560445118302,
+        "slope": 0.9993147946608529
+      },
+      "kick": {
+        "complete": 10,
+        "events": 10,
+        "joint": 0,
+        "semantic_E_all": 0.29222482574311454,
+        "baseline_semantic_E_all": 0.07897656850435567,
+        "slope": 0.8690926678067903
+      },
+      "jump": {
+        "complete": 9,
+        "events": 0,
+        "joint": 0,
+        "semantic_E_all": 1.0,
+        "baseline_semantic_E_all": 0.2333586545129062,
+        "slope": 0.22249357638123468
+      },
+      "lean": {
+        "complete": 10,
+        "events": 10,
+        "joint": 8,
+        "semantic_E_all": 0.07252801678444405,
+        "baseline_semantic_E_all": 0.061046486485767194,
+        "slope": 0.8154160731626707
+      },
+      "walk": {
+        "complete": 9,
+        "events": 9,
+        "joint": 4,
+        "semantic_E_all": 0.21123524691897896,
+        "baseline_semantic_E_all": 0.14043516079251647,
+        "slope": 1.369461114714891
+      }
+    },
+    "joint_v5_root_long_step4000_validation": {
+      "raise_hand": {
+        "complete": 10,
+        "events": 10,
+        "joint": 5,
+        "semantic_E_all": 0.05599768696924625,
+        "baseline_semantic_E_all": 0.023502258459047326,
+        "slope": 1.0693213302923494
+      },
+      "reach": {
+        "complete": 10,
+        "events": 10,
+        "joint": 6,
+        "semantic_E_all": 0.061480860775796745,
+        "baseline_semantic_E_all": 0.087446122225616,
+        "slope": 0.8058660467474514
+      },
+      "strike": {
+        "complete": 10,
+        "events": 10,
+        "joint": 5,
+        "semantic_E_all": 0.1674746449425486,
+        "baseline_semantic_E_all": 0.34337644699524444,
+        "slope": 0.47413882371707283
+      },
+      "wave": {
+        "complete": 10,
+        "events": 10,
+        "joint": 10,
+        "semantic_E_all": 0.04341801354901843,
+        "baseline_semantic_E_all": 0.03602964051702788,
+        "slope": 0.9813081380515691
+      },
+      "turn": {
+        "complete": 10,
+        "events": 8,
+        "joint": 0,
+        "semantic_E_all": 0.4315481475190547,
+        "baseline_semantic_E_all": 0.14139892255682898,
+        "slope": 0.81916693740714
+      },
+      "sidestep": {
+        "complete": 10,
+        "events": 10,
+        "joint": 9,
+        "semantic_E_all": 0.04501489468448305,
+        "baseline_semantic_E_all": 0.08533626224316097,
+        "slope": 0.9694247070694065
+      },
+      "back_walk": {
+        "complete": 10,
+        "events": 8,
+        "joint": 8,
+        "semantic_E_all": 0.2580576333866658,
+        "baseline_semantic_E_all": 0.3755560445118302,
+        "slope": 0.9949119750573276
+      },
+      "kick": {
+        "complete": 10,
+        "events": 10,
+        "joint": 4,
+        "semantic_E_all": 0.1276937752256214,
+        "baseline_semantic_E_all": 0.07897656850435567,
+        "slope": 0.8969143989798958
+      },
+      "jump": {
+        "complete": 10,
+        "events": 1,
+        "joint": 0,
+        "semantic_E_all": 0.9711426383054963,
+        "baseline_semantic_E_all": 0.2333586545129062,
+        "slope": 0.09783173955812274
+      },
+      "lean": {
+        "complete": 10,
+        "events": 10,
+        "joint": 7,
+        "semantic_E_all": 0.09244692580456734,
+        "baseline_semantic_E_all": 0.061046486485767194,
+        "slope": 0.8104669493071985
+      },
+      "walk": {
+        "complete": 10,
+        "events": 10,
+        "joint": 4,
+        "semantic_E_all": 0.11632740711342371,
+        "baseline_semantic_E_all": 0.14043516079251647,
+        "slope": 1.3032256904417516
+      }
+    },
+    "joint_v5_root_long_validation": {
+      "raise_hand": {
+        "complete": 10,
+        "events": 10,
+        "joint": 0,
+        "semantic_E_all": 0.13375537285840525,
+        "baseline_semantic_E_all": 0.023502258459047326,
+        "slope": 0.9724658242920555
+      },
+      "reach": {
+        "complete": 10,
+        "events": 10,
+        "joint": 6,
+        "semantic_E_all": 0.06630776326839337,
+        "baseline_semantic_E_all": 0.087446122225616,
+        "slope": 0.7813088065141569
+      },
+      "strike": {
+        "complete": 10,
+        "events": 10,
+        "joint": 3,
+        "semantic_E_all": 0.21933403897875584,
+        "baseline_semantic_E_all": 0.34337644699524444,
+        "slope": 0.5701687392944599
+      },
+      "wave": {
+        "complete": 10,
+        "events": 10,
+        "joint": 10,
+        "semantic_E_all": 0.033754715068060305,
+        "baseline_semantic_E_all": 0.03602964051702788,
+        "slope": 1.0695079811777854
+      },
+      "turn": {
+        "complete": 10,
+        "events": 10,
+        "joint": 0,
+        "semantic_E_all": 0.1847166856010553,
+        "baseline_semantic_E_all": 0.14139892255682898,
+        "slope": 0.7863753318691382
+      },
+      "sidestep": {
+        "complete": 10,
+        "events": 10,
+        "joint": 5,
+        "semantic_E_all": 0.08543309097975182,
+        "baseline_semantic_E_all": 0.08533626224316097,
+        "slope": 1.055582470025267
+      },
+      "back_walk": {
+        "complete": 10,
+        "events": 8,
+        "joint": 8,
+        "semantic_E_all": 0.25657774659055493,
+        "baseline_semantic_E_all": 0.3755560445118302,
+        "slope": 0.9966061513914202
+      },
+      "kick": {
+        "complete": 10,
+        "events": 10,
+        "joint": 5,
+        "semantic_E_all": 0.10982058248615478,
+        "baseline_semantic_E_all": 0.07897656850435567,
+        "slope": 0.934562817507457
+      },
+      "jump": {
+        "complete": 9,
+        "events": 7,
+        "joint": 0,
+        "semantic_E_all": 0.6621209905475595,
+        "baseline_semantic_E_all": 0.2333586545129062,
+        "slope": 0.4261439407150564
+      },
+      "lean": {
+        "complete": 10,
+        "events": 10,
+        "joint": 7,
+        "semantic_E_all": 0.07729348386683532,
+        "baseline_semantic_E_all": 0.061046486485767194,
+        "slope": 0.8481471371034491
+      },
+      "walk": {
+        "complete": 10,
+        "events": 10,
+        "joint": 4,
+        "semantic_E_all": 0.09213650951367884,
+        "baseline_semantic_E_all": 0.14043516079251647,
+        "slope": 1.2507426057925897
+      }
+    }
+  },
+  "pending": []
+}

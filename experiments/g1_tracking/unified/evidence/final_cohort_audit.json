@@ -1,0 +1,27 @@
+{
+  "requests": 880,
+  "unique_source_command_pairs": 880,
+  "seed_families_disjoint": true,
+  "seeds": [
+    94041000,
+    94041001,
+    94041002,
+    94041003,
+    94041100,
+    94041101,
+    94041102,
+    94041103,
+    94041200,
+    94041201,
+    94041202,
+    94041203,
+    94041300,
+    94041301,
+    94041302,
+    94041303
+  ],
+  "manifest_sha256": "d11a43c06dd66d3621269f5692ba009ac19ec3baa92f247f1dd2b10e51024e88",
+  "reference_manifest_sha256": "1130e0f875f86870e04e9226555250c7146cc13546e6a00ce83c53e72e25d4a4",
+  "selected_checkpoint_sha256": "72218056174c917a064ccf2c0a15e24601f9ed8df17cded6841be8f73936c217",
+  "scope": "Fresh noise seeds within cached templates and trained command ranges; no unseen-text claim."
+}

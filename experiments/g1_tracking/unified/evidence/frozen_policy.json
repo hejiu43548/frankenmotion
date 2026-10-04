@@ -1,0 +1,414 @@
+{
+  "frozen_at_utc": "2026-10-04T14:51:43.679087+00:00",
+  "checkpoint": "/home/pku/frankenmotion/outputs_amass/franken_unified_20261004/frozen_unified/policy.pt",
+  "checkpoint_sha256": "72218056174c917a064ccf2c0a15e24601f9ed8df17cded6841be8f73936c217",
+  "preview": true,
+  "preview_offsets": [
+    5,
+    10,
+    20
+  ],
+  "selected": "joint_v5_root_short_validation",
+  "selection_rule": "Lowest all-11-task macro semantic E_all on the 110 development requests; lexicographic name tie-break only. No per-task checkpoint selection.",
+  "candidates": [
+    {
+      "name": "joint_v1_validation",
+      "checkpoint": "/home/pku/frankenmotion/outputs_amass/franken_unified_20261004/training/joint_v1/model_2999.pt",
+      "sha256": "5b0810d57cca6aebf58f51c1c53da77101f12776588c0efd362c9485080733d7",
+      "preview": false,
+      "preview_offsets": [],
+      "aggregate": {
+        "requests": 110,
+        "complete": 90,
+        "event": 63,
+        "joint": 13,
+        "macro_semantic_E_all": 0.6200508897759704
+      },
+      "audit_sha256": "1f8d246b0ac59da8fd279527f4b22b18a0b713cdb7bc6fefe37e698f8ab4267e",
+      "evaluation_protocol_sha256": "aa170c802d48ade01654c52237d22d2654cdd2f48e788e6705a1617d3cbe33e8"
+    },
+    {
+      "name": "joint_v2_plain_validation",
+      "checkpoint": "/home/pku/frankenmotion/outputs_amass/franken_unified_20261004/training/joint_v2_plain/model_2999.pt",
+      "sha256": "5dff509173aecb6e4023ada721a649f7d8e664d3651c1ac4392197077f4921bf",
+      "preview": false,
+      "preview_offsets": [],
+      "aggregate": {
+        "requests": 110,
+        "complete": 81,
+        "event": 58,
+        "joint": 15,
+        "macro_semantic_E_all": 0.585569118927686
+      },
+      "audit_sha256": "77df92d7e7063d343de0e34d3a465fa5e189ed6f0d61721ed8c5a9f342dbd816",
+      "evaluation_protocol_sha256": "97a0b5dce50576f2137e1d6b18bae351e17c20e304c0ff47b4a4c186f05785d9"
+    },
+    {
+      "name": "joint_v2_preview_validation",
+      "checkpoint": "/home/pku/frankenmotion/outputs_amass/franken_unified_20261004/training/joint_v2_preview/model_2999.pt",
+      "sha256": "df0e3ae3420284a80ce6a99abe609bfd46cde40ecf094e12acf2af219609a661",
+      "preview": true,
+      "preview_offsets": [
+        5,
+        10,
+        20
+      ],
+      "aggregate": {
+        "requests": 110,
+        "complete": 86,
+        "event": 71,
+        "joint": 14,
+        "macro_semantic_E_all": 0.5587345259254877
+      },
+      "audit_sha256": "4a5b88263b571f3828b5ca1136067df0521b223e32470eef4abdd3188a323840",
+      "evaluation_protocol_sha256": "db7851c9e635ab8fb8a8949c4d87510de455e20a65942393f8a223722923a0f2"
+    },
+    {
+      "name": "joint_v3_pose_common_step1000_validation",
+      "checkpoint": "/home/pku/frankenmotion/outputs_amass/franken_unified_20261004/training/joint_v3_pose_common/model_1000.pt",
+      "sha256": "16ab91d26d22fe2d381277cc0da927138bbb56441a52fea9f7ffa90b5b5cbb45",
+      "preview": false,
+      "preview_offsets": [],
+      "aggregate": {
+        "requests": 110,
+        "complete": 103,
+        "event": 61,
+        "joint": 7,
+        "macro_semantic_E_all": 0.6523440506034975
+      },
+      "audit_sha256": "6797b3b4b5e71fcc9f6628bf39362fc149280abbfdde5d0d79839e1f8b47a42a",
+      "evaluation_protocol_sha256": "423556ad94a4b455ea900209866c184aa61236af339c98baec8289c539f402b0"
+    },
+    {
+      "name": "joint_v3_pose_common_validation",
+      "checkpoint": "/home/pku/frankenmotion/outputs_amass/franken_unified_20261004/training/joint_v3_pose_common/model_2999.pt",
+      "sha256": "616e21066afd3793de4f2787489006efc5762ad88716d26e8852513567d39aea",
+      "preview": false,
+      "preview_offsets": [],
+      "aggregate": {
+        "requests": 110,
+        "complete": 95,
+        "event": 64,
+        "joint": 14,
+        "macro_semantic_E_all": 0.6010888691552718
+      },
+      "audit_sha256": "3200c31fe7451755ec568fdb46a9ab365bd8b687306105912eeaada317964575",
+      "evaluation_protocol_sha256": "1e42de2011191208ce7cd46eea00cbeef267b2dc9b49e9099e464768ae0487cb"
+    },
+    {
+      "name": "joint_v4_tracking_step1000_validation",
+      "checkpoint": "/home/pku/frankenmotion/outputs_amass/franken_unified_20261004/training/joint_v4_tracking/model_1000.pt",
+      "sha256": "dc1622522ce6bbdbf3c2c3fb139b00042fa03c46f3bbd2cc064342baa97ec3a4",
+      "preview": true,
+      "preview_offsets": [
+        5,
+        10,
+        20
+      ],
+      "aggregate": {
+        "requests": 110,
+        "complete": 101,
+        "event": 88,
+        "joint": 30,
+        "macro_semantic_E_all": 0.32660534886890397
+      },
+      "audit_sha256": "525a83a942cdeb3795cfcd06ca3aa3698e311f357e94847f1856a0ff72b289ba",
+      "evaluation_protocol_sha256": "c6964c206c453a0a4026e93a69a393dc05cfae30c272133c55b2c5da615fe0ea"
+    },
+    {
+      "name": "joint_v4_tracking_step2000_validation",
+      "checkpoint": "/home/pku/frankenmotion/outputs_amass/franken_unified_20261004/training/joint_v4_tracking/model_2000.pt",
+      "sha256": "2e74b46f34b392fe3d739aa450718efbe4163e25089e29f994d18819deb415c3",
+      "preview": true,
+      "preview_offsets": [
+        5,
+        10,
+        20
+      ],
+      "aggregate": {
+        "requests": 110,
+        "complete": 108,
+        "event": 95,
+        "joint": 30,
+        "macro_semantic_E_all": 0.2682147445808243
+      },
+      "audit_sha256": "e81c5481cd5d8d8b3db8c4cde56edc6ccab1419c712c0faa1029c1036b4e1860",
+      "evaluation_protocol_sha256": "5d77bf9b2a27f6711a70c0c0d5902e49f2f666c2e9112cc020d7cf0312f84d0e"
+    },
+    {
+      "name": "joint_v4_tracking_step3000_validation",
+      "checkpoint": "/home/pku/frankenmotion/outputs_amass/franken_unified_20261004/training/joint_v4_tracking/model_3000.pt",
+      "sha256": "72248d4048cb23762fe6eb6ddac2011f098f8592b4cc61e63caa0ada2b92d0d4",
+      "preview": true,
+      "preview_offsets": [
+        5,
+        10,
+        20
+      ],
+      "aggregate": {
+        "requests": 110,
+        "complete": 108,
+        "event": 98,
+        "joint": 36,
+        "macro_semantic_E_all": 0.2527842396456656
+      },
+      "audit_sha256": "61046a8b725f353c33a05e42d83dd32e57123d2aaa7efe5058f93180670f6b8c",
+      "evaluation_protocol_sha256": "770ad5e9497372b7e7bbd438f534f112debb78a719c9ad084248930f63608c3c"
+    },
+    {
+      "name": "joint_v4_tracking_step4000_validation",
+      "checkpoint": "/home/pku/frankenmotion/outputs_amass/franken_unified_20261004/training/joint_v4_tracking/model_4000.pt",
+      "sha256": "94b73958c50ea32c049981e67619b261d9bfc2a9e9d5e4f18d967cdd034fc65f",
+      "preview": true,
+      "preview_offsets": [
+        5,
+        10,
+        20
+      ],
+      "aggregate": {
+        "requests": 110,
+        "complete": 106,
+        "event": 96,
+        "joint": 50,
+        "macro_semantic_E_all": 0.2281057109447594
+      },
+      "audit_sha256": "c34402dc7e7f39a5f8c50085c0cd404287176c0411d9e33a40c426c9a1743132",
+      "evaluation_protocol_sha256": "47060a33b931377e165cec95a6a59a0d16310fb82e7d26e85f467b9de0713405"
+    },
+    {
+      "name": "joint_v4_tracking_validation",
+      "checkpoint": "/home/pku/frankenmotion/outputs_amass/franken_unified_20261004/training/joint_v4_tracking/model_4999.pt",
+      "sha256": "a630fb541969ef58d09b653613eef1cc0dcbec32f946e79f733c54c9386cc70b",
+      "preview": true,
+      "preview_offsets": [
+        5,
+        10,
+        20
+      ],
+      "aggregate": {
+        "requests": 110,
+        "complete": 109,
+        "event": 97,
+        "joint": 34,
+        "macro_semantic_E_all": 0.24341886651980893
+      },
+      "audit_sha256": "7b629867a42bab105371210bd0f3ca9f781829fc4e3ccb44f2cd544e101e85ab",
+      "evaluation_protocol_sha256": "2739188a7b0e21d5217336d6059a1530a86f0bde410348f4af5079a9f9be7c0e"
+    },
+    {
+      "name": "joint_v5_root_short_step1000_validation",
+      "checkpoint": "/home/pku/frankenmotion/outputs_amass/franken_unified_20261004/training/joint_v5_root_short/model_1000.pt",
+      "sha256": "911889cbe65948baedd9942b5d42426a9f8f3e1ee2d661c5d7952c8771ea1017",
+      "preview": true,
+      "preview_offsets": [
+        5,
+        10,
+        20
+      ],
+      "aggregate": {
+        "requests": 110,
+        "complete": 106,
+        "event": 98,
+        "joint": 28,
+        "macro_semantic_E_all": 0.2723101736948434
+      },
+      "audit_sha256": "072cf14298cb8c43a93130b917e00c7e4e375ee2bb1a51bd6ac8c3669f52776d",
+      "evaluation_protocol_sha256": "e5dffdd3aea8c33c0173361b92e71abafd80e8428d568778ad707761eac1e97f"
+    },
+    {
+      "name": "joint_v5_root_short_step2000_validation",
+      "checkpoint": "/home/pku/frankenmotion/outputs_amass/franken_unified_20261004/training/joint_v5_root_short/model_2000.pt",
+      "sha256": "2a169f739dc834b3cf0502a0ea41649dba1001d066564159a7b7e099cffb5495",
+      "preview": true,
+      "preview_offsets": [
+        5,
+        10,
+        20
+      ],
+      "aggregate": {
+        "requests": 110,
+        "complete": 107,
+        "event": 98,
+        "joint": 55,
+        "macro_semantic_E_all": 0.20514503236771703
+      },
+      "audit_sha256": "ab39ea36369d019fdf8c4744642d14e32fef924b1a3029caa127639020f1f2c4",
+      "evaluation_protocol_sha256": "8026e91f333ab22599177d538382fa6083eba097765ff7891ce582f61504e5de"
+    },
+    {
+      "name": "joint_v5_root_short_step3000_validation",
+      "checkpoint": "/home/pku/frankenmotion/outputs_amass/franken_unified_20261004/training/joint_v5_root_short/model_3000.pt",
+      "sha256": "6a25930dc3286cc647f4dcc05535e831901731b51543d10ccb79c37e87820a28",
+      "preview": true,
+      "preview_offsets": [
+        5,
+        10,
+        20
+      ],
+      "aggregate": {
+        "requests": 110,
+        "complete": 108,
+        "event": 97,
+        "joint": 46,
+        "macro_semantic_E_all": 0.2430656917408803
+      },
+      "audit_sha256": "6e7ed30ee471728cfedb875026bba6085c0d43ad8ca47c340d10139ecb67c8a9",
+      "evaluation_protocol_sha256": "d4583a0bbde3b377c83d4ce59ff0981715bdaa5349d5ef2c83cad7c3b2fe3471"
+    },
+    {
+      "name": "joint_v5_root_short_step4000_validation",
+      "checkpoint": "/home/pku/frankenmotion/outputs_amass/franken_unified_20261004/training/joint_v5_root_short/model_4000.pt",
+      "sha256": "e201d9b860590d55c1f6ae3b82dadb23e8eb8b243a286c35ed9e98d6c218a365",
+      "preview": true,
+      "preview_offsets": [
+        5,
+        10,
+        20
+      ],
+      "aggregate": {
+        "requests": 110,
+        "complete": 110,
+        "event": 105,
+        "joint": 54,
+        "macro_semantic_E_all": 0.16741946318148482
+      },
+      "audit_sha256": "daa1de79cec4f7a727efb4ca8626a34502a2de38181cd81003a2ca65f52cacfb",
+      "evaluation_protocol_sha256": "a2b595b77e09a3db346e3ec8019c798bdff2b2d6cf9a6d019d930784906ee73f"
+    },
+    {
+      "name": "joint_v5_root_short_validation",
+      "checkpoint": "/home/pku/frankenmotion/outputs_amass/franken_unified_20261004/training/joint_v5_root_short/model_4999.pt",
+      "sha256": "72218056174c917a064ccf2c0a15e24601f9ed8df17cded6841be8f73936c217",
+      "preview": true,
+      "preview_offsets": [
+        5,
+        10,
+        20
+      ],
+      "aggregate": {
+        "requests": 110,
+        "complete": 109,
+        "event": 107,
+        "joint": 49,
+        "macro_semantic_E_all": 0.1593441166051264
+      },
+      "audit_sha256": "00b29d3d11981dfdd2422939efe178df5947957ee9cd781659d4b5d1aa06e4ff",
+      "evaluation_protocol_sha256": "2d63af6090259d01a0717c8fa326cbcbed3dce0e35224952613c32b595252241"
+    },
+    {
+      "name": "joint_v5_root_long_step1000_validation",
+      "checkpoint": "/home/pku/frankenmotion/outputs_amass/franken_unified_20261004/training/joint_v5_root_long/model_1000.pt",
+      "sha256": "c036b5e8e3427ef4f6927e93ca89ad0d2aaf2b34875045896d026efdbffa8b60",
+      "preview": true,
+      "preview_offsets": [
+        5,
+        10,
+        20,
+        35,
+        50
+      ],
+      "aggregate": {
+        "requests": 110,
+        "complete": 110,
+        "event": 96,
+        "joint": 38,
+        "macro_semantic_E_all": 0.2669197035385752
+      },
+      "audit_sha256": "58dfd3ba3edc3d9a8291063004165a8882c2b856f2e1299981d45fb1f8d823d6",
+      "evaluation_protocol_sha256": "419e791bfb523e4ea23c8f17a5f1fea3a933e42cc00337df748d78e6e1cc4d8d"
+    },
+    {
+      "name": "joint_v5_root_long_step2000_validation",
+      "checkpoint": "/home/pku/frankenmotion/outputs_amass/franken_unified_20261004/training/joint_v5_root_long/model_2000.pt",
+      "sha256": "74180215f32129565a18d5233750ef5b0d6d29d9c2df7fdbabcfac0b51a936da",
+      "preview": true,
+      "preview_offsets": [
+        5,
+        10,
+        20,
+        35,
+        50
+      ],
+      "aggregate": {
+        "requests": 110,
+        "complete": 108,
+        "event": 98,
+        "joint": 50,
+        "macro_semantic_E_all": 0.21577125173554174
+      },
+      "audit_sha256": "01e679cfdb5baa1adb7d9e172529f6a6f10f23f56644fd3d4f8b54b9f954e34e",
+      "evaluation_protocol_sha256": "d840b023aad005380ee3cf817b165b6f1ca79a4c69efd5b468500bb00986d29c"
+    },
+    {
+      "name": "joint_v5_root_long_step3000_validation",
+      "checkpoint": "/home/pku/frankenmotion/outputs_amass/franken_unified_20261004/training/joint_v5_root_long/model_3000.pt",
+      "sha256": "263ed26a18af8b8c34a1b00aa9138ca5d448fd544c60882521b2a8b0296e74e1",
+      "preview": true,
+      "preview_offsets": [
+        5,
+        10,
+        20,
+        35,
+        50
+      ],
+      "aggregate": {
+        "requests": 110,
+        "complete": 108,
+        "event": 97,
+        "joint": 41,
+        "macro_semantic_E_all": 0.2731458812613914
+      },
+      "audit_sha256": "efdf514f87ea2177353c536281143ac7bece72a4d91a5715f7b299160126ed61",
+      "evaluation_protocol_sha256": "cf3bc30693182e122fd628bb6d527bc8b66dcb8f44b106d4a1b32872aecdada7"
+    },
+    {
+      "name": "joint_v5_root_long_step4000_validation",
+      "checkpoint": "/home/pku/frankenmotion/outputs_amass/franken_unified_20261004/training/joint_v5_root_long/model_4000.pt",
+      "sha256": "a325a4c173edca75fd8686fe7e897fa0febbedc7699a97d9c285c479bc68d7c5",
+      "preview": true,
+      "preview_offsets": [
+        5,
+        10,
+        20,
+        35,
+        50
+      ],
+      "aggregate": {
+        "requests": 110,
+        "complete": 110,
+        "event": 97,
+        "joint": 58,
+        "macro_semantic_E_all": 0.2155093298432657
+      },
+      "audit_sha256": "cc6467399e71b293a9e151cb0facca2b46326d1052edb9f62bab25385e2c1182",
+      "evaluation_protocol_sha256": "3873ebf3a311ff333fd3bef5ee24e1e80988f5784591878efacd79cddedd56ef"
+    },
+    {
+      "name": "joint_v5_root_long_validation",
+      "checkpoint": "/home/pku/frankenmotion/outputs_amass/franken_unified_20261004/training/joint_v5_root_long/model_4999.pt",
+      "sha256": "6ead8f0286d932d773d1b2db637c8c8f0655ade6ed1e40355623668ac86de7ff",
+      "preview": true,
+      "preview_offsets": [
+        5,
+        10,
+        20,
+        35,
+        50
+      ],
+      "aggregate": {
+        "requests": 110,
+        "complete": 109,
+        "event": 105,
+        "joint": 48,
+        "macro_semantic_E_all": 0.17465917997810956
+      },
+      "audit_sha256": "81b85693100f8e5c83942064d87116e1146eff536009d869f4be5bee6d064750",
+      "evaluation_protocol_sha256": "4f9ca5afa0ea584627ecb54ff80f2dc1b86699b7d1b963e99ba27058e37b75f5"
+    }
+  ],
+  "development_manifest_sha256": "57c285b437d8e1fa33f9e7ef96413f80bfedbd637775b670510d663e088fc89d",
+  "study_protocol_sha256": "cc6ffb9b6194435193e4f31f703f5108b89b0d9c0ea876bcc2dc905736155fb8",
+  "final_seed_base": 94041000,
+  "final_requests": 880,
+  "task_routing": false
+}

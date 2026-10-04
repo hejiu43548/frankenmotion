@@ -1,0 +1,13 @@
+{
+  "single_checkpoint_sha256": "72218056174c917a064ccf2c0a15e24601f9ed8df17cded6841be8f73936c217",
+  "unique_checkpoints": 1,
+  "raw_max_error": 0.0,
+  "overflow_warnings": 0,
+  "aggregate": {
+    "requests": 880,
+    "complete": 875,
+    "event": 837,
+    "joint": 420,
+    "macro_semantic_E_all": 0.1693161684846185
+  }
+}

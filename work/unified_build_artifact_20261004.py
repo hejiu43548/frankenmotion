@@ -22,7 +22,7 @@ def copy(path,relative):
  assert path.is_file(),path
  dest=payload/relative;dest.parent.mkdir(parents=True,exist_ok=True);shutil.copy2(path,dest)
 for name in ['policy.pt','actor.pt','actor.json','protocol.json']:copy(U/'frozen_unified'/name,'weights/'+name)
-for name in ['protocol.json','paired_preview_protocol.json','paired_preview_complete.json','additional_snapshot_protocol.json','additional_snapshot_complete.json','final_waiter_replaced.json','final_pipeline_complete.json','runtime_versions.json']:copy(U/name,'provenance/'+name)
+for name in ['protocol.json','paired_preview_protocol.json','paired_preview_complete.json','additional_snapshot_protocol.json','additional_snapshot_complete.json','final_waiter_replaced.json','final_pipeline_complete.json','runtime_versions.json','development_comparison.json','frozen_entrypoint_audit.json']:copy(U/name,'provenance/'+name)
 for name in ['manifest.json','reference_manifest.json','protocol.json','cohort_audit.json']:copy(U/'final_test'/name,'data/final_test/'+name)
 for name in ['manifest.json','protocol.json']:copy(U/'final_test/challenges'/name,'data/final_challenges/'+name)
 for name in ['manifest.json','clips.json','audit.json']:copy(U/'training_corpus_augmented'/name,'data/training_corpus/'+name)

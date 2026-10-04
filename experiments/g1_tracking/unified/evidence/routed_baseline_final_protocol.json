@@ -1,0 +1,19 @@
+{
+  "split": "final_test",
+  "scope": "Frozen routed V3 baseline; explicitly NOT a unified policy",
+  "manifest_sha256": "d11a43c06dd66d3621269f5692ba009ac19ec3baa92f247f1dd2b10e51024e88",
+  "task_route": {
+    "raise_hand": "sonic",
+    "reach": "beyondmimic",
+    "strike": "sonic",
+    "wave": "sonic",
+    "turn": "sonic",
+    "sidestep": "beyondmimic",
+    "back_walk": "beyondmimic",
+    "kick": "sonic",
+    "jump": "sonic",
+    "lean": "sonic",
+    "walk": "sonic"
+  },
+  "controller_protocol_sha256": "50121f776553b6a9592e9d1012ab787995e39b0afb5e0b43a43fc8719067e774"
+}

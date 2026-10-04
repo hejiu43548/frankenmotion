@@ -1,0 +1,14 @@
+{
+  "preview_offsets": [
+    5,
+    10,
+    20
+  ],
+  "preview": true,
+  "checkpoint": "/home/pku/frankenmotion/outputs_amass/franken_unified_20261004/frozen_unified/policy.pt",
+  "sha256": "72218056174c917a064ccf2c0a15e24601f9ed8df17cded6841be8f73936c217",
+  "split": "final_test",
+  "single_shared_checkpoint": true,
+  "task_routing": false,
+  "manifest_sha256": "d11a43c06dd66d3621269f5692ba009ac19ec3baa92f247f1dd2b10e51024e88"
+}

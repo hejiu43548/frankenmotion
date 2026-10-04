@@ -1,0 +1,21 @@
+{
+  "raw_max_error": 4.440892098500626e-16,
+  "checkpoint_sha256": "72218056174c917a064ccf2c0a15e24601f9ed8df17cded6841be8f73936c217",
+  "unique_checkpoints": 1,
+  "overflow_warnings": 0,
+  "no_internal_resets_on_completed_rollouts": true,
+  "summary": {
+    "sequence": {
+      "planned": 24,
+      "complete": 23,
+      "all_component_events": 21,
+      "all_component_joint_pass": 3
+    },
+    "composition": {
+      "planned": 12,
+      "complete": 12,
+      "all_component_events": 8,
+      "all_component_joint_pass": 2
+    }
+  }
+}

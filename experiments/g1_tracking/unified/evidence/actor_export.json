@@ -1,0 +1,16 @@
+{
+  "checkpoint": "/home/pku/frankenmotion/outputs_amass/franken_unified_20261004/frozen_unified/policy.pt",
+  "checkpoint_sha256": "72218056174c917a064ccf2c0a15e24601f9ed8df17cded6841be8f73936c217",
+  "actor_sha256": "be4713037b7cde86a02352e0a48f710bb1a2b486af7816ded0fe93292c297be4",
+  "preview_offsets": [
+    5,
+    10,
+    20
+  ],
+  "input_dimensions": 361,
+  "output_dimensions": 29,
+  "random_observations": 512,
+  "max_absolute_action_error": 0.0,
+  "contains": "one actor and fixed observation normalization; no critic, task ID, or routing",
+  "contract": "Expects concatenated BM actor observations in the trained order, with optional shared reference preview. Outputs normalized actions; the existing native action scale/offset, limits, and observation construction remain required. This export is not a hardware deployment validation."
+}
