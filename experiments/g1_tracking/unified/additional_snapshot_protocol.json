@@ -1,0 +1,19 @@
+{
+  "created_at_utc": "2026-10-04T14:03:12.378860+00:00",
+  "reason": "Development learning was non-monotonic: V4 step4000 outperformed its final snapshot. Measured source-generation/retarget runtime leaves time to evaluate both missing 2000/4000 checkpoints symmetrically. This extends the exploratory development search before any final data are created; not a retrospective claim of initial preregistration.",
+  "indices": [
+    2000,
+    4000
+  ],
+  "selection": "One global all-11-task E_all score; no per-task winners",
+  "runs": {
+    "joint_v5_root_short": {
+      "training_pid": 399920,
+      "watcher_pid": 405276
+    },
+    "joint_v5_root_long": {
+      "training_pid": 400029,
+      "watcher_pid": 405277
+    }
+  }
+}

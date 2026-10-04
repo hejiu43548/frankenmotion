@@ -162,3 +162,11 @@ record the original run names/process handles and one-shot output locations. The
 preserve the original execution procedure but are not restart/resume commands.
 Use the training/evaluation CLIs above for a fresh experiment. Exact per-run source
 snapshots and protocol arguments take precedence over a later edited driver.
+
+The V5 development checkpoint grid was extended symmetrically from
+1000/3000/final to 1000/2000/3000/4000/final before any final cohort was created.
+This followed the non-monotonic V4 curve and a measured runtime check, which left
+room to evaluate the additional snapshots. `additional_snapshot_protocol.json`
+records this exploratory extension; it was not part of the initial preregistration.
+All candidates still use one global eleven-task selection score. The final driver
+waits for both the original paired run and the additional snapshot audits.

@@ -1,0 +1,5 @@
+{
+  "pid": 401026,
+  "time_utc": "2026-10-04T14:02:51.359660+00:00",
+  "reason": "Expand symmetric development snapshot grid before freeze; training jobs remain running. Original final waiter only, before any final data or freeze."
+}

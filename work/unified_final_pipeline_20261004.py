@@ -11,9 +11,12 @@ assert not (U/'final_test').exists() and not (U/'frozen_unified').exists()
 while not (U/'paired_preview_complete.json').exists():
  path=Path('/proc/399524/cmdline');assert path.exists() and b'unified_run_pair_20261004.py' in path.read_bytes(),'Paired driver stopped without completion; inspect its log, never restart blindly'
  time.sleep(30)
+while not (U/'additional_snapshot_complete.json').exists():
+ path=Path('/proc/'+str(read(U/'additional_snapshot_driver.json')['pid'])+'/cmdline');assert path.exists() and b'unified_additional_snapshots_20261004.py' in path.read_bytes(),'Additional snapshot driver stopped; inspect logs'
+ time.sleep(30)
 expected=['joint_v1_validation','joint_v2_plain_validation','joint_v2_preview_validation','joint_v3_pose_common_step1000_validation','joint_v3_pose_common_validation']
 expected += [f'joint_v4_tracking_step{i}_validation' for i in [1000,2000,3000,4000]]+['joint_v4_tracking_validation']
-for variant in ['short','long']:expected += [f'joint_v5_root_{variant}_step{i}_validation' for i in [1000,3000]]+[f'joint_v5_root_{variant}_validation']
+for variant in ['short','long']:expected += [f'joint_v5_root_{variant}_step{i}_validation' for i in [1000,2000,3000,4000]]+[f'joint_v5_root_{variant}_validation']
 assert all((U/'evaluation'/n/'audit.json').exists() for n in expected)
 run('unified_freeze_20261004.py',['--candidates']+expected)
 selected=read(U/'frozen_unified/protocol.json');checkpoint=selected['checkpoint'];flags=['--preview'] if selected['preview'] else []
