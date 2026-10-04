@@ -11,7 +11,7 @@ text=['# 统一 G1 tracker：独立测试结果','', '本轮交付的是一套�
 for name,label in labels.items():
  a=audits[name]['aggregate'];text.append(f"| {label} | {a['complete']}/880 | {a['event']}/880 | {a['joint']}/880 | {a['macro_semantic_E_all']:.4f} |")
 paired=read(U/'statistics/final_paired_comparison.json');delta=paired['macro_mean_difference'][0];lo,hi=paired['macro_percentile_95'][0]
-text+=['',f'统一减混合的 E_all 差值为 {delta:.4f}，配对 source-cluster bootstrap 的 95% 区间为 [{lo:.4f}, {hi:.4f}]。重采样保留同一来源的五档命令并按任务分层；该区间只反映本批输入变化，不代表跨训练种子的不确定性。']
+text+=['',f'统一减混合的 E_all 差值为 {delta:.4f}，配对 prompt/noise-block bootstrap 的 95% 区间为 [{lo:.4f}, {hi:.4f}]。重采样将同一提示编号/噪声编号对应的全部十一类动作和五档命令保留在同一个块内；该区间只反映本批输入变化，不代表跨训练种子的不确定性。']
 text+=['','E_all 对物理失败或语义失败记 1；其余为绝对命令误差除以命令范围并截断至 1，各任务等权。全程站稳并不等于执行成功：例如没有真正起跳会被语义检查判失败。','', '![Command responses](figures/final_command_responses.png)','', '图中横轴为命令，纵轴为相应测量量；距离和速度换算为 human-equivalent 单位，角度保留弧度。曲线为完成样本的中位数，色带为 P10–P90，不是置信区间。失败样本保留在总体误差中；每个点标出完成/计划数量。','', '| 动作 | 统一：完成/语义/联合通过 | 统一 E_all↓ | 混合：完成/语义/联合通过 | 混合 E_all↓ |','|---|---:|---:|---:|---:|']
 for task in summaries['unified_final']:
  x=summaries['unified_final'][task]['actual'];b=summaries['routed_baseline_final'][task]['actual'];text.append(f"| {task} | {x['measurable']}/{x['event_pass']}/{x['joint_pass']} | {x['semantic_E_all']:.4f} | {b['measurable']}/{b['event_pass']}/{b['joint_pass']} | {b['semantic_E_all']:.4f} |")

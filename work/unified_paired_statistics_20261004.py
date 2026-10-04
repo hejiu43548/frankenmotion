@@ -1,4 +1,4 @@
-"""Paired, task-stratified source-cluster bootstrap; never a selection score."""
+"""Paired shared prompt/noise-block bootstrap; never a selection score."""
 import argparse,json,os,sys
 from pathlib import Path
 import numpy as np
@@ -13,9 +13,13 @@ assert datasets[0].keys()==datasets[1].keys();assert read(folders[0]/'protocol.j
 for k,r in datasets[0].items():
  other=datasets[1][k];assert all(r[f]==other[f] for f in ['task','command','seed','path'])
  for field in ['human','g1']:assert abs(r[field]['quantity']-other[field]['quantity'])<1e-8 and r[field]['event_pass']==other[field]['event_pass']
-rng=np.random.default_rng(8104);reps=10000;draws=np.zeros((reps,3));per_task={}
+rng=np.random.default_rng(8104);reps=10000;draws=np.zeros((reps,3));per_task={};shared_blocks=None;shared_draw_indices=None
 for i,task in enumerate(TASKS):
  span=RANGES[i][1]-RANGES[i][0];sources=sorted({r['source'] for r in datasets[0].values() if r['task']==task});clusters=[]
+ blocks=[source.rsplit('_p',1)[1] for source in sources];assert len(set(blocks))==len(blocks)
+ if shared_blocks is None:
+  shared_blocks=blocks;shared_draw_indices=rng.integers(0,len(blocks),size=(reps,len(blocks)))
+ else:assert blocks==shared_blocks,'All tasks must share the same prompt/noise blocks'
  for source in sources:
   rs=[r for r in datasets[0].values() if r['source']==source];assert len(rs)==5
   differences=[]
@@ -25,7 +29,7 @@ for i,task in enumerate(TASKS):
     x=data[key(r)]['actual'];event=x is not None and x['event_pass'];values.append([min(abs(x['quantity']-r['command'])/span,1) if event else 1.,float(x is not None),float(event)])
    differences.append(np.asarray(values[0])-np.asarray(values[1]))
   clusters.append(np.mean(differences,axis=0))
- clusters=np.asarray(clusters);samples=clusters[rng.integers(0,len(clusters),size=(reps,len(clusters)))].mean(axis=1);draws+=samples/len(TASKS)
+ clusters=np.asarray(clusters);samples=clusters[shared_draw_indices].mean(axis=1);draws+=samples/len(TASKS)
  per_task[task]=dict(sources=len(sources),mean_difference=clusters.mean(axis=0).tolist(),percentile_95=np.quantile(samples,[.025,.975],axis=0).T.tolist())
-report=dict(model=a.model,baseline=a.baseline,split=read(folders[0]/'protocol.json')['split'],columns=['semantic_E_all','completion_fraction','event_fraction'],direction='model minus baseline; lower E_all is better, higher completion/event fractions are better',bootstrap_replicates=reps,seed=8104,method='Paired resampling of source clips within each task, retaining all five commands together; eleven tasks equally weighted.',macro_mean_difference=np.mean([v['mean_difference'] for v in per_task.values()],axis=0).tolist(),macro_percentile_95=np.quantile(draws,[.025,.975],axis=0).T.tolist(),per_task=per_task,limitations='Conditional on this selected model, cached templates and simulator protocol; not uncertainty across independent training runs or a causal policy-only comparison. Development intervals are descriptive after model selection.')
+report=dict(model=a.model,baseline=a.baseline,split=read(folders[0]/'protocol.json')['split'],columns=['semantic_E_all','completion_fraction','event_fraction'],direction='model minus baseline; lower E_all is better, higher completion/event fractions are better',bootstrap_replicates=reps,seed=8104,method_version='shared-block-v2',shared_prompt_noise_blocks=shared_blocks,method='Paired resampling of shared prompt/noise blocks, preserving all eleven tasks and all five commands together in each draw; eleven tasks equally weighted.',macro_mean_difference=np.mean([v['mean_difference'] for v in per_task.values()],axis=0).tolist(),macro_percentile_95=np.quantile(draws,[.025,.975],axis=0).T.tolist(),per_task=per_task,limitations='Conditional on this selected model, cached templates and simulator protocol; not uncertainty across independent training runs or a causal policy-only comparison. Development intervals are descriptive after model selection. The development cohort has only two shared blocks and cannot support reliable significance claims; 10,000 bootstrap draws do not increase the independent sample count.')
 out=U/a.output;assert not out.exists();out.parent.mkdir(parents=True,exist_ok=True);out.write_text(json.dumps(report,indent=2));print(json.dumps({k:v for k,v in report.items() if k!='per_task'},indent=2))

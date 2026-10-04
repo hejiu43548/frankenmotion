@@ -4,6 +4,7 @@ from pathlib import Path
 R=Path('/home/pku/frankenmotion');U=R/'outputs_amass/franken_unified_20261004';REPO=R/'work/git_publish_g1'
 read=lambda p:json.loads(p.read_text());sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
 assert (U/'final_pipeline_complete.json').exists()
+runtime=read(U/'runtime_versions.json');current_sources={p.name:sha(p) for p in sorted((R/'work').glob('unified_*_20261004.py'))};assert runtime['source_sha256']==current_sources,'Refresh runtime source provenance before packaging'
 selected=read(U/'frozen_unified/protocol.json');assert sha(Path(selected['checkpoint']))==selected['checkpoint_sha256']
 assert not subprocess.check_output(['git','status','--porcelain'],cwd=REPO,text=True).strip(),'Commit final code/evidence documentation first'
 commit=subprocess.check_output(['git','rev-parse','HEAD'],cwd=REPO,text=True).strip();branch=subprocess.check_output(['git','branch','--show-current'],cwd=REPO,text=True).strip();assert branch=='codex/g1-unified-tracker'
