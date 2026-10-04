@@ -1,6 +1,7 @@
-"""Development-only zero-shot test of dance-specialist BeyondMimic checkpoint.
-References start at their first pose (RSI), unlike SONIC's standing transition.
-Every early termination is retained; this is not a general-policy benchmark.
+"""Evaluate one shared tracker with a fixed observation/action contract on all requests.
+
+The wrapper selects standing entry and full-horizon physical termination; raw
+trajectories are independently audited after simulation.
 """
 import os,sys,json,time
 from pathlib import Path
@@ -52,17 +53,13 @@ def convert(states,path):
  np.savez_compressed(path,fps=50.,**{k:np.array(v) for k,v in log.items()});return len(tt)
 
 assert not os.environ.get('BM_WEIGHT_MAP'),'Unified inference forbids task-based weight maps'
-weight_map={};current_checkpoint=os.environ.get('BM_CHECKPOINT','/home/pku/frankenmotion/work/beyondmimic_demo.pt')
-if weight_map:assert all(r['task'] in weight_map and Path(weight_map[r['task']]).exists() for r in rows),'Incomplete frozen weight map'
+current_checkpoint=os.environ.get('BM_CHECKPOINT','/home/pku/frankenmotion/work/beyondmimic_demo.pt')
 results=[]
 with torch.inference_mode():
  for row in rows:
   stem=Path(row['path']).stem;dest=OUT/(stem+'.json')
   if dest.exists():results.append(json.loads(dest.read_text()));continue
   try:
-   requested_checkpoint=weight_map.get(row['task'],current_checkpoint)
-   if requested_checkpoint!=current_checkpoint:
-    runner.load(requested_checkpoint,load_cfg={'actor':True},strict=True,map_location='cuda:0');policy=runner.get_inference_policy(device='cuda:0');current_checkpoint=requested_checkpoint
    ref=np.load(Path(os.environ.get('BM_REFERENCE_DIR',str(ROOT/'physical_development_eval/gmr_probe')))/(stem+'_uniform.npz'))['reference_qpos'];mp=OUT/(stem+'_motion.npz');entry=1. if os.environ.get('BM_ENTRY')=='standing' else 0.;conversion_ref=ref
    if entry:
     a=np.arange(20)/20.;a=a*a*(3-2*a);lead=np.repeat(ref[:1],20,axis=0);lead[:,7:]=tr.rt.Q0+a[:,None]*(ref[0,7:]-tr.rt.Q0);conversion_ref=np.r_[lead,ref]

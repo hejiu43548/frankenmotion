@@ -114,3 +114,51 @@ parent selection and all arguments before launching the two runs. Both use the
 same globally selected V4 parent, common rewards/corpus, fresh optimizer and seed;
 only the future preview horizon differs. Training uses one seed per variant, so
 this is exploratory evidence rather than a multi-training-seed significance claim.
+
+## Re-run joint training on the configured data
+
+The 735-clip corpus lives at
+`outputs_amass/franken_unified_20261004/training_corpus_augmented`. Its audit and
+manifest identify every clip and exclude development/final seed families. Preserve
+this directory. To train a fresh V4-style joint model on the existing corpus:
+
+```bash
+cd /home/pku/frankenmotion
+work/mjlab_stable_env/bin/python work/unified_expand_checkpoint_20261004.py \
+  --source work/beyondmimic_demo.pt \
+  --destination outputs_amass/franken_unified_20261004/initial/preview_reproduction.pt
+work/mjlab_stable_env/bin/python work/unified_train_20261004.py \
+  --name reproduction_joint_v4 --dataset training_corpus_augmented \
+  --initial outputs_amass/franken_unified_20261004/initial/preview_reproduction.pt \
+  --preview --calibrate-preview --task-balanced-slots \
+  --steps 5000 --envs 520 --seed 4104 \
+  --body-pos-std .1 --body-pos-weight 2 --joint-weight 2 --joint-worst-count 8 \
+  --action-rate-weight -.02 --entropy-coef .003 --episode-seconds 30
+work/mjlab_stable_env/bin/python work/unified_evaluate_20261004.py \
+  --checkpoint outputs_amass/franken_unified_20261004/training/reproduction_joint_v4/model_4999.pt \
+  --preview --name reproduction_joint_v4_validation
+work/g1_sim_env/bin/python work/unified_assess_20261004.py \
+  --name reproduction_joint_v4_validation
+```
+
+Use new names and checkpoint destinations; these tools deliberately refuse to
+replace existing runs. The last two commands use development data. They do not
+re-open the already frozen final cohort for model selection. A later research
+iteration needs a new held-out cohort and study directory.
+
+For the matched V5 continuations, use the parent's checkpoint recorded in
+`paired_preview_protocol.json`, learning rate `5e-5`, seed `5104`,
+`--root-ori-weight 2 --root-wide-weight 1 --reset-training-rng`, and the same other
+settings. The long-preview branch first expands that parent with
+`unified_expand_checkpoint_20261004.py --long-preview`, then adds
+`--long-preview` to training. Both branches retain `--preview` and
+`--calibrate-preview`. Evaluate either with the same `--preview` evaluation flag;
+its saved input dimensions determine the offsets, which are checked against the
+recorded contract. Never assemble a controller by selecting a different checkpoint
+for each task.
+
+`run_pair`, `watch_checkpoints`, `final_pipeline`, and historical `finish_*` drivers
+record the original run names/process handles and one-shot output locations. They
+preserve the original execution procedure but are not restart/resume commands.
+Use the training/evaluation CLIs above for a fresh experiment. Exact per-run source
+snapshots and protocol arguments take precedence over a later edited driver.
