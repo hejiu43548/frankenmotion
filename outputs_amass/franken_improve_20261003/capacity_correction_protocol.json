@@ -1,0 +1,13 @@
+{
+  "created_utc": "2026-10-03T17:55:56.696791+00:00",
+  "reason": "MuJoCo-Warp broadphase overflow in V1 BM and novel-text logs; matching cached metrics does not rule out physical contact loss",
+  "change": "nconmax=256,njmax=2048 evaluation allocation only",
+  "unchanged": "Frozen weights, routes, commands, generated motions, robot gains, timestep and task metrics",
+  "script_sha256": "71e1eddcefb7657d09ed72cd09285a587a7346832d436afdda067b7d843d77f5",
+  "published_v1": "Preserve historical archive and provide correction notice; do not silently replace",
+  "scopes": [
+    "V1 BM880",
+    "integrated V3 BM240",
+    "novel phrasing BM30"
+  ]
+}

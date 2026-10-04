@@ -1,0 +1,43 @@
+{
+  "frozen_utc": "2026-10-03T17:27:50.802463+00:00",
+  "task_route": {
+    "raise_hand": "sonic",
+    "reach": "beyondmimic",
+    "strike": "sonic",
+    "wave": "sonic",
+    "turn": "sonic",
+    "sidestep": "beyondmimic",
+    "back_walk": "beyondmimic",
+    "kick": "sonic",
+    "jump": "sonic",
+    "lean": "sonic",
+    "walk": "sonic"
+  },
+  "generation": {
+    "kick": "frozen_kick_v3/kick.pt",
+    "jump": "frozen_generation_v1/jump_aligned.pt",
+    "all_other_tasks": "frozen_generation_v1/physical.pt"
+  },
+  "retarget": {
+    "raise_hand": "frozen_retarget_v2 source-derived IK weight4",
+    "lean": "frozen_retarget_v2 source-derived IK weight4",
+    "all_other_tasks": "GMR uniform"
+  },
+  "selection": "Integrate already frozen v1/v2/kick-v3 choices; no additional tuning. All 11 tasks now assessed on fresh common noise.",
+  "noise_formula": "64028000+prompt_index*100+noise_index",
+  "planned_requests": 880,
+  "unique_physical_rollouts": 1120,
+  "paired_v1_control": "Extra240 executions only for three changed tasks. Eight unchanged tasks share the same exact physical result; no duplicate execution claim.",
+  "source_scope": "Four shared task prompt templates, independent noise only",
+  "code_hashes": {
+    "/home/pku/frankenmotion/work/generate_v3_20261003.py": "6ca49b564a4177f4c2eb7016cca022842a8f9c644dbdb6f614ea3760b2e80a1f",
+    "/home/pku/frankenmotion/work/eval_integrated_v3_20261003.py": "2d8b8439a1ad860dcf01454d47a7fb227bdfcda8b2ecadaade403ad213a31e5a",
+    "/home/pku/frankenmotion/work/run_integrated_v3_20261003.py": "9e71d2dafa9d2801622e0a839b7a93b8bcc1760f2c16c694980a7204fb6af48f"
+  },
+  "weight_hashes": {
+    "/home/pku/frankenmotion/outputs_amass/franken_improve_20261003/frozen_kick_v3/kick.pt": "55cf7167327ca6b6ac6fda307cbf4d449e47e98ef0c8d972dc957fb6a53de2c2",
+    "/home/pku/frankenmotion/outputs_amass/franken_improve_20261003/frozen_generation_v1/physical.pt": "559623d553092545b2ecc9be4b0dad44d736ed1dbfd0e094e063838da84e480a",
+    "/home/pku/frankenmotion/outputs_amass/franken_improve_20261003/frozen_generation_v1/jump_aligned.pt": "5e4a76103232db0be43af461fe7ccc54d1aff1e015ff576683946d0472eb7252"
+  },
+  "no_hardware": true
+}

@@ -1,0 +1,13 @@
+{
+  "created_utc": "2026-10-03T18:16:32.387336+00:00",
+  "tasks": [
+    "turn",
+    "strike"
+  ],
+  "checkpoint": "model_2399.pt only",
+  "selection_data": "Five original development commands per task, fixed p0/s0; capacity256 standing-entry evaluation",
+  "rule": "Require all5 physical completions, all5 event passes, nondecreasing Q across commands, and semantic_E_all improvement >0.02 over corrected SONIC uniform on same development inputs. If not met, retain current primary controller; report the attempted specialist as not selected.",
+  "semantic_E_all": "Missing/event failure costs1; otherwise clipped absolute Q error divided by task command span",
+  "fresh_validation": "Only if selected: freeze weights first; use fresh 86029000+prompt*100+noise samples, same4templates. No integrated640 or earlierconfirmation reuse.",
+  "scope": "Supplementary bounded specialist experiment; integratedV3 remains frozen"
+}

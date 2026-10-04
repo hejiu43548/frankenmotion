@@ -1,0 +1,13 @@
+{
+  "frozen_utc": "2026-10-03T17:20:24.676457+00:00",
+  "task": "kick",
+  "selected_generator": "/home/pku/frankenmotion/outputs_amass/franken_improve_20261003/frozen_kick_v3/kick.pt",
+  "sha256": "55cf7167327ca6b6ac6fda307cbf4d449e47e98ef0c8d972dc957fb6a53de2c2",
+  "retarget": "GMR uniform unchanged",
+  "controller": "SONIC v1.1 mode0 corrected actuator bridge",
+  "selection": "Matched original development seed990707: prior adapter+GMR all5events, better joint/numeric than physical adapter or extra ankle IK. V1 findings motivated the test; no fresh kick metrics inspected.",
+  "fresh_noise": "53027000+prompt*100+noise",
+  "requests_per_generator": 80,
+  "paired_generator": "frozen_generation_v1/physical.pt",
+  "not_unseen_text": true
+}

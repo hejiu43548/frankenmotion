@@ -1,0 +1,292 @@
+{
+  "frozen_utc": "2026-10-03T16:33:50.104016+00:00",
+  "selection_data": "Development only: one prompt/noise pair per task, five commands. Confirmation metrics not inspected.",
+  "selection_rule": "Minimize semantic_E_all (event failure or missing=1, otherwise clipped normalized numeric error); use BeyondMimic in primary route only when improvement over SONIC exceeds 0.02. Per-task BM bank minimizes same score, numeric E_all breaks ties.",
+  "task_route": {
+    "raise_hand": "sonic",
+    "reach": "beyondmimic",
+    "strike": "sonic",
+    "wave": "sonic",
+    "turn": "sonic",
+    "sidestep": "beyondmimic",
+    "back_walk": "beyondmimic",
+    "kick": "sonic",
+    "jump": "sonic",
+    "lean": "sonic",
+    "walk": "sonic"
+  },
+  "beyondmimic_weight_bank": {
+    "raise_hand": "dance",
+    "reach": "dance",
+    "strike": "dance",
+    "wave": "dance",
+    "turn": "dance",
+    "sidestep": "side_std01",
+    "back_walk": "back_multi",
+    "kick": "dance",
+    "jump": "dance",
+    "lean": "dance",
+    "walk": "locomotion"
+  },
+  "weights": {
+    "side_std01": {
+      "source": "/home/pku/frankenmotion/outputs_amass/franken_improve_20261003/beyondmimic_finetune_sidestep_root2.0_all_std0.1/model_2399.pt",
+      "frozen": "/home/pku/frankenmotion/outputs_amass/franken_improve_20261003/frozen_controllers_v1/side_std01.pt",
+      "sha256": "5a1394cd484163e1edaa26e565f99c3362708679c472d30335ad09c928f2a2c2"
+    },
+    "dance": {
+      "source": "/home/pku/frankenmotion/work/beyondmimic_demo.pt",
+      "frozen": "/home/pku/frankenmotion/outputs_amass/franken_improve_20261003/frozen_controllers_v1/dance.pt",
+      "sha256": "f1bc404f5165b833a3933ac98ff223450392b78df3eb76b0c36cd1360ff22319"
+    },
+    "back_multi": {
+      "source": "/home/pku/frankenmotion/outputs_amass/franken_improve_20261003/beyondmimic_finetune_back_walk_root2.0_all/model_1199.pt",
+      "frozen": "/home/pku/frankenmotion/outputs_amass/franken_improve_20261003/frozen_controllers_v1/back_multi.pt",
+      "sha256": "f83227d8e0002eaf0c7b5a73f3b88d7a8aa01609c74c552646be8d30a026e4d1"
+    },
+    "locomotion": {
+      "source": "/home/pku/frankenmotion/outputs_amass/franken_improve_20261003/beyondmimic_finetune_locomotion_root2.0_all/model_2399.pt",
+      "frozen": "/home/pku/frankenmotion/outputs_amass/franken_improve_20261003/frozen_controllers_v1/locomotion.pt",
+      "sha256": "e53d40e310119f754b011a25606059e80a51d47529493423aaafd614dc582b99"
+    }
+  },
+  "decisions": {
+    "raise_hand": {
+      "sonic": {
+        "semantic_E_all": 0.1692196986622579,
+        "E_all": 0.1692196986622579,
+        "complete": 5,
+        "event": 5
+      },
+      "beyondmimic_options": {
+        "dance": {
+          "semantic_E_all": 0.43766987421266973,
+          "E_all": 0.43766987421266973,
+          "complete": 5,
+          "event": 5
+        }
+      },
+      "beyondmimic_selected": "dance",
+      "primary_route": "sonic"
+    },
+    "reach": {
+      "sonic": {
+        "semantic_E_all": 0.08991972844441816,
+        "E_all": 0.08991972844441816,
+        "complete": 5,
+        "event": 5
+      },
+      "beyondmimic_options": {
+        "dance": {
+          "semantic_E_all": 0.05765368233204392,
+          "E_all": 0.05765368233204392,
+          "complete": 5,
+          "event": 5
+        }
+      },
+      "beyondmimic_selected": "dance",
+      "primary_route": "beyondmimic"
+    },
+    "strike": {
+      "sonic": {
+        "semantic_E_all": 0.31111857623232003,
+        "E_all": 0.31111857623232003,
+        "complete": 5,
+        "event": 5
+      },
+      "beyondmimic_options": {
+        "dance": {
+          "semantic_E_all": 0.31303376842363967,
+          "E_all": 0.31303376842363967,
+          "complete": 5,
+          "event": 5
+        }
+      },
+      "beyondmimic_selected": "dance",
+      "primary_route": "sonic"
+    },
+    "wave": {
+      "sonic": {
+        "semantic_E_all": 0.029880672460768642,
+        "E_all": 0.029880672460768642,
+        "complete": 5,
+        "event": 5
+      },
+      "beyondmimic_options": {
+        "dance": {
+          "semantic_E_all": 0.03870381155101356,
+          "E_all": 0.03870381155101356,
+          "complete": 5,
+          "event": 5
+        }
+      },
+      "beyondmimic_selected": "dance",
+      "primary_route": "sonic"
+    },
+    "turn": {
+      "sonic": {
+        "semantic_E_all": 0.14741589438526992,
+        "E_all": 0.14741589438526992,
+        "complete": 5,
+        "event": 5
+      },
+      "beyondmimic_options": {
+        "dance": {
+          "semantic_E_all": 0.36754254038602757,
+          "E_all": 0.20609514219256822,
+          "complete": 5,
+          "event": 4
+        }
+      },
+      "beyondmimic_selected": "dance",
+      "primary_route": "sonic"
+    },
+    "sidestep": {
+      "sonic": {
+        "semantic_E_all": 1.0,
+        "E_all": 0.7897103504191086,
+        "complete": 5,
+        "event": 0
+      },
+      "beyondmimic_options": {
+        "dance": {
+          "semantic_E_all": 0.8808262850231877,
+          "E_all": 0.44580572797277257,
+          "complete": 5,
+          "event": 2
+        },
+        "side_std03": {
+          "semantic_E_all": 0.5630847770831509,
+          "E_all": 0.2794591874420066,
+          "complete": 5,
+          "event": 3
+        },
+        "side_std01": {
+          "semantic_E_all": 0.0745034692341393,
+          "E_all": 0.0745034692341393,
+          "complete": 5,
+          "event": 5
+        },
+        "locomotion": {
+          "semantic_E_all": 0.6620965669167184,
+          "E_all": 0.4443838337299426,
+          "complete": 5,
+          "event": 3
+        }
+      },
+      "beyondmimic_selected": "side_std01",
+      "primary_route": "beyondmimic"
+    },
+    "back_walk": {
+      "sonic": {
+        "semantic_E_all": 1.0,
+        "E_all": 0.8748535095604003,
+        "complete": 5,
+        "event": 0
+      },
+      "beyondmimic_options": {
+        "dance": {
+          "semantic_E_all": 0.37013052388132095,
+          "E_all": 0.37013052388132095,
+          "complete": 5,
+          "event": 5
+        },
+        "back_multi": {
+          "semantic_E_all": 0.10220892203262717,
+          "E_all": 0.10220892203262717,
+          "complete": 5,
+          "event": 5
+        },
+        "locomotion": {
+          "semantic_E_all": 0.47493233311393,
+          "E_all": 0.13081888738650133,
+          "complete": 5,
+          "event": 3
+        }
+      },
+      "beyondmimic_selected": "back_multi",
+      "primary_route": "beyondmimic"
+    },
+    "kick": {
+      "sonic": {
+        "semantic_E_all": 0.48179811428375857,
+        "E_all": 0.10623952609456822,
+        "complete": 5,
+        "event": 3
+      },
+      "beyondmimic_options": {
+        "dance": {
+          "semantic_E_all": 1.0,
+          "E_all": 0.6881362480837518,
+          "complete": 5,
+          "event": 0
+        }
+      },
+      "beyondmimic_selected": "dance",
+      "primary_route": "sonic"
+    },
+    "jump": {
+      "sonic": {
+        "semantic_E_all": 0.1894917511049155,
+        "E_all": 0.1894917511049155,
+        "complete": 5,
+        "event": 5
+      },
+      "beyondmimic_options": {
+        "dance": {
+          "semantic_E_all": 1.0,
+          "E_all": 0.954209815166989,
+          "complete": 5,
+          "event": 0
+        }
+      },
+      "beyondmimic_selected": "dance",
+      "primary_route": "sonic"
+    },
+    "lean": {
+      "sonic": {
+        "semantic_E_all": 0.21589256166281032,
+        "E_all": 0.21589256166281032,
+        "complete": 5,
+        "event": 5
+      },
+      "beyondmimic_options": {
+        "dance": {
+          "semantic_E_all": 1.0,
+          "E_all": 1.0,
+          "complete": 0,
+          "event": 0
+        }
+      },
+      "beyondmimic_selected": "dance",
+      "primary_route": "sonic"
+    },
+    "walk": {
+      "sonic": {
+        "semantic_E_all": 0.06047511621867172,
+        "E_all": 0.06047511621867172,
+        "complete": 5,
+        "event": 5
+      },
+      "beyondmimic_options": {
+        "dance": {
+          "semantic_E_all": 0.408449718185532,
+          "E_all": 0.408449718185532,
+          "complete": 4,
+          "event": 4
+        },
+        "locomotion": {
+          "semantic_E_all": 0.17034263345180217,
+          "E_all": 0.17034263345180217,
+          "complete": 5,
+          "event": 5
+        }
+      },
+      "beyondmimic_selected": "locomotion",
+      "primary_route": "sonic"
+    }
+  },
+  "generation_protocol_sha256": "cced6fd106462219ae61bb89b9b6acc4050dab9a5519386b36475b4748f8c621",
+  "evaluation": "Standing + 1s transition; physical fall root height<0.35m or norm(roll,pitch)>pi/3; native actuator/simulator differences disclosed.",
+  "primary_scope": "Task-routed offline motion execution, not seamless online policy switching or hardware deployment"
+}

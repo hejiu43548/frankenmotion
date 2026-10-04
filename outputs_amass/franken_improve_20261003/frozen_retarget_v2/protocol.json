@@ -1,0 +1,20 @@
+{
+  "frozen_utc": "2026-10-03T17:12:21.795781+00:00",
+  "tasks": [
+    "raise_hand",
+    "lean"
+  ],
+  "weight": 4,
+  "selection": "Original development p0/s0 five commands each, w4 passes all10 numeric+event; choose lower strength over w12. v1 heldout informed task priorities, not v2 confirmation.",
+  "fresh_noise": "53027000+prompt_index*100+noise_index",
+  "requests": 160,
+  "paired_weights": [
+    0,
+    4
+  ],
+  "generator": "frozen_generation_v1/physical.pt",
+  "script_sha256": "eeda2c5840442a04043b65b569aea8b40c9057d77c6cb991f5412818cbd42dbc",
+  "generation_editing": false,
+  "task_aware_retarget": "source-derived wrist position or torso direction; fixedroot, foot-anchor preservation",
+  "limits": "same four prompt templates, new noise only; post-v1 hypothesis and separate validation; no hardware"
+}

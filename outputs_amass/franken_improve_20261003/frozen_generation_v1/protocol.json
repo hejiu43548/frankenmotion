@@ -1,0 +1,21 @@
+{
+  "frozen_utc": "2026-10-03T15:45:04.166579+00:00",
+  "generators": {
+    "physical": {
+      "source": "/home/pku/frankenmotion/outputs_amass/franken_improve_20261003/physical_adapter/best.pt",
+      "frozen": "/home/pku/frankenmotion/outputs_amass/franken_improve_20261003/frozen_generation_v1/physical.pt",
+      "sha256": "559623d553092545b2ecc9be4b0dad44d736ed1dbfd0e094e063838da84e480a"
+    },
+    "jump_aligned": {
+      "source": "/home/pku/frankenmotion/outputs_amass/franken_improve_20261003/jump_aligned_adapter/best.pt",
+      "frozen": "/home/pku/frankenmotion/outputs_amass/franken_improve_20261003/frozen_generation_v1/jump_aligned.pt",
+      "sha256": "5e4a76103232db0be43af461fe7ccc54d1aff1e015ff576683946d0472eb7252"
+    }
+  },
+  "routing": "jump uses jump_aligned; all other tasks use physical",
+  "confirmation_seeds": "42026000+prompt_index*100+noise_index",
+  "n": 880,
+  "prompts": "same four templates used in development; heldout noise only",
+  "selection": "development 990700+task, no independent confirmation metrics inspected",
+  "controller_selection": "still in development, must freeze before inspecting confirmation"
+}

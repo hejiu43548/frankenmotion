@@ -1,0 +1,13 @@
+{
+  "raise_hand": "/home/pku/frankenmotion/outputs_amass/franken_improve_20261003/frozen_controllers_v1/dance.pt",
+  "reach": "/home/pku/frankenmotion/outputs_amass/franken_improve_20261003/frozen_controllers_v1/dance.pt",
+  "strike": "/home/pku/frankenmotion/outputs_amass/franken_improve_20261003/frozen_controllers_v1/dance.pt",
+  "wave": "/home/pku/frankenmotion/outputs_amass/franken_improve_20261003/frozen_controllers_v1/dance.pt",
+  "turn": "/home/pku/frankenmotion/outputs_amass/franken_improve_20261003/frozen_controllers_v1/dance.pt",
+  "sidestep": "/home/pku/frankenmotion/outputs_amass/franken_improve_20261003/frozen_controllers_v1/side_std01.pt",
+  "back_walk": "/home/pku/frankenmotion/outputs_amass/franken_improve_20261003/frozen_controllers_v1/back_multi.pt",
+  "kick": "/home/pku/frankenmotion/outputs_amass/franken_improve_20261003/frozen_controllers_v1/dance.pt",
+  "jump": "/home/pku/frankenmotion/outputs_amass/franken_improve_20261003/frozen_controllers_v1/dance.pt",
+  "lean": "/home/pku/frankenmotion/outputs_amass/franken_improve_20261003/frozen_controllers_v1/dance.pt",
+  "walk": "/home/pku/frankenmotion/outputs_amass/franken_improve_20261003/frozen_controllers_v1/locomotion.pt"
+}
