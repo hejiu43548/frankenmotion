@@ -1,0 +1,20 @@
+{
+  "objective": "One shared whole-body tracker checkpoint for all eleven tasks, without task-based policy/checkpoint routing or body-part policy composition",
+  "created_date": "2026-10-04",
+  "budget_hours_authorized": 7,
+  "preserved_baseline": "Frozen integrated V3 task-routed tracker; prior results and weights remain immutable",
+  "reference_pipeline": "Keep frozen V3 generator and retarget outputs for a matched tracker comparison; task-specific retarget details disclosed separately from unified tracker",
+  "initial_training": "55 original development source references; 11 tasks x5commands; p0/s0; all clips and parameters sampled with one common observation/action interface",
+  "additional_training_seed_base": 92041000,
+  "development_validation_seed_base": 88041000,
+  "final_test_seed_base": 94041000,
+  "seed_formula": "base + prompt_index*100 + noise_index",
+  "development_validation": "11tasks x p0 x2newnoises x5commands =110; used for architecture/training choices, not independent claims",
+  "final_test": "11tasks x4sharedtemplates x4newnoises x5commands =880; no final metrics inspected until one unified checkpoint is selected and hashed",
+  "selection": "Rank shared checkpoints by macro semantic_E_all on development validation; failures/event failures cost1, otherwise clipped abs error/taskspan. Retain per-task completion, joint pass and monotonicity. Do not select different checkpoints per task. Require no task-based actor dispatch in inference.",
+  "baseline_evaluation": "Old frozen routed tracker and selected unified tracker on identical fresh final references, same standing entry and physical failure definitions. Native actuator/physics differences disclosed.",
+  "transitions": "Separate continuous-reference sequence tests with no simulator reset or actor reload between actions; report separately from single-task numeric benchmark. Do not claim arbitrary composition from sequential transitions.",
+  "development_iterations": "May improve sampling, observation preview, common rewards or distillation using development/training only; record each variant before evaluation. Distillation is optional, not assumed successful.",
+  "physical_capacity": {"nconmax":256,"njmax":2048},
+  "hardware": "No hardware control"
+}
