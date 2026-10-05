@@ -1,0 +1,326 @@
+{
+  "all64rollouts_match_same_exported_actor": true,
+  "max_error": 7.62939453125e-06,
+  "cases": [
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_000/selected",
+      "frames": 759,
+      "action_max_error": 2.86102294921875e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_001/selected",
+      "frames": 739,
+      "action_max_error": 3.814697265625e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_002/selected",
+      "frames": 717,
+      "action_max_error": 4.76837158203125e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_003/selected",
+      "frames": 732,
+      "action_max_error": 3.814697265625e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_004/selected",
+      "frames": 714,
+      "action_max_error": 3.814697265625e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_005/selected",
+      "frames": 737,
+      "action_max_error": 3.814697265625e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_006/selected",
+      "frames": 789,
+      "action_max_error": 3.337860107421875e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_007/selected",
+      "frames": 789,
+      "action_max_error": 3.814697265625e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_008/selected",
+      "frames": 779,
+      "action_max_error": 3.814697265625e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_009/selected",
+      "frames": 724,
+      "action_max_error": 3.814697265625e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_010/selected",
+      "frames": 767,
+      "action_max_error": 3.814697265625e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_011/selected",
+      "frames": 749,
+      "action_max_error": 2.86102294921875e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_012/selected",
+      "frames": 719,
+      "action_max_error": 3.814697265625e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_013/selected",
+      "frames": 727,
+      "action_max_error": 3.814697265625e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_014/selected",
+      "frames": 762,
+      "action_max_error": 2.86102294921875e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_015/selected",
+      "frames": 759,
+      "action_max_error": 2.86102294921875e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_016/selected",
+      "frames": 787,
+      "action_max_error": 3.814697265625e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_017/selected",
+      "frames": 747,
+      "action_max_error": 2.86102294921875e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_018/selected",
+      "frames": 784,
+      "action_max_error": 4.76837158203125e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_019/selected",
+      "frames": 744,
+      "action_max_error": 3.337860107421875e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_020/selected",
+      "frames": 744,
+      "action_max_error": 3.814697265625e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_021/selected",
+      "frames": 757,
+      "action_max_error": 2.86102294921875e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_022/selected",
+      "frames": 774,
+      "action_max_error": 4.76837158203125e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_023/selected",
+      "frames": 714,
+      "action_max_error": 2.86102294921875e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_024/selected",
+      "frames": 764,
+      "action_max_error": 2.86102294921875e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_025/selected",
+      "frames": 727,
+      "action_max_error": 2.86102294921875e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_026/selected",
+      "frames": 782,
+      "action_max_error": 2.86102294921875e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_027/selected",
+      "frames": 769,
+      "action_max_error": 2.86102294921875e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_028/selected",
+      "frames": 749,
+      "action_max_error": 2.86102294921875e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_029/selected",
+      "frames": 792,
+      "action_max_error": 3.814697265625e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_030/selected",
+      "frames": 784,
+      "action_max_error": 3.814697265625e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_031/selected",
+      "frames": 747,
+      "action_max_error": 3.814697265625e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_000/selected_cpu",
+      "frames": 759,
+      "action_max_error": 2.86102294921875e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_001/selected_cpu",
+      "frames": 739,
+      "action_max_error": 3.814697265625e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_002/selected_cpu",
+      "frames": 717,
+      "action_max_error": 2.86102294921875e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_003/selected_cpu",
+      "frames": 732,
+      "action_max_error": 2.86102294921875e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_004/selected_cpu",
+      "frames": 714,
+      "action_max_error": 2.86102294921875e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_005/selected_cpu",
+      "frames": 737,
+      "action_max_error": 3.814697265625e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_006/selected_cpu",
+      "frames": 789,
+      "action_max_error": 2.86102294921875e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_007/selected_cpu",
+      "frames": 789,
+      "action_max_error": 3.814697265625e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_008/selected_cpu",
+      "frames": 779,
+      "action_max_error": 3.814697265625e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_009/selected_cpu",
+      "frames": 724,
+      "action_max_error": 4.76837158203125e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_010/selected_cpu",
+      "frames": 767,
+      "action_max_error": 3.337860107421875e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_011/selected_cpu",
+      "frames": 749,
+      "action_max_error": 2.86102294921875e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_012/selected_cpu",
+      "frames": 719,
+      "action_max_error": 4.291534423828125e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_013/selected_cpu",
+      "frames": 727,
+      "action_max_error": 7.62939453125e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_014/selected_cpu",
+      "frames": 762,
+      "action_max_error": 2.86102294921875e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_015/selected_cpu",
+      "frames": 759,
+      "action_max_error": 4.76837158203125e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_016/selected_cpu",
+      "frames": 787,
+      "action_max_error": 3.814697265625e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_017/selected_cpu",
+      "frames": 747,
+      "action_max_error": 3.814697265625e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_018/selected_cpu",
+      "frames": 784,
+      "action_max_error": 3.337860107421875e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_019/selected_cpu",
+      "frames": 744,
+      "action_max_error": 2.86102294921875e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_020/selected_cpu",
+      "frames": 744,
+      "action_max_error": 3.337860107421875e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_021/selected_cpu",
+      "frames": 757,
+      "action_max_error": 3.814697265625e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_022/selected_cpu",
+      "frames": 774,
+      "action_max_error": 4.76837158203125e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_023/selected_cpu",
+      "frames": 714,
+      "action_max_error": 2.86102294921875e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_024/selected_cpu",
+      "frames": 764,
+      "action_max_error": 4.76837158203125e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_025/selected_cpu",
+      "frames": 727,
+      "action_max_error": 4.76837158203125e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_026/selected_cpu",
+      "frames": 782,
+      "action_max_error": 4.76837158203125e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_027/selected_cpu",
+      "frames": 769,
+      "action_max_error": 2.86102294921875e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_028/selected_cpu",
+      "frames": 749,
+      "action_max_error": 2.86102294921875e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_029/selected_cpu",
+      "frames": 792,
+      "action_max_error": 3.814697265625e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_030/selected_cpu",
+      "frames": 784,
+      "action_max_error": 3.814697265625e-06
+    },
+    {
+      "run": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_031/selected_cpu",
+      "frames": 747,
+      "action_max_error": 2.86102294921875e-06
+    }
+  ]
+}

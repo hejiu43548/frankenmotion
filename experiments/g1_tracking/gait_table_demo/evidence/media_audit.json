@@ -1,0 +1,72 @@
+[
+  {
+    "file": "scene_000.mp4",
+    "frames": 380,
+    "fps": 25.0,
+    "duration": 15.2,
+    "size": [
+      1280,
+      720
+    ]
+  },
+  {
+    "file": "scene_003.mp4",
+    "frames": 366,
+    "fps": 25.0,
+    "duration": 14.64,
+    "size": [
+      1280,
+      720
+    ]
+  },
+  {
+    "file": "funding_demo.mp4",
+    "frames": 1010,
+    "fps": 25.0,
+    "duration": 40.4,
+    "size": [
+      1280,
+      720
+    ]
+  },
+  {
+    "file": "scene_002.mp4",
+    "frames": 359,
+    "fps": 25.0,
+    "duration": 14.36,
+    "size": [
+      1280,
+      720
+    ]
+  },
+  {
+    "file": "gait_before_after.mp4",
+    "frames": 150,
+    "fps": 25.0,
+    "duration": 6.0,
+    "size": [
+      1920,
+      800
+    ]
+  },
+  {
+    "file": "first_four_random_layouts.mp4",
+    "frames": 380,
+    "fps": 25.0,
+    "duration": 15.2,
+    "size": [
+      1280,
+      720
+    ]
+  },
+  {
+    "file": "scene_001.mp4",
+    "frames": 370,
+    "fps": 25.0,
+    "duration": 14.8,
+    "size": [
+      1280,
+      720
+    ]
+  }
+]

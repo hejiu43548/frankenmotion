@@ -1,0 +1,36 @@
+{
+  "frozen_unix": 1791176793.0260112,
+  "selected": "distill_v2/model_3000: six development CPU and GPU scenes; visual inspection of scene0 and5 walk, scene0 full phases",
+  "deployment": "One fixed 361-input actor; no routing, no teacher or action mixture at inference",
+  "training": "SONIC locomotion and previous interaction actor mixed offline only; supervised distillation then DAgger on 8 training references; teacher validation groups14/15 excluded from DAgger",
+  "reference": "Existing goal-conditioned generator + up to3 same-noise command corrections; uniform GMR; walk-only temporal resampling clip(distance/.45+.8,2.8,4.8); 1.5s settling; explicit scene-aware right-hand lift/extend/lower/hold IK",
+  "test": {
+    "seed": 75005000,
+    "count": 32,
+    "all_random": true,
+    "range_distance_m": [
+      0.85,
+      1.75
+    ],
+    "range_direction_rad": [
+      -0.5,
+      0.5
+    ],
+    "known_table_pose": true,
+    "table_top_m": 0.8
+  },
+  "primary_backend": "mjlab GPU MuJoCo",
+  "independent_check": "native CPU MuJoCo; same exported actor and initial-only state writes",
+  "gait_diagnostics": "knees, foot clearance, contacts and contact-point slip, plus human visual review by assistant; not validated perceptual naturalness metric",
+  "limitations": [
+    "Arms remain relatively held and stiff",
+    "No perception or moving obstacles",
+    "Not hardware tested",
+    "No new validation of all prior 11 skills"
+  ],
+  "weights": {
+    "goal_adapter.pt": "cccab0bfb8f89ccc75d5437454afb973128f245482c76f6f1241d0ffbe381a28",
+    "actor.pt": "32063fd52a62b155bc82925819cc2848016995e01d20b4920ac397e2f8cdcfe6",
+    "policy.pt": "3a33089c8baeef2477a081744f17973da485811034237924c05703b21b3da6b1"
+  }
+}

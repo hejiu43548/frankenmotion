@@ -1,0 +1,7 @@
+{
+  "count": 8,
+  "training_clips_only": true,
+  "selection_seed": 73005000,
+  "scope": "DAgger: execute 70% student +30% teacher joint targets in physical simulation, label with full teacher. Offline teacher: SONIC walking, smooth transition during settling to prior single interaction actor. These mixed-teacher trajectories are not final demo results. Student deployment must be separately evaluated with one network.",
+  "actor_sha256": "1ee24af84ac3f0cbf7e9251f109d071458122ee8f0fe2cf958d3b3b32d8f82f2"
+}

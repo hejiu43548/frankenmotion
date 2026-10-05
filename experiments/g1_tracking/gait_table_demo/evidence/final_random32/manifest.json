@@ -1,0 +1,2178 @@
+[
+  {
+    "index": 0,
+    "seed": 75005000,
+    "distance_robot_m": 1.2977537918865618,
+    "direction_rad": -0.3289780007464681,
+    "distance_human_m": 1.6986585485792232,
+    "goal_xy": [
+      1.2281591767256363,
+      -0.4192731102522038
+    ],
+    "table_center": [
+      1.843301640467668,
+      -0.6292725133498867,
+      0.4
+    ],
+    "table_half_size": [
+      0.4,
+      0.48,
+      0.035
+    ],
+    "table_top": 0.8,
+    "table_yaw": -0.3289780007464681,
+    "hand_target": [
+      1.561477744515078,
+      -0.6809957351182924,
+      0.84
+    ],
+    "goal_generation": {
+      "endpoint_error_m": [
+        0.002555183134973049
+      ],
+      "xy": [
+        [
+          1.6096588373184204,
+          -0.5502598881721497
+        ]
+      ],
+      "heading_rad": [
+        -0.46944570541381836
+      ]
+    },
+    "generation_refinements": [
+      {
+        "iteration": 0,
+        "injected_distance_human_m": 1.6986585485792232,
+        "injected_direction_rad": -0.3289780007464681,
+        "endpoint_error_human_m": 0.05121756536921658,
+        "achieved_xy_human_m": [
+          1.5565111637115479,
+          -0.5528925657272339
+        ]
+      },
+      {
+        "iteration": 1,
+        "injected_distance_human_m": 1.74576946225214,
+        "injected_direction_rad": -0.31730884143380933,
+        "endpoint_error_human_m": 0.0025552375799487125,
+        "achieved_xy_human_m": [
+          1.6096588373184204,
+          -0.5502598881721497
+        ]
+      }
+    ],
+    "selected_generation_iteration": 1,
+    "weight_sha256": "cccab0bfb8f89ccc75d5437454afb973128f245482c76f6f1241d0ffbe381a28",
+    "source": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_000",
+    "prompt": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p0.json"
+  },
+  {
+    "index": 1,
+    "seed": 75005001,
+    "distance_robot_m": 1.1246857204954022,
+    "direction_rad": 0.4437289159546235,
+    "distance_human_m": 1.4721259344634556,
+    "goal_xy": [
+      1.0157678760080846,
+      0.48283909530638275
+    ],
+    "table_center": [
+      1.6028199807635608,
+      0.7618907505642676,
+      0.4
+    ],
+    "table_half_size": [
+      0.4,
+      0.48,
+      0.035
+    ],
+    "table_top": 0.8,
+    "table_yaw": 0.4437289159546235,
+    "hand_target": [
+      1.4371341431439222,
+      0.5281211990562094,
+      0.84
+    ],
+    "goal_generation": {
+      "endpoint_error_m": [
+        0.002003207802772522
+      ],
+      "xy": [
+        [
+          1.3312253952026367,
+          0.6308839917182922
+        ]
+      ],
+      "heading_rad": [
+        0.589534342288971
+      ]
+    },
+    "generation_refinements": [
+      {
+        "iteration": 0,
+        "injected_distance_human_m": 1.4721259344634556,
+        "injected_direction_rad": 0.4437289159546235,
+        "endpoint_error_human_m": 0.03765631602132332,
+        "achieved_xy_human_m": [
+          1.3000456094741821,
+          0.6086140871047974
+        ]
+      },
+      {
+        "iteration": 1,
+        "injected_distance_human_m": 1.5088458623653036,
+        "injected_direction_rad": 0.44932843486888496,
+        "endpoint_error_human_m": 0.002003242025385749,
+        "achieved_xy_human_m": [
+          1.3312253952026367,
+          0.6308839917182922
+        ]
+      }
+    ],
+    "selected_generation_iteration": 1,
+    "weight_sha256": "cccab0bfb8f89ccc75d5437454afb973128f245482c76f6f1241d0ffbe381a28",
+    "source": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_001",
+    "prompt": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p0.json"
+  },
+  {
+    "index": 2,
+    "seed": 75005002,
+    "distance_robot_m": 0.9322437392483108,
+    "direction_rad": 0.43122435908778867,
+    "distance_human_m": 1.2202343826185673,
+    "goal_xy": [
+      0.8469011775215814,
+      0.3896623985968255
+    ],
+    "table_center": [
+      1.437396712340509,
+      0.6613516022080639,
+      0.4
+    ],
+    "table_half_size": [
+      0.4,
+      0.48,
+      0.035
+    ],
+    "table_top": 0.8,
+    "table_yaw": 0.43122435908778867,
+    "hand_target": [
+      1.268800719726419,
+      0.4296721010119725,
+      0.84
+    ],
+    "goal_generation": {
+      "endpoint_error_m": [
+        0.006464845966547728
+      ],
+      "xy": [
+        [
+          1.1149828433990479,
+          0.5096843838691711
+        ]
+      ],
+      "heading_rad": [
+        0.5839715600013733
+      ]
+    },
+    "generation_refinements": [
+      {
+        "iteration": 0,
+        "injected_distance_human_m": 1.2202343826185673,
+        "injected_direction_rad": 0.43122435908778867,
+        "endpoint_error_human_m": 0.06782738579868339,
+        "achieved_xy_human_m": [
+          1.0421814918518066,
+          0.4959399998188019
+        ]
+      },
+      {
+        "iteration": 1,
+        "injected_distance_human_m": 1.2864860124380944,
+        "injected_direction_rad": 0.4196231525032734,
+        "endpoint_error_human_m": 0.006464883378275281,
+        "achieved_xy_human_m": [
+          1.1149828433990479,
+          0.5096843838691711
+        ]
+      }
+    ],
+    "selected_generation_iteration": 1,
+    "weight_sha256": "cccab0bfb8f89ccc75d5437454afb973128f245482c76f6f1241d0ffbe381a28",
+    "source": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_002",
+    "prompt": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p0.json"
+  },
+  {
+    "index": 3,
+    "seed": 75005003,
+    "distance_robot_m": 1.049668911453735,
+    "direction_rad": 0.12529736890445098,
+    "distance_human_m": 1.3739347792825338,
+    "goal_xy": [
+      1.0414400834266082,
+      0.1311768893702246
+    ],
+    "table_center": [
+      1.6863444402583023,
+      0.21240724416139256,
+      0.4
+    ],
+    "table_half_size": [
+      0.4,
+      0.48,
+      0.035
+    ],
+    "table_top": 0.8,
+    "table_yaw": 0.12529736890445098,
+    "hand_target": [
+      1.4558000717395947,
+      0.04226232315488615,
+      0.84
+    ],
+    "goal_generation": {
+      "endpoint_error_m": [
+        0.0015558720333501697
+      ],
+      "xy": [
+        [
+          1.3646823167800903,
+          0.1713612973690033
+        ]
+      ],
+      "heading_rad": [
+        0.19186997413635254
+      ]
+    },
+    "generation_refinements": [
+      {
+        "iteration": 0,
+        "injected_distance_human_m": 1.3739347792825338,
+        "injected_direction_rad": 0.12529736890445098,
+        "endpoint_error_human_m": 0.03346404808898881,
+        "achieved_xy_human_m": [
+          1.3376637697219849,
+          0.15003037452697754
+        ]
+      },
+      {
+        "iteration": 1,
+        "injected_distance_human_m": 1.402062682752008,
+        "injected_direction_rad": 0.1383594414608215,
+        "endpoint_error_human_m": 0.0015558192298609631,
+        "achieved_xy_human_m": [
+          1.3646823167800903,
+          0.1713612973690033
+        ]
+      }
+    ],
+    "selected_generation_iteration": 1,
+    "weight_sha256": "cccab0bfb8f89ccc75d5437454afb973128f245482c76f6f1241d0ffbe381a28",
+    "source": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_003",
+    "prompt": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p0.json"
+  },
+  {
+    "index": 4,
+    "seed": 75005004,
+    "distance_robot_m": 0.8739681646015812,
+    "direction_rad": -0.14532103782469707,
+    "distance_human_m": 1.1439561982157074,
+    "goal_xy": [
+      0.864756074624058,
+      -0.12655940951919456
+    ],
+    "table_center": [
+      1.50790472839897,
+      -0.22068596872284502,
+      0.4
+    ],
+    "table_half_size": [
+      0.4,
+      0.48,
+      0.035
+    ],
+    "table_top": 0.8,
+    "table_yaw": -0.14532103782469707,
+    "hand_target": [
+      1.2402664488109099,
+      -0.32300777138065284,
+      0.84
+    ],
+    "goal_generation": {
+      "endpoint_error_m": [
+        0.010609019547700882
+      ],
+      "xy": [
+        [
+          1.1217776536941528,
+          -0.16247455775737762
+        ]
+      ],
+      "heading_rad": [
+        -0.1906062364578247
+      ]
+    },
+    "generation_refinements": [
+      {
+        "iteration": 0,
+        "injected_distance_human_m": 1.1439561982157074,
+        "injected_direction_rad": -0.14532103782469707,
+        "endpoint_error_human_m": 0.2699141664778107,
+        "achieved_xy_human_m": [
+          0.8711183071136475,
+          -0.09603271633386612
+        ]
+      },
+      {
+        "iteration": 1,
+        "injected_distance_human_m": 1.4124126499745338,
+        "injected_direction_rad": -0.1673604616755736,
+        "endpoint_error_human_m": 0.04470487328153569,
+        "achieved_xy_human_m": [
+          1.1741026639938354,
+          -0.18039806187152863
+        ]
+      },
+      {
+        "iteration": 2,
+        "injected_distance_human_m": 1.3683628733741535,
+        "injected_direction_rad": -0.16187557876152725,
+        "endpoint_error_human_m": 0.010609025332489821,
+        "achieved_xy_human_m": [
+          1.1217776536941528,
+          -0.16247455775737762
+        ]
+      }
+    ],
+    "selected_generation_iteration": 2,
+    "weight_sha256": "cccab0bfb8f89ccc75d5437454afb973128f245482c76f6f1241d0ffbe381a28",
+    "source": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_004",
+    "prompt": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p0.json"
+  },
+  {
+    "index": 5,
+    "seed": 75005005,
+    "distance_robot_m": 1.1034734400617145,
+    "direction_rad": -0.23060469532685302,
+    "distance_human_m": 1.4443607129562526,
+    "goal_xy": [
+      1.0742626884697144,
+      -0.25221678985241164
+    ],
+    "table_center": [
+      1.707056122506751,
+      -0.4007848545218239,
+      0.4
+    ],
+    "table_half_size": [
+      0.4,
+      0.48,
+      0.035
+    ],
+    "table_top": 0.8,
+    "table_yaw": -0.23060469532685302,
+    "hand_target": [
+      1.4316747570252482,
+      -0.4799372615954116,
+      0.84
+    ],
+    "goal_generation": {
+      "endpoint_error_m": [
+        0.003092045895755291
+      ],
+      "xy": [
+        [
+          1.4086015224456787,
+          -0.3319849967956543
+        ]
+      ],
+      "heading_rad": [
+        -0.3171628713607788
+      ]
+    },
+    "generation_refinements": [
+      {
+        "iteration": 0,
+        "injected_distance_human_m": 1.4443607129562526,
+        "injected_direction_rad": -0.23060469532685302,
+        "endpoint_error_human_m": 0.042696731438309696,
+        "achieved_xy_human_m": [
+          1.3644909858703613,
+          -0.3395939767360687
+        ]
+      },
+      {
+        "iteration": 1,
+        "injected_distance_human_m": 1.4828492979588757,
+        "injected_direction_rad": -0.21797477208902943,
+        "endpoint_error_human_m": 0.0030920544822231415,
+        "achieved_xy_human_m": [
+          1.4086015224456787,
+          -0.3319849967956543
+        ]
+      }
+    ],
+    "selected_generation_iteration": 1,
+    "weight_sha256": "cccab0bfb8f89ccc75d5437454afb973128f245482c76f6f1241d0ffbe381a28",
+    "source": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_005",
+    "prompt": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p0.json"
+  },
+  {
+    "index": 6,
+    "seed": 75005006,
+    "distance_robot_m": 1.5768927442476226,
+    "direction_rad": -0.3046550038384904,
+    "distance_human_m": 2.0640296772432123,
+    "goal_xy": [
+      1.504277615188813,
+      -0.47301118729122615
+    ],
+    "table_center": [
+      2.124345437454844,
+      -0.6679878417662222,
+      0.4
+    ],
+    "table_half_size": [
+      0.4,
+      0.48,
+      0.035
+    ],
+    "table_top": 0.8,
+    "table_yaw": -0.3046550038384904,
+    "hand_target": [
+      1.8438628417732945,
+      -0.7265498902254457,
+      0.84
+    ],
+    "goal_generation": {
+      "endpoint_error_m": [
+        0.0014650123193860054
+      ],
+      "xy": [
+        [
+          1.9701993465423584,
+          -0.6199501752853394
+        ]
+      ],
+      "heading_rad": [
+        -0.4585217237472534
+      ]
+    },
+    "generation_refinements": [
+      {
+        "iteration": 0,
+        "injected_distance_human_m": 2.0640296772432123,
+        "injected_direction_rad": -0.3046550038384904,
+        "endpoint_error_human_m": 0.04314977425014778,
+        "achieved_xy_human_m": [
+          1.9302705526351929,
+          -0.6381956338882446
+        ]
+      },
+      {
+        "iteration": 1,
+        "injected_distance_human_m": 2.0954528745911998,
+        "injected_direction_rad": -0.29043554417525247,
+        "endpoint_error_human_m": 0.0014650906213288086,
+        "achieved_xy_human_m": [
+          1.9701993465423584,
+          -0.6199501752853394
+        ]
+      }
+    ],
+    "selected_generation_iteration": 1,
+    "weight_sha256": "cccab0bfb8f89ccc75d5437454afb973128f245482c76f6f1241d0ffbe381a28",
+    "source": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_006",
+    "prompt": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p0.json"
+  },
+  {
+    "index": 7,
+    "seed": 75005007,
+    "distance_robot_m": 1.5820672898193644,
+    "direction_rad": -0.45952510573719096,
+    "distance_human_m": 2.070802754020491,
+    "goal_xy": [
+      1.4179487311596235,
+      -0.7016824818386178
+    ],
+    "table_center": [
+      2.000519827335304,
+      -0.9899721242135493,
+      0.4
+    ],
+    "table_half_size": [
+      0.4,
+      0.48,
+      0.035
+    ],
+    "table_top": 0.8,
+    "table_yaw": -0.45952510573719096,
+    "hand_target": [
+      1.7143608673715958,
+      -1.004568344014876,
+      0.84
+    ],
+    "goal_generation": {
+      "endpoint_error_m": [
+        0.0014345229137688875
+      ],
+      "xy": [
+        [
+          1.8546180725097656,
+          -0.918010413646698
+        ]
+      ],
+      "heading_rad": [
+        -0.7164701819419861
+      ]
+    },
+    "generation_refinements": [
+      {
+        "iteration": 0,
+        "injected_distance_human_m": 2.070802754020491,
+        "injected_direction_rad": -0.45952510573719096,
+        "endpoint_error_human_m": 0.04692325331448189,
+        "achieved_xy_human_m": [
+          1.8100876808166504,
+          -0.9086861610412598
+        ]
+      },
+      {
+        "iteration": 1,
+        "injected_distance_human_m": 2.116299535512123,
+        "injected_direction_rad": -0.4540403502450157,
+        "endpoint_error_human_m": 0.0014345449537120254,
+        "achieved_xy_human_m": [
+          1.8546180725097656,
+          -0.918010413646698
+        ]
+      }
+    ],
+    "selected_generation_iteration": 1,
+    "weight_sha256": "cccab0bfb8f89ccc75d5437454afb973128f245482c76f6f1241d0ffbe381a28",
+    "source": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_007",
+    "prompt": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p0.json"
+  },
+  {
+    "index": 8,
+    "seed": 75005008,
+    "distance_robot_m": 1.4921559643964972,
+    "direction_rad": 0.3276852349693218,
+    "distance_human_m": 1.953115837982574,
+    "goal_xy": [
+      1.412758184106437,
+      0.4802538238518501
+    ],
+    "table_center": [
+      2.028171613788091,
+      0.6894578165658141,
+      0.4
+    ],
+    "table_half_size": [
+      0.4,
+      0.48,
+      0.035
+    ],
+    "table_top": 0.8,
+    "table_yaw": 0.3276852349693218,
+    "hand_target": [
+      1.8365334623412315,
+      0.47644415759054864,
+      0.84
+    ],
+    "goal_generation": {
+      "endpoint_error_m": [
+        0.0010491508292034268
+      ],
+      "xy": [
+        [
+          1.8499233722686768,
+          0.6278641819953918
+        ]
+      ],
+      "heading_rad": [
+        0.42313194274902344
+      ]
+    },
+    "generation_refinements": [
+      {
+        "iteration": 0,
+        "injected_distance_human_m": 1.953115837982574,
+        "injected_direction_rad": 0.3276852349693218,
+        "endpoint_error_human_m": 0.020172759455620748,
+        "achieved_xy_human_m": [
+          1.8445706367492676,
+          0.6089781522750854
+        ]
+      },
+      {
+        "iteration": 1,
+        "injected_distance_human_m": 1.963884316781128,
+        "injected_direction_rad": 0.3363950926094468,
+        "endpoint_error_human_m": 0.0010491904878733608,
+        "achieved_xy_human_m": [
+          1.8499233722686768,
+          0.6278641819953918
+        ]
+      }
+    ],
+    "selected_generation_iteration": 1,
+    "weight_sha256": "cccab0bfb8f89ccc75d5437454afb973128f245482c76f6f1241d0ffbe381a28",
+    "source": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_008",
+    "prompt": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p0.json"
+  },
+  {
+    "index": 9,
+    "seed": 75005009,
+    "distance_robot_m": 0.9849611046555099,
+    "direction_rad": -0.38423548375596295,
+    "distance_human_m": 1.2892373044111016,
+    "goal_xy": [
+      0.9131429443116493,
+      -0.3692131375480217
+    ],
+    "table_center": [
+      1.5157483781680083,
+      -0.6128659460415613,
+      0.4
+    ],
+    "table_half_size": [
+      0.4,
+      0.48,
+      0.035
+    ],
+    "table_top": 0.8,
+    "table_yaw": -0.38423548375596295,
+    "hand_target": [
+      1.2314979910092616,
+      -0.6489452669900311,
+      0.84
+    ],
+    "goal_generation": {
+      "endpoint_error_m": [
+        0.006675553508102894
+      ],
+      "xy": [
+        [
+          1.2004809379577637,
+          -0.48739680647850037
+        ]
+      ],
+      "heading_rad": [
+        -0.5413734912872314
+      ]
+    },
+    "generation_refinements": [
+      {
+        "iteration": 0,
+        "injected_distance_human_m": 1.2892373044111016,
+        "injected_direction_rad": -0.38423548375596295,
+        "endpoint_error_human_m": 0.08490132213888313,
+        "achieved_xy_human_m": [
+          1.1131199598312378,
+          -0.4616912603378296
+        ]
+      },
+      {
+        "iteration": 1,
+        "injected_distance_human_m": 1.3734945425174567,
+        "injected_direction_rad": -0.37639144972766386,
+        "endpoint_error_human_m": 0.006675483365864657,
+        "achieved_xy_human_m": [
+          1.2004809379577637,
+          -0.48739680647850037
+        ]
+      }
+    ],
+    "selected_generation_iteration": 1,
+    "weight_sha256": "cccab0bfb8f89ccc75d5437454afb973128f245482c76f6f1241d0ffbe381a28",
+    "source": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_009",
+    "prompt": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p0.json"
+  },
+  {
+    "index": 10,
+    "seed": 75005010,
+    "distance_robot_m": 1.3670710279095282,
+    "direction_rad": -0.17589930895377304,
+    "distance_human_m": 1.7893894069827467,
+    "goal_xy": [
+      1.345976525518983,
+      -0.23922873594420097
+    ],
+    "table_center": [
+      1.9859467419350083,
+      -0.35297460224458854,
+      0.4
+    ],
+    "table_half_size": [
+      0.4,
+      0.48,
+      0.035
+    ],
+    "table_top": 0.8,
+    "table_yaw": -0.17589930895377304,
+    "hand_target": [
+      1.715305241341069,
+      -0.4470659310494296,
+      0.84
+    ],
+    "goal_generation": {
+      "endpoint_error_m": [
+        0.0010228068567812443
+      ],
+      "xy": [
+        [
+          1.7626368999481201,
+          -0.3136875033378601
+        ]
+      ],
+      "heading_rad": [
+        -0.28327345848083496
+      ]
+    },
+    "generation_refinements": [
+      {
+        "iteration": 0,
+        "injected_distance_human_m": 1.7893894069827467,
+        "injected_direction_rad": -0.17589930895377304,
+        "endpoint_error_human_m": 0.031945787599840174,
+        "achieved_xy_human_m": [
+          1.7368593215942383,
+          -0.3331211507320404
+        ]
+      },
+      {
+        "iteration": 1,
+        "injected_distance_human_m": 1.8105855302252487,
+        "injected_direction_rad": -0.16262055657127844,
+        "endpoint_error_human_m": 0.0010227195457344301,
+        "achieved_xy_human_m": [
+          1.7626368999481201,
+          -0.3136875033378601
+        ]
+      }
+    ],
+    "selected_generation_iteration": 1,
+    "weight_sha256": "cccab0bfb8f89ccc75d5437454afb973128f245482c76f6f1241d0ffbe381a28",
+    "source": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_010",
+    "prompt": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p0.json"
+  },
+  {
+    "index": 11,
+    "seed": 75005011,
+    "distance_robot_m": 1.2159380308460994,
+    "direction_rad": 0.17266555348378743,
+    "distance_human_m": 1.591568095236865,
+    "goal_xy": [
+      1.197857398895533,
+      0.2089089437269685
+    ],
+    "table_center": [
+      1.8381920948506465,
+      0.3205847117165927,
+      0.4
+    ],
+    "table_half_size": [
+      0.4,
+      0.48,
+      0.035
+    ],
+    "table_top": 0.8,
+    "table_yaw": 0.17266555348378743,
+    "hand_target": [
+      1.615962761819522,
+      0.13971425105332816,
+      0.84
+    ],
+    "goal_generation": {
+      "endpoint_error_m": [
+        0.01003160048276186
+      ],
+      "xy": [
+        [
+          1.577728509902954,
+          0.2754634618759155
+        ]
+      ],
+      "heading_rad": [
+        0.21934926509857178
+      ]
+    },
+    "generation_refinements": [
+      {
+        "iteration": 0,
+        "injected_distance_human_m": 1.591568095236865,
+        "injected_direction_rad": 0.17266555348378743,
+        "endpoint_error_human_m": 0.010031610727869266,
+        "achieved_xy_human_m": [
+          1.577728509902954,
+          0.2754634618759155
+        ]
+      }
+    ],
+    "selected_generation_iteration": 0,
+    "weight_sha256": "cccab0bfb8f89ccc75d5437454afb973128f245482c76f6f1241d0ffbe381a28",
+    "source": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_011",
+    "prompt": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p0.json"
+  },
+  {
+    "index": 12,
+    "seed": 75005012,
+    "distance_robot_m": 0.9558708535854323,
+    "direction_rad": 0.039811513350048844,
+    "distance_human_m": 1.2511604334595874,
+    "goal_xy": [
+      0.9551134467246589,
+      0.03804461354627026
+    ],
+    "table_center": [
+      1.6045984038633183,
+      0.06391526198409866,
+      0.4
+    ],
+    "table_half_size": [
+      0.4,
+      0.48,
+      0.035
+    ],
+    "table_top": 0.8,
+    "table_yaw": 0.039811513350048844,
+    "hand_target": [
+      1.3603686369350585,
+      -0.08592405510646968,
+      0.84
+    ],
+    "goal_generation": {
+      "endpoint_error_m": [
+        0.014617866836488247
+      ],
+      "xy": [
+        [
+          1.2646958827972412,
+          0.04816868156194687
+        ]
+      ],
+      "heading_rad": [
+        0.01651918888092041
+      ]
+    },
+    "generation_refinements": [
+      {
+        "iteration": 0,
+        "injected_distance_human_m": 1.2511604334595874,
+        "injected_direction_rad": 0.039811513350048844,
+        "endpoint_error_human_m": 0.13310538216348203,
+        "achieved_xy_human_m": [
+          1.1181702613830566,
+          0.0669252872467041
+        ]
+      },
+      {
+        "iteration": 1,
+        "injected_distance_human_m": 1.3825538754481979,
+        "injected_direction_rad": 0.02363207770759179,
+        "endpoint_error_human_m": 0.014617858705108015,
+        "achieved_xy_human_m": [
+          1.2646958827972412,
+          0.04816868156194687
+        ]
+      }
+    ],
+    "selected_generation_iteration": 1,
+    "weight_sha256": "cccab0bfb8f89ccc75d5437454afb973128f245482c76f6f1241d0ffbe381a28",
+    "source": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_012",
+    "prompt": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p0.json"
+  },
+  {
+    "index": 13,
+    "seed": 75005013,
+    "distance_robot_m": 1.003231378103253,
+    "direction_rad": 0.2572564473208092,
+    "distance_human_m": 1.313151668114692,
+    "goal_xy": [
+      0.9702166930362651,
+      0.25525039973470337
+    ],
+    "table_center": [
+      1.5988262682928582,
+      0.4206287595515964,
+      0.4
+    ],
+    "table_half_size": [
+      0.4,
+      0.48,
+      0.035
+    ],
+    "table_top": 0.8,
+    "table_yaw": 0.2572564473208092,
+    "hand_target": [
+      1.39267330915473,
+      0.22162886648983285,
+      0.84
+    ],
+    "goal_generation": {
+      "endpoint_error_m": [
+        0.006130133755505085
+      ],
+      "xy": [
+        [
+          1.2758773565292358,
+          0.3356207311153412
+        ]
+      ],
+      "heading_rad": [
+        0.3427515923976898
+      ]
+    },
+    "generation_refinements": [
+      {
+        "iteration": 0,
+        "injected_distance_human_m": 1.313151668114692,
+        "injected_direction_rad": 0.2572564473208092,
+        "endpoint_error_human_m": 0.08278096129649551,
+        "achieved_xy_human_m": [
+          1.187159538269043,
+          0.33346202969551086
+        ]
+      },
+      {
+        "iteration": 1,
+        "injected_distance_human_m": 1.3935190301891551,
+        "injected_direction_rad": 0.24258699555911306,
+        "endpoint_error_human_m": 0.006130221543440138,
+        "achieved_xy_human_m": [
+          1.2758773565292358,
+          0.3356207311153412
+        ]
+      }
+    ],
+    "selected_generation_iteration": 1,
+    "weight_sha256": "cccab0bfb8f89ccc75d5437454afb973128f245482c76f6f1241d0ffbe381a28",
+    "source": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_013",
+    "prompt": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p0.json"
+  },
+  {
+    "index": 14,
+    "seed": 75005014,
+    "distance_robot_m": 1.3237545601235032,
+    "direction_rad": -0.34694768351893535,
+    "distance_human_m": 1.7326915273394718,
+    "goal_xy": [
+      1.2448786022425908,
+      -0.4501148754776972
+    ],
+    "table_center": [
+      1.8561483314151879,
+      -0.6711336941272863,
+      0.4
+    ],
+    "table_half_size": [
+      0.4,
+      0.48,
+      0.035
+    ],
+    "table_top": 0.8,
+    "table_yaw": -0.34694768351893535,
+    "hand_target": [
+      1.5734405361781236,
+      -0.7177845516992345,
+      0.84
+    ],
+    "goal_generation": {
+      "endpoint_error_m": [
+        0.0003888251376338303
+      ],
+      "xy": [
+        [
+          1.6292529106140137,
+          -0.5895010232925415
+        ]
+      ],
+      "heading_rad": [
+        -0.4959232807159424
+      ]
+    },
+    "generation_refinements": [
+      {
+        "iteration": 0,
+        "injected_distance_human_m": 1.7326915273394718,
+        "injected_direction_rad": -0.34694768351893535,
+        "endpoint_error_human_m": 0.028851720501711264,
+        "achieved_xy_human_m": [
+          1.6197270154953003,
+          -0.6163296699523926
+        ]
+      },
+      {
+        "iteration": 1,
+        "injected_distance_human_m": 1.7328377981192766,
+        "injected_direction_rad": -0.3302970190302818,
+        "endpoint_error_human_m": 0.00038883231182592866,
+        "achieved_xy_human_m": [
+          1.6292529106140137,
+          -0.5895010232925415
+        ]
+      }
+    ],
+    "selected_generation_iteration": 1,
+    "weight_sha256": "cccab0bfb8f89ccc75d5437454afb973128f245482c76f6f1241d0ffbe381a28",
+    "source": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_014",
+    "prompt": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p0.json"
+  },
+  {
+    "index": 15,
+    "seed": 75005015,
+    "distance_robot_m": 1.2952764771842669,
+    "direction_rad": 0.09151665471620674,
+    "distance_human_m": 1.6954159367503208,
+    "goal_xy": [
+      1.289856098573265,
+      0.11837397230911835
+    ],
+    "table_center": [
+      1.9371360259407333,
+      0.17777679738642496,
+      0.4
+    ],
+    "table_half_size": [
+      0.4,
+      0.48,
+      0.035
+    ],
+    "table_top": 0.8,
+    "table_yaw": 0.09151665471620674,
+    "hand_target": [
+      1.7009766623545115,
+      0.015515418769852352,
+      0.84
+    ],
+    "goal_generation": {
+      "endpoint_error_m": [
+        0.004792687017470598
+      ],
+      "xy": [
+        [
+          1.6835401058197021,
+          0.15460790693759918
+        ]
+      ],
+      "heading_rad": [
+        0.06154251471161842
+      ]
+    },
+    "generation_refinements": [
+      {
+        "iteration": 0,
+        "injected_distance_human_m": 1.6954159367503208,
+        "injected_direction_rad": 0.09151665471620674,
+        "endpoint_error_human_m": 0.17960112914482113,
+        "achieved_xy_human_m": [
+          1.510661244392395,
+          0.12860701978206635
+        ]
+      },
+      {
+        "iteration": 1,
+        "injected_distance_human_m": 1.8747656833609152,
+        "injected_direction_rad": 0.09684477406179112,
+        "endpoint_error_human_m": 0.032253526519449176,
+        "achieved_xy_human_m": [
+          1.7205382585525513,
+          0.15647318959236145
+        ]
+      },
+      {
+        "iteration": 2,
+        "injected_distance_human_m": 1.8425521319372955,
+        "injected_direction_rad": 0.09770850877328836,
+        "endpoint_error_human_m": 0.004792657870382773,
+        "achieved_xy_human_m": [
+          1.6835401058197021,
+          0.15460790693759918
+        ]
+      }
+    ],
+    "selected_generation_iteration": 2,
+    "weight_sha256": "cccab0bfb8f89ccc75d5437454afb973128f245482c76f6f1241d0ffbe381a28",
+    "source": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_015",
+    "prompt": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p0.json"
+  },
+  {
+    "index": 16,
+    "seed": 75005016,
+    "distance_robot_m": 1.563154822505321,
+    "direction_rad": 0.12014979884302046,
+    "distance_human_m": 2.0460478086074447,
+    "goal_xy": [
+      1.5518855578828987,
+      0.1873611868987963
+    ],
+    "table_center": [
+      2.197199507659905,
+      0.2652707897934277,
+      0.4
+    ],
+    "table_half_size": [
+      0.4,
+      0.48,
+      0.035
+    ],
+    "table_top": 0.8,
+    "table_yaw": 0.12014979884302046,
+    "hand_target": [
+      1.965782364522977,
+      0.09631486103582962,
+      0.84
+    ],
+    "goal_generation": {
+      "endpoint_error_m": [
+        0.005204926710575819
+      ],
+      "xy": [
+        [
+          2.0362937450408936,
+          0.24378234148025513
+        ]
+      ],
+      "heading_rad": [
+        0.14628098905086517
+      ]
+    },
+    "generation_refinements": [
+      {
+        "iteration": 0,
+        "injected_distance_human_m": 2.0460478086074447,
+        "injected_direction_rad": 0.12014979884302046,
+        "endpoint_error_human_m": 0.005205141590083307,
+        "achieved_xy_human_m": [
+          2.0362937450408936,
+          0.24378234148025513
+        ]
+      }
+    ],
+    "selected_generation_iteration": 0,
+    "weight_sha256": "cccab0bfb8f89ccc75d5437454afb973128f245482c76f6f1241d0ffbe381a28",
+    "source": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_016",
+    "prompt": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p0.json"
+  },
+  {
+    "index": 17,
+    "seed": 75005017,
+    "distance_robot_m": 1.1836859642348672,
+    "direction_rad": 0.3322441357740584,
+    "distance_human_m": 1.5493526542179068,
+    "goal_xy": [
+      1.1189534521971174,
+      0.38607723805319144
+    ],
+    "table_center": [
+      1.7334067496967331,
+      0.598084655828723,
+      0.4
+    ],
+    "table_half_size": [
+      0.4,
+      0.48,
+      0.035
+    ],
+    "table_top": 0.8,
+    "table_yaw": 0.3322441357740584,
+    "hand_target": [
+      1.5427416944869954,
+      0.384199554145909,
+      0.84
+    ],
+    "goal_generation": {
+      "endpoint_error_m": [
+        0.001074242522008717
+      ],
+      "xy": [
+        [
+          1.465626835823059,
+          0.5057271122932434
+        ]
+      ],
+      "heading_rad": [
+        0.43200790882110596
+      ]
+    },
+    "generation_refinements": [
+      {
+        "iteration": 0,
+        "injected_distance_human_m": 1.5493526542179068,
+        "injected_direction_rad": 0.3322441357740584,
+        "endpoint_error_human_m": 0.02126034683376889,
+        "achieved_xy_human_m": [
+          1.4438284635543823,
+          0.5097717642784119
+        ]
+      },
+      {
+        "iteration": 1,
+        "injected_distance_human_m": 1.5676043554206516,
+        "injected_direction_rad": 0.32524800684524735,
+        "endpoint_error_human_m": 0.0010742470720391882,
+        "achieved_xy_human_m": [
+          1.465626835823059,
+          0.5057271122932434
+        ]
+      }
+    ],
+    "selected_generation_iteration": 1,
+    "weight_sha256": "cccab0bfb8f89ccc75d5437454afb973128f245482c76f6f1241d0ffbe381a28",
+    "source": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_017",
+    "prompt": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p0.json"
+  },
+  {
+    "index": 18,
+    "seed": 75005018,
+    "distance_robot_m": 1.525275142961205,
+    "direction_rad": -0.10671104819009225,
+    "distance_human_m": 1.9964662609538522,
+    "goal_xy": [
+      1.516599037718478,
+      -0.1624549799997253
+    ],
+    "table_center": [
+      2.1629016927287577,
+      -0.23168559552973084,
+      0.4
+    ],
+    "table_half_size": [
+      0.4,
+      0.48,
+      0.035
+    ],
+    "table_top": 0.8,
+    "table_yaw": -0.10671104819009225,
+    "hand_target": [
+      1.8994125389952643,
+      -0.34426208448194284,
+      0.84
+    ],
+    "goal_generation": {
+      "endpoint_error_m": [
+        0.002687041414901614
+      ],
+      "xy": [
+        [
+          1.987581491470337,
+          -0.2136951982975006
+        ]
+      ],
+      "heading_rad": [
+        -0.1970219612121582
+      ]
+    },
+    "generation_refinements": [
+      {
+        "iteration": 0,
+        "injected_distance_human_m": 1.9964662609538522,
+        "injected_direction_rad": -0.10671104819009225,
+        "endpoint_error_human_m": 0.08396171687865459,
+        "achieved_xy_human_m": [
+          1.9032145738601685,
+          -0.2311536818742752
+        ]
+      },
+      {
+        "iteration": 1,
+        "injected_distance_human_m": 2.0761012651744024,
+        "injected_direction_rad": -0.0936428966876865,
+        "endpoint_error_human_m": 0.0026870471497443663,
+        "achieved_xy_human_m": [
+          1.987581491470337,
+          -0.2136951982975006
+        ]
+      }
+    ],
+    "selected_generation_iteration": 1,
+    "weight_sha256": "cccab0bfb8f89ccc75d5437454afb973128f245482c76f6f1241d0ffbe381a28",
+    "source": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_018",
+    "prompt": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p0.json"
+  },
+  {
+    "index": 19,
+    "seed": 75005019,
+    "distance_robot_m": 1.1740726786169298,
+    "direction_rad": -0.33379320200952445,
+    "distance_human_m": 1.536769612737362,
+    "goal_xy": [
+      1.1092713571162487,
+      -0.38466051390311445
+    ],
+    "table_center": [
+      1.7233955039918394,
+      -0.597619505787298,
+      0.4
+    ],
+    "table_half_size": [
+      0.4,
+      0.48,
+      0.035
+    ],
+    "table_top": 0.8,
+    "table_yaw": -0.33379320200952445,
+    "hand_target": [
+      1.441325818480019,
+      -0.6479850943896625,
+      0.84
+    ],
+    "goal_generation": {
+      "endpoint_error_m": [
+        0.001711593591608107
+      ],
+      "xy": [
+        [
+          1.4526618719100952,
+          -0.505047082901001
+        ]
+      ],
+      "heading_rad": [
+        -0.48337018489837646
+      ]
+    },
+    "generation_refinements": [
+      {
+        "iteration": 0,
+        "injected_distance_human_m": 1.536769612737362,
+        "injected_direction_rad": -0.33379320200952445,
+        "endpoint_error_human_m": 0.03245388813805809,
+        "achieved_xy_human_m": [
+          1.4210304021835327,
+          -0.5133521556854248
+        ]
+      },
+      {
+        "iteration": 1,
+        "injected_distance_human_m": 1.562872469301214,
+        "injected_direction_rad": -0.3213495674646244,
+        "endpoint_error_human_m": 0.001711635210298269,
+        "achieved_xy_human_m": [
+          1.4526618719100952,
+          -0.505047082901001
+        ]
+      }
+    ],
+    "selected_generation_iteration": 1,
+    "weight_sha256": "cccab0bfb8f89ccc75d5437454afb973128f245482c76f6f1241d0ffbe381a28",
+    "source": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_019",
+    "prompt": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p0.json"
+  },
+  {
+    "index": 20,
+    "seed": 75005020,
+    "distance_robot_m": 1.1603205996754529,
+    "direction_rad": -0.33388611824249004,
+    "distance_human_m": 1.5187692134314836,
+    "goal_xy": [
+      1.0962429779003071,
+      -0.3802567914389818
+    ],
+    "table_center": [
+      1.7103473347776266,
+      -0.5932728445061013,
+      0.4
+    ],
+    "table_half_size": [
+      0.4,
+      0.48,
+      0.035
+    ],
+    "table_top": 0.8,
+    "table_yaw": -0.33388611824249004,
+    "hand_target": [
+      1.4282729707026627,
+      -0.6436122240384778,
+      0.84
+    ],
+    "goal_generation": {
+      "endpoint_error_m": [
+        0.0004908153787255287
+      ],
+      "xy": [
+        [
+          1.4353199005126953,
+          -0.4979751408100128
+        ]
+      ],
+      "heading_rad": [
+        -0.46767759323120117
+      ]
+    },
+    "generation_refinements": [
+      {
+        "iteration": 0,
+        "injected_distance_human_m": 1.5187692134314836,
+        "injected_direction_rad": -0.33388611824249004,
+        "endpoint_error_human_m": 0.024497490383037966,
+        "achieved_xy_human_m": [
+          1.4126484394073486,
+          -0.5079805850982666
+        ]
+      },
+      {
+        "iteration": 1,
+        "injected_distance_human_m": 1.5365221160816118,
+        "injected_direction_rad": -0.3228356675744331,
+        "endpoint_error_human_m": 0.000490923056544314,
+        "achieved_xy_human_m": [
+          1.4353199005126953,
+          -0.4979751408100128
+        ]
+      }
+    ],
+    "selected_generation_iteration": 1,
+    "weight_sha256": "cccab0bfb8f89ccc75d5437454afb973128f245482c76f6f1241d0ffbe381a28",
+    "source": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_020",
+    "prompt": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p0.json"
+  },
+  {
+    "index": 21,
+    "seed": 75005021,
+    "distance_robot_m": 1.2785339065415555,
+    "direction_rad": 0.44805150594599097,
+    "distance_human_m": 1.6735012169280887,
+    "goal_xy": [
+      1.1523335582552698,
+      0.5538739212990261
+    ],
+    "table_center": [
+      1.7381739564125795,
+      0.8354605472010475,
+      0.4
+    ],
+    "table_half_size": [
+      0.4,
+      0.48,
+      0.035
+    ],
+    "table_top": 0.8,
+    "table_yaw": 0.44805150594599097,
+    "hand_target": [
+      1.5735001534694344,
+      0.6009769899433111,
+      0.84
+    ],
+    "goal_generation": {
+      "endpoint_error_m": [
+        0.011127252131700516
+      ],
+      "xy": [
+        [
+          1.5193438529968262,
+          0.7235023975372314
+        ]
+      ],
+      "heading_rad": [
+        0.6088259816169739
+      ]
+    },
+    "generation_refinements": [
+      {
+        "iteration": 0,
+        "injected_distance_human_m": 1.6735012169280887,
+        "injected_direction_rad": 0.44805150594599097,
+        "endpoint_error_human_m": 0.07111559357079991,
+        "achieved_xy_human_m": [
+          1.4546232223510742,
+          0.6783447265625
+        ]
+      },
+      {
+        "iteration": 1,
+        "injected_distance_human_m": 1.7421960895258795,
+        "injected_direction_rad": 0.4588256499368757,
+        "endpoint_error_human_m": 0.011127300114490686,
+        "achieved_xy_human_m": [
+          1.5193438529968262,
+          0.7235023975372314
+        ]
+      }
+    ],
+    "selected_generation_iteration": 1,
+    "weight_sha256": "cccab0bfb8f89ccc75d5437454afb973128f245482c76f6f1241d0ffbe381a28",
+    "source": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_021",
+    "prompt": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p0.json"
+  },
+  {
+    "index": 22,
+    "seed": 75005022,
+    "distance_robot_m": 1.4373710741960277,
+    "direction_rad": -0.14799717520955824,
+    "distance_human_m": 1.881406687407319,
+    "goal_xy": [
+      1.4216582985007857,
+      -0.21195114351966382
+    ],
+    "table_center": [
+      2.0645527539512547,
+      -0.3077985177718834,
+      0.4
+    ],
+    "table_half_size": [
+      0.4,
+      0.48,
+      0.035
+    ],
+    "table_top": 0.8,
+    "table_yaw": -0.14799717520955824,
+    "hand_target": [
+      1.7966416058621348,
+      -0.4094037180795923,
+      0.84
+    ],
+    "goal_generation": {
+      "endpoint_error_m": [
+        0.012675607576966286
+      ],
+      "xy": [
+        [
+          1.8623629808425903,
+          -0.29001128673553467
+        ]
+      ],
+      "heading_rad": [
+        -0.23028241097927094
+      ]
+    },
+    "generation_refinements": [
+      {
+        "iteration": 0,
+        "injected_distance_human_m": 1.881406687407319,
+        "injected_direction_rad": -0.14799717520955824,
+        "endpoint_error_human_m": 0.012675601859201874,
+        "achieved_xy_human_m": [
+          1.8623629808425903,
+          -0.29001128673553467
+        ]
+      }
+    ],
+    "selected_generation_iteration": 0,
+    "weight_sha256": "cccab0bfb8f89ccc75d5437454afb973128f245482c76f6f1241d0ffbe381a28",
+    "source": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_022",
+    "prompt": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p0.json"
+  },
+  {
+    "index": 23,
+    "seed": 75005023,
+    "distance_robot_m": 0.892959653760726,
+    "direction_rad": -0.22884045704356004,
+    "distance_human_m": 1.1688145770639278,
+    "goal_xy": [
+      0.8696802760528577,
+      -0.20256643524804593
+    ],
+    "table_center": [
+      1.5027348346251435,
+      -0.35001787088313363,
+      0.4
+    ],
+    "table_half_size": [
+      0.4,
+      0.48,
+      0.035
+    ],
+    "table_top": 0.8,
+    "table_yaw": -0.22884045704356004,
+    "hand_target": [
+      1.2274935413451686,
+      -0.42965599286982303,
+      0.84
+    ],
+    "goal_generation": {
+      "endpoint_error_m": [
+        0.005251611117273569
+      ],
+      "xy": [
+        [
+          1.143029808998108,
+          -0.2627730667591095
+        ]
+      ],
+      "heading_rad": [
+        -0.3173425495624542
+      ]
+    },
+    "generation_refinements": [
+      {
+        "iteration": 0,
+        "injected_distance_human_m": 1.1688145770639278,
+        "injected_direction_rad": -0.22884045704356004,
+        "endpoint_error_human_m": 0.2207535332895158,
+        "achieved_xy_human_m": [
+          0.930485725402832,
+          -0.1907985955476761
+        ]
+      },
+      {
+        "iteration": 1,
+        "injected_distance_human_m": 1.388348474552577,
+        "injected_direction_rad": -0.24703190049529086,
+        "endpoint_error_human_m": 0.005251620586383243,
+        "achieved_xy_human_m": [
+          1.143029808998108,
+          -0.2627730667591095
+        ]
+      }
+    ],
+    "selected_generation_iteration": 1,
+    "weight_sha256": "cccab0bfb8f89ccc75d5437454afb973128f245482c76f6f1241d0ffbe381a28",
+    "source": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_023",
+    "prompt": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p0.json"
+  },
+  {
+    "index": 24,
+    "seed": 75005024,
+    "distance_robot_m": 1.3582550733309704,
+    "direction_rad": -0.4897430080166655,
+    "distance_human_m": 1.7778500096776668,
+    "goal_xy": [
+      1.198597318982394,
+      -0.6389219914492981
+    ],
+    "table_center": [
+      1.7721922737414646,
+      -0.9446814195540414,
+      0.4
+    ],
+    "table_half_size": [
+      0.4,
+      0.48,
+      0.035
+    ],
+    "table_top": 0.8,
+    "table_yaw": -0.4897430080166655,
+    "hand_target": [
+      1.4857229527808005,
+      -0.9506251682310938,
+      0.84
+    ],
+    "goal_generation": {
+      "endpoint_error_m": [
+        0.005404971074312925
+      ],
+      "xy": [
+        [
+          1.5727959871292114,
+          -0.8400145173072815
+        ]
+      ],
+      "heading_rad": [
+        -0.6958782076835632
+      ]
+    },
+    "generation_refinements": [
+      {
+        "iteration": 0,
+        "injected_distance_human_m": 1.7778500096776668,
+        "injected_direction_rad": -0.4897430080166655,
+        "endpoint_error_human_m": 0.07236254274063997,
+        "achieved_xy_human_m": [
+          1.4987118244171143,
+          -0.8185760974884033
+        ]
+      },
+      {
+        "iteration": 1,
+        "injected_distance_human_m": 1.8481801938605775,
+        "injected_direction_rad": -0.48034830694140906,
+        "endpoint_error_human_m": 0.005405022939839233,
+        "achieved_xy_human_m": [
+          1.5727959871292114,
+          -0.8400145173072815
+        ]
+      }
+    ],
+    "selected_generation_iteration": 1,
+    "weight_sha256": "cccab0bfb8f89ccc75d5437454afb973128f245482c76f6f1241d0ffbe381a28",
+    "source": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_024",
+    "prompt": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p0.json"
+  },
+  {
+    "index": 25,
+    "seed": 75005025,
+    "distance_robot_m": 1.006497386306197,
+    "direction_rad": -0.18889878798073512,
+    "distance_human_m": 1.317426618254191,
+    "goal_xy": [
+      0.9885934216241666,
+      -0.188997448032053
+    ],
+    "table_center": [
+      1.627030970293787,
+      -0.3110527488129946,
+      0.4
+    ],
+    "table_half_size": [
+      0.4,
+      0.48,
+      0.035
+    ],
+    "table_top": 0.8,
+    "table_yaw": -0.18889878798073512,
+    "hand_target": [
+      1.355189232944961,
+      -0.40161802822608916,
+      0.84
+    ],
+    "goal_generation": {
+      "endpoint_error_m": [
+        0.0022040309850126505
+      ],
+      "xy": [
+        [
+          1.2919573783874512,
+          -0.24653476476669312
+        ]
+      ],
+      "heading_rad": [
+        -0.2589908540248871
+      ]
+    },
+    "generation_refinements": [
+      {
+        "iteration": 0,
+        "injected_distance_human_m": 1.317426618254191,
+        "injected_direction_rad": -0.18889878798073512,
+        "endpoint_error_human_m": 0.1425720846755163,
+        "achieved_xy_human_m": [
+          1.1521830558776855,
+          -0.2326485812664032
+        ]
+      },
+      {
+        "iteration": 1,
+        "injected_distance_human_m": 1.4595301404938095,
+        "injected_direction_rad": -0.18056983584457134,
+        "endpoint_error_human_m": 0.02019816555395636,
+        "achieved_xy_human_m": [
+          1.3101727962493896,
+          -0.25947171449661255
+        ]
+      },
+      {
+        "iteration": 2,
+        "injected_distance_human_m": 1.4414691315819947,
+        "injected_direction_rad": -0.1743356826408539,
+        "endpoint_error_human_m": 0.002204073702549307,
+        "achieved_xy_human_m": [
+          1.2919573783874512,
+          -0.24653476476669312
+        ]
+      }
+    ],
+    "selected_generation_iteration": 2,
+    "weight_sha256": "cccab0bfb8f89ccc75d5437454afb973128f245482c76f6f1241d0ffbe381a28",
+    "source": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_025",
+    "prompt": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p0.json"
+  },
+  {
+    "index": 26,
+    "seed": 75005026,
+    "distance_robot_m": 1.4976641459136433,
+    "direction_rad": 0.21436148767752572,
+    "distance_human_m": 1.9603256182041555,
+    "goal_xy": [
+      1.4633862379667493,
+      0.31858846885091013
+    ],
+    "table_center": [
+      2.0985093109692823,
+      0.4568587915518397,
+      0.4
+    ],
+    "table_half_size": [
+      0.4,
+      0.48,
+      0.035
+    ],
+    "table_top": 0.8,
+    "table_yaw": 0.21436148767752572,
+    "hand_target": [
+      1.8840125062423545,
+      0.26688215940478277,
+      0.84
+    ],
+    "goal_generation": {
+      "endpoint_error_m": [
+        0.0027645272202789783
+      ],
+      "xy": [
+        [
+          1.9182146787643433,
+          0.4167935252189636
+        ]
+      ],
+      "heading_rad": [
+        0.26771795749664307
+      ]
+    },
+    "generation_refinements": [
+      {
+        "iteration": 0,
+        "injected_distance_human_m": 1.9603256182041555,
+        "injected_direction_rad": 0.21436148767752572,
+        "endpoint_error_human_m": 0.032849361732325055,
+        "achieved_xy_human_m": [
+          1.8917733430862427,
+          0.39424580335617065
+        ]
+      },
+      {
+        "iteration": 1,
+        "injected_distance_human_m": 1.9883850444096085,
+        "injected_direction_rad": 0.22301299570868766,
+        "endpoint_error_human_m": 0.002764461152298363,
+        "achieved_xy_human_m": [
+          1.9182146787643433,
+          0.4167935252189636
+        ]
+      }
+    ],
+    "selected_generation_iteration": 1,
+    "weight_sha256": "cccab0bfb8f89ccc75d5437454afb973128f245482c76f6f1241d0ffbe381a28",
+    "source": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_026",
+    "prompt": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p0.json"
+  },
+  {
+    "index": 27,
+    "seed": 75005027,
+    "distance_robot_m": 1.3894448779521649,
+    "direction_rad": 0.16954282623570238,
+    "distance_human_m": 1.8186750325591556,
+    "goal_xy": [
+      1.3695230306874009,
+      0.23444346287389325
+    ],
+    "table_center": [
+      2.010203336953899,
+      0.3441190990118509,
+      0.4
+    ],
+    "table_half_size": [
+      0.4,
+      0.48,
+      0.035
+    ],
+    "table_top": 0.8,
+    "table_yaw": 0.16954282623570238,
+    "hand_target": [
+      1.7874102792503448,
+      0.16394348068600595,
+      0.84
+    ],
+    "goal_generation": {
+      "endpoint_error_m": [
+        0.0026232809759676456
+      ],
+      "xy": [
+        [
+          1.7948492765426636,
+          0.3082162141799927
+        ]
+      ],
+      "heading_rad": [
+        0.2089519500732422
+      ]
+    },
+    "generation_refinements": [
+      {
+        "iteration": 0,
+        "injected_distance_human_m": 1.8186750325591556,
+        "injected_direction_rad": 0.16954282623570238,
+        "endpoint_error_human_m": 0.07568740981356624,
+        "achieved_xy_human_m": [
+          1.7172226905822754,
+          0.3137248158454895
+        ]
+      },
+      {
+        "iteration": 1,
+        "injected_distance_human_m": 1.8919138159516542,
+        "injected_direction_rad": 0.15924796490892917,
+        "endpoint_error_human_m": 0.002623232174673372,
+        "achieved_xy_human_m": [
+          1.7948492765426636,
+          0.3082162141799927
+        ]
+      }
+    ],
+    "selected_generation_iteration": 1,
+    "weight_sha256": "cccab0bfb8f89ccc75d5437454afb973128f245482c76f6f1241d0ffbe381a28",
+    "source": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_027",
+    "prompt": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p0.json"
+  },
+  {
+    "index": 28,
+    "seed": 75005028,
+    "distance_robot_m": 1.2142796029783767,
+    "direction_rad": 0.37041044316357963,
+    "distance_human_m": 1.5893973424389756,
+    "goal_xy": [
+      1.131925757200297,
+      0.4395668713584525
+    ],
+    "table_center": [
+      1.7378420061231532,
+      0.6748656161304027,
+      0.4
+    ],
+    "table_half_size": [
+      0.4,
+      0.48,
+      0.035
+    ],
+    "table_top": 0.8,
+    "table_yaw": 0.37041044316357963,
+    "hand_target": [
+      1.555477024642167,
+      0.4538610606808836,
+      0.84
+    ],
+    "goal_generation": {
+      "endpoint_error_m": [
+        0.00208634277805686
+      ],
+      "xy": [
+        [
+          1.4836479425430298,
+          0.5749474167823792
+        ]
+      ],
+      "heading_rad": [
+        0.5105406045913696
+      ]
+    },
+    "generation_refinements": [
+      {
+        "iteration": 0,
+        "injected_distance_human_m": 1.5893973424389756,
+        "injected_direction_rad": 0.37041044316357963,
+        "endpoint_error_human_m": 0.05202130197474857,
+        "achieved_xy_human_m": [
+          1.4317983388900757,
+          0.5603336691856384
+        ]
+      },
+      {
+        "iteration": 1,
+        "injected_distance_human_m": 1.6412677880075002,
+        "injected_direction_rad": 0.3679593120147653,
+        "endpoint_error_human_m": 0.0020863187615692285,
+        "achieved_xy_human_m": [
+          1.4836479425430298,
+          0.5749474167823792
+        ]
+      }
+    ],
+    "selected_generation_iteration": 1,
+    "weight_sha256": "cccab0bfb8f89ccc75d5437454afb973128f245482c76f6f1241d0ffbe381a28",
+    "source": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_028",
+    "prompt": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p0.json"
+  },
+  {
+    "index": 29,
+    "seed": 75005029,
+    "distance_robot_m": 1.6060487803343548,
+    "direction_rad": 0.38890918082718196,
+    "distance_human_m": 2.1021926556533272,
+    "goal_xy": [
+      1.4861142390450588,
+      0.6089804211310856
+    ],
+    "table_center": [
+      2.087574336152562,
+      0.855446953519223,
+      0.4
+    ],
+    "table_half_size": [
+      0.4,
+      0.48,
+      0.035
+    ],
+    "table_top": 0.8,
+    "table_yaw": 0.38890918082718196,
+    "hand_target": [
+      1.9093286288563518,
+      0.6311068816852464,
+      0.84
+    ],
+    "goal_generation": {
+      "endpoint_error_m": [
+        0.0016889650141820312
+      ],
+      "xy": [
+        [
+          1.945748209953308,
+          0.7955077886581421
+        ]
+      ],
+      "heading_rad": [
+        0.5419681072235107
+      ]
+    },
+    "generation_refinements": [
+      {
+        "iteration": 0,
+        "injected_distance_human_m": 2.1021926556533272,
+        "injected_direction_rad": 0.38890918082718196,
+        "endpoint_error_human_m": 0.03897901088200447,
+        "achieved_xy_human_m": [
+          1.9218804836273193,
+          0.7658796310424805
+        ]
+      },
+      {
+        "iteration": 1,
+        "injected_distance_human_m": 2.13571310033696,
+        "injected_direction_rad": 0.3982977745366309,
+        "endpoint_error_human_m": 0.0016889386978057811,
+        "achieved_xy_human_m": [
+          1.945748209953308,
+          0.7955077886581421
+        ]
+      }
+    ],
+    "selected_generation_iteration": 1,
+    "weight_sha256": "cccab0bfb8f89ccc75d5437454afb973128f245482c76f6f1241d0ffbe381a28",
+    "source": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_029",
+    "prompt": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p0.json"
+  },
+  {
+    "index": 30,
+    "seed": 75005030,
+    "distance_robot_m": 1.5346556215602778,
+    "direction_rad": 0.42765743442483417,
+    "distance_human_m": 2.008744576194924,
+    "goal_xy": [
+      1.3964442323403123,
+      0.6364836076051278
+    ],
+    "table_center": [
+      1.987905103606245,
+      0.9060648342536911,
+      0.4
+    ],
+    "table_half_size": [
+      0.4,
+      0.48,
+      0.035
+    ],
+    "table_top": 0.8,
+    "table_yaw": 0.42765743442483417,
+    "hand_target": [
+      1.8184838019359615,
+      0.6749881748085044,
+      0.84
+    ],
+    "goal_generation": {
+      "endpoint_error_m": [
+        0.009387723170220852
+      ],
+      "xy": [
+        [
+          1.8370733261108398,
+          0.8347845673561096
+        ]
+      ],
+      "heading_rad": [
+        0.5923790335655212
+      ]
+    },
+    "generation_refinements": [
+      {
+        "iteration": 0,
+        "injected_distance_human_m": 2.008744576194924,
+        "injected_direction_rad": 0.42765743442483417,
+        "endpoint_error_human_m": 0.07295372080742452,
+        "achieved_xy_human_m": [
+          1.7619004249572754,
+          0.8018878698348999
+        ]
+      },
+      {
+        "iteration": 1,
+        "injected_distance_human_m": 2.081690844551938,
+        "injected_direction_rad": 0.4281673598977015,
+        "endpoint_error_human_m": 0.009387712172678411,
+        "achieved_xy_human_m": [
+          1.8370733261108398,
+          0.8347845673561096
+        ]
+      }
+    ],
+    "selected_generation_iteration": 1,
+    "weight_sha256": "cccab0bfb8f89ccc75d5437454afb973128f245482c76f6f1241d0ffbe381a28",
+    "source": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_030",
+    "prompt": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p0.json"
+  },
+  {
+    "index": 31,
+    "seed": 75005031,
+    "distance_robot_m": 1.1994641892665252,
+    "direction_rad": 0.46134919531108487,
+    "distance_human_m": 1.5700051208097945,
+    "goal_xy": [
+      1.0740634581649993,
+      0.5339494631212257
+    ],
+    "table_center": [
+      1.656107719306438,
+      0.8233012871561134,
+      0.4
+    ],
+    "table_half_size": [
+      0.4,
+      0.48,
+      0.035
+    ],
+    "table_top": 0.8,
+    "table_yaw": 0.46134919531108487,
+    "hand_target": [
+      1.4945664732749373,
+      0.5866487447430005,
+      0.84
+    ],
+    "goal_generation": {
+      "endpoint_error_m": [
+        0.0037262726109474897
+      ],
+      "xy": [
+        [
+          1.4095897674560547,
+          0.6987780928611755
+        ]
+      ],
+      "heading_rad": [
+        0.6139863729476929
+      ]
+    },
+    "generation_refinements": [
+      {
+        "iteration": 0,
+        "injected_distance_human_m": 1.5700051208097945,
+        "injected_direction_rad": 0.46134919531108487,
+        "endpoint_error_human_m": 0.040541550948352954,
+        "achieved_xy_human_m": [
+          1.3717217445373535,
+          0.677038848400116
+        ]
+      },
+      {
+        "iteration": 1,
+        "injected_distance_human_m": 1.6103158841559608,
+        "injected_direction_rad": 0.46406592560751153,
+        "endpoint_error_human_m": 0.003726365078276497,
+        "achieved_xy_human_m": [
+          1.4095897674560547,
+          0.6987780928611755
+        ]
+      }
+    ],
+    "selected_generation_iteration": 1,
+    "weight_sha256": "cccab0bfb8f89ccc75d5437454afb973128f245482c76f6f1241d0ffbe381a28",
+    "source": "/home/pku/frankenmotion/outputs_amass/gait_demo_20261005/final_random32/scene_031",
+    "prompt": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p0.json"
+  }
+]

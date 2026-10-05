@@ -1,0 +1,905 @@
+{
+  "runtime": "/home/pku/frankenmotion/work/mjlab_stable_env/bin/python",
+  "python": "3.11.17 (main, Oct  1 2026, 20:58:47) [Clang 22.1.3 ]",
+  "versions": {
+    "torch": "2.7.0",
+    "numpy": "2.4.6",
+    "scipy": "1.15.3",
+    "mujoco": "3.5.0",
+    "mujoco-warp": "3.5.0",
+    "mjlab": "1.1.1",
+    "rsl-rl-lib": "4.0.1",
+    "imageio": "2.38.0",
+    "imageio-ffmpeg": "0.6.0",
+    "Pillow": "12.3.0",
+    "warp-lang": "1.12.0"
+  },
+  "repositories": {
+    "frankenmotion": {
+      "path": "/home/pku/frankenmotion",
+      "enclosing_git_root": "/home/pku/frankenmotion",
+      "head": "f110fd4af1703383e49a05e70a227e9a539598a9",
+      "independent_repository": true
+    },
+    "gmr": {
+      "path": "/home/pku/frankenmotion/work/GMR",
+      "enclosing_git_root": "/home/pku/frankenmotion",
+      "head": "f110fd4af1703383e49a05e70a227e9a539598a9",
+      "independent_repository": false
+    },
+    "previous_published_snapshot": {
+      "path": "/home/pku/frankenmotion/work/git_publish_g1",
+      "enclosing_git_root": "/home/pku/frankenmotion/work/git_publish_g1",
+      "head": "3691da13ebd6731e573ec92b290655bddedcd3df",
+      "independent_repository": true
+    }
+  },
+  "external_assets": [
+    {
+      "path": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/code/audit_results.py",
+      "bytes": 6024,
+      "sha256": "36bbe409cf3ab08bab2f26e4636ff72d381fabfc186087a574815f4abe90eb9c"
+    },
+    {
+      "path": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/code/cache.py",
+      "bytes": 4524,
+      "sha256": "24c946e4a76d0ac734d7d60cbcc81201fa660af88bfd64b7712a457d084d9d4f"
+    },
+    {
+      "path": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/code/core.py",
+      "bytes": 8170,
+      "sha256": "230581cc2815073f458c9e4f1d52a02522098642a55d8bad6e4237412561d75f"
+    },
+    {
+      "path": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/code/g1_runtime.py",
+      "bytes": 5359,
+      "sha256": "1bb849dcf3dcf039871edfd937584c36ac4690ddf0ec09aadff3e9e75ceda0b9"
+    },
+    {
+      "path": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/code/generate.py",
+      "bytes": 2943,
+      "sha256": "6a623e596f98b17d86a210ca3e3eefb7e077918caf687b773c08fd06b8d9b24e"
+    },
+    {
+      "path": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/code/infer_one.py",
+      "bytes": 1606,
+      "sha256": "f9415e377e725c1d9048d889adcc81be6ac185806dd8204bd763a9f58d32abec"
+    },
+    {
+      "path": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/code/metadata_export.py",
+      "bytes": 3228,
+      "sha256": "39c9954a5a84d1604100806f739dd77979ad22d9db1ae97df86740984030e5fe"
+    },
+    {
+      "path": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/code/original_experiment.py",
+      "bytes": 8477,
+      "sha256": "23ec412f202e86396bcaa7384d4d98fb901e98fdc1a82866bcb477d61a2e7679"
+    },
+    {
+      "path": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/code/partner_metrics.py",
+      "bytes": 6020,
+      "sha256": "9511e20f7fec36fe88660098ca498c95d3c4b371cf67c27b89c87a670e520401"
+    },
+    {
+      "path": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/code/plot.py",
+      "bytes": 4413,
+      "sha256": "09ec6898aa5c17ada93713232edd3921781940d370098a4376584946e1b93e0f"
+    },
+    {
+      "path": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/code/prior_run.py",
+      "bytes": 7823,
+      "sha256": "ed1fe95b934a5303b1d4561633531ef68e09e0cbe69e9b9110302deb84f72726"
+    },
+    {
+      "path": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/code/prompts.py",
+      "bytes": 6495,
+      "sha256": "410ecf794879f373e3b3ba7aa02f094e1d0c33e2f5ec3b24fd1c0b05236591f3"
+    },
+    {
+      "path": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/code/train_free.py",
+      "bytes": 5552,
+      "sha256": "106e3e089d1fac4ec8eace8eff6d834f3276266eaa489c19409e46f6c3c94b86"
+    },
+    {
+      "path": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/code/train_tasks.py",
+      "bytes": 4818,
+      "sha256": "d9d6143077451849ae0a3dbe43e4d385790b91b23645e609e53480e1901aed2f"
+    },
+    {
+      "path": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/code/transfer.py",
+      "bytes": 10137,
+      "sha256": "739177597d5833418c177e35c7d1f0d324373f9dab6eeddcd0e138e166cc6b1d"
+    },
+    {
+      "path": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/evaluation_manifest.json",
+      "bytes": 66934,
+      "sha256": "d43884afd25b5698cc4a2bafea343d5434ff66d0a0aba604df29886ac2940fde"
+    },
+    {
+      "path": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/reach_p0.pt",
+      "bytes": 101723,
+      "sha256": "7b2d405ca9690363b9e8e3661e003096cebacd38b6fb299c5face3b4597dca06"
+    },
+    {
+      "path": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p0.pt",
+      "bytes": 199508,
+      "sha256": "81e4cbbaa95e7089f822a585fe3fdf66df7bdab2373ddc898e6a8902b5497b9c"
+    },
+    {
+      "path": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p1.pt",
+      "bytes": 199508,
+      "sha256": "064018584beeb083c14a5e04038e53342facf35276600f7f975125cdc77f7996"
+    },
+    {
+      "path": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p2.pt",
+      "bytes": 199508,
+      "sha256": "d14d835550e19114771a1d68c15fe009333ab618a9a986537dd3df94113bcfa6"
+    },
+    {
+      "path": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/prompts/walk_p3.pt",
+      "bytes": 199508,
+      "sha256": "220f629755f6c2fab86b77afdd1a52176e93df614214c9be041d04cf0cb1b1a8"
+    },
+    {
+      "path": "/home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/skeleton.npz",
+      "bytes": 1794,
+      "sha256": "f6454fbe22bd135f7de84af8a02a9e633a2a971e7dbc5f03ba577668735e15b9"
+    },
+    {
+      "path": "/home/pku/frankenmotion/outputs_amass/franken_improve_20261003/frozen_generation_v1/physical.pt",
+      "bytes": 7303650,
+      "sha256": "559623d553092545b2ecc9be4b0dad44d736ed1dbfd0e094e063838da84e480a"
+    },
+    {
+      "path": "/home/pku/frankenmotion/outputs_amass/franken_improve_20261003/frozen_retarget_v2/protocol.json",
+      "bytes": 817,
+      "sha256": "f22c86f8d275b4f16c981d82c0f522089b0eacfd32f389db493cb2ecf451a370"
+    },
+    {
+      "path": "/home/pku/frankenmotion/outputs_amass/franken_improve_20261003/frozen_retarget_v2/task_retarget_v2_20261003.py",
+      "bytes": 3883,
+      "sha256": "eeda2c5840442a04043b65b569aea8b40c9057d77c6cb991f5412818cbd42dbc"
+    },
+    {
+      "path": "/home/pku/frankenmotion/outputs_amass/official_20260916/logs/checkpoints/last.ckpt",
+      "bytes": 177871842,
+      "sha256": "1de95780b218852af164737201afde6b6878cd7e5407e97538b06588f40b6eac"
+    },
+    {
+      "path": "/home/pku/frankenmotion/outputs_amass/root_control_20260925/base_config.yaml",
+      "bytes": 3281,
+      "sha256": "15236d4d4dded106da5b5185c935139e6d6ddd85a85826204aab5fae3b931172"
+    },
+    {
+      "path": "/home/pku/frankenmotion/outputs_amass/root_control_20260925/best.pt",
+      "bytes": 7155102,
+      "sha256": "fb6e0134dce0c2e6fd6a8116ce473016b8799bebcba82c2eaa671b8728b9bba5"
+    },
+    {
+      "path": "/home/pku/frankenmotion/outputs_amass/root_control_20260925/code/control.py",
+      "bytes": 3391,
+      "sha256": "72b632c895a3e28d087658b594753aad5cea8d0528cf2dbf5e07f729f5b620af"
+    },
+    {
+      "path": "/home/pku/frankenmotion/outputs_amass/root_control_20260925/code/infer.py",
+      "bytes": 1638,
+      "sha256": "5375e06c4a2828476426735231eca4340f669099d6198f9429c75e1bc3787c39"
+    },
+    {
+      "path": "/home/pku/frankenmotion/outputs_amass/root_control_20260925/code/launch.py",
+      "bytes": 1002,
+      "sha256": "19f648a2a61c7057dbfd616ec6d2d65b7b15a611edb200981d3e9f5a603f8fd1"
+    },
+    {
+      "path": "/home/pku/frankenmotion/outputs_amass/root_control_20260925/code/train.py",
+      "bytes": 17200,
+      "sha256": "090a3c1cc13defd36f9a0d98b3e07a64580c08ca5b062e8cd88935c1fa13d888"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/assets/unitree_g1/._g1_mocap_29dof.xml",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/assets/unitree_g1/._g1_mocap_29dof_with_hands.xml",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/assets/unitree_g1/g1_mocap_29dof.xml",
+      "bytes": 27122,
+      "sha256": "85a25128d42ad3cc8dd071c089806a2773a59ee0689edcc646aeb0201ae8f4c8"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/assets/unitree_g1/g1_mocap_29dof_with_hands.xml",
+      "bytes": 38081,
+      "sha256": "167280f50c138ac548c03c85f609ddd96e0d994e9f288d6baa42b67617524ec5"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/.___init__.py",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/._data_loader.py",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/._kinematics_model.py",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/._motion_retarget.py",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/._neck_retarget.py",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/._params.py",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/._robot_motion_viewer.py",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/._rot_utils.py",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/._torch_utils.py",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/._xrobot_utils.py",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/__init__.py",
+      "bytes": 641,
+      "sha256": "eb7a658704164e03cf182bc57f863c7dc01f87b49c463cecc5c2f3f5d58b5502"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/data_loader.py",
+      "bytes": 673,
+      "sha256": "48d2857fe856124509295a57678655c6301e1e36d0109bf15962b648ff61c635"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/._bvh_lafan1_to_g1.json",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/._bvh_lafan1_to_n1.json",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/._bvh_lafan1_to_pm01.json",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/._bvh_lafan1_to_t1_29dof.json",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/._bvh_lafan1_to_toddy.json",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/._bvh_nokov_to_g1.json",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/._bvh_to_talos.json",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/._bvh_xsens_to_g1.json",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/._bvh_xsens_to_h1_2.json",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/._fbx_offline_to_g1.json",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/._fbx_to_g1.json",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/._smplx_to_adam.json",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/._smplx_to_bhl.json",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/._smplx_to_g1.json",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/._smplx_to_gr3.json",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/._smplx_to_h1.json",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/._smplx_to_h1_2.json",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/._smplx_to_hi.json",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/._smplx_to_k1.json",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/._smplx_to_kuavo.json",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/._smplx_to_n1.json",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/._smplx_to_openloong.json",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/._smplx_to_pm01.json",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/._smplx_to_r1pro.json",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/._smplx_to_t1.json",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/._smplx_to_t1_29dof.json",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/._smplx_to_tienkung.json",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/._smplx_to_toddy.json",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/._xrobot_to_g1.json",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/._xsens_mvn_to_g1.json",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/bvh_lafan1_to_g1.json",
+      "bytes": 9252,
+      "sha256": "cb4ef4bc38bf8c59aabddd4baeb261fb5d23e8628ac3793fc06a9ebf699aa320"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/bvh_lafan1_to_n1.json",
+      "bytes": 9258,
+      "sha256": "5da832739c9a8c1a343e2456712b65d27404a725f64a3170ac99782d8c271d36"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/bvh_lafan1_to_pm01.json",
+      "bytes": 8961,
+      "sha256": "6a57f162b9e38dc300bdb11dcfa409d78018db1a4ab7041c5bdaf0a7484bea85"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/bvh_lafan1_to_t1_29dof.json",
+      "bytes": 9229,
+      "sha256": "143f96f53104a5627bfc4f176c902172b4ea359c82cd40d133a3c6105751081a"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/bvh_lafan1_to_toddy.json",
+      "bytes": 9544,
+      "sha256": "68cb1f3fcfe7593d4acab8beafbf5529119ef5aa389e77b03769a6115a8deafe"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/bvh_nokov_to_g1.json",
+      "bytes": 7106,
+      "sha256": "d3d6d94ae644902697a676e659524183700d3c7c43362404cf7cb8697ae3239f"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/bvh_to_talos.json",
+      "bytes": 4101,
+      "sha256": "34a3b0e17b37aaa424ca5d54b24e8b22dcb41b9b76e1d46aa6153e46cca78295"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/bvh_xsens_to_g1.json",
+      "bytes": 9154,
+      "sha256": "9fbbb70976d10cb0b50f44abe140ee7357c7789698a3e300bdf27f3a4dc6aaea"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/bvh_xsens_to_h1_2.json",
+      "bytes": 9328,
+      "sha256": "3ef02cf538f76ba25b7be27abea9a0ec80964dab30dc9b5a96721be5b4bed39c"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/fbx_offline_to_g1.json",
+      "bytes": 9143,
+      "sha256": "ac918cbc97051504fd99da32832a32a5e78f2c98d27b6f5f40ac1607554a8b05"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/fbx_to_g1.json",
+      "bytes": 9385,
+      "sha256": "68500f9b6a99dea0fe73e4dbc1bd18fbe77ca1f933dba32f7ca2b5aa8bf180ed"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/smplx_to_adam.json",
+      "bytes": 4282,
+      "sha256": "3a201cfd60d685b3b9537f8f37272c13aaf74dc1b59aa3067b7f1641f8bff36b"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/smplx_to_bhl.json",
+      "bytes": 3926,
+      "sha256": "578289f66c042125405e715d6797860106417058c26f72300e55d4de5168c05c"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/smplx_to_g1.json",
+      "bytes": 9268,
+      "sha256": "db35f79822fb3bc712cd473d672e60bb91214528524d363e44d7c9da0c5cfc9b"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/smplx_to_gr3.json",
+      "bytes": 8237,
+      "sha256": "3d07a4ad060aaf52e532fffe4f24d237d783bf40aa1e611262c4b18bd1733915"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/smplx_to_h1.json",
+      "bytes": 8018,
+      "sha256": "e0e497dc5d0d866dcea8b74a40913a454b7150a500abd341488c550ac100d1d9"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/smplx_to_h1_2.json",
+      "bytes": 8038,
+      "sha256": "9ae00733ccc63afa8c1314e97042864d7c28d63c3238e97971f67070992cf629"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/smplx_to_hi.json",
+      "bytes": 9654,
+      "sha256": "88df377c955223ec0140d11d1ab4c56fdb155aafbab616af10e1eccefb9a321c"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/smplx_to_k1.json",
+      "bytes": 7565,
+      "sha256": "7517e2b59c27b438cdf199d29dc3f51f0c11e4f60b209c8f64fd6a9709205974"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/smplx_to_kuavo.json",
+      "bytes": 7416,
+      "sha256": "74c4d8f956b25e156634cd42b583e824642e06d0104443b12c5f07383c201dbf"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/smplx_to_n1.json",
+      "bytes": 9413,
+      "sha256": "44ee5f652e9fff1929ed40b6d6248e443a37d86dce165e071e0f941532e14238"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/smplx_to_openloong.json",
+      "bytes": 9268,
+      "sha256": "db35f79822fb3bc712cd473d672e60bb91214528524d363e44d7c9da0c5cfc9b"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/smplx_to_pm01.json",
+      "bytes": 9220,
+      "sha256": "7b6ce94c19f64e3867982459d759f3cc153a330594e51845ab605073620ed65a"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/smplx_to_r1pro.json",
+      "bytes": 7922,
+      "sha256": "1e30ea378ef9c40ee6686d3ba5fc3e90de15c49199d41ef340bf1f877088f365"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/smplx_to_t1.json",
+      "bytes": 7454,
+      "sha256": "61ce8e43a29da9c8ee87adef48511c4e2a0d92b2f02fd2ae4819ec81f83638b3"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/smplx_to_t1_29dof.json",
+      "bytes": 8648,
+      "sha256": "bd4c2e218ffa9a1de8311404b9f90aaeee8d2f68bc68f520c38b6950df09c569"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/smplx_to_tienkung.json",
+      "bytes": 8497,
+      "sha256": "ec094268e0f63538563fcf4478a53bd8e27371e0fcc33afa01e73fab630d4eed"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/smplx_to_toddy.json",
+      "bytes": 9137,
+      "sha256": "5d5ed950e109a7bb12e22df9c510ddaa1d42248ecc3b68ca1dbe4b53875a5da8"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/xrobot_to_g1.json",
+      "bytes": 3355,
+      "sha256": "34ff208990409365928e86a433d7201c268b690cac40b4c09eb83a1067d63a0b"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/ik_configs/xsens_mvn_to_g1.json",
+      "bytes": 3975,
+      "sha256": "d02933acb0f6377afaf072f1a788c9a9ef6b3432d4783da04d1c533409087f83"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/kinematics_model.py",
+      "bytes": 10910,
+      "sha256": "f4b69a6876cfc967383555cc82220077f768a8246eac5ae6d29e680ae9bdb1b1"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/motion_retarget.py",
+      "bytes": 12876,
+      "sha256": "3a4f9fb0d13b204c8dcbb2ab62db59bce9de81b1f5911167aa73f079e0c90663"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/neck_retarget.py",
+      "bytes": 2023,
+      "sha256": "dfc439e5244ee2bb1cc5358fd1f3f35a20740696eb4844fe6b51733212382886"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/optitrack_vendor/._DataDescriptions.py",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/optitrack_vendor/._MoCapData.py",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/optitrack_vendor/._NatNetClient.py",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/optitrack_vendor/DataDescriptions.py",
+      "bytes": 34020,
+      "sha256": "26cbe1cf7bc09bf6af13adc3d25c95224f0e7cd0cefdd0c43e317aa95f4feeb5"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/optitrack_vendor/MoCapData.py",
+      "bytes": 42743,
+      "sha256": "d1c1c137b9aa40274ddd5150c152340a39e2ab303d470f425ff59d59e76bfecf"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/optitrack_vendor/NatNetClient.py",
+      "bytes": 109342,
+      "sha256": "9488167be4965c12b520118d0e1a7564aa3c705019f4d4eed5fb28ef26624f3b"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/params.py",
+      "bytes": 4790,
+      "sha256": "3506cdd277375139770b0ced7108719145620a389a8dee85bc6c94c6bf135bef"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/robot_motion_viewer.py",
+      "bytes": 5846,
+      "sha256": "6d5ee44d80de6e411bc0a7fc9c2ca162cabc597d21a8c747e1045c3c6accc991"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/rot_utils.py",
+      "bytes": 4969,
+      "sha256": "8c6fb05f3438b0f4bc40f3adc64b362f7083a5f39f2f9895f7b382f2afea4e93"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/torch_utils.py",
+      "bytes": 11066,
+      "sha256": "0a3f0714d7c70e25d9938f6c933e914b8e41b9487a956665e97e56861be32b88"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/.___init__.py",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/._lafan1.py",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/._smpl.py",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/._xsens.py",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/lafan1.py",
+      "bytes": 1834,
+      "sha256": "3f07179414a54f8821cbdb52307f987228e7955d27f95aee0e3941b1d5ec2f4c"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/lafan_vendor/.___init__.py",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/lafan_vendor/._extract.py",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/lafan_vendor/._utils.py",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/lafan_vendor/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/lafan_vendor/extract.py",
+      "bytes": 8297,
+      "sha256": "4c374bbcb7d1026b940862b130ada9da45850d6dca2c60d6ee6b4024d0a06f22"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/lafan_vendor/utils.py",
+      "bytes": 10594,
+      "sha256": "1181093a4641a7981e3e83589d32755b8b17301862d043f40c9fcbcb3926ac5e"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/smpl.py",
+      "bytes": 13806,
+      "sha256": "2f9fb3df35afb065b93b7bf9173114c1993e800a2407cdc8705df77afc105437"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/xsens.py",
+      "bytes": 3352,
+      "sha256": "cffbe24963150b91fc57a74e29f41967b41cf7011f55b5b55ab8e82c68453448"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/xsens_vendor/._BVHParser.py",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/xsens_vendor/.___init__.py",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/xsens_vendor/._mujoco_retargeting_robot_view.py",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/xsens_vendor/._mujoco_xml_read.py",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/xsens_vendor/._mujoco_xsens_bvh_view.py",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/xsens_vendor/._pkls_to_csvs.py",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/xsens_vendor/._rq.py",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/xsens_vendor/._video_recorder.py",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/xsens_vendor/._xsens_to_gmr_adapter.py",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/xsens_vendor/BVHParser.py",
+      "bytes": 23467,
+      "sha256": "5387497a142efc2a5567e9f2fc9b8db2069699a8342fffe7737b4ffd9b0e5642"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/xsens_vendor/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/xsens_vendor/bvh_edit/._CurveEditor.py",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/xsens_vendor/bvh_edit/.___init__.py",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/xsens_vendor/bvh_edit/._bspline.py",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/xsens_vendor/bvh_edit/._spine_bias_edit.py",
+      "bytes": 163,
+      "sha256": "3fed7af4c62050857cc807c9ada01829128e4c4d8beb7a79a7d66448fd021a28"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/xsens_vendor/bvh_edit/CurveEditor.py",
+      "bytes": 13710,
+      "sha256": "3769b632f84d48feadd69c3ccb424746d7fe6c1fdb799ebf0e47b0ee65a52c4a"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/xsens_vendor/bvh_edit/__init__.py",
+      "bytes": 0,
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/xsens_vendor/bvh_edit/bspline.py",
+      "bytes": 5097,
+      "sha256": "303afd68c45bd0702b2356c90f41224d0c731e1f9321b2ed7015c595b4d01f1d"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/xsens_vendor/bvh_edit/spine_bias_edit.py",
+      "bytes": 224,
+      "sha256": "2866399ec41999bf87753cc92632280bc3d558393e26e5a9208328a2254eb45e"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/xsens_vendor/mujoco_retargeting_robot_view.py",
+      "bytes": 13884,
+      "sha256": "eb632e070054806ef56ba9f9dfa02302c58070da4298308dc709cd1d7e3227bb"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/xsens_vendor/mujoco_xml_read.py",
+      "bytes": 1652,
+      "sha256": "3a6fd8689a1a72f7f38575edb002f26460b088c59c296c195a7eeb9548233e5b"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/xsens_vendor/mujoco_xsens_bvh_view.py",
+      "bytes": 8559,
+      "sha256": "a727ab14dcb7527ec5f2f4ee02b0f6058318296c23eff809886a83b595e4db80"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/xsens_vendor/pkls_to_csvs.py",
+      "bytes": 3854,
+      "sha256": "fb0c0358dcc9e7dc3ff9714a9e1c00b6bf49239a5287f10ce4ebc9784ab34220"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/xsens_vendor/rq.py",
+      "bytes": 865,
+      "sha256": "ce69e65decceda329d154403b6e69e3e97a82e44bf65d1a4c3c1dfc56480fbec"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/xsens_vendor/video_recorder.py",
+      "bytes": 3509,
+      "sha256": "c318cd7982a5ec9c9be8958f5b273419d66573874b1a9282635d696b4ef4bd5e"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/utils/xsens_vendor/xsens_to_gmr_adapter.py",
+      "bytes": 16928,
+      "sha256": "afdc6851615c6efe63efdf5877adab543be84d4d6736b4540b84ca60bca2ffe4"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/GMR/general_motion_retargeting/xrobot_utils.py",
+      "bytes": 34796,
+      "sha256": "284e6f4b07e2c062c03a1badd5665d7ffe7e7690288283f8c0a226e6c5c5243d"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/beyondmimic_demo_motion.npz",
+      "bytes": 11782402,
+      "sha256": "f08d15d4b5bb605e17b6928ccdb44ae6ce7bf2038111e8b145f12a176cd096d4"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/gmr_probe_20261003.py",
+      "bytes": 4664,
+      "sha256": "b2bf6d50eba00910dc0fc80ba7eb8a8a2f53acab3020a4eca4dc54a842badccc"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/mjlab_cpu_fk_20261003.py",
+      "bytes": 1845,
+      "sha256": "c125333aa314e1e5e6686cebf0f50450b090166d16fe8860a0b03843a36bcf12"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/physical_adapter_20261003.py",
+      "bytes": 6665,
+      "sha256": "46d20abab6a208ae97c3be82fbc623e6df7a7f34fbca28af8a45b405268ffb6c"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/unified_calibration_20261004.py",
+      "bytes": 2660,
+      "sha256": "34a69f9bfe5bc10e624236121f881c66a452e1438022a8285a6fb499e45e2e9f"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/unified_export_actor_20261004.py",
+      "bytes": 2206,
+      "sha256": "61b23a0504daf0c245187ee135520f0b22b573c8e0d5515052c34552a9daa69e"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/unified_motion_20261004.py",
+      "bytes": 2844,
+      "sha256": "e268a33c32c9c52d04c6f126a966f5875ca860a6699855af6c437b981566259b"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/unified_preview_20261004.py",
+      "bytes": 1634,
+      "sha256": "0d6c789f2551134eb73d10c13426d2183f33c1dbf08c7615c63f09290af2515a"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/unified_retarget_20261004.py",
+      "bytes": 1580,
+      "sha256": "31c9118feee9f554d57f953bec26f99d7f2a36088ea37b9f2cbebb5d84402059"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/unified_rewards_20261004.py",
+      "bytes": 515,
+      "sha256": "ebebe1942e8dd763fcb1aaf55a30f39209545b52ac9121db30e4c2898067092d"
+    },
+    {
+      "path": "/home/pku/frankenmotion/work/unified_train_20261004.py",
+      "bytes": 8080,
+      "sha256": "2c5924309fdadb9a98190916798d6ac7badee6ca5df833d5b239dbc25ae6bbbc"
+    }
+  ],
+  "scope": "Full generation uses the configured server and original assets at these paths. Compact delivery contains new adapters, shared policy and an independently executable CPU scene; it does not redistribute the complete original generator or all training data."
+}
