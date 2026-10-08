@@ -1,0 +1,32 @@
+import os
+os.environ['OMP_NUM_THREADS']='2'
+import json,sys,hashlib,argparse,shutil,time,math
+from pathlib import Path
+import numpy as np,torch
+from residual_actor import SharedResidualActor
+R=Path('/home/pku/frankenmotion');D=R/'outputs_amass/jump_tracker_20261007';p=argparse.ArgumentParser();p.add_argument('--teacher',required=True);p.add_argument('--name',required=True);p.add_argument('--steps',type=int,default=3000);p.add_argument('--reference-only',action='store_true');p.add_argument('--seed',type=int,default=710710);p.add_argument('--hidden-width',type=int,default=128);p.add_argument('--learning-rate',type=float,default=5e-4);p.add_argument('--cosine',action='store_true');p.add_argument('--extra-retention');a=p.parse_args();out=D/'residual_training'/a.name;out.mkdir(parents=True,exist_ok=False);torch.set_num_threads(2);torch.manual_seed(a.seed);rng=np.random.default_rng(a.seed)
+rows=json.loads(Path(a.teacher).read_text());observations=[];targets=[];groups=[];kept=[]
+for i,r in enumerate(rows):
+ if not r.get('physical_complete'):continue
+ if r['task']=='jump' and (not r.get('actual') or not r['actual']['event_pass'] or abs(r['actual']['quantity']-r['command'])>.06):continue
+ z=np.load(Path(r['run'])/'pulse.npz');c=json.loads((Path(r['run'])/'inference_contract.json').read_text());indices=[c['action_target_names'].index('left_'+n+'_joint') for n in ['hip_pitch','knee','ankle_pitch']];obs=z['observations'].astype(np.float32);delta=z['delta'][:,indices].astype(np.float32);observations.append(obs);targets.append(delta);groups.extend([i]*len(obs));kept.append(dict(task=r['task'],source=r['source'],command=r['command'],frames=len(obs),run=r['run']))
+if a.extra_retention:
+ extra=np.load(a.extra_retention)['observations'];observations.append(extra);targets.append(np.zeros((len(extra),3),dtype=np.float32));groups.extend([-1]*len(extra))
+obs=np.concatenate(observations);target=np.concatenate(targets);groups=np.array(groups);active=np.where(np.max(abs(target),axis=1)>.03)[0];inactive=np.where(np.max(abs(target),axis=1)<=.03)[0];assert len(active)>100
+retention=R/'outputs_amass/universal_tracker_20261006/long_retention_v2/dataset.npz'
+with np.load(retention) as z:
+ ids=np.flatnonzero(z['group']<42);ids=rng.choice(ids,min(30000,len(ids)),replace=False);old=z['observations'][ids].astype(np.float32)
+obs=torch.from_numpy(obs);target=torch.from_numpy(target);old=torch.from_numpy(old);checkpoint=torch.load(D/'backup/policy.pt',map_location='cpu',weights_only=False);state=checkpoint['actor_state_dict'];mean=state['obs_normalizer._mean'].clone();std=state['obs_normalizer._std'].clone();projection=torch.zeros(3,29)
+for k,n in enumerate(['hip_pitch','knee','ankle_pitch']):
+ for side in ['left','right']:
+  j=c['action_target_names'].index(side+'_'+n+'_joint');projection[k,j]=1/c['action_scale'][j]
+model=SharedResidualActor(torch.jit.load(str(D/'backup/actor.pt')).eval(),mean,std,projection,reference_only=a.reference_only,hidden_width=a.hidden_width);optimizer=torch.optim.AdamW(model.head.parameters(),lr=a.learning_rate,weight_decay=1e-5);logs=[];start=time.monotonic();source=out/'source_snapshot';source.mkdir();shutil.copy2(__file__,source/Path(__file__).name);shutil.copy2(Path(__file__).parent/'residual_actor.py',source/'residual_actor.py')
+protocol=dict(reference_only=a.reference_only,hidden_width=a.hidden_width,learning_rate=a.learning_rate,cosine=a.cosine,architecture='Frozen shared495-input tracker + learned128/128/3 ELU residual; same symmetric hip-pitch,knee,ankle-pitch correction on both legs; packaged into one actor; no runtime task ID or external phase controller',scope='Offline imitation of successful training-only optimized pulse rollouts, zero residual target on other-action rollouts and historical training-table states. Specialized teacher, shared student. This is not a claim of zero distillation or full generalist RL.',extra_retention=a.extra_retention,extra_retention_sha256=hashlib.sha256(Path(a.extra_retention).read_bytes()).hexdigest() if a.extra_retention else None,teacher_manifest=a.teacher,teacher_manifest_sha256=hashlib.sha256(Path(a.teacher).read_bytes()).hexdigest(),retention_path=str(retention),retention_groups='strictly<42',retention_samples=len(old),kept=kept,all_teacher_requests=len(rows),quality_retained_teacher_requests=len(kept),jump_teacher_tolerance_m=.06,observations=len(obs),active=len(active),inactive=len(inactive),steps=a.steps,device='cpu',seed=a.seed,base_sha256=hashlib.sha256((D/'backup/actor.pt').read_bytes()).hexdigest());protocol['architecture']=f'Frozen495-input backbone + learned {a.hidden_width}/{a.hidden_width}/3 residual; head input is '+('353 reference-only features' if a.reference_only else '495 reference and proprioceptive features')+'; symmetric hip-pitch,knee,ankle-pitch corrections; single shared actor, no task routing';(out/'protocol.json').write_text(json.dumps(protocol,indent=2))
+for step in range(a.steps):
+ if a.cosine:
+  for group in optimizer.param_groups:group['lr']=a.learning_rate*(.1+.9*(1+math.cos(math.pi*step/a.steps))/2)
+ ia=rng.choice(active,64);ib=rng.choice(inactive,64);ic=rng.integers(len(old),size=128);x=torch.cat([obs[ia],obs[ib],old[ic]]);y=torch.cat([target[ia],target[ib],torch.zeros(128,3)]);prediction=model.physical_residual(x);loss=(prediction-y).square().mean();optimizer.zero_grad();loss.backward();torch.nn.utils.clip_grad_norm_(model.head.parameters(),1.);optimizer.step()
+ if step%100==0:logs.append(dict(step=step,loss=float(loss),active_mse=float((prediction[:64]-y[:64]).square().mean()),retention_mse=float(prediction[128:].square().mean())));(out/'log.json').write_text(json.dumps(logs,indent=2));print(logs[-1],flush=True)
+ if step in [499,1499,a.steps-1]:
+  path=out/f'actor_{step}.pt';model.eval();torch.jit.script(model).save(str(path));meta=json.loads((D/'backup/actor.json').read_text());meta.update(base_checkpoint_sha256=meta.get('checkpoint_sha256'),checkpoint=str(path),checkpoint_sha256=hashlib.sha256(path.read_bytes()).hexdigest(),artifact_kind='standalone composite TorchScript actor',reference_only=a.reference_only,head_input_dim=353 if a.reference_only else 495,architecture=protocol['architecture'],hidden_width=a.hidden_width,training=str(out),step=step,actor_sha256=hashlib.sha256(path.read_bytes()).hexdigest());path.with_suffix('.json').write_text(json.dumps(meta,indent=2));model.train();model.base.eval()
+(out/'complete.json').write_text(json.dumps(dict(wall_s=time.monotonic()-start,steps=a.steps),indent=2))

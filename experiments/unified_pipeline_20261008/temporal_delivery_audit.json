@@ -1,0 +1,71 @@
+{
+  "backups_verified": [
+    "generator",
+    "tracker"
+  ],
+  "original_weights_unchanged": true,
+  "training": false,
+  "videos": [
+    {
+      "path": "outputs_amass/temporal_mix_20261008/videos/g1_speed_0p6_s0/reference_vs_physics.mp4",
+      "frames": 175,
+      "fps": 25.0
+    },
+    {
+      "path": "outputs_amass/temporal_mix_20261008/videos/g1_speed_0p6_s1/reference_vs_physics.mp4",
+      "frames": 175,
+      "fps": 25.0
+    },
+    {
+      "path": "outputs_amass/temporal_mix_20261008/videos/g1_speed_0p6_s2/reference_vs_physics.mp4",
+      "frames": 175,
+      "fps": 25.0
+    },
+    {
+      "path": "outputs_amass/temporal_mix_20261008/videos/g1_text_only_s0/reference_vs_physics.mp4",
+      "frames": 175,
+      "fps": 25.0
+    },
+    {
+      "path": "outputs_amass/temporal_mix_20261008/videos/g1_text_only_s1/reference_vs_physics.mp4",
+      "frames": 175,
+      "fps": 25.0
+    },
+    {
+      "path": "outputs_amass/temporal_mix_20261008/videos/g1_text_only_s2/reference_vs_physics.mp4",
+      "frames": 175,
+      "fps": 25.0
+    },
+    {
+      "path": "outputs_amass/temporal_mix_20261008/videos/human_comparison_s0.mp4",
+      "frames": 120,
+      "fps": 20.0
+    },
+    {
+      "path": "outputs_amass/temporal_mix_20261008/videos/human_comparison_s1.mp4",
+      "frames": 120,
+      "fps": 20.0
+    },
+    {
+      "path": "outputs_amass/temporal_mix_20261008/videos/human_comparison_s2.mp4",
+      "frames": 120,
+      "fps": 20.0
+    },
+    {
+      "path": "outputs_amass/temporal_mix_20261008/videos_emphasis/g1_speed_0p6_s0/reference_vs_physics.mp4",
+      "frames": 175,
+      "fps": 25.0
+    },
+    {
+      "path": "outputs_amass/temporal_mix_20261008/videos_emphasis/g1_text_only_s0/reference_vs_physics.mp4",
+      "frames": 175,
+      "fps": 25.0
+    },
+    {
+      "path": "outputs_amass/temporal_mix_20261008/videos_emphasis/human_comparison_s0.mp4",
+      "frames": 120,
+      "fps": 20.0
+    }
+  ],
+  "warning": "Rollout completion is not temporal composition success. First prompt suppresses waving; emphasized global action yields partial arm motion but incorrect timing/overlap and tracking attenuation."
+}

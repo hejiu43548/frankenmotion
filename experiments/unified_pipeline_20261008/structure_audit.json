@@ -1,0 +1,42 @@
+{
+  "sha256": "672b06afc7370f9ce1c9940bf9c82f645611c2937aad8075a66c5ff81a8998f1",
+  "checkpoint": "/home/pku/frankenmotion/outputs_amass/unified_commands_20261007/exports/candidate_v4/unified_generator.pt",
+  "loaded_weight_files": [
+    "/home/pku/frankenmotion/outputs_amass/unified_commands_20261007/exports/candidate_v4/unified_generator.pt"
+  ],
+  "controller": "SharedCommands",
+  "width": 1024,
+  "controller_parameters": 8655053,
+  "input_features": 46,
+  "transformer_residual_heads": 4,
+  "output_residual_head": true,
+  "legacy_modules_present": [],
+  "module_classes": [
+    "Dropout",
+    "EmbeddedNormalizer",
+    "GELU",
+    "GaussianDiffusion",
+    "LayerNorm",
+    "Linear",
+    "ModuleList",
+    "MultiheadAttention",
+    "NonDynamicallyQuantizableLinear",
+    "PositionalEncoding",
+    "Sequential",
+    "SharedCommands",
+    "SiLU",
+    "TimestepEmbedder",
+    "TransformerDenoiser",
+    "TransformerEncoder",
+    "TransformerEncoderLayer",
+    "UnifiedControl",
+    "WeightedMSELoss"
+  ],
+  "inference_shape": [
+    1,
+    120,
+    205
+  ],
+  "finite": true,
+  "scope": "One shared learned controller with fixed dense heads; semantic task/intent inputs remain. Base model, text frontend, retargeting, scene assembly and tracker are separate concepts. Does not claim arbitrary actions or all numeric ranges work."
+}

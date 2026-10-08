@@ -1,0 +1,9 @@
+"""Single repeated-route exploratory interface ablation, not an independent benchmark."""
+from pathlib import Path
+import json
+import numpy as np
+D=Path('/home/pku/frankenmotion/outputs_amass/universal_tracker_20261006');out={}
+for tag,name in [('relative_anchors','frozen_demo_long_horizon_v3'),('fixed_world_reference','frozen_demo_long_no_anchors')]:
+ p=D/'general_evaluation'/name;r=json.loads((p/'results.json').read_text())[0];run=Path(r['run']);a=np.load(run/'actual.npz');initial=np.load(run/'initial_motion.npz');n=len(a['qpos']);error=np.linalg.norm(a['qpos'][:,:2]-initial['body_pos_w'][:n,0,:2],axis=-1);rs=json.loads((p/'command_metrics.json').read_text())['results'];w=[x['actual'] for x in rs if x['task']=='walk' and x['complete']];t=[x['actual'] for x in rs if x['task']=='turn' and x['complete']];v=[x['actual'] for x in rs if x['task']=='wave' and x['complete']]
+ out[tag]=dict(physical_complete=r['physical_complete'],frames=n,completed_stages=sum(x['complete'] for x in rs),initial_world_plan_root_xy_rmse_m=float(np.sqrt((error**2).mean())),initial_world_plan_final_root_xy_error_m=float(error[-1]),walk_distance_max_error_m=max(x['distance_error_m'] for x in w),walk_direction_max_error_deg=max(x['direction_error_deg'] for x in w),turn_max_error_deg=max(x['error_deg'] for x in t),wave_quantities=[x['quantity'] for x in v],run=str(run))
+(D/'long_horizon_ablation.json').write_text(json.dumps(dict(scope=__doc__,definition='Root XY compared against initial immutable world plan in both arms. Relative anchoring intentionally shifts this plan at command boundaries; this metric measures that drift, not tracking error to the adapted reference. Same actor, source sequence, and initialization; only --anchors differs. One physical trial each.',results=out),indent=2));print(json.dumps(out,indent=2))

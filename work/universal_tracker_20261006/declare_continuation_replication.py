@@ -1,0 +1,5 @@
+import json,datetime
+from pathlib import Path
+D=Path('/home/pku/frankenmotion/outputs_amass/universal_tracker_20261006');assert not (D/'frozen_unified/protocol.json').exists()
+plan=dict(declared_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),scope='Supplementary second seed of expanded continuation, not full-pipeline multi-seed replication.',new_seed=6107,rule='After global freeze and first expanded run completes, repeat selected expanded configuration from the same v4 warm start for exactly selected checkpoint iteration+1 updates; no extra checkpoint selection, no deployment switch, no feedback from fresh test scores.',evaluation='Same fresh native880, natural54 and table12. Report separately; main candidate stays immutable.',compute_deadline_utc='2026-10-06T02:05:00Z',failure_policy='Report incomplete/failed attempt explicitly, never substitute a partial checkpoint after inspecting its scores.')
+(D/'replication_plan.json').write_text(json.dumps(plan,indent=2));p=D/'final_test_plan.json';main=json.loads(p.read_text());main['supplementary_continuation_seed']=plan;p.write_text(json.dumps(main,indent=2));print(plan)

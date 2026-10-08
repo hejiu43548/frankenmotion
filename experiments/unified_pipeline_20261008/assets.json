@@ -1,0 +1,17 @@
+{
+  "generator": {
+    "server_path": "/home/pku/frankenmotion/outputs_amass/unified_commands_20261007/exports/candidate_v4/unified_generator.pt",
+    "sha256": "672b06afc7370f9ce1c9940bf9c82f645611c2937aad8075a66c5ff81a8998f1",
+    "bytes": 93925684
+  },
+  "tracker": {
+    "server_path": "/home/pku/frankenmotion/outputs_amass/unified_commands_20261007/backup/tracker.pt",
+    "sha256": "be554b1bd9cb48f2f7021a21b33b5d8c41970690935b47823c8531cba6eb892c",
+    "bytes": 2357208
+  },
+  "tracker_config": {
+    "server_path": "/home/pku/frankenmotion/outputs_amass/unified_commands_20261007/backup/tracker.json",
+    "sha256": "97a6e9bf80153eb2ec2bb18d8b10671ff361c1640bdc40034a6355480177510f",
+    "bytes": 1581
+  }
+}

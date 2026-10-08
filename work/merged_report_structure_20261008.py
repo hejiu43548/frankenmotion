@@ -1,0 +1,11 @@
+from pathlib import Path
+import sys,json,hashlib,torch
+R=Path('/home/pku/frankenmotion');sys.path[:0]=[str(R/'work/unified_commands_20261007'),str(R)];from single_runtime import load_one_checkpoint
+from shared_infer import command_features,generate
+D=R/'outputs_amass/unified_commands_20261007';O=R/'outputs_amass/merged_report_20261008';O.mkdir(exist_ok=True);f=D/'exports/candidate_v4/unified_generator.pt';torch.set_num_threads(2);calls=[];old=torch.load
+def traced(p,*a,**kw):calls.append(str(p));return old(p,*a,**kw)
+torch.load=traced;m=load_one_checkpoint(f);assert calls==[str(f)];classes=sorted(set(type(x).__name__ for x in m.modules()));banned=['RootControl','TemporalTaskControl','WideTaskControl','GoalControl','ReachControl','ExitControl','LegacyTargets'];assert not set(classes)&set(banned);assert type(m.denoiser).__name__=='UnifiedControl';assert len(m.denoiser.controller.residuals)==4
+keys=list(m.state_dict());assert all(not any(s in k for s in ['denoiser.root.','legacy','teacher']) for k in keys);pack=old(f,map_location='cpu',weights_only=False);assert pack['width']==1024
+z=old(R/'outputs_amass/franken_eleven_20261003/prompts/walk_p0.pt',map_location='cpu',weights_only=False);features=command_features('walk',.8,z['local'].shape[0]);raw=generate(m,z['local'],z['tx'],features,107089991);assert torch.isfinite(raw).all();assert calls==[str(f)]
+assert not any(x in sys.modules for x in ['control','core','physical_adapter_20261003','legacy_targets','uc_common']);result=dict(sha256=hashlib.sha256(f.read_bytes()).hexdigest(),checkpoint=str(f),loaded_weight_files=calls,controller=type(m.denoiser.controller).__name__,width=pack['width'],controller_parameters=sum(p.numel() for p in m.denoiser.controller.parameters()),input_features=46,transformer_residual_heads=4,output_residual_head=True,legacy_modules_present=[],module_classes=classes,inference_shape=list(raw.shape),finite=True,scope='One shared learned controller with fixed dense heads; semantic task/intent inputs remain. Base model, text frontend, retargeting, scene assembly and tracker are separate concepts. Does not claim arbitrary actions or all numeric ranges work.')
+(O/'structure_audit.json').write_text(json.dumps(result,indent=2));print(json.dumps(result,indent=2))

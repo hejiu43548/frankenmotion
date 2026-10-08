@@ -1,0 +1,7 @@
+import torch,json,hashlib,shutil
+from pathlib import Path
+from blend_actor import BlendActor
+R=Path('/home/pku/frankenmotion');D=R/'outputs_amass/jump_tracker_20261007';base=D/'backup/actor.pt';feedback=D/'residual_training/shared_residual_v1/actor_2999.pt';reference=D/'residual_training/reference_residual_v2/actor_9999.pt';out=D/'residual_training/blends';out.mkdir(exist_ok=False);shutil.copy2(__file__,out/'build_blends.py');shutil.copy2(Path(__file__).with_name('blend_actor.py'),out/'blend_actor.py')
+for weight in [.5,.75]:
+ a=torch.jit.load(str(feedback));b=torch.jit.load(str(reference));assert torch.equal(a.projection,b.projection)
+ model=BlendActor(torch.jit.load(str(base)),a,b,weight).eval();actor=torch.jit.freeze(torch.jit.script(model));path=out/f'actor_feedback{int(weight*100)}.pt';actor.save(str(path));meta=json.load(open(D/'backup/actor.json'));meta.update(checkpoint=str(path),checkpoint_sha256=hashlib.sha256(path.read_bytes()).hexdigest(),actor_sha256=hashlib.sha256(path.read_bytes()).hexdigest(),artifact_kind='standalone shared composite actor',architecture='Frozen backbone + fixed weighted mean of state-conditioned and reference-only residuals; both active for every motion; no task routing',feedback_weight=weight,sources={str(p):hashlib.sha256(p.read_bytes()).hexdigest() for p in [base,feedback,reference]});path.with_suffix('.json').write_text(json.dumps(meta,indent=2))

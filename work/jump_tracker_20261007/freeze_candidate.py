@@ -1,0 +1,19 @@
+"""Explicit validation-driven choice, before fresh test generation."""
+import json,hashlib,datetime,shutil
+from pathlib import Path
+R=Path('/home/pku/frankenmotion');D=R/'outputs_amass/jump_tracker_20261007';E=D/'general_evaluation';assert not (D/'fresh_final').exists() and not (D/'candidate_freeze.json').exists()
+source=D/'residual_training/reference_residual_v4_broad/actor_14999.pt';out=D/'final_candidate';out.mkdir(exist_ok=False);target=out/'actor.pt';shutil.copy2(source,target);meta=json.load(open(source.with_suffix('.json')));sha=hashlib.sha256(target.read_bytes()).hexdigest();meta.update(checkpoint=str(target),checkpoint_sha256=sha,actor_sha256=sha,source_actor=str(source));target.with_suffix('.json').write_text(json.dumps(meta,indent=2))
+alternatives={}
+for tag in ['residual_v3','residual_v4','residual_v5','residual_v6','residual_v7_feedback','residual_v8_capacity','envelope_3000','envelope_3999']:
+ entry={}
+ for suffix in ['dev','extended_dev','regression']:
+  p=E/(tag+'_'+suffix)/'eleven_audit.json'
+  if suffix=='dev' and tag.startswith('envelope_'):p=E/('envelope_shared_4000_'+tag.split('_')[-1]+'_jump')/'eleven_audit.json'
+  if p.exists():entry[suffix]=json.load(open(p))['aggregate']
+ p=E/(tag+'_natural')/'fidelity_summary.json'
+ if p.exists():
+  rows=json.load(open(p))['results'];entry['natural']=dict(requests=sum(r['requests'] for r in rows.values()),complete=sum(r['complete'] for r in rows.values()),accurate_complete=sum(r['accurate_complete'] for r in rows.values()))
+ if entry:alternatives[tag]=entry
+selected=alternatives['residual_v4'];assert selected['dev']['complete']==10 and selected['extended_dev']['complete']==79 and selected['natural']['complete']==25
+record=dict(frozen_utc=datetime.datetime.now(datetime.timezone.utc).isoformat(),checkpoint=str(target),checkpoint_sha256=sha,source_checkpoint=str(source),source_model='reference_residual_v4_broad (frozen backbone + reference-only256/256/3 residual)',validation_tag='residual_v4',task_routing=False,selection_scope='Adaptive choice on repeatedly consulted historical validation and regression, not a pre-registered model-selection rule. Fresh diffusion noise has not been generated or evaluated yet.',selection_reason='Select the conservative shared residual candidate:89/90 jump completions and57/90 joint passes; all110 generated regressions complete,25/54 natural completions and13/54 strict fidelity,6/6 table success. Higher jump-fit alternatives either fell more or reduced natural completion. Per-task regression still has a one-case kick decrease; not universal dominance.',validation_results=alternatives,primary_evaluation=dict(seed_base=107071000,requests=60,standard_grid=[.25,.325,.4,.475,.55],standard_requests=40,interpolation=[.275,.35,.425,.5,.525],interpolation_requests=20,prompts=4,new_noises_per_prompt=2,metric='complete AND original jump event AND absolute human-equivalent height error<=0.04m; all requests remain in denominator',reference='Frozen generator and GMR, identical reference files for baseline and candidate',retuning_after_test=False),secondary_evaluation=dict(requests_per_profile=40,profiles=['baseline_delay20ms','baseline_delay20ms_prediction','candidate_delay20ms','candidate_delay20ms_prediction','candidate_delay20ms_prediction_with_mass_inertia_1.1'],scope='Exact-state prediction is a privileged simulator diagnostic; mass-mismatch predictor retains nominal model'),visual_selection=dict(source='jump_p0_s0',commands=[.25,.4,.55],rule='Render regardless of outcome, preserve visible failure'),base_policy_sha256=hashlib.sha256((D/'backup/policy.pt').read_bytes()).hexdigest(),base_actor_sha256=hashlib.sha256((D/'backup/actor.pt').read_bytes()).hexdigest())
+(D/'candidate_freeze.json').write_text(json.dumps(record,indent=2));shutil.copy2(__file__,out/'freeze_candidate.py');print(json.dumps(record,indent=2))

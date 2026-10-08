@@ -1,3 +1,7 @@
+# Current G1 research snapshot
+
+See [unified command generation, shared tracker and demos](experiments/unified_pipeline_20261008/README.md) for the selected 2026-10-08 pipeline, asset hashes and limitations. Earlier experiment documentation describes historical versions.
+
 # FrankenMotion: Part-level Human Motion Generation and Composition
 
 <p align="center">
