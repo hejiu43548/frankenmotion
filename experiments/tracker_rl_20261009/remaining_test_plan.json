@@ -1,0 +1,11 @@
+{
+  "created_utc": "2026-10-09T20:43:43.150817+00:00",
+  "experiments": {
+    "scratch_drift_seed2": "scratch_seed2",
+    "scratch_no_drift_matched": "scratch_no_drift"
+  },
+  "terminal_iteration": 5999,
+  "primary_freeze_sha256": "fac1f8a309501a57b1db74576eeb7058f781b323b619249137460de5f37f5e9b",
+  "script_sha256": "95c34447f14d7e4def698e549cb3efae85d1c62a3168f1cd73363e02d7c90d8b",
+  "scope": "Recipes and selection rules fixed before first test. Wait for validation selection; test selected and fixed terminal independently. No test-based selection or retraining."
+}
