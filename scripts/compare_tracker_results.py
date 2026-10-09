@@ -134,7 +134,7 @@ def main(configuration: DictConfig):
         ylim=(0, 1.05),
     )
     axes[0].tick_params(axis="x", labelrotation=90)
-    axes[0].legend()
+    axes[0].legend(loc="lower left", bbox_to_anchor=(0, 1.02), ncol=2, frameon=False)
     timeline = np.linspace(0, 1, 101)
     for title, episodes in [
         (configuration.baseline_label, baseline_episodes),
