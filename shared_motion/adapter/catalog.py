@@ -1,6 +1,7 @@
 """Nine distinct additions; units refer to human SMPL kinematics, not G1 scale."""
 
-import torch, math
+import torch
+import math
 
 NEW = {
     "squat": dict(
@@ -60,32 +61,38 @@ NEW = {
 }
 
 
-def quantities(p):
-    """p is canonical B,T,24,3; all measurements differentiable."""
-    root = p[:, :, 0]
-    torso = (p[:, :, 16] + p[:, :, 17]) / 2 - root
-    lateral = p[:, :, 16, :2] - p[:, :, 17, :2]
-    pelvis = p[:, :, 1, :2] - p[:, :, 2, :2]
+def quantities(joint_positions):
+    """Canonical joint positions have shape (batch, frames, 24, 3); measurements are differentiable."""
+    root = joint_positions[:, :, 0]
+    torso = (joint_positions[:, :, 16] + joint_positions[:, :, 17]) / 2 - root
+    lateral = joint_positions[:, :, 16, :2] - joint_positions[:, :, 17, :2]
+    pelvis = joint_positions[:, :, 1, :2] - joint_positions[:, :, 2, :2]
     angle = torch.atan2(lateral[..., 1], lateral[..., 0]) - torch.atan2(
         pelvis[..., 1], pelvis[..., 0]
     )
     angle = torch.atan2(angle.sin(), angle.cos())
-    hands = torch.linalg.vector_norm(p[:, :, 20] - p[:, :, 21], dim=-1)
-    feet = p[:, :, [7, 8], 2]
+    hands = torch.linalg.vector_norm(
+        joint_positions[:, :, 20] - joint_positions[:, :, 21], dim=-1
+    )
+    feet = joint_positions[:, :, [7, 8], 2]
     feet = feet - feet[:, :1]
     return {
         "squat": root[:, :5, 2].mean(1) - root[:, :, 2].amin(1),
         "bow": torch.atan2(torso[..., 0], torso[..., 2]).amax(1),
         "clap": hands.amax(1) - hands.amin(1),
-        "point": (p[:, :, 21, 0] - root[:, :, 0]).amax(1),
-        "stretch": ((p[:, :, 20, 2] + p[:, :, 21, 2]) / 2 - root[:, :, 2]).amax(1),
+        "point": (joint_positions[:, :, 21, 0] - root[:, :, 0]).amax(1),
+        "stretch": (
+            (joint_positions[:, :, 20, 2] + joint_positions[:, :, 21, 2]) / 2
+            - root[:, :, 2]
+        ).amax(1),
         "twist": angle.abs().amax(1),
         "march": feet.amax(1).mean(1),
         "jog": torch.linalg.vector_norm(root[:, 1:, :2] - root[:, :-1, :2], dim=-1).sum(
             1
         )
-        / ((p.shape[1] - 1) / 20),
+        / ((joint_positions.shape[1] - 1) / 20),
         "arm_circle": (
-            p[:, :, [20, 21], 2].amax(1) - p[:, :, [20, 21], 2].amin(1)
+            joint_positions[:, :, [20, 21], 2].amax(1)
+            - joint_positions[:, :, [20, 21], 2].amin(1)
         ).mean(1),
     }

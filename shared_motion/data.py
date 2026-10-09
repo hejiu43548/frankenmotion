@@ -1,6 +1,7 @@
 """Task-uniform sampling without truncating or duplicating the stored corpus."""
 
-import json, random
+import json
+import random
 from pathlib import Path
 from collections import defaultdict
 
@@ -19,8 +20,12 @@ def read_manifest(path, split="train"):
             raise ValueError("Every sample needs a task label")
         for field in ["path", "prompt_cache"]:
             if row.get(field):
-                p = Path(row[field])
-                row[field] = str(p if p.is_absolute() else (path.parent / p).resolve())
+                record_path = Path(row[field])
+                row[field] = str(
+                    record_path
+                    if record_path.is_absolute()
+                    else (path.parent / record_path).resolve()
+                )
         selected.append(row)
     if not selected:
         raise ValueError(f"No samples explicitly marked split={split!r}")
@@ -39,8 +44,8 @@ class BalancedTaskSampler:
         if not rows or num_samples <= 0:
             raise ValueError("Nonempty rows and positive num_samples required")
         self.groups = defaultdict(list)
-        for i, row in enumerate(rows):
-            self.groups[row["task"]].append(i)
+        for row_index, row in enumerate(rows):
+            self.groups[row["task"]].append(row_index)
         self.tasks = sorted(self.groups)
         self.num_samples = num_samples
         self.seed = seed

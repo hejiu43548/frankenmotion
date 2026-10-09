@@ -1,4 +1,5 @@
-import numpy as np, torch
+import numpy as np
+import torch
 from src.tools.geometry import (
     rotation_6d_to_matrix,
     matrix_to_euler_angles,
@@ -10,102 +11,174 @@ from .schema import TASKS
 
 class FK:
     def __init__(self, skeleton, device="cpu"):
-        z = np.load(skeleton)
-        self.J = torch.tensor(z["J"], device=device, dtype=torch.float32)
-        self.parents = z["parents"][:22].tolist()
-        self.height = float(z["height"])
+        skeleton_data = np.load(skeleton)
+        self.rest_joint_positions = torch.tensor(
+            skeleton_data["J"], device=device, dtype=torch.float32
+        )
+        self.parents = skeleton_data["parents"][:22].tolist()
+        self.height = float(skeleton_data["height"])
 
-    def __call__(self, raw, canonical=True, return_pose=False):
+    def __call__(self, motion, canonical=True, return_pose=False):
         # Same SMPL-RIFKE root reconstruction as upstream; no redundant xyz prediction.
-        b, t, _ = raw.shape
-        mat = rotation_6d_to_matrix(raw[..., 4:136].reshape(b, t, 22, 6))
-        e = matrix_to_euler_angles(mat[:, :, 0], "ZYX")
+        batch_size, num_frames, _ = motion.shape
+        local_rotations = rotation_6d_to_matrix(
+            motion[..., 4:136].reshape(batch_size, num_frames, 22, 6)
+        )
+        root_euler_angles = matrix_to_euler_angles(local_rotations[:, :, 0], "ZYX")
         yaw = torch.cat(
-            [torch.zeros_like(raw[:, :1, 3]), torch.cumsum(raw[:, :-1, 3], 1)], 1
+            [torch.zeros_like(motion[:, :1, 3]), torch.cumsum(motion[:, :-1, 3], 1)], 1
         )
-        rz = axis_angle_rotation("Z", yaw)
-        r0 = (
-            rz
-            @ axis_angle_rotation("Y", e[..., 1])
-            @ axis_angle_rotation("X", e[..., 2])
+        yaw_rotation = axis_angle_rotation("Z", yaw)
+        root_rotation = (
+            yaw_rotation
+            @ axis_angle_rotation("Y", root_euler_angles[..., 1])
+            @ axis_angle_rotation("X", root_euler_angles[..., 2])
         )
-        mats = torch.cat([r0[:, :, None], mat[:, :, 1:]], 2)
-        v = (rz[..., :2, :2] @ raw[..., 1:3, None]).squeeze(-1)
-        xy = torch.cat([torch.zeros_like(v[:, :1]), torch.cumsum(v[:, :-1], 1)], 1)
-        trans = torch.cat([xy, raw[..., :1]], -1)
-        g = []
-        p = []
-        for j in range(22):
-            if j == 0:
-                g.append(mats[:, :, 0])
-                p.append(self.J[0].expand(b, t, 3) + trans)
-            else:
-                par = self.parents[j]
-                g.append(g[par] @ mats[:, :, j])
-                p.append(
-                    p[par] + (g[par] @ (self.J[j] - self.J[par])[:, None]).squeeze(-1)
-                )
-        p.extend(
+        reconstructed_rotations = torch.cat(
+            [root_rotation[:, :, None], local_rotations[:, :, 1:]], 2
+        )
+        root_velocity = (yaw_rotation[..., :2, :2] @ motion[..., 1:3, None]).squeeze(-1)
+        root_xy = torch.cat(
             [
-                p[20] + (g[20] @ (self.J[22] - self.J[20])[:, None]).squeeze(-1),
-                p[21] + (g[21] @ (self.J[37] - self.J[21])[:, None]).squeeze(-1),
+                torch.zeros_like(root_velocity[:, :1]),
+                torch.cumsum(root_velocity[:, :-1], 1),
+            ],
+            1,
+        )
+        root_translation = torch.cat([root_xy, motion[..., :1]], -1)
+        global_rotations = []
+        joint_positions = []
+        for joint_index in range(22):
+            if joint_index == 0:
+                global_rotations.append(reconstructed_rotations[:, :, 0])
+                joint_positions.append(
+                    self.rest_joint_positions[0].expand(batch_size, num_frames, 3)
+                    + root_translation
+                )
+            else:
+                parent_index = self.parents[joint_index]
+                global_rotations.append(
+                    global_rotations[parent_index]
+                    @ reconstructed_rotations[:, :, joint_index]
+                )
+                joint_positions.append(
+                    joint_positions[parent_index]
+                    + (
+                        global_rotations[parent_index]
+                        @ (
+                            self.rest_joint_positions[joint_index]
+                            - self.rest_joint_positions[parent_index]
+                        )[:, None]
+                    ).squeeze(-1)
+                )
+        joint_positions.extend(
+            [
+                joint_positions[20]
+                + (
+                    global_rotations[20]
+                    @ (self.rest_joint_positions[22] - self.rest_joint_positions[20])[
+                        :, None
+                    ]
+                ).squeeze(-1),
+                joint_positions[21]
+                + (
+                    global_rotations[21]
+                    @ (self.rest_joint_positions[37] - self.rest_joint_positions[21])[
+                        :, None
+                    ]
+                ).squeeze(-1),
             ]
         )
-        p = torch.stack(p, 2)
+        joint_positions = torch.stack(joint_positions, 2)
         if canonical:
-            side = p[:, 0, 1, :2] - p[:, 0, 2, :2]
+            side = joint_positions[:, 0, 1, :2] - joint_positions[:, 0, 2, :2]
             angle = torch.atan2(side[:, 1], side[:, 0]) - np.pi / 2
-            rot = axis_angle_rotation("Z", -angle)
-            p = (rot[:, None, None] @ p[..., None]).squeeze(-1)
+            canonical_rotation = axis_angle_rotation("Z", -angle)
+            joint_positions = (
+                canonical_rotation[:, None, None] @ joint_positions[..., None]
+            ).squeeze(-1)
         if return_pose:
-            return p, matrix_to_axis_angle(mats).reshape(b, t, 66), trans
-        return p
+            return (
+                joint_positions,
+                matrix_to_axis_angle(reconstructed_rotations).reshape(
+                    batch_size, num_frames, 66
+                ),
+                root_translation,
+            )
+        return joint_positions
 
 
-def quantity(p, task, scale=1.0, net_walk=False):
+def quantity(joint_positions, task, scale=1.0, net_walk=False):
     # Frozen screenshot quantities, including legacy path-speed walk; net-speed is separately reported.
     task = TASKS[task] if isinstance(task, int) else task
-    root = p[:, :, 0]
-    span = (p.shape[1] - 1) / 20
+    root = joint_positions[:, :, 0]
+    duration_seconds = (joint_positions.shape[1] - 1) / 20
     if task == "raise_hand":
-        q = torch.quantile((p[:, :, 21] - root)[..., 2], 0.95, dim=1)
+        measured_quantity = torch.quantile(
+            (joint_positions[:, :, 21] - root)[..., 2], 0.95, dim=1
+        )
     elif task == "reach":
-        q = torch.quantile((p[:, :, 21] - root)[..., 0], 0.95, dim=1)
+        measured_quantity = torch.quantile(
+            (joint_positions[:, :, 21] - root)[..., 0], 0.95, dim=1
+        )
     elif task == "strike":
-        w = p[:, :, 21]
-        s = 0.25 * w[:, :-2] + 0.5 * w[:, 1:-1] + 0.25 * w[:, 2:]
-        v = (s[:, 2:] - s[:, :-2]).norm(dim=-1) * 10
-        q = v[:, 14:32].amax(1)
+        wrist_positions = joint_positions[:, :, 21]
+        smoothed_wrist_positions = (
+            0.25 * wrist_positions[:, :-2]
+            + 0.5 * wrist_positions[:, 1:-1]
+            + 0.25 * wrist_positions[:, 2:]
+        )
+        wrist_speed = (
+            smoothed_wrist_positions[:, 2:] - smoothed_wrist_positions[:, :-2]
+        ).norm(dim=-1) * 10
+        measured_quantity = wrist_speed[:, 14:32].amax(1)
     elif task == "wave":
-        a = p[:, 16:101]
-        lat = a[:, :, 16] - a[:, :, 17]
-        lat = lat / lat.norm(dim=-1, keepdim=True).clamp_min(1e-8)
-        s = ((a[:, :, 21] - (a[:, :, 16] + a[:, :, 17]) / 2) * lat).sum(-1)
-        q = (torch.quantile(s, 0.95, dim=1) - torch.quantile(s, 0.05, dim=1)) / 2
+        wave_positions = joint_positions[:, 16:101]
+        lateral_direction = wave_positions[:, :, 16] - wave_positions[:, :, 17]
+        lateral_direction = lateral_direction / lateral_direction.norm(
+            dim=-1, keepdim=True
+        ).clamp_min(1e-8)
+        lateral_wrist_displacement = (
+            (
+                wave_positions[:, :, 21]
+                - (wave_positions[:, :, 16] + wave_positions[:, :, 17]) / 2
+            )
+            * lateral_direction
+        ).sum(-1)
+        measured_quantity = (
+            torch.quantile(lateral_wrist_displacement, 0.95, dim=1)
+            - torch.quantile(lateral_wrist_displacement, 0.05, dim=1)
+        ) / 2
     elif task == "turn":
-        side = p[:, :, 1, :2] - p[:, :, 2, :2]
+        side = joint_positions[:, :, 1, :2] - joint_positions[:, :, 2, :2]
         yaw = torch.atan2(side[..., 1], side[..., 0])
-        diff = yaw[:, -1] - yaw[:, 0]
-        return -torch.atan2(torch.sin(diff), torch.cos(diff))
+        yaw_difference = yaw[:, -1] - yaw[:, 0]
+        return -torch.atan2(torch.sin(yaw_difference), torch.cos(yaw_difference))
     elif task == "sidestep":
-        q = -(root[:, :, 1] - root[:, :1, 1]).amin(1)
+        measured_quantity = -(root[:, :, 1] - root[:, :1, 1]).amin(1)
     elif task == "back_walk":
-        q = -(root[:, -1, 0] - root[:, 0, 0]) / span
+        measured_quantity = -(root[:, -1, 0] - root[:, 0, 0]) / duration_seconds
     elif task == "kick":
-        s = (p[:, :, 8] - root)[..., 0]
-        q = s[:, 10:51].amax(1) - s[:, 0]
+        ankle_forward_displacement = (joint_positions[:, :, 8] - root)[..., 0]
+        measured_quantity = (
+            ankle_forward_displacement[:, 10:51].amax(1)
+            - ankle_forward_displacement[:, 0]
+        )
     elif task == "jump":
-        q = root[:, :, 2].amax(1) - root[:, 0, 2]
+        measured_quantity = root[:, :, 2].amax(1) - root[:, 0, 2]
     elif task == "lean":
-        v = (p[:, :, 16] + p[:, :, 17]) / 2 - root
-        pitch = torch.atan2(v[..., 0], v[..., 2])
+        torso_vector = (
+            joint_positions[:, :, 16] + joint_positions[:, :, 17]
+        ) / 2 - root
+        pitch = torch.atan2(torso_vector[..., 0], torso_vector[..., 2])
         return torch.quantile(pitch[:, 20:59], 0.9, dim=1)
     elif task == "walk":
-        q = (
-            (root[:, -1, 0] - root[:, 0, 0]) / span
+        measured_quantity = (
+            (root[:, -1, 0] - root[:, 0, 0]) / duration_seconds
             if net_walk
-            else (root[:, 1:, :2] - root[:, :-1, :2]).norm(dim=-1).sum(1) / span
+            else (root[:, 1:, :2] - root[:, :-1, :2]).norm(dim=-1).sum(1)
+            / duration_seconds
         )
     else:
         raise ValueError(task)
-    return q * scale
+    return measured_quantity * scale

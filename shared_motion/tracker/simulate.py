@@ -1,8 +1,11 @@
 """Run a prepared 50 Hz G1 reference using one exported tracker and fixed dynamics."""
 
-import argparse, json
+import argparse
+import json
 from pathlib import Path
-import numpy as np, torch, mujoco
+import numpy as np
+import torch
+import mujoco
 from scipy.spatial.transform import Rotation
 from .runtime import Tracker
 
@@ -10,114 +13,179 @@ from .runtime import Tracker
 def run(actor, scene, contract, reference, initial_state, output):
     torch.set_num_threads(1)
     tracker = Tracker(actor)
-    net = tracker.actor
-    c = json.loads(Path(contract).read_text())
-    c["preview_offsets"] = json.loads(Path(actor).with_suffix(".json").read_text())[
-        "preview_offsets"
+    actor_model = tracker.actor
+    inference_contract = json.loads(Path(contract).read_text())
+    inference_contract["preview_offsets"] = json.loads(
+        Path(actor).with_suffix(".json").read_text()
+    )["preview_offsets"]
+    simulation_model = mujoco.MjModel.from_binary_path(str(scene))
+    simulation_data = mujoco.MjData(simulation_model)
+    reference_motion = dict(np.load(reference))
+    initial_qpos = np.load(initial_state)["qpos"]
+    simulation_data.qpos[:] = (
+        initial_qpos[0] if initial_qpos.ndim == 2 else initial_qpos
+    )
+    mujoco.mj_forward(simulation_model, simulation_data)
+    joint_position_addresses = [
+        simulation_model.joint("robot/" + joint_name).qposadr[0]
+        for joint_name in inference_contract["joint_names"]
     ]
-    m = mujoco.MjModel.from_binary_path(str(scene))
-    d = mujoco.MjData(m)
-    ref = dict(np.load(reference))
-    q = np.load(initial_state)["qpos"]
-    d.qpos[:] = q[0] if q.ndim == 2 else q
-    mujoco.mj_forward(m, d)
-    qa = [m.joint("robot/" + n).qposadr[0] for n in c["joint_names"]]
-    va = [m.joint("robot/" + n).dofadr[0] for n in c["joint_names"]]
-    aids = [
-        int(np.where(m.actuator_trnid[:, 0] == m.joint("robot/" + n).id)[0][0])
-        for n in c["action_target_names"]
+    joint_velocity_addresses = [
+        simulation_model.joint("robot/" + joint_name).dofadr[0]
+        for joint_name in inference_contract["joint_names"]
     ]
-    anchor = m.body(c["anchor_body_name"]).id
-    pelvis = m.body("robot/pelvis").id
-    names = c["sonic_source_joint_names"]
-    order = [c["joint_names"].index(n) for n in names]
-    action_order = [names.index(n) for n in c["action_target_names"]]
-    mj_to_il = np.argsort(net.il_to_mj.numpy())
-    last = np.zeros(29)
-    n = len(ref["joint_pos"])
-    states = [d.qpos.copy()]
+    actuator_ids = [
+        int(
+            np.where(
+                simulation_model.actuator_trnid[:, 0]
+                == simulation_model.joint("robot/" + joint_name).id
+            )[0][0]
+        )
+        for joint_name in inference_contract["action_target_names"]
+    ]
+    anchor_body_id = simulation_model.body(inference_contract["anchor_body_name"]).id
+    pelvis_body_id = simulation_model.body("robot/pelvis").id
+    source_joint_names = inference_contract["sonic_source_joint_names"]
+    source_joint_order = [
+        inference_contract["joint_names"].index(joint_name)
+        for joint_name in source_joint_names
+    ]
+    action_order = [
+        source_joint_names.index(joint_name)
+        for joint_name in inference_contract["action_target_names"]
+    ]
+    mj_to_il = np.argsort(actor_model.il_to_mj.numpy())
+    last_action = np.zeros(29)
+    num_frames = len(reference_motion["joint_pos"])
+    states = [simulation_data.qpos.copy()]
     actions = []
     failure = None
 
-    def rot(q):
-        return Rotation.from_quat(np.asarray(q)[[1, 2, 3, 0]])
+    def rotation_from_wxyz(quaternion):
+        return Rotation.from_quat(np.asarray(quaternion)[[1, 2, 3, 0]])
 
     def sensor(name):
-        s = m.sensor(name)
-        return d.sensordata[s.adr[0] : s.adr[0] + s.dim[0]].copy()
+        sensor_spec = simulation_model.sensor(name)
+        return simulation_data.sensordata[
+            sensor_spec.adr[0] : sensor_spec.adr[0] + sensor_spec.dim[0]
+        ].copy()
 
-    for i in range(n - 1):
-        inv = rot(d.xquat[anchor]).inv()
+    for frame_index in range(num_frames - 1):
+        inverse_anchor_rotation = rotation_from_wxyz(
+            simulation_data.xquat[anchor_body_id]
+        ).inv()
 
-        def relative(k):
-            return inv.apply(
-                ref["body_pos_w"][k, c["reference_anchor_index"]] - d.xpos[anchor]
+        def relative(reference_frame):
+            return inverse_anchor_rotation.apply(
+                reference_motion["body_pos_w"][
+                    reference_frame, inference_contract["reference_anchor_index"]
+                ]
+                - simulation_data.xpos[anchor_body_id]
             ), (
-                inv * rot(ref["body_quat_w"][k, c["reference_anchor_index"]])
+                inverse_anchor_rotation
+                * rotation_from_wxyz(
+                    reference_motion["body_quat_w"][
+                        reference_frame, inference_contract["reference_anchor_index"]
+                    ]
+                )
             ).as_matrix()[
                 :, :2
             ].reshape(
                 -1
             )
 
-        pos, r = relative(i)
-        obs = [
-            ref["joint_pos"][i],
-            ref["joint_vel"][i],
-            pos,
-            r,
-            sensor(c["linear_velocity_sensor"]),
-            sensor(c["angular_velocity_sensor"]),
-            d.qpos[qa] - np.array(c["default_joint_pos"]),
-            d.qvel[va],
-            last,
+        relative_position, relative_rotation = relative(frame_index)
+        observation_parts = [
+            reference_motion["joint_pos"][frame_index],
+            reference_motion["joint_vel"][frame_index],
+            relative_position,
+            relative_rotation,
+            sensor(inference_contract["linear_velocity_sensor"]),
+            sensor(inference_contract["angular_velocity_sensor"]),
+            simulation_data.qpos[joint_position_addresses]
+            - np.array(inference_contract["default_joint_pos"]),
+            simulation_data.qvel[joint_velocity_addresses],
+            last_action,
         ]
-        for offset in c["preview_offsets"]:
-            k = min(i + offset, n - 1)
-            pos, r = relative(k)
-            obs.extend([ref["joint_pos"][k], ref["joint_vel"][k], pos, r])
-        ids = np.minimum(i + np.arange(10) * 5, n - 1)
-        enc = np.zeros(1762, np.float32)
-        enc[4:294] = ref["joint_pos"][ids][:, order][:, mj_to_il].ravel()
-        enc[294:584] = ref["joint_vel"][ids][:, order][:, mj_to_il].ravel()
-        robot = rot(d.qpos[3:7])
-        rr = Rotation.from_quat(ref["body_quat_w"][ids, 0][:, [1, 2, 3, 0]])
-        enc[601:661] = (robot.inv() * rr).as_matrix()[:, :, :2].ravel()
-        raw = (
+        for offset in inference_contract["preview_offsets"]:
+            preview_frame = min(frame_index + offset, num_frames - 1)
+            relative_position, relative_rotation = relative(preview_frame)
+            observation_parts.extend(
+                [
+                    reference_motion["joint_pos"][preview_frame],
+                    reference_motion["joint_vel"][preview_frame],
+                    relative_position,
+                    relative_rotation,
+                ]
+            )
+        encoder_frame_indices = np.minimum(
+            frame_index + np.arange(10) * 5, num_frames - 1
+        )
+        encoder_input = np.zeros(1762, np.float32)
+        encoder_input[4:294] = reference_motion["joint_pos"][encoder_frame_indices][
+            :, source_joint_order
+        ][:, mj_to_il].ravel()
+        encoder_input[294:584] = reference_motion["joint_vel"][encoder_frame_indices][
+            :, source_joint_order
+        ][:, mj_to_il].ravel()
+        robot_rotation = rotation_from_wxyz(simulation_data.qpos[3:7])
+        reference_rotations = Rotation.from_quat(
+            reference_motion["body_quat_w"][encoder_frame_indices, 0][:, [1, 2, 3, 0]]
+        )
+        encoder_input[601:661] = (
+            (robot_rotation.inv() * reference_rotations).as_matrix()[:, :, :2].ravel()
+        )
+        previous_sonic_action = (
             np.zeros(29)
-            if i == 0
+            if frame_index == 0
             else (
                 (
-                    (last * np.array(c["action_scale"]) + np.array(c["action_offset"]))[
-                        np.argsort(action_order)
-                    ]
-                    - np.array(c["sonic_default_positions"])
+                    (
+                        last_action * np.array(inference_contract["action_scale"])
+                        + np.array(inference_contract["action_offset"])
+                    )[np.argsort(action_order)]
+                    - np.array(inference_contract["sonic_default_positions"])
                 )
-                / np.array(c["sonic_action_scale"])
+                / np.array(inference_contract["sonic_action_scale"])
             )[mj_to_il]
         )
         state = np.r_[
-            d.qvel[3:6],
-            (d.qpos[qa][order] - np.array(c["sonic_default_positions"]))[mj_to_il],
-            d.qvel[va][order][mj_to_il],
-            raw,
-            robot.inv().apply([0, 0, -1]),
+            simulation_data.qvel[3:6],
+            (
+                simulation_data.qpos[joint_position_addresses][source_joint_order]
+                - np.array(inference_contract["sonic_default_positions"])
+            )[mj_to_il],
+            simulation_data.qvel[joint_velocity_addresses][source_joint_order][
+                mj_to_il
+            ],
+            previous_sonic_action,
+            robot_rotation.inv().apply([0, 0, -1]),
         ]
-        x = np.r_[enc, np.concatenate(obs), state].astype(np.float32)
-        last = tracker(x[None])[0].numpy()
-        actions.append(last.copy())
-        d.ctrl[aids] = last * np.array(c["action_scale"]) + np.array(c["action_offset"])
-        for _ in range(round(c["control_timestep"] / m.opt.timestep)):
-            mujoco.mj_step(m, d)
-        mujoco.mj_forward(m, d)
-        states.append(d.qpos.copy())
-        tilt = np.arccos(np.clip(d.xmat[pelvis].reshape(3, 3)[2, 2], -1, 1))
+        observation = np.r_[
+            encoder_input, np.concatenate(observation_parts), state
+        ].astype(np.float32)
+        last_action = tracker(observation[None])[0].numpy()
+        actions.append(last_action.copy())
+        simulation_data.ctrl[actuator_ids] = last_action * np.array(
+            inference_contract["action_scale"]
+        ) + np.array(inference_contract["action_offset"])
+        for _ in range(
+            round(
+                inference_contract["control_timestep"] / simulation_model.opt.timestep
+            )
+        ):
+            mujoco.mj_step(simulation_model, simulation_data)
+        mujoco.mj_forward(simulation_model, simulation_data)
+        states.append(simulation_data.qpos.copy())
+        tilt = np.arccos(
+            np.clip(simulation_data.xmat[pelvis_body_id].reshape(3, 3)[2, 2], -1, 1)
+        )
         if (
-            not np.isfinite(d.qpos).all()
-            or d.xpos[pelvis, 2] < 0.35
+            not np.isfinite(simulation_data.qpos).all()
+            or simulation_data.xpos[pelvis_body_id, 2] < 0.35
             or tilt > np.pi / 3
         ):
-            failure = float(d.time)
+            failure = float(simulation_data.time)
             break
     output = Path(output)
     output.parent.mkdir(parents=True, exist_ok=True)
@@ -138,11 +206,18 @@ def run(actor, scene, contract, reference, initial_state, output):
 
 
 def main():
-    p = argparse.ArgumentParser()
+    parser = argparse.ArgumentParser()
     for name in ["actor", "scene", "contract", "reference", "initial-state", "output"]:
-        p.add_argument("--" + name, required=True)
-    a = p.parse_args()
-    run(a.actor, a.scene, a.contract, a.reference, a.initial_state, a.output)
+        parser.add_argument("--" + name, required=True)
+    args = parser.parse_args()
+    run(
+        args.actor,
+        args.scene,
+        args.contract,
+        args.reference,
+        args.initial_state,
+        args.output,
+    )
 
 
 if __name__ == "__main__":

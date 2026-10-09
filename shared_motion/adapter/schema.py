@@ -1,4 +1,5 @@
-import torch, math
+import torch
+import math
 
 TASKS = [
     "raise_hand",
@@ -50,12 +51,12 @@ INTENTS = [
     "place_hold_retract",
     "start_stop_departure",
 ]
-NF = 46
+COMMAND_FEATURE_COUNT = 46
 
 
 def features(
-    tid,
-    cmd,
+    task_index,
+    command_value,
     phase,
     intent=0,
     root=None,
@@ -65,35 +66,41 @@ def features(
     task_valid=True,
 ):
     device = phase.device
-    b, n = phase.shape
-    c = torch.zeros(b, n, NF, device=device)
-    c[:, :, tid] = 1
-    c[:, :, 12 + intent] = 1
-    if tid < 11 and task_valid:
-        lo, hi = RANGES[tid]
-        c[:, :, 16] = ((cmd - lo) / (hi - lo) * 2 - 1).clamp(-5, 5)[:, None]
-        c[:, :, 17] = 1
+    batch_size, num_frames = phase.shape
+    command_features = torch.zeros(
+        batch_size, num_frames, COMMAND_FEATURE_COUNT, device=device
+    )
+    command_features[:, :, task_index] = 1
+    command_features[:, :, 12 + intent] = 1
+    if task_index < 11 and task_valid:
+        lower_bound, upper_bound = RANGES[task_index]
+        command_features[:, :, 16] = (
+            (command_value - lower_bound) / (upper_bound - lower_bound) * 2 - 1
+        ).clamp(-5, 5)[:, None]
+        command_features[:, :, 17] = 1
     if root is not None:
-        c[:, :, 18:22] = root
+        command_features[:, :, 18:22] = root
     if goal is not None:
-        c[:, :, 22] = goal[:, 0, None] / 3
-        c[:, :, 23] = goal[:, 1, None].sin()
-        c[:, :, 24] = goal[:, 1, None].cos()
-        c[:, :, 25] = 1
+        command_features[:, :, 22] = goal[:, 0, None] / 3
+        command_features[:, :, 23] = goal[:, 1, None].sin()
+        command_features[:, :, 24] = goal[:, 1, None].cos()
+        command_features[:, :, 25] = 1
     if height is not None:
-        c[:, :, 26] = (height[:, None] - 0.84) / 0.03
-        c[:, :, 27] = 1
-    freq = phase.new_tensor([1, 2, 3, 4, 6, 8, 10, 12])
-    ph = phase[..., None] * freq * 2 * math.pi
-    c[:, :, 28:45] = torch.cat([phase[..., None], ph.sin(), ph.cos()], -1)
-    c[:, :, 45] = frames / 120
-    return c
+        command_features[:, :, 26] = (height[:, None] - 0.84) / 0.03
+        command_features[:, :, 27] = 1
+    frequencies = phase.new_tensor([1, 2, 3, 4, 6, 8, 10, 12])
+    phase_angles = phase[..., None] * frequencies * 2 * math.pi
+    command_features[:, :, 28:45] = torch.cat(
+        [phase[..., None], phase_angles.sin(), phase_angles.cos()], -1
+    )
+    command_features[:, :, 45] = frames / 120
+    return command_features
 
 
-def availability(c):
+def availability(command_features):
     return (
-        c[..., 17:18]
-        .maximum(c[..., 20:22].amax(-1, keepdim=True))
-        .maximum(c[..., 25:26])
-        .maximum(c[..., 27:28])
+        command_features[..., 17:18]
+        .maximum(command_features[..., 20:22].amax(-1, keepdim=True))
+        .maximum(command_features[..., 25:26])
+        .maximum(command_features[..., 27:28])
     )

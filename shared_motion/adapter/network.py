@@ -4,7 +4,7 @@ import torch
 from torch import nn
 from .schema import availability
 
-NF = 55
+COMMAND_FEATURE_COUNT = 55
 
 
 class SharedCommands(nn.Module):
@@ -12,7 +12,10 @@ class SharedCommands(nn.Module):
         super().__init__()
         self.width = width
         self.encoder = nn.Sequential(
-            nn.Linear(NF, width), nn.SiLU(), nn.Linear(width, width), nn.SiLU()
+            nn.Linear(COMMAND_FEATURE_COUNT, width),
+            nn.SiLU(),
+            nn.Linear(width, width),
+            nn.SiLU(),
         )
         self.residuals = nn.ModuleList(
             [
@@ -24,12 +27,16 @@ class SharedCommands(nn.Module):
             nn.Linear(width, width), nn.SiLU(), nn.Linear(width, 205)
         )
 
-    def forward(self, c):
-        h = self.encoder(c)
-        gate = availability(c)
+    def forward(self, command_features):
+        encoded_commands = self.encoder(command_features)
+        gate = availability(command_features)
         return (
-            torch.stack([m(h) for m in self.residuals], -2) * gate[..., None],
-            self.output(h) * gate,
+            torch.stack(
+                [residual_head(encoded_commands) for residual_head in self.residuals],
+                -2,
+            )
+            * gate[..., None],
+            self.output(encoded_commands) * gate,
         )
 
 
@@ -43,22 +50,23 @@ class UnifiedControl(nn.Module):
         self.static_residuals = None
         self.cached = None
         self.handles = [
-            layer.register_forward_hook(self.hook(i))
-            for i, layer in enumerate(base.seqTransEncoder.layers)
+            layer.register_forward_hook(self.hook(layer_index))
+            for layer_index, layer in enumerate(base.seqTransEncoder.layers)
         ]
 
-    def hook(self, i):
-        def add(module, args, out):
+    def hook(self, layer_index):
+        def add(module, args, layer_output):
             if self.cached is None:
-                return out
-            z = self.cached[0][..., i, :]
-            return out + torch.nn.functional.pad(
-                z, (0, 0, out.shape[1] - z.shape[1], 0)
+                return layer_output
+            layer_residual = self.cached[0][..., layer_index, :]
+            return layer_output + torch.nn.functional.pad(
+                layer_residual,
+                (0, 0, layer_output.shape[1] - layer_residual.shape[1], 0),
             )
 
         return add
 
-    def forward(self, x, y, t, tf=None):
+    def forward(self, motion, conditioning, timesteps, final_timesteps=None):
         self.cached = (
             self.static_residuals
             if self.static_residuals is not None
@@ -69,12 +77,12 @@ class UnifiedControl(nn.Module):
             )
         )
         try:
-            out = self.base(x, y, t, tf)
+            prediction = self.base(motion, conditioning, timesteps, final_timesteps)
             if self.cached is not None:
-                out = out + torch.nn.functional.pad(
-                    self.cached[1], (0, out.shape[-1] - 205)
+                prediction = prediction + torch.nn.functional.pad(
+                    self.cached[1], (0, prediction.shape[-1] - 205)
                 )
-            return out
+            return prediction
         finally:
             self.cached = None
 

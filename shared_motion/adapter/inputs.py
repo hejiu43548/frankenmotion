@@ -1,7 +1,8 @@
-import torch, math
+import torch
+import math
 from .schema import TASKS, RANGES, features
 
-HH = 1.2701193988323212
+REFERENCE_HUMAN_HEIGHT = 1.2701193988323212
 
 
 def encode_control(values, valid):
@@ -22,8 +23,10 @@ KINDS = TASKS + [
 ]
 
 
-def make(kind, cmd, phase, extra=None, frames=None, fkheight=1.372592926):
-    b, n = phase.shape
+def make(
+    kind, command_value, phase, extra=None, frames=None, skeleton_height=1.372592926
+):
+    batch_size, num_frames = phase.shape
     frames = frames or (
         60 if kind in ["raise_hand", "reach", "strike", "kick", "jump", "lean"] else 120
     )
@@ -32,44 +35,56 @@ def make(kind, cmd, phase, extra=None, frames=None, fkheight=1.372592926):
     goal = None
     height = None
     intent = 0
-    tid = TASKS.index(kind) if kind in TASKS else 11
+    task_index = TASKS.index(kind) if kind in TASKS else 11
     if kind in ["walk", "back_walk", "turn", "turn_endpoint"]:
-        tid = 4 if kind == "turn_endpoint" else tid
+        task_index = 4 if kind == "turn_endpoint" else task_index
         intent = 1 if kind == "turn_endpoint" else 0
-        v = torch.zeros(b, n, 2, device=device)
-        if tid == 4:
-            v[:, :, 1] = -cmd[:, None] / ((frames - 1) / 20)
+        root_velocity = torch.zeros(batch_size, num_frames, 2, device=device)
+        if task_index == 4:
+            root_velocity[:, :, 1] = -command_value[:, None] / ((frames - 1) / 20)
         else:
-            v[:, :, 0] = cmd[:, None] * fkheight / HH
-        root = encode_control(v, torch.ones(b, n, device=device, dtype=torch.bool))
+            root_velocity[:, :, 0] = (
+                command_value[:, None] * skeleton_height / REFERENCE_HUMAN_HEIGHT
+            )
+        root = encode_control(
+            root_velocity,
+            torch.ones(batch_size, num_frames, device=device, dtype=torch.bool),
+        )
     if kind == "walk_endpoint":
-        tid = 10
+        task_index = 10
         intent = 1
         goal = extra
-        dist, angle = goal.unbind(-1)
-        cmd = dist / 4.3 * HH / fkheight
-        tt = phase * 5.95
+        goal_distance, angle = goal.unbind(-1)
+        command_value = goal_distance / 4.3 * REFERENCE_HUMAN_HEIGHT / skeleton_height
+        frame_times = phase * 5.95
         grid = torch.arange(120, device=device) * 0.05
         profile = torch.clamp((grid - 0.6) / 0.6, 0, 1) * torch.clamp(
             (5.3 - grid) / 0.8, 0, 1
         )
-        norm = profile[:-1].sum() * 0.05
-        v = torch.zeros(b, n, 2, device=device)
-        v[:, :, 0] = (
-            dist[:, None]
-            * torch.clamp((tt - 0.6) / 0.6, 0, 1)
-            * torch.clamp((5.3 - tt) / 0.8, 0, 1)
-            / norm
+        profile_integral = profile[:-1].sum() * 0.05
+        root_velocity = torch.zeros(batch_size, num_frames, 2, device=device)
+        root_velocity[:, :, 0] = (
+            goal_distance[:, None]
+            * torch.clamp((frame_times - 0.6) / 0.6, 0, 1)
+            * torch.clamp((5.3 - frame_times) / 0.8, 0, 1)
+            / profile_integral
         )
-        v[:, :, 1] = angle[:, None] * (tt < 1.2).to(v) / 1.2
-        root = encode_control(v, torch.ones(b, n, device=device, dtype=torch.bool))
+        root_velocity[:, :, 1] = (
+            angle[:, None] * (frame_times < 1.2).to(root_velocity) / 1.2
+        )
+        root = encode_control(
+            root_velocity,
+            torch.ones(batch_size, num_frames, device=device, dtype=torch.bool),
+        )
     if kind == "place_hold_retract":
-        tid = 1
+        task_index = 1
         intent = 2
         height = extra
     if kind in ["back_departure", "side_departure"]:
-        tid = 6 if kind == "back_departure" else 5
+        task_index = 6 if kind == "back_departure" else 5
         intent = 3
     if kind == "root_profile":
         root = extra
-    return features(tid, cmd, phase, intent, root, goal, height, frames)
+    return features(
+        task_index, command_value, phase, intent, root, goal, height, frames
+    )

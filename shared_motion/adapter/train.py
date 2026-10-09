@@ -1,133 +1,188 @@
 """Joint task-balanced training through the deployed DDIM sampler."""
 
-import argparse, json, random
+import argparse
+import json
+import random
 from pathlib import Path
-import numpy as np, torch
+import numpy as np
+import torch
 from shared_motion.data import read_manifest, BalancedTaskSampler
 from .model import load, save, command, TASKS
-from .schema import RANGES, TASKS as OLD
+from .schema import RANGES, TASKS as ORIGINAL_TASKS
 from .catalog import NEW, quantities
 from .kinematics import FK, quantity
 from .sampling import generate
 
 
-def differentiable(model, z, c, seed):
-    local = z["local"][None]
-    b, n, _ = local.shape
+def differentiable(model, prompt_cache, command_features, seed):
+    local = prompt_cache["local"][None]
+    batch_size, num_frames, _ = local.shape
     device = local.device
     local = model.motion_normalizer(
-        torch.cat([torch.zeros(b, n, 205, device=device), local], -1)
+        torch.cat([torch.zeros(batch_size, num_frames, 205, device=device), local], -1)
     )[..., 205:]
-    y = dict(
-        mask=torch.ones(b, n, device=device, dtype=torch.bool),
-        tx=model.prepare_tx_emb(z["tx"]),
+    conditioning = dict(
+        mask=torch.ones(batch_size, num_frames, device=device, dtype=torch.bool),
+        tx=model.prepare_tx_emb(prompt_cache["tx"]),
     )
     noise = torch.randn(
-        b,
-        n,
+        batch_size,
+        num_frames,
         205,
         generator=torch.Generator(device=device).manual_seed(seed),
         device=device,
     )
     steps = np.linspace(model.timesteps - 1, 0, 50, dtype=int)
-    model.denoiser.static_residuals = model.denoiser.controller(c)
+    model.denoiser.static_residuals = model.denoiser.controller(command_features)
     try:
-        for i, t in enumerate(steps):
-            x = torch.cat([noise, local], -1)
-            pred = model.denoiser(
-                x, y, torch.full((b,), int(t), device=device, dtype=torch.long)
+        for step_index, timestep in enumerate(steps):
+            noisy_motion = torch.cat([noise, local], -1)
+            prediction = model.denoiser(
+                noisy_motion,
+                conditioning,
+                torch.full(
+                    (batch_size,), int(timestep), device=device, dtype=torch.long
+                ),
             )
-            if i == len(steps) - 1:
-                return model.motion_normalizer.inverse(pred)[..., :205]
-            al = model.alphas_cumprod[t]
-            an = model.alphas_cumprod[steps[i + 1]]
+            if step_index == len(steps) - 1:
+                return model.motion_normalizer.inverse(prediction)[..., :205]
+            alpha = model.alphas_cumprod[timestep]
+            next_alpha = model.alphas_cumprod[steps[step_index + 1]]
             noise = (
-                an.sqrt() * pred
-                + (1 - an).sqrt() * (x - al.sqrt() * pred) / (1 - al).sqrt()
+                next_alpha.sqrt() * prediction
+                + (1 - next_alpha).sqrt()
+                * (noisy_motion - alpha.sqrt() * prediction)
+                / (1 - alpha).sqrt()
             )[..., :205]
     finally:
         model.denoiser.static_residuals = None
 
 
 def main():
-    p = argparse.ArgumentParser()
-    p.add_argument("--initial", required=True)
-    p.add_argument("--manifest", required=True)
-    p.add_argument("--skeleton", required=True)
-    p.add_argument("--output", required=True)
-    p.add_argument("--steps", type=int, default=2700)
-    p.add_argument("--seed", type=int, default=0)
-    p.add_argument("--device", default="cpu")
-    p.add_argument("--lr", type=float, default=3e-5)
-    a = p.parse_args()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--initial", required=True)
+    parser.add_argument("--manifest", required=True)
+    parser.add_argument("--skeleton", required=True)
+    parser.add_argument("--output", required=True)
+    parser.add_argument("--steps", type=int, default=2700)
+    parser.add_argument("--seed", type=int, default=0)
+    parser.add_argument("--device", default="cpu")
+    parser.add_argument("--lr", type=float, default=3e-5)
+    args = parser.parse_args()
     torch.set_num_threads(2)
-    torch.manual_seed(a.seed)
-    rng = random.Random(a.seed)
-    rows = read_manifest(a.manifest)
-    if any(r["task"] not in TASKS or not r.get("prompt_cache") for r in rows):
+    torch.manual_seed(args.seed)
+    rng = random.Random(args.seed)
+    rows = read_manifest(args.manifest)
+    if any(
+        record["task"] not in TASKS or not record.get("prompt_cache") for record in rows
+    ):
         raise ValueError("Training rows need a supported task and prompt_cache")
-    model, pack = load(a.initial, a.device)
-    teacher, _ = load(a.initial, a.device)
+    model, checkpoint = load(args.initial, args.device)
+    teacher, _ = load(args.initial, args.device)
     model.requires_grad_(False)
     model.denoiser.controller.requires_grad_(True)
     teacher.requires_grad_(False)
-    fk = FK(a.skeleton, a.device)
+    forward_kinematics = FK(args.skeleton, args.device)
     optimizer = torch.optim.AdamW(
-        model.denoiser.controller.parameters(), lr=a.lr, weight_decay=1e-6
+        model.denoiser.controller.parameters(), lr=args.lr, weight_decay=1e-6
     )
     cache = {}
     logs = []
-    for step, index in enumerate(BalancedTaskSampler(rows, a.steps, a.seed), 1):
+    for step, index in enumerate(BalancedTaskSampler(rows, args.steps, args.seed), 1):
         row = rows[index]
         task = row["task"]
         path = row["prompt_cache"]
         if path not in cache:
-            cache[path] = torch.load(path, map_location=a.device, weights_only=False)
-        z = cache[path]
-        frames = len(z["local"])
-        lo, hi = NEW[task]["bounds"] if task in NEW else RANGES[OLD.index(task)]
-        value = float(row.get("command", rng.uniform(lo, hi)))
-        seed = rng.randrange(2**31)
-        c = command(task, value, frames, a.device)
-        with torch.no_grad():
-            target = generate(teacher, z["local"], z["tx"], c, seed)
-            tp = fk(target)
-        pred = differentiable(model, z, c, seed)
-        pp = fk(pred)
-        q = (
-            quantities(pp)[task]
-            if task in NEW
-            else quantity(pp, task, scale=1.2701193988323212 / fk.height)
+            cache[path] = torch.load(path, map_location=args.device, weights_only=False)
+        prompt_cache = cache[path]
+        frames = len(prompt_cache["local"])
+        lower_bound, upper_bound = (
+            NEW[task]["bounds"] if task in NEW else RANGES[ORIGINAL_TASKS.index(task)]
         )
-        qloss = ((q - value) / (hi - lo)).square().mean()
-        geom = ((pp - pp[:, :, :1]) - (tp - tp[:, :, :1])).square().mean() + 0.1 * (
-            pp[:, :, 0] - tp[:, :, 0]
+        value = float(row.get("command", rng.uniform(lower_bound, upper_bound)))
+        seed = rng.randrange(2**31)
+        command_features = command(task, value, frames, args.device)
+        with torch.no_grad():
+            target = generate(
+                teacher,
+                prompt_cache["local"],
+                prompt_cache["tx"],
+                command_features,
+                seed,
+            )
+            target_positions = forward_kinematics(target)
+        predicted_motion = differentiable(model, prompt_cache, command_features, seed)
+        predicted_positions = forward_kinematics(predicted_motion)
+        measured_quantity = (
+            quantities(predicted_positions)[task]
+            if task in NEW
+            else quantity(
+                predicted_positions,
+                task,
+                scale=1.2701193988323212 / forward_kinematics.height,
+            )
+        )
+        quantity_loss = (
+            ((measured_quantity - value) / (upper_bound - lower_bound)).square().mean()
+        )
+        geometry_loss = (
+            (predicted_positions - predicted_positions[:, :, :1])
+            - (target_positions - target_positions[:, :, :1])
+        ).square().mean() + 0.1 * (
+            predicted_positions[:, :, 0] - target_positions[:, :, 0]
         ).square().mean()
-        vel = (
-            (pp[:, 1:] - pp[:, :-1]) - (tp[:, 1:] - tp[:, :-1])
+        velocity_loss = (
+            (predicted_positions[:, 1:] - predicted_positions[:, :-1])
+            - (target_positions[:, 1:] - target_positions[:, :-1])
         ).square().mean() * 400
         replay = []
-        for t in TASKS:
-            low, high = NEW[t]["bounds"] if t in NEW else RANGES[OLD.index(t)]
-            replay.append(command(t, rng.uniform(low, high), frames, a.device))
-        cc = torch.cat(replay, 0)
+        for replay_task in TASKS:
+            low, high = (
+                NEW[replay_task]["bounds"]
+                if replay_task in NEW
+                else RANGES[ORIGINAL_TASKS.index(replay_task)]
+            )
+            replay.append(
+                command(replay_task, rng.uniform(low, high), frames, args.device)
+            )
+        replay_commands = torch.cat(replay, 0)
         with torch.no_grad():
-            tr, to = teacher.denoiser.controller(cc)
-        sr, so = model.denoiser.controller(cc)
-        retain = (sr - tr).square().mean() + (so - to).square().mean()
-        loss = qloss + 2 * geom + 0.05 * vel + 300 * retain
+            teacher_residuals, teacher_output = teacher.denoiser.controller(
+                replay_commands
+            )
+        student_residuals, student_output = model.denoiser.controller(replay_commands)
+        retention_loss = (student_residuals - teacher_residuals).square().mean() + (
+            student_output - teacher_output
+        ).square().mean()
+        loss = (
+            quantity_loss
+            + 2 * geometry_loss
+            + 0.05 * velocity_loss
+            + 300 * retention_loss
+        )
         # Preserve the selected stationary support prior for the nine added classes.
         if task in NEW and task not in ["jog", "march"]:
-            feet = pp[:, :, [7, 8]]
+            feet = predicted_positions[:, :, [7, 8]]
             loss = (
                 loss
-                + 0.4 * ((pp[:, 1:, 0, :2] - pp[:, :-1, 0, :2]) * 20).square().mean()
+                + 0.4
+                * (
+                    (
+                        predicted_positions[:, 1:, 0, :2]
+                        - predicted_positions[:, :-1, 0, :2]
+                    )
+                    * 20
+                )
+                .square()
+                .mean()
                 + 0.1 * ((feet[:, 1:] - feet[:, :-1]) * 20).square().mean()
             )
             if task != "squat":
                 ankles = feet.mean(2)
-                height = pp[:, :, 0, 2] - ankles[:, :, 2]
-                offset = (pp[:, :, 0, :2] - ankles[:, :, :2]).norm(dim=-1)
+                height = predicted_positions[:, :, 0, 2] - ankles[:, :, 2]
+                offset = (predicted_positions[:, :, 0, :2] - ankles[:, :, :2]).norm(
+                    dim=-1
+                )
                 loss = (
                     loss
                     + 20 * torch.relu(0.82 - height).square().mean()
@@ -138,29 +193,49 @@ def main():
             source = np.load(row["path"])["motion"]
             sample = np.linspace(0, len(source) - 1, frames)
             source = np.stack(
-                [np.interp(sample, np.arange(len(source)), v) for v in source.T], 1
+                [
+                    np.interp(sample, np.arange(len(source)), feature_values)
+                    for feature_values in source.T
+                ],
+                1,
             ).astype("float32")
             with torch.no_grad():
-                prototype = fk(torch.tensor(source[None], device=a.device))
+                prototype = forward_kinematics(
+                    torch.tensor(source[None], device=args.device)
+                )
             if task == "arm_circle":
-                v = pp[:, :, [20, 21]] - pp[:, :, [16, 17]]
-                pv = prototype[:, :, [20, 21]] - prototype[:, :, [16, 17]]
+                predicted_arm_vectors = (
+                    predicted_positions[:, :, [20, 21]]
+                    - predicted_positions[:, :, [16, 17]]
+                )
+                prototype_arm_vectors = (
+                    prototype[:, :, [20, 21]] - prototype[:, :, [16, 17]]
+                )
                 loss = (
                     loss
                     + 5
                     * (
-                        torch.nn.functional.normalize(v, dim=-1)
-                        - torch.nn.functional.normalize(pv, dim=-1)
+                        torch.nn.functional.normalize(predicted_arm_vectors, dim=-1)
+                        - torch.nn.functional.normalize(prototype_arm_vectors, dim=-1)
                     )
                     .square()
                     .mean()
                 )
             else:
-                gap = (pp[:, :, 20] - pp[:, :, 21]).norm(dim=-1)
-                pg = (prototype[:, :, 20] - prototype[:, :, 21]).norm(dim=-1)
-                pattern = (pg - pg.amin(1, keepdim=True)) / (
-                    pg.amax(1, keepdim=True) - pg.amin(1, keepdim=True)
-                ).clamp_min(0.05)
+                gap = (
+                    predicted_positions[:, :, 20] - predicted_positions[:, :, 21]
+                ).norm(dim=-1)
+                prototype_hand_gap = (prototype[:, :, 20] - prototype[:, :, 21]).norm(
+                    dim=-1
+                )
+                pattern = (
+                    prototype_hand_gap - prototype_hand_gap.amin(1, keepdim=True)
+                ) / (
+                    prototype_hand_gap.amax(1, keepdim=True)
+                    - prototype_hand_gap.amin(1, keepdim=True)
+                ).clamp_min(
+                    0.05
+                )
                 loss = loss + 25 * (gap - (0.12 + value * pattern)).square().mean()
         if not torch.isfinite(loss):
             raise RuntimeError("Non-finite training loss")
@@ -170,22 +245,26 @@ def main():
         optimizer.step()
         logs.append(
             dict(
-                step=step, task=task, loss=float(loss), command=value, quantity=float(q)
+                step=step,
+                task=task,
+                loss=float(loss),
+                command=value,
+                quantity=float(measured_quantity),
             )
         )
         if step % 50 == 0:
             print(logs[-1], flush=True)
-    dest = Path(a.output)
-    dest.parent.mkdir(parents=True, exist_ok=True)
-    save(model, pack, dest, a.steps)
-    dest.with_suffix(".training.json").write_text(
+    destination = Path(args.output)
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    save(model, checkpoint, destination, args.steps)
+    destination.with_suffix(".training.json").write_text(
         json.dumps(
             dict(
-                initial=a.initial,
-                manifest=a.manifest,
+                initial=args.initial,
+                manifest=args.manifest,
                 sampling="Task-balanced cycles; all train records retained",
-                seed=a.seed,
-                steps=a.steps,
+                seed=args.seed,
+                steps=args.steps,
                 log=logs,
             ),
             indent=2,

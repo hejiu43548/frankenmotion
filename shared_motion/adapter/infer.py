@@ -1,32 +1,40 @@
-import argparse, numpy as np, torch
+import argparse
+import numpy as np
+import torch
 from .model import load, command
 from .sampling import generate
 
 
 def main():
-    p = argparse.ArgumentParser()
-    p.add_argument("--checkpoint", required=True)
-    p.add_argument("--prompt-cache", required=True)
-    p.add_argument("--task", required=True)
-    p.add_argument("--command", type=float, required=True)
-    p.add_argument("--extra", type=float, nargs="+")
-    p.add_argument("--seed", type=int, default=0)
-    p.add_argument("--output", required=True)
-    p.add_argument("--device", default="cpu")
-    a = p.parse_args()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--checkpoint", required=True)
+    parser.add_argument("--prompt-cache", required=True)
+    parser.add_argument("--task", required=True)
+    parser.add_argument("--command", type=float, required=True)
+    parser.add_argument("--extra", type=float, nargs="+")
+    parser.add_argument("--seed", type=int, default=0)
+    parser.add_argument("--output", required=True)
+    parser.add_argument("--device", default="cpu")
+    args = parser.parse_args()
     torch.set_num_threads(2)
-    m, _ = load(a.checkpoint, a.device)
-    z = torch.load(a.prompt_cache, map_location=a.device, weights_only=False)
-    c = command(a.task, a.command, len(z["local"]), a.device, a.extra)
-    raw = generate(m, z["local"], z["tx"], c, a.seed)
+    model, _ = load(args.checkpoint, args.device)
+    prompt_cache = torch.load(
+        args.prompt_cache, map_location=args.device, weights_only=False
+    )
+    command_features = command(
+        args.task, args.command, len(prompt_cache["local"]), args.device, args.extra
+    )
+    motion = generate(
+        model, prompt_cache["local"], prompt_cache["tx"], command_features, args.seed
+    )
     np.savez_compressed(
-        a.output,
-        motion=raw[0].cpu().numpy(),
-        control_features=c[0].cpu().numpy(),
+        args.output,
+        motion=motion[0].cpu().numpy(),
+        control_features=command_features[0].cpu().numpy(),
         fps=20.0,
-        task=a.task,
-        command=a.command,
-        seed=a.seed,
+        task=args.task,
+        command=args.command,
+        seed=args.seed,
     )
 
 

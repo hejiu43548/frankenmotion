@@ -1,84 +1,118 @@
 """Task-balanced fine tuning of the ONE exported shared correction head."""
 
-import argparse, copy, json, random
+import argparse
+import copy
+import json
+import random
 from pathlib import Path
-import numpy as np, torch
+import numpy as np
+import torch
 from shared_motion.data import read_manifest, BalancedTaskSampler
 
 
 def main():
-    p = argparse.ArgumentParser()
-    p.add_argument("--initial", required=True)
-    p.add_argument("--manifest", required=True)
-    p.add_argument("--output", required=True)
-    p.add_argument("--steps", type=int, default=4000)
-    p.add_argument("--batch-size", type=int, default=512)
-    p.add_argument("--seed", type=int, default=0)
-    p.add_argument("--device", default="cpu")
-    p.add_argument("--lr", type=float, default=3e-5)
-    p.add_argument("--retain", type=float, default=1.0)
-    a = p.parse_args()
+    parser = argparse.ArgumentParser()
+    parser.add_argument("--initial", required=True)
+    parser.add_argument("--manifest", required=True)
+    parser.add_argument("--output", required=True)
+    parser.add_argument("--steps", type=int, default=4000)
+    parser.add_argument("--batch-size", type=int, default=512)
+    parser.add_argument("--seed", type=int, default=0)
+    parser.add_argument("--device", default="cpu")
+    parser.add_argument("--lr", type=float, default=3e-5)
+    parser.add_argument("--retain", type=float, default=1.0)
+    args = parser.parse_args()
     torch.set_num_threads(2)
-    torch.manual_seed(a.seed)
-    rng = random.Random(a.seed)
-    rows = read_manifest(a.manifest)
-    net = torch.jit.load(a.initial, map_location=a.device).eval()
-    teacher = torch.jit.load(a.initial, map_location=a.device).eval()
-    for parameter in net.parameters():
+    torch.manual_seed(args.seed)
+    rng = random.Random(args.seed)
+    rows = read_manifest(args.manifest)
+    tracker_model = torch.jit.load(args.initial, map_location=args.device).eval()
+    teacher = torch.jit.load(args.initial, map_location=args.device).eval()
+    for parameter in tracker_model.parameters():
         parameter.requires_grad_(False)
-    for parameter in net.head.parameters():
+    for parameter in tracker_model.head.parameters():
         parameter.requires_grad_(True)
     for parameter in teacher.parameters():
         parameter.requires_grad_(False)
-    opt = torch.optim.Adam(net.head.parameters(), lr=a.lr)
+    optimizer = torch.optim.Adam(tracker_model.head.parameters(), lr=args.lr)
     cache = {}
-    sampler = BalancedTaskSampler(rows, a.steps * a.batch_size, a.seed)
-    it = iter(sampler)
+    sampler = BalancedTaskSampler(rows, args.steps * args.batch_size, args.seed)
+    sample_indices = iter(sampler)
 
     def sample(row):
         path = row["path"]
         if path not in cache:
-            z = np.load(path)
-            x = np.c_[z["observations"], z["sonic_actions"], z["latents"]]
-            y = z["actions"]
-            n = len(y) if row.get("complete", True) else max(0, len(y) - 75)
-            if n == 0:
-                raise ValueError(f"No usable frames: {path}")
-            if x.shape != (len(y), 588) or y.shape[1:] != (29,):
-                raise ValueError(f"Invalid teacher dataset: {path}")
-            cache[path] = (x[:n].astype("float32"), y[:n].astype("float32"))
-        x, y = cache[path]
-        i = rng.randrange(len(y))
-        return x[i], y[i]
-
-    for step in range(a.steps):
-        batch = [sample(rows[next(it)]) for _ in range(a.batch_size)]
-        x = torch.as_tensor(np.stack([r[0] for r in batch]), device=a.device)
-        y = torch.as_tensor(np.stack([r[1] for r in batch]), device=a.device)
-        normalized = torch.clamp((x - net.mean) / net.std, -10, 10)
-        pred = x[:, 495:524] + 3 * torch.tanh(net.head(normalized))
-        with torch.no_grad():
-            old = x[:, 495:524] + 3 * torch.tanh(
-                teacher.head(torch.clamp((x - teacher.mean) / teacher.std, -10, 10))
+            training_data = np.load(path)
+            input_features = np.c_[
+                training_data["observations"],
+                training_data["sonic_actions"],
+                training_data["latents"],
+            ]
+            target_actions = training_data["actions"]
+            usable_frames = (
+                len(target_actions)
+                if row.get("complete", True)
+                else max(0, len(target_actions) - 75)
             )
-        loss = (pred - y).square().mean() + a.retain * (pred - old).square().mean()
-        opt.zero_grad()
+            if usable_frames == 0:
+                raise ValueError(f"No usable frames: {path}")
+            if input_features.shape != (
+                len(target_actions),
+                588,
+            ) or target_actions.shape[1:] != (29,):
+                raise ValueError(f"Invalid teacher dataset: {path}")
+            cache[path] = (
+                input_features[:usable_frames].astype("float32"),
+                target_actions[:usable_frames].astype("float32"),
+            )
+        input_features, target_actions = cache[path]
+        frame_index = rng.randrange(len(target_actions))
+        return input_features[frame_index], target_actions[frame_index]
+
+    for step in range(args.steps):
+        batch = [sample(rows[next(sample_indices)]) for _ in range(args.batch_size)]
+        input_features = torch.as_tensor(
+            np.stack([sample_record[0] for sample_record in batch]), device=args.device
+        )
+        target_actions = torch.as_tensor(
+            np.stack([sample_record[1] for sample_record in batch]), device=args.device
+        )
+        normalized = torch.clamp(
+            (input_features - tracker_model.mean) / tracker_model.std, -10, 10
+        )
+        predicted_actions = input_features[:, 495:524] + 3 * torch.tanh(
+            tracker_model.head(normalized)
+        )
+        with torch.no_grad():
+            teacher_actions = input_features[:, 495:524] + 3 * torch.tanh(
+                teacher.head(
+                    torch.clamp((input_features - teacher.mean) / teacher.std, -10, 10)
+                )
+            )
+        loss = (predicted_actions - target_actions).square().mean() + args.retain * (
+            predicted_actions - teacher_actions
+        ).square().mean()
+        optimizer.zero_grad()
         loss.backward()
-        torch.nn.utils.clip_grad_norm_(net.head.parameters(), 2.0)
-        opt.step()
+        torch.nn.utils.clip_grad_norm_(tracker_model.head.parameters(), 2.0)
+        optimizer.step()
         if step % 100 == 0:
             print(step, float(loss), flush=True)
-    net.reset()
-    dest = Path(a.output)
-    dest.parent.mkdir(parents=True, exist_ok=True)
-    torch.jit.save(net.cpu(), str(dest))
-    side = json.loads(Path(a.initial).with_suffix(".json").read_text())
-    side.update(
-        training_manifest=str(Path(a.manifest).resolve()),
-        sampling="Uniform task cycles; uniform clip then frame; no corpus truncation",
-        steps=a.steps,
+    tracker_model.reset()
+    destination = Path(args.output)
+    destination.parent.mkdir(parents=True, exist_ok=True)
+    torch.jit.save(tracker_model.cpu(), str(destination))
+    checkpoint_metadata = json.loads(
+        Path(args.initial).with_suffix(".json").read_text()
     )
-    dest.with_suffix(".json").write_text(json.dumps(side, indent=2))
+    checkpoint_metadata.update(
+        training_manifest=str(Path(args.manifest).resolve()),
+        sampling="Uniform task cycles; uniform clip then frame; no corpus truncation",
+        steps=args.steps,
+    )
+    destination.with_suffix(".json").write_text(
+        json.dumps(checkpoint_metadata, indent=2)
+    )
 
 
 if __name__ == "__main__":
