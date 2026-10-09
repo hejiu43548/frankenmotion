@@ -1,0 +1,16 @@
+experiment: baseline_current
+run_date: '20261009'
+artifacts: /home/pku/frankenmotion/work/tracker_rl_20261009/artifacts
+report_root: experiments
+seed: 51001
+num_envs: 400
+iterations: 3000
+save_interval: 500
+preview_offsets: []
+start_probability: 0.35
+resume: null
+device: cuda:0
+hydra:
+  run:
+    dir: .
+  output_subdir: null

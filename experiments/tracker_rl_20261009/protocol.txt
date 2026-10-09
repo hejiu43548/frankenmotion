@@ -1,0 +1,74 @@
+Status: research and implementation; no improvement claimed yet.
+
+Scope: simulation-only online PPO for one reference-conditioned G1 policy across
+20 official FrankenMotion motion classes. No historical specialist weights,
+action labels, teacher rollouts, per-task policy routing or policy distillation.
+The existing shared20 policy may be evaluated as a baseline only. Primary new
+policy starts randomly; optional official pretrained initialization must have
+verified public provenance and be reported as a separate experiment.
+
+Research sources accessed 2026-10-09:
+https://xbpeng.github.io/projects/DeepMimic/index.html
+https://arxiv.org/html/2508.08241v1
+https://github.com/HybridRobotics/whole_body_tracking
+https://github.com/mujocolab/mjlab
+https://arxiv.org/abs/2511.07820
+https://github.com/leggedrobotics/rsl_rl
+
+Research decisions:
+- DeepMimic: imitation can be an RL objective from kinematic references, without
+  expert action labels. Reference state initialization reduces exploration cost.
+- BeyondMimic: use the published tracking MDP and fixed reward recipe as a
+  reproducible baseline. Exclude its second-stage policy distillation.
+- SONIC: a generalist pretrained baseline, not a feasible from-scratch scaling
+  target on one GPU. No claim to reproduce its dataset or compute scale.
+- mjlab 1.1.1 is already installed with MuJoCo/Warp 3.5.0, rsl-rl 4.0.1,
+  torch 2.7.0, warp 1.12.0. Pin these, record source hashes and local changes.
+
+Frozen experiment choices before training:
+- 20 tasks from main commit 43bf05fc87e6e534d6815f12f8d566eb89170839.
+- Official generator SHA256 c9dca1988dd08dd9e2164ac4cf6ae8fece23011a6371e83d502cdfabe5352e18.
+- Initial data: 4 train seeds (41001..41004), 2 validation seeds (42001..42002),
+  2 test seeds (43001..43002) per task. The previous seed1234 demos are diagnostic
+  examples, never held-out evidence. Each clip lasts 6s at 20Hz, uniform GMR
+  retargeting and 50Hz resampling. No hand editing based on policy outcomes.
+- Splits are generation-seed-disjoint, not task-disjoint or independent motion
+  capture families. This is explicitly limited generalization evidence.
+- First comparison: current-reference PPO versus future-reference PPO with the
+  same reward, training data, optimizer and interaction budget.
+- Upstream 6 tracking rewards + 3 regularizers are frozen; no task rewards added.
+- Evaluation uses deterministic policy, full reference from the start, no RSI,
+  no mid-episode resets or external assistance; nominal and perturbation trials.
+- Report task-macro completion and success plus global root/body/joint error,
+  failure timing and action smoothness. Do not summarize errors only on survivors.
+- Checkpoint selection uses validation only. Test after selecting one recipe.
+- Aim: >=20% relative tracking-error reduction or >=15 percentage-point success
+  gain over the matched baseline without a major completion regression. This is
+  a target, never an assumed outcome. Repeat seed for strongest feasible result.
+
+GPU service authorization: user explicitly allowed pausing llama-server.
+Paused PID208711; original supervisor:
+/home/pku/experiments/qwen38-tools/bin/python /home/pku/frankenmotion/FrankenAgentVision/start_local_server.py
+Restore after resource-intensive work via this supervisor. Preserve other jobs.
+
+Pre-training engineering audit:
+- The mjlab G1 foot collision shapes are capsules. Floor alignment uses actual
+  capsule endpoints and radius, once per clip. No per-frame floor projection.
+- Reference velocity is measured at the body frame origin (mjOBJ_XBODY), not
+  inertial COM (mjOBJ_BODY). A finite-difference test detects the difference.
+- Explicit environment reset does not refresh upstream relative tracking targets.
+  Added TrackingEnvironment.reset() to refresh after FK without advancing time.
+  Discarded initial baseline_current run and its first-step-failure evaluation.
+- Six real-environment tests passed (tests_v3.log). Reset body error tolerance is
+  5mm because upstream RSI clamps joint angles to soft limits; actual max 2.25mm.
+- Train/validation reference audit covers 120 clips. Zero clips have more than
+  10% of frames with foot penetration exceeding 2cm. This is not a semantic or
+  dynamic feasibility guarantee; no clips were filtered based on this audit.
+- Tracking-success thresholds fixed before valid trained-policy evaluation:
+  complete, mean global anchor error<0.15m, mean global tracked-body error<0.20m,
+  mean per-frame joint RMS error<0.40rad. Completion alone is separately reported.
+- Primary failure-inclusive errors append fixed errors for the unobserved tail:
+  0.5m root/body, 1rad joints. Also report observed-horizon errors and failure time.
+- Formal runs: baseline_current_v2 then preview_future_v2; 400 environments,
+  24 PPO steps/update, 3000 updates each. Validation at 500/1000/1500/2000/2500/2999.
+  Preview offsets 5/10/20 at 50Hz (0.1/0.2/0.4s); end-of-clip clamped.

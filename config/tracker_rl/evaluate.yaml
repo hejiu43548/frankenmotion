@@ -1,0 +1,15 @@
+artifacts: /home/pku/frankenmotion/work/tracker_rl_20261009/artifacts
+seed: 61001
+num_envs: 40
+save_interval: 500
+preview_offsets: []
+start_probability: 0.35
+device: cuda:0
+checkpoint: ???
+split: val
+output: ???
+perturbation: 0.0
+hydra:
+  run:
+    dir: .
+  output_subdir: null

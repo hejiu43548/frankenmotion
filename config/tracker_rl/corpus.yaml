@@ -1,0 +1,15 @@
+repository: /home/pku/frankenmotion
+checkpoint_directory: /home/pku/frankenmotion/pretrained/official_20260910
+checkpoint_sha256: c9dca1988dd08dd9e2164ac4cf6ae8fece23011a6371e83d502cdfabe5352e18
+prompts: /home/pku/frankenmotion/work/official20_20261009_chat/prompts
+output: /home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/human
+frames: 120
+fps: 20
+train_seeds: [41001, 41002, 41003, 41004]
+val_seeds: [42001, 42002]
+test_seeds: [43001, 43002]
+device: cuda
+hydra:
+  run:
+    dir: .
+  output_subdir: null
