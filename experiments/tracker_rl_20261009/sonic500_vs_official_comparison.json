@@ -1,0 +1,75 @@
+{
+  "summary": {
+    "complete": {
+      "baseline": 0.95,
+      "candidate": 1.0,
+      "candidate_minus_baseline": 0.05,
+      "task_cluster_bootstrap_95_percent_interval": [
+        0.0,
+        0.15
+      ]
+    },
+    "tracking_success": {
+      "baseline": 0.75,
+      "candidate": 0.85,
+      "candidate_minus_baseline": 0.1,
+      "task_cluster_bootstrap_95_percent_interval": [
+        -0.025,
+        0.25
+      ]
+    },
+    "root_m_failure_penalized": {
+      "baseline": 0.11954612113601912,
+      "candidate": 0.09425451650206251,
+      "candidate_minus_baseline": -0.025291604633956594,
+      "task_cluster_bootstrap_95_percent_interval": [
+        -0.05603514363818768,
+        0.0011202520016412923
+      ]
+    },
+    "body_m_failure_penalized": {
+      "baseline": 0.11972206715986475,
+      "candidate": 0.09732606247083246,
+      "candidate_minus_baseline": -0.02239600468903223,
+      "task_cluster_bootstrap_95_percent_interval": [
+        -0.0531993765378934,
+        0.0038852447682543854
+      ]
+    },
+    "joint_rad_failure_penalized": {
+      "baseline": 0.13582175144047887,
+      "candidate": 0.15421399442712508,
+      "candidate_minus_baseline": 0.018392242986646212,
+      "task_cluster_bootstrap_95_percent_interval": [
+        -0.03525367222176037,
+        0.04914770683401653
+      ]
+    },
+    "horizon_fraction": {
+      "baseline": 0.9728187919463087,
+      "candidate": 1.0,
+      "candidate_minus_baseline": 0.027181208053691275,
+      "task_cluster_bootstrap_95_percent_interval": [
+        0.0,
+        0.08154362416107383
+      ]
+    },
+    "action_delta_squared": {
+      "baseline": 0.008892430403793722,
+      "candidate": 0.010278529632318508,
+      "candidate_minus_baseline": 0.0013860992285247844,
+      "task_cluster_bootstrap_95_percent_interval": [
+        -8.725867943014929e-05,
+        0.0037325921053833187
+      ]
+    }
+  },
+  "tasks": 20,
+  "clips": 40,
+  "input_sha256": {
+    "baseline": "09b624677a50a97bc5bf10c09697c5e53203f65b3c553639bea56c30243ee487",
+    "candidate": "3c13b22320bd69dbc7c43e4d10cf0321c763bd18db5b3ee7a7625e059fa0d2d9"
+  },
+  "interval_interpretation": "Paired resampling of observed task clusters, retaining all their motion seeds. Describes variability across this small task mix, not training-seed uncertainty or proof of novel-task generalization. Selection-set intervals are exploratory.",
+  "delta_direction": "Positive favors candidate for success/completion/horizon; negative favors candidate for errors. Lower action variation alone does not establish better tracking."
+}
