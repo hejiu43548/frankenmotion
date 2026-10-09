@@ -1,0 +1,115 @@
+{
+  "checkpoint_architectures": {
+    "scratch_drift_v1_20261010": {
+      "checkpoint_sha256": "9022529d4b8d1b1f5d081549a4813039fb645877457ca74062b6a406b6d1f5dd",
+      "linear_weight_shapes": {
+        "actor_state_dict": {
+          "mlp.0.weight": [
+            512,
+            361
+          ],
+          "mlp.2.weight": [
+            256,
+            512
+          ],
+          "mlp.4.weight": [
+            128,
+            256
+          ],
+          "mlp.6.weight": [
+            29,
+            128
+          ]
+        },
+        "critic_state_dict": {
+          "mlp.0.weight": [
+            512,
+            487
+          ],
+          "mlp.2.weight": [
+            256,
+            512
+          ],
+          "mlp.4.weight": [
+            128,
+            256
+          ],
+          "mlp.6.weight": [
+            1,
+            128
+          ]
+        }
+      }
+    },
+    "sonic_online_v1_20261010": {
+      "checkpoint_sha256": "607a56d57829419e74196548bffd248409caa8308e84b3d241f9ced43c0230b0",
+      "linear_weight_shapes": {
+        "actor_state_dict": {
+          "mlp.0.weight": [
+            512,
+            454
+          ],
+          "mlp.2.weight": [
+            256,
+            512
+          ],
+          "mlp.4.weight": [
+            128,
+            256
+          ],
+          "mlp.6.weight": [
+            29,
+            128
+          ]
+        },
+        "critic_state_dict": {
+          "mlp.0.weight": [
+            512,
+            580
+          ],
+          "mlp.2.weight": [
+            256,
+            512
+          ],
+          "mlp.4.weight": [
+            128,
+            256
+          ],
+          "mlp.6.weight": [
+            1,
+            128
+          ]
+        }
+      }
+    }
+  },
+  "sonic_reference_encoder_offsets_frames": [
+    0,
+    5,
+    10,
+    15,
+    20,
+    25,
+    30,
+    35,
+    40,
+    45
+  ],
+  "sonic_reference_encoder_horizon_seconds": 0.9,
+  "new_ppo_preview_offsets_frames": [
+    5,
+    10,
+    20
+  ],
+  "sonic_export_legacy_preview_slots": [
+    5,
+    10,
+    20,
+    35,
+    50
+  ],
+  "legacy_preview_note": "Last two legacy preview slots are ignored by the new residual; base encoder uses its separate 1762D block, not these five slots.",
+  "new_residual_features": "361 current/preview features +29 nominal motor targets +64 official token =454",
+  "base_observation_noise_note": "Frozen base history is constructed from raw simulator root angular velocity,joint position/velocity,executed action,projected gravity. The new actor observation corruption configuration does not add the same noise to that base history.",
+  "causal_scope": "The official-base comparison measures addition of reference-conditioned residual structure plus online PPO; it does not isolate PPO optimization from information/capacity changes."
+}

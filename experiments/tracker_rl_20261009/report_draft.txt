@@ -368,3 +368,8 @@ Both test seeds will be rendered so the failed second-seed jump is not omitted.
 All ten evaluation summaries and eight paired comparisons are preserved with
 hashes. Second seed and matched control training/evaluation remain incomplete;
 these results do not end the goal or change their frozen configurations.
+
+输入与训练随机化审计（独立测试后文档核对；未更改训练/评测）
+SONIC参考编码器读取[0,5,10,15,20,25,30,35,40,45]帧，覆盖0–0.9秒。旧2350维ABI中的[5,10,20,35,50]五个preview槽并不是官方参考编码器的输入。新增残差只使用前三个preview槽，其361维当前/参考特征加29维基座动作、64维token构成454维actor输入；critic580维。从零actor361维、critic487维，隐藏层均512/256/128。
+SONIC新增输入含锚点误差反馈，因此其对官方基座的增益来自新增条件残差结构与在线PPO的组合，不能孤立归因于优化器。基座历史使用原始仿真状态，新actor观测噪声未同时加入基座历史。
+training_randomization_audit.json保存正式配置重建的push/COM/编码器偏置/足部摩擦与actor噪声；policy_input_audit.json保存实测checkpoint网络形状和输入范围。当前审计只修正文档，不改变任何已冻结模型。

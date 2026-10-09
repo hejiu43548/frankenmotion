@@ -1,0 +1,406 @@
+{
+  "configuration_sha256": "5a3dbf672a06e0b0dc4cbe9a03570ae659dfaca3475236173b1f4af55be2218f",
+  "train_events": {
+    "push_robot": {
+      "func": "mjlab.envs.mdp.events.push_by_setting_velocity",
+      "params": {
+        "velocity_range": {
+          "x": [
+            -0.5,
+            0.5
+          ],
+          "y": [
+            -0.5,
+            0.5
+          ],
+          "z": [
+            -0.2,
+            0.2
+          ],
+          "roll": [
+            -0.52,
+            0.52
+          ],
+          "pitch": [
+            -0.52,
+            0.52
+          ],
+          "yaw": [
+            -0.78,
+            0.78
+          ]
+        }
+      },
+      "mode": "interval",
+      "interval_range_s": [
+        1.0,
+        3.0
+      ],
+      "is_global_time": false,
+      "min_step_count_between_reset": 0,
+      "domain_randomization": false
+    },
+    "base_com": {
+      "func": "mjlab.envs.mdp.events.randomize_field",
+      "params": {
+        "asset_cfg": {
+          "name": "robot",
+          "joint_names": null,
+          "joint_ids": "slice(None, None, None)",
+          "body_names": [
+            "torso_link"
+          ],
+          "body_ids": "slice(None, None, None)",
+          "geom_names": null,
+          "geom_ids": "slice(None, None, None)",
+          "site_names": null,
+          "site_ids": "slice(None, None, None)",
+          "actuator_names": null,
+          "actuator_ids": "slice(None, None, None)",
+          "preserve_order": false
+        },
+        "operation": "add",
+        "field": "body_ipos",
+        "ranges": {
+          "0": [
+            -0.025,
+            0.025
+          ],
+          "1": [
+            -0.05,
+            0.05
+          ],
+          "2": [
+            -0.05,
+            0.05
+          ]
+        }
+      },
+      "mode": "startup",
+      "interval_range_s": null,
+      "is_global_time": false,
+      "min_step_count_between_reset": 0,
+      "domain_randomization": true
+    },
+    "encoder_bias": {
+      "func": "mjlab.envs.mdp.events.randomize_encoder_bias",
+      "params": {
+        "asset_cfg": {
+          "name": "robot",
+          "joint_names": null,
+          "joint_ids": "slice(None, None, None)",
+          "body_names": null,
+          "body_ids": "slice(None, None, None)",
+          "geom_names": null,
+          "geom_ids": "slice(None, None, None)",
+          "site_names": null,
+          "site_ids": "slice(None, None, None)",
+          "actuator_names": null,
+          "actuator_ids": "slice(None, None, None)",
+          "preserve_order": false
+        },
+        "bias_range": [
+          -0.01,
+          0.01
+        ]
+      },
+      "mode": "startup",
+      "interval_range_s": null,
+      "is_global_time": false,
+      "min_step_count_between_reset": 0,
+      "domain_randomization": false
+    },
+    "foot_friction": {
+      "func": "mjlab.envs.mdp.events.randomize_field",
+      "params": {
+        "asset_cfg": {
+          "name": "robot",
+          "joint_names": null,
+          "joint_ids": "slice(None, None, None)",
+          "body_names": null,
+          "body_ids": "slice(None, None, None)",
+          "geom_names": "^(left|right)_foot[1-7]_collision$",
+          "geom_ids": "slice(None, None, None)",
+          "site_names": null,
+          "site_ids": "slice(None, None, None)",
+          "actuator_names": null,
+          "actuator_ids": "slice(None, None, None)",
+          "preserve_order": false
+        },
+        "operation": "abs",
+        "field": "geom_friction",
+        "ranges": [
+          0.3,
+          1.2
+        ],
+        "shared_random": true
+      },
+      "mode": "startup",
+      "interval_range_s": null,
+      "is_global_time": false,
+      "min_step_count_between_reset": 0,
+      "domain_randomization": true
+    }
+  },
+  "training_reference_initialization": {
+    "pose_range": {
+      "x": [
+        -0.05,
+        0.05
+      ],
+      "y": [
+        -0.05,
+        0.05
+      ],
+      "z": [
+        -0.01,
+        0.01
+      ],
+      "roll": [
+        -0.1,
+        0.1
+      ],
+      "pitch": [
+        -0.1,
+        0.1
+      ],
+      "yaw": [
+        -0.2,
+        0.2
+      ]
+    },
+    "velocity_range": {
+      "x": [
+        -0.5,
+        0.5
+      ],
+      "y": [
+        -0.5,
+        0.5
+      ],
+      "z": [
+        -0.2,
+        0.2
+      ],
+      "roll": [
+        -0.52,
+        0.52
+      ],
+      "pitch": [
+        -0.52,
+        0.52
+      ],
+      "yaw": [
+        -0.78,
+        0.78
+      ]
+    },
+    "joint_position_range": [
+      -0.1,
+      0.1
+    ],
+    "start_probability": 0.35
+  },
+  "actor_observations": {
+    "terms": {
+      "command": {
+        "func": "mjlab.envs.mdp.observations.generated_commands",
+        "params": {
+          "command_name": "motion"
+        },
+        "noise": null,
+        "clip": null,
+        "scale": null,
+        "delay_min_lag": 0,
+        "delay_max_lag": 0,
+        "delay_per_env": true,
+        "delay_hold_prob": 0.0,
+        "delay_update_period": 0,
+        "delay_per_env_phase": true,
+        "history_length": 0,
+        "flatten_history_dim": true
+      },
+      "motion_anchor_pos_b": {
+        "func": "mjlab.tasks.tracking.mdp.observations.motion_anchor_pos_b",
+        "params": {
+          "command_name": "motion"
+        },
+        "noise": {
+          "operation": "add",
+          "_tensor_cache": {},
+          "n_min": -0.25,
+          "n_max": 0.25
+        },
+        "clip": null,
+        "scale": null,
+        "delay_min_lag": 0,
+        "delay_max_lag": 0,
+        "delay_per_env": true,
+        "delay_hold_prob": 0.0,
+        "delay_update_period": 0,
+        "delay_per_env_phase": true,
+        "history_length": 0,
+        "flatten_history_dim": true
+      },
+      "motion_anchor_ori_b": {
+        "func": "mjlab.tasks.tracking.mdp.observations.motion_anchor_ori_b",
+        "params": {
+          "command_name": "motion"
+        },
+        "noise": {
+          "operation": "add",
+          "_tensor_cache": {},
+          "n_min": -0.05,
+          "n_max": 0.05
+        },
+        "clip": null,
+        "scale": null,
+        "delay_min_lag": 0,
+        "delay_max_lag": 0,
+        "delay_per_env": true,
+        "delay_hold_prob": 0.0,
+        "delay_update_period": 0,
+        "delay_per_env_phase": true,
+        "history_length": 0,
+        "flatten_history_dim": true
+      },
+      "base_lin_vel": {
+        "func": "mjlab.envs.mdp.observations.builtin_sensor",
+        "params": {
+          "sensor_name": "robot/imu_lin_vel"
+        },
+        "noise": {
+          "operation": "add",
+          "_tensor_cache": {},
+          "n_min": -0.5,
+          "n_max": 0.5
+        },
+        "clip": null,
+        "scale": null,
+        "delay_min_lag": 0,
+        "delay_max_lag": 0,
+        "delay_per_env": true,
+        "delay_hold_prob": 0.0,
+        "delay_update_period": 0,
+        "delay_per_env_phase": true,
+        "history_length": 0,
+        "flatten_history_dim": true
+      },
+      "base_ang_vel": {
+        "func": "mjlab.envs.mdp.observations.builtin_sensor",
+        "params": {
+          "sensor_name": "robot/imu_ang_vel"
+        },
+        "noise": {
+          "operation": "add",
+          "_tensor_cache": {},
+          "n_min": -0.2,
+          "n_max": 0.2
+        },
+        "clip": null,
+        "scale": null,
+        "delay_min_lag": 0,
+        "delay_max_lag": 0,
+        "delay_per_env": true,
+        "delay_hold_prob": 0.0,
+        "delay_update_period": 0,
+        "delay_per_env_phase": true,
+        "history_length": 0,
+        "flatten_history_dim": true
+      },
+      "joint_pos": {
+        "func": "mjlab.envs.mdp.observations.joint_pos_rel",
+        "params": {
+          "biased": true
+        },
+        "noise": {
+          "operation": "add",
+          "_tensor_cache": {},
+          "n_min": -0.01,
+          "n_max": 0.01
+        },
+        "clip": null,
+        "scale": null,
+        "delay_min_lag": 0,
+        "delay_max_lag": 0,
+        "delay_per_env": true,
+        "delay_hold_prob": 0.0,
+        "delay_update_period": 0,
+        "delay_per_env_phase": true,
+        "history_length": 0,
+        "flatten_history_dim": true
+      },
+      "joint_vel": {
+        "func": "mjlab.envs.mdp.observations.joint_vel_rel",
+        "params": {},
+        "noise": {
+          "operation": "add",
+          "_tensor_cache": {},
+          "n_min": -0.5,
+          "n_max": 0.5
+        },
+        "clip": null,
+        "scale": null,
+        "delay_min_lag": 0,
+        "delay_max_lag": 0,
+        "delay_per_env": true,
+        "delay_hold_prob": 0.0,
+        "delay_update_period": 0,
+        "delay_per_env_phase": true,
+        "history_length": 0,
+        "flatten_history_dim": true
+      },
+      "actions": {
+        "func": "mjlab.envs.mdp.observations.last_action",
+        "params": {},
+        "noise": null,
+        "clip": null,
+        "scale": null,
+        "delay_min_lag": 0,
+        "delay_max_lag": 0,
+        "delay_per_env": true,
+        "delay_hold_prob": 0.0,
+        "delay_update_period": 0,
+        "delay_per_env_phase": true,
+        "history_length": 0,
+        "flatten_history_dim": true
+      },
+      "reference_preview": {
+        "func": "shared_motion.rl.motion.reference_preview",
+        "params": {
+          "offsets": [
+            5,
+            10,
+            20
+          ]
+        },
+        "noise": null,
+        "clip": null,
+        "scale": null,
+        "delay_min_lag": 0,
+        "delay_max_lag": 0,
+        "delay_per_env": true,
+        "delay_hold_prob": 0.0,
+        "delay_update_period": 0,
+        "delay_per_env_phase": true,
+        "history_length": 0,
+        "flatten_history_dim": true
+      }
+    },
+    "concatenate_terms": true,
+    "concatenate_dim": -1,
+    "enable_corruption": true,
+    "history_length": null,
+    "flatten_history_dim": true,
+    "nan_policy": "disabled",
+    "nan_check_per_term": true
+  },
+  "eval_events": {},
+  "eval_actor_corruption": false,
+  "eval_pose_range": {},
+  "eval_velocity_range": {},
+  "eval_joint_position_range": [
+    0.0,
+    0.0
+  ]
+}
