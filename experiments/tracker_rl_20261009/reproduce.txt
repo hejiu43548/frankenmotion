@@ -184,3 +184,16 @@ Fresh CPU runtime verification
    this inference path. The lock is for this Linux/Python environment, not a
    portable lock for every OS. Optional CPU-only torch wheel installation has
    not been separately verified here.
+
+Fresh training installation smoke
+   requirements-tracker-rl.txt was separately installed into clean_training_env
+   (Python3.11.17; no system site packages). pip check passed. From the audited
+   refactored source, seed81001,40 environments,24 steps,2 PPO updates completed.
+   Actor/critic/optimizer checkpoint persistence was verified (17 optimizer
+   state entries). TorchScript parity maximum error was 3.7253e-8; the exported
+   model executed through the separate clean CPU runtime. As expected for this
+   short smoke, its walk terminated after36/298frames. No quality claim is made
+   and this run is excluded from model selection. clean_training_audit.json and
+   clean_training_lock.txt capture evidence. This verifies installation and the
+   train/save/export/infer chain, not full-budget statistical reproducibility
+   across machines or installation of optional SONIC ONNX import dependencies.
