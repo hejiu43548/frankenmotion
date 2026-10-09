@@ -1,0 +1,172 @@
+[
+  {
+    "label": "shared20",
+    "perturbation": 0.0,
+    "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_test_frozen_shared20_plain/metrics.json",
+    "metrics_sha256": "edc98c9e37c6fb0073354b883367e65048e63835f18c1694460c3d4e3e5bcfc5",
+    "macro": {
+      "complete": 0.775,
+      "tracking_success": 0.725,
+      "root_m": 0.11099132405828613,
+      "body_m": 0.11388441251072348,
+      "joint_rad": 0.1390471067930796,
+      "root_m_failure_penalized": 0.1467337897312513,
+      "body_m_failure_penalized": 0.14952064953608013,
+      "joint_rad_failure_penalized": 0.2303355613361891,
+      "action_delta_squared": 0.031910091993988005
+    }
+  },
+  {
+    "label": "shared20",
+    "perturbation": 0.3,
+    "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_test_frozen_shared20_perturb03/metrics.json",
+    "metrics_sha256": "bc3fa5a9e2679e4a9c90cfd2009dfa3ffc289b6b8d22a1a0b87060f756659a5e",
+    "macro": {
+      "complete": 0.8,
+      "tracking_success": 0.7,
+      "root_m": 0.1235105405115565,
+      "body_m": 0.1278922818108163,
+      "joint_rad": 0.14053054600451823,
+      "root_m_failure_penalized": 0.1575599126181196,
+      "body_m_failure_penalized": 0.1616203291854104,
+      "joint_rad_failure_penalized": 0.22632857546634635,
+      "action_delta_squared": 0.03378523263758852
+    }
+  },
+  {
+    "label": "official_sonic",
+    "perturbation": 0.0,
+    "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_test_frozen_official_sonic_plain/metrics.json",
+    "metrics_sha256": "d018d7c21ba2acc2c5c2b1b259efb23bdaecb1b8cd5ed3baad6a99d14446acba",
+    "macro": {
+      "complete": 0.95,
+      "tracking_success": 0.775,
+      "root_m": 0.10696675072155977,
+      "body_m": 0.10803042119300514,
+      "joint_rad": 0.11385678041751948,
+      "root_m_failure_penalized": 0.11823815853769024,
+      "body_m_failure_penalized": 0.11926894616614843,
+      "joint_rad_failure_penalized": 0.13714959576055868,
+      "action_delta_squared": 0.009961062153545941
+    }
+  },
+  {
+    "label": "official_sonic",
+    "perturbation": 0.3,
+    "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_test_frozen_official_sonic_perturb03/metrics.json",
+    "metrics_sha256": "517e6ae3a087214ca289c30fb68d65ba159490459a362404ef7b71362288ab86",
+    "macro": {
+      "complete": 0.95,
+      "tracking_success": 0.7,
+      "root_m": 0.11758230363202768,
+      "body_m": 0.118973592611479,
+      "joint_rad": 0.11466720113061837,
+      "root_m_failure_penalized": 0.1288042601209814,
+      "body_m_failure_penalized": 0.13015444922655953,
+      "joint_rad_failure_penalized": 0.13806939420167275,
+      "action_delta_squared": 0.010980926486710124
+    }
+  },
+  {
+    "label": "extension_selected",
+    "perturbation": 0.0,
+    "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_test_frozen_extension_selected_plain/metrics.json",
+    "metrics_sha256": "54a29dd0cc62c0960348e0ef255bb97dafe8abf6995459ac6b70920008385350",
+    "macro": {
+      "complete": 0.95,
+      "tracking_success": 0.575,
+      "root_m": 0.17179272642456975,
+      "body_m": 0.17412465418592454,
+      "joint_rad": 0.16036113031074767,
+      "root_m_failure_penalized": 0.18369730106708132,
+      "body_m_failure_penalized": 0.1857788702307986,
+      "joint_rad_failure_penalized": 0.18735511505243024,
+      "action_delta_squared": 0.016333275253981788
+    }
+  },
+  {
+    "label": "extension_selected",
+    "perturbation": 0.3,
+    "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_test_frozen_extension_selected_perturb03/metrics.json",
+    "metrics_sha256": "fde4a338ca758f0051518f8ae4838d4bd8a878c87d69a33d09fa8fd7d15f7c21",
+    "macro": {
+      "complete": 0.95,
+      "tracking_success": 0.575,
+      "root_m": 0.1784758139369303,
+      "body_m": 0.18270037994137356,
+      "joint_rad": 0.1614604741526086,
+      "root_m_failure_penalized": 0.1901219341114364,
+      "body_m_failure_penalized": 0.19403217231374778,
+      "joint_rad_failure_penalized": 0.1884669060166342,
+      "action_delta_squared": 0.01644775693953823
+    }
+  },
+  {
+    "label": "scratch_seed1_selected",
+    "perturbation": 0.0,
+    "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_test_frozen_scratch_seed1_selected_plain/metrics.json",
+    "metrics_sha256": "df2e913a83d85734df3c5cde8b279b25e75feea0304bfb2f087f285dd48b90c9",
+    "macro": {
+      "complete": 0.875,
+      "tracking_success": 0.875,
+      "root_m": 0.08237296056503603,
+      "body_m": 0.09201283125740974,
+      "joint_rad": 0.176825233825773,
+      "root_m_failure_penalized": 0.11722045241756288,
+      "body_m_failure_penalized": 0.1250937675657758,
+      "joint_rad_failure_penalized": 0.2398933133335271,
+      "action_delta_squared": 0.018162706418374454
+    }
+  },
+  {
+    "label": "scratch_seed1_selected",
+    "perturbation": 0.3,
+    "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_test_frozen_scratch_seed1_selected_perturb03/metrics.json",
+    "metrics_sha256": "fb23cfbf435975bea8b62ae70c9fecb8a980da8c2133d36ec0ddc796796c7fc0",
+    "macro": {
+      "complete": 0.875,
+      "tracking_success": 0.85,
+      "root_m": 0.08466908909894107,
+      "body_m": 0.09539201153596275,
+      "joint_rad": 0.17735321323184983,
+      "root_m_failure_penalized": 0.1186019434814615,
+      "body_m_failure_penalized": 0.1273403444172697,
+      "joint_rad_failure_penalized": 0.23991318737724635,
+      "action_delta_squared": 0.018523340493219576
+    }
+  },
+  {
+    "label": "sonic_selected",
+    "perturbation": 0.0,
+    "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_test_frozen_sonic_selected_plain/metrics.json",
+    "metrics_sha256": "05b976cd4cd4ec0e466e14247676d9c6feea54d3bdbf1e5de99208f3a80d515a",
+    "macro": {
+      "complete": 0.975,
+      "tracking_success": 0.925,
+      "root_m": 0.0517755391002469,
+      "body_m": 0.05893850591766749,
+      "joint_rad": 0.13340787585591016,
+      "root_m_failure_penalized": 0.057255882011053784,
+      "body_m_failure_penalized": 0.06439523009459727,
+      "joint_rad_failure_penalized": 0.14392245789344066,
+      "action_delta_squared": 0.012382368097998997
+    }
+  },
+  {
+    "label": "sonic_selected",
+    "perturbation": 0.3,
+    "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_test_frozen_sonic_selected_perturb03/metrics.json",
+    "metrics_sha256": "7b677bf238fb9cb37593e24d139a29f56abb5bc4dd2f253df9928ab75f61148e",
+    "macro": {
+      "complete": 1.0,
+      "tracking_success": 0.975,
+      "root_m": 0.06000890627968432,
+      "body_m": 0.0665992754134449,
+      "joint_rad": 0.1333236876334377,
+      "root_m_failure_penalized": 0.06000890627968432,
+      "body_m_failure_penalized": 0.06659927541344489,
+      "joint_rad_failure_penalized": 0.1333236876334377,
+      "action_delta_squared": 0.012040654572115892
+    }
+  }
+]

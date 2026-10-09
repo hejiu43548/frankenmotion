@@ -329,3 +329,42 @@ initial tensors and normalization buffers exactly equal the first scratch
 seed, and the initial checkpoint SHA is identical. Only the experiment name
 and0.5m training drift termination differ; common physical terminations,
 rewards,source,data,versions,seed and budget match. Full training pending.
+
+First held-out test batch (frozen policies, no post-test tuning)
+After the extension, scratch seed1 and SONIC policies were selected and their
+hashes frozen, first test evaluation began at2026-10-09T20:15:00UTC. Remaining
+seed2/control recipes and selection rules were hashed beforehand and continue
+unchanged. This follows per-run freeze-before-test, without waiting for all
+independent runs to finish. The initial launcher preflight found a missing
+protocol-document copy; it stopped before any evaluation. The corrected launch
+confirmed zero prior test evaluations and saved primary_test_freeze.json.
+
+40 held-out clips use generation seeds43001/43002; same20 task descriptions.
+Method                 Complete Strict Anchor-pen(m) Joint-pen(rad)
+Old shared20              .775   .725     .146734       .230336
+Official SONIC            .950   .775     .118238       .137150
+Extended scratch          .950   .575     .183697       .187355
+Scratch seed1 selected    .875   .875     .117220       .239893
+Official SONIC plus PPO    .975   .925     .057256       .143922
+
+Paired task-cluster95% intervals for strict-success differences:
+Scratch seed1 minus old:+.15,[.025,.30]. SONIC+PPO minus old:+.20,[.05,.375].
+SONIC+PPO minus official:+.15,[-.05,.35]. The latter point improvement is not
+conclusive on this small unperturbed test. These intervals do not measure
+training-seed variability or unseen-task generalization. Joint error remains
+slightly higher than the respective baselines for both main learned policies.
+
+With the common initial velocity perturbation, complete/strict are:
+old .80/.70; official .95/.70; extension .95/.575; scratch .875/.85;
+SONIC+PPO1.00/.975. Strict differences: scratch-old+.15,[0,.325];
+SONIC-old+.275,[.10,.45]; SONIC-official+.275,[.10,.475]. Some policies perform
+better under this particular perturbation; that is not evidence perturbations
+help generally. It remains one initial-velocity diagnostic, not push recovery.
+
+Scratch test failures:both jump,both kick,and strike43002 terminate early.
+SONIC test failures:jump43002 terminates at151/298frames; both strike clips
+complete but global torso-anchor errors .18545/.16805m exceed the strict limit.
+Both test seeds will be rendered so the failed second-seed jump is not omitted.
+All ten evaluation summaries and eight paired comparisons are preserved with
+hashes. Second seed and matched control training/evaluation remain incomplete;
+these results do not end the goal or change their frozen configurations.
