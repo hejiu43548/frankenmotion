@@ -103,3 +103,12 @@ Trainer refactoring audit
    actor-state difference 0.0001577 and critic-state difference 0.002748; no claim
    of bitwise GPU training equivalence is made. Full benchmark results retain
    their actual source snapshots and hashes.
+
+Environment separation
+- requirements-tracker-rl.txt: online training/export and complete experiment tools.
+- requirements-tracker-runtime.txt: CPU inference/evaluation/rendering; no mjlab.
+- requirements-tracker-retarget.txt: separate GMR environment, MuJoCo 3.14.0.
+  Do not install it over the tracker environment, which uses MuJoCo 3.5.0.
+- Official generator remains its separate original environment. The bundled
+  fixed corpus allows reproduction of tracker training without regenerating it.
+  Reproducing text-to-motion generation additionally needs the official assets.

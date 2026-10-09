@@ -11,5 +11,8 @@ scipy==1.15.3
 tensorboard==2.21.0
 tensordict==0.14.2
 
-# Reporting only
+# Rendering/reporting used by the full experiment workflow
 matplotlib==3.11.2
+imageio==2.38.0
+imageio-ffmpeg==0.6.0
+Pillow==12.3.0
