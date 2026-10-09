@@ -170,3 +170,17 @@ Validation-only checkpoint selection
    legacy limitation recorded explicitly. Schema2 requires the embedded hash.
    selection_script_audit.json records seven real candidates and six rejected
    invalid inputs; tests/test_tracker_selection.py checks the tie-break order.
+
+Fresh CPU runtime verification
+   requirements-tracker-runtime.txt was installed into a new Python3.11.17 venv
+   with include-system-site-packages=false. pip check passed. With
+   CUDA_VISIBLE_DEVICES='' and torch.cuda.is_available()==false, both the
+   portable scratch2000 and SONIC+PPO1000 exports exactly reproduced their
+   298-frame walk validation states/actions from the existing environment.
+   This tests inference dependencies, not a fresh RL training installation.
+   clean_runtime_audit.json and clean_runtime_lock.txt capture the environment.
+   On Linux, the default PyPI torch wheel installs NVIDIA CUDA library packages
+   even when inference is CPU-only; an available GPU/driver is not required by
+   this inference path. The lock is for this Linux/Python environment, not a
+   portable lock for every OS. Optional CPU-only torch wheel installation has
+   not been separately verified here.
