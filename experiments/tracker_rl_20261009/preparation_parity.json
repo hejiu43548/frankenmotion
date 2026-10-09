@@ -1,0 +1,7 @@
+{
+  "scene_sha256": "b2de7f56a2d11698383f9a6c870091737d8ec3cde4e87e636cb69181cb576602",
+  "train_motion_sha256": "ed021ee0046567edc6e0915c9d3a92b222d204f860c4a736ec066ddcd35158ea",
+  "val_motion_sha256": "5426ef860be9ab62dbcdf4c4ca6778b2ec26412f8c900a5a20e0ed59579d1a92",
+  "retarget_one_clip_sha256": "384257f4df232f7e3cec5a5efe92bffa5dca6be5923e5842a222cae8803b8235",
+  "description": "Hydra scene byte-identical; relocated preparation archives byte-identical; source-height-config retarget one clip byte-identical. No training source semantics changed."
+}

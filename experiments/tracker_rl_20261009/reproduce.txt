@@ -27,10 +27,9 @@ MuJoCo evaluation. Do not merge their MuJoCo dependencies silently.
    the unrelated enclosing repository commit returned by git rev-parse.
 
 3. Training robot scene and motion FK
-   RL_PYTHON scripts/export_tracker_scene.py bootstrap_motion=BOOTSTRAP_NPZ \
-     output=ARTIFACTS/scene
+   RL_PYTHON scripts/export_tracker_scene.py output=ARTIFACTS/scene
    RL_PYTHON scripts/prepare_tracker_motion.py root=ARTIFACTS
-   The bootstrap file supplies upstream environment shapes for scene creation;
+   The bundled 8KB two-frame fixture supplies upstream environment shapes for scene creation;
    none of its motion frames enter the training dataset. Prepared references
    can subsequently bootstrap scene creation too. Keep the original scene file
    and hash when reproducing the reported experiment.
@@ -49,7 +48,12 @@ MuJoCo evaluation. Do not merge their MuJoCo dependencies silently.
    Reward terms and weights are identical; residual action mapping preserves
    actual motor commands in action history and the action-rate reward.
    Set a NEW experiment name for every fresh run; outputs refuse overwrite.
-   Training from a checkpoint is not yet an audited reproduction option.
+   To extend a completed own PPO run (fresh simulator/RNG state):
+   RL_PYTHON scripts/continue_tracker_rl.py parent_report=PARENT_REPORT \
+     checkpoint=PARENT_CHECKPOINT experiment=NEW_NAME iterations=3000 seed=51001
+   Data, source semantics, dependency versions, checkpoint digest and restored
+   actor/critic/normalizer/optimizer state are checked. This is a new segment,
+   not bitwise recovery of an uninterrupted training process.
 
 5. Validation
    RL_PYTHON scripts/evaluate_tracker_rl.py artifacts=ARTIFACTS \

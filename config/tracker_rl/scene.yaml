@@ -1,4 +1,4 @@
-bootstrap_motion: ???
+bootstrap_motion: experiments/tracker_rl_20261009/scene_fixture.npz
 output: ???
 device: cuda:0
 hydra:

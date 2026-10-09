@@ -1,0 +1,9 @@
+parent_report: ???
+checkpoint: ???
+experiment: ???
+seed: 51001
+iterations: 3000
+hydra:
+  run:
+    dir: .
+  output_subdir: null

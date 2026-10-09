@@ -1,0 +1,11 @@
+{
+  "purpose": "Shape initialization only for scene export; no policy or extra training data",
+  "source": "First two frames of official-generated training motions.npz",
+  "source_sha256": "ed021ee0046567edc6e0915c9d3a92b222d204f860c4a736ec066ddcd35158ea",
+  "fixture_sha256": "09ffad2f7ebaec1a336840a84f3203164849236dccba3616a66835eb22a3f404",
+  "scene_export_sha256": "b2de7f56a2d11698383f9a6c870091737d8ec3cde4e87e636cb69181cb576602",
+  "scene_export_byte_equal_to_original": true,
+  "GMR_upstream": "https://github.com/YanjieZe/GMR",
+  "GMR_snapshot_sha256": "21b4f2dcb814ec6c49488ec16907074793ad911d6a02921585fc68f5ebbe2701",
+  "GMR_snapshot_git_commit": "unknown; unpacked server snapshot, archive preserves exact source and assets"
+}
