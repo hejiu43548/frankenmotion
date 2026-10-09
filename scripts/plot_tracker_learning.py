@@ -40,6 +40,19 @@ def main(configuration: DictConfig):
             series.setdefault("selected_extension_v1", []).append(
                 (transitions, row["metrics"])
             )
+    additional_labels = {}
+    for run in configuration.get("additional_runs", []):
+        curve = root / run.file
+        if not curve.exists():
+            continue
+        additional_labels[run.name] = run.label
+        records = series.setdefault(run.name, [])
+        if run.initial_metrics is not None:
+            initial = json.loads((root / run.initial_metrics).read_text())
+            records.append((0, initial["macro"]))
+        for row in json.loads(curve.read_text()):
+            transitions = (row["iteration"] + 1) * run.num_envs * run.steps_per_update
+            records.append((transitions, row["metrics"]))
     if not series:
         raise ValueError("No completed validation checkpoints")
     output = Path(configuration.output)
@@ -48,7 +61,7 @@ def main(configuration: DictConfig):
     fields = [
         ("complete", "Completion"),
         ("tracking_success", "Strict tracking success"),
-        ("root_m_failure_penalized", "Root error including failure tail (m)"),
+        ("root_m_failure_penalized", "Anchor error including failure tail (m)"),
     ]
     names = {
         "baseline_current_v2": "Current reference",
@@ -56,6 +69,7 @@ def main(configuration: DictConfig):
         "reference_residual_v1": "Reference + residual",
         "selected_extension_v1": "Selected policy: larger training batch",
     }
+    names.update(additional_labels)
     for experiment, records in series.items():
         records.sort(key=lambda record: record[0])
         for axis, (field, title) in zip(axes, fields):
@@ -70,9 +84,19 @@ def main(configuration: DictConfig):
             axis.grid(alpha=0.2)
     axes[0].set_ylim(0, 1.02)
     axes[1].set_ylim(0, 1.02)
-    axes[0].legend(loc="lower right", fontsize=8)
-    figure.suptitle("Validation only; deterministic full-start tracking; Warp backend")
-    figure.savefig(output / "learning_curves.png", dpi=170)
+    handles, labels = axes[0].get_legend_handles_labels()
+    figure.legend(
+        handles,
+        labels,
+        loc="upper center",
+        bbox_to_anchor=(0.5, 1.15),
+        ncol=3,
+        fontsize=8,
+    )
+    figure.suptitle(
+        "Configuration screening; validation only; Warp backend\nOnline transitions shown; public pretraining excluded"
+    )
+    figure.savefig(output / "learning_curves.png", dpi=170, bbox_inches="tight")
     plt.close(figure)
     (output / "plot_data.json").write_text(json.dumps(series, indent=2))
 

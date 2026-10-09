@@ -1,0 +1,10 @@
+artifacts: /home/pku/frankenmotion/work/tracker_rl_20261009/artifacts
+splits: [train, val]
+window: 11
+clearance: 0.03
+plot_tasks: [jump, lean, squat, walk]
+output: ???
+hydra:
+  run:
+    dir: .
+  output_subdir: null

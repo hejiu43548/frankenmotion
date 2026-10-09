@@ -1,5 +1,18 @@
 run_root: /home/pku/frankenmotion/work/tracker_rl_20261009
 output: ???
+additional_runs:
+  - name: scratch_drift_v1
+    label: From scratch + drift termination
+    file: validation_scratch_drift_curve.json
+    num_envs: 2000
+    steps_per_update: 24
+    initial_metrics: null
+  - name: sonic_online_v1
+    label: Official SONIC + online residual
+    file: validation_sonic_online_curve.json
+    num_envs: 2000
+    steps_per_update: 24
+    initial_metrics: artifacts/evaluation/sonic_zero_residual_gpu_val/metrics.json
 hydra:
   run:
     dir: .
