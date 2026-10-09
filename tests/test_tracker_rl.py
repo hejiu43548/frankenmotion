@@ -227,6 +227,63 @@ class NativeTrackerContractTests(unittest.TestCase):
         with self.assertRaisesRegex(ValueError, "body_lin_vel_w"):
             self.tracker.run_reference(reference, {"task": "arm_circle", "seed": 42001})
 
+    def test_supplied_state_is_not_snapped_to_reference(self):
+        record = {"task": "arm_circle", "seed": 42001}
+        self.tracker.reset_reference(self.reference, record)
+        position = self.tracker.data.qpos.copy()
+        position[0] += 0.125
+        velocity = np.zeros(self.tracker.model.nv)
+        velocity[0] = 0.17
+        self.tracker.reset_reference(
+            self.reference, record, {"qpos": position[None], "qvel": velocity[None]}
+        )
+        np.testing.assert_array_equal(self.tracker.data.qpos, position)
+        np.testing.assert_array_equal(self.tracker.data.qvel, velocity)
+        self.tracker.reset_reference(self.reference, record, {"qpos": position})
+        np.testing.assert_array_equal(self.tracker.data.qvel, np.zeros_like(velocity))
+
+    def test_invalid_supplied_state_is_rejected(self):
+        position = self.reference["qpos"][0].copy()
+        position[3:7] = 0
+        with self.assertRaisesRegex(ValueError, "quaternion"):
+            self.tracker.reset_reference(self.reference, {}, {"qpos": position})
+        with self.assertRaisesRegex(ValueError, "qvel"):
+            self.tracker.reset_reference(
+                self.reference, {}, {"qpos": self.reference["qpos"][0], "qvel": [0]}
+            )
+
+    def test_simulate_entry_matches_explicit_state_follow(self):
+        from shared_motion.tracker.simulate import run
+
+        record = {"task": "arm_circle", "seed": 42001}
+        self.tracker.reset_reference(self.reference, record)
+        position = self.tracker.data.qpos.copy()
+        position[0] += 0.015
+        velocity = self.tracker.data.qvel.copy()
+        velocity[0] += 0.17
+        initial = {"qpos": position, "qvel": velocity}
+        _, states, actions = self.tracker.run_reference(self.reference, record, initial)
+        final_position = self.tracker.data.qpos.copy()
+        final_velocity = self.tracker.data.qvel.copy()
+        with tempfile.TemporaryDirectory() as directory:
+            root = Path(directory)
+            np.savez(root / "reference.npz", **self.reference)
+            np.savez(root / "initial.npz", **initial)
+            run(
+                self.configuration["policy"],
+                self.configuration["scene"],
+                self.configuration["contract"],
+                root / "reference.npz",
+                root / "initial.npz",
+                root / "rollout.npz",
+            )
+            with np.load(root / "rollout.npz") as actual:
+                np.testing.assert_array_equal(actual["qpos"], states)
+                np.testing.assert_array_equal(actual["actions"], actions)
+            with np.load(root / "rollout_final_state.npz") as actual:
+                np.testing.assert_array_equal(actual["qpos"], final_position)
+                np.testing.assert_array_equal(actual["qvel"], final_velocity)
+
 
 if __name__ == "__main__":
     unittest.main()

@@ -42,8 +42,18 @@ def main(configuration: DictConfig):
     if any(len(reference[name]) != len(reference["qpos"]) for name in required):
         raise ValueError("Reference arrays have inconsistent frame counts")
     record = {"task": configuration.task, "seed": configuration.motion_seed}
-    result, states, actions = tracker.run_reference(reference, record)
+    initial_state = None
+    if configuration.initial_state is not None:
+        with np.load(configuration.initial_state) as archive:
+            initial_state = dict(archive)
+    result, states, actions = tracker.run_reference(reference, record, initial_state)
     np.savez_compressed(output / "rollout.npz", states=states, actions=actions, fps=50)
+    np.savez_compressed(
+        output / "final_state.npz", qpos=tracker.data.qpos, qvel=tracker.data.qvel
+    )
+    input_names = ["reference", "policy", "contract", "scene"]
+    if configuration.initial_state is not None:
+        input_names.append("initial_state")
     (output / "result.json").write_text(
         json.dumps(
             {
@@ -53,9 +63,13 @@ def main(configuration: DictConfig):
                     name: hashlib.sha256(
                         Path(configuration[name]).read_bytes()
                     ).hexdigest()
-                    for name in ["reference", "policy", "contract", "scene"]
+                    for name in input_names
                 },
-                "initialization": "exact reference pose and velocity with soft joint limits; no mid-motion resets or external assistance",
+                "initialization": (
+                    "provided qpos and qvel (zero qvel when omitted); no pose snapping or mid-motion resets"
+                    if initial_state is not None
+                    else "exact reference pose and velocity with soft joint limits; no mid-motion resets or external assistance"
+                ),
             },
             indent=2,
         )

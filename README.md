@@ -1,4 +1,29 @@
-# 共享任务适配器与统一 Tracker
+# 官方 FrankenMotion → G1 统一动作跟踪
+
+后续主线使用官方 FrankenMotion 生成动作，经 GMR 统一重定向及 50 Hz 参考准备，再由一个共享 tracker 在 MuJoCo 中执行。生成端不使用此前训练的 shared20 adapter。在线强化学习代码位于 `shared_motion/rl/`，入口和 Hydra 配置分别位于 `scripts/` 与 `config/tracker_rl/`。
+
+服务器官方生成权重为 `/home/pku/frankenmotion/pretrained/official_20260910/frankenmotion.ckpt`，SHA256 为 `c9dca1988dd08dd9e2164ac4cf6ae8fece23011a6371e83d502cdfabe5352e18`。权重、SMPL 和仿真资产不放入 Git。
+
+当前研究同时评估随机初始化的共享 PPO tracker，以及冻结官方 SONIC mode0 基座、从零初始化残差头的在线 PPO。两条路线均不使用历史专项教师、教师动作数据或蒸馏损失。训练尚未完成，验证结果不能当作独立测试结论。协议、数据索引、来源审计和复现步骤见 [实验目录](experiments/tracker_rl_20261009/) 与 [复现说明](experiments/tracker_rl_20261009/reproduce.txt)。
+
+## 新 tracker 的 follow 接入
+
+```bash
+python scripts/follow_tracker_rl.py reference=PREPARED_REFERENCE.npz \
+  policy=EXPORT/policy.pt contract=EXPORT/contract.json \
+  scene=EXPORT/scene.mjb initial_state=INITIAL.npz output=NEW_OUTPUT
+```
+
+`PREPARED_REFERENCE.npz` 必须是 `prepare_tracker_motion.py` 生成的完整 50 Hz G1 参考，包括 qpos、关节状态及刚体 FK 数组；不能直接传人体动作或原始 GMR NPZ。`INITIAL.npz` 包含完整 MuJoCo `qpos` 和可选 `qvel`，缺少 qvel 时使用零速度。显式提供的状态会原样使用，不会吸附到参考姿态；调用方应保证参考与初始状态的世界坐标对齐。省略 `initial_state` 才使用基准评测的参考起始姿态和速度。
+
+SONIC+PPO 导出需额外传入 `policy_kind=sonic_rl legacy_contract=EXPORT/sonic_contract.json`。每段开始重置策略历史；输出的 `final_state.npz` 是最后一步后的真实 qpos/qvel，可用于下一段初始化。逐帧 rollout 保存控制前状态，不能把其最后一帧当作最终状态。
+
+原有 `python -m shared_motion.tracker.simulate` 接口也支持新的 schema 2 导出契约，会按契约选择新 tracker，并保存独立的 `*_final_state.npz`。新路径使用统一的参考跟踪终止条件；历史路径仍保持原有行为。外部初始状态接入已验证，但不表示模型具备任意初始姿态恢复能力。
+
+## 历史 shared20 接口与训练记录
+
+以下为原 main 保留的历史接口。其生成器、教师训练入口和权重说明不属于上述官方生成＋无专项教师在线 RL 主线。
+
 
 本分支保留已选用的 20 类命令生成方案和一个 G1 tracker，并提供可配置的三阶段训练、推理、数据采样和仿真接口。历史试验、按任务选权重的代码、旧 demo、三维 reach 试验均不包含在本分支。原分支和服务器实验目录保留。
 

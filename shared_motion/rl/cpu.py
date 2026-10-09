@@ -201,18 +201,44 @@ class NativeTracker:
         )
         return np.concatenate([encoder, observation, state]).astype(np.float32)
 
-    def reset_reference(self, reference, record):
+    def reset_reference(self, reference, record, initial_state=None):
+        if initial_state is not None:
+            if "qpos" not in initial_state:
+                raise ValueError("Initial state must include qpos")
+            position = np.asarray(initial_state["qpos"], dtype=np.float64)
+            velocity = np.asarray(
+                initial_state.get("qvel", np.zeros(self.model.nv)), dtype=np.float64
+            )
+            # Match the existing simulate entry's first-snapshot convention.
+            if position.ndim == 2 and len(position):
+                position = position[0]
+            if velocity.ndim == 2 and len(velocity):
+                velocity = velocity[0]
+            for name, value, size in [
+                ("qpos", position, self.model.nq),
+                ("qvel", velocity, self.model.nv),
+            ]:
+                if value.shape != (size,) or not np.isfinite(value).all():
+                    raise ValueError(f"Initial {name} must be a finite [{size}] vector")
+            if not np.isclose(np.linalg.norm(position[3:7]), 1, atol=1e-3):
+                raise ValueError("Initial root quaternion must be unit wxyz")
         mujoco.mj_resetData(self.model, self.data)
-        self.data.qpos[:] = reference["qpos"][0]
-        limits = np.asarray(self.contract["soft_joint_limits"])
-        self.data.qpos[self.joint_addresses] = np.clip(
-            self.data.qpos[self.joint_addresses], limits[:, 0], limits[:, 1]
-        )
-        self.data.qvel[:3] = reference["body_lin_vel_w"][0, 0]
-        self.data.qvel[3:6] = (
-            rotation(self.data.qpos[3:7]).inv().apply(reference["body_ang_vel_w"][0, 0])
-        )
-        self.data.qvel[self.velocity_addresses] = reference["joint_vel"][0]
+        if initial_state is None:
+            self.data.qpos[:] = reference["qpos"][0]
+            limits = np.asarray(self.contract["soft_joint_limits"])
+            self.data.qpos[self.joint_addresses] = np.clip(
+                self.data.qpos[self.joint_addresses], limits[:, 0], limits[:, 1]
+            )
+            self.data.qvel[:3] = reference["body_lin_vel_w"][0, 0]
+            self.data.qvel[3:6] = (
+                rotation(self.data.qpos[3:7])
+                .inv()
+                .apply(reference["body_ang_vel_w"][0, 0])
+            )
+            self.data.qvel[self.velocity_addresses] = reference["joint_vel"][0]
+        else:
+            self.data.qpos[:] = position
+            self.data.qvel[:] = velocity
         if self.configuration["perturbation"]:
             random = np.random.default_rng(self.configuration["seed"] + record["seed"])
             self.data.qvel[:6] += random.uniform(
@@ -239,8 +265,12 @@ class NativeTracker:
         reference = dict(np.load(motion_path))
         return self.run_reference(reference, record)
 
-    def run_reference(self, reference, record):
+    def run_reference(self, reference, record, initial_state=None):
         """Track one prepared reference, also usable outside dataset evaluation."""
+        if "qpos" not in reference:
+            raise ValueError(
+                "Prepared reference must include qpos; run prepare_tracker_motion"
+            )
         frames = len(reference["qpos"])
         body_count = len(self.contract["body_names"])
         expected_shapes = {
@@ -265,7 +295,7 @@ class NativeTracker:
             np.linalg.norm(reference["body_quat_w"], axis=-1), 1, atol=1e-3
         ):
             raise ValueError("Reference body quaternions must be unit wxyz quaternions")
-        self.reset_reference(reference, record)
+        self.reset_reference(reference, record, initial_state=initial_state)
         previous_action = np.zeros(29)
         states = []
         actions = []

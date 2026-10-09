@@ -4,3 +4,4 @@ defaults:
 reference: ???
 task: generated
 motion_seed: 0
+initial_state: null

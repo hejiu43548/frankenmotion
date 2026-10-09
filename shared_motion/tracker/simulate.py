@@ -1,6 +1,7 @@
 """Run a prepared 50 Hz G1 reference using one exported tracker and fixed dynamics."""
 
 import argparse
+import hashlib
 import json
 from pathlib import Path
 import numpy as np
@@ -10,11 +11,80 @@ from scipy.spatial.transform import Rotation
 from .runtime import Tracker
 
 
+def run_exported_tracker(actor, scene, contract, reference, initial_state, output):
+    """Use the RL export contract while preserving the supplied simulator state."""
+    from shared_motion.rl.cpu import NativeTracker
+
+    metadata = json.loads(Path(contract).read_text())
+    policy_kind = metadata.get("policy_kind")
+    if policy_kind not in ["rl", "sonic_rl"]:
+        raise ValueError("Expected an RL export with policy_kind rl or sonic_rl")
+    tracker = NativeTracker(
+        {
+            "policy": str(actor),
+            "policy_kind": policy_kind,
+            "contract": str(contract),
+            "scene": str(scene),
+            "legacy_contract": str(Path(actor).parent / "sonic_contract.json"),
+            "seed": 61001,
+            "perturbation": 0.0,
+        }
+    )
+    with np.load(reference) as archive:
+        reference_motion = dict(archive)
+    with np.load(initial_state) as archive:
+        supplied_state = dict(archive)
+    result, states, actions = tracker.run_reference(
+        reference_motion, {"task": "provided_reference", "seed": 0}, supplied_state
+    )
+    output = Path(output)
+    output.parent.mkdir(parents=True, exist_ok=True)
+    np.savez_compressed(output, qpos=states, actions=actions, fps=50.0)
+    final_state_path = output.with_name(output.stem + "_final_state.npz")
+    np.savez_compressed(
+        final_state_path, qpos=tracker.data.qpos, qvel=tracker.data.qvel
+    )
+    output.with_suffix(".json").write_text(
+        json.dumps(
+            {
+                "complete": result["complete"],
+                "termination_time": (
+                    float(tracker.data.time) if result["failure"] else None
+                ),
+                "frames": len(states),
+                "tracker": str(actor),
+                "reference": str(reference),
+                "state_reset_after_initialization": False,
+                "initialization": "provided qpos and qvel; missing qvel defaults to zero",
+                "frame_recording": "pre-control states; final post-control state saved separately",
+                "final_state": str(final_state_path),
+                "termination_protocol": "native RL tracking thresholds, including reference deviation",
+                "episode": result,
+                "input_sha256": {
+                    name: hashlib.sha256(Path(path).read_bytes()).hexdigest()
+                    for name, path in [
+                        ("policy", actor),
+                        ("scene", scene),
+                        ("contract", contract),
+                        ("reference", reference),
+                        ("initial_state", initial_state),
+                    ]
+                },
+            },
+            indent=2,
+        )
+    )
+
+
 def run(actor, scene, contract, reference, initial_state, output):
     torch.set_num_threads(1)
+    inference_contract = json.loads(Path(contract).read_text())
+    if inference_contract.get("schema_version") == 2:
+        return run_exported_tracker(
+            actor, scene, contract, reference, initial_state, output
+        )
     tracker = Tracker(actor)
     actor_model = tracker.actor
-    inference_contract = json.loads(Path(contract).read_text())
     inference_contract["preview_offsets"] = json.loads(
         Path(actor).with_suffix(".json").read_text()
     )["preview_offsets"]

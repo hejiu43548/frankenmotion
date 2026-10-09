@@ -1,0 +1,30 @@
+{
+  "reports": [
+    {
+      "policy_kind": "rl",
+      "baseline_evaluation": "cpu_native_scratch_drift_v1_4000",
+      "baseline_metrics_sha256": "4e4743e756ee9c8bf9cffb2ad4515c3729a28d3184a72c3b1066e01ad2bf40db",
+      "default_episodes_exactly_reproduced": 40,
+      "supplied_state_test_frames": 298,
+      "supplied_root_x_offset_m": 0.015,
+      "supplied_root_velocity_x_offset_m_s": 0.17,
+      "simulate_and_hydra_state_action_max_difference": 0.0,
+      "provided_initial_state_preserved": true,
+      "final_post_step_state_matches": true
+    },
+    {
+      "policy_kind": "sonic_rl",
+      "baseline_evaluation": "cpu_native_sonic_online_v1_500",
+      "baseline_metrics_sha256": "3c13b22320bd69dbc7c43e4d10cf0321c763bd18db5b3ee7a7625e059fa0d2d9",
+      "default_episodes_exactly_reproduced": 40,
+      "supplied_state_test_frames": 298,
+      "supplied_root_x_offset_m": 0.015,
+      "supplied_root_velocity_x_offset_m_s": 0.17,
+      "simulate_and_hydra_state_action_max_difference": 0.0,
+      "provided_initial_state_preserved": true,
+      "final_post_step_state_matches": true
+    }
+  ],
+  "scope": "Validation only, no training/evaluation protocol changes. Explicit-state rollout is an interface test, not a robustness claim.",
+  "source": "isolated follow_candidate; active training and automatic evaluator sources untouched"
+}

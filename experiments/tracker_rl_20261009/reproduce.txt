@@ -130,3 +130,25 @@ Exact terminal-state diagnostic
    evaluator. It does not relax termination or write training data. Saved config
    paths must resolve on the machine running the audit. Default config uses only
    validation evaluations; do not use test diagnostics while selecting a model.
+
+Explicit initial state and existing simulation integration
+   Add initial_state=INITIAL_NPZ to scripts/follow_tracker_rl.py to preserve the
+   supplied MuJoCo qpos and qvel. Missing qvel means zero velocity. The caller
+   must align reference and initial state in world coordinates. Omitting this
+   option retains the reference-start benchmark exactly. No pose snapping is
+   applied to supplied states; arbitrary-pose recovery is not established.
+   For SONIC+PPO also pass policy_kind=sonic_rl and
+   legacy_contract=EXPORT_DIRECTORY/sonic_contract.json.
+   RL_PYTHON -m shared_motion.tracker.simulate \
+     --actor EXPORT_DIRECTORY/policy.pt --scene EXPORT_DIRECTORY/scene.mjb \
+     --contract EXPORT_DIRECTORY/contract.json --reference PREPARED_REFERENCE_NPZ \
+     --initial-state INITIAL_NPZ --output NEW_ROLLOUT_NPZ
+   Schema 2 selects the new contract-aware native tracker automatically. The
+   old contract remains on the historical implementation. New-policy termination
+   follows the common native tracking protocol, not the historical fall-only
+   rule. Saved trajectories are pre-control states; use final_state.npz (Hydra)
+   or <output_stem>_final_state.npz (compatibility entry) for the actual post-step
+   state. Each new invocation resets policy history.
+   follow_integration_audit.json records exact reproduction of 40 validation
+   episodes each for scratch and SONIC+PPO, plus explicit-state API/CLI parity.
+   All 14 real unit/integration tests passed. This is interface validation only.
