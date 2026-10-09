@@ -219,6 +219,10 @@ class NativeTracker:
         ):
             raise ValueError(f"Motion checksum mismatch: {motion_path}")
         reference = dict(np.load(motion_path))
+        return self.run_reference(reference, record)
+
+    def run_reference(self, reference, record):
+        """Track one prepared reference, also usable outside dataset evaluation."""
         self.reset_reference(reference, record)
         previous_action = np.zeros(29)
         states = []

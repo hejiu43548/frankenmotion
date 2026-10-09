@@ -1,0 +1,6 @@
+defaults:
+  - cpu_evaluate
+  - _self_
+reference: ???
+task: generated
+motion_seed: 0

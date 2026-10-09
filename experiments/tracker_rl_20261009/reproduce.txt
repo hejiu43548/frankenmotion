@@ -85,3 +85,21 @@ Known reproducibility limits
 - Dataset seeds are disjoint, but task descriptions are shared across splits.
 - Completion is physical tracking completion, not proof of prompt semantics.
 - Reference alignment occurs once per clip; no per-frame floor correction.
+
+Single-reference follow entry
+   RL_PYTHON scripts/follow_tracker_rl.py reference=PREPARED_REFERENCE_NPZ \
+     policy=EXPORT_DIRECTORY/policy.pt contract=EXPORT_DIRECTORY/contract.json \
+     scene=EXPORT_DIRECTORY/scene.mjb output=NEW_OUTPUT
+   This accepts the same 50Hz prepared motion arrays and uses the identical
+   native evaluator dynamics. A real validation clip produced exactly matching
+   states and actions in single-reference and batch modes (follow_parity.json).
+   The old SONIC 2350-dimensional policy ABI is a different policy format. Do not
+   substitute the new TorchScript file into that old runner without its contract.
+
+Trainer refactoring audit
+   Original run snapshots remain untouched. The delivered fresh-training entry
+   points share shared_motion/rl/training.py. Random initial actor/critic states
+   matched exactly. A matched five-update original/refactored pair had maximum
+   actor-state difference 0.0001577 and critic-state difference 0.002748; no claim
+   of bitwise GPU training equivalence is made. Full benchmark results retain
+   their actual source snapshots and hashes.
