@@ -10,3 +10,6 @@ numpy==2.4.6
 scipy==1.15.3
 tensorboard==2.21.0
 tensordict==0.14.2
+
+# Reporting only
+matplotlib==3.11.2

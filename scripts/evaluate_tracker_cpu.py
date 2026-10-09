@@ -95,6 +95,10 @@ def main(configuration: DictConfig):
                 "scene_sha256": hashlib.sha256(
                     Path(configuration.scene).read_bytes()
                 ).hexdigest(),
+                "references": {
+                    f'{record["task"]}:{record["seed"]}': record["motion_sha256"]
+                    for record in records
+                },
                 "macro": summary,
                 "per_task": per_task,
                 "episodes": results,

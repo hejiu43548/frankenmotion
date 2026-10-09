@@ -1,0 +1,11 @@
+baseline: ???
+candidate: ???
+output: ???
+baseline_label: Existing tracker
+candidate_label: Online RL
+seed: 71001
+bootstrap_samples: 10000
+hydra:
+  run:
+    dir: .
+  output_subdir: null
