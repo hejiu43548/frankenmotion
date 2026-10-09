@@ -1,15 +1,14 @@
 {
-  "current_task": "strike",
+  "current_task": "kick",
   "status": "awaiting_user_review",
-  "source_directory": "data_processing/strike",
-  "data": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_strike_20261009_v3",
-  "review": "/Users/andy/Develop/frankenmotion/outputs_amass/task_data_review_20261009/strike_final/index.html",
-  "train_samples": 13,
-  "validation_samples": 1,
+  "source_directory": "data_processing/kick",
+  "data": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1",
+  "review": "/Users/andy/Develop/frankenmotion/outputs_amass/task_data_review_20261009/kick/index.html",
+  "train_samples": 33,
+  "validation_samples": 2,
   "training_started": false,
-  "next_task": "kick",
+  "next_task": "sidestep",
   "queue": [
-    "strike",
     "kick",
     "sidestep",
     "turn_left/right",
@@ -26,21 +25,43 @@
       "review": "/Users/andy/Develop/frankenmotion/outputs_amass/wave_source_review_20261009/final_review/index.html"
     },
     "strike": {
-      "status": "awaiting_user_review",
+      "status": "provisionally_accepted_with_known_defects",
       "scope": "right forward straight punch/jab",
       "data": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_strike_20261009_v3",
       "train_samples": 13,
       "validation_samples": 1,
-      "user_approved": false,
-      "review": "/Users/andy/Develop/frankenmotion/outputs_amass/task_data_review_20261009/strike_final/index.html"
+      "user_approved": true,
+      "review": "/Users/andy/Develop/frankenmotion/outputs_amass/task_data_review_20261009/strike_final/index.html",
+      "user_evidence": "有部分混合了右拳，但是训练数据太少了，先训练试试吧，这个缺陷加入memo，继续kick",
+      "known_defects": [
+        "User-observed mixed punches remain",
+        "Only13train/1val and sparse parameter support",
+        "No validation support within1.5–2.5m/s command range"
+      ]
     },
     "kick": {
-      "status": "prioritized_pending"
+      "status": "awaiting_user_review",
+      "data": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1",
+      "review": "/Users/andy/Develop/frankenmotion/outputs_amass/task_data_review_20261009/kick/index.html",
+      "train_samples": 33,
+      "validation_samples": 2,
+      "user_approved": false,
+      "parameter_coverage": {
+        "requested_range": [
+          0.25,
+          0.7
+        ],
+        "train_inside_range": 10,
+        "empty_train_bins": 5,
+        "bins": 10,
+        "val_inside_range": 0
+      }
     },
     "sidestep": {
       "status": "prioritized_pending"
     }
   },
-  "current_data": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_strike_20261009_v3",
-  "audit_lists": "/mnt/sda2/frankenmotion/outputs_amass/task_source_audits_20261009_v4"
+  "current_data": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1",
+  "audit_lists": "/mnt/sda2/frankenmotion/outputs_amass/task_source_audits_20261009_v5",
+  "training_plan": "Clean kick first, then train together; no training now."
 }

@@ -66,4 +66,6 @@ arguments expose the source paths. Retain `policy.json`, `provenance.json`,
 cache hashes and the code snapshot. The review uses seed20261009 and ten distinct
 training recordings; fixed-camera source videos are20fps, with optional0.5×
 player speed. Other19 task records must remain identical, including provisionally
-accepted wave. Do not train or process kick until the user reviews strike.
+accepted wave. User provisionally accepted this dataset with known defects on2026-10-09.
+Mixed-punch contamination remains according to user review. Continue cleaning kick
+before unified training; see `../MEMO.md`. This is not a clean-data certification.

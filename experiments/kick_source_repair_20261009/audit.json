@@ -1,0 +1,40 @@
+{
+  "status": "awaiting_user_review",
+  "base": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_strike_20261009_v3",
+  "counts": {
+    "train": 33,
+    "val": 2
+  },
+  "by_source": {
+    "train:hdm05_babel_kick:frame": 1,
+    "train:babel_kick:frame": 14,
+    "train:babel_kick:single_action_sequence": 18,
+    "val:babel_kick:single_action_sequence": 2
+  },
+  "families": {
+    "train": 28,
+    "val": 2
+  },
+  "rejection_counts": {
+    "conflicting_category": 175,
+    "left_side_back_round_or_mixed_kick": 151,
+    "test_or_unassigned_source_family": 117,
+    "missing_verified_raw_source": 43,
+    "conflicting_context_action": 81,
+    "crop_starts_mid_kick": 160,
+    "heading_change_rad_above_limit": 223,
+    "no_right_forward_kick_peak": 55,
+    "lateral_or_round_kick": 63,
+    "support_foot_excursion_m_above_limit": 205,
+    "command_peak_not_selected_event": 66,
+    "root_excursion_m_above_limit": 101,
+    "left_kick_inside_crop": 59,
+    "no_raised_kicking_ankle": 43,
+    "insufficient_forward_kick": 9,
+    "overlapping_source_event": 11,
+    "no_unpadded_context": 36
+  },
+  "other19_tasks_unchanged": true,
+  "training_started": false,
+  "scope": "Right forward kick; BABEL act_cat with frame events or explicitly single-action sequences. No regex-only admission, no generated motion or time scaling."
+}

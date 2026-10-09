@@ -1,0 +1,8 @@
+data: /mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1
+project: /home/psirobot/projects/frankenmotion
+seed: 20261009
+hydra:
+  job:
+    chdir: false
+  run:
+    dir: experiments/kick_source_repair_20261009/review_hydra

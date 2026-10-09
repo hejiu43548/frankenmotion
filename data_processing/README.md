@@ -4,9 +4,9 @@ Keep task selection, temporal cropping, label reconstruction, admission checks,
 and review rendering here. Processing never launches training. Each repair writes
 a new dataset directory and preserves every other task's records exactly.
 
-Current review sequence: **strike (awaiting review)** → kick → sidestep →
-turn left/right label swap → point → march → jump. Wave was provisionally accepted
-by the user. Each task still requires10 rendered training samples and explicit
+Current review sequence: **kick (in progress)** → sidestep →
+turn left/right label swap → point → march → jump. Wave and strike were provisionally accepted by the user; strike retains
+known semantic and parameter-coverage defects recorded in `MEMO.md`. Each task still requires10 rendered training samples and explicit
 user review before the next begins. `review_state.json` is the current gate record.
 
 `export_task_audits.py` exports all20 tasks separately as exact train/val JSON,
