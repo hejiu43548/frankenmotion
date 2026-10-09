@@ -23,10 +23,9 @@ import torch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from mjlab.rl import MjlabOnPolicyRunner
-from mjlab.rl import RslRlVecEnvWrapper
 from shared_motion.rl.environment import build_configuration
 from shared_motion.rl.environment import TrackingEnvironment
-from shared_motion.rl.residual import ReferenceResidualWrapper
+from shared_motion.rl.wrappers import make_wrapper
 
 
 def digest(path):
@@ -83,7 +82,18 @@ def main(arguments: DictConfig):
     for name, expected in protocol["data_sha256"].items():
         if digest(Path(configuration.artifacts) / "motion/train" / name) != expected:
             raise ValueError(f"Parent training data changed: {name}")
-    for name in ["environment.py", "motion.py", "residual.py"]:
+    semantic_modules = ["environment.py", "motion.py", "residual.py", "wrappers.py"]
+    if configuration.get("sonic_directory", None):
+        semantic_modules += ["sonic.py", "sonic_residual.py"]
+        for kind, expected in protocol["official_onnx_sha256"].items():
+            if (
+                digest(Path(configuration.sonic_directory) / f"model_{kind}.onnx")
+                != expected
+            ):
+                raise ValueError(f"Official SONIC base changed: {kind}")
+        if digest(configuration.sonic_contract) != protocol["sonic_contract_sha256"]:
+            raise ValueError("SONIC physical observation/action contract changed")
+    for name in semantic_modules:
         source = "shared_motion/rl/" + name
         if (
             source in protocol["sources"]
@@ -100,6 +110,8 @@ def main(arguments: DictConfig):
     checkpoints = Path(configuration.artifacts) / "training" / name
     checkpoints.mkdir(parents=True, exist_ok=False)
     OmegaConf.save(configuration, report / "config.yaml")
+    if configuration.get("sonic_directory", None):
+        shutil.copy2(configuration.sonic_contract, report / "sonic_contract.json")
     sources = [Path(__file__), *sorted((root / "shared_motion/rl").glob("*.py"))]
     snapshot = report / "source"
     snapshot.mkdir()
@@ -118,12 +130,7 @@ def main(arguments: DictConfig):
     environment = TrackingEnvironment(
         cfg=environment_configuration, device=configuration.device
     )
-    wrapper_type = (
-        ReferenceResidualWrapper
-        if configuration.get("reference_residual", False)
-        else RslRlVecEnvWrapper
-    )
-    wrapper = wrapper_type(environment, clip_actions=agent_configuration.clip_actions)
+    wrapper = make_wrapper(environment, configuration, agent_configuration.clip_actions)
     runner = MjlabOnPolicyRunner(
         wrapper,
         dataclasses.asdict(agent_configuration),

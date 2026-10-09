@@ -1,0 +1,8 @@
+{
+  "states": 0.0,
+  "actions": 0.0,
+  "after_other_episode_max_state_error": 0.0,
+  "after_other_episode_max_action_error": 0.0,
+  "passed": true,
+  "frames": 298
+}

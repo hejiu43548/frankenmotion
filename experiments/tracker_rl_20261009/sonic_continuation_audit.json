@@ -1,0 +1,7 @@
+{
+  "actor_critic_normalizers_exact": true,
+  "optimizer_exact": true,
+  "first_update": 2,
+  "learning_rate": 1e-05,
+  "simulator_state": "fresh reset"
+}

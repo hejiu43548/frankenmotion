@@ -99,6 +99,8 @@ def train(configuration: DictConfig, entry_source: Path):
             kind: digest(Path(configuration.sonic_directory) / f"model_{kind}.onnx")
             for kind in ["encoder", "decoder"]
         }
+        protocol["sonic_contract_sha256"] = digest(configuration.sonic_contract)
+        shutil.copy2(configuration.sonic_contract, report / "sonic_contract.json")
     (report / "protocol.json").write_text(
         json.dumps(protocol, indent=2, default=describe)
     )

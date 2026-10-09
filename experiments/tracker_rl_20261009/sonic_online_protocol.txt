@@ -81,3 +81,27 @@ Deploy with scripts/follow_tracker_rl.py:
 The export stores five preview offsets for compatibility with the original2350D
 runtime ABI. The new residual uses only the first three, matching its training.
 The two unused previews are not silently added to the learned input.
+
+Follow and continuation validation
+----------------------------------
+The real walk42001 follow command runs all298 frames. Its recorded states/actions
+equal the batch evaluator exactly (maximum differences0). Running walk, then jump,
+then walk again through the same policy instance also reproduces states/actions
+exactly: reset clears causal controller history and does not leak across commands.
+This validates runtime consistency, not extra evidence of task generalization.
+
+SONIC continuation now restores actor, critic, normalization and optimizer exactly,
+including the optimizer's adaptive LR scalar. A 40-to-80 environment continuation
+passed for two updates. It starts a new seeded simulator segment; it does not claim
+bitwise reproduction of an interrupted training process. Official ONNX hashes and
+the physical action/observation contract are checked before any continuation.
+The contract is copied and SHA256-recorded in each SONIC training report. A changed
+action scale was rejected before creating a new run. Queued formal SONIC source was
+updated with these provenance-only additions BEFORE its training process started;
+neither running scratch experiment's source was changed.
+
+Official-only20-class videos, seed42001, have been rendered and visually checked
+for walk and a terminated jump case. Terminated means the evaluator's physical
+tracking rule fired; it does not necessarily mean the robot fell. The red tail
+label identifies held last recorded frames. These videos are a pretrained baseline,
+not the eventual online-RL deliverable or evidence of improvement from this project.
