@@ -91,3 +91,23 @@ Task-cluster bootstrap intervals over these 20 validation tasks:
 completion delta +0.15, 95% [0.025,0.30]; strict success delta0, [-0.15,0.125];
 failure-inclusive root error delta -0.01739 m, [-0.05312,0.02027]. These intervals
 describe this validation set, not unseen-task or training-seed generalization.
+
+Independent training-seed replication (registered before launch)
+---------------------------------------------------------------
+scratch_drift_seed2_20261010 repeats the entire scratch recipe above with seed
+51002 instead of51001. It starts from newly randomized parameters, never the
+first run checkpoint. Same frozen drift_repository,80 training clips,2000env,
+24 rollout steps,6000 updates, preview[5,10,20],0.5m training termination and
+unchanged nine rewards. It waits for the first scratch run to finish successfully,
+so the queued SONIC experiment and this run retain two main training slots.
+
+python scripts/train_tracker_rl.py experiment=scratch_drift_seed2 run_date=20261010 \
+  iterations=6000 num_envs=2000 preview_offsets=[5,10,20] \
+  training_drift_threshold=0.5 seed=51002
+
+Evaluate the same500,1000,2000,3000,4000,5000,5999 checkpoints. Selection within
+each seed uses validation strict success, then completion, then lower penalized
+anchor error. Report both training seeds separately; do not hide the weaker run.
+Test remains untouched until selection and recipes are frozen. Two seeds assess
+some sensitivity but are not sufficient for a precise seed-variance estimate.
+This replication does not replace the matched no-drift causal ablation.

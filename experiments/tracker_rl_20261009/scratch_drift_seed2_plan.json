@@ -1,0 +1,28 @@
+{
+  "supervisor_pid": 1415193,
+  "script_sha256": "1a9bcaeda4c925981a32aaa1829914fb58e097d2ae6fe054eb48117444e15d17",
+  "seed": 51002,
+  "training_initialization": "random; no checkpoint, no teacher",
+  "source": "/home/pku/frankenmotion/work/tracker_rl_20261009/drift_repository",
+  "wait_for": "/home/pku/frankenmotion/work/tracker_rl_20261009/scratch_drift_result.json",
+  "iterations": 6000,
+  "num_envs": 2000,
+  "preview_offsets": [
+    5,
+    10,
+    20
+  ],
+  "training_drift_threshold": 0.5,
+  "rewards": "unchanged nine terms",
+  "validation_iterations": [
+    500,
+    1000,
+    2000,
+    3000,
+    4000,
+    5000,
+    5999
+  ],
+  "selection": "validation strict success descending, completion descending, penalized anchor error ascending; report both seeds separately",
+  "purpose": "independent training seed replication, not additional motion generation seeds"
+}
