@@ -379,3 +379,6 @@ training_randomization_audit.json保存正式配置重建的push/COM/编码器�
 
 最终已选权重的干净CPU环境复算
 在同一服务器的新建独立Python环境中，关闭GPU，无mjlab/onnxruntime，分别复算从零seed1选中5999与SONIC选中2999的全部40条普通独立测试参考，共80条。所有NPZ数组及逐条/总体指标均与原记录完全一致。该复算不作为新增统计样本，也没有改变模型选择；不声称跨硬件逐位一致。见selected_clean_runtime_audit.json。
+
+已选权重独立便携包核对
+portable_trackers包含最新follow运行时、两条路线的已选policy、场景及walk42001参考。复制到远程隔离目录并取消PYTHONPATH后，从干净CPU环境调用包内入口；两模型均复现298帧验证步行，状态/动作最大差0。首次打包遗漏SONIC伴随policy.json，隔离测试发现后已补齐，再次21文件哈希验证和推理通过。未修改训练、权重或评测规则。详见portable_selected_audit.json。

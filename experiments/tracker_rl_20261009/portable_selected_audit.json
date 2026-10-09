@@ -1,0 +1,111 @@
+{
+  "bundle_manifest_sha256": "a30745db3433d35ddebdfe6c3e6db1831f49c14e89a4002207754155e2f95d70",
+  "verified_files": 21,
+  "interpreter": "/home/pku/frankenmotion/work/tracker_rl_20261009/clean_cpu_env/bin/python",
+  "working_directory": "/home/pku/frankenmotion/work/tracker_rl_20261009/portable_selected_check",
+  "pythonpath_unset": true,
+  "gpu_disabled": true,
+  "models": [
+    {
+      "model": "scratch_seed1",
+      "frames": 298,
+      "max_absolute_differences": {
+        "states": 0.0,
+        "actions": 0.0
+      },
+      "result": {
+        "episode": {
+          "root_m": 0.07471399053150259,
+          "body_m": 0.09044337521643712,
+          "joint_rad": 0.15979970283637007,
+          "action_delta_squared": 0.027040357576941967,
+          "root_m_failure_penalized": 0.07471399053150257,
+          "body_m_failure_penalized": 0.09044337521643708,
+          "joint_rad_failure_penalized": 0.15979970283637013,
+          "task": "walk",
+          "motion_seed": 42001,
+          "frames": 298,
+          "expected_frames": 298,
+          "complete": true,
+          "failure": [],
+          "tracking_success": true
+        },
+        "configuration": {
+          "artifacts": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts",
+          "policy": "/home/pku/frankenmotion/work/tracker_rl_20261009/portable_selected_check/models/scratch_seed1/policy.pt",
+          "policy_kind": "rl",
+          "contract": "/home/pku/frankenmotion/work/tracker_rl_20261009/portable_selected_check/models/scratch_seed1/contract.json",
+          "scene": "/home/pku/frankenmotion/work/tracker_rl_20261009/portable_selected_check/scene/scene.mjb",
+          "legacy_contract": "configs/release/inference_contract.json",
+          "split": "val",
+          "output": "/home/pku/frankenmotion/work/tracker_rl_20261009/portable_selected_check/check_v2_scratch_seed1",
+          "workers": 2,
+          "seed": 61001,
+          "perturbation": 0.0,
+          "reference": "/home/pku/frankenmotion/work/tracker_rl_20261009/portable_selected_check/reference/walk_42001.npz",
+          "task": "walk",
+          "motion_seed": 42001,
+          "initial_state": null
+        },
+        "input_sha256": {
+          "reference": "6cdf34f34d789c791f3a76b15354dcc24d46828df060012994bb961b98f33661",
+          "policy": "907aea31163c2b3b0d8b38e51b015f8cedb854e453a653fbd93c2067d85ee66b",
+          "contract": "53ea77dd884cbff4b1d3dbb9c89fbbfbd7d59b887bb81979f970b47a6ad06705",
+          "scene": "b2de7f56a2d11698383f9a6c870091737d8ec3cde4e87e636cb69181cb576602"
+        },
+        "initialization": "exact reference pose and velocity with soft joint limits; no mid-motion resets or external assistance"
+      }
+    },
+    {
+      "model": "sonic_online",
+      "frames": 298,
+      "max_absolute_differences": {
+        "states": 0.0,
+        "actions": 0.0
+      },
+      "result": {
+        "episode": {
+          "root_m": 0.039118067390008955,
+          "body_m": 0.04359654185156868,
+          "joint_rad": 0.12282336163432829,
+          "action_delta_squared": 0.009787646838973598,
+          "root_m_failure_penalized": 0.03911806739000893,
+          "body_m_failure_penalized": 0.04359654185156864,
+          "joint_rad_failure_penalized": 0.12282336163432823,
+          "task": "walk",
+          "motion_seed": 42001,
+          "frames": 298,
+          "expected_frames": 298,
+          "complete": true,
+          "failure": [],
+          "tracking_success": true
+        },
+        "configuration": {
+          "artifacts": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts",
+          "policy": "/home/pku/frankenmotion/work/tracker_rl_20261009/portable_selected_check/models/sonic_online/policy.pt",
+          "policy_kind": "sonic_rl",
+          "contract": "/home/pku/frankenmotion/work/tracker_rl_20261009/portable_selected_check/models/sonic_online/contract.json",
+          "scene": "/home/pku/frankenmotion/work/tracker_rl_20261009/portable_selected_check/scene/scene.mjb",
+          "legacy_contract": "/home/pku/frankenmotion/work/tracker_rl_20261009/portable_selected_check/models/sonic_online/sonic_contract.json",
+          "split": "val",
+          "output": "/home/pku/frankenmotion/work/tracker_rl_20261009/portable_selected_check/check_v2_sonic_online",
+          "workers": 2,
+          "seed": 61001,
+          "perturbation": 0.0,
+          "reference": "/home/pku/frankenmotion/work/tracker_rl_20261009/portable_selected_check/reference/walk_42001.npz",
+          "task": "walk",
+          "motion_seed": 42001,
+          "initial_state": null
+        },
+        "input_sha256": {
+          "reference": "6cdf34f34d789c791f3a76b15354dcc24d46828df060012994bb961b98f33661",
+          "policy": "709a83c01949ab0381bc40c00763fe0d3e89a2f8ff3ba4fdca68725dd2a05408",
+          "contract": "52d200d5c66258ae626fae5698eb6ad8db9e149e2b1d642daccecc2cf319f14e",
+          "scene": "b2de7f56a2d11698383f9a6c870091737d8ec3cde4e87e636cb69181cb576602"
+        },
+        "initialization": "exact reference pose and velocity with soft joint limits; no mid-motion resets or external assistance"
+      }
+    }
+  ],
+  "scope": "Copied portable files and clean CPU dependencies; no source checkout in import path. Each selected policy reproduces its validation walk exactly. Full80 final-checkpoint environment reproduction is recorded separately."
+}
