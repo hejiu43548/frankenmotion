@@ -1,0 +1,12 @@
+{
+  "verified_manifest_files": 17,
+  "comparison": "independent packaged follow versus original native batch rollout, walk42001",
+  "max_absolute_errors": {
+    "states": 0.0,
+    "actions": 0.0
+  },
+  "frames": 298,
+  "source_directory": "/home/pku/frankenmotion/work/tracker_rl_20261009/portable_check2000/interim_scratch2000",
+  "environment": "existing pinned Python3.11 MuJoCo3.5.0 environment; clean-environment installation not separately exercised",
+  "status": "passed"
+}
