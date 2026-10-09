@@ -3,6 +3,7 @@ checkpoint: ???
 experiment: ???
 seed: 51001
 iterations: 3000
+num_envs: null
 hydra:
   run:
     dir: .

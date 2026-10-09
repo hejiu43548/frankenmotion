@@ -72,6 +72,11 @@ def main(arguments: DictConfig):
     if digest(checkpoint) != ready["sha256"]:
         raise ValueError("Checkpoint digest differs from recorded ready marker")
     configuration = OmegaConf.load(parent / "config.yaml")
+    parent_num_envs = configuration.num_envs
+    if arguments.num_envs is not None:
+        if arguments.num_envs < 20 or arguments.num_envs % 20:
+            raise ValueError("num_envs must give every task an equal number of slots")
+        configuration.num_envs = arguments.num_envs
     for name in ["experiment", "seed", "iterations"]:
         configuration[name] = arguments[name]
     configuration.resume = str(checkpoint)
@@ -105,6 +110,7 @@ def main(arguments: DictConfig):
         sources={str(source.relative_to(root)): digest(source) for source in sources},
         parent_report=str(parent.resolve()),
         parent_checkpoint_sha256=ready["sha256"],
+        parent_num_envs=parent_num_envs,
         initialization="Continue own online PPO actor, critic, normalizers and optimizer; fresh seeded simulator state, not exact interrupted-run resume",
     )
     (report / "protocol.json").write_text(json.dumps(protocol, indent=2))
