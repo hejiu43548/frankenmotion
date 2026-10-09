@@ -16,7 +16,7 @@ python scripts/follow_tracker_rl.py reference=PREPARED_REFERENCE.npz \
 
 `PREPARED_REFERENCE.npz` 必须是 `prepare_tracker_motion.py` 生成的完整 50 Hz G1 参考，包括 qpos、关节状态及刚体 FK 数组；不能直接传人体动作或原始 GMR NPZ。`INITIAL.npz` 包含完整 MuJoCo `qpos` 和可选 `qvel`，缺少 qvel 时使用零速度。显式提供的状态会原样使用，不会吸附到参考姿态；调用方应保证参考与初始状态的世界坐标对齐。省略 `initial_state` 才使用基准评测的参考起始姿态和速度。
 
-SONIC+PPO 导出需额外传入 `policy_kind=sonic_rl legacy_contract=EXPORT/sonic_contract.json`。每段开始重置策略历史；输出的 `final_state.npz` 是最后一步后的真实 qpos/qvel，可用于下一段初始化。逐帧 rollout 保存控制前状态，不能把其最后一帧当作最终状态。
+SONIC+PPO 导出需额外传入 `policy_kind=sonic_rl legacy_contract=EXPORT/sonic_contract.json`，并保留与 `policy.pt` 同目录的 `policy.json`（兼容预览布局元数据）。复制模型时应保留完整导出目录。每段开始重置策略历史；输出的 `final_state.npz` 是最后一步后的真实 qpos/qvel，可用于下一段初始化。逐帧 rollout 保存控制前状态，不能把其最后一帧当作最终状态。
 
 原有 `python -m shared_motion.tracker.simulate` 接口也支持新的 schema 2 导出契约，会按契约选择新 tracker，并保存独立的 `*_final_state.npz`。新路径使用统一的参考跟踪终止条件；历史路径仍保持原有行为。外部初始状态接入已验证，但不表示模型具备任意初始姿态恢复能力。
 

@@ -138,7 +138,8 @@ Explicit initial state and existing simulation integration
    option retains the reference-start benchmark exactly. No pose snapping is
    applied to supplied states; arbitrary-pose recovery is not established.
    For SONIC+PPO also pass policy_kind=sonic_rl and
-   legacy_contract=EXPORT_DIRECTORY/sonic_contract.json.
+   legacy_contract=EXPORT_DIRECTORY/sonic_contract.json. Keep the adjacent
+   EXPORT_DIRECTORY/policy.json metadata; copy the complete export directory.
    RL_PYTHON -m shared_motion.tracker.simulate \
      --actor EXPORT_DIRECTORY/policy.pt --scene EXPORT_DIRECTORY/scene.mjb \
      --contract EXPORT_DIRECTORY/contract.json --reference PREPARED_REFERENCE_NPZ \

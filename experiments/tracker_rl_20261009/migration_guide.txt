@@ -85,7 +85,8 @@ select_tracker_checkpoint.py 检查候选完整性并输出冻结哈希，排序
 使用 scripts/follow_tracker_rl.py 或支持 schema2 契约的历史 simulate 入口。
 显式 initial_state 提供 qpos/qvel 后，状态不会重置到参考；调用方负责世界
 坐标对齐。缺少 qvel 时默认零速度；省略整个 initial_state 才使用参考起点。
-新策略需要对应的 contract.json 与 scene.mjb；SONIC+PPO还需 sonic_contract.json。
+新策略需要对应的 contract.json 与 scene.mjb；SONIC+PPO还需 sonic_contract.json
+以及与policy.pt同目录的policy.json，复制时保留完整导出目录。
 用单段固定参考先核对轨迹，再验证真实调用流程。输出 final_state.npz 保存
 最后物理步后的状态，可作为下一段输入；rollout 的最后一帧是控制前状态。
 每段调用会重置策略历史，连续动作切换效果需要独立测量。当前未证明任意
