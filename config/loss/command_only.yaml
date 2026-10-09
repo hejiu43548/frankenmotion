@@ -1,0 +1,9 @@
+_target_: shared_motion.training.losses.LossRecipe
+mode: free
+command_kind: huber
+command_weight: 1.0
+pose_weight: 0.0
+velocity_excess_weight: 0.0
+support_weight: 0.0
+reference_mode: root_only
+ddim_steps: 10

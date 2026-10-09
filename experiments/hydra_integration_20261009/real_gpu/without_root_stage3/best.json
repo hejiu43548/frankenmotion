@@ -1,0 +1,6 @@
+{
+  "step": 0,
+  "metric": 0.9671039454464008,
+  "checkpoint": "/mnt/sda2/frankenmotion/outputs_amass/hydra_pipeline_validation_20261009/without_root_stage3_artifacts/checkpoint_000000.pt",
+  "sha256": "8ea9c2b00884f84d48cba561650f896233fb08a1cce21acdf9b11cf4c3507ebf"
+}

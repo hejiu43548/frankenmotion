@@ -1,0 +1,17 @@
+# @package _global_
+defaults:
+  - /loss: supervised
+stage:
+  index: 2
+  initial: ${artifact_root}/${experiment}_${run_date}/stage1/best.pt
+  epochs: null
+  steps: 70000
+  patience: 0
+  min_delta: 0.0
+  batch_size: 40
+  accumulate: 1
+  learning_rate: 0.0001
+  weight_decay: 0.000001
+  clip: 2.0
+  root_dropout: 0.15
+  eval_every: 10000

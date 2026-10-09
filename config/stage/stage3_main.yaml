@@ -1,0 +1,17 @@
+# @package _global_
+defaults:
+  - /loss: main_replay
+stage:
+  index: 3
+  initial: ${artifact_root}/${experiment}_${run_date}/stage2/best.pt
+  epochs: null
+  steps: 2700
+  patience: 0
+  min_delta: 0.0
+  batch_size: 1
+  accumulate: 1
+  learning_rate: 0.00003
+  weight_decay: 0.000001
+  clip: 1.0
+  root_dropout: 0.0
+  eval_every: 900

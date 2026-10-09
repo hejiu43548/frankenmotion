@@ -1,11 +1,12 @@
 # 共享任务适配器与统一 Tracker
 
-本分支只保留已选用的 20 类命令生成方案和一个 G1 tracker，以及训练、推理、数据采样和仿真接口。历史试验、按任务选权重的代码、旧 demo、三维 reach 试验均不包含在本分支。原分支和服务器实验目录保留。
+本分支保留已选用的 20 类命令生成方案和一个 G1 tracker，并提供可配置的三阶段训练、推理、数据采样和仿真接口。历史试验、按任务选权重的代码、旧 demo、三维 reach 试验均不包含在本分支。原分支和服务器实验目录保留。
 
 ## 当前结构
 
 - `shared_motion/adapter/`：55 维命令输入 → 一个共享残差网络 → 冻结的 FrankenMotion 扩散模型。包含命令定义、50 步 DDIM、人体 FK、统一训练和推理入口。
 - `shared_motion/tracker/`：一个 SONIC mode0 时序骨干 + 一个共享残差头。单个导出权重输入 2350 维，输出 29 维；每个 episode 开始调用 `reset()`。
+- `shared_motion/training/`、`scripts/`、`config/`：可选独立root或统一命令架构的Hydra三阶段训练。
 - `shared_motion/data.py`：两阶段均衡采样，由适配器和 tracker 的训练入口共同使用。
 - `src/`、`configs/`、`prepare/`：保留 FrankenMotion 上游模型及必要数据工具；不是额外任务适配器或 tracker。
 - `configs/release/`：最终权重来源、SHA256、命令定义和 G1 观测/执行约定。
@@ -35,3 +36,7 @@ python -m unittest discover -s tests -v
 `adapter.infer` 输出 SMPL-RIFKE 人体参考；GMR 重定向属于外部数据转换步骤。`tracker.simulate` 接收已转换的 50 Hz G1 参考（joint/body pos、quat、vel），以及含完整 MuJoCo `qpos` 的初始状态文件。不要把人体 NPZ 直接传入 tracker。tracker 权重旁必须有同名 `.json`，用于读取 preview offsets。仿真仅初始化一次状态，无任务分流、逐帧状态覆盖或运行时权重混合。
 
 整理后的训练入口用于后续继续训练，不声称从零精确复现历史多阶段试验。已选权重没有被此次整理修改。拍手接触、侧移、跳跃、深蹲及高速慢跑仍有已知质量限制；单纯不摔倒不等于语义或参数执行成功。
+
+## 可配置三阶段训练
+
+新增入口见 [scripts/README.md](scripts/README.md)，Hydra配置在 `config/`。支持独立RootControl＋20类TaskControl与main的55维SharedCommands两种架构，损失可独立切换。默认从配置指定的官方backbone权重初始化，依次执行root条件预训练、真实动作监督、自由生成微调。原20类发布包与tracker入口保留；独立turn/spin实验未并入。阶段训练需完整20类的motion/text缓存清单，缺失任务会直接报错。

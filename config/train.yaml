@@ -1,0 +1,42 @@
+defaults:
+  - backbone: official
+  - controller: with_root
+  - data: amass20
+  - stage: stage2
+  - _self_
+
+experiment: shared20
+run_date: ${now:%Y%m%d}
+seed: 20261011
+initial: ${stage.initial}
+artifact_root: ${oc.env:FRANKENMOTION_ARTIFACTS,outputs_training}
+paths:
+  report: experiments/${experiment}_${run_date}/stage${stage.index}
+  artifacts: ${artifact_root}/${experiment}_${run_date}/stage${stage.index}
+runtime:
+  device: cuda
+  threads: 4
+  resume: null
+  stop_after: null
+  checkpoint_every: 1000
+  log_every: 20
+validation:
+  seed: 7331
+  noise_seed: 1928
+  batch_size: 20
+  points: 10
+  ddim_steps: 50
+  supervised_loss:
+    _target_: shared_motion.training.losses.LossRecipe
+    mode: supervised
+    command_kind: huber
+    reconstruction: 1.0
+    root_feature_weight: 5.0
+    command_weight: 0.2
+    speed_weight: 0.1
+    yaw_weight: 0.1
+hydra:
+  job:
+    chdir: false
+  run:
+    dir: ${paths.report}

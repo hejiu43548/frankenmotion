@@ -1,0 +1,18 @@
+defaults:
+  - backbone: official
+  - controller: with_root
+  - _self_
+checkpoint: ???
+text_cache: ???
+skeleton: ???
+task: reach
+command: 0.4
+seed: 0
+ddim_steps: 50
+device: cuda
+output: outputs_training/inference.npz
+hydra:
+  job:
+    chdir: false
+  run:
+    dir: outputs_training/inference_logs/${now:%Y%m%d_%H%M%S}

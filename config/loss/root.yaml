@@ -1,0 +1,7 @@
+_target_: shared_motion.training.losses.LossRecipe
+mode: root
+reconstruction: 1.0
+root_feature_weight: 5.0
+command_weight: 0.0
+speed_weight: 0.1
+yaw_weight: 0.1

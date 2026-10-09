@@ -1,0 +1,26 @@
+train_manifest: ???
+val_manifest: ???
+skeleton: ???
+# Relative cache paths are relative to this explicit root, not Hydra's output directory.
+path_root: ${hydra:runtime.cwd}
+tasks:
+  - raise_hand
+  - reach
+  - strike
+  - wave
+  - turn
+  - sidestep
+  - back_walk
+  - kick
+  - jump
+  - lean
+  - walk
+  - squat
+  - bow
+  - clap
+  - point
+  - stretch
+  - twist
+  - march
+  - jog
+  - arm_circle

@@ -1,0 +1,14 @@
+# Main continuation objective adapted to cached real motions and masked minibatches.
+_target_: shared_motion.training.losses.LossRecipe
+mode: free
+command_kind: mse
+circular_turn: false
+command_weight: 1.0
+pose_weight: 2.0
+root_position_weight: 0.2
+velocity_match_weight: 0.05
+retain_weight: 300.0
+stationary_priors: true
+prototype_weight: 1.0
+reference_mode: task
+ddim_steps: 50

@@ -1,0 +1,28 @@
+{
+  "train": {
+    "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/cache/train_raise_hand_02975.npz": "1d1f9541b3a39e9bb0f2daf3434416a84b7748ac832198932e2841f2e19ec540",
+    "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/cache/train_reach_11278.npz": "377815af387f9ae4d89b827874f8b492225d8082391dddeccec112bdf4f32d05",
+    "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/cache/train_strike_07396.npz": "dab0c580f1b2b020b8113a6f178a3e345b69b93d119e603f33fc10f1e1763cd8",
+    "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/cache/train_wave_13557.npz": "6965e80d2f5d0dea39ce77ac3a41e04708b124965f2daff0a11ade745dc684a0",
+    "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/cache/train_turn_00213.npz": "4bf6dce535d81eb559119a678f72d61070c489a2d568f65e14b352fba612a846",
+    "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/cache/train_sidestep_07328.npz": "c1d48d684103866f069d55fc1678a3c590cc824217ebc38ca91b62e83e8ba516",
+    "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/cache/train_back_walk_11165.npz": "c61d2d02d11f808ecf27105e34e0a272d3d2d62ef0c8bd90071850c47cc4685a",
+    "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/cache/train_kick_04591.npz": "d37bbe1f83f45098d64b6db7154970aa7eb40a53a94688c33230aec6bd2bd1f2",
+    "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/cache/train_jump_02727.npz": "aeb8c83bbbb15b1c7b4f84934bc15714abee33b405071fc601a7b439fa1f0c61",
+    "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/cache/train_lean_08045.npz": "60b81d45ca61d1da2deaeb12b0aca11f6bb3fc56f20b2e139498af5c912801f1",
+    "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/cache/train_walk_13129.npz": "f38fc8a5ef1ab6559f178596539869412b95b712b7f092ccad18b3692aa3f3e5"
+  },
+  "val": {
+    "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/cache/val_raise_hand_00435.npz": "afbae22aa598c3740fdd3f21f6fac99722a8c8c4c39f86b947333f9f4a321002",
+    "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/cache/val_reach_01402.npz": "ebe52450947b9fd04ebb5116684790c3bf8f27ea68f14c9088184eabd3849a52",
+    "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/cache/val_strike_07023.npz": "e61b80c025171f7cb6a6bb550decf9d8740568eb7fea95a1601cee5fd1fcaa36",
+    "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/cache/val_wave_14661.npz": "132320759ab5de845e4d2fa4d886b1138dc3b66b719b8288458d15ae8c2ec481",
+    "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/cache/val_turn_11275.npz": "ca54201b0e3efa7dccbc302f7a717de30018f19bdf240aadd251add070075d2c",
+    "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/cache/val_sidestep_11217.npz": "7dd73557cf1c86cf4be8a7970f81358de18564904b73bba17c879a39a0f7258f",
+    "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/cache/val_back_walk_11357.npz": "fe1441e3dbb2f6ab6f976561e6d5698e2c9d98e37f945a62e423e7fa8014191f",
+    "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/cache/val_kick_00142.npz": "2a0cba9ae25661dadd583485423fd2d6e425b24e6377134b4550d3ea8d4384b5",
+    "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/cache/val_jump_03372.npz": "c7f4a1b69ec127b1f36327b21fae63ab21191b9a180a7678df7e74b11a0c3107",
+    "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/cache/val_lean_11815.npz": "5e502fc0710529dd9ceb4737a289cfd774c58d22dc366dfa67a599868e234115",
+    "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/cache/val_walk_09235.npz": "3f12b8a23598f8c85863a808b3246bda7ab0f911172b4ace562b0560b660266c"
+  }
+}

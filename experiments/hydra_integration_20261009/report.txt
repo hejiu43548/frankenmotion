@@ -1,0 +1,27 @@
+Hydra three-stage integration — 2026-10-09
+
+Scope
+Base main: 15c5901. Experimental source branch: codex/charlie-aligned-root-retrain at 94d6e18.
+User-selected default: all20 main tasks; independent RootControl+TaskControl or main SharedCommands; configurable losses. The standalone walking-turn/spin experiments and their datasets/weights are not imported.
+No full training job was launched by this code integration.
+
+Validation
+1. Final source: 10 unittest cases passed on Betail, PyTorch2.6/CUDA-capable Python3.11; unit_tests.txt contains the complete output.
+   Synthetic20-class fixtures verify configuration, both controller parameter contracts, zero initialization, pure-noise generation independent of GT motion/quantity, all20 command metrics, missing-data/leakage rejection, task-balanced sampling, strict backbone loading, both three-stage pipelines, all free-loss options, and exact parameter/optimizer/sampler/RNG replay after interruption in all three stages. Cache and skeleton mutation invalidate resume. AST style checks pass.
+2. Official-backbone GPU integration: both default-size controllers completed stages1/2/3 against real cached AMASS records, one train/val record per each of the existing11 tasks. Stage1 ran one epoch; stages2/3 ran two optimizer steps, evaluating every step. This is integration evidence, not a trained-model quality claim. Official SHA256: c9dca1988dd08dd9e2164ac4cf6ae8fece23011a6371e83d502cdfabe5352e18.
+   Evaluation used2 command points/class and50 DDIM steps; default production remains10 points/class. Four task-stage runs each audited66 saved motions, total264. Both root runs checked record coverage and frozen backbone parameters. Each task run checked frozen parameters and reconstructed quantities from saved motions.
+3. Selected stage2 step2 versus stage3 step0: motion, lengths, task, requested, and measured arrays exactly equal for both architectures (real_gpu/transition_validation.json).
+4. scripts/infer.py loaded each official-backbone stage3 checkpoint and generated finite60x205 motion for reach=0.4 with50 DDIM steps (real_gpu/inference_validation.json).
+5. Hydra CLI composition and the stage3_main shell override passed using Python3.12. Black default formatting and git diff --check passed.
+
+Evidence and reproducibility
+real_gpu/ contains exact resolved configs, original data indices, source hashes, cache hashes, statuses, selected checkpoint hashes, validation and completion audits. No checkpoint or raw motion binary is committed.
+Large artifacts: betail:/mnt/sda2/frankenmotion/outputs_amass/hydra_pipeline_validation_20261009.
+Run tests: PYTHONPATH=/tmp/frankenmotion_hydra_deps:. /home/psirobot/projects/frankenmotion/.venv_unified/bin/python -m unittest discover -s tests -v from /tmp/frankenmotion_hydra_validation.
+Real smoke configs can be replayed with scripts/train.py --config-path <absolute archived stage-config directory> --config-name config, overriding paths.report and paths.artifacts to new directories and initial to the newly produced previous-stage best.pt. Cache paths are Betail-specific and require the indexed files. Run stages in order for each controller.
+The official GPU smoke was completed before the final provenance-only runner change adding skeleton/backbone-source hashes and replacing an equivalent dynamic hashlib import. Its protocol source hashes are preserved verbatim; final_source_sha256.json records the delivered source. The complete unittest suite was rerun after that change, including changed-skeleton rejection. Model, losses, sampler and inference code are unchanged from the real GPU run.
+
+Limits
+Real20-class supervised caches are not yet supplied by this integration. Existing11-class data are explicitly overridden in the GPU smoke; no examples are relabelled or duplicated to fill missing task classes. Default20-class production config rejects incomplete manifests. See scripts/README.md for cache fields, architecture semantics, loss differences, launch and resume commands. Passing these short checks does not establish convergence, naturalness, contact quality or exact reproduction of main's historicalv10 training.
+
+Compact archive: all six stage data indices were verified JSON-equal to the shared real_gpu/train.json and val.json, so repeated copies were omitted. Duplicate configuration.json and scan-containing validation JSON files were omitted; configs, scan JSON, and per-stage validation_metrics.json retain their contents. omitted_redundant_evidence_sha256.json identifies originals still available on Betail.

@@ -1,0 +1,4 @@
+# Main's unified55 network: root fields remain, but there is no separate root branch.
+_target_: shared_motion.training.model.create_shared_commands
+width: 1024
+zero_initialize: true

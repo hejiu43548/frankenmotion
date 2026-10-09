@@ -1,0 +1,18 @@
+_target_: shared_motion.training.model.load_official_backbone
+checkpoint: ${oc.env:FRANKENMOTION_CHECKPOINT,pretrained/official/frankenmotion.ckpt}
+expected_sha256: c9dca1988dd08dd9e2164ac4cf6ae8fece23011a6371e83d502cdfabe5352e18
+timesteps: 100
+denoiser:
+  _target_: src.model.backbones.frankenmotion.TransformerDenoiser
+  nfeats: 613
+  tx_dim: 512
+  latent_dim: 512
+  ff_size: 2048
+  num_layers: 4
+  num_heads: 8
+  dropout: 0.1
+  activation: gelu
+  nb_registers: 0
+schedule:
+  _target_: src.model.schedule.cosine.CosineBetaSchedule
+  s: 0.008

@@ -1,0 +1,4 @@
+# Independent frozen RootControl after stage1; twenty-row TaskControl embedding.
+_target_: shared_motion.training.model.create_charlie_root
+bottleneck: 128
+embedding_width: 32

@@ -1,0 +1,17 @@
+# @package _global_
+defaults:
+  - /loss: free_generation
+stage:
+  index: 3
+  initial: ${artifact_root}/${experiment}_${run_date}/stage2/best.pt
+  epochs: null
+  steps: 8800
+  patience: 0
+  min_delta: 0.0
+  batch_size: 20
+  accumulate: 1
+  learning_rate: 0.00003
+  weight_decay: 0.01
+  clip: 1.0
+  root_dropout: 0.0
+  eval_every: 1100

@@ -1,0 +1,119 @@
+{
+  "controller_kind": "shared_commands",
+  "stage": 2,
+  "backbone_sha256": "c9dca1988dd08dd9e2164ac4cf6ae8fece23011a6371e83d502cdfabe5352e18",
+  "backbone_config": {
+    "_target_": "shared_motion.training.model.load_official_backbone",
+    "checkpoint": "/home/psirobot/checkpoints/frankenmotion/frankenmotion.ckpt",
+    "expected_sha256": "c9dca1988dd08dd9e2164ac4cf6ae8fece23011a6371e83d502cdfabe5352e18",
+    "timesteps": 100,
+    "denoiser": {
+      "_target_": "src.model.backbones.frankenmotion.TransformerDenoiser",
+      "nfeats": 613,
+      "tx_dim": 512,
+      "latent_dim": 512,
+      "ff_size": 2048,
+      "num_layers": 4,
+      "num_heads": 8,
+      "dropout": 0.1,
+      "activation": "gelu",
+      "nb_registers": 0
+    },
+    "schedule": {
+      "_target_": "src.model.schedule.cosine.CosineBetaSchedule",
+      "s": 0.008
+    }
+  },
+  "tasks": [
+    "raise_hand",
+    "reach",
+    "strike",
+    "wave",
+    "turn",
+    "sidestep",
+    "back_walk",
+    "kick",
+    "jump",
+    "lean",
+    "walk"
+  ],
+  "loss": {
+    "_target_": "shared_motion.training.losses.LossRecipe",
+    "mode": "supervised",
+    "command_kind": "huber",
+    "reconstruction": 1.0,
+    "root_feature_weight": 5.0,
+    "command_weight": 0.2,
+    "speed_weight": 0.1,
+    "yaw_weight": 0.1
+  },
+  "controller": {
+    "_target_": "shared_motion.training.model.create_shared_commands",
+    "width": 1024,
+    "zero_initialize": true
+  },
+  "schedule": {
+    "index": 2,
+    "initial": "outputs_training/shared20_20261009/stage1/best.pt",
+    "epochs": 1,
+    "steps": 2,
+    "patience": 0,
+    "min_delta": 0.0,
+    "batch_size": 22,
+    "accumulate": 1,
+    "learning_rate": 0.0001,
+    "weight_decay": 1e-06,
+    "clip": 2.0,
+    "root_dropout": 0.15,
+    "eval_every": 1
+  },
+  "validation": {
+    "seed": 7331,
+    "noise_seed": 1928,
+    "batch_size": 11,
+    "points": 2,
+    "ddim_steps": 50,
+    "supervised_loss": {
+      "_target_": "shared_motion.training.losses.LossRecipe",
+      "mode": "supervised",
+      "command_kind": "huber",
+      "reconstruction": 1.0,
+      "root_feature_weight": 5.0,
+      "command_weight": 0.2,
+      "speed_weight": 0.1,
+      "yaw_weight": 0.1
+    }
+  },
+  "seed": 20261011,
+  "initial_sha256": "b63d3bc6a64b608503aaef4581dc87419aeac9cc67ecf2fe2a804b2781d64481",
+  "data_sha256": {
+    "train": "a41a0bbe1b390b44b9bd4b79b9c5781601a8bfb4f18e70dff94ccd5cd2b93eb9",
+    "val": "dc4cd72b9ec1e85415eb5c685fe662f51ddb6ad07d890e8eac313e9baccde18a"
+  },
+  "cache_sha256": {
+    "train": "eb04ca54ba9185290045f0ff8de840cefe15ca648735d7c93ef0019b93af0191",
+    "val": "c837da7294b6c52ea2d254c99e2c1020696958542b68781d1aff3478b6fed755"
+  },
+  "sources": {
+    "shared_motion/training/data.py": "70b9e61d71d6f71b5760b229628db430b11b586aa16e9d5c3d8eee69d1253b44",
+    "shared_motion/training/adapters.py": "3d4c45bc4a2fc8e82aaceba1f19a7b15c566aa6323c518a41a7f8b6e8224a2ff",
+    "shared_motion/training/runner.py": "c5d3e2a2b3b751e802be3c7f150abbb7b289c8e146a31dea9a203bd637f0bbd8",
+    "shared_motion/training/catalog.py": "6e831cd2b4ce518f78313b6586da547071925e4034e8f3390edbea6372801299",
+    "shared_motion/training/model.py": "3abae7a67abfccc76cc2efbd9e7e39f6709325ce5515f2d6dd0d926180bb8dee",
+    "shared_motion/training/__init__.py": "6ab08a39c309e9127fb3ebf8c705710d824fc677376b4e762dc55743c86a0a3c",
+    "shared_motion/training/losses.py": "c1e1de06af8d8f09ea3f394f1d9f9a5df29de3a7929f416909f58c786b45cc76",
+    "shared_motion/training/geometry.py": "63cb2ef34a82bd1c1e11172761375c0f6b3c37449487d4b656cdaf24196d81e5",
+    "shared_motion/adapter/sampling.py": "3a0e6cd9ba6a5cee24678d3dc9d8f0bab0e268a0df8973fd9fbadf712669c5c3",
+    "shared_motion/adapter/infer.py": "d2fd2d3914be0dcc394169fefdd012df6cff60d22236429a659ee42fe87c2344",
+    "shared_motion/adapter/network.py": "2d80af1972f251c28931806d25b71676bdec705a9461a3a455cb1aa74740c140",
+    "shared_motion/adapter/inputs.py": "fe6aa9ca4a2e4b58b323060009c5b8479a902685753930b43abf7e8edf65c4c2",
+    "shared_motion/adapter/train.py": "27e94b3922aceabc9ad0b6f52915a8652f10193cb98c1809420ce9cdf45feb3f",
+    "shared_motion/adapter/catalog.py": "1164b5c61266747a02843d6af32bd13ac69aba15cb94a0c6f62084b496c9eaa2",
+    "shared_motion/adapter/model.py": "0470a4ba99fcb9aa926c69fb7ae9ce261a1d00f099c568ca9241c6b8021771b4",
+    "shared_motion/adapter/kinematics.py": "cd62ae41bed0c87a8060e43a777d838ffa5371e1509e215298de43920e69c21c",
+    "shared_motion/adapter/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "shared_motion/adapter/schema.py": "0be2ee9c74c4d4d749361bf677a06d434125024790e6f5a121620150846fd33c",
+    "scripts/train.py": "f32967034d9c540a975ce4f2565ca11c8b7df964fc05ae789ff9a326e447e080"
+  },
+  "trainable_parameters": 8664269
+}

@@ -55,3 +55,8 @@ deps/
 *.mjb
 configs/release/local_assets.json
 __pycache__/
+
+# Training weights and raw rollouts live outside compact experiment reports.
+outputs_training/
+experiments/**/run.lock
+experiments/**/train.log

@@ -1,0 +1,185 @@
+{
+  "step": 1,
+  "tasks": [
+    {
+      "task": "raise_hand",
+      "requested": [
+        0.3499999940395355,
+        0.75
+      ],
+      "measured": [
+        0.3200828433036804,
+        0.32017022371292114
+      ],
+      "mae": 0.22987346351146698,
+      "normalized_mae": 0.5746836587786674,
+      "key": "00435",
+      "family": "BMLmovi/Subject_16_F_MoSh/Subject_16_F_5_poses",
+      "noise_seed": 1928
+    },
+    {
+      "task": "reach",
+      "requested": [
+        0.25,
+        0.550000011920929
+      ],
+      "measured": [
+        0.17924387753009796,
+        0.17925749719142914
+      ],
+      "mae": 0.22074931859970093,
+      "normalized_mae": 0.7358310619990029,
+      "key": "01402",
+      "family": "BMLmovi/Subject_60_F_MoSh/Subject_60_F_16_poses",
+      "noise_seed": 1929
+    },
+    {
+      "task": "strike",
+      "requested": [
+        1.5,
+        2.5
+      ],
+      "measured": [
+        0.17074881494045258,
+        0.17081601917743683
+      ],
+      "mae": 1.8292176723480225,
+      "normalized_mae": 1.8292176723480225,
+      "key": "07023",
+      "family": "CMU/56/56_06_poses",
+      "noise_seed": 1930
+    },
+    {
+      "task": "wave",
+      "requested": [
+        0.07999999821186066,
+        0.2199999988079071
+      ],
+      "measured": [
+        0.19072972238063812,
+        0.19074077904224396
+      ],
+      "mae": 0.0699944719672203,
+      "normalized_mae": 0.49996051405157355,
+      "key": "14661",
+      "family": "KIT/969/Trial_23_poses",
+      "noise_seed": 1931
+    },
+    {
+      "task": "turn",
+      "requested": [
+        0.44999998807907104,
+        1.5
+      ],
+      "measured": [
+        -0.14536237716674805,
+        -0.1432742029428482
+      ],
+      "mae": 1.1193182468414307,
+      "normalized_mae": 1.0660173779442197,
+      "key": "11275",
+      "family": "KIT/3/912_3_02_poses",
+      "noise_seed": 1932
+    },
+    {
+      "task": "sidestep",
+      "requested": [
+        0.4000000059604645,
+        1.2000000476837158
+      ],
+      "measured": [
+        0.33914220333099365,
+        0.34004083275794983
+      ],
+      "mae": 0.4604085087776184,
+      "normalized_mae": 0.575510635972023,
+      "key": "11217",
+      "family": "KIT/291/push_recovery_left08_poses",
+      "noise_seed": 1933
+    },
+    {
+      "task": "back_walk",
+      "requested": [
+        0.3499999940395355,
+        0.8999999761581421
+      ],
+      "measured": [
+        -0.46191832423210144,
+        -0.46201494336128235
+      ],
+      "mae": 1.086966633796692,
+      "normalized_mae": 1.9763029705394397,
+      "key": "11357",
+      "family": "KIT/3/balancing03_poses",
+      "noise_seed": 1934
+    },
+    {
+      "task": "kick",
+      "requested": [
+        0.25,
+        0.699999988079071
+      ],
+      "measured": [
+        0.9074744582176208,
+        0.9073289036750793
+      ],
+      "mae": 0.4324016869068146,
+      "normalized_mae": 0.9608926375706992,
+      "key": "00142",
+      "family": "ACCAD/Male2MartialArtsKicks_c3d/G20 -  reverse spin cresent right_poses",
+      "noise_seed": 1935
+    },
+    {
+      "task": "jump",
+      "requested": [
+        0.25,
+        0.550000011920929
+      ],
+      "measured": [
+        0.27968981862068176,
+        0.27970466017723083
+      ],
+      "mae": 0.14999258518218994,
+      "normalized_mae": 0.49997528394063306,
+      "key": "03372",
+      "family": "BioMotionLab_NTroje/rub059/0030_jumping2_poses",
+      "noise_seed": 1936
+    },
+    {
+      "task": "lean",
+      "requested": [
+        0.4000000059604645,
+        0.8999999761581421
+      ],
+      "measured": [
+        0.11779329925775528,
+        0.1178383082151413
+      ],
+      "mae": 0.5321841835975647,
+      "normalized_mae": 1.0643683671951294,
+      "key": "11815",
+      "family": "KIT/3/walk_with_support05_poses",
+      "noise_seed": 1937
+    },
+    {
+      "task": "walk",
+      "requested": [
+        0.5,
+        1.100000023841858
+      ],
+      "measured": [
+        0.2039613127708435,
+        0.2040688395500183
+      ],
+      "mae": 0.595984935760498,
+      "normalized_mae": 0.9933082262674966,
+      "key": "09235",
+      "family": "Eyes_Japan_Dataset/kaiwa/tennis-19-catch overhead-kaiwa_poses",
+      "noise_seed": 1938
+    }
+  ],
+  "macro_normalized_mae": 0.9796425824188097,
+  "motion_archive": "/mnt/sda2/frankenmotion/outputs_amass/hydra_pipeline_validation_20261009/with_root_stage3_artifacts/motions/scan_000001.npz",
+  "motion_sha256": "caf8e6665c2df53a72d8d749cef8b2dd7dfa581d0f68f822ce19929511677800",
+  "protocol": "fixed validation text per task, fixed seeds, pure-noise DDIM, requested root controls only"
+}

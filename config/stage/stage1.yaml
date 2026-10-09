@@ -1,0 +1,17 @@
+# @package _global_
+defaults:
+  - /loss: root
+stage:
+  index: 1
+  initial: null
+  epochs: 100
+  steps: null
+  patience: 15
+  min_delta: 0.00001
+  batch_size: 16
+  accumulate: 4
+  learning_rate: 0.0001
+  weight_decay: 0.01
+  clip: 1.0
+  root_dropout: 0.15
+  eval_every: 1
