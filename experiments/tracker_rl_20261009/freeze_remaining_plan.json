@@ -1,0 +1,45 @@
+{
+  "jobs": [
+    [
+      "sonic_online_v1",
+      "sonic_online_result.json",
+      [
+        500,
+        1000,
+        1500,
+        2000,
+        2500,
+        2999
+      ]
+    ],
+    [
+      "scratch_drift_seed2",
+      "scratch_drift_seed2_result.json",
+      [
+        500,
+        1000,
+        2000,
+        3000,
+        4000,
+        5000,
+        5999
+      ]
+    ],
+    [
+      "scratch_no_drift_matched",
+      "scratch_no_drift_matched_result.json",
+      [
+        500,
+        1000,
+        2000,
+        3000,
+        4000,
+        5000,
+        5999
+      ]
+    ]
+  ],
+  "test_evaluation": false,
+  "source_sha256": "981257713a7c7a5fd2a7b2020df1bb05d223cde966978c122ee7a1a686a324f7",
+  "selector_sha256": "a62193934405e2e29bb050ec570ae719f714f397cd6237c90bd7d6ffd8b29ebd"
+}

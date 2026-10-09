@@ -1,0 +1,20 @@
+defaults:
+  - select
+  - _self_
+experiment: sonic_online_v1_20261010
+expected_iterations: [500, 1000, 1500, 2000, 2500, 2999]
+expected_episodes: 40
+candidates:
+  - iteration: 500
+    metrics: /home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_sonic_online_v1_500/metrics.json
+  - iteration: 1000
+    metrics: /home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_sonic_online_v1_1000/metrics.json
+  - iteration: 1500
+    metrics: /home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_sonic_online_v1_1500/metrics.json
+  - iteration: 2000
+    metrics: /home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_sonic_online_v1_2000/metrics.json
+  - iteration: 2500
+    metrics: /home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_sonic_online_v1_2500/metrics.json
+  - iteration: 2999
+    metrics: /home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_sonic_online_v1_2999/metrics.json
+output: /home/pku/frankenmotion/work/tracker_rl_20261009/sonic_online_v1_native_selection.json

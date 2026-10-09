@@ -1,0 +1,22 @@
+defaults:
+  - select
+  - _self_
+experiment: scratch_drift_seed2_20261010
+expected_iterations: [500, 1000, 2000, 3000, 4000, 5000, 5999]
+expected_episodes: 40
+candidates:
+  - iteration: 500
+    metrics: /home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_drift_seed2_500/metrics.json
+  - iteration: 1000
+    metrics: /home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_drift_seed2_1000/metrics.json
+  - iteration: 2000
+    metrics: /home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_drift_seed2_2000/metrics.json
+  - iteration: 3000
+    metrics: /home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_drift_seed2_3000/metrics.json
+  - iteration: 4000
+    metrics: /home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_drift_seed2_4000/metrics.json
+  - iteration: 5000
+    metrics: /home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_drift_seed2_5000/metrics.json
+  - iteration: 5999
+    metrics: /home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_drift_seed2_5999/metrics.json
+output: /home/pku/frankenmotion/work/tracker_rl_20261009/scratch_drift_seed2_native_selection.json
