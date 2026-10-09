@@ -112,3 +112,10 @@ Environment separation
 - Official generator remains its separate original environment. The bundled
   fixed corpus allows reproduction of tracker training without regenerating it.
   Reproducing text-to-motion generation additionally needs the official assets.
+
+Observation reconstruction audit
+   RL_PYTHON scripts/audit_tracker_observations.py artifacts=ARTIFACTS \
+     export=EXPORT_DIRECTORY output=NEW_AUDIT_JSON
+   Reconstructs raw current/future observations in native MuJoCo from actual
+   GPU rollout states at several times across all validation clips. This checks
+   observation semantics, not equivalence of the two physics integrators.

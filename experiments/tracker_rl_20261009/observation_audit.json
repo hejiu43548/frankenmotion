@@ -1,0 +1,35 @@
+{
+  "passed": true,
+  "environments": 40,
+  "tolerance": 1e-05,
+  "results": [
+    {
+      "step": 0,
+      "maximum": 4.1781459003686905e-07,
+      "current_maximum": 3.312050012027612e-07,
+      "preview_maximum": 4.1781459003686905e-07,
+      "worst_dimension": 218
+    },
+    {
+      "step": 25,
+      "maximum": 4.5262277126312256e-07,
+      "current_maximum": 4.5262277126312256e-07,
+      "preview_maximum": 4.2654573917388916e-07,
+      "worst_dimension": 59
+    },
+    {
+      "step": 50,
+      "maximum": 4.44706529378891e-07,
+      "current_maximum": 3.9534643292427063e-07,
+      "preview_maximum": 4.44706529378891e-07,
+      "worst_dimension": 353
+    },
+    {
+      "step": 100,
+      "maximum": 4.172325134277344e-07,
+      "current_maximum": 4.172325134277344e-07,
+      "preview_maximum": 4.172325134277344e-07,
+      "worst_dimension": 352
+    }
+  ]
+}

@@ -1,0 +1,12 @@
+artifacts: /home/pku/frankenmotion/work/tracker_rl_20261009/artifacts
+export: ???
+output: ???
+split: val
+seed: 61001
+device: cuda:0
+steps: [0, 25, 50, 100]
+tolerance: 0.00001
+hydra:
+  run:
+    dir: .
+  output_subdir: null
