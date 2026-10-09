@@ -8,6 +8,7 @@ import dataclasses
 import json
 import os
 from pathlib import Path
+import tempfile
 import unittest
 
 if os.environ.get("TRACKER_RL_ARTIFACTS"):
@@ -145,6 +146,55 @@ class TrackerIntegrationTests(unittest.TestCase):
         np.testing.assert_allclose(
             (data.xpos[body_id] - before) / 1e-6, velocity[3:], atol=1e-6
         )
+
+
+@unittest.skipUnless(
+    os.environ.get("TRACKER_RL_ARTIFACTS") and os.environ.get("TRACKER_RL_EXPORT"),
+    "Prepared corpus and schema-v2 export required",
+)
+class NativeTrackerContractTests(unittest.TestCase):
+    @classmethod
+    def setUpClass(cls):
+        from shared_motion.rl.cpu import NativeTracker
+
+        cls.tracker_class = NativeTracker
+        exported = Path(os.environ["TRACKER_RL_EXPORT"])
+        cls.configuration = {
+            "policy": str(exported / "policy.pt"),
+            "contract": str(exported / "contract.json"),
+            "scene": str(exported / "scene.mjb"),
+            "policy_kind": "rl",
+            "seed": 61001,
+            "perturbation": 0,
+        }
+        cls.tracker = NativeTracker(cls.configuration)
+        cls.reference = dict(
+            np.load(
+                Path(os.environ["TRACKER_RL_ARTIFACTS"])
+                / "motion/val/arm_circle_42001.npz"
+            )
+        )
+
+    def test_mismatched_policy_contract_is_rejected(self):
+        contract = json.loads(Path(self.configuration["contract"]).read_text())
+        contract["policy_sha256"] = "0" * 64
+        with tempfile.TemporaryDirectory() as directory:
+            path = Path(directory) / "contract.json"
+            path.write_text(json.dumps(contract))
+            with self.assertRaisesRegex(ValueError, "policy checksum"):
+                self.tracker_class(dict(self.configuration, contract=str(path)))
+
+    def test_wrong_reference_frequency_is_rejected(self):
+        with self.assertRaisesRegex(ValueError, "50Hz"):
+            self.tracker.run_reference(
+                dict(self.reference, fps=20), {"task": "arm_circle", "seed": 42001}
+            )
+
+    def test_incomplete_body_velocity_reference_is_rejected(self):
+        reference = dict(self.reference)
+        reference["body_lin_vel_w"] = reference["body_lin_vel_w"][:, :-1]
+        with self.assertRaisesRegex(ValueError, "body_lin_vel_w"):
+            self.tracker.run_reference(reference, {"task": "arm_circle", "seed": 42001})
 
 
 if __name__ == "__main__":

@@ -1,0 +1,17 @@
+{
+  "caveat": "Both diagnostics overlapped the 400-environment residual training job; indicative throughput, not isolated hardware benchmarks.",
+  "runs": [
+    {
+      "num_envs": 400,
+      "updates": 80,
+      "median_last40_update_seconds": 0.87,
+      "transitions_per_second": 11034.48275862069
+    },
+    {
+      "num_envs": 2000,
+      "updates": 80,
+      "median_last40_update_seconds": 1.1,
+      "transitions_per_second": 43636.36363636363
+    }
+  ]
+}

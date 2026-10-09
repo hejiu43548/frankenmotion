@@ -24,7 +24,15 @@ def main(configuration: DictConfig):
     reference = dict(np.load(configuration.reference))
     if float(reference.get("fps", 0)) != 50:
         raise ValueError("Expected the prepared 50Hz reference")
-    required = ["qpos", "joint_pos", "joint_vel", "body_pos_w", "body_quat_w"]
+    required = [
+        "qpos",
+        "joint_pos",
+        "joint_vel",
+        "body_pos_w",
+        "body_quat_w",
+        "body_lin_vel_w",
+        "body_ang_vel_w",
+    ]
     if any(name not in reference for name in required):
         raise ValueError(
             "Run prepare_tracker_motion first; a raw GMR trajectory is not sufficient"

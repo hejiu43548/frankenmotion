@@ -73,6 +73,8 @@ def main(configuration: DictConfig):
         )
 
     contract = {
+        "schema_version": 2,
+        "reference_convention": "50Hz; body origins in world coordinates; unit wxyz quaternions; joint/body ordering below",
         "reference_residual": bool(use_residual),
         "joint_names": list(robot.joint_names),
         "body_names": list(robot.body_names),
@@ -97,8 +99,12 @@ def main(configuration: DictConfig):
         ).hexdigest(),
         "jit_parity_max_abs": float((actual - expected).abs().max()),
     }
-    (output / "contract.json").write_text(json.dumps(contract, indent=2))
     mujoco.mj_saveModel(environment.sim.mj_model, str(output / "scene.mjb"))
+    for name, filename in [("policy", "policy.pt"), ("scene", "scene.mjb")]:
+        contract[name + "_sha256"] = hashlib.sha256(
+            (output / filename).read_bytes()
+        ).hexdigest()
+    (output / "contract.json").write_text(json.dumps(contract, indent=2))
     np.savez_compressed(
         output / "parity_fixture.npz",
         observation=observations["actor"].cpu().numpy(),

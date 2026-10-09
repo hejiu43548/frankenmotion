@@ -23,10 +23,20 @@ class NativeTracker:
         torch.set_num_threads(1)
         self.configuration = configuration
         self.contract = json.loads(Path(configuration["contract"]).read_text())
+        self.legacy = configuration["policy_kind"] == "shared20"
+        for name in ["scene", "policy"]:
+            expected = self.contract.get(name + "_sha256")
+            if expected and not (self.legacy and name == "policy"):
+                if (
+                    hashlib.sha256(Path(configuration[name]).read_bytes()).hexdigest()
+                    != expected
+                ):
+                    raise ValueError(
+                        f"Exported {name} checksum differs from its contract"
+                    )
         self.model = mujoco.MjModel.from_binary_path(configuration["scene"])
         self.data = mujoco.MjData(self.model)
         self.policy = torch.jit.load(configuration["policy"], map_location="cpu").eval()
-        self.legacy = configuration["policy_kind"] == "shared20"
         self.joint_addresses = self.contract["joint_qpos_addresses"]
         self.velocity_addresses = self.contract["joint_velocity_addresses"]
         self.anchor = self.model.body("robot/" + self.contract["anchor_body_name"]).id
@@ -223,6 +233,30 @@ class NativeTracker:
 
     def run_reference(self, reference, record):
         """Track one prepared reference, also usable outside dataset evaluation."""
+        frames = len(reference["qpos"])
+        body_count = len(self.contract["body_names"])
+        expected_shapes = {
+            "qpos": (frames, self.model.nq),
+            "joint_pos": (frames, len(self.joint_addresses)),
+            "joint_vel": (frames, len(self.joint_addresses)),
+            "body_pos_w": (frames, body_count, 3),
+            "body_quat_w": (frames, body_count, 4),
+            "body_lin_vel_w": (frames, body_count, 3),
+            "body_ang_vel_w": (frames, body_count, 3),
+        }
+        if frames < 2 or float(reference.get("fps", 0)) != 50:
+            raise ValueError("Expected at least two frames at 50Hz")
+        for name, shape in expected_shapes.items():
+            if name not in reference or reference[name].shape != shape:
+                raise ValueError(
+                    f"Invalid prepared reference shape for {name}: expected {shape}"
+                )
+            if not np.isfinite(reference[name]).all():
+                raise ValueError(f"Nonfinite prepared reference: {name}")
+        if not np.allclose(
+            np.linalg.norm(reference["body_quat_w"], axis=-1), 1, atol=1e-3
+        ):
+            raise ValueError("Reference body quaternions must be unit wxyz quaternions")
         self.reset_reference(reference, record)
         previous_action = np.zeros(29)
         states = []
@@ -233,7 +267,10 @@ class NativeTracker:
         for frame_index in range(horizon):
             observation = self.observe(reference, frame_index, previous_action)
             with torch.inference_mode():
-                action = self.policy(torch.from_numpy(observation)[None])[0].numpy()
+                prediction = self.policy(torch.from_numpy(observation)[None])
+                if prediction.shape != (1, 29):
+                    raise ValueError("Tracker policy must emit [1,29] motor actions")
+                action = prediction[0].numpy()
             if not np.isfinite(action).all():
                 raise RuntimeError("Nonfinite policy output")
             errors.append(
