@@ -265,3 +265,23 @@ SONIC续训也核对官方权重哈希及物理接口哈希，40到80环境的�
 候选长期训练、官方基座在线RL与第二随机种子、验证选择后的冻结测试集评测、
 相同扰动条件下的新旧比较、最终权重及新旧视频、完整交付清单和最终报告仍待完成。
 资源密集计算结束后需恢复此前获授权暂停的 llama 服务。
+
+Native validation update: scratch 5000 / official-base PPO 1000
+The scratch 5000 checkpoint reaches 82.5% completion and strict success,
+with failure-penalized torso-anchor error 0.11854 m and joint error 0.25261 rad.
+Versus the old tracker, strict success is +7.5 percentage points (task-cluster
+95% interval [0,20]); joint error remains worse by 0.04029 rad.
+SONIC+PPO 1000 reaches 100% completion and 92.5% strict success, anchor
+error 0.07299 m and joint error 0.15171 rad. Versus its unchanged official
+base, strict success is +17.5 points (interval [2.5,35]) and anchor error
+is lower by 0.04656 m (interval [-0.08002,-0.01836]). Joint error increases
+by 0.01588 rad (interval [-0.03901,0.04728]). These are exploratory selected
+validation comparisons, not independent test evidence or seed replication.
+No rewards or evaluation thresholds were changed for this improvement.
+
+Follow integration now accepts explicit qpos/qvel through both Hydra and
+the existing simulate entry using schema 2 contracts. All 14 tests passed;
+80 baseline validation episodes were exactly reproduced. Provided-state
+rollouts match between the native API, compatibility entry, and Hydra CLI.
+Final post-step state is separately saved for continuation. This establishes
+interface parity, not general recovery from arbitrary poses. See audit JSON.

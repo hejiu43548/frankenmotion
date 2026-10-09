@@ -1,0 +1,90 @@
+[
+  {
+    "experiment": "scratch_drift_v1",
+    "iteration": 4000,
+    "result_marker": "scratch_drift_result.json",
+    "sonic": false,
+    "checkpoint_sha256": "3b5df5b78d8c81e31502c01b19c770a6109cc512451bce0e66731dc25c887351",
+    "policy_sha256": "8ade31cc06d3e379f1ea49e0efef96eb54a4bb7c5cfdc03f29046b2b80d298f0",
+    "metrics_sha256": "4e4743e756ee9c8bf9cffb2ad4515c3729a28d3184a72c3b1066e01ad2bf40db",
+    "metrics": {
+      "complete": 0.875,
+      "tracking_success": 0.8,
+      "root_m": 0.08303651760049859,
+      "body_m": 0.09412482779151311,
+      "joint_rad": 0.18284346240481403,
+      "root_m_failure_penalized": 0.11841028163823172,
+      "body_m_failure_penalized": 0.12841945949414849,
+      "joint_rad_failure_penalized": 0.24589076528690107,
+      "action_delta_squared": 0.019881793869615562
+    },
+    "evaluation": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_drift_v1_4000",
+    "export": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_drift_v1_4000"
+  },
+  {
+    "experiment": "sonic_online_v1",
+    "iteration": 500,
+    "result_marker": "sonic_online_result.json",
+    "sonic": true,
+    "checkpoint_sha256": "a36c65ab1cb872cf8661f683f2b46b464db035fc8f438faff637b352e6d9f9e8",
+    "policy_sha256": "d0e65b4fbbb71605801b1d4dd84a73069447b426e960a545d3de7b9be8b6f01e",
+    "metrics_sha256": "3c13b22320bd69dbc7c43e4d10cf0321c763bd18db5b3ee7a7625e059fa0d2d9",
+    "metrics": {
+      "complete": 1.0,
+      "tracking_success": 0.85,
+      "root_m": 0.09425451650206254,
+      "body_m": 0.09732606247083246,
+      "joint_rad": 0.15421399442712508,
+      "root_m_failure_penalized": 0.09425451650206251,
+      "body_m_failure_penalized": 0.09732606247083246,
+      "joint_rad_failure_penalized": 0.15421399442712508,
+      "action_delta_squared": 0.010278529632318508
+    },
+    "evaluation": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_sonic_online_v1_500",
+    "export": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_sonic_online_v1_500"
+  },
+  {
+    "experiment": "sonic_online_v1",
+    "iteration": 1000,
+    "result_marker": "sonic_online_result.json",
+    "sonic": true,
+    "checkpoint_sha256": "acef2369c5909a34cba9d56c7aa499cb97f4bbb81b8d38514475b49e99f58582",
+    "policy_sha256": "64181d2b0db9cc37b2ddc7441d5fe44339c37a542f730a588c1764eaf6b5cb30",
+    "metrics_sha256": "adb6f9d91e91ad58b835909a7e6a03065f347286ef3c08e52e53d8fc30d31434",
+    "metrics": {
+      "complete": 1.0,
+      "tracking_success": 0.925,
+      "root_m": 0.07298768632799268,
+      "body_m": 0.07675226585616189,
+      "joint_rad": 0.15170547486823127,
+      "root_m_failure_penalized": 0.07298768632799267,
+      "body_m_failure_penalized": 0.0767522658561619,
+      "joint_rad_failure_penalized": 0.1517054748682313,
+      "action_delta_squared": 0.009635276246403023
+    },
+    "evaluation": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_sonic_online_v1_1000",
+    "export": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_sonic_online_v1_1000"
+  },
+  {
+    "experiment": "scratch_drift_v1",
+    "iteration": 5000,
+    "result_marker": "scratch_drift_result.json",
+    "sonic": false,
+    "checkpoint_sha256": "6616dc3591ede75a7f3d8f32267bbdb79522402e4d498d835a05d257d1c9e20d",
+    "policy_sha256": "12bf00f521d401093e26c7beb714e00d19518686877391335a93488e3b48c5cd",
+    "metrics_sha256": "5c414ae786314f6db09951f62840327396ea0cbd0e52df288f459fcb32cab20a",
+    "metrics": {
+      "complete": 0.825,
+      "tracking_success": 0.825,
+      "root_m": 0.07546684508766266,
+      "body_m": 0.08598267815827619,
+      "joint_rad": 0.17420505671801428,
+      "root_m_failure_penalized": 0.11854255128097684,
+      "body_m_failure_penalized": 0.1271663807079762,
+      "joint_rad_failure_penalized": 0.25261102264106416,
+      "action_delta_squared": 0.01859443854338612
+    },
+    "evaluation": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_drift_v1_5000",
+    "export": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_drift_v1_5000"
+  }
+]
