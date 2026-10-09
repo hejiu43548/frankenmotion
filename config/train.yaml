@@ -17,6 +17,7 @@ runtime:
   device: cuda
   threads: 4
   resume: null
+  resume_migration: null
   stop_after: null
   checkpoint_every: 1000
   log_every: 20

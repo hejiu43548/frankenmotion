@@ -255,6 +255,39 @@ def audit_scans(report_path, skeleton, device):
     return dict(rollouts=count, max_quantity_error=maximum_error)
 
 
+def validate_source_migration(checkpoint, protocol, checkpoint_path, migration_path):
+    """Only a separately validated implementation change may cross source hashes."""
+    migration = json.loads(Path(migration_path).read_text())
+    evidence_path = Path(migration["evidence"])
+    if file_sha256(evidence_path) != migration["evidence_sha256"]:
+        raise ValueError("Migration evidence hash mismatch")
+    evidence = json.loads(evidence_path.read_text())
+    if (
+        not evidence.get("passed")
+        or evidence["old_sources"] != checkpoint["protocol"]["sources"]
+        or evidence["new_sources"] != protocol["sources"]
+        or migration["parent_checkpoint_sha256"] != file_sha256(checkpoint_path)
+        or migration["parent_step"] != checkpoint["step"]
+    ):
+        raise ValueError("Unverified source migration or checkpoint lineage")
+    expected = dict(checkpoint["protocol"], sources=protocol["sources"])
+    if expected != protocol:
+        raise ValueError(
+            "Source migration cannot change data, recipe, architecture or schedule"
+        )
+    parent_report = Path(migration["parent_report"])
+    if (
+        json.loads((parent_report / "protocol.json").read_text())
+        != checkpoint["protocol"]
+    ):
+        raise ValueError("Parent protocol differs from immutable checkpoint")
+    return dict(
+        migration,
+        new_sources=protocol["sources"],
+        old_sources=checkpoint["protocol"]["sources"],
+    )
+
+
 def _run_locked(config):
     resolved = OmegaConf.to_container(config, resolve=True, throw_on_missing=True)
     phase = "root" if config.stage.index == 1 else "task"
@@ -359,6 +392,7 @@ def _run_locked(config):
     stale = 0
     step = 0
     best_step = None
+    execution_lineage = None
     if config.runtime.resume:
         checkpoint = torch.load(
             config.runtime.resume, map_location="cpu", weights_only=False
@@ -366,10 +400,22 @@ def _run_locked(config):
         checkpoint_compatible(
             checkpoint, model, list(config.data.tasks), config.stage.index
         )
+        execution_lineage = checkpoint.get("execution_lineage")
         if checkpoint["protocol"] != protocol:
-            raise ValueError(
-                "Resume protocol differs: data, sources, controller, loss and stage settings must match"
+            migration_path = config.runtime.get("resume_migration")
+            if not migration_path:
+                raise ValueError(
+                    "Resume protocol differs: data, sources, controller, loss and stage settings must match"
+                )
+            if (report_path / "protocol.json").exists():
+                raise ValueError("Source migration requires a fresh report directory")
+            execution_lineage = validate_source_migration(
+                checkpoint, protocol, config.runtime.resume, migration_path
             )
+            save_json(report_path / "protocol.json", protocol)
+            save_json(report_path / "execution_lineage.json", execution_lineage)
+            OmegaConf.save(config, report_path / "config.yaml", resolve=True)
+            save_json(report_path / "configuration.json", resolved)
         model.load_adapter(checkpoint["adapter"])
         optimizer.load_state_dict(checkpoint["optimizer"])
         sampler.load_state_dict(checkpoint["sampler"])
@@ -403,6 +449,7 @@ def _run_locked(config):
             stale=stale,
             best_step=best_step,
             protocol=protocol,
+            execution_lineage=execution_lineage,
             controller_kind=model.kind,
             task_policy=TURN_POLICY,
             stage=config.stage.index,

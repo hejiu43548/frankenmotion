@@ -140,3 +140,11 @@ Betail已修复的现有11类清单在 `/mnt/sda2/frankenmotion/outputs_amass/ma
 `config/import_root.yaml` 和 `scripts/import_root.py` 可导入此前已重训的、与任务无关的root速度/转速分支：验证原始权重及代码哈希、全部参数和多个扩散时刻的前向逐位一致性，生成 `verified_external_root_v1` 导入文件。它仅可作为with_root阶段二的root初始化，保留原11类衍生root训练历史，不标成20类训练过的root，不接受旧TaskControl权重。
 
 `config/pipeline.yaml` 和 `scripts/run_stages.py` 顺序运行阶段二和三，独占pipeline锁；阶段二完成审计后从best.json选择权重并核验哈希，失败即停止衔接。GPU必须可用，不能用CUDA不可用的状态冒充启动成功。恢复前核查旧supervisor与子进程均已退出，再使用 `resume=true`；无检查点的部分初始化目录拒绝自动覆盖。监控通知进度保存在独立 `monitor_state.json`，不要改写supervisor持有的pipeline_state.json。
+
+## 批量指标与性能迁移
+
+命令指标在一个batch上只执行一次FK，再按任务与真实长度分组计算指标；新增9类只计算请求的指标。FK前将padding替换为末尾真实帧以避免零旋转的未定义梯度，指标仍严格裁到每条样本的真实长度。模型、任务语义、损失权重和采样规则不变。
+
+普通恢复仍要求源码哈希完全一致。经数值和梯度验证的实现优化，可在**新报告目录**显式指定 `runtime.resume=<父检查点>` 与 `runtime.resume_migration=<迁移JSON>`。迁移JSON包含 `parent_checkpoint_sha256`、`parent_step`、`parent_report`、`evidence`、`evidence_sha256`；证据必须包含 `passed=true` 和准确的 `old_sources` / `new_sources`。入口仅允许protocol中的sources发生变化，拒绝修改数据、recipe、模型或计划。旧protocol、评估及权重保持原样，新检查点保存execution_lineage；优化器、随机状态、采样历史、全局步数和best记录全部继承。继承扫描JSON中的motion_archive继续指向保留的父存档。
+
+切换必须等约定评估和权重写完、确认旧supervisor及训练进程退出并释放锁后执行；不要热改正在运行的源码快照。`tests/test_batched_measure.py` 检查变长/NaN padding下的指标及梯度一致性，以及迁移越权、篡改拒绝。
