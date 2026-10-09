@@ -1,6 +1,7 @@
 """Small deterministic fixtures, never production motion or pretrained weights."""
 
 import json
+import hashlib
 from pathlib import Path
 
 import numpy as np
@@ -8,6 +9,7 @@ import torch
 from torch import nn
 
 from shared_motion.training.catalog import TASK_NAMES
+from shared_motion.training.turn import TURN_REVISION
 
 
 class ToyEncoder(nn.Module):
@@ -80,7 +82,7 @@ def make_data(root):
             motion[:, 0] = 0.9
             motion[:, 4:136] = np.tile([1, 0, 0, 0, 1, 0], 22)
             motion[:, 1] = 0.01
-            motion[:, 3] = 0.001
+            motion[:, 3] = -0.5 / 119 if name == "turn" else 0.001
             path = root / f"{split}_{name}.npz"
             np.savez(
                 path,
@@ -100,5 +102,37 @@ def make_data(root):
                     target_frames=120,
                 )
             )
+        turn = next(row for row in rows if row["task"] == "turn")
+        turn.update(
+            turn_source_revision=TURN_REVISION,
+            ready_for_training=True,
+            pad_frames=0,
+            real_frames=120,
+            crop_start_frame_20fps=0,
+            crop_end_frame_20fps=120,
+            admission_reasons=[],
+            direction="right",
+            caption="A synthetic right walking turn",
+            quantity=0.5,
+            cache_sha256=hashlib.sha256(Path(turn["cache"]).read_bytes()).hexdigest(),
+        )
+        with np.load(turn["cache"]) as archive:
+            negative = {name: archive[name].copy() for name in archive.files}
+        negative["quantity"] = np.float32(-0.5)
+        negative["motion"][:, 3] = -negative["motion"][:, 3]
+        negative_path = root / f"{split}_turn_left.npz"
+        np.savez(negative_path, **negative)
+        rows.append(
+            dict(
+                turn,
+                direction="left",
+                caption="A synthetic left walking turn",
+                quantity=-0.5,
+                key="turn_left",
+                family=f"synthetic_{split}_turn_left",
+                cache=str(negative_path),
+                cache_sha256=hashlib.sha256(negative_path.read_bytes()).hexdigest(),
+            )
+        )
         (root / f"{split}.json").write_text(json.dumps(rows))
     return root

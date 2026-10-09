@@ -1,0 +1,16 @@
+# Immutable provenance of the previously reviewed walking-turn source revision.
+revision: walking_turn_v2
+admission_sha256:
+  rules.json: 2f01d032ad2e569fe08e1f0b5de52f03a929bbf530e403b136862b4f5418b935
+  turn_train.json: 29bdde9f54ba9f6ae868654299757fc8c93fb6f4c20cfd0c174e9237e5a12fe0
+  turn_val.json: bcaf742e196d5e7fda7407c5cbb5842cc44a612bc9e23638fad19ac5201ac086
+  turn_test.json: 6c90d3c209bd1f6a1f18e3316d0e7e5339273b9cca6d893b9b9e4ad92bc6e8cc
+  provenance.json: 4c84148dc88b5c6a177c2da90a93f8dd50bbf7948d974154a552521cb5605339
+  verification.json: 9b814be36c02db9cd3b4e486029f17f859f5ca44f1b54e746425105161833446
+prepared_sha256:
+  train.json: 1476c07c4f5b343039571e8ba0ed9528065f91f732e2a5319001abb45e6741fa
+  val.json: 6c3f77c7c361bfe68475a81f4e11ce7a82fc6f437b26dc87b4e2d179c2518ac9
+  turn_policy.json: b541d57e5a68e45e6d5390d328024a1673b2ee1a0603b10a0da987ccb1975a63
+  pca.npz: 3a2bc3f9c9d884b1b3c9ff8fc16a127cf802cc5dde5983d90d1ccbce08b4711d
+  data_audit.json: 4b44465e5b0bcd82ef83c415c2d021b0c497fd6cce3af3a00ae3cba589ae96fa
+  source_sha256.json: 28e728fe35a4ebfce386bdeb5e8e6d4044cf52a1a2f592fe19375bd666edbb78

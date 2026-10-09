@@ -1,3 +1,5 @@
+# Turn rows must be exported by scripts/repair_turn_data.py (walking_turn_v2).
+# Keep all20 tasks; the existing repaired11-task manifest is not a substitute.
 train_manifest: ???
 val_manifest: ???
 skeleton: ???

@@ -160,7 +160,9 @@ class StagedTrainingTest(unittest.TestCase):
     def test_manifest_missing_tasks_and_leakage(self):
         records = json.loads((self.data / "train.json").read_text())
         incomplete = self.data / "missing.json"
-        incomplete.write_text(json.dumps(records[:-1]))
+        incomplete.write_text(
+            json.dumps([row for row in records if row["task"] != "arm_circle"])
+        )
         with self.assertRaisesRegex(ValueError, "Missing train task"):
             MotionDataset(incomplete, "train", TASK_NAMES)
         dataset = MotionDataset(self.data / "train.json", "train", TASK_NAMES)
@@ -312,6 +314,7 @@ class StagedTrainingTest(unittest.TestCase):
         paths = list((REPOSITORY / "shared_motion/training").glob("*.py")) + [
             REPOSITORY / "scripts/train.py",
             REPOSITORY / "scripts/infer.py",
+            REPOSITORY / "scripts/repair_turn_data.py",
         ]
         for path in paths:
             module = ast.parse(path.read_text())

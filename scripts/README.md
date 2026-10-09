@@ -1,6 +1,6 @@
 # Hydra 三阶段训练
 
-新增训练默认覆盖 main 的20类任务；没有并入独立 turn/spin 试验。旧 `shared_motion.adapter.infer` 和已发布 shared20 权重保持兼容。上游配置继续在 `configs/`；本次阶段训练配置按要求放在 **`config/`**。
+新增训练默认覆盖 main 的20类任务；turn 使用已确认的 walking-turn v2 数据语义。没有并入独立 turn/spin 训练器或权重。旧 `shared_motion.adapter.infer` 和已发布 shared20 权重保持兼容。上游配置继续在 `configs/`；本次阶段训练配置按要求放在 **`config/`**。
 
 使用 Python3.9–3.12、仓库 `environment.yml` 的 PyTorch/Hydra/OmegaConf 依赖。下面命令从仓库根目录运行，`PYTHON` 可指定解释器。三个 shell 入口会先切到仓库根目录。
 
@@ -27,7 +27,7 @@ DATA_ARGS=(
 - `local_mask`: T×408；`tx`: 512；`quantity`: 此片段真实命令量的标量。
 - 3≤T≤120；特征与官方模型采用相同归一化/PCA约定。只在 batch 内补齐到120帧并按长度屏蔽。
 
-相对 cache 路径按 `data.path_root` 解释；不随 Hydra 输出目录改变。train/val 按 `family` 隔离。入口检查配置中的每个任务都有数据；已有11类缓存不能直接宣称是20类。main 旧的 prompt-only manifest 不足以执行阶段一/二，需要先准备真实 motion 与 quantity；此改动不编造或复制缺失任务。部分动作指标仍沿用原固定时间窗口，数据准备应保证该任务事件落在有效窗口中。
+相对 cache 路径按 `data.path_root` 解释；不随 Hydra 输出目录改变。train/val 按 `family` 隔离。入口检查配置中的每个任务都有数据；已有11类缓存不能直接宣称是20类。main 旧的 prompt-only manifest 不足以执行阶段一/二，需要先准备真实 motion 与 quantity；此改动不编造或复制缺失任务。部分动作指标仍沿用原固定时间窗口，数据准备应保证该任务事件落在有效窗口中。turn 必须来自下面的 v2 修复清单；旧的 caption 匹配/序列开头裁剪清单会被拒绝。
 
 ## 两种控制器
 
@@ -36,7 +36,7 @@ DATA_ARGS=(
 | `controller=with_root`（默认） | 独立 RootControl＋TaskControl。阶段一训练root，二/三冻结root，只训task。Root结构保持593536参数；任务embedding从11扩展20，Task597888参数。没有新增时间相位或205维输出头。 |
 | `controller=without_root` | main的55维 SharedCommands，默认width1024、8664269参数，保留时间特征和205维输出残差。**无独立root分支，不是删除root输入字段**。阶段一用root_profile训练统一网络；阶段二/三继续训练同一个网络，root能力不会被单独冻结。 |
 
-两种配置都从冻结官方底座开始；新控制器的最终残差层归零初始化。只有 walk/back_walk/turn 的生成请求显式携带root值；新增9类沿用main条件定义。turn仍是main的零速度、正向0.45–1.5rad语义，本次没有导入独立walking-turn/spin的任务定义或权重。
+两种配置都从冻结官方底座开始；新控制器的最终残差层归零初始化。只有 walk/back_walk/turn 的生成请求显式携带root值；新增9类沿用main条件定义。turn 是允许位移的行进转弯：固定 native 步速0.7448640466m/s（仅由591条训练事件计算的中位数），角度范围[-3.5,3.5]rad，正右负左，按有效帧累加解包后的角度。SharedCommands 的转角特征也使用此范围归一化。spin 未加入任务列表；旧发布包的历史推理入口保持原协议。
 
 ## 三阶段启动
 
@@ -73,7 +73,7 @@ bash scripts/train_stage3.sh stage=stage3_main experiment=shared20 run_date=2026
 | 选择 | 计算 |
 |---|---|
 | `loss=root` | 根特征加权重建＋.1speed MSE＋.1yaw MSE。 |
-| `loss=supervised` | 加权重建＋.2命令Huber/span＋.1speed MSE＋.1yaw MSE；turn用周期误差。 |
+| `loss=supervised` | 加权重建＋.2命令Huber/span＋.1speed MSE＋.1yaw MSE；turn用有符号累积角误差，不将左右大转弯按2π视为等价。 |
 | `loss=free_generation` | 命令Huber/span＋2相对姿态＋.002速度过量＋.01支撑脚速度。固定初始参考只接root条件；SharedCommands参考是阶段三开始时冻结的统一网络，关闭task输入，不声称有独立冻结root模块。 |
 | `loss=main_replay` | 命令MSE＋2相对姿态＋.2root位置匹配＋.05速度匹配＋300控制器输出保持；完整冻结初始模型作为teacher，20类命令replay，额外静止/站姿以及clap/arm_circle真实动作约束。 |
 | `loss=command_only` | 仅命令Huber，供损失消融。 |
@@ -91,13 +91,13 @@ bash scripts/train_stage3.sh loss=free_generation loss.command_kind=mse loss.sup
 
 `experiments/实验名_日期/stageN/` 保存 `config.yaml`、配置快照、protocol/source哈希、train/val数据索引、验证JSON、状态及report.txt。大权重和原始rollout在 `${FRANKENMOTION_ARTIFACTS}/实验名_日期/stageN/`；不向Git提交大缓存或视频。
 
-阶段二/三固定每类10个等间距命令点（20类共200条），每类验证文本、种子跨检查点固定，50步纯噪声DDIM、不注入GT根轨迹。保存动作会重算FK/命令量；选择宏平均归一化MAE最佳权重。阶段一按完整验证loss选best。低MAE不表示自然性或接触可靠。
+阶段二/三固定每类10个等间距命令点（20类共200条），验证文本、种子跨检查点固定，50步纯噪声DDIM、不注入GT根轨迹。turn 的左右各5点分别选固定同方向验证文本，同时记录实际步速和步速MAE；阶段三turn命令幅度在[0.35,3.5]采样，方向匹配训练文本对应的事件。保存动作会重算FK/命令量；选择宏平均归一化MAE最佳权重。阶段一按完整验证loss选best。低MAE不表示自然性或接触可靠。
 
 ```bash
 bash scripts/train_stage2.sh experiment=charlie20 run_date=20261009 "${DATA_ARGS[@]}" runtime.resume=/absolute/path/stage2/latest.pt
 ```
 
-恢复要求配置、损失、数据索引哈希和源码一致，保存并恢复优化器、采样器和Python/NumPy/Torch/CUDA随机状态。`runtime.stop_after=N` 可作短程恢复检查；它不会假称训练完成。已有运行目录默认拒绝覆盖。恢复到同一report目录保留扫描历史。
+恢复要求配置、损失、数据索引/缓存/骨架哈希、源码和任务语义一致，保存并恢复优化器、采样器和Python/NumPy/Torch/CUDA随机状态。`runtime.stop_after=N` 可作短程恢复检查；它不会假称训练完成。没有walking_turn_v2语义标记的旧阶段权重不能作为新阶段初始化或恢复权重；不得通过修改旧protocol伪造兼容。已有运行目录默认拒绝覆盖。恢复到同一report目录保留扫描历史。
 
 新阶段检查点不冒充旧的 `frankenmotion_shared20_v1` 发布包。使用配套入口生成：
 
@@ -108,3 +108,26 @@ bash scripts/train_stage2.sh experiment=charlie20 run_date=20261009 "${DATA_ARGS
 同一个底座文件/配置需与训练一致，文本NPZ只读取local/local_mask/tx，不读取真实motion或quantity。旧发布权重仍使用原 `python -m shared_motion.adapter.infer`。
 
 测试：`python -m unittest discover -s tests -v`。测试包括全部控制器/损失组合、20类指标、缺失任务/数据泄漏拒绝、初始化与冻结、无GT生成、两种架构阶段二/三逐位恢复，以及AST命名规则。测试用合成夹具不属于训练数据或实验效果证据。
+
+
+## 修复 turn 数据来源
+
+上一版三阶段入口保留了旧的零步速turn定义；现已接回经确认的 **walking_turn_v2** 事件数据，和原地spin区分。来源为完整Frankenstein标注中的walking/strolling源序列，按原train/val/test family划分，从完整时间轴检测转弯事件，不再仅取序列开头六秒或依赖caption包含“turn”。原规则/选择器在实验源提交 `94d6e18` 的 `work/turn_admission/`；源文件哈希登记在 `config/data/turn_sources/walking_turn_v2.yaml`。
+
+准入要求：2–6秒真实裁剪、walking时间标注覆盖≥85%、无冲突动作；整体路径≥0.5m；**转弯事件内**路径≥0.3m、位移≥0.2m；至少70%转弯帧在移动且80%角度变化发生于移动中；身体和路径同向改变，角度差≤0.6rad；进出速度、前向行走、双踝相对运动、根高度范围均通过规则。完整阈值随导出结果保存到 `admission_rules.json`。
+
+已准备的v2缓存保留原全局AMASS文本，按事件绝对时间重裁局部身体/轨迹文本，复用原PCA；全局caption仍可能描述更宽时间段。选择结果591 train（294左/297右）、84 val、92 test。test不进入训练或步速统计；规则准入不等于逐条人工确认。
+
+```bash
+"$PYTHON" scripts/repair_turn_data.py \
+  base_train_manifest=/path/to/base/train.json \
+  base_val_manifest=/path/to/base/val.json \
+  admission_dir=/mnt/sda2/frankenmotion/outputs_amass/walking_turn_admission_20261009_v2 \
+  prepared_dir=/mnt/sda2/frankenmotion/outputs_amass/walking_turn_retrain_20261009/data_v2 \
+  skeleton=/path/to/verified/skeleton.npz \
+  output=/path/to/new/repaired_manifests
+```
+
+此入口验证已审查的selection、缓存/PCA、源动作哈希，逐个比对真实事件裁剪并重算有符号转角；只替换turn，所有非turn记录（包括新增9类）原样保留。生成的train.json/val.json可直接传给三阶段的 `data.train_manifest` / `data.val_manifest`；`data.path_root` 必须保留base清单使用的cache路径根。缓存复用，不复制大动作文件；旧数据和结果不覆盖。
+
+Betail已修复的现有11类清单在 `/mnt/sda2/frankenmotion/outputs_amass/main_walking_turn_data_20261009`，总计9181 train/1146 val。它不冒充完整20类数据；准备好其余9类后，对完整base清单运行同一替换入口即可。正式默认仍为20类，缺失任务会报错。

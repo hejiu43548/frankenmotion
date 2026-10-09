@@ -11,6 +11,7 @@ from torch.nn import functional as functional
 
 from .catalog import TASK_NAMES
 from .model import file_sha256
+from .turn import require_turn_revision, validate_turn_record
 
 
 class MotionDataset:
@@ -26,6 +27,8 @@ class MotionDataset:
                 continue
             if record.get("task") not in tasks:
                 continue
+            if record["task"] == "turn":
+                require_turn_revision(record)
             if not record.get("family"):
                 raise ValueError(
                     "Every training record needs a source family for split isolation"
@@ -79,6 +82,13 @@ class MotionDataset:
                 for name in ["motion", "local", "tx", "quantity"]
             ):
                 raise ValueError(f"Nonfinite cache: {record['cache']}")
+            if record["task"] == "turn":
+                validate_turn_record(
+                    record,
+                    self.cache_hashes[record["cache"]],
+                    frames,
+                    float(item["quantity"]),
+                )
             item["task"] = torch.tensor(task_index)
             self.items.append(item)
             self.groups.setdefault(task_index, []).append(record_index)

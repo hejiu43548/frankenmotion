@@ -1,0 +1,16 @@
+defaults:
+  - /data/turn_sources@source: walking_turn_v2
+  - _self_
+base_train_manifest: ???
+base_val_manifest: ???
+# Directory containing rules.json and admitted turn_train/val/test.json.
+admission_dir: ???
+# Previously regenerated motion/text caches, with the original PCA (data_v2).
+prepared_dir: ???
+skeleton: ???
+output: ???
+hydra:
+  job:
+    chdir: false
+  run:
+    dir: outputs_training/turn_repair_logs/${now:%Y%m%d_%H%M%S}

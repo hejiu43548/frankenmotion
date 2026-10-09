@@ -2,7 +2,6 @@
 
 import fcntl
 import json
-import hashlib
 import os
 from pathlib import Path
 import random
@@ -17,6 +16,7 @@ from .catalog import COMMAND_RANGES, TASK_NAMES, command_error, measure
 from .data import MotionDataset, StatefulSampler, assert_disjoint
 from .geometry import Skeleton
 from .model import build_model, file_sha256
+from .turn import TURN_POLICY, TURN_NATIVE_SPEED, scan_indices, sample_commands
 
 
 def save_json(path, value):
@@ -71,6 +71,8 @@ def checkpoint_compatible(checkpoint, model, tasks, stage=None):
         raise ValueError(
             "Checkpoint controller/backbone/task catalog does not match config"
         )
+    if checkpoint.get("task_policy") != model.task_policy:
+        raise ValueError("Checkpoint task semantics differ: walking_turn_v2 required")
     if checkpoint["backbone_config"] != model.backbone_configuration:
         raise ValueError(
             "Checkpoint backbone architecture/schedule config does not match"
@@ -142,23 +144,13 @@ def scan(model, skeleton, dataset, config, artifact_path, step):
     measured_values = []
     for task_name in config.data.tasks:
         task_index = TASK_NAMES.index(task_name)
-        indices = dataset.groups[task_index]
-        selected = min(
-            indices,
-            key=lambda index: hashlib.sha256(
-                str(
-                    dataset.rows[index].get("key", dataset.rows[index]["cache"])
-                ).encode()
-            ).hexdigest(),
-        )
-        batch = dataset.batch(
-            [selected] * config.validation.points, config.runtime.device
-        )
         commands = torch.linspace(
             *COMMAND_RANGES[task_index],
             config.validation.points,
             device=config.runtime.device,
         )
+        selected = scan_indices(dataset, task_index, commands, TASK_NAMES.index("turn"))
+        batch = dataset.batch(selected, config.runtime.device)
         motion = model.sample(
             batch,
             commands,
@@ -178,11 +170,26 @@ def scan(model, skeleton, dataset, config, artifact_path, step):
                 measured=measured.tolist(),
                 mae=float(errors.mean()),
                 normalized_mae=float(errors.mean()) / (bounds[1] - bounds[0]),
-                key=dataset.rows[selected].get("key"),
-                family=dataset.rows[selected]["family"],
+                keys=[dataset.rows[index]["key"] for index in selected],
+                families=[dataset.rows[index]["family"] for index in selected],
                 noise_seed=config.validation.noise_seed + task_index,
             )
         )
+        if task_name == "turn":
+            speeds = torch.stack(
+                [
+                    motion[index, : int(batch["lengths"][index]) - 1, 1:3]
+                    .norm(dim=-1)
+                    .mean()
+                    * 20
+                    for index in range(len(motion))
+                ]
+            )
+            tasks[-1].update(
+                requested_speed_m_s=TURN_NATIVE_SPEED,
+                measured_speed_m_s=speeds.tolist(),
+                speed_mae_m_s=float((speeds - TURN_NATIVE_SPEED).abs().mean()),
+            )
         motions.append(motion.cpu().numpy())
         lengths.append(batch["lengths"].cpu().numpy())
         task_indices.append(batch["task"].cpu().numpy())
@@ -311,6 +318,7 @@ def _run_locked(config):
     sampler = StatefulSampler(training, config.seed, config.stage.index == 1)
     protocol = dict(
         controller_kind=model.kind,
+        task_policy=TURN_POLICY,
         stage=config.stage.index,
         backbone_sha256=model.backbone_sha256,
         backbone_config=OmegaConf.to_container(config.backbone, resolve=True),
@@ -379,6 +387,7 @@ def _run_locked(config):
             best_step=best_step,
             protocol=protocol,
             controller_kind=model.kind,
+            task_policy=TURN_POLICY,
             stage=config.stage.index,
             backbone_sha256=model.backbone_sha256,
             backbone_config=OmegaConf.to_container(config.backbone, resolve=True),
@@ -451,10 +460,9 @@ def _run_locked(config):
             for indices in batches:
                 batch = training.batch(indices, config.runtime.device)
                 if recipe.mode == "free":
-                    bounds = batch["motion"].new_tensor(COMMAND_RANGES)[batch["task"]]
-                    commands = bounds[:, 0] + torch.rand(
-                        len(indices), device=config.runtime.device
-                    ) * (bounds[:, 1] - bounds[:, 0])
+                    commands = sample_commands(
+                        batch, COMMAND_RANGES, TASK_NAMES.index("turn")
+                    )
                     seeds = [
                         config.seed
                         + 510000000

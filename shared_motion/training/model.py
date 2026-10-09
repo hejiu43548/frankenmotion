@@ -13,6 +13,7 @@ from shared_motion.adapter.inputs import encode_control, make
 from shared_motion.adapter.model import command
 from shared_motion.adapter.network import SharedCommands, UnifiedControl
 from .adapters import RootControl, TaskControl
+from .turn import TURN_NATIVE_SPEED, TURN_POLICY, TURN_RANGE
 from .catalog import COMMAND_RANGES, HUMAN_HEIGHT, ROOT_TASKS, TASK_NAMES
 
 
@@ -110,6 +111,7 @@ class ControlledDiffusion(nn.Module):
     def __init__(self, bundle, controller_config, phase):
         super().__init__()
         self.phase = phase
+        self.task_policy = dict(TURN_POLICY)
         self.kind = (
             "charlie_root"
             if str(controller_config._target_).endswith("create_charlie_root")
@@ -185,6 +187,7 @@ class ControlledDiffusion(nn.Module):
         supported = torch.isin(batch["task"], batch["task"].new_tensor(ROOT_TASKS))
         valid = batch["mask"] & supported[:, None]
         turning = batch["task"] == TASK_NAMES.index("turn")
+        values[turning, :, 0] = TURN_NATIVE_SPEED
         values[turning, :, 1] = -commands[turning, None] / (
             (batch["lengths"][turning, None] - 1) / 20
         )
@@ -204,6 +207,13 @@ class ControlledDiffusion(nn.Module):
                     length,
                     commands.device,
                 )
+                if TASK_NAMES[task_index] == "turn":
+                    features[:, :, 16] = (
+                        2
+                        * (commands[sample_index] - TURN_RANGE[0])
+                        / (TURN_RANGE[1] - TURN_RANGE[0])
+                        - 1
+                    )
                 features[:, :, 18:22] = root_control[
                     sample_index : sample_index + 1, :length
                 ]

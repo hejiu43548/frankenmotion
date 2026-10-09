@@ -39,4 +39,4 @@ python -m unittest discover -s tests -v
 
 ## 可配置三阶段训练
 
-新增入口见 [scripts/README.md](scripts/README.md)，Hydra配置在 `config/`。支持独立RootControl＋20类TaskControl与main的55维SharedCommands两种架构，损失可独立切换。默认从配置指定的官方backbone权重初始化，依次执行root条件预训练、真实动作监督、自由生成微调。原20类发布包与tracker入口保留；独立turn/spin实验未并入。阶段训练需完整20类的motion/text缓存清单，缺失任务会直接报错。
+新增入口见 [scripts/README.md](scripts/README.md)，Hydra配置在 `config/`。支持独立RootControl＋20类TaskControl与main的55维SharedCommands两种架构，损失可独立切换。默认从配置指定的官方backbone权重初始化，依次执行root条件预训练、真实动作监督、自由生成微调。原20类发布包与tracker入口保留；独立turn/spin训练器和权重未并入；turn数据已修复为经过准入的行进转弯事件。阶段训练需完整20类的motion/text缓存清单，缺失任务会直接报错。

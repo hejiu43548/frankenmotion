@@ -12,7 +12,7 @@ class LossRecipe:
         self,
         mode,
         command_kind="huber",
-        circular_turn=True,
+        circular_turn=False,
         reconstruction=1.0,
         root_feature_weight=5.0,
         command_weight=0.2,
@@ -39,6 +39,8 @@ class LossRecipe:
             or not 2 <= ddim_steps <= 100
         ):
             raise ValueError("Invalid reference mode or DDIM steps")
+        if circular_turn:
+            raise ValueError("walking_turn_v2 requires signed unwrapped turn error")
         self.options = dict(locals())
         self.options.pop("self")
         for name, value in self.options.items():

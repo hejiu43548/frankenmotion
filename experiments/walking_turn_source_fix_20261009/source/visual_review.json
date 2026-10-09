@@ -1,0 +1,28 @@
+{
+  "method": "Inspected top-down root paths/body-heading arrows plus chronological rendered skeleton frames sampled at 2 fps for all 16 train-only QA clips.",
+  "reviewed_ids": [
+    "fdae9f7728cb4778",
+    "bafe79b081fd35ca",
+    "8cf5962af22d7009",
+    "a8f4327b51bd11f3",
+    "ceac92c44cb2e77c",
+    "15f5aa2d01e1c652",
+    "f9bb07e64e79714c",
+    "9dfd15d87063a319",
+    "e47855bfdf68ccd8",
+    "78edefc64a47be8c",
+    "09b022dc8e5af625",
+    "5e3fff0b4deb3d3b",
+    "0f870c176a4e821b",
+    "00a751e6d1bc0f43",
+    "46bf54ad45999ef9",
+    "d569e8243e0f6b03"
+  ],
+  "observations": [
+    "Samples show leg alternation with translated curved trajectories, including left/right bends and U-turns.",
+    "Small-angle threshold-edge cases include gentle bends and body/path angle mismatch within the stated tolerance; admission is not an exhaustive manual quality certificate.",
+    "No clip was relabeled as spin based solely on walking context. The stationary-turn rejection uses motion inside the rotation event."
+  ],
+  "all_767_manually_reviewed": false,
+  "scope": "Source selection only. No model training, no old dataset replacement."
+}

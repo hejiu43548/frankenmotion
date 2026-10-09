@@ -1,0 +1,17 @@
+{
+  "revision": "walking_turn_v2",
+  "task": "walking while turning; translation required",
+  "angle": "signed unwrapped radians; positive right, negative left",
+  "range_rad": [
+    -3.5,
+    3.5
+  ],
+  "native_speed_m_s": 0.7448640465736389,
+  "speed_source": "median over591 admitted TRAIN event crops only",
+  "training_magnitude_range_rad": [
+    0.35,
+    3.5
+  ],
+  "training_direction": "match source turn direction",
+  "spin_added": false
+}
