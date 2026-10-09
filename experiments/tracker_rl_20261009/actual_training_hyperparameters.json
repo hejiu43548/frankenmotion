@@ -1,0 +1,484 @@
+{
+  "runs": [
+    {
+      "experiment": "scratch_drift_v1_20261010",
+      "protocol_sha256": "5d1472ac73f3d4b3248431988ebfd76b634e9d568c9246dc09ebd30aaf5496db",
+      "configuration": {
+        "experiment": "scratch_drift_v1",
+        "run_date": 20261010,
+        "artifacts": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts",
+        "report_root": "experiments",
+        "seed": 51001,
+        "num_envs": 2000,
+        "iterations": 6000,
+        "save_interval": 500,
+        "preview_offsets": [
+          5,
+          10,
+          20
+        ],
+        "start_probability": 0.35,
+        "training_drift_threshold": 0.5,
+        "resume": null,
+        "device": "cuda:0"
+      },
+      "runner": {
+        "seed": 42,
+        "num_steps_per_env": 24,
+        "max_iterations": 30000,
+        "obs_groups": {
+          "actor": [
+            "actor"
+          ],
+          "critic": [
+            "critic"
+          ]
+        },
+        "save_interval": 500,
+        "experiment_name": "g1_tracking",
+        "run_name": "",
+        "logger": "tensorboard",
+        "wandb_project": "mjlab",
+        "wandb_tags": [],
+        "resume": false,
+        "load_run": ".*",
+        "load_checkpoint": "model_.*.pt",
+        "clip_actions": null,
+        "class_name": "OnPolicyRunner",
+        "actor": {
+          "hidden_dims": [
+            512,
+            256,
+            128
+          ],
+          "activation": "elu",
+          "obs_normalization": true,
+          "init_noise_std": 1.0,
+          "noise_std_type": "scalar",
+          "stochastic": true,
+          "cnn_cfg": null,
+          "class_name": "MLPModel"
+        },
+        "critic": {
+          "hidden_dims": [
+            512,
+            256,
+            128
+          ],
+          "activation": "elu",
+          "obs_normalization": true,
+          "init_noise_std": 1.0,
+          "noise_std_type": "scalar",
+          "stochastic": false,
+          "cnn_cfg": null,
+          "class_name": "MLPModel"
+        },
+        "algorithm": {
+          "num_learning_epochs": 5,
+          "num_mini_batches": 4,
+          "learning_rate": 0.001,
+          "schedule": "adaptive",
+          "gamma": 0.99,
+          "lam": 0.95,
+          "entropy_coef": 0.005,
+          "desired_kl": 0.01,
+          "max_grad_norm": 1.0,
+          "value_loss_coef": 1.0,
+          "use_clipped_value_loss": true,
+          "clip_param": 0.2,
+          "normalize_advantage_per_mini_batch": false,
+          "optimizer": "adam",
+          "share_cnn_encoders": false,
+          "class_name": "PPO"
+        }
+      },
+      "rewards": {
+        "motion_global_root_pos": {
+          "func": "mjlab.tasks.tracking.mdp.rewards.motion_global_anchor_position_error_exp",
+          "params": {
+            "command_name": "motion",
+            "std": 0.3
+          },
+          "weight": 0.5
+        },
+        "motion_global_root_ori": {
+          "func": "mjlab.tasks.tracking.mdp.rewards.motion_global_anchor_orientation_error_exp",
+          "params": {
+            "command_name": "motion",
+            "std": 0.4
+          },
+          "weight": 0.5
+        },
+        "motion_body_pos": {
+          "func": "mjlab.tasks.tracking.mdp.rewards.motion_relative_body_position_error_exp",
+          "params": {
+            "command_name": "motion",
+            "std": 0.3
+          },
+          "weight": 1.0
+        },
+        "motion_body_ori": {
+          "func": "mjlab.tasks.tracking.mdp.rewards.motion_relative_body_orientation_error_exp",
+          "params": {
+            "command_name": "motion",
+            "std": 0.4
+          },
+          "weight": 1.0
+        },
+        "motion_body_lin_vel": {
+          "func": "mjlab.tasks.tracking.mdp.rewards.motion_global_body_linear_velocity_error_exp",
+          "params": {
+            "command_name": "motion",
+            "std": 1.0
+          },
+          "weight": 1.0
+        },
+        "motion_body_ang_vel": {
+          "func": "mjlab.tasks.tracking.mdp.rewards.motion_global_body_angular_velocity_error_exp",
+          "params": {
+            "command_name": "motion",
+            "std": 3.14
+          },
+          "weight": 1.0
+        },
+        "action_rate_l2": {
+          "func": "mjlab.envs.mdp.rewards.action_rate_l2",
+          "params": {},
+          "weight": -0.1
+        },
+        "joint_limit": {
+          "func": "mjlab.envs.mdp.rewards.joint_pos_limits",
+          "params": {
+            "asset_cfg": {
+              "name": "robot",
+              "joint_names": [
+                ".*"
+              ],
+              "joint_ids": "slice(None, None, None)",
+              "body_names": null,
+              "body_ids": "slice(None, None, None)",
+              "geom_names": null,
+              "geom_ids": "slice(None, None, None)",
+              "site_names": null,
+              "site_ids": "slice(None, None, None)",
+              "actuator_names": null,
+              "actuator_ids": "slice(None, None, None)",
+              "preserve_order": false
+            }
+          },
+          "weight": -10.0
+        },
+        "self_collisions": {
+          "func": "mjlab.tasks.tracking.mdp.rewards.self_collision_cost",
+          "params": {
+            "sensor_name": "self_collision"
+          },
+          "weight": -10.0
+        }
+      },
+      "terminations": {
+        "time_out": {
+          "func": "mjlab.envs.mdp.terminations.time_out",
+          "params": {},
+          "time_out": true
+        },
+        "anchor_pos": {
+          "func": "mjlab.tasks.tracking.mdp.terminations.bad_anchor_pos_z_only",
+          "params": {
+            "command_name": "motion",
+            "threshold": 0.25
+          },
+          "time_out": false
+        },
+        "anchor_ori": {
+          "func": "mjlab.tasks.tracking.mdp.terminations.bad_anchor_ori",
+          "params": {
+            "asset_cfg": {
+              "name": "robot",
+              "joint_names": null,
+              "joint_ids": "slice(None, None, None)",
+              "body_names": null,
+              "body_ids": "slice(None, None, None)",
+              "geom_names": null,
+              "geom_ids": "slice(None, None, None)",
+              "site_names": null,
+              "site_ids": "slice(None, None, None)",
+              "actuator_names": null,
+              "actuator_ids": "slice(None, None, None)",
+              "preserve_order": false
+            },
+            "command_name": "motion",
+            "threshold": 0.8
+          },
+          "time_out": false
+        },
+        "ee_body_pos": {
+          "func": "mjlab.tasks.tracking.mdp.terminations.bad_motion_body_pos_z_only",
+          "params": {
+            "command_name": "motion",
+            "threshold": 0.25,
+            "body_names": [
+              "left_ankle_roll_link",
+              "right_ankle_roll_link",
+              "left_wrist_yaw_link",
+              "right_wrist_yaw_link"
+            ]
+          },
+          "time_out": false
+        },
+        "reference_end": {
+          "func": "shared_motion.rl.motion.reference_finished",
+          "params": {},
+          "time_out": false
+        },
+        "global_drift": {
+          "func": "mjlab.tasks.tracking.mdp.terminations.bad_anchor_pos",
+          "params": {
+            "command_name": "motion",
+            "threshold": 0.5
+          },
+          "time_out": false
+        }
+      }
+    },
+    {
+      "experiment": "sonic_online_v1_20261010",
+      "protocol_sha256": "4a373d898eda40cc22b435be5534b28b08baff697d4085777ecd9ce1d6a1cd30",
+      "configuration": {
+        "experiment": "sonic_online_v1",
+        "run_date": 20261010,
+        "artifacts": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts",
+        "report_root": "experiments",
+        "seed": 51001,
+        "num_envs": 2000,
+        "iterations": 3000,
+        "save_interval": 500,
+        "preview_offsets": [
+          5,
+          10,
+          20
+        ],
+        "start_probability": 0.35,
+        "training_drift_threshold": null,
+        "resume": null,
+        "device": "cuda:0",
+        "sonic_directory": "/home/pku/frankenmotion/work/g1_sonic_official/gear_sonic_deploy/policy/release",
+        "sonic_contract": "configs/release/inference_contract.json",
+        "residual_noise_std": 0.1
+      },
+      "runner": {
+        "seed": 42,
+        "num_steps_per_env": 24,
+        "max_iterations": 30000,
+        "obs_groups": {
+          "actor": [
+            "actor"
+          ],
+          "critic": [
+            "critic"
+          ]
+        },
+        "save_interval": 500,
+        "experiment_name": "g1_tracking",
+        "run_name": "",
+        "logger": "tensorboard",
+        "wandb_project": "mjlab",
+        "wandb_tags": [],
+        "resume": false,
+        "load_run": ".*",
+        "load_checkpoint": "model_.*.pt",
+        "clip_actions": null,
+        "class_name": "OnPolicyRunner",
+        "actor": {
+          "hidden_dims": [
+            512,
+            256,
+            128
+          ],
+          "activation": "elu",
+          "obs_normalization": true,
+          "init_noise_std": 0.1,
+          "noise_std_type": "scalar",
+          "stochastic": true,
+          "cnn_cfg": null,
+          "class_name": "MLPModel"
+        },
+        "critic": {
+          "hidden_dims": [
+            512,
+            256,
+            128
+          ],
+          "activation": "elu",
+          "obs_normalization": true,
+          "init_noise_std": 1.0,
+          "noise_std_type": "scalar",
+          "stochastic": false,
+          "cnn_cfg": null,
+          "class_name": "MLPModel"
+        },
+        "algorithm": {
+          "num_learning_epochs": 5,
+          "num_mini_batches": 4,
+          "learning_rate": 0.001,
+          "schedule": "adaptive",
+          "gamma": 0.99,
+          "lam": 0.95,
+          "entropy_coef": 0.005,
+          "desired_kl": 0.01,
+          "max_grad_norm": 1.0,
+          "value_loss_coef": 1.0,
+          "use_clipped_value_loss": true,
+          "clip_param": 0.2,
+          "normalize_advantage_per_mini_batch": false,
+          "optimizer": "adam",
+          "share_cnn_encoders": false,
+          "class_name": "PPO"
+        }
+      },
+      "rewards": {
+        "motion_global_root_pos": {
+          "func": "mjlab.tasks.tracking.mdp.rewards.motion_global_anchor_position_error_exp",
+          "params": {
+            "command_name": "motion",
+            "std": 0.3
+          },
+          "weight": 0.5
+        },
+        "motion_global_root_ori": {
+          "func": "mjlab.tasks.tracking.mdp.rewards.motion_global_anchor_orientation_error_exp",
+          "params": {
+            "command_name": "motion",
+            "std": 0.4
+          },
+          "weight": 0.5
+        },
+        "motion_body_pos": {
+          "func": "mjlab.tasks.tracking.mdp.rewards.motion_relative_body_position_error_exp",
+          "params": {
+            "command_name": "motion",
+            "std": 0.3
+          },
+          "weight": 1.0
+        },
+        "motion_body_ori": {
+          "func": "mjlab.tasks.tracking.mdp.rewards.motion_relative_body_orientation_error_exp",
+          "params": {
+            "command_name": "motion",
+            "std": 0.4
+          },
+          "weight": 1.0
+        },
+        "motion_body_lin_vel": {
+          "func": "mjlab.tasks.tracking.mdp.rewards.motion_global_body_linear_velocity_error_exp",
+          "params": {
+            "command_name": "motion",
+            "std": 1.0
+          },
+          "weight": 1.0
+        },
+        "motion_body_ang_vel": {
+          "func": "mjlab.tasks.tracking.mdp.rewards.motion_global_body_angular_velocity_error_exp",
+          "params": {
+            "command_name": "motion",
+            "std": 3.14
+          },
+          "weight": 1.0
+        },
+        "action_rate_l2": {
+          "func": "mjlab.envs.mdp.rewards.action_rate_l2",
+          "params": {},
+          "weight": -0.1
+        },
+        "joint_limit": {
+          "func": "mjlab.envs.mdp.rewards.joint_pos_limits",
+          "params": {
+            "asset_cfg": {
+              "name": "robot",
+              "joint_names": [
+                ".*"
+              ],
+              "joint_ids": "slice(None, None, None)",
+              "body_names": null,
+              "body_ids": "slice(None, None, None)",
+              "geom_names": null,
+              "geom_ids": "slice(None, None, None)",
+              "site_names": null,
+              "site_ids": "slice(None, None, None)",
+              "actuator_names": null,
+              "actuator_ids": "slice(None, None, None)",
+              "preserve_order": false
+            }
+          },
+          "weight": -10.0
+        },
+        "self_collisions": {
+          "func": "mjlab.tasks.tracking.mdp.rewards.self_collision_cost",
+          "params": {
+            "sensor_name": "self_collision"
+          },
+          "weight": -10.0
+        }
+      },
+      "terminations": {
+        "time_out": {
+          "func": "mjlab.envs.mdp.terminations.time_out",
+          "params": {},
+          "time_out": true
+        },
+        "anchor_pos": {
+          "func": "mjlab.tasks.tracking.mdp.terminations.bad_anchor_pos_z_only",
+          "params": {
+            "command_name": "motion",
+            "threshold": 0.25
+          },
+          "time_out": false
+        },
+        "anchor_ori": {
+          "func": "mjlab.tasks.tracking.mdp.terminations.bad_anchor_ori",
+          "params": {
+            "asset_cfg": {
+              "name": "robot",
+              "joint_names": null,
+              "joint_ids": "slice(None, None, None)",
+              "body_names": null,
+              "body_ids": "slice(None, None, None)",
+              "geom_names": null,
+              "geom_ids": "slice(None, None, None)",
+              "site_names": null,
+              "site_ids": "slice(None, None, None)",
+              "actuator_names": null,
+              "actuator_ids": "slice(None, None, None)",
+              "preserve_order": false
+            },
+            "command_name": "motion",
+            "threshold": 0.8
+          },
+          "time_out": false
+        },
+        "ee_body_pos": {
+          "func": "mjlab.tasks.tracking.mdp.terminations.bad_motion_body_pos_z_only",
+          "params": {
+            "command_name": "motion",
+            "threshold": 0.25,
+            "body_names": [
+              "left_ankle_roll_link",
+              "right_ankle_roll_link",
+              "left_wrist_yaw_link",
+              "right_wrist_yaw_link"
+            ]
+          },
+          "time_out": false
+        },
+        "reference_end": {
+          "func": "shared_motion.rl.motion.reference_finished",
+          "params": {},
+          "time_out": false
+        }
+      }
+    }
+  ],
+  "runner_seed_note": "Saved upstream runner defaults retain seed42/max_iterations30000; the project seeds torch/numpy/random and environment using configuration.seed and calls learning with configuration.iterations. Installed runner initialization and algorithm construction do not reseed from runner.seed. Actual initial parameter audit is still required for seed replication.",
+  "runner_init_sha256": "ad265412885503fa3c25c4e6414bb4d4ac6918ab8fc985e337dae4e2af6c22d4",
+  "algorithm_construction_sha256": "980839487c99683e7d21419b8af1b5fada0bd941c2c8ead5eb926151e7362b9a"
+}
