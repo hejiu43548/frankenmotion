@@ -68,6 +68,68 @@
       "parameter_coverage": {
         "requested_range": [
           0.4,
+          1.0
+        ],
+        "train_range": [
+          0.5049563646316528,
+          0.9346804618835449
+        ],
+        "train_inside_range": 34,
+        "empty_train_bins": 2,
+        "bins": 10,
+        "val_inside_range": 6,
+        "bin_counts": {
+          "train": {
+            "samples": 34,
+            "inside_range": 34,
+            "bin_counts": [
+              0,
+              2,
+              1,
+              4,
+              5,
+              10,
+              6,
+              3,
+              3,
+              0
+            ],
+            "empty_bins": [
+              0,
+              9
+            ]
+          },
+          "val": {
+            "samples": 6,
+            "inside_range": 6,
+            "bin_counts": [
+              0,
+              1,
+              0,
+              1,
+              0,
+              4,
+              0,
+              0,
+              0,
+              0
+            ],
+            "empty_bins": [
+              0,
+              2,
+              4,
+              6,
+              7,
+              8,
+              9
+            ]
+          }
+        }
+      },
+      "user_evidence": "问题不大，单任务跑一下side step",
+      "parameter_coverage_previous_range": {
+        "requested_range": [
+          0.4,
           1.2
         ],
         "train_range": [
@@ -79,7 +141,7 @@
         "bins": 10,
         "val_inside_range": 6
       },
-      "user_evidence": "问题不大，单任务跑一下side step"
+      "command_range_user_evidence": "收缩一下任务定义里这个任务的命令范围上限吧，到1即可"
     }
   },
   "current_data": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_sidestep_20261010_v2",

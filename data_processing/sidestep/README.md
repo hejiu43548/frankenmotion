@@ -45,7 +45,16 @@ retiming is performed. Reference-left caches use task=-1 and their index uses
 current sidestep task selector. Native left and mirrored right always share a
 source family and split. Current training manifests contain rightward mirrors.
 
-## Coverage and verification
+## Current command range (2026-10-10)
+
+The user reduced the upper command bound to1.0m; the lower bound stays0.4m.
+The current definition is `RANGES[TASKS.index("sidestep")] = (0.4,1.0)` in
+shared_motion/adapter/schema.py, inherited by the20-task training catalog.
+All34train/6val quantities still lie inside the new range. This edits the task
+definition only; no retraining or reevaluation was performed. Prior experiments,
+source-coverage reports and frozen code snapshots retain their original ranges.
+
+## Coverage and verification (original0.4–1.2m audit)
 
 Training directed displacement0.504956–0.934680m, all34 inside0.4–1.2m.
 Ten equal-width bin counts: `[0,3,4,10,8,6,3,0,0,0]`; four bins remain empty.
