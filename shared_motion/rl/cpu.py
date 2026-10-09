@@ -25,7 +25,11 @@ class NativeTracker:
         self.contract = json.loads(Path(configuration["contract"]).read_text())
         # Both use the same historical 2350D observation ABI. The official
         # SONIC export contains only its own encoder/decoder, with no old head.
-        self.legacy = configuration["policy_kind"] in ["shared20", "sonic_mode0"]
+        self.legacy = configuration["policy_kind"] in [
+            "shared20",
+            "sonic_mode0",
+            "sonic_rl",
+        ]
         for name in ["scene", "policy"]:
             expected = self.contract.get(name + "_sha256")
             if expected and not (

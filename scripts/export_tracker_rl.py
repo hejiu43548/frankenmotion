@@ -14,11 +14,10 @@ import torch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from mjlab.rl import MjlabOnPolicyRunner
-from mjlab.rl import RslRlVecEnvWrapper
 from shared_motion.rl.environment import build_configuration
 from shared_motion.rl.environment import TrackingEnvironment
 from shared_motion.rl.residual import ReferenceResidualPolicy
-from shared_motion.rl.residual import ReferenceResidualWrapper
+from shared_motion.rl.wrappers import make_wrapper
 
 
 @hydra.main(
@@ -36,8 +35,8 @@ def main(configuration: DictConfig):
         cfg=environment_configuration, device=configuration.device
     )
     use_residual = configuration.get("reference_residual", False)
-    wrapper_class = ReferenceResidualWrapper if use_residual else RslRlVecEnvWrapper
-    wrapper = wrapper_class(environment, clip_actions=agent_configuration.clip_actions)
+    use_sonic = bool(configuration.get("sonic_directory", None))
+    wrapper = make_wrapper(environment, configuration, agent_configuration.clip_actions)
     runner = MjlabOnPolicyRunner(
         wrapper, dataclasses.asdict(agent_configuration), device=configuration.device
     )
@@ -47,10 +46,27 @@ def main(configuration: DictConfig):
     with torch.inference_mode():
         predicted = policy(observations)
         expected = (
-            wrapper.to_environment_actions(predicted) if use_residual else predicted
+            wrapper.to_environment_actions(predicted)
+            if use_residual or use_sonic
+            else predicted
         ).cpu()
     action = environment.action_manager.get_term("joint_pos")
-    if use_residual:
+    if use_sonic:
+        from shared_motion.rl.sonic import SonicResidualPolicy
+
+        runner.export_policy_to_jit(str(output), "policy_core.pt")
+        core = torch.jit.load(str(output / "policy_core.pt")).eval()
+        combined = SonicResidualPolicy(
+            wrapper.base.cpu(), core, agent_configuration.clip_actions
+        ).eval()
+        torch.jit.save(torch.jit.script(combined), str(output / "policy.pt"))
+        (output / "policy.json").write_text(
+            json.dumps({"preview_offsets": [5, 10, 20, 35, 50], "reset_required": True})
+        )
+        (output / "sonic_contract.json").write_bytes(
+            Path(configuration.sonic_contract).read_bytes()
+        )
+    elif use_residual:
         runner.export_policy_to_jit(str(output), "policy_core.pt")
         core = torch.jit.load(str(output / "policy_core.pt")).eval()
         combined = ReferenceResidualPolicy(
@@ -60,8 +76,19 @@ def main(configuration: DictConfig):
     else:
         runner.export_policy_to_jit(str(output), "policy.pt")
     exported = torch.jit.load(str(output / "policy.pt")).eval()
+    export_input = observations["actor"].cpu()
+    if use_sonic:
+        export_input = torch.cat(
+            [
+                wrapper.encoder_inputs.cpu(),
+                observations["actor"][:, :361].cpu(),
+                torch.zeros(1, 134),
+                wrapper.sonic_states.cpu(),
+            ],
+            dim=1,
+        )
     with torch.inference_mode():
-        actual = exported(observations["actor"].cpu())
+        actual = exported(export_input)
     torch.testing.assert_close(actual, expected, atol=1e-5, rtol=1e-5)
     robot = environment.scene["robot"]
     action = environment.action_manager.get_term("joint_pos")
@@ -76,6 +103,8 @@ def main(configuration: DictConfig):
         "schema_version": 2,
         "reference_convention": "50Hz; body origins in world coordinates; unit wxyz quaternions; joint/body ordering below",
         "reference_residual": bool(use_residual),
+        "sonic_residual": use_sonic,
+        "policy_kind": "sonic_rl" if use_sonic else "rl",
         "joint_names": list(robot.joint_names),
         "body_names": list(robot.body_names),
         "tracked_body_names": list(command.cfg.body_names),
@@ -89,10 +118,13 @@ def main(configuration: DictConfig):
         "action_offset": vector(action.offset),
         "action_target_names": list(action.target_names),
         "control_timestep": environment.step_dt,
-        "preview_offsets": list(configuration.preview_offsets),
+        "preview_offsets": (
+            [5, 10, 20, 35, 50] if use_sonic else list(configuration.preview_offsets)
+        ),
+        "core_preview_offsets": list(configuration.preview_offsets),
         "linear_velocity_sensor": "robot/imu_lin_vel",
         "angular_velocity_sensor": "robot/imu_ang_vel",
-        "input_dimensions": observations["actor"].shape[-1],
+        "input_dimensions": export_input.shape[-1],
         "output_dimensions": 29,
         "checkpoint_sha256": hashlib.sha256(
             Path(configuration.checkpoint).read_bytes()
@@ -107,7 +139,7 @@ def main(configuration: DictConfig):
     (output / "contract.json").write_text(json.dumps(contract, indent=2))
     np.savez_compressed(
         output / "parity_fixture.npz",
-        observation=observations["actor"].cpu().numpy(),
+        observation=export_input.numpy(),
         action=expected.numpy(),
     )
     print("EXPORT_COMPLETE", contract["jit_parity_max_abs"], flush=True)

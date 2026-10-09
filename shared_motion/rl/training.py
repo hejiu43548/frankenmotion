@@ -16,10 +16,9 @@ from omegaconf import OmegaConf
 import torch
 
 from mjlab.rl import MjlabOnPolicyRunner
-from mjlab.rl import RslRlVecEnvWrapper
 from shared_motion.rl.environment import build_configuration
 from shared_motion.rl.environment import TrackingEnvironment
-from shared_motion.rl.residual import ReferenceResidualWrapper
+from shared_motion.rl.wrappers import make_wrapper
 
 
 def digest(path):
@@ -63,6 +62,7 @@ def train(configuration: DictConfig, entry_source: Path):
         shutil.copy2(source, snapshot / source.name)
         source_hashes[str(source.relative_to(root))] = digest(source)
     environment_configuration, agent_configuration = build_configuration(configuration)
+    use_sonic = bool(configuration.get("sonic_directory", None))
     protocol = {
         "configuration": OmegaConf.to_container(configuration, resolve=True),
         "sources": source_hashes,
@@ -91,24 +91,58 @@ def train(configuration: DictConfig, entry_source: Path):
             ]
         },
     }
+    if use_sonic:
+        protocol["initialization"] = (
+            "random residual MLP with zero output layer around frozen official SONIC; online PPO only, no teacher loss or historical weights"
+        )
+        protocol["official_onnx_sha256"] = {
+            kind: digest(Path(configuration.sonic_directory) / f"model_{kind}.onnx")
+            for kind in ["encoder", "decoder"]
+        }
     (report / "protocol.json").write_text(
         json.dumps(protocol, indent=2, default=describe)
     )
     environment = TrackingEnvironment(
         cfg=environment_configuration, device=configuration.device
     )
-    wrapper_type = (
-        ReferenceResidualWrapper
-        if configuration.get("reference_residual", False)
-        else RslRlVecEnvWrapper
-    )
-    wrapper = wrapper_type(environment, clip_actions=agent_configuration.clip_actions)
+    wrapper = make_wrapper(environment, configuration, agent_configuration.clip_actions)
     runner = MjlabOnPolicyRunner(
         wrapper,
         dataclasses.asdict(agent_configuration),
         str(checkpoints),
         device=configuration.device,
     )
+    if use_sonic:
+        with torch.no_grad():
+            runner.alg.actor.mlp[-1].weight.zero_()
+            runner.alg.actor.mlp[-1].bias.zero_()
+        base_parameters = list(wrapper.base.parameters())
+        optimized_ids = {
+            id(parameter)
+            for group in runner.alg.optimizer.param_groups
+            for parameter in group["params"]
+        }
+        if any(
+            parameter.requires_grad or id(parameter) in optimized_ids
+            for parameter in base_parameters
+        ):
+            raise RuntimeError("Frozen official SONIC parameters entered optimization")
+        (report / "base_optimization_audit.json").write_text(
+            json.dumps(
+                {
+                    "algorithm": type(runner.alg).__module__
+                    + "."
+                    + type(runner.alg).__qualname__,
+                    "frozen_base_parameters": sum(
+                        parameter.numel() for parameter in base_parameters
+                    ),
+                    "base_parameters_in_optimizer": 0,
+                    "initial_residual_output_layer_is_zero": True,
+                    "teacher_loss": False,
+                },
+                indent=2,
+            )
+        )
     original_save = runner.save
 
     def atomic_save(path, infos=None):
@@ -140,7 +174,7 @@ def train(configuration: DictConfig, entry_source: Path):
     )
     wrapper.reset()
     initial_state = runner.alg.save()
-    initial_state.update(iter=0, infos={"initialization": "random"})
+    initial_state.update(iter=0, infos={"initialization": protocol["initialization"]})
     torch.save(initial_state, checkpoints / "initial.pt")
     start_time = time.monotonic()
     runner.learn(

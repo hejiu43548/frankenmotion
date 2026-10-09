@@ -70,6 +70,8 @@ def build_configuration(configuration, split="train", evaluation=False):
     agent = load_rl_cfg("Mjlab-Tracking-Flat-Unitree-G1")
     agent.logger = "tensorboard"
     agent.save_interval = configuration.save_interval
+    if configuration.get("sonic_directory", None):
+        agent.actor.init_noise_std = configuration.get("residual_noise_std", 0.1)
     return environment, agent
 
 

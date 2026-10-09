@@ -1,0 +1,36 @@
+{
+  "passed": true,
+  "results": [
+    {
+      "step": 0,
+      "encoder": 3.4598633646965027e-07,
+      "state": 5.960464477539063e-08,
+      "actor": 4.1781459003686905e-07
+    },
+    {
+      "step": 5,
+      "encoder": 3.0244700610637665e-07,
+      "state": 3.5762786865234375e-07,
+      "actor": 4.363246262073517e-07
+    },
+    {
+      "step": 15,
+      "encoder": 3.3527612686157227e-07,
+      "state": 3.5762786865234375e-07,
+      "actor": 4.202593117952347e-07
+    },
+    {
+      "step": 30,
+      "encoder": 3.501772880554199e-07,
+      "state": 9.5367431640625e-07,
+      "actor": 4.5588240027427673e-07
+    }
+  ],
+  "forced_resets": 10,
+  "checks": [
+    "idempotent reads",
+    "native current/preview and SONIC inputs",
+    "actual residual-modified action histories",
+    "partial environment reset"
+  ]
+}

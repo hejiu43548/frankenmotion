@@ -209,3 +209,28 @@ class SonicModeZeroPolicy(torch.nn.Module):
     def reset(self):
         self.initialized.fill_(False)
         self.history.zero_()
+
+
+class SonicResidualPolicy(torch.nn.Module):
+    """One deployable module containing frozen SONIC and the online PPO residual."""
+
+    def __init__(self, base, residual, clip_actions=None):
+        super().__init__()
+        self.base = base
+        self.residual = residual
+        self.clip_limit = float("inf") if clip_actions is None else float(clip_actions)
+        self.register_buffer("il_to_mj", base.il_to_mj.clone())
+
+    def forward(self, observation):
+        nominal = self.base(observation)
+        token = self.base.encoder(observation[:, :1762])
+        # Native legacy ABI has five previews, while this residual uses the
+        # first three (5,10,20). Remaining previews are deliberately ignored.
+        features = torch.cat([observation[:, 1762:2123], nominal, token], dim=1)
+        return (nominal + self.residual(features)).clamp(
+            -self.clip_limit, self.clip_limit
+        )
+
+    @torch.jit.export
+    def reset(self):
+        self.base.reset()

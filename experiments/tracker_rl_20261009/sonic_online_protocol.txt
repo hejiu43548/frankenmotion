@@ -1,0 +1,83 @@
+Clean official SONIC + online PPO residual (2026-10-10; queued, not yet a result)
+
+The user's priority remains training from scratch. Both existing scratch runs
+continue. This additional experiment tests whether a clean general controller
+provides a useful initialization; no historical specialist heads or trajectories
+are loaded. Its success would motivate transferring mechanisms to scratch runs,
+not claiming that public pretraining has been reproduced from scratch.
+
+Method
+------
+Direct official ONNX import, fixed SHA256 allowlist. The frozen mode0 encoder and
+decoder contain 14,415,453 parameters. None require gradients or enter the PPO
+optimizer. A newly initialized shared MLP [512,256,128], with zero last layer,
+learns an additive motor-action residual using ordinary online PPO. Initial action
+noise std=0.1 in normalized action coordinates. Actor input is the existing 361D
+current/future observation, followed by 29 nominal actions and 64 SONIC tokens.
+Critic uses its existing privileged observation plus the same nominal/token terms.
+The base action is a controller component, not a supervised regression target.
+No behavior cloning loss, distillation loss, expert-action cache or task routing.
+The original nine BeyondMimic-style rewards and physical terminations are unchanged.
+Training_drift_threshold is null for this fine-tuning experiment.
+
+State semantics
+---------------
+PPO stores residual samples/log probabilities. Only the environment boundary adds
+the nominal action and applies configured clipping. History records the actual
+executed combined motor action, transformed into SONIC action coordinates.
+Each reset environment gets ten copies of its new proprioception with previous
+action zero. Non-reset histories shift by exactly one frame. Repeated observation
+reads do not advance history. Future reference indices stop at the current clip.
+
+Checks completed before queuing
+------------------------------
+1. Forty real validation environments at steps 0/5/15/30: native observation,
+   encoder input and proprioception max discrepancy <1e-6. Additional checks cover
+   nonzero residual actions, partial resets and unchanged non-reset histories.
+   Run scripts/audit_sonic_residual.py; sonic_wrapper_audit.json is saved evidence.
+2. Five PPO updates and a separate two-update optimizer audit completed.
+   Optimizer is rsl_rl.algorithms.ppo.PPO; base parameters in optimizer=0.
+3. Exported standalone policy contains both the official base and learned head.
+   CPU/GPU action parity max4.17e-7, including normalization and action conversion.
+   Its [1,2350] input and reset method work with the repository's original Tracker
+   runtime, also max4.17e-7 on the saved export fixture. CPU deployment needs no ONNX.
+4. Five-update smoke native evaluation completes40 clips, complete.95/strict.75.
+   This is pipeline validation, not evidence of RL improvement.
+5. All11 existing real integration/contract tests pass after integration.
+6. Twenty updates at2000env complete; about2.06s/update while TWO other GPU training
+   jobs were also active. This is a contention benchmark, not standalone throughput.
+
+The zero-residual initial checkpoint's GPU validation is complete.95/strict.775,
+root failure-inclusive.118316m. Native official-only baseline is .95/.75/.119546m.
+GPU/native differences reflect evaluator/integrator behavior; never pool them.
+
+Formal queued experiment
+------------------------
+Name sonic_online_v1_20261010, seed51001, 2000env,24steps/update,3000updates=144M
+transitions. Validation at500,1000,1500,2000,2500,2999. No test policy evaluations.
+The supervisor waits for the current scratch extension to finish before starting,
+so scratch_drift and SONIC online training become the next two major concurrent jobs.
+Frozen source: /home/pku/frankenmotion/work/tracker_rl_20261009/sonic_repository.
+Supervisor /home/pku/frankenmotion/work/tracker_rl_20261009/run_sonic_online.py.
+
+Reproduce (paths may be overridden with Hydra)
+---------------------------------------------
+Install requirements-tracker-rl.txt and requirements-tracker-sonic.txt in the RL
+environment. Do not combine with the separate GMR retarget environment.
+
+python scripts/train_tracker_rl.py --config-name sonic_residual \
+  experiment=sonic_online_v1 run_date=20261010 num_envs=2000 iterations=3000 seed=51001
+
+Evaluate/export with scripts/evaluate_tracker_rl.py or scripts/export_tracker_rl.py:
+  checkpoint=<training/model_N.pt> output=<new directory> preview_offsets=[5,10,20] \
+  +sonic_directory=<official release ONNX directory> \
+  +sonic_contract=configs/release/inference_contract.json
+
+Deploy with scripts/follow_tracker_rl.py:
+  policy=<export/policy.pt> policy_kind=sonic_rl contract=<export/contract.json> \
+  legacy_contract=<export/sonic_contract.json> scene=<export/scene.mjb> \
+  reference=<prepared50Hz motion.npz> output=<new directory>
+
+The export stores five preview offsets for compatibility with the original2350D
+runtime ABI. The new residual uses only the first three, matching its training.
+The two unused previews are not silently added to the learned input.

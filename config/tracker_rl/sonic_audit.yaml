@@ -1,0 +1,11 @@
+artifacts: /home/pku/frankenmotion/work/tracker_rl_20261009/artifacts
+sonic_directory: /home/pku/frankenmotion/work/g1_sonic_official/gear_sonic_deploy/policy/release
+sonic_contract: configs/release/inference_contract.json
+baseline_metrics: /home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_sonic_official_mode0/metrics.json
+output: ???
+seed: 71001
+device: cuda:0
+hydra:
+  run:
+    dir: .
+  output_subdir: null

@@ -1,0 +1,7 @@
+{
+  "algorithm": "rsl_rl.algorithms.ppo.PPO",
+  "frozen_base_parameters": 14415453,
+  "base_parameters_in_optimizer": 0,
+  "initial_residual_output_layer_is_zero": true,
+  "teacher_loss": false
+}

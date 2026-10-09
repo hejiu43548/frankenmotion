@@ -14,10 +14,9 @@ import torch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from mjlab.rl import MjlabOnPolicyRunner
-from mjlab.rl import RslRlVecEnvWrapper
 from shared_motion.rl.environment import build_configuration
 from shared_motion.rl.environment import TrackingEnvironment
-from shared_motion.rl.residual import ReferenceResidualWrapper
+from shared_motion.rl.wrappers import make_wrapper
 
 
 @hydra.main(
@@ -50,12 +49,7 @@ def main(configuration: DictConfig):
     environment = TrackingEnvironment(
         cfg=environment_configuration, device=configuration.device
     )
-    wrapper_type = (
-        ReferenceResidualWrapper
-        if configuration.get("reference_residual", False)
-        else RslRlVecEnvWrapper
-    )
-    wrapper = wrapper_type(environment, clip_actions=agent_configuration.clip_actions)
+    wrapper = make_wrapper(environment, configuration, agent_configuration.clip_actions)
     runner = MjlabOnPolicyRunner(
         wrapper, dataclasses.asdict(agent_configuration), device=configuration.device
     )
@@ -90,7 +84,7 @@ def main(configuration: DictConfig):
             actions = policy(observations)
             physical_actions = (
                 wrapper.to_environment_actions(actions)
-                if isinstance(wrapper, ReferenceResidualWrapper)
+                if hasattr(wrapper, "to_environment_actions")
                 else actions
             )
         errors = {
