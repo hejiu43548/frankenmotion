@@ -1,0 +1,448 @@
+{
+  "scope": "Engineering reproduction of already-frozen selected weights on all 40 unperturbed held-out references each; identical repeats are not new statistical samples or selection inputs.",
+  "python": "/home/pku/frankenmotion/work/tracker_rl_20261009/clean_cpu_env/bin/python",
+  "gpu_available": false,
+  "onnxruntime_installed": false,
+  "mjlab_installed": false,
+  "models": [
+    {
+      "label": "scratch_seed1_selected",
+      "policy_sha256": "907aea31163c2b3b0d8b38e51b015f8cedb854e453a653fbd93c2067d85ee66b",
+      "original_metrics_sha256": "df2e913a83d85734df3c5cde8b279b25e75feea0304bfb2f087f285dd48b90c9",
+      "repeat_metrics_sha256": "326d996c218440317075436adc567eef92aa9dd2e20e0a0c4ba2d254687c4a31",
+      "macro": {
+        "complete": 0.875,
+        "tracking_success": 0.875,
+        "root_m": 0.08237296056503603,
+        "body_m": 0.09201283125740974,
+        "joint_rad": 0.176825233825773,
+        "root_m_failure_penalized": 0.11722045241756288,
+        "body_m_failure_penalized": 0.1250937675657758,
+        "joint_rad_failure_penalized": 0.2398933133335271,
+        "action_delta_squared": 0.018162706418374454
+      },
+      "trajectories": [
+        {
+          "file": "arm_circle_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "arm_circle_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "back_walk_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "back_walk_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "bow_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "bow_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "clap_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "clap_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "jog_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "jog_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "jump_43001.npz",
+          "frames": 143,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "jump_43002.npz",
+          "frames": 143,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "kick_43001.npz",
+          "frames": 103,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "kick_43002.npz",
+          "frames": 96,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "lean_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "lean_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "march_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "march_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "point_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "point_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "raise_hand_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "raise_hand_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "reach_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "reach_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "sidestep_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "sidestep_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "squat_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "squat_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "stretch_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "stretch_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "strike_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "strike_43002.npz",
+          "frames": 75,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "turn_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "turn_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "twist_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "twist_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "walk_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "walk_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "wave_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "wave_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        }
+      ]
+    },
+    {
+      "label": "sonic_selected",
+      "policy_sha256": "709a83c01949ab0381bc40c00763fe0d3e89a2f8ff3ba4fdca68725dd2a05408",
+      "original_metrics_sha256": "05b976cd4cd4ec0e466e14247676d9c6feea54d3bdbf1e5de99208f3a80d515a",
+      "repeat_metrics_sha256": "5f0d02ee591eddb5e423781107648da9a7bc4bfd17be6bb00bc71a13726fdde9",
+      "macro": {
+        "complete": 0.975,
+        "tracking_success": 0.925,
+        "root_m": 0.0517755391002469,
+        "body_m": 0.05893850591766749,
+        "joint_rad": 0.13340787585591016,
+        "root_m_failure_penalized": 0.057255882011053784,
+        "body_m_failure_penalized": 0.06439523009459727,
+        "joint_rad_failure_penalized": 0.14392245789344066,
+        "action_delta_squared": 0.012382368097998997
+      },
+      "trajectories": [
+        {
+          "file": "arm_circle_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "arm_circle_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "back_walk_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "back_walk_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "bow_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "bow_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "clap_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "clap_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "jog_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "jog_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "jump_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "jump_43002.npz",
+          "frames": 151,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "kick_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "kick_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "lean_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "lean_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "march_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "march_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "point_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "point_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "raise_hand_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "raise_hand_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "reach_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "reach_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "sidestep_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "sidestep_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "squat_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "squat_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "stretch_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "stretch_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "strike_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "strike_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "turn_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "turn_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "twist_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "twist_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "walk_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "walk_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "wave_43001.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        },
+        {
+          "file": "wave_43002.npz",
+          "frames": 298,
+          "all_arrays_exact": true
+        }
+      ]
+    }
+  ],
+  "script_sha256": "a1434058caf26350e2bc5214b36fc63133abdad014f303aa5013a068245d0bfd"
+}
