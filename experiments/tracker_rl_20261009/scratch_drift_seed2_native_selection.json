@@ -1,0 +1,316 @@
+{
+  "experiment": "scratch_drift_seed2_20261010",
+  "test_used": false,
+  "rule": "strict success, completion, lower failure-penalized torso-anchor error, earlier iteration",
+  "configuration": {
+    "experiment": "scratch_drift_seed2_20261010",
+    "expected_iterations": [
+      500,
+      1000,
+      2000,
+      3000,
+      4000,
+      5000,
+      5999
+    ],
+    "expected_episodes": 40,
+    "candidates": [
+      {
+        "iteration": 500,
+        "metrics": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_drift_seed2_500/metrics.json"
+      },
+      {
+        "iteration": 1000,
+        "metrics": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_drift_seed2_1000/metrics.json"
+      },
+      {
+        "iteration": 2000,
+        "metrics": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_drift_seed2_2000/metrics.json"
+      },
+      {
+        "iteration": 3000,
+        "metrics": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_drift_seed2_3000/metrics.json"
+      },
+      {
+        "iteration": 4000,
+        "metrics": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_drift_seed2_4000/metrics.json"
+      },
+      {
+        "iteration": 5000,
+        "metrics": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_drift_seed2_5000/metrics.json"
+      },
+      {
+        "iteration": 5999,
+        "metrics": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_drift_seed2_5999/metrics.json"
+      }
+    ],
+    "output": "/home/pku/frankenmotion/work/tracker_rl_20261009/scratch_drift_seed2_native_selection.json"
+  },
+  "evaluation_conditions": {
+    "backend": "native MuJoCo; compare only with runs of this evaluator, separately from Warp",
+    "scene_sha256": "b2de7f56a2d11698383f9a6c870091737d8ec3cde4e87e636cb69181cb576602",
+    "references": {
+      "arm_circle:42001": "552f858c882062b0709f679d2a8967d2bc80c106833c0c5031557b49df046566",
+      "arm_circle:42002": "fb04589215854fb2dc6bf54fd6bdbbf68c6e68469f87064b6ffcd4349be5d6be",
+      "back_walk:42001": "9e95f777cff3990d1453f0823a6194b59c3491c917c85b601461c3966f06f925",
+      "back_walk:42002": "34d0a36556012ca447ce4e1e93a449c6c51264a01992562801a2fc6e929a50cc",
+      "bow:42001": "5e542369052e163077ff6a390fa749812945baed99c9c4e85abf698304033ec4",
+      "bow:42002": "479d58977f5c4849dfb183291dffccc370cc45ef2f0d2a6a58af16eeb95ea2bd",
+      "clap:42001": "d2ba7fd195eb64c7599f38413fb13936e3fd380aa68798ab0ec50a88372a9bf0",
+      "clap:42002": "62e51b8ab9efa722326cd6f86cfa50c8ac4f40d6cbaa013aabffe62d479b4a7f",
+      "jog:42001": "fcf3d50701897432efbb1c1a294ea4fb45ddc32c8685f55594937536050c68a2",
+      "jog:42002": "1462769861ec1831e0d5df3d599352f76e3dd39a92df13d5a18a8740f75f2c58",
+      "jump:42001": "e6bce570dab8de39596494ad8f4d2db7404dd762d61e13d553b3e9754d7753d0",
+      "jump:42002": "1b61468356a946467c28fa9391008963ddc9259b031b85bfe53f9e6634e7c703",
+      "kick:42001": "c43eb0bd28ec0e8a3700966e8d570c795e67c43ecd1a6455c037375bf122ea2f",
+      "kick:42002": "4437127c2c5b87dfe61260d03c8f54f7b1445eda0504b83dd056f9b9e5febfd6",
+      "lean:42001": "b1fcc5bb3bdb4829e9dd6cf6e25a6cd8b7da2bc9d71168194e43d4c1120905a7",
+      "lean:42002": "cef4d9056fc89c51d037f6983714325ce0216e115dd3656cda3b93114a7a8284",
+      "march:42001": "ad093622bdea1d914d030757d8bbdf140b3a52d7f1869ee4fadce62da7405697",
+      "march:42002": "f6e9b0026dfdff4322224c25994966eae7da9070caa349df925575aa004f0bb6",
+      "point:42001": "1ffe90c837c26288b706d66abf1ef3aca531645b3805cb6bf3872a34afacd205",
+      "point:42002": "0ebab7ffd03f5c988ea59fd2d84d9fb26d5cd116e88ffe5572333b58d628d698",
+      "raise_hand:42001": "e64bc3f8ade64c8edf6e2a5b64ce4022c18bb4137693cda4ef6641e6b3f18658",
+      "raise_hand:42002": "adae6a8f218ec6a524e14675170aa89ad116f7c3a0d0e907c490daa648884098",
+      "reach:42001": "a53722499bc1c12764c1bbc62320ec3625420743f93034b216e32d8cfea74cbb",
+      "reach:42002": "5ed978c1b1e7d45c2d1017444082f1c97915d345775ce251ce75302f6382b7ce",
+      "sidestep:42001": "fe8a63c4dcefc932083b5e72cb1956af056660b6e86478ec5b3da3a5239c9e58",
+      "sidestep:42002": "e0dac77be49374939278670fa3fa208beff18e2310ed181a14816e77ffa56e1e",
+      "squat:42001": "9d2da6978f0ead1687512bfd45c196bf940673f76f11a848d500963d5ae2bf26",
+      "squat:42002": "b9847fa8c94ee7025e198ab3a9493a1ba9616b025bd3b8e30c52ac404f945d05",
+      "stretch:42001": "fba16a1e1a02f8b806e21d73fcc6c3bf6f306de23fb8a9074b7b94496e1e9362",
+      "stretch:42002": "09efc7ced5038fb267aab24c03abfe067bb969f83ef5a96bc50a972acfb73ca9",
+      "strike:42001": "7e55f72d722ada72c5dc539b37977c4929407cac46ef89a65f60d3ad5fbe6b1a",
+      "strike:42002": "d0cc314a446a28951b82d59ac815e622e1a68a06f193724c24d22bf1452c2496",
+      "turn:42001": "da43ef5712eccbac696b10b18ebbcd1466a6f73ae7a476083a6dcc19e5b9c860",
+      "turn:42002": "572d876c80a75f0bc71f8937a3b2e2ff49d681770c025f27566a0420f2d43f62",
+      "twist:42001": "26712282e9e8931c1edbd2c9fc6928d590771839b5049c1a52b667fecac28543",
+      "twist:42002": "fde39d6c92d73b84e99fbc1fc31b48d2dc52724da0a6677c586983aeb8095a84",
+      "walk:42001": "6cdf34f34d789c791f3a76b15354dcc24d46828df060012994bb961b98f33661",
+      "walk:42002": "e3f9dc5cd5f8e98c9349446e9613672224abcecfe0bfca7a102dda1500ba3cb7",
+      "wave:42001": "925e45df3285d366aebd8c007f3b2bc0d50eab38c364b8b69f0935ba238ab5d7",
+      "wave:42002": "352d7ba731bd763274441a50a29a51c0cb725c2ff95e45eefe9c2ae8db0c7279"
+    },
+    "seed": 61001,
+    "horizons": {
+      "arm_circle:42001": 298,
+      "arm_circle:42002": 298,
+      "back_walk:42001": 298,
+      "back_walk:42002": 298,
+      "bow:42001": 298,
+      "bow:42002": 298,
+      "clap:42001": 298,
+      "clap:42002": 298,
+      "jog:42001": 298,
+      "jog:42002": 298,
+      "jump:42001": 298,
+      "jump:42002": 298,
+      "kick:42001": 298,
+      "kick:42002": 298,
+      "lean:42001": 298,
+      "lean:42002": 298,
+      "march:42001": 298,
+      "march:42002": 298,
+      "point:42001": 298,
+      "point:42002": 298,
+      "raise_hand:42001": 298,
+      "raise_hand:42002": 298,
+      "reach:42001": 298,
+      "reach:42002": 298,
+      "sidestep:42001": 298,
+      "sidestep:42002": 298,
+      "squat:42001": 298,
+      "squat:42002": 298,
+      "stretch:42001": 298,
+      "stretch:42002": 298,
+      "strike:42001": 298,
+      "strike:42002": 298,
+      "turn:42001": 298,
+      "turn:42002": 298,
+      "twist:42001": 298,
+      "twist:42002": 298,
+      "walk:42001": 298,
+      "walk:42002": 298,
+      "wave:42001": 298,
+      "wave:42002": 298
+    }
+  },
+  "selected": {
+    "iteration": 4000,
+    "metrics": {
+      "complete": 0.875,
+      "tracking_success": 0.875,
+      "root_m": 0.08083127103231205,
+      "body_m": 0.08961963722298541,
+      "joint_rad": 0.1646904953194731,
+      "root_m_failure_penalized": 0.11198296416808766,
+      "body_m_failure_penalized": 0.1200553704610291,
+      "joint_rad_failure_penalized": 0.22666321096888611,
+      "action_delta_squared": 0.018089772168889424
+    },
+    "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_drift_seed2_4000/metrics.json",
+    "metrics_sha256": "3509a82b022a1c5084ebd47d81e90dfc8992b16f94657fd5b50c84d711341eeb",
+    "policy": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_drift_seed2_4000/policy.pt",
+    "policy_sha256": "e5af01b4f431bfdd788f8908207c66bf753245b00bcb9b7728dfa2283fe4f0f8",
+    "contract": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_drift_seed2_4000/contract.json",
+    "contract_sha256": "59bbfd1771ddabad30523e75af9ea1b645ef8947c74b4774a7e47b0c2b206302",
+    "checkpoint_sha256": "565be77d5f38b96a6f5588f05d783ee07254802d5cee8ec8520877a988e03e65",
+    "legacy_contract_without_policy_hash": false
+  },
+  "ranking": [
+    {
+      "iteration": 4000,
+      "metrics": {
+        "complete": 0.875,
+        "tracking_success": 0.875,
+        "root_m": 0.08083127103231205,
+        "body_m": 0.08961963722298541,
+        "joint_rad": 0.1646904953194731,
+        "root_m_failure_penalized": 0.11198296416808766,
+        "body_m_failure_penalized": 0.1200553704610291,
+        "joint_rad_failure_penalized": 0.22666321096888611,
+        "action_delta_squared": 0.018089772168889424
+      },
+      "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_drift_seed2_4000/metrics.json",
+      "metrics_sha256": "3509a82b022a1c5084ebd47d81e90dfc8992b16f94657fd5b50c84d711341eeb",
+      "policy": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_drift_seed2_4000/policy.pt",
+      "policy_sha256": "e5af01b4f431bfdd788f8908207c66bf753245b00bcb9b7728dfa2283fe4f0f8",
+      "contract": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_drift_seed2_4000/contract.json",
+      "contract_sha256": "59bbfd1771ddabad30523e75af9ea1b645ef8947c74b4774a7e47b0c2b206302",
+      "checkpoint_sha256": "565be77d5f38b96a6f5588f05d783ee07254802d5cee8ec8520877a988e03e65",
+      "legacy_contract_without_policy_hash": false
+    },
+    {
+      "iteration": 5999,
+      "metrics": {
+        "complete": 0.85,
+        "tracking_success": 0.85,
+        "root_m": 0.07202390737774932,
+        "body_m": 0.07909487423604969,
+        "joint_rad": 0.14710560204319087,
+        "root_m_failure_penalized": 0.10982346968875537,
+        "body_m_failure_penalized": 0.11581415700948179,
+        "joint_rad_failure_penalized": 0.2198117590703365,
+        "action_delta_squared": 0.01552551867154572
+      },
+      "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_drift_seed2_5999/metrics.json",
+      "metrics_sha256": "5f1d28936146c9e8a364abb3c04ef30407ab174c37053828e88a4cb5fa4d0f78",
+      "policy": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_drift_seed2_5999/policy.pt",
+      "policy_sha256": "79bd2d371130a4b87dafc9fdbdd7ad7c9c035681d7bc729d1ae4d061d8f17a81",
+      "contract": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_drift_seed2_5999/contract.json",
+      "contract_sha256": "d4ab1ec4cf0ce8bc543316302988297266fd31c14adae3ef29eed1079671a396",
+      "checkpoint_sha256": "c3ec44964b10cfa098158676ca35f9176651d8b5ba6762f091b29e6bcbfef283",
+      "legacy_contract_without_policy_hash": false
+    },
+    {
+      "iteration": 3000,
+      "metrics": {
+        "complete": 0.85,
+        "tracking_success": 0.825,
+        "root_m": 0.08751615573738224,
+        "body_m": 0.09690015135871734,
+        "joint_rad": 0.18387719927612084,
+        "root_m_failure_penalized": 0.12194221050373925,
+        "body_m_failure_penalized": 0.13083921956718053,
+        "joint_rad_failure_penalized": 0.25393065949074567,
+        "action_delta_squared": 0.01777765696533464
+      },
+      "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_drift_seed2_3000/metrics.json",
+      "metrics_sha256": "d8a7b549c3a25d0ab9dc17f046c4166b51c5cb5f398878fd5171b3527fb09786",
+      "policy": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_drift_seed2_3000/policy.pt",
+      "policy_sha256": "a928107c5c8fbcb6b25c72421809dea7450b7a106ecb8521d48770d4db39679b",
+      "contract": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_drift_seed2_3000/contract.json",
+      "contract_sha256": "9245608b4eab558efbbdf0c877e15044ed3c9ff48200160b0a4a32b4b29ecf79",
+      "checkpoint_sha256": "ec715edbca73b19b6dd2bee1fcb7dea6a8e295445594069e019e74e5bc48376b",
+      "legacy_contract_without_policy_hash": false
+    },
+    {
+      "iteration": 5000,
+      "metrics": {
+        "complete": 0.85,
+        "tracking_success": 0.8,
+        "root_m": 0.08073333781458225,
+        "body_m": 0.08702113344524864,
+        "joint_rad": 0.15343534778026185,
+        "root_m_failure_penalized": 0.11867410135210814,
+        "body_m_failure_penalized": 0.12383722287039209,
+        "joint_rad_failure_penalized": 0.22561026001103435,
+        "action_delta_squared": 0.01476743650360158
+      },
+      "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_drift_seed2_5000/metrics.json",
+      "metrics_sha256": "689cb42a8373096f51a60f2a19630b75e561a6450a212b97eb2d62693cf1ed46",
+      "policy": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_drift_seed2_5000/policy.pt",
+      "policy_sha256": "b6c15a3f579896a27c4bcb04df3b55737591283e2b28837cbc2b623b3d1afed3",
+      "contract": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_drift_seed2_5000/contract.json",
+      "contract_sha256": "542a2dbd1a19af93488ed94ddd03e36c3f971e51449909fc103638c6e976ea02",
+      "checkpoint_sha256": "f2af8af950c9092827984f512ec3f1ec85a243b9b8b41bc9983451900e49b9c8",
+      "legacy_contract_without_policy_hash": false
+    },
+    {
+      "iteration": 2000,
+      "metrics": {
+        "complete": 0.85,
+        "tracking_success": 0.775,
+        "root_m": 0.08025488176962642,
+        "body_m": 0.0958078473179878,
+        "joint_rad": 0.20052495454697028,
+        "root_m_failure_penalized": 0.12289233667653414,
+        "body_m_failure_penalized": 0.13680369627750355,
+        "joint_rad_failure_penalized": 0.2778476490615314,
+        "action_delta_squared": 0.022758801104455516
+      },
+      "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_drift_seed2_2000/metrics.json",
+      "metrics_sha256": "1b2f7361ddf10c9b3a7f2dc23728fd898635ada1ea9236916e859f37ec33529b",
+      "policy": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_drift_seed2_2000/policy.pt",
+      "policy_sha256": "c1c3d09fe5fbb2ce7310df21aec437ee391c1a5e0ea1ccf79ffa0f27f29c6b28",
+      "contract": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_drift_seed2_2000/contract.json",
+      "contract_sha256": "7cb664e0a5aae8b3c94737d2bf1c28e553fcb43640b939b2810384a9870d10e7",
+      "checkpoint_sha256": "797671cb18695d44e900b0ec4dc165a6c0d85023eb3756c50c88bc0f45f037e5",
+      "legacy_contract_without_policy_hash": false
+    },
+    {
+      "iteration": 1000,
+      "metrics": {
+        "complete": 0.8,
+        "tracking_success": 0.5,
+        "root_m": 0.10094001431473125,
+        "body_m": 0.11904331705008656,
+        "joint_rad": 0.22267272024067114,
+        "root_m_failure_penalized": 0.1468087176575975,
+        "body_m_failure_penalized": 0.1636490032796248,
+        "joint_rad_failure_penalized": 0.3099760929764155,
+        "action_delta_squared": 0.02744610022854842
+      },
+      "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_drift_seed2_1000/metrics.json",
+      "metrics_sha256": "835cbadf03a593c1dfd734d444d69604639dd83fa1ee24ceb2ff4c8c76e623c6",
+      "policy": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_drift_seed2_1000/policy.pt",
+      "policy_sha256": "fe7082d914ce4e7ec33ebcfd1fbb83adfc02535b8affaf2a3604670d3e122e7e",
+      "contract": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_drift_seed2_1000/contract.json",
+      "contract_sha256": "b926e3a514c3ca27a32c5af6cebdae3e70e890b003761d10455ddb8c3335cd5b",
+      "checkpoint_sha256": "0bcebb01e904f22e8ac900b08992dd82e3b28c9ddfbf01bdceaa71bf70bba2ad",
+      "legacy_contract_without_policy_hash": false
+    },
+    {
+      "iteration": 500,
+      "metrics": {
+        "complete": 0.375,
+        "tracking_success": 0.35,
+        "root_m": 0.11891740733065455,
+        "body_m": 0.13536362999542254,
+        "joint_rad": 0.2325944305785535,
+        "root_m_failure_penalized": 0.2357797751187128,
+        "body_m_failure_penalized": 0.24758511547637507,
+        "joint_rad_failure_penalized": 0.46936520151700567,
+        "action_delta_squared": 0.02076794153912318
+      },
+      "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_drift_seed2_500/metrics.json",
+      "metrics_sha256": "172b1fb6faafac8b4d4800bb66e20cebbcc702d119fd4081bf259c814998857e",
+      "policy": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_drift_seed2_500/policy.pt",
+      "policy_sha256": "202e95c531ee44e68cbbc96c8850a66f482d1f6bcfd8882aec9b8328acc840da",
+      "contract": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_drift_seed2_500/contract.json",
+      "contract_sha256": "fdf6209e645963495b0a311e9666b751fbadc0b7839da75728917ad50731f424",
+      "checkpoint_sha256": "7f915e2c0c923b3a5ececb8667753fdcf1aa4731027cef2bb2ddbdcdd88228cb",
+      "legacy_contract_without_policy_hash": false
+    }
+  ]
+}

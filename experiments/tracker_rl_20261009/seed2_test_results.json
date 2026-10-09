@@ -1,0 +1,74 @@
+[
+  {
+    "experiment": "scratch_drift_seed2",
+    "label": "scratch_seed2_selected",
+    "perturbation": 0.0,
+    "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_test_frozen_scratch_seed2_selected_plain/metrics.json",
+    "metrics_sha256": "d7c80a89348c8e621f9b40ba4d8638b07a78557472b9e139e13335cc3bdc8961",
+    "macro": {
+      "complete": 0.825,
+      "tracking_success": 0.825,
+      "root_m": 0.08298570544698888,
+      "body_m": 0.09006788556910801,
+      "joint_rad": 0.1699996546282085,
+      "root_m_failure_penalized": 0.12409538346173629,
+      "body_m_failure_penalized": 0.13098294744085595,
+      "joint_rad_failure_penalized": 0.25246300340227334,
+      "action_delta_squared": 0.021658589235758394
+    }
+  },
+  {
+    "experiment": "scratch_drift_seed2",
+    "label": "scratch_seed2_selected",
+    "perturbation": 0.3,
+    "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_test_frozen_scratch_seed2_selected_perturb03/metrics.json",
+    "metrics_sha256": "6e7089e67e5f17d341f2f34bfaeb11ae49f1ee3ba1035b688762a4cad005aa82",
+    "macro": {
+      "complete": 0.825,
+      "tracking_success": 0.825,
+      "root_m": 0.08696347440313851,
+      "body_m": 0.09604629044590904,
+      "joint_rad": 0.1705584837116055,
+      "root_m_failure_penalized": 0.12751457897026613,
+      "body_m_failure_penalized": 0.13578126227896875,
+      "joint_rad_failure_penalized": 0.2533688090169336,
+      "action_delta_squared": 0.021922063861438155
+    }
+  },
+  {
+    "experiment": "scratch_drift_seed2",
+    "label": "scratch_seed2_terminal",
+    "perturbation": 0.0,
+    "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_test_frozen_scratch_seed2_terminal_plain/metrics.json",
+    "metrics_sha256": "b9205127f968563f5404d327ec7950d326cfb93f70b57917874bc16acd3bf711",
+    "macro": {
+      "complete": 0.85,
+      "tracking_success": 0.825,
+      "root_m": 0.07453624599609623,
+      "body_m": 0.08222848576048544,
+      "joint_rad": 0.15136268837381223,
+      "root_m_failure_penalized": 0.11267755984180132,
+      "body_m_failure_penalized": 0.1196308313334096,
+      "joint_rad_failure_penalized": 0.22438540663957038,
+      "action_delta_squared": 0.015887044720243347
+    }
+  },
+  {
+    "experiment": "scratch_drift_seed2",
+    "label": "scratch_seed2_terminal",
+    "perturbation": 0.3,
+    "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_test_frozen_scratch_seed2_terminal_perturb03/metrics.json",
+    "metrics_sha256": "b9ef47c4249e12b042d84899b4226e1bd6024bdebb61de72176bfbf02993225f",
+    "macro": {
+      "complete": 0.875,
+      "tracking_success": 0.85,
+      "root_m": 0.07453315718813756,
+      "body_m": 0.08456259722438533,
+      "joint_rad": 0.15234753215428887,
+      "root_m_failure_penalized": 0.10836622538959413,
+      "body_m_failure_penalized": 0.11738785846668416,
+      "joint_rad_failure_penalized": 0.21678358516357865,
+      "action_delta_squared": 0.01558333676247108
+    }
+  }
+]
