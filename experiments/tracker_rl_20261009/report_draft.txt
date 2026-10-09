@@ -285,3 +285,19 @@ the existing simulate entry using schema 2 contracts. All 14 tests passed;
 rollouts match between the native API, compatibility entry, and Hydra CLI.
 Final post-step state is separately saved for continuation. This establishes
 interface parity, not general recovery from arbitrary poses. See audit JSON.
+
+First scratch seed completed and selection frozen
+Seed51001 completed6000 updates/288M transitions, returncode0. All seven
+predeclared native candidates were ranked by the verified selection utility;
+checkpoint5999 selected and policy/contract/metrics hashes frozen. Native
+completion90%, strict87.5%, anchor penalty0.10675m, joint penalty0.21931rad.
+Strict delta vs old shared20 +12.5 percentage points, task-cluster interval
+[2.5,25]; this remains selection-biased exploratory validation evidence.
+Both jump and kick clips fail completion; strike42001 completes but mean
+anchor error0.16897m exceeds the strict threshold. Full checkpoint, exported
+policy, original training report, and20 validation videos saved locally.
+Independent seed51002 launched; actor/critic each have8 different initial
+tensors, optimizer empty. Source,data,rewards,terminations,versions match;
+configuration differs only in seed and experiment name.
+SONIC+PPO2000 native validation reaches100% completion/97.5% strict; remaining
+candidates pending. No test evaluation or reward/threshold change.
