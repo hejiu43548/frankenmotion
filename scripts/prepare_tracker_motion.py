@@ -119,7 +119,13 @@ def main(configuration: DictConfig):
         records = []
         ends = []
         for record in [record for record in manifest if record["split"] == split]:
-            arrays, states = convert(record["reference_path"], model, contract)
+            reference_path = root / "retarget" / Path(record["reference_path"]).name
+            if (
+                hashlib.sha256(reference_path.read_bytes()).hexdigest()
+                != record["reference_sha256"]
+            ):
+                raise ValueError(f"Retarget checksum mismatch: {reference_path}")
+            arrays, states = convert(reference_path, model, contract)
             destination = directory / (Path(record["path"]).stem + ".npz")
             np.savez_compressed(destination, fps=50, qpos=states, **arrays)
             records.append(
@@ -135,7 +141,7 @@ def main(configuration: DictConfig):
         np.savez_compressed(
             directory / "motions.npz",
             fps=50,
-            **{key: np.concatenate(value) for key, value in chunks.items()}
+            **{key: np.concatenate(value) for key, value in chunks.items()},
         )
         (directory / "clips.json").write_text(
             json.dumps({"ends": ends, "records": records}, indent=2)

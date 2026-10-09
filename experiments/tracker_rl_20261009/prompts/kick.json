@@ -1,0 +1,13 @@
+{
+  "duration": 6.0,
+  "sequence_caption": "A person kicks forward with the right leg and then returns the foot to the ground.",
+  "body_parts": {
+    "action": [
+      {
+        "start": 0.0,
+        "end": 6.0,
+        "text": "A person kicks forward with the right leg and then returns the foot to the ground."
+      }
+    ]
+  }
+}

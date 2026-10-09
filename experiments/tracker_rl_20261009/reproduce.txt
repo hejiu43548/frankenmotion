@@ -1,0 +1,83 @@
+REPRODUCTION NOTES (work in progress; final selected policy pending)
+
+Use the repository source commit and requirements-tracker-rl.txt together.
+All commands below run from the repository root. Set experiment-specific paths
+explicitly instead of relying on server defaults in the example YAML files.
+There are three environments: official generator, GMR retargeter, and RL/native
+MuJoCo evaluation. Do not merge their MuJoCo dependencies silently.
+
+1. Reference generation
+   GENERATOR_PYTHON scripts/generate_tracker_corpus.py repository=GENERATOR_REPO \
+     checkpoint_directory=OFFICIAL_CHECKPOINT_DIR \
+     prompts=experiments/tracker_rl_20261009/prompts output=ARTIFACTS/human
+   The official checkpoint digest is enforced in corpus.yaml. 20 prompts x
+   8 seeds = 160 six-second references; split definitions are explicit.
+   This stage may require the original generator's model/text encoder assets.
+
+2. Uniform retargeting
+   RETARGET_PYTHON scripts/retarget_tracker_corpus.py \
+     manifest=ARTIFACTS/human/manifest.json output=ARTIFACTS/retarget \
+     gmr=GMR_SOURCE dependencies=GMR_DEPENDENCIES
+   human_height=1.3725929260253906 metres reproduces the original shoulder-to-ankle
+   scale metadata. No original specialist policy or skeleton file is needed.
+   Source archives are located beside their manifest and checked by SHA-256.
+   GMR upstream: https://github.com/YanjieZe/GMR
+   The server's GMR directory is an unpacked snapshot, not a Git checkout.
+   Its exact source/assets must be bundled or hash-verified, not attributed to
+   the unrelated enclosing repository commit returned by git rev-parse.
+
+3. Training robot scene and motion FK
+   RL_PYTHON scripts/export_tracker_scene.py bootstrap_motion=BOOTSTRAP_NPZ \
+     output=ARTIFACTS/scene
+   RL_PYTHON scripts/prepare_tracker_motion.py root=ARTIFACTS
+   The bootstrap file supplies upstream environment shapes for scene creation;
+   none of its motion frames enter the training dataset. Prepared references
+   can subsequently bootstrap scene creation too. Keep the original scene file
+   and hash when reproducing the reported experiment.
+   RL_PYTHON scripts/audit_tracker_references.py artifacts=ARTIFACTS
+   No quality-based filtering was performed in this study.
+
+4. Online RL (random initialization, no action labels)
+   RL_PYTHON scripts/train_tracker_rl.py artifacts=ARTIFACTS \
+     experiment=baseline_current iterations=3000 num_envs=400 seed=51001
+   RL_PYTHON scripts/train_tracker_rl.py artifacts=ARTIFACTS \
+     experiment=preview_future iterations=3000 num_envs=400 seed=51001 \
+     preview_offsets=[5,10,20]
+   RL_PYTHON scripts/train_tracker_residual.py artifacts=ARTIFACTS \
+     experiment=reference_residual iterations=3000 num_envs=400 seed=51001
+   Each initial comparison consumes 28.8 million environment transitions.
+   Reward terms and weights are identical; residual action mapping preserves
+   actual motor commands in action history and the action-rate reward.
+   Set a NEW experiment name for every fresh run; outputs refuse overwrite.
+   Training from a checkpoint is not yet an audited reproduction option.
+
+5. Validation
+   RL_PYTHON scripts/evaluate_tracker_rl.py artifacts=ARTIFACTS \
+     checkpoint=CHECKPOINT output=NEW_OUTPUT preview_offsets=[5,10,20]
+   Add +reference_residual=true for the residual policy checkpoint.
+   Use split=val during selection. Test is reserved until recipe selection.
+   Training environments sample random reference starts; evaluation always
+   begins at reference frame zero and never rescues a failed rollout.
+
+6. Portable inference and fair baseline comparison
+   RL_PYTHON scripts/export_tracker_rl.py artifacts=ARTIFACTS \
+     checkpoint=CHECKPOINT output=EXPORT_DIRECTORY preview_offsets=[5,10,20]
+   Add +reference_residual=true for residual exports. policy.pt emits ordinary
+   normalized motor targets, so deployed inference needs no special wrapper.
+   RL_PYTHON scripts/evaluate_tracker_cpu.py artifacts=ARTIFACTS \
+     policy=EXPORT_DIRECTORY/policy.pt contract=EXPORT_DIRECTORY/contract.json \
+     scene=EXPORT_DIRECTORY/scene.mjb output=NEW_OUTPUT
+   Evaluate old shared20 separately with policy_kind=shared20 and its verified
+   ABI contract. It is NEVER loaded by the training process.
+   RL_PYTHON scripts/render_tracker_comparison.py artifacts=ARTIFACTS \
+     scene=EXPORT_DIRECTORY/scene.mjb rollouts=NEW_OUTPUT output=VIDEO_DIRECTORY
+   Videos replay stored physical states. Early failures hold the last recorded
+   frame with an explicit termination label; no fabricated successful tail.
+
+Known reproducibility limits
+- GPU simulation is not promised bitwise deterministic across hardware.
+- Native MuJoCo and Warp kinematics/termination timing differ slightly; all
+  headline old/new policy comparisons must use the same native evaluator.
+- Dataset seeds are disjoint, but task descriptions are shared across splits.
+- Completion is physical tracking completion, not proof of prompt semantics.
+- Reference alignment occurs once per clip; no per-frame floor correction.

@@ -1,0 +1,13 @@
+{
+  "duration": 6.0,
+  "sequence_caption": "A person stands in place and repeatedly claps both hands together in front of the chest.",
+  "body_parts": {
+    "action": [
+      {
+        "start": 0.0,
+        "end": 6.0,
+        "text": "A person stands in place and repeatedly claps both hands together in front of the chest."
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "duration": 6.0,
+  "sequence_caption": "A person stands still and makes large continuous circles with both arms at the shoulders.",
+  "body_parts": {
+    "action": [
+      {
+        "start": 0.0,
+        "end": 6.0,
+        "text": "A person stands still and makes large continuous circles with both arms at the shoulders."
+      }
+    ]
+  }
+}

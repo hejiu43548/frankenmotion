@@ -53,7 +53,10 @@ def convert_record(arguments):
     sys.path.insert(0, configuration["dependencies"])
     from general_motion_retargeting.motion_retarget import GeneralMotionRetargeting
 
-    source = np.load(record["path"])
+    source_path = Path(configuration["manifest"]).parent / Path(record["path"]).name
+    if hashlib.sha256(source_path.read_bytes()).hexdigest() != record["sha256"]:
+        raise ValueError(f"Source checksum mismatch: {source_path}")
+    source = np.load(source_path)
     joints = source["joints"].astype(np.float64)
     rotations = (
         Rotation.from_rotvec(source["poses"].reshape(-1, 3))
@@ -91,7 +94,11 @@ def convert_record(arguments):
         for name in ["left", "right"]
     ]
     robot_height = neutral.xpos[shoulders, 2].mean() - neutral.xpos[ankles, 2].mean()
-    human_height = float(np.load(configuration["skeleton"])["height"])
+    human_height = float(configuration["human_height"])
+    if not np.isfinite(human_height) or human_height <= 0:
+        raise ValueError(
+            "human_height must be a positive finite shoulder-to-ankle height"
+        )
     scale = robot_height / human_height
     retargeter.human_scale_table = {
         name: scale for name in retargeter.human_scale_table

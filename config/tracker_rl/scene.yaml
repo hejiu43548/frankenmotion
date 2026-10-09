@@ -1,0 +1,7 @@
+bootstrap_motion: ???
+output: ???
+device: cuda:0
+hydra:
+  run:
+    dir: .
+  output_subdir: null

@@ -1,0 +1,13 @@
+{
+  "duration": 6.0,
+  "sequence_caption": "A person stands with feet planted and leans the body forward, then returns upright.",
+  "body_parts": {
+    "action": [
+      {
+        "start": 0.0,
+        "end": 6.0,
+        "text": "A person stands with feet planted and leans the body forward, then returns upright."
+      }
+    ]
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "duration": 6.0,
+  "sequence_caption": "A person stands with feet planted and twists the upper body left and right at the waist.",
+  "body_parts": {
+    "action": [
+      {
+        "start": 0.0,
+        "end": 6.0,
+        "text": "A person stands with feet planted and twists the upper body left and right at the waist."
+      }
+    ]
+  }
+}

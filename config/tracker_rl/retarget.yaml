@@ -4,7 +4,8 @@ manifest: ${artifacts}/human/manifest.json
 output: ${artifacts}/retarget
 gmr: ${repository}/work/GMR
 dependencies: ${repository}/work/gmr_deps
-skeleton: ${repository}/outputs_amass/franken_eleven_20261003/skeleton.npz
+# Shoulder-to-ankle height, metres; captured from the original anatomical metadata.
+human_height: 1.3725929260253906
 workers: 4
 hydra:
   run:

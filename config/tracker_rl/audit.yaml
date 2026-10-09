@@ -1,0 +1,6 @@
+artifacts: ???
+splits: [train, val]
+hydra:
+  run:
+    dir: .
+  output_subdir: null
