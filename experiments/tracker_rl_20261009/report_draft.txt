@@ -310,3 +310,22 @@ Anchor penalty0.11277m vs0.14776m; joint penalty0.23458rad vs0.20658rad.
 This does not establish a clear robustness gain; it is a secondary diagnostic
 after freezing the checkpoint, not a selection criterion or mid-motion push
 recovery test. All40 cases retained; no reward/termination adjustment.
+
+Official SONIC plus PPO completed and selected
+The3000-update/144M-transition run completed returncode0. All six predeclared
+native validation candidates evaluated; checkpoint2999 selected and frozen.
+Native validation40/40 complete and strict, anchor0.05114m, body0.05706m,
+joint0.12910rad. Versus unchanged official base, strict +25 percentage points
+(task-cluster95% interval[7.5,45]); anchor -0.06841m ([-0.10595,-0.03727]).
+Joint error changes only -0.00672rad ([-0.05936,0.02326]). Action delta squared
+increases0.00239 ([0.00058,0.00474]), so improved tracking is not uniformly
+smoother control. Validation was used for selection; no independent test yet.
+Initial velocity perturbation:100% complete,95% strict, anchor0.05835m and
+joint0.13101rad. Strict gain over official perturbation baseline+17.5points
+has interval[-5,40]; anchor improves0.06076m, but action changes also increase.
+No broad robustness or real-robot claim follows from this diagnostic.
+Matched no-drift control started after SONIC completion. Its actor13/critic12
+initial tensors and normalization buffers exactly equal the first scratch
+seed, and the initial checkpoint SHA is identical. Only the experiment name
+and0.5m training drift termination differ; common physical terminations,
+rewards,source,data,versions,seed and budget match. Full training pending.

@@ -1,0 +1,289 @@
+{
+  "experiment": "sonic_online_v1_20261010",
+  "test_used": false,
+  "rule": "strict success, completion, lower failure-penalized torso-anchor error, earlier iteration",
+  "configuration": {
+    "experiment": "sonic_online_v1_20261010",
+    "expected_iterations": [
+      500,
+      1000,
+      1500,
+      2000,
+      2500,
+      2999
+    ],
+    "expected_episodes": 40,
+    "candidates": [
+      {
+        "iteration": 500,
+        "metrics": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_sonic_online_v1_500/metrics.json"
+      },
+      {
+        "iteration": 1000,
+        "metrics": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_sonic_online_v1_1000/metrics.json"
+      },
+      {
+        "iteration": 1500,
+        "metrics": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_sonic_online_v1_1500/metrics.json"
+      },
+      {
+        "iteration": 2000,
+        "metrics": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_sonic_online_v1_2000/metrics.json"
+      },
+      {
+        "iteration": 2500,
+        "metrics": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_sonic_online_v1_2500/metrics.json"
+      },
+      {
+        "iteration": 2999,
+        "metrics": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_sonic_online_v1_2999/metrics.json"
+      }
+    ],
+    "output": "/home/pku/frankenmotion/work/tracker_rl_20261009/sonic_online_v1_native_selection.json"
+  },
+  "evaluation_conditions": {
+    "backend": "native MuJoCo; compare only with runs of this evaluator, separately from Warp",
+    "scene_sha256": "b2de7f56a2d11698383f9a6c870091737d8ec3cde4e87e636cb69181cb576602",
+    "references": {
+      "arm_circle:42001": "552f858c882062b0709f679d2a8967d2bc80c106833c0c5031557b49df046566",
+      "arm_circle:42002": "fb04589215854fb2dc6bf54fd6bdbbf68c6e68469f87064b6ffcd4349be5d6be",
+      "back_walk:42001": "9e95f777cff3990d1453f0823a6194b59c3491c917c85b601461c3966f06f925",
+      "back_walk:42002": "34d0a36556012ca447ce4e1e93a449c6c51264a01992562801a2fc6e929a50cc",
+      "bow:42001": "5e542369052e163077ff6a390fa749812945baed99c9c4e85abf698304033ec4",
+      "bow:42002": "479d58977f5c4849dfb183291dffccc370cc45ef2f0d2a6a58af16eeb95ea2bd",
+      "clap:42001": "d2ba7fd195eb64c7599f38413fb13936e3fd380aa68798ab0ec50a88372a9bf0",
+      "clap:42002": "62e51b8ab9efa722326cd6f86cfa50c8ac4f40d6cbaa013aabffe62d479b4a7f",
+      "jog:42001": "fcf3d50701897432efbb1c1a294ea4fb45ddc32c8685f55594937536050c68a2",
+      "jog:42002": "1462769861ec1831e0d5df3d599352f76e3dd39a92df13d5a18a8740f75f2c58",
+      "jump:42001": "e6bce570dab8de39596494ad8f4d2db7404dd762d61e13d553b3e9754d7753d0",
+      "jump:42002": "1b61468356a946467c28fa9391008963ddc9259b031b85bfe53f9e6634e7c703",
+      "kick:42001": "c43eb0bd28ec0e8a3700966e8d570c795e67c43ecd1a6455c037375bf122ea2f",
+      "kick:42002": "4437127c2c5b87dfe61260d03c8f54f7b1445eda0504b83dd056f9b9e5febfd6",
+      "lean:42001": "b1fcc5bb3bdb4829e9dd6cf6e25a6cd8b7da2bc9d71168194e43d4c1120905a7",
+      "lean:42002": "cef4d9056fc89c51d037f6983714325ce0216e115dd3656cda3b93114a7a8284",
+      "march:42001": "ad093622bdea1d914d030757d8bbdf140b3a52d7f1869ee4fadce62da7405697",
+      "march:42002": "f6e9b0026dfdff4322224c25994966eae7da9070caa349df925575aa004f0bb6",
+      "point:42001": "1ffe90c837c26288b706d66abf1ef3aca531645b3805cb6bf3872a34afacd205",
+      "point:42002": "0ebab7ffd03f5c988ea59fd2d84d9fb26d5cd116e88ffe5572333b58d628d698",
+      "raise_hand:42001": "e64bc3f8ade64c8edf6e2a5b64ce4022c18bb4137693cda4ef6641e6b3f18658",
+      "raise_hand:42002": "adae6a8f218ec6a524e14675170aa89ad116f7c3a0d0e907c490daa648884098",
+      "reach:42001": "a53722499bc1c12764c1bbc62320ec3625420743f93034b216e32d8cfea74cbb",
+      "reach:42002": "5ed978c1b1e7d45c2d1017444082f1c97915d345775ce251ce75302f6382b7ce",
+      "sidestep:42001": "fe8a63c4dcefc932083b5e72cb1956af056660b6e86478ec5b3da3a5239c9e58",
+      "sidestep:42002": "e0dac77be49374939278670fa3fa208beff18e2310ed181a14816e77ffa56e1e",
+      "squat:42001": "9d2da6978f0ead1687512bfd45c196bf940673f76f11a848d500963d5ae2bf26",
+      "squat:42002": "b9847fa8c94ee7025e198ab3a9493a1ba9616b025bd3b8e30c52ac404f945d05",
+      "stretch:42001": "fba16a1e1a02f8b806e21d73fcc6c3bf6f306de23fb8a9074b7b94496e1e9362",
+      "stretch:42002": "09efc7ced5038fb267aab24c03abfe067bb969f83ef5a96bc50a972acfb73ca9",
+      "strike:42001": "7e55f72d722ada72c5dc539b37977c4929407cac46ef89a65f60d3ad5fbe6b1a",
+      "strike:42002": "d0cc314a446a28951b82d59ac815e622e1a68a06f193724c24d22bf1452c2496",
+      "turn:42001": "da43ef5712eccbac696b10b18ebbcd1466a6f73ae7a476083a6dcc19e5b9c860",
+      "turn:42002": "572d876c80a75f0bc71f8937a3b2e2ff49d681770c025f27566a0420f2d43f62",
+      "twist:42001": "26712282e9e8931c1edbd2c9fc6928d590771839b5049c1a52b667fecac28543",
+      "twist:42002": "fde39d6c92d73b84e99fbc1fc31b48d2dc52724da0a6677c586983aeb8095a84",
+      "walk:42001": "6cdf34f34d789c791f3a76b15354dcc24d46828df060012994bb961b98f33661",
+      "walk:42002": "e3f9dc5cd5f8e98c9349446e9613672224abcecfe0bfca7a102dda1500ba3cb7",
+      "wave:42001": "925e45df3285d366aebd8c007f3b2bc0d50eab38c364b8b69f0935ba238ab5d7",
+      "wave:42002": "352d7ba731bd763274441a50a29a51c0cb725c2ff95e45eefe9c2ae8db0c7279"
+    },
+    "seed": 61001,
+    "horizons": {
+      "arm_circle:42001": 298,
+      "arm_circle:42002": 298,
+      "back_walk:42001": 298,
+      "back_walk:42002": 298,
+      "bow:42001": 298,
+      "bow:42002": 298,
+      "clap:42001": 298,
+      "clap:42002": 298,
+      "jog:42001": 298,
+      "jog:42002": 298,
+      "jump:42001": 298,
+      "jump:42002": 298,
+      "kick:42001": 298,
+      "kick:42002": 298,
+      "lean:42001": 298,
+      "lean:42002": 298,
+      "march:42001": 298,
+      "march:42002": 298,
+      "point:42001": 298,
+      "point:42002": 298,
+      "raise_hand:42001": 298,
+      "raise_hand:42002": 298,
+      "reach:42001": 298,
+      "reach:42002": 298,
+      "sidestep:42001": 298,
+      "sidestep:42002": 298,
+      "squat:42001": 298,
+      "squat:42002": 298,
+      "stretch:42001": 298,
+      "stretch:42002": 298,
+      "strike:42001": 298,
+      "strike:42002": 298,
+      "turn:42001": 298,
+      "turn:42002": 298,
+      "twist:42001": 298,
+      "twist:42002": 298,
+      "walk:42001": 298,
+      "walk:42002": 298,
+      "wave:42001": 298,
+      "wave:42002": 298
+    }
+  },
+  "selected": {
+    "iteration": 2999,
+    "metrics": {
+      "complete": 1.0,
+      "tracking_success": 1.0,
+      "root_m": 0.05113683627269745,
+      "body_m": 0.05705914397895366,
+      "joint_rad": 0.12910385379628028,
+      "root_m_failure_penalized": 0.05113683627269745,
+      "body_m_failure_penalized": 0.057059143978953654,
+      "joint_rad_failure_penalized": 0.12910385379628028,
+      "action_delta_squared": 0.011284645637154266
+    },
+    "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_sonic_online_v1_2999/metrics.json",
+    "metrics_sha256": "ede098e4f192ab7c758d98635f035497e90829fdf40f87ffbe813cade6deac20",
+    "policy": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_sonic_online_v1_2999/policy.pt",
+    "policy_sha256": "709a83c01949ab0381bc40c00763fe0d3e89a2f8ff3ba4fdca68725dd2a05408",
+    "contract": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_sonic_online_v1_2999/contract.json",
+    "contract_sha256": "52d200d5c66258ae626fae5698eb6ad8db9e149e2b1d642daccecc2cf319f14e",
+    "checkpoint_sha256": "607a56d57829419e74196548bffd248409caa8308e84b3d241f9ced43c0230b0",
+    "legacy_contract_without_policy_hash": false
+  },
+  "ranking": [
+    {
+      "iteration": 2999,
+      "metrics": {
+        "complete": 1.0,
+        "tracking_success": 1.0,
+        "root_m": 0.05113683627269745,
+        "body_m": 0.05705914397895366,
+        "joint_rad": 0.12910385379628028,
+        "root_m_failure_penalized": 0.05113683627269745,
+        "body_m_failure_penalized": 0.057059143978953654,
+        "joint_rad_failure_penalized": 0.12910385379628028,
+        "action_delta_squared": 0.011284645637154266
+      },
+      "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_sonic_online_v1_2999/metrics.json",
+      "metrics_sha256": "ede098e4f192ab7c758d98635f035497e90829fdf40f87ffbe813cade6deac20",
+      "policy": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_sonic_online_v1_2999/policy.pt",
+      "policy_sha256": "709a83c01949ab0381bc40c00763fe0d3e89a2f8ff3ba4fdca68725dd2a05408",
+      "contract": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_sonic_online_v1_2999/contract.json",
+      "contract_sha256": "52d200d5c66258ae626fae5698eb6ad8db9e149e2b1d642daccecc2cf319f14e",
+      "checkpoint_sha256": "607a56d57829419e74196548bffd248409caa8308e84b3d241f9ced43c0230b0",
+      "legacy_contract_without_policy_hash": false
+    },
+    {
+      "iteration": 2000,
+      "metrics": {
+        "complete": 1.0,
+        "tracking_success": 0.975,
+        "root_m": 0.0625777176149995,
+        "body_m": 0.06718197102290649,
+        "joint_rad": 0.13922386198055348,
+        "root_m_failure_penalized": 0.06257771761499951,
+        "body_m_failure_penalized": 0.06718197102290649,
+        "joint_rad_failure_penalized": 0.1392238619805535,
+        "action_delta_squared": 0.010728917694924681
+      },
+      "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_sonic_online_v1_2000/metrics.json",
+      "metrics_sha256": "bbd158b260e29b951e34ac4ad299120ffe9910a06a0ecc514d6625ae28826ac4",
+      "policy": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_sonic_online_v1_2000/policy.pt",
+      "policy_sha256": "5f0a0405e8b45db2a3a09ab83503790b172fa04e0f73372650513c0e69d8ec97",
+      "contract": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_sonic_online_v1_2000/contract.json",
+      "contract_sha256": "767ee121a76159e5977b9d2275faa6fbc461b936f08237979d7c3be190872039",
+      "checkpoint_sha256": "1849e26c6740a391ee26aac35291c124408d7d0e05cc8e7aa6a853eedb03be88",
+      "legacy_contract_without_policy_hash": false
+    },
+    {
+      "iteration": 2500,
+      "metrics": {
+        "complete": 1.0,
+        "tracking_success": 0.95,
+        "root_m": 0.056063896308458996,
+        "body_m": 0.06136506358890792,
+        "joint_rad": 0.13601010172264166,
+        "root_m_failure_penalized": 0.056063896308458996,
+        "body_m_failure_penalized": 0.06136506358890792,
+        "joint_rad_failure_penalized": 0.13601010172264164,
+        "action_delta_squared": 0.011129984242701806
+      },
+      "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_sonic_online_v1_2500/metrics.json",
+      "metrics_sha256": "b812500fdb5c866f6f01cb5ef725dc067754fd4e143f48143079d65742a27ee1",
+      "policy": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_sonic_online_v1_2500/policy.pt",
+      "policy_sha256": "5b7906786417cb64c08107151178042dc8946c653bf1f6dd8b1a84652c010e20",
+      "contract": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_sonic_online_v1_2500/contract.json",
+      "contract_sha256": "5d912a7498c10693accd3fd80e3296cf164a5039908a3ff238ff10d9e424e7dc",
+      "checkpoint_sha256": "b50b9a862279b2caeec99bfc7dd3d6ad46dc9ec040ad7fd4cbde03bf0644738e",
+      "legacy_contract_without_policy_hash": false
+    },
+    {
+      "iteration": 1000,
+      "metrics": {
+        "complete": 1.0,
+        "tracking_success": 0.925,
+        "root_m": 0.07298768632799268,
+        "body_m": 0.07675226585616189,
+        "joint_rad": 0.15170547486823127,
+        "root_m_failure_penalized": 0.07298768632799267,
+        "body_m_failure_penalized": 0.0767522658561619,
+        "joint_rad_failure_penalized": 0.1517054748682313,
+        "action_delta_squared": 0.009635276246403023
+      },
+      "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_sonic_online_v1_1000/metrics.json",
+      "metrics_sha256": "adb6f9d91e91ad58b835909a7e6a03065f347286ef3c08e52e53d8fc30d31434",
+      "policy": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_sonic_online_v1_1000/policy.pt",
+      "policy_sha256": "64181d2b0db9cc37b2ddc7441d5fe44339c37a542f730a588c1764eaf6b5cb30",
+      "contract": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_sonic_online_v1_1000/contract.json",
+      "contract_sha256": "097c1a8b84e7329e9e0e0c756d33c616e0e39bbce9e17437e964af5873c92829",
+      "checkpoint_sha256": "acef2369c5909a34cba9d56c7aa499cb97f4bbb81b8d38514475b49e99f58582",
+      "legacy_contract_without_policy_hash": false
+    },
+    {
+      "iteration": 1500,
+      "metrics": {
+        "complete": 1.0,
+        "tracking_success": 0.9,
+        "root_m": 0.06973613800861442,
+        "body_m": 0.0744874359954388,
+        "joint_rad": 0.14556601236731395,
+        "root_m_failure_penalized": 0.06973613800861442,
+        "body_m_failure_penalized": 0.0744874359954388,
+        "joint_rad_failure_penalized": 0.14556601236731395,
+        "action_delta_squared": 0.010884896919799549
+      },
+      "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_sonic_online_v1_1500/metrics.json",
+      "metrics_sha256": "90abae2569ec248b02545c9d9af0f31f009bc77d081ec703cd99ea4411e249b5",
+      "policy": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_sonic_online_v1_1500/policy.pt",
+      "policy_sha256": "eabf0e5b5a55df641db30f44bd7c1e7406eb8844fdfa676e38201b3d4ca3caed",
+      "contract": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_sonic_online_v1_1500/contract.json",
+      "contract_sha256": "4a0d44576471f33da34eccbd0668b9ac7293f047fbea7a8ae499397cae54b295",
+      "checkpoint_sha256": "9bfc59d275ca994319d87e20adf6f95a89eeea7131e011a5461fce11ddb7cc57",
+      "legacy_contract_without_policy_hash": false
+    },
+    {
+      "iteration": 500,
+      "metrics": {
+        "complete": 1.0,
+        "tracking_success": 0.85,
+        "root_m": 0.09425451650206254,
+        "body_m": 0.09732606247083246,
+        "joint_rad": 0.15421399442712508,
+        "root_m_failure_penalized": 0.09425451650206251,
+        "body_m_failure_penalized": 0.09732606247083246,
+        "joint_rad_failure_penalized": 0.15421399442712508,
+        "action_delta_squared": 0.010278529632318508
+      },
+      "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_sonic_online_v1_500/metrics.json",
+      "metrics_sha256": "3c13b22320bd69dbc7c43e4d10cf0321c763bd18db5b3ee7a7625e059fa0d2d9",
+      "policy": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_sonic_online_v1_500/policy.pt",
+      "policy_sha256": "d0e65b4fbbb71605801b1d4dd84a73069447b426e960a545d3de7b9be8b6f01e",
+      "contract": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_sonic_online_v1_500/contract.json",
+      "contract_sha256": "d896d0c4e97c3c779bdde4d8d76954948cee413d7bee1657bcfced6f7f2b4e69",
+      "checkpoint_sha256": "a36c65ab1cb872cf8661f683f2b46b464db035fc8f438faff637b352e6d9f9e8",
+      "legacy_contract_without_policy_hash": false
+    }
+  ]
+}

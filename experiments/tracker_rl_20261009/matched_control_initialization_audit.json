@@ -1,0 +1,37 @@
+{
+  "experiments": [
+    "scratch_drift_v1_20261010",
+    "scratch_no_drift_matched_20261010"
+  ],
+  "seed": 51001,
+  "configuration_differences": [
+    "experiment",
+    "training_drift_threshold"
+  ],
+  "removed_termination": {
+    "func": "mjlab.tasks.tracking.mdp.terminations.bad_anchor_pos",
+    "params": {
+      "command_name": "motion",
+      "threshold": 0.5
+    },
+    "time_out": false
+  },
+  "source_data_reward_runner_versions_equal": true,
+  "other_terminations_equal": true,
+  "optimizer_initial_states_empty": true,
+  "parameter_and_normalizer_comparison": {
+    "actor_state_dict": {
+      "all_tensors_exactly_equal": true,
+      "tensor_count": 13
+    },
+    "critic_state_dict": {
+      "all_tensors_exactly_equal": true,
+      "tensor_count": 12
+    }
+  },
+  "initial_checkpoint_sha256": [
+    "3bc18cff93abe420beff4428695efbaa0da1e865100f3c23ecfc30ace3989158",
+    "3bc18cff93abe420beff4428695efbaa0da1e865100f3c23ecfc30ace3989158"
+  ],
+  "scope": "Matched initialization/configuration verified; no claim of bitwise GPU training determinism or ablation effect before full-budget evaluation."
+}
