@@ -8,7 +8,8 @@ Current scope (2026-10-10): **sidestep only**, using HDM05 non-crossing
 walkLeft phases and rightward mirrors for the existing right-only quantity.
 All other tasks are deferred by the user. Wave and strike remain provisionally
 accepted; kick is not silently marked approved by the request to move on.
-The wave/strike/kick stage2 diagnostics are complete. No new training is started.
+The wave/strike/kick stage2 diagnostics are complete. Sidestep was provisionally
+accepted on2026-10-10 and its single-task stage2 diagnostic is now authorized.
 Each repaired task requires10 rendered training samples for user review;
 `review_state.json` records the current scope and gate.
 

@@ -1,0 +1,18 @@
+code_root: /mnt/sda2/frankenmotion/code/shared20_walking_43bf05f
+python: /home/psirobot/projects/frankenmotion/.venv_unified/bin/python
+output: /mnt/sda2/frankenmotion/outputs_amass/sidestep_stage2_20261010
+initial_root: /mnt/sda2/frankenmotion/outputs_amass/shared20_walking_20261009/imported_root.pt
+backbone: /home/psirobot/checkpoints/frankenmotion/frankenmotion.ckpt
+dataset_directory: /mnt/sda2/frankenmotion/outputs_amass/source_repair_sidestep_20261010_v2
+cache_root: /home/psirobot/projects/frankenmotion
+skeleton: /home/psirobot/projects/frankenmotion/outputs_amass/transfer_charlie_20261008/snapshot/outputs_amass/franken_eleven_20261003/skeleton.npz
+tasks: [sidestep]
+steps: 10000
+batch_size: 8
+eval_every: 1000
+seed: 20261010
+hydra:
+  job:
+    chdir: false
+  run:
+    dir: ${output}/launcher_hydra

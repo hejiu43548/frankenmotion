@@ -2,7 +2,10 @@
 
 Current candidate: `source_repair_sidestep_20261010_v2`, 34 train /6 val clips
 from10/2 original recordings. Only sidestep is active; all other tasks are deferred.
-No sidestep training has been launched. Ten source-paired TRAIN videos await review.
+The user provisionally accepted the ten source-paired TRAIN reviews on2026-10-10
+and requested a single-task stage2 trial. See experiments/sidestep_stage2_20261010
+and the current review_state.json; the original source-review artifacts remain
+immutable snapshots from before that decision.
 
 ## Source boundary status
 

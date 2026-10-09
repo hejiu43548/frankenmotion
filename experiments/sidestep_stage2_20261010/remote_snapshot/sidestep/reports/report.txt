@@ -1,0 +1,7 @@
+Stage 2 completed at optimizer step 10000.
+Controller: charlie_root
+Best evaluation step: 2000; metric: 0.1420239545404911
+Frozen parameters and saved rollout quantities verified.
+Command error alone does not certify natural motion.
+See config.yaml, protocol.json, data_index/, completion_audit.json and best.json.
+Large artifacts: /mnt/sda2/frankenmotion/outputs_amass/sidestep_stage2_20261010/sidestep/artifacts

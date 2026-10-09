@@ -1,0 +1,63 @@
+{
+  "step": 10000,
+  "tasks": [
+    {
+      "task": "sidestep",
+      "requested": [
+        0.4000000059604645,
+        0.4888889193534851,
+        0.5777778029441833,
+        0.6666666865348816,
+        0.7555556297302246,
+        0.8444444537162781,
+        0.9333333373069763,
+        1.0222222805023193,
+        1.1111111640930176,
+        1.2000000476837158
+      ],
+      "measured": [
+        0.33961471915245056,
+        0.4293793737888336,
+        0.5397899746894836,
+        0.6407151222229004,
+        0.7107316851615906,
+        0.7393915057182312,
+        0.8022138476371765,
+        0.6030774116516113,
+        0.39646151661872864,
+        0.24767597019672394
+      ],
+      "mae": 0.2550949156284332,
+      "normalized_mae": 0.31886864453554153,
+      "keys": [
+        "sidestep_HDM_mm_01-01_03_120_poses_513_535_right",
+        "sidestep_HDM_mm_01-01_03_120_poses_513_535_right",
+        "sidestep_HDM_mm_01-01_03_120_poses_513_535_right",
+        "sidestep_HDM_mm_01-01_03_120_poses_513_535_right",
+        "sidestep_HDM_mm_01-01_03_120_poses_513_535_right",
+        "sidestep_HDM_mm_01-01_03_120_poses_513_535_right",
+        "sidestep_HDM_mm_01-01_03_120_poses_513_535_right",
+        "sidestep_HDM_mm_01-01_03_120_poses_513_535_right",
+        "sidestep_HDM_mm_01-01_03_120_poses_513_535_right",
+        "sidestep_HDM_mm_01-01_03_120_poses_513_535_right"
+      ],
+      "families": [
+        "MPI_HDM05/mm/HDM_mm_01-01_03_120_poses",
+        "MPI_HDM05/mm/HDM_mm_01-01_03_120_poses",
+        "MPI_HDM05/mm/HDM_mm_01-01_03_120_poses",
+        "MPI_HDM05/mm/HDM_mm_01-01_03_120_poses",
+        "MPI_HDM05/mm/HDM_mm_01-01_03_120_poses",
+        "MPI_HDM05/mm/HDM_mm_01-01_03_120_poses",
+        "MPI_HDM05/mm/HDM_mm_01-01_03_120_poses",
+        "MPI_HDM05/mm/HDM_mm_01-01_03_120_poses",
+        "MPI_HDM05/mm/HDM_mm_01-01_03_120_poses",
+        "MPI_HDM05/mm/HDM_mm_01-01_03_120_poses"
+      ],
+      "noise_seed": 1933
+    }
+  ],
+  "macro_normalized_mae": 0.31886864453554153,
+  "motion_archive": "/mnt/sda2/frankenmotion/outputs_amass/sidestep_stage2_20261010/sidestep/artifacts/motions/scan_010000.npz",
+  "motion_sha256": "6aed08bd7e38d57922dc2762f73a0f6421673d0bad02aa08cf65a609e6fc414e",
+  "protocol": "fixed validation text per task, fixed seeds, pure-noise DDIM, requested root controls only"
+}

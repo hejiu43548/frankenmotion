@@ -1,0 +1,18 @@
+{
+  "stage": 2,
+  "steps": 10000,
+  "train": 34,
+  "val": 6,
+  "all_training_records_seen": true,
+  "root_parameters_exact": true,
+  "optimizer_steps": 10000,
+  "rollouts_verified": 290,
+  "quantity_max_error": 0,
+  "video_frames": 22,
+  "video_fps": 20,
+  "video_hash_verified": true,
+  "training_processes_exited": true,
+  "stage3_started": false,
+  "visual_observation": "Three sampled frames checked: high1.2m command has obvious abnormal body pose; naturalness not passed.",
+  "other_tasks_deferred": true
+}
