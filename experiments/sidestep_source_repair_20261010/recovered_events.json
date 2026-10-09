@@ -1,0 +1,578 @@
+[
+  {
+    "family": "MPI_HDM05/bk/HDM_bk_01-01_01_120_poses",
+    "split": "train",
+    "semantic_class": "walkLeft",
+    "official_scene": "01-01, phase6: sideways left, no crossover",
+    "boundary_status": "supplemented_from_motion_and_script_not_official_cut_mapping",
+    "native_class_variants_reference": [
+      "walkLeft2Steps",
+      "walkLeft3Steps"
+    ],
+    "event": {
+      "start": 672,
+      "stop": 794,
+      "start_s": 33.6,
+      "end_s": 39.7,
+      "left_distance_m": 3.6481475830078125,
+      "heading_range_rad": 0.3463459014892578,
+      "ankle_min_m": 0.039930958300828934
+    },
+    "closure_boundaries_20fps": [
+      672,
+      697,
+      721,
+      746,
+      769,
+      793
+    ],
+    "babel_corrobating_labels": [
+      {
+        "file": "train.json",
+        "sequence_id": "9509",
+        "raw_label": "side step to the left",
+        "proc_label": "side step to the left",
+        "seg_id": "4abd0a46-c650-4e29-ac50-a4e54664f1a6",
+        "act_cat": [
+          "step",
+          "sideways movement"
+        ],
+        "start_t": 33.507,
+        "end_t": 40.319
+      }
+    ]
+  },
+  {
+    "family": "MPI_HDM05/bk/HDM_bk_01-01_02_120_poses",
+    "split": "train",
+    "semantic_class": "walkLeft",
+    "official_scene": "01-01, phase6: sideways left, no crossover",
+    "boundary_status": "supplemented_from_motion_and_script_not_official_cut_mapping",
+    "native_class_variants_reference": [
+      "walkLeft2Steps",
+      "walkLeft3Steps"
+    ],
+    "event": {
+      "start": 637,
+      "stop": 739,
+      "start_s": 31.85,
+      "end_s": 36.95,
+      "left_distance_m": 3.052280616760254,
+      "heading_range_rad": 0.28376471996307373,
+      "ankle_min_m": 0.051271431148052216
+    },
+    "closure_boundaries_20fps": [
+      637,
+      662,
+      686,
+      710,
+      738
+    ],
+    "babel_corrobating_labels": [
+      {
+        "file": "train.json",
+        "sequence_id": "13267",
+        "raw_label": "standing",
+        "proc_label": "stand",
+        "seg_id": "b420a77f-3731-4b1c-b07c-52ee165be6d4",
+        "act_cat": [
+          "stand"
+        ],
+        "start_t": 36.872,
+        "end_t": 37.986
+      },
+      {
+        "file": "train.json",
+        "sequence_id": "13267",
+        "raw_label": "sidestep left foot to foot",
+        "proc_label": "sidestep left foot to foot",
+        "seg_id": "11add59d-2ae1-44fe-8ff8-dd77b8bd1cce",
+        "act_cat": [
+          "step",
+          "sideways movement",
+          "foot movements"
+        ],
+        "start_t": 31.614,
+        "end_t": 36.872
+      }
+    ]
+  },
+  {
+    "family": "MPI_HDM05/bk/HDM_bk_01-01_03_120_poses",
+    "split": "train",
+    "semantic_class": "walkLeft",
+    "official_scene": "01-01, phase6: sideways left, no crossover",
+    "boundary_status": "supplemented_from_motion_and_script_not_official_cut_mapping",
+    "native_class_variants_reference": [
+      "walkLeft2Steps",
+      "walkLeft3Steps"
+    ],
+    "event": {
+      "start": 609,
+      "stop": 731,
+      "start_s": 30.45,
+      "end_s": 36.55,
+      "left_distance_m": 4.037177276611328,
+      "heading_range_rad": 0.7015436291694641,
+      "ankle_min_m": 0.04548601806163788
+    },
+    "closure_boundaries_20fps": [
+      609,
+      635,
+      656,
+      678,
+      700,
+      730
+    ],
+    "babel_corrobating_labels": [
+      {
+        "file": "train.json",
+        "sequence_id": "4283",
+        "raw_label": "move left side to side",
+        "proc_label": "move left side to side",
+        "seg_id": "979e73d5-8e6e-491b-9244-025c00d88805",
+        "act_cat": [
+          "sideways movement"
+        ],
+        "start_t": 29.805,
+        "end_t": 37.305
+      }
+    ]
+  },
+  {
+    "family": "MPI_HDM05/dg/HDM_dg_01-01_01_120_poses",
+    "split": "train",
+    "semantic_class": "walkLeft",
+    "official_scene": "01-01, phase6: sideways left, no crossover",
+    "boundary_status": "supplemented_from_motion_and_script_not_official_cut_mapping",
+    "native_class_variants_reference": [
+      "walkLeft2Steps",
+      "walkLeft3Steps"
+    ],
+    "event": {
+      "start": 534,
+      "stop": 607,
+      "start_s": 26.7,
+      "end_s": 30.35,
+      "left_distance_m": 2.466502380371094,
+      "heading_range_rad": 0.16165924072265625,
+      "ankle_min_m": 0.060817595571279526
+    },
+    "closure_boundaries_20fps": [
+      534,
+      557,
+      579,
+      606
+    ],
+    "babel_corrobating_labels": [
+      {
+        "file": "train.json",
+        "sequence_id": "2510",
+        "raw_label": "side walk left",
+        "proc_label": "side walk left",
+        "seg_id": "b82596d2-99f4-428d-98c0-1dadcd4e28c1",
+        "act_cat": [
+          "walk"
+        ],
+        "start_t": 26.64,
+        "end_t": 30.64
+      }
+    ]
+  },
+  {
+    "family": "MPI_HDM05/dg/HDM_dg_01-01_02_120_poses",
+    "split": "train",
+    "semantic_class": "walkLeft",
+    "official_scene": "01-01, phase6: sideways left, no crossover",
+    "boundary_status": "supplemented_from_motion_and_script_not_official_cut_mapping",
+    "native_class_variants_reference": [
+      "walkLeft2Steps",
+      "walkLeft3Steps"
+    ],
+    "event": {
+      "start": 484,
+      "stop": 561,
+      "start_s": 24.2,
+      "end_s": 28.05,
+      "left_distance_m": 2.3645858764648438,
+      "heading_range_rad": 0.13077926635742188,
+      "ankle_min_m": 0.0692063570022583
+    },
+    "closure_boundaries_20fps": [
+      484,
+      508,
+      532,
+      560
+    ],
+    "babel_corrobating_labels": []
+  },
+  {
+    "family": "MPI_HDM05/dg/HDM_dg_01-01_03_120_poses",
+    "split": "train",
+    "semantic_class": "walkLeft",
+    "official_scene": "01-01, phase6: sideways left, no crossover",
+    "boundary_status": "supplemented_from_motion_and_script_not_official_cut_mapping",
+    "native_class_variants_reference": [
+      "walkLeft2Steps",
+      "walkLeft3Steps"
+    ],
+    "event": {
+      "start": 531,
+      "stop": 612,
+      "start_s": 26.55,
+      "end_s": 30.6,
+      "left_distance_m": 2.5987071990966797,
+      "heading_range_rad": 0.08478164672851562,
+      "ankle_min_m": 0.07838894426822662
+    },
+    "closure_boundaries_20fps": [
+      531,
+      556,
+      581,
+      611
+    ],
+    "babel_corrobating_labels": [
+      {
+        "file": "train.json",
+        "sequence_id": "4607",
+        "raw_label": "transition",
+        "proc_label": "transition",
+        "seg_id": "b6df3dd3-6ff0-493f-8572-1cefa9c700eb",
+        "act_cat": [
+          "transition"
+        ],
+        "start_t": 26.046,
+        "end_t": 26.671
+      },
+      {
+        "file": "train.json",
+        "sequence_id": "4607",
+        "raw_label": "move left side to side",
+        "proc_label": "move left side to side",
+        "seg_id": "2a0ceecc-4885-469b-88ad-4e5255522c6c",
+        "act_cat": [
+          "sideways movement"
+        ],
+        "start_t": 26.671,
+        "end_t": 31.13
+      }
+    ]
+  },
+  {
+    "family": "MPI_HDM05/dg/HDM_dg_01-01_04_120_poses",
+    "split": "train",
+    "semantic_class": "walkLeft",
+    "official_scene": "01-01, phase6: sideways left, no crossover",
+    "boundary_status": "supplemented_from_motion_and_script_not_official_cut_mapping",
+    "native_class_variants_reference": [
+      "walkLeft2Steps",
+      "walkLeft3Steps"
+    ],
+    "event": {
+      "start": 509,
+      "stop": 588,
+      "start_s": 25.45,
+      "end_s": 29.4,
+      "left_distance_m": 2.892135429382324,
+      "heading_range_rad": 0.19298410415649414,
+      "ankle_min_m": 0.06702173501253128
+    },
+    "closure_boundaries_20fps": [
+      509,
+      535,
+      559,
+      587
+    ],
+    "babel_corrobating_labels": [
+      {
+        "file": "train.json",
+        "sequence_id": "7299",
+        "raw_label": "walk horizontally",
+        "proc_label": "walk horizontally",
+        "seg_id": "023dff5b-8176-405b-8a46-abd28f93bde0",
+        "act_cat": [
+          "walk"
+        ],
+        "start_t": 19.044,
+        "end_t": 36.171
+      }
+    ]
+  },
+  {
+    "family": "MPI_HDM05/mm/HDM_mm_01-01_01_120_poses",
+    "split": "train",
+    "semantic_class": "walkLeft",
+    "official_scene": "01-01, phase6: sideways left, no crossover",
+    "boundary_status": "supplemented_from_motion_and_script_not_official_cut_mapping",
+    "native_class_variants_reference": [
+      "walkLeft2Steps",
+      "walkLeft3Steps"
+    ],
+    "event": {
+      "start": 538,
+      "stop": 614,
+      "start_s": 26.9,
+      "end_s": 30.7,
+      "left_distance_m": 2.2360485076904295,
+      "heading_range_rad": 0.22731828689575195,
+      "ankle_min_m": 0.07442820817232132
+    },
+    "closure_boundaries_20fps": [
+      538,
+      561,
+      585,
+      613
+    ],
+    "babel_corrobating_labels": [
+      {
+        "file": "train.json",
+        "sequence_id": "4246",
+        "raw_label": "transition",
+        "proc_label": "transition",
+        "seg_id": "7559a661-8746-4db8-85ee-7f78e6529232",
+        "act_cat": [
+          "transition"
+        ],
+        "start_t": 26.773,
+        "end_t": 27.086
+      },
+      {
+        "file": "train.json",
+        "sequence_id": "4246",
+        "raw_label": "transition",
+        "proc_label": "transition",
+        "seg_id": "f216fbb2-c48d-4655-96dc-17e3e8256fa3",
+        "act_cat": [
+          "transition"
+        ],
+        "start_t": 30.336,
+        "end_t": 30.711
+      },
+      {
+        "file": "train.json",
+        "sequence_id": "4246",
+        "raw_label": "walk to the left talking sideway steps",
+        "proc_label": "walk to the left talk sideway steps",
+        "seg_id": "d8bbbe38-e949-4a2f-9bf1-1fc081063895",
+        "act_cat": [
+          "walk",
+          "communicate (vocalise)",
+          "step",
+          "sideways movement"
+        ],
+        "start_t": 27.086,
+        "end_t": 30.336
+      }
+    ]
+  },
+  {
+    "family": "MPI_HDM05/mm/HDM_mm_01-01_03_120_poses",
+    "split": "val",
+    "semantic_class": "walkLeft",
+    "official_scene": "01-01, phase6: sideways left, no crossover",
+    "boundary_status": "supplemented_from_motion_and_script_not_official_cut_mapping",
+    "native_class_variants_reference": [
+      "walkLeft2Steps",
+      "walkLeft3Steps"
+    ],
+    "event": {
+      "start": 490,
+      "stop": 561,
+      "start_s": 24.5,
+      "end_s": 28.05,
+      "left_distance_m": 2.2545181274414063,
+      "heading_range_rad": 0.24269628524780273,
+      "ankle_min_m": 0.10761749744415283
+    },
+    "closure_boundaries_20fps": [
+      490,
+      513,
+      534,
+      560
+    ],
+    "babel_corrobating_labels": [
+      {
+        "file": "val.json",
+        "sequence_id": "7810",
+        "raw_label": "stand",
+        "proc_label": "stand",
+        "seg_id": "2da5ef89-5f83-4cba-b5a1-1fd9b6d96956",
+        "act_cat": [
+          "stand"
+        ],
+        "start_t": 27.866,
+        "end_t": 28.481
+      },
+      {
+        "file": "val.json",
+        "sequence_id": "7810",
+        "raw_label": "step left",
+        "proc_label": "step left",
+        "seg_id": "8dab1762-749a-4544-98cd-aa41153b9749",
+        "act_cat": [
+          "step"
+        ],
+        "start_t": 24.311,
+        "end_t": 27.866
+      }
+    ]
+  },
+  {
+    "family": "MPI_HDM05/tr/HDM_tr_01-01_01_120_poses",
+    "split": "train",
+    "semantic_class": "walkLeft",
+    "official_scene": "01-01, phase6: sideways left, no crossover",
+    "boundary_status": "supplemented_from_motion_and_script_not_official_cut_mapping",
+    "native_class_variants_reference": [
+      "walkLeft2Steps",
+      "walkLeft3Steps"
+    ],
+    "event": {
+      "start": 586,
+      "stop": 671,
+      "start_s": 29.3,
+      "end_s": 33.55,
+      "left_distance_m": 2.037938117980957,
+      "heading_range_rad": 0.20337224006652832,
+      "ankle_min_m": 0.11725281924009323
+    },
+    "closure_boundaries_20fps": [
+      586,
+      612,
+      640,
+      670
+    ],
+    "babel_corrobating_labels": [
+      {
+        "file": "val.json",
+        "sequence_id": "3285",
+        "raw_label": "step side to side",
+        "proc_label": "step side to side",
+        "seg_id": "c9906995-4a71-466d-88b0-ae9868c20e6f",
+        "act_cat": [
+          "side to side movement",
+          "step"
+        ],
+        "start_t": 29.305,
+        "end_t": 33.355
+      },
+      {
+        "file": "val.json",
+        "sequence_id": "3285",
+        "raw_label": "transition",
+        "proc_label": "transition",
+        "seg_id": "a4bb6af5-e656-4edc-8f26-0febc8fc2722",
+        "act_cat": [
+          "transition"
+        ],
+        "start_t": 28.505,
+        "end_t": 29.305
+      },
+      {
+        "file": "val.json",
+        "sequence_id": "3285",
+        "raw_label": "transition",
+        "proc_label": "transition",
+        "seg_id": "b3b0b112-ab17-4186-9151-d925653525bf",
+        "act_cat": [
+          "transition"
+        ],
+        "start_t": 33.355,
+        "end_t": 36.955
+      }
+    ]
+  },
+  {
+    "family": "MPI_HDM05/tr/HDM_tr_01-01_02_120_poses",
+    "split": "train",
+    "semantic_class": "walkLeft",
+    "official_scene": "01-01, phase6: sideways left, no crossover",
+    "boundary_status": "supplemented_from_motion_and_script_not_official_cut_mapping",
+    "native_class_variants_reference": [
+      "walkLeft2Steps",
+      "walkLeft3Steps"
+    ],
+    "event": {
+      "start": 554,
+      "stop": 631,
+      "start_s": 27.7,
+      "end_s": 31.55,
+      "left_distance_m": 1.9951892852783204,
+      "heading_range_rad": 0.18681621551513672,
+      "ankle_min_m": 0.1058209165930748
+    },
+    "closure_boundaries_20fps": [
+      554,
+      578,
+      603,
+      630
+    ],
+    "babel_corrobating_labels": [
+      {
+        "file": "train.json",
+        "sequence_id": "11019",
+        "raw_label": "move left side to side",
+        "proc_label": "move left side to side",
+        "seg_id": "33681a74-43fe-453b-a097-bb407c4f755a",
+        "act_cat": [
+          "sideways movement"
+        ],
+        "start_t": 27.671,
+        "end_t": 31.713
+      }
+    ]
+  },
+  {
+    "family": "MPI_HDM05/tr/HDM_tr_01-01_03_120_poses",
+    "split": "val",
+    "semantic_class": "walkLeft",
+    "official_scene": "01-01, phase6: sideways left, no crossover",
+    "boundary_status": "supplemented_from_motion_and_script_not_official_cut_mapping",
+    "native_class_variants_reference": [
+      "walkLeft2Steps",
+      "walkLeft3Steps"
+    ],
+    "event": {
+      "start": 572,
+      "stop": 650,
+      "start_s": 28.6,
+      "end_s": 32.5,
+      "left_distance_m": 2.0741907119750977,
+      "heading_range_rad": 0.2055422067642212,
+      "ankle_min_m": 0.1116839125752449
+    },
+    "closure_boundaries_20fps": [
+      572,
+      595,
+      620,
+      649
+    ],
+    "babel_corrobating_labels": [
+      {
+        "file": "train.json",
+        "sequence_id": "9968",
+        "raw_label": "stepping sideways",
+        "proc_label": "step sideways",
+        "seg_id": "bd136957-e2a5-4df7-8787-7b352c4cba09",
+        "act_cat": [
+          "sideways movement",
+          "step"
+        ],
+        "start_t": 28.461,
+        "end_t": 32.086
+      },
+      {
+        "file": "train.json",
+        "sequence_id": "9968",
+        "raw_label": "transition",
+        "proc_label": "transition",
+        "seg_id": "9feea9f8-3166-489b-a679-d589ad1cde09",
+        "act_cat": [
+          "transition"
+        ],
+        "start_t": 32.086,
+        "end_t": 32.898
+      }
+    ]
+  }
+]

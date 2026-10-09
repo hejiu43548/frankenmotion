@@ -1,0 +1,26 @@
+{
+  "base": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1",
+  "counts": {
+    "train": 34,
+    "val": 6
+  },
+  "families": {
+    "train": 10,
+    "val": 2
+  },
+  "rejected_reasons": {
+    "excess_forward_backward_travel": 2,
+    "turning_instead_of_sidestep": 2,
+    "held_out_source_family": 1
+  },
+  "native_boundary_status": "Official mocapTakes2Cuts mapping HTTP403; only HDM05 scene01-01 noncrossing left phases supplemented from body-local motion, with available BABEL act_cat frame evidence. Not claimed to be official cut rows.",
+  "other19_tasks_unchanged": true,
+  "training_direction": "right",
+  "native_left_preserved": true,
+  "no_training_launched": true,
+  "limitations": [
+    "Mirrored SMPL poses are re-FKed on the original asymmetric skeleton, so the result is not an exact pixelwise reflection.",
+    "Adjacent clips share at most one closure frame and inherit original source-family split.",
+    "One full open-close cycle is cropped; original official2/3-step cut boundaries are not claimed."
+  ]
+}

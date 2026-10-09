@@ -1,0 +1,11 @@
+{
+  "mirror_raw_exact": true,
+  "closure_config_refactor_matches_executed_boundaries": true,
+  "text_embeddings_pca_and_masks_exact": true,
+  "all20_source_families_split_disjoint": true,
+  "native_left_cannot_match_current_task_loader": true,
+  "raw_and_motion_hashes_verified": true,
+  "cache_pairs": 40,
+  "rejected_non_test_cycles": 1,
+  "held_out_test_families": 1
+}

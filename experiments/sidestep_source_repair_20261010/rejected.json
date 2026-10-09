@@ -1,0 +1,70 @@
+[
+  {
+    "family": "MPI_HDM05/bk/HDM_bk_01-01_03_120_poses",
+    "split": "train",
+    "task": "sidestep",
+    "task_id": 5,
+    "source_kind": "hdm05_walkLeft_script_supplement_mirrored",
+    "source_class": "walkLeft",
+    "native_direction": "left",
+    "training_direction": "right",
+    "mirrored": true,
+    "annotation_level": "script_and_motion_supplement",
+    "crop_start_frame_20fps": 609,
+    "crop_end_frame_20fps": 636,
+    "source_event_start_20fps": 609,
+    "source_event_end_20fps": 731,
+    "raw_source": "/mnt/sda2/dataset/amass/MPI_HDM05/bk/HDM_bk_01-01_03_120_poses.npz",
+    "motion_source": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_sidestep_20261010_v2/motions/HDM_bk_01-01_03_120_poses_mirror_right.npy",
+    "native_motion_source": "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/motions/MPI_HDM05/bk/HDM_bk_01-01_03_120_poses.npy",
+    "real_frames": 27,
+    "target_frames": 27,
+    "pad_frames": 0,
+    "caption": "side step to the right without crossing the feet",
+    "boundary_status": "supplemented_from_motion_and_script_not_official_cut_mapping",
+    "reasons": [
+      "excess_forward_backward_travel",
+      "turning_instead_of_sidestep",
+      "excess_forward_backward_travel",
+      "turning_instead_of_sidestep"
+    ],
+    "native_metrics": {
+      "direction": "left",
+      "signed_endpoint_lateral_m": 0.5863508582115173,
+      "directed_distance_m": 0.5863508582115173,
+      "forward_excursion_m": 0.36450767517089844,
+      "heading_change_rad": 0.49078071117401123,
+      "reverse_fraction": -0.0,
+      "minimum_ankle_separation_m": 0.04692832753062248,
+      "opening_excursion_m": 0.6070150136947632,
+      "initial_ankle_separation_m": 0.04692832753062248,
+      "final_ankle_separation_m": 0.07390759140253067,
+      "left_ankle_lift_m": 0.06889551877975464,
+      "right_ankle_lift_m": 0.07606503367424011,
+      "forward_to_lateral_ratio": 0.6216545701026917
+    },
+    "metrics": {
+      "direction": "right",
+      "signed_endpoint_lateral_m": -0.6177982687950134,
+      "directed_distance_m": 0.6177982687950134,
+      "forward_excursion_m": 0.3082183003425598,
+      "heading_change_rad": 0.487676739692688,
+      "reverse_fraction": -0.0,
+      "minimum_ankle_separation_m": 0.0477546751499176,
+      "opening_excursion_m": 0.6105781197547913,
+      "initial_ankle_separation_m": 0.0477546751499176,
+      "final_ankle_separation_m": 0.0759371668100357,
+      "left_ankle_lift_m": 0.08248826861381531,
+      "right_ankle_lift_m": 0.06533828377723694,
+      "forward_to_lateral_ratio": 0.4988979697227478
+    }
+  },
+  {
+    "family": "MPI_HDM05/mm/HDM_mm_01-01_02_120_poses",
+    "split": "test",
+    "status": "held_out_no_motion_inspection",
+    "reasons": [
+      "held_out_source_family"
+    ]
+  }
+]

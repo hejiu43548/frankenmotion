@@ -5,7 +5,7 @@
 - wave：用户暂定通过；不是逐条样本验收。
 - strike：用户允许带已知缺陷暂定试用，并继续 kick。用户观察到部分片段仍有混合拳动作；保留该人工反馈，不用自动筛选通过反驳人工复核。
 - 用户随后明确：先清洗 kick，之后统一训练。该决定已被 2026-10-10 的单任务阶段二试训请求更新，见下节。
-- 当前次序：kick → sidestep；随后处理 turn 左右标签交换、point、march、jump。每类仍需 10 条训练样本供复核。
+- 当前范围已由2026-10-10用户更新为仅处理sidestep，其他任务暂缓。每类仍保留10条训练样本复核要求。
 
 ## strike 已知缺陷
 
@@ -26,7 +26,7 @@
 
 - 当前处理进度：`review_state.json`。
 - strike 候选：Betail `/mnt/sda2/frankenmotion/outputs_amass/source_repair_strike_20261009_v3`。
-- 20 类逐条审计：Betail `/mnt/sda2/frankenmotion/outputs_amass/task_source_audits_20261009_v5`；其中审核状态是导出时快照，最新用户决定以本 memo 和 `review_state.json` 为准。
+- 20 类逐条审计：Betail `/mnt/sda2/frankenmotion/outputs_amass/task_source_audits_20261010_v6`；其中审核状态是导出时快照，最新用户决定以本 memo 和 `review_state.json` 为准。
 
 ## kick 候选监督缺口（待用户复核）
 
@@ -42,3 +42,13 @@
 ### 单任务阶段二结果
 
 三个任务均完成10000步；多种子MAE：wave 0.0592m、strike 0.3828m/s、kick 0.1565m，平均端点增益0.527/0.968/1.218。wave高段不稳定，strike中间档位回落，kick中高段饱和。说明命令已有影响，尚不能认为全范围稳定可控，亦不能据此单独确认数据覆盖的因果贡献。最终报告见`experiments/single_task_stage2_20261010/report.md`，复核页`http://127.0.0.1:50086/single_stage2/index.html`。本轮训练已结束，未开始stage3；kick语义复核状态不因试训而变成通过。
+
+## 2026-10-10：仅处理HDM05 sidestep，其余暂缓
+
+用户直接指定进入sidestep，覆盖此前等待kick后再进入下一类的队列；这不等于kick语义验收通过。仅用HDM05 01-01第6阶段非交叉walkLeft类动作。官方cuts映射403，依据脚本、身体局部侧向运动和脚距恢复边界，BABEL act_cat帧级标注作为旁证；不能将这些边界写成官方walkLeft2/3Steps cuts。
+
+最终34train/6val，来自10/2个原始录制；排除1个test来源和1个含转身/前后位移的边缘周期（左右检查分别记一次原因）。每条为完整迈开—并拢周期，22–31帧（20fps），无补帧、幅度缩放或重定时。原生左侧作为独立参考保留；当前任务5度量身体右侧位移，因此训练清单仅用镜像右侧。左侧参考使用不同task标记且ready_for_training=false，防止被现有loader误当右侧监督。
+
+镜像对22关节SMPL姿态和根平移执行左右交换与反射，再按原管线转20fps并FK。固定骨架不完全左右对称，故重算位移，不能简单复用左侧幅度标签。训练范围0.505–0.935m（目标0.4–1.2m），10等宽箱有4箱为空；验证6条均在目标范围，仍只有2个独立录制。
+
+80个左右缓存的精确裁剪、方向、控制量核验通过，最大重算差2.87e-8；6项镜像/方向/错误动作回归测试通过。10个不同TRAIN录制的左右对照视频已渲染，待用户复核。本轮不启动训练，不推进其他任务。数据为`source_repair_sidestep_20261010_v2`；新逐任务审计为`task_source_audits_20261010_v6`。

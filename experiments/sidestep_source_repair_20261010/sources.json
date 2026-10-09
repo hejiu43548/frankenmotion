@@ -1,0 +1,410 @@
+{
+  "MPI_HDM05/bk/HDM_bk_01-01_01_120_poses": {
+    "family": "MPI_HDM05/bk/HDM_bk_01-01_01_120_poses",
+    "split": "train",
+    "status": "inspected",
+    "raw": "/mnt/sda2/dataset/amass/MPI_HDM05/bk/HDM_bk_01-01_01_120_poses.npz",
+    "raw_sha256": "cc5bfd895d543dae5a9cedb28f2b9e0976bffdf0a43a98aa633a64e39d5040a6",
+    "motion": "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/motions/MPI_HDM05/bk/HDM_bk_01-01_01_120_poses.npy",
+    "motion_sha256": "c0c5da3ff2dc6c2af40f618fc3e704d93224e16a14081e7423b72d5758c3fdbb",
+    "frames": 1713,
+    "raw_frames": 10283,
+    "raw_fps": 120.0,
+    "candidates": [
+      {
+        "start": 672,
+        "stop": 794,
+        "start_s": 33.6,
+        "end_s": 39.7,
+        "left_distance_m": 3.6481475830078125,
+        "heading_range_rad": 0.3463459014892578,
+        "ankle_min_m": 0.039930958300828934
+      }
+    ],
+    "mirrored_raw": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_sidestep_20261010_v2/mirrored_raw/HDM_bk_01-01_01_120_poses.npz",
+    "mirrored_raw_sha256": "427720b59bed3e0e00e187eb5427359280802e7fa5ed6c894b9c1cbf2c5ec4e2",
+    "mirrored_motion": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_sidestep_20261010_v2/motions/HDM_bk_01-01_01_120_poses_mirror_right.npy",
+    "mirrored_motion_sha256": "12a31db3426d3f1b593b2d8392a1ad0ca8db2c5aa35f57ae0eeabf793201ca7d",
+    "conversion": {
+      "family": "MPI_HDM05/bk/HDM_bk_01-01_01_120_poses",
+      "status": "ok",
+      "frames": 1713,
+      "fk_error": 7.152557373046875e-07
+    },
+    "mirror_involution_exact": true
+  },
+  "MPI_HDM05/bk/HDM_bk_01-01_02_120_poses": {
+    "family": "MPI_HDM05/bk/HDM_bk_01-01_02_120_poses",
+    "split": "train",
+    "status": "inspected",
+    "raw": "/mnt/sda2/dataset/amass/MPI_HDM05/bk/HDM_bk_01-01_02_120_poses.npz",
+    "raw_sha256": "73415b46797aacade19844acb32aa6b0653ee7a57b4ea68932a9fa844779c6fa",
+    "motion": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_sidestep_20261010_v1/inspection/motions/MPI_HDM05/bk/HDM_bk_01-01_02_120_poses.npy",
+    "motion_sha256": "66c1135b69a13bb45873ec40d9f08230e66858b219023b4ff11b820ccaaf9aad",
+    "frames": 1457,
+    "raw_frames": 8747,
+    "raw_fps": 120.0,
+    "candidates": [
+      {
+        "start": 637,
+        "stop": 739,
+        "start_s": 31.85,
+        "end_s": 36.95,
+        "left_distance_m": 3.052280616760254,
+        "heading_range_rad": 0.28376471996307373,
+        "ankle_min_m": 0.051271431148052216
+      }
+    ],
+    "mirrored_raw": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_sidestep_20261010_v2/mirrored_raw/HDM_bk_01-01_02_120_poses.npz",
+    "mirrored_raw_sha256": "eb39ecfc168820a88c98c4e9ad6711943b17828defcdb237ceb11ad229468d9e",
+    "mirrored_motion": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_sidestep_20261010_v2/motions/HDM_bk_01-01_02_120_poses_mirror_right.npy",
+    "mirrored_motion_sha256": "1baeb1daa162a73a5c70a42afbf61b51946e7fd154c12551c4b45043649e290c",
+    "conversion": {
+      "family": "MPI_HDM05/bk/HDM_bk_01-01_02_120_poses",
+      "status": "ok",
+      "frames": 1457,
+      "fk_error": 4.76837158203125e-07
+    },
+    "mirror_involution_exact": true
+  },
+  "MPI_HDM05/bk/HDM_bk_01-01_03_120_poses": {
+    "family": "MPI_HDM05/bk/HDM_bk_01-01_03_120_poses",
+    "split": "train",
+    "status": "inspected",
+    "raw": "/mnt/sda2/dataset/amass/MPI_HDM05/bk/HDM_bk_01-01_03_120_poses.npz",
+    "raw_sha256": "1365d58b165627c12759cce41e3906fd8cc7d1769b86a658e35405618f8ae5fe",
+    "motion": "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/motions/MPI_HDM05/bk/HDM_bk_01-01_03_120_poses.npy",
+    "motion_sha256": "9f4986c1a2927ad20db2748c45e2fd176867c523dca432d0b8604b255a14bb1c",
+    "frames": 1494,
+    "raw_frames": 8969,
+    "raw_fps": 120.0,
+    "candidates": [
+      {
+        "start": 609,
+        "stop": 731,
+        "start_s": 30.45,
+        "end_s": 36.55,
+        "left_distance_m": 4.037177276611328,
+        "heading_range_rad": 0.7015436291694641,
+        "ankle_min_m": 0.04548601806163788
+      }
+    ],
+    "mirrored_raw": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_sidestep_20261010_v2/mirrored_raw/HDM_bk_01-01_03_120_poses.npz",
+    "mirrored_raw_sha256": "4b3d5856d07bec42f417cdf6be7a741152b24561978c459ea700e13ac7c9ec5c",
+    "mirrored_motion": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_sidestep_20261010_v2/motions/HDM_bk_01-01_03_120_poses_mirror_right.npy",
+    "mirrored_motion_sha256": "d87620c1856ecb85c2420a3a3bcc9811fb2efc8acf5f78922b6107f9edb9f812",
+    "conversion": {
+      "family": "MPI_HDM05/bk/HDM_bk_01-01_03_120_poses",
+      "status": "ok",
+      "frames": 1494,
+      "fk_error": 4.76837158203125e-07
+    },
+    "mirror_involution_exact": true
+  },
+  "MPI_HDM05/dg/HDM_dg_01-01_01_120_poses": {
+    "family": "MPI_HDM05/dg/HDM_dg_01-01_01_120_poses",
+    "split": "train",
+    "status": "inspected",
+    "raw": "/mnt/sda2/dataset/amass/MPI_HDM05/dg/HDM_dg_01-01_01_120_poses.npz",
+    "raw_sha256": "a67e702ae1c2bb04dc4a086ccaf68ce18f98272a39bed587fb54f5d57cf4d6c4",
+    "motion": "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/motions/MPI_HDM05/dg/HDM_dg_01-01_01_120_poses.npy",
+    "motion_sha256": "57d8e2966cfe76e1d97f9da9278ae7af4b6e055fa30eae6394f794331f1215b3",
+    "frames": 1257,
+    "raw_frames": 7542,
+    "raw_fps": 120.0,
+    "candidates": [
+      {
+        "start": 534,
+        "stop": 607,
+        "start_s": 26.7,
+        "end_s": 30.35,
+        "left_distance_m": 2.466502380371094,
+        "heading_range_rad": 0.16165924072265625,
+        "ankle_min_m": 0.060817595571279526
+      }
+    ],
+    "mirrored_raw": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_sidestep_20261010_v2/mirrored_raw/HDM_dg_01-01_01_120_poses.npz",
+    "mirrored_raw_sha256": "8e156f27a6e58c55020f0fbf5e8c333fb673b64992803d5ef9220d2867870c75",
+    "mirrored_motion": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_sidestep_20261010_v2/motions/HDM_dg_01-01_01_120_poses_mirror_right.npy",
+    "mirrored_motion_sha256": "b12cda4e1f1aa416d2fc38d89cbf9e69cfbceb3933a01ccffc43eaa1662439fc",
+    "conversion": {
+      "family": "MPI_HDM05/dg/HDM_dg_01-01_01_120_poses",
+      "status": "ok",
+      "frames": 1257,
+      "fk_error": 4.76837158203125e-07
+    },
+    "mirror_involution_exact": true
+  },
+  "MPI_HDM05/dg/HDM_dg_01-01_02_120_poses": {
+    "family": "MPI_HDM05/dg/HDM_dg_01-01_02_120_poses",
+    "split": "train",
+    "status": "inspected",
+    "raw": "/mnt/sda2/dataset/amass/MPI_HDM05/dg/HDM_dg_01-01_02_120_poses.npz",
+    "raw_sha256": "0c590f3e289cdc65fbd1c78c39039eff10860c52f0a3605758cb9293d0acf60d",
+    "motion": "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/motions/MPI_HDM05/dg/HDM_dg_01-01_02_120_poses.npy",
+    "motion_sha256": "400cffa0881b90aa06dea8c1719fe309eeca0a2face25a011568fecabc1f8369",
+    "frames": 1276,
+    "raw_frames": 7660,
+    "raw_fps": 120.0,
+    "candidates": [
+      {
+        "start": 484,
+        "stop": 561,
+        "start_s": 24.2,
+        "end_s": 28.05,
+        "left_distance_m": 2.3645858764648438,
+        "heading_range_rad": 0.13077926635742188,
+        "ankle_min_m": 0.0692063570022583
+      }
+    ],
+    "mirrored_raw": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_sidestep_20261010_v2/mirrored_raw/HDM_dg_01-01_02_120_poses.npz",
+    "mirrored_raw_sha256": "19128b54a13317f24798dbae0d408ff18aab71cd951adf6ef3ac35eac8e09302",
+    "mirrored_motion": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_sidestep_20261010_v2/motions/HDM_dg_01-01_02_120_poses_mirror_right.npy",
+    "mirrored_motion_sha256": "0eb3a5c9bfb505e24e4852dcece9bbdd5a3625fa9adcaa1c29d9355c83778601",
+    "conversion": {
+      "family": "MPI_HDM05/dg/HDM_dg_01-01_02_120_poses",
+      "status": "ok",
+      "frames": 1276,
+      "fk_error": 4.76837158203125e-07
+    },
+    "mirror_involution_exact": true
+  },
+  "MPI_HDM05/dg/HDM_dg_01-01_03_120_poses": {
+    "family": "MPI_HDM05/dg/HDM_dg_01-01_03_120_poses",
+    "split": "train",
+    "status": "inspected",
+    "raw": "/mnt/sda2/dataset/amass/MPI_HDM05/dg/HDM_dg_01-01_03_120_poses.npz",
+    "raw_sha256": "3cbf6e4cb7a776f3474f3ac74bc50f3a3cd5b2cd2e4b1c48374f2be36b0aa392",
+    "motion": "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/motions/MPI_HDM05/dg/HDM_dg_01-01_03_120_poses.npy",
+    "motion_sha256": "8d1f6a4f88062cd057ee75e05b23a8761221df2b1d14adcb3b283773edc47837",
+    "frames": 1281,
+    "raw_frames": 7687,
+    "raw_fps": 120.0,
+    "candidates": [
+      {
+        "start": 531,
+        "stop": 612,
+        "start_s": 26.55,
+        "end_s": 30.6,
+        "left_distance_m": 2.5987071990966797,
+        "heading_range_rad": 0.08478164672851562,
+        "ankle_min_m": 0.07838894426822662
+      }
+    ],
+    "mirrored_raw": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_sidestep_20261010_v2/mirrored_raw/HDM_dg_01-01_03_120_poses.npz",
+    "mirrored_raw_sha256": "f94d28b9e2f850bc04f6f5310fae9a675546475f1e4a48060398e2dd4d08e85c",
+    "mirrored_motion": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_sidestep_20261010_v2/motions/HDM_dg_01-01_03_120_poses_mirror_right.npy",
+    "mirrored_motion_sha256": "6efbce62dce37f4d0d9415a52c0cdf740dc31975221f078ff865f54e89aceb06",
+    "conversion": {
+      "family": "MPI_HDM05/dg/HDM_dg_01-01_03_120_poses",
+      "status": "ok",
+      "frames": 1281,
+      "fk_error": 4.76837158203125e-07
+    },
+    "mirror_involution_exact": true
+  },
+  "MPI_HDM05/dg/HDM_dg_01-01_04_120_poses": {
+    "family": "MPI_HDM05/dg/HDM_dg_01-01_04_120_poses",
+    "split": "train",
+    "status": "inspected",
+    "raw": "/mnt/sda2/dataset/amass/MPI_HDM05/dg/HDM_dg_01-01_04_120_poses.npz",
+    "raw_sha256": "791fe5c45b9baa2f21b1d13439995e4c92f6858c2d9a865559facf4afb941fb2",
+    "motion": "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/motions/MPI_HDM05/dg/HDM_dg_01-01_04_120_poses.npy",
+    "motion_sha256": "5989eac234624f6e1fc92d789bf7920103638995b2be9923cf11d3057c6d1314",
+    "frames": 1274,
+    "raw_frames": 7647,
+    "raw_fps": 120.0,
+    "candidates": [
+      {
+        "start": 509,
+        "stop": 588,
+        "start_s": 25.45,
+        "end_s": 29.4,
+        "left_distance_m": 2.892135429382324,
+        "heading_range_rad": 0.19298410415649414,
+        "ankle_min_m": 0.06702173501253128
+      }
+    ],
+    "mirrored_raw": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_sidestep_20261010_v2/mirrored_raw/HDM_dg_01-01_04_120_poses.npz",
+    "mirrored_raw_sha256": "0097b9d55b184b2a9b115f872a1baf3894dd7e1b2a0af8637dfedb14308dd1b5",
+    "mirrored_motion": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_sidestep_20261010_v2/motions/HDM_dg_01-01_04_120_poses_mirror_right.npy",
+    "mirrored_motion_sha256": "f54608a29f4f91c0ef754d56d6b87aa770280c5018f8ff58fde7a21a2cd2574d",
+    "conversion": {
+      "family": "MPI_HDM05/dg/HDM_dg_01-01_04_120_poses",
+      "status": "ok",
+      "frames": 1274,
+      "fk_error": 4.76837158203125e-07
+    },
+    "mirror_involution_exact": true
+  },
+  "MPI_HDM05/mm/HDM_mm_01-01_01_120_poses": {
+    "family": "MPI_HDM05/mm/HDM_mm_01-01_01_120_poses",
+    "split": "train",
+    "status": "inspected",
+    "raw": "/mnt/sda2/dataset/amass/MPI_HDM05/mm/HDM_mm_01-01_01_120_poses.npz",
+    "raw_sha256": "9f47e095180a86de6acfbdf610663901960cfc8a6404e811ecb010a16365668b",
+    "motion": "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/motions/MPI_HDM05/mm/HDM_mm_01-01_01_120_poses.npy",
+    "motion_sha256": "e31b7090975861cdc30548e7ab6bfb2a4dee65a77647efde33a70e40681b9389",
+    "frames": 1393,
+    "raw_frames": 8361,
+    "raw_fps": 120.0,
+    "candidates": [
+      {
+        "start": 538,
+        "stop": 614,
+        "start_s": 26.9,
+        "end_s": 30.7,
+        "left_distance_m": 2.2360485076904295,
+        "heading_range_rad": 0.22731828689575195,
+        "ankle_min_m": 0.07442820817232132
+      }
+    ],
+    "mirrored_raw": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_sidestep_20261010_v2/mirrored_raw/HDM_mm_01-01_01_120_poses.npz",
+    "mirrored_raw_sha256": "8681c8420c479af18bdabf765d8c2f42984b06cea21b8ad6d77e7b134c5258c9",
+    "mirrored_motion": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_sidestep_20261010_v2/motions/HDM_mm_01-01_01_120_poses_mirror_right.npy",
+    "mirrored_motion_sha256": "cc67ffb9c37f4790cbd89c4b8df4f1b9e8109fa7f23de7a7f86be311be83c8f2",
+    "conversion": {
+      "family": "MPI_HDM05/mm/HDM_mm_01-01_01_120_poses",
+      "status": "ok",
+      "frames": 1393,
+      "fk_error": 4.76837158203125e-07
+    },
+    "mirror_involution_exact": true
+  },
+  "MPI_HDM05/mm/HDM_mm_01-01_03_120_poses": {
+    "family": "MPI_HDM05/mm/HDM_mm_01-01_03_120_poses",
+    "split": "val",
+    "status": "inspected",
+    "raw": "/mnt/sda2/dataset/amass/MPI_HDM05/mm/HDM_mm_01-01_03_120_poses.npz",
+    "raw_sha256": "84079d247de343de42e617a7ea709f378043e5520236ea7414ff5ce2558697e6",
+    "motion": "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/motions/MPI_HDM05/mm/HDM_mm_01-01_03_120_poses.npy",
+    "motion_sha256": "42ec989ca164dcbd95d22026f23cd597504eba81d226917db4b0eee36981ae9c",
+    "frames": 1247,
+    "raw_frames": 7487,
+    "raw_fps": 120.0,
+    "candidates": [
+      {
+        "start": 490,
+        "stop": 561,
+        "start_s": 24.5,
+        "end_s": 28.05,
+        "left_distance_m": 2.2545181274414063,
+        "heading_range_rad": 0.24269628524780273,
+        "ankle_min_m": 0.10761749744415283
+      }
+    ],
+    "mirrored_raw": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_sidestep_20261010_v2/mirrored_raw/HDM_mm_01-01_03_120_poses.npz",
+    "mirrored_raw_sha256": "5aec59ec1d75e37492b9408fd4734da5e6f596f90d8440ae6123ff98e3a0f134",
+    "mirrored_motion": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_sidestep_20261010_v2/motions/HDM_mm_01-01_03_120_poses_mirror_right.npy",
+    "mirrored_motion_sha256": "16066e7533ad8ee4e8d0f6fb2c94e35c503387936957654e70f6063739e84a3f",
+    "conversion": {
+      "family": "MPI_HDM05/mm/HDM_mm_01-01_03_120_poses",
+      "status": "ok",
+      "frames": 1247,
+      "fk_error": 4.76837158203125e-07
+    },
+    "mirror_involution_exact": true
+  },
+  "MPI_HDM05/tr/HDM_tr_01-01_01_120_poses": {
+    "family": "MPI_HDM05/tr/HDM_tr_01-01_01_120_poses",
+    "split": "train",
+    "status": "inspected",
+    "raw": "/mnt/sda2/dataset/amass/MPI_HDM05/tr/HDM_tr_01-01_01_120_poses.npz",
+    "raw_sha256": "90e2116f1e8715f8c8abad93f48be1a800062efd3c0b8429c96f62468e1a9030",
+    "motion": "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/motions/MPI_HDM05/tr/HDM_tr_01-01_01_120_poses.npy",
+    "motion_sha256": "52ef2fd1a7b02290365d8834c730a345d546249932107394a599a92f2100db75",
+    "frames": 1482,
+    "raw_frames": 8893,
+    "raw_fps": 120.0,
+    "candidates": [
+      {
+        "start": 586,
+        "stop": 671,
+        "start_s": 29.3,
+        "end_s": 33.55,
+        "left_distance_m": 2.037938117980957,
+        "heading_range_rad": 0.20337224006652832,
+        "ankle_min_m": 0.11725281924009323
+      }
+    ],
+    "mirrored_raw": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_sidestep_20261010_v2/mirrored_raw/HDM_tr_01-01_01_120_poses.npz",
+    "mirrored_raw_sha256": "273f6f6a0f292b2e0c3785e59317908c0cc365a748c22afe4c30d176f8763dbf",
+    "mirrored_motion": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_sidestep_20261010_v2/motions/HDM_tr_01-01_01_120_poses_mirror_right.npy",
+    "mirrored_motion_sha256": "aa02a5519ef61a75fd2fe465f4939cadafe086e775c9366b5b748994f8cb30ee",
+    "conversion": {
+      "family": "MPI_HDM05/tr/HDM_tr_01-01_01_120_poses",
+      "status": "ok",
+      "frames": 1482,
+      "fk_error": 4.172325134277344e-07
+    },
+    "mirror_involution_exact": true
+  },
+  "MPI_HDM05/tr/HDM_tr_01-01_02_120_poses": {
+    "family": "MPI_HDM05/tr/HDM_tr_01-01_02_120_poses",
+    "split": "train",
+    "status": "inspected",
+    "raw": "/mnt/sda2/dataset/amass/MPI_HDM05/tr/HDM_tr_01-01_02_120_poses.npz",
+    "raw_sha256": "540febfe9b597620e981d466af0fc5a5e7b09a8a9f390614b541b8d7978753b8",
+    "motion": "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/motions/MPI_HDM05/tr/HDM_tr_01-01_02_120_poses.npy",
+    "motion_sha256": "0ad77da5657f8e7a025fa1071d533de7eabdb768b476a2faadc6a88e3410f2af",
+    "frames": 1327,
+    "raw_frames": 7967,
+    "raw_fps": 120.0,
+    "candidates": [
+      {
+        "start": 554,
+        "stop": 631,
+        "start_s": 27.7,
+        "end_s": 31.55,
+        "left_distance_m": 1.9951892852783204,
+        "heading_range_rad": 0.18681621551513672,
+        "ankle_min_m": 0.1058209165930748
+      }
+    ],
+    "mirrored_raw": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_sidestep_20261010_v2/mirrored_raw/HDM_tr_01-01_02_120_poses.npz",
+    "mirrored_raw_sha256": "9bf10b050918fd9e3b824b51e4c8c478bbf2aed7ad6c971b37a2d69a8feb006c",
+    "mirrored_motion": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_sidestep_20261010_v2/motions/HDM_tr_01-01_02_120_poses_mirror_right.npy",
+    "mirrored_motion_sha256": "8489860b70ddbd3447c8c2d789828165b1ca505fe366f2942372411ea847efcd",
+    "conversion": {
+      "family": "MPI_HDM05/tr/HDM_tr_01-01_02_120_poses",
+      "status": "ok",
+      "frames": 1327,
+      "fk_error": 3.5762786865234375e-07
+    },
+    "mirror_involution_exact": true
+  },
+  "MPI_HDM05/tr/HDM_tr_01-01_03_120_poses": {
+    "family": "MPI_HDM05/tr/HDM_tr_01-01_03_120_poses",
+    "split": "val",
+    "status": "inspected",
+    "raw": "/mnt/sda2/dataset/amass/MPI_HDM05/tr/HDM_tr_01-01_03_120_poses.npz",
+    "raw_sha256": "e4833d00f29e2c516098ef81588a9b3bb748c50cbbbf9c9b77a00e6477efd6f1",
+    "motion": "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/motions/MPI_HDM05/tr/HDM_tr_01-01_03_120_poses.npy",
+    "motion_sha256": "d389605c5065c261dc316ea47222a67d9c754ac1a2031fbf2aaed29a4ba14b41",
+    "frames": 1314,
+    "raw_frames": 7889,
+    "raw_fps": 120.0,
+    "candidates": [
+      {
+        "start": 572,
+        "stop": 650,
+        "start_s": 28.6,
+        "end_s": 32.5,
+        "left_distance_m": 2.0741907119750977,
+        "heading_range_rad": 0.2055422067642212,
+        "ankle_min_m": 0.1116839125752449
+      }
+    ],
+    "mirrored_raw": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_sidestep_20261010_v2/mirrored_raw/HDM_tr_01-01_03_120_poses.npz",
+    "mirrored_raw_sha256": "7e06ac63e687495abcb6a71193dee2472d02f75a20347cc6613182e2c910cdc4",
+    "mirrored_motion": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_sidestep_20261010_v2/motions/HDM_tr_01-01_03_120_poses_mirror_right.npy",
+    "mirrored_motion_sha256": "96fdf1a0283475794783aded21528f7d37d842e29ab92419f379dc295362b7c5",
+    "conversion": {
+      "family": "MPI_HDM05/tr/HDM_tr_01-01_03_120_poses",
+      "status": "ok",
+      "frames": 1314,
+      "fk_error": 3.5762786865234375e-07
+    },
+    "mirror_involution_exact": true
+  }
+}

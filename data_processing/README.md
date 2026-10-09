@@ -4,10 +4,13 @@ Keep task selection, temporal cropping, label reconstruction, admission checks,
 and review rendering here. Processing never launches training. Each repair writes
 a new dataset directory and preserves every other task's records exactly.
 
-Current review sequence: **kick (in progress)** → sidestep →
-turn left/right label swap → point → march → jump. Wave and strike were provisionally accepted by the user; strike retains
-known semantic and parameter-coverage defects recorded in `MEMO.md`. Each task still requires10 rendered training samples and explicit
-user review before the next begins. `review_state.json` is the current gate record.
+Current scope (2026-10-10): **sidestep only**, using HDM05 non-crossing
+walkLeft phases and rightward mirrors for the existing right-only quantity.
+All other tasks are deferred by the user. Wave and strike remain provisionally
+accepted; kick is not silently marked approved by the request to move on.
+The wave/strike/kick stage2 diagnostics are complete. No new training is started.
+Each repaired task requires10 rendered training samples for user review;
+`review_state.json` records the current scope and gate.
 
 `export_task_audits.py` exports all20 tasks separately as exact train/val JSON,
 human-readable CSV and an HTML index, preserving crop bounds, quantities, captions,
