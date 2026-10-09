@@ -301,3 +301,12 @@ tensors, optimizer empty. Source,data,rewards,terminations,versions match;
 configuration differs only in seed and experiment name.
 SONIC+PPO2000 native validation reaches100% completion/97.5% strict; remaining
 candidates pending. No test evaluation or reward/threshold change.
+
+Selected scratch5999 initial velocity diagnostic
+Under the same initial +/-0.3 linear/angular velocity perturbations, native
+validation completion and strict success are87.5%, versus old shared20
+82.5%/77.5%. Strict delta +10 points, task-cluster95% interval[-2.5,25].
+Anchor penalty0.11277m vs0.14776m; joint penalty0.23458rad vs0.20658rad.
+This does not establish a clear robustness gain; it is a secondary diagnostic
+after freezing the checkpoint, not a selection criterion or mid-motion push
+recovery test. All40 cases retained; no reward/termination adjustment.
