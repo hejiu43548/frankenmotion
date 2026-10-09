@@ -23,10 +23,14 @@ class NativeTracker:
         torch.set_num_threads(1)
         self.configuration = configuration
         self.contract = json.loads(Path(configuration["contract"]).read_text())
-        self.legacy = configuration["policy_kind"] == "shared20"
+        # Both use the same historical 2350D observation ABI. The official
+        # SONIC export contains only its own encoder/decoder, with no old head.
+        self.legacy = configuration["policy_kind"] in ["shared20", "sonic_mode0"]
         for name in ["scene", "policy"]:
             expected = self.contract.get(name + "_sha256")
-            if expected and not (self.legacy and name == "policy"):
+            if expected and not (
+                configuration["policy_kind"] == "shared20" and name == "policy"
+            ):
                 if (
                     hashlib.sha256(Path(configuration[name]).read_bytes()).hexdigest()
                     != expected

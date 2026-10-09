@@ -1,0 +1,29 @@
+{
+  "max_action_error": 3.487847712868586e-06,
+  "frames": 1329,
+  "episodes": [
+    {
+      "task": "arm_circle",
+      "frames": 298
+    },
+    {
+      "task": "back_walk",
+      "frames": 298
+    },
+    {
+      "task": "jog",
+      "frames": 298
+    },
+    {
+      "task": "jump",
+      "frames": 137
+    },
+    {
+      "task": "walk",
+      "frames": 298
+    }
+  ],
+  "threshold": 0.0002,
+  "passed": true,
+  "teacher_data_used": false
+}

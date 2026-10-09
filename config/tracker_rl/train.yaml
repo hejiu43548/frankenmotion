@@ -8,6 +8,7 @@ iterations: 3000
 save_interval: 500
 preview_offsets: []
 start_probability: 0.35
+training_drift_threshold: null
 resume: null
 device: cuda:0
 hydra:

@@ -9,6 +9,7 @@ from mjlab.managers import ObservationTermCfg
 from mjlab.managers import TerminationTermCfg
 from mjlab.tasks.registry import load_env_cfg
 from mjlab.tasks.registry import load_rl_cfg
+from mjlab.tasks.tracking.mdp.terminations import bad_anchor_pos
 
 from .motion import MultiClipCommandCfg
 from .motion import reference_finished
@@ -39,6 +40,18 @@ def build_configuration(configuration, split="train", evaluation=False):
     environment.terminations["reference_end"] = TerminationTermCfg(
         func=reference_finished, time_out=False
     )
+    # Training-only failure signal: prevent long, upright but off-path rollouts.
+    # Evaluation retains the original common physical termination protocol.
+    drift_threshold = configuration.get("training_drift_threshold", None)
+    if drift_threshold is not None:
+        if not 0.0 < float(drift_threshold) < float("inf"):
+            raise ValueError("training_drift_threshold must be finite and positive")
+        if not evaluation:
+            environment.terminations["global_drift"] = TerminationTermCfg(
+                func=bad_anchor_pos,
+                params={"command_name": "motion", "threshold": float(drift_threshold)},
+                time_out=False,
+            )
     if configuration.preview_offsets:
         for group in ["actor", "critic"]:
             environment.observations[group].terms["reference_preview"] = (

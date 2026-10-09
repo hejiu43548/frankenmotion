@@ -96,6 +96,37 @@ class TrackerIntegrationTests(unittest.TestCase):
         )
         self.assertEqual(len(baseline.rewards), 9)
 
+    def test_drift_termination_is_training_only_and_preserves_rewards(self):
+        configuration = OmegaConf.merge(
+            self.configuration, {"training_drift_threshold": 0.5}
+        )
+        baseline, _ = build_configuration(self.configuration)
+        training, _ = build_configuration(configuration)
+        evaluation, _ = build_configuration(configuration, "val", evaluation=True)
+        self.assertEqual(
+            dataclasses.asdict(baseline)["rewards"],
+            dataclasses.asdict(training)["rewards"],
+        )
+        self.assertNotIn("global_drift", evaluation.terminations)
+        termination = training.terminations["global_drift"]
+        self.assertFalse(termination.time_out)
+        self.environment.reset()
+        command = self.environment.command_manager.get_term("motion")
+        self.assertFalse(
+            bool(termination.func(self.environment, **termination.params).any())
+        )
+        # Move reference world origins by 0.6 m horizontally, leaving height
+        # and robot state unchanged. This distinguishes global from z-only error.
+        origins = self.environment.scene.env_origins
+        original_origins = origins.clone()
+        try:
+            origins[:, 0] += 0.6
+            self.assertTrue(
+                bool(termination.func(self.environment, **termination.params).all())
+            )
+        finally:
+            origins.copy_(original_origins)
+
     def test_splits_have_no_shared_seeds_or_files(self):
         records = {
             split: json.loads(

@@ -1,0 +1,34 @@
+{
+  "source_sha256": {
+    "encoder": "013ab0287236aa2721e13f1e936d699db982302d0de0bfcdae76d5c3245362d3",
+    "decoder": "c7241a123eaa36b5d64bad19540efde93cac1ad443bd4572fd12ca99898118ed"
+  },
+  "policy_sha256": "908a0212996ab4e03df6d7b31fc0993d7beb56925afcf2e362423d8435013953",
+  "parity": {
+    "encoder_mode0": {
+      "samples": 128,
+      "max_error": {
+        "cpu": 0.0,
+        "cuda:0": 0.0
+      }
+    },
+    "encoder_mode2": {
+      "samples": 128,
+      "max_error": {
+        "cpu": 0.0,
+        "cuda:0": 0.0
+      }
+    },
+    "decoder_mode0": {
+      "samples": 128,
+      "max_error": {
+        "cpu": 2.86102294921875e-06,
+        "cuda:0": 3.337860107421875e-06
+      }
+    }
+  },
+  "limitations": "Random ABI parity is not a trajectory or deployment quality test. Native dynamics differ from official deployment gains.",
+  "source": "https://huggingface.co/nvidia/GEAR-SONIC/tree/6733128a3d8a523b1418b06bca3cdf61c8b0987f",
+  "provenance_evidence": "Local HF snapshot symlinks resolve to matching content-addressed SHA256 blobs; public network revalidation unavailable at import time.",
+  "historical_tracker_weights_loaded": false
+}

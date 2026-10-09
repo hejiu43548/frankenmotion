@@ -1,0 +1,9 @@
+directory: /home/pku/frankenmotion/work/g1_sonic_official/gear_sonic_deploy/policy/release
+native_contract: configs/release/inference_contract.json
+output: /home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/sonic_official_mode0
+samples: 128
+seed: 71001
+hydra:
+  run:
+    dir: .
+  output_subdir: null

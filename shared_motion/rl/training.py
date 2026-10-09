@@ -77,6 +77,7 @@ def train(configuration: DictConfig, entry_source: Path):
         )
         + "no teacher, distilled policy, expert action labels or pretrained checkpoint",
         "rewards": dataclasses.asdict(environment_configuration)["rewards"],
+        "terminations": dataclasses.asdict(environment_configuration)["terminations"],
         "runner": dataclasses.asdict(agent_configuration),
         "versions": {
             package: importlib.metadata.version(package)

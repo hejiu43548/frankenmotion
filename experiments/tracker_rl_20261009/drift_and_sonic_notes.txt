@@ -1,0 +1,93 @@
+2026-10-10 supplementary experiment protocol (ongoing, not final conclusions)
+
+User preference: prioritize training from scratch. Fine-tuning a clean shared
+policy or official SONIC is permitted, but successful techniques must also be
+tested from scratch. Historical specialist teacher actions, residual heads and
+distillation remain excluded. Current scratch runs are not cancelled.
+
+Hypothesis and evidence
+-----------------------
+The selected scratch preview policy at update 4000 can stay upright far away
+from the reference. On validation back_walk, mean root error is 0.864/0.900 m;
+58.7/60.1% of frames exceed 0.5 m. In these frames total weighted reward remains
+3.731/3.717 per step (root position component approximately 0.001). This is an
+observational grouping of pre-step error and following-step reward, not a causal
+proof. Relative body tracking and stability can coexist with global path drift.
+
+PHC discusses global joint deviation termination and relaxed foot termination:
+https://arxiv.org/html/2305.06456v3
+SONIC documents adaptive termination thresholds and motion sampling:
+https://nvlabs.github.io/GR00T-WholeBodyControl/user_guide/configuration.html
+We test a simpler fixed threshold as a diagnostic, not a reproduction of PHC.
+
+scratch_drift_v1_20261010
+-----------------------
+Random initialization, no checkpoint import, same official 80 training clips,
+seed 51001, 2000 environments, 24 steps/update, 6000 updates (288M transitions),
+future offsets [5,10,20], unchanged upstream nine rewards. Add only a training
+termination: global anchor position deviation >0.5 m, non-timeout terminal.
+Evaluation does not include this additional termination; all comparisons use the
+original common physical failure definitions, full starts and held-out val clips.
+Validation checkpoints: 500,1000,2000,3000,4000,5000,5999. Test remains unused.
+
+Command:
+python scripts/train_tracker_rl.py experiment=scratch_drift_v1 run_date=20261010 \
+  iterations=6000 num_envs=2000 preview_offsets=[5,10,20] \
+  training_drift_threshold=0.5 seed=51001
+
+Frozen live source: /home/pku/frankenmotion/work/tracker_rl_20261009/drift_repository
+The existing extension uses a different untouched source snapshot. Each run saves
+all RL modules, resolved config, source/data hashes, dependencies and initial.pt.
+11 real integration tests passed, including horizontal-drift detection, unchanged
+rewards and absence of the new termination in evaluation. Earlier 8-test invocation
+skipped three export-contract tests; the subsequent full invocation passed all 11.
+
+This is not yet a strictly matched ablation: previous scratch screening used 400
+environments, followed by 2000 for the selected extension. A matched 2000-env
+no-drift scratch experiment is needed before attributing differences to termination.
+
+Clean official SONIC import and baseline
+--------------------------------------
+Local official repository commit b042411fae38ee4d1af9aac82a37a1f8d14d6dd0.
+HF cached snapshot 6733128a3d8a523b1418b06bca3cdf61c8b0987f.
+Official source: https://huggingface.co/nvidia/GEAR-SONIC
+Mode 0 = G1 robot motion input; mode 2 = SMPL pose input (plus wrist references).
+Release input layout differs from v1.1; never swap checkpoints without the ABI.
+Official configuration: gear_sonic_deploy/policy/release/observation_config.yaml.
+
+Source ONNX hashes are pinned in shared_motion/rl/sonic.py. Matching local HF
+snapshot symlinks point to content-addressed blobs. Live public-network verification
+failed due connectivity; provenance claim is based on this cache and official docs.
+The import path reads ONNX initializers directly; no historical tracker, head,
+normalizer, teacher trajectory or action dataset is read. Decoder/encoder are frozen.
+Optional import dependencies: onnx==1.23.1, onnxruntime==1.23.2.
+
+128 random inputs per module: mode0/mode2 encoder maximum CPU and CUDA difference
+from ONNX Runtime is zero. Decoder errors 2.861e-6 CPU, 3.338e-6 CUDA. This checks
+batched graph conversion, not a claim that robot dynamics or task quality matches
+the official deployment. The first extraction attempt omitted timewise feature
+interleaving and failed parity; it was corrected before any policy evaluation.
+
+The resulting standalone mode0 policy keeps 10 causal proprioception frames and
+uses the same native 2350D ABI. It ignores the old residual-head input features.
+Unlearned joint permutations and actuator scales come from the native ABI contract.
+No zeroed teacher-trained head is loaded or retained.
+
+Native validation (40 clips, common scene and initialization):
+                  completion  strict success  root error w/failure  joint w/failure
+Existing shared20    0.80         0.75             0.136938 m          0.212318 rad
+Official SONIC0      0.95         0.75             0.119546 m          0.135822 rad
+
+These are PRETRAINED baseline results, not gains from our online RL. No policy test
+split has been used. Native results must not be mixed with GPU/Warp evaluations.
+This makes official SONIC a plausible clean initialization for a later online-RL
+residual experiment; it does not establish improvement or remove the scratch goal.
+
+An independent original-ONNX shadow check also passed on actual native rollouts
+for arm_circle/back_walk/jog/jump/walk, seed42001 (including the failed jump tail
+only until physical termination). See sonic_trajectory_audit.json for frame count
+and maximum final motor-action discrepancy. No expert dataset was read.
+Task-cluster bootstrap intervals over these 20 validation tasks:
+completion delta +0.15, 95% [0.025,0.30]; strict success delta0, [-0.15,0.125];
+failure-inclusive root error delta -0.01739 m, [-0.05312,0.02027]. These intervals
+describe this validation set, not unseen-task or training-seed generalization.
