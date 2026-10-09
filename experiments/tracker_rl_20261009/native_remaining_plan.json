@@ -1,0 +1,147 @@
+{
+  "jobs": [
+    {
+      "experiment": "scratch_drift_v1",
+      "iteration": 4000,
+      "result_marker": "scratch_drift_result.json",
+      "sonic": false
+    },
+    {
+      "experiment": "scratch_drift_v1",
+      "iteration": 5000,
+      "result_marker": "scratch_drift_result.json",
+      "sonic": false
+    },
+    {
+      "experiment": "scratch_drift_v1",
+      "iteration": 5999,
+      "result_marker": "scratch_drift_result.json",
+      "sonic": false
+    },
+    {
+      "experiment": "sonic_online_v1",
+      "iteration": 500,
+      "result_marker": "sonic_online_result.json",
+      "sonic": true
+    },
+    {
+      "experiment": "sonic_online_v1",
+      "iteration": 1000,
+      "result_marker": "sonic_online_result.json",
+      "sonic": true
+    },
+    {
+      "experiment": "sonic_online_v1",
+      "iteration": 1500,
+      "result_marker": "sonic_online_result.json",
+      "sonic": true
+    },
+    {
+      "experiment": "sonic_online_v1",
+      "iteration": 2000,
+      "result_marker": "sonic_online_result.json",
+      "sonic": true
+    },
+    {
+      "experiment": "sonic_online_v1",
+      "iteration": 2500,
+      "result_marker": "sonic_online_result.json",
+      "sonic": true
+    },
+    {
+      "experiment": "sonic_online_v1",
+      "iteration": 2999,
+      "result_marker": "sonic_online_result.json",
+      "sonic": true
+    },
+    {
+      "experiment": "scratch_drift_seed2",
+      "iteration": 500,
+      "result_marker": "scratch_drift_seed2_result.json",
+      "sonic": false
+    },
+    {
+      "experiment": "scratch_drift_seed2",
+      "iteration": 1000,
+      "result_marker": "scratch_drift_seed2_result.json",
+      "sonic": false
+    },
+    {
+      "experiment": "scratch_drift_seed2",
+      "iteration": 2000,
+      "result_marker": "scratch_drift_seed2_result.json",
+      "sonic": false
+    },
+    {
+      "experiment": "scratch_drift_seed2",
+      "iteration": 3000,
+      "result_marker": "scratch_drift_seed2_result.json",
+      "sonic": false
+    },
+    {
+      "experiment": "scratch_drift_seed2",
+      "iteration": 4000,
+      "result_marker": "scratch_drift_seed2_result.json",
+      "sonic": false
+    },
+    {
+      "experiment": "scratch_drift_seed2",
+      "iteration": 5000,
+      "result_marker": "scratch_drift_seed2_result.json",
+      "sonic": false
+    },
+    {
+      "experiment": "scratch_drift_seed2",
+      "iteration": 5999,
+      "result_marker": "scratch_drift_seed2_result.json",
+      "sonic": false
+    },
+    {
+      "experiment": "scratch_no_drift_matched",
+      "iteration": 500,
+      "result_marker": "scratch_no_drift_matched_result.json",
+      "sonic": false
+    },
+    {
+      "experiment": "scratch_no_drift_matched",
+      "iteration": 1000,
+      "result_marker": "scratch_no_drift_matched_result.json",
+      "sonic": false
+    },
+    {
+      "experiment": "scratch_no_drift_matched",
+      "iteration": 2000,
+      "result_marker": "scratch_no_drift_matched_result.json",
+      "sonic": false
+    },
+    {
+      "experiment": "scratch_no_drift_matched",
+      "iteration": 3000,
+      "result_marker": "scratch_no_drift_matched_result.json",
+      "sonic": false
+    },
+    {
+      "experiment": "scratch_no_drift_matched",
+      "iteration": 4000,
+      "result_marker": "scratch_no_drift_matched_result.json",
+      "sonic": false
+    },
+    {
+      "experiment": "scratch_no_drift_matched",
+      "iteration": 5000,
+      "result_marker": "scratch_no_drift_matched_result.json",
+      "sonic": false
+    },
+    {
+      "experiment": "scratch_no_drift_matched",
+      "iteration": 5999,
+      "result_marker": "scratch_no_drift_matched_result.json",
+      "sonic": false
+    }
+  ],
+  "split": "val",
+  "perturbation": 0,
+  "seed": 61001,
+  "selection_protocol": "final_selection_protocol.txt",
+  "source_script_sha256": "60f734595b721b8a25d420230d2b444870794eb90bdcbde0f60e1edc09f99259"
+}
