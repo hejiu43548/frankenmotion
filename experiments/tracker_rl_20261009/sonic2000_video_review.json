@@ -1,0 +1,31 @@
+{
+  "checkpoint": 2000,
+  "experiment": "sonic_online_v1_20261010",
+  "split": "val",
+  "motion_seed": 42001,
+  "videos": {
+    "arm_circle_42001.mp4": "5053449947ec00a9d09279291da369ee56e49b755484a87a3242d0ed6a6a927d",
+    "back_walk_42001.mp4": "180f1ee8a4031bb480d3052a11a77982d9832149d2e8ab44dfc34e6b24b01d9d",
+    "bow_42001.mp4": "f43023e276c6f673320f83c4ca2377f8178fce9da1a3f9386e17f74defea46f0",
+    "clap_42001.mp4": "5af64a8868feb397ae62eef3df1c80988a19eeb46226af12f14b8d163d07cae8",
+    "jog_42001.mp4": "6beaf0380147de4d7ece71722bb940e31b5501d53b11969843d3c5256338756d",
+    "jump_42001.mp4": "cafe2a34e09e2bb86b01cad512566fe902002ef8b1c9e2005d41da4140d53dc9",
+    "kick_42001.mp4": "9f7e7778c11808eea042db2bc8fb4d10412b59ac75fa738bcf44479df558f5bc",
+    "lean_42001.mp4": "782fa7aaa92b01c4ae30ad9c9d031179e40841c1cd6a2abe03736fddcb5b8246",
+    "march_42001.mp4": "88421e75f5ff0b5e66e252dffd11bb743f1357a6f4b37771896706059e1fbcc4",
+    "point_42001.mp4": "fcac002d0911efccd1e48d197c2e3e72985d84708a4c57ed0b21763e248d5aa6",
+    "raise_hand_42001.mp4": "18ac0eccc283d7dac98c854cd37183c5eb804fd978259eae9c8e0cf9cf2f6f40",
+    "reach_42001.mp4": "067730e3e91cf3c540d16d4ad421163296a975c4e7997bccd770b2700119625d",
+    "sidestep_42001.mp4": "b61557c05dcc8b4214ae6de4a6913ff8f17c32fa50190b940d5321917c037a6d",
+    "squat_42001.mp4": "82d6f41e8cbb998ffbe700951b5576c334d7eef3cf663a193f144f361a5b5300",
+    "stretch_42001.mp4": "7e04be4e2e4aa4cab03cbbd75a6050db8640b82f5f24f22b8a35fb7d8f4e77e6",
+    "strike_42001.mp4": "b2894907c21ff6e01c13bab811d168a13a8ac9e88f7dfdf9e2807cc7b1668517",
+    "turn_42001.mp4": "50c5a63c2739ec77445cba94697be38e70df6639c35b2ed99a0b3b91c7584172",
+    "twist_42001.mp4": "87c81c3483e42f1922d8bd9f93b18322cbc7c424c73d8145a6137aa7491c994c",
+    "walk_42001.mp4": "c78491f80ffdd114686f60c9d841f748fb6b2757219c8894dc346205cc4109db",
+    "wave_42001.mp4": "238d6913ddec11859f6e4ede92dad64828c69be6eee89d2acc73067b029329a7"
+  },
+  "visual_review": "jump frames at2.4/2.8/3.2/3.6s inspected: crouch, both feet airborne, landing, upright continuation. No claim of real robot deployment.",
+  "native_validation": "40/40 complete,39/40 strict; only strike42001 fails strict with anchor0.22834m. Checkpoint not yet finally selected.",
+  "no_teacher": "Frozen official base and online PPO residual, no historical specialist teacher."
+}
