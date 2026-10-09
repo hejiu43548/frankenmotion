@@ -1,0 +1,30 @@
+{
+  "supervisor_pid": 1415411,
+  "script_sha256": "edd6372304d66d9879a4e81a9acaeb4fc966d0d4b596246f158b3bf9b930534a",
+  "seed": 51001,
+  "initialization": "random, identical seed as scratch_drift_v1; verify initial parameter hashes after start",
+  "source": "/home/pku/frankenmotion/work/tracker_rl_20261009/drift_repository",
+  "wait_for": "/home/pku/frankenmotion/work/tracker_rl_20261009/sonic_online_result.json",
+  "iterations": 6000,
+  "num_envs": 2000,
+  "rollout_steps": 24,
+  "preview_offsets": [
+    5,
+    10,
+    20
+  ],
+  "training_drift_threshold": null,
+  "changed_training_factor": "only additional global-drift termination disabled",
+  "unchanged": "data, initialization seed, architecture, optimizer, rewards, domain randomization, simulator, rollout budget, validation protocol",
+  "validation_iterations": [
+    500,
+    1000,
+    2000,
+    3000,
+    4000,
+    5000,
+    5999
+  ],
+  "test_used": false,
+  "scope": "one-seed matched ablation, not precise across-seed causal estimate"
+}

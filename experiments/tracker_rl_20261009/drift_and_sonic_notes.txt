@@ -111,3 +111,23 @@ anchor error. Report both training seeds separately; do not hide the weaker run.
 Test remains untouched until selection and recipes are frozen. Two seeds assess
 some sensitivity but are not sufficient for a precise seed-variance estimate.
 This replication does not replace the matched no-drift causal ablation.
+
+Matched no-drift control (registered before launch)
+--------------------------------------------------
+The matched control uses the SAME frozen drift_repository and seed51001 as
+scratch_drift_v1. Set only training_drift_threshold=null. Keep2000 environments,
+24 rollout steps,6000updates, future offsets[5,10,20], data, rewards, PPO settings,
+domain randomization and evaluation identical. Run naming/output paths differ.
+Wait for SONIC online training to finish successfully before taking its slot.
+
+python scripts/train_tracker_rl.py experiment=scratch_no_drift_matched run_date=20261010 \
+  iterations=6000 num_envs=2000 preview_offsets=[5,10,20] \
+  training_drift_threshold=null seed=51001
+
+Compare initial actor/critic/normalizer parameter tensors after startup; compare
+resolved configurations and source/data/dependency hashes to the drift run.
+Report matched-budget validation learning curves and final5999 checkpoints as
+well as each run's validation-selected checkpoint. Selection is strict success,
+then completion, then lower penalized anchor error. This is one matched seed:
+it supports a controlled diagnostic, not a high-confidence multi-seed claim.
+The earlier400-env screening/2000-env continuation is contextual, not this control.
