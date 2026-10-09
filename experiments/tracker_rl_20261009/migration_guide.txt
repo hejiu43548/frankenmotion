@@ -1,0 +1,95 @@
+将统一 PPO tracker 迁移到更高质量前期工作的操作说明
+状态：方法与接口说明；最终模型优劣须以完成后的独立测试报告为准。
+
+1. 先区分两种复现目标
+精确复算本次实验：使用归档中的官方生成参考、场景、原训练源码快照、依赖
+版本、配置和种子。不要先替换参考数据，否则是在开展新实验。
+迁移方法：保留同一机器人、控制与评测约定，用更高质量的生成或动捕参考
+替换运动学数据。建立新 artifacts 目录和实验名，保存来源、划分与哈希。
+本次从零路线不需要旧 shared20 权重或专项教师数据；SONIC 路线需要固定
+官方 ONNX，但新残差由在线 PPO 学习，不读取历史专项残差头。
+
+2. 数据入口与坐标约定
+如果上游仍输出兼容的人体 SMPL 动作，可复用统一 GMR 转换；如果已经有
+可靠的机器人运动学参考，可以从 retarget 层接入。每条机器人 NPZ 至少包含：
+- qpos：逐帧完整位姿，根平移以米计，根四元数为 wxyz，后接关节角（弧度）。
+- fps：原始采样频率；joint_names：和 qpos 关节列一一对应的名称。
+retarget/manifest.json 的记录沿用现有样例，包括 task、split、path、
+reference_path、reference_sha256；额外保留动作来源和随机种子等溯源信息。
+prepare_tracker_motion.py 根据场景契约重排关节、插值至50Hz、计算 FK 和速度，
+生成 motion/{train,val,test}/motions.npz、clips.json 及逐动作 NPZ。
+传入训练器的最终 body_* 数组必须采用机器人刚体坐标原点，而非质心。
+MuJoCo 速度重建使用 mjOBJ_XBODY；错误的原点约定会造成看似合理却不一致的
+训练/部署输入。转换器会在整段开始时统一对齐足部地面，不逐帧修正参考。
+
+先按动作来源、主体或生成种子划分 train/val/test，再做确定性的转换。不要
+根据测试 tracker 的表现筛选或修补动作。本次仅隔离生成种子，没有隔离任务
+语义；若同学需要声称新类别泛化，应另设完全未训练的动作类别测试集。
+对于长度变化，检查片段边界与未来参考索引；当前命令实现会在片段末尾截断
+预览，不能跨到下一条动作。每个 split 必须有数据，每条至少能定义速度。
+
+3. 先验证参考，再训练
+运行 export_tracker_scene.py、prepare_tracker_motion.py 和
+ audit_tracker_references.py（具体参数见 reproduce.txt）。检查关节顺序、根
+四元数、采样频率、尺度、地面、运动学连续性与身体原点速度。可选的离地质心
+诊断只能发现部分物理不一致，不能作为完整可行性证明；不自动删除难例。
+机器人型号、关节自由度、执行器或 PD 参数发生变化时，不能直接复用现有
+TorchScript 策略。应重新导出场景/契约并重新训练，单独记录物理配置变化。
+
+4. 首选从零共享 PPO
+在仓库根目录、RL 环境中运行（ARTIFACTS 替换为新数据的绝对路径）：
+  python scripts/train_tracker_rl.py artifacts=ARTIFACTS \
+    experiment=new_data_scratch_seed1 run_date=YYYYMMDD seed=51001 \
+    num_envs=2000 iterations=6000 preview_offsets=[5,10,20] \
+    training_drift_threshold=0.5
+第二个独立随机种子使用新的 experiment 与 seed=51002。不要设置 resume；
+默认随机初始化，不需要动作标签。批量规模变化时以 num_envs×24×iterations
+比较交互步数，不能只比较更新次数。2000×24×6000为2.88亿步。
+任务采样按环境槽位分配；使环境数为任务数的整数倍可获得严格均衡的任务槽。
+每次 reset 在该任务内部随机选择动作；35%从头开始，其余使用随机参考帧。
+更大的数据集需要重新评估训练预算，本次预算不是通用的充分训练保证。
+
+奖励沿用固定六项运动跟踪与三项正则。0.5m全局 torso 锚点偏离提前终止只在
+训练启用，不增加奖励项，也不改变评测阈值。做匹配对照时仅把
+training_drift_threshold=null，其余源代码、种子、初始参数、环境数、更新数
+与参考数据保持一致。应同时比较验证选中的策略和固定终点检查点。
+
+5. 官方 SONIC 对照路线
+  python scripts/train_tracker_rl.py --config-name sonic_residual \
+    artifacts=ARTIFACTS experiment=new_data_sonic run_date=YYYYMMDD \
+    seed=51001 num_envs=2000 iterations=3000 \
+    sonic_directory=OFFICIAL_ONNX_DIRECTORY
+该配置冻结官方 mode0 编码器/解码器，零初始化新的共享残差输出层，并仅用
+PPO 更新新网络。正式结果要与未经本次训练的相同官方基座成对比较，才能
+区分预训练能力与本次在线学习收益。不要把它标为完整控制器从零训练。
+mode2 只做过官方图的数值导入核对；本次在线训练接口使用 mode0，不能声称
+mode2 训练已经实现。保留官方模型的哈希、来源和许可记录。
+
+6. 模型选择与测试
+导出声明好的每个候选检查点，用 evaluate_tracker_cpu.py 在同一原生 MuJoCo
+验证集评测。GPU/Warp曲线可用于观察训练，但不能与原生指标混用或替代选模。
+select_tracker_checkpoint.py 检查候选完整性并输出冻结哈希，排序依次为严格
+成功率、完成率、较低的带失败尾部记账的锚点误差，最后选更早检查点。
+所有训练种子都单独报告，不能只发布表现较好的种子。冻结后再用 split=test
+运行相同评测器。若看过测试结果再调参，必须把该测试集降为开发集并准备
+新的独立测试；不要继续称其为未见测试。
+完整率不等于准确跟踪。除总体指标，保留逐任务误差、失败时间和全部视频。
+初始速度扰动只是起始条件敏感性试验，不能替代中途外力恢复或实机安全评估。
+
+7. 接入实际 follow
+使用 scripts/follow_tracker_rl.py 或支持 schema2 契约的历史 simulate 入口。
+显式 initial_state 提供 qpos/qvel 后，状态不会重置到参考；调用方负责世界
+坐标对齐。缺少 qvel 时默认零速度；省略整个 initial_state 才使用参考起点。
+新策略需要对应的 contract.json 与 scene.mjb；SONIC+PPO还需 sonic_contract.json。
+用单段固定参考先核对轨迹，再验证真实调用流程。输出 final_state.npz 保存
+最后物理步后的状态，可作为下一段输入；rollout 的最后一帧是控制前状态。
+每段调用会重置策略历史，连续动作切换效果需要独立测量。当前未证明任意
+初始姿态恢复、长时自由命令切换或真实机器人部署能力。
+
+8. 交付时至少保留什么
+源代码提交及实际训练快照、安装版本与来源、完整配置、数据索引和哈希、
+场景/控制契约、训练种子、初始参数审计、完整训练检查点（含优化器）与独立
+推理导出、声明的选模候选及冻结清单、同条件基线/测试结果、失败保留的视频。
+仅有 policy.pt 不能复现训练；仅有训练日志也不能复现部署。恢复自身 PPO
+使用 continue_tracker_rl.py 的审计入口；恢复会重建仿真与随机状态，不承诺
+与未中断的 GPU 训练逐位相同。
