@@ -1,0 +1,110 @@
+[
+  {
+    "experiment": "scratch_drift_v1_20261010",
+    "iteration": 500,
+    "checkpoint_sha256": "b024ff13a57e5564d2cece0cb7fb207e846ed8a10ba9bbf5fa4b47003164ab0e",
+    "metrics": {
+      "complete": 0.45,
+      "tracking_success": 0.4,
+      "root_m": 0.11465525921591069,
+      "body_m": 0.13339782473701267,
+      "joint_rad": 0.20726733603970868,
+      "root_m_failure_penalized": 0.216947419578513,
+      "body_m_failure_penalized": 0.23160830782617525,
+      "joint_rad_failure_penalized": 0.42577381431526284,
+      "action_delta_squared": 0.025966424116850607
+    },
+    "evaluation": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_scratch_drift_500",
+    "export": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/scratch_drift_500"
+  },
+  {
+    "experiment": "selected_extension_v1_20261009",
+    "iteration": 4000,
+    "checkpoint_sha256": "28069ccdd6c187fc12f381eecfa29d3ed430dc890d4ea5e91be3caa19c460be1",
+    "metrics": {
+      "complete": 0.85,
+      "tracking_success": 0.5,
+      "root_m": 0.3070611896513749,
+      "body_m": 0.3168900342499027,
+      "joint_rad": 0.20066753663293097,
+      "root_m_failure_penalized": 0.35244147726933456,
+      "body_m_failure_penalized": 0.3612914511619643,
+      "joint_rad_failure_penalized": 0.2831433604314406,
+      "action_delta_squared": 0.013375271510404152
+    },
+    "evaluation": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_selection_extension_4000",
+    "export": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/selection_extension_4000"
+  },
+  {
+    "experiment": "selected_extension_v1_20261009",
+    "iteration": 5000,
+    "checkpoint_sha256": "f660219be7622859a47afd3a642c3afbbfe51712b083127f573c5827bc881cf8",
+    "metrics": {
+      "complete": 0.85,
+      "tracking_success": 0.525,
+      "root_m": 0.2699061716693296,
+      "body_m": 0.27614060845526406,
+      "joint_rad": 0.18785486139478946,
+      "root_m_failure_penalized": 0.30079351148033107,
+      "body_m_failure_penalized": 0.30699265177382395,
+      "joint_rad_failure_penalized": 0.25447068755376273,
+      "action_delta_squared": 0.017243022654734763
+    },
+    "evaluation": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_selection_extension_5000",
+    "export": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/selection_extension_5000"
+  },
+  {
+    "experiment": "selected_extension_v1_20261009",
+    "iteration": 6000,
+    "checkpoint_sha256": "7a0f2409d32d3dbe64f479920bee82d19c0ae2becdefb55528eaf31c95448bfc",
+    "metrics": {
+      "complete": 0.85,
+      "tracking_success": 0.525,
+      "root_m": 0.2307156909212623,
+      "body_m": 0.23544471639954137,
+      "joint_rad": 0.17309922034974784,
+      "root_m_failure_penalized": 0.26990897635464106,
+      "body_m_failure_penalized": 0.27388199481169434,
+      "joint_rad_failure_penalized": 0.2515844423965305,
+      "action_delta_squared": 0.014674484184069362
+    },
+    "evaluation": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_selection_extension_6000",
+    "export": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/selection_extension_6000"
+  },
+  {
+    "experiment": "selected_extension_v1_20261009",
+    "iteration": 7000,
+    "checkpoint_sha256": "c36d2ad1fb3de48f934dd473b92a3a49e45e0298cb8b9fadfb1ee0cb5b8cfc6d",
+    "metrics": {
+      "complete": 0.925,
+      "tracking_success": 0.525,
+      "root_m": 0.2154101907741714,
+      "body_m": 0.21879267171387004,
+      "joint_rad": 0.16944942296039148,
+      "root_m_failure_penalized": 0.23290578516753851,
+      "body_m_failure_penalized": 0.23632828177090057,
+      "joint_rad_failure_penalized": 0.2084626025363674,
+      "action_delta_squared": 0.016338332147898874
+    },
+    "evaluation": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_selection_extension_7000",
+    "export": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/selection_extension_7000"
+  },
+  {
+    "experiment": "selected_extension_v1_20261009",
+    "iteration": 8000,
+    "checkpoint_sha256": "4259d3f9be3bbf0b40b749ae88feba373a9ff325c056919c942f0c2bd5da47eb",
+    "metrics": {
+      "complete": 0.95,
+      "tracking_success": 0.55,
+      "root_m": 0.1795171833343941,
+      "body_m": 0.18348721144974126,
+      "joint_rad": 0.16457257283602186,
+      "root_m_failure_penalized": 0.19118208659434693,
+      "body_m_failure_penalized": 0.1952684206266467,
+      "joint_rad_failure_penalized": 0.19160229019956027,
+      "action_delta_squared": 0.015779006562281785
+    },
+    "evaluation": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_selection_extension_8000",
+    "export": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/selection_extension_8000"
+  }
+]
