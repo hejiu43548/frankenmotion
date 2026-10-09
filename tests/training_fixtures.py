@@ -40,7 +40,7 @@ class ToyBackbone(nn.Module):
 
 
 def toy_bundle():
-    with torch.random.fork_rng():
+    with torch.random.fork_rng(devices=[]):
         torch.manual_seed(912)
         backbone = ToyBackbone().requires_grad_(False)
     mean = torch.zeros(613)

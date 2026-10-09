@@ -1,0 +1,60 @@
+{
+  "source": {
+    "checkpoint": "/mnt/sda2/frankenmotion/outputs_amass/charlie_aligned_20261009/root/best.pt",
+    "checkpoint_sha256": "b288753a2937515034fcf5c046b7f5ef865e9843f54957734ac9d3e81ff6641a",
+    "reference_code_sha256": "72b632c895a3e28d087658b594753aad5cea8d0528cf2dbf5e07f729f5b620af",
+    "epoch": 95,
+    "optimizer_step": 10640,
+    "training_protocol": {
+      "recipe": "charlie_root_retrained_official_v1",
+      "official_sha256": "c9dca1988dd08dd9e2164ac4cf6ae8fece23011a6371e83d502cdfabe5352e18",
+      "epochs": 100,
+      "patience": 15,
+      "batch_size": 16,
+      "accumulate": 4,
+      "optimizer": {
+        "name": "AdamW",
+        "lr": 0.0001,
+        "weight_decay": 0.01,
+        "clip": 1
+      },
+      "root_condition_dropout": 0.15,
+      "seed": 20260925,
+      "smoke": false,
+      "trainable_parameters": 593536,
+      "architecture": "unchanged retrieved RootControl",
+      "training_samples": 7133,
+      "validation_samples": 893,
+      "data_policy": "Reuse full retained task cache; deduplicate family/key, retain longest task crop (up to 6s). This is not the historical full 1-20s root dataset.",
+      "original_data_sha256": {
+        "train": "c3dbc6ff7ba9ec6177785f08333ce42490ff69fe007df37027a188eb61074b4a",
+        "val": "2b6a781c712031956c808885be0f286763bf6edb9bfe29dc28f716972b83bb2b"
+      },
+      "data_sha256": {
+        "train": "1c10a549c8e056b252412d78e6694023bde5b4d4ea35929b39c9065cc6d055ea",
+        "val": "ca4cb3f28c241ff25498bbeb4017d65ff280e2a742acce23ae43c7b3601b909c"
+      },
+      "source_sha256": {
+        "work/charlie_aligned/root_control.py": "72b632c895a3e28d087658b594753aad5cea8d0528cf2dbf5e07f729f5b620af",
+        "work/charlie_aligned/task_control.py": "27e71572b8d95fdef1d89ee800dd18ba65c30581439e82245ebdec6bc66d25b5",
+        "work/charlie_aligned/model.py": "1abc954bfe24b3b0181ebd012ec9a93e7cb1ca59c9cb59bcc1945a7b2e84bfb8",
+        "work/charlie_aligned/train_root.py": "ee9d09d0e31c73858393c902a613a1df78cd350c719c593fd08e3a2ac84524f9",
+        "work/charlie_aligned/architecture_provenance.json": "3b7e2d3ba7db85dfa43aed4479aa30dbc7553b17bc7b415789f342380215f786",
+        "work/unified_direct/common.py": "d34cedf1840a56d21b51c2243e8a4afa128e8aed6e36d9ce25b0aebbe06ddee3",
+        "work/unified_direct/train.py": "72db777a243eee93dd5904cce3729d7c8468b9c6b112df454f486fb8fd12e40b"
+      }
+    },
+    "scope": "Task-agnostic speed/yaw profile adapter trained on previous11-class-derived root data; not retrained on20 classes or walking_turn_v2"
+  },
+  "checks": {
+    "parameters_exact": true,
+    "forward_bitwise_equal": true,
+    "forward_max_errors": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "root_trainable_parameters": 593536
+  },
+  "imported_sha256": "ec279c4d78f0a5c8355f4124a4a6224731abbedfca08dceac9e1dfec5fd1e4e6"
+}

@@ -1,0 +1,14 @@
+defaults:
+  - backbone: official
+  - controller: with_root
+  - _self_
+source_checkpoint: /mnt/sda2/frankenmotion/outputs_amass/charlie_aligned_20261009/root/best.pt
+expected_sha256: b288753a2937515034fcf5c046b7f5ef865e9843f54957734ac9d3e81ff6641a
+reference_code: /home/psirobot/projects/frankenmotion/work/charlie_aligned/root_control.py
+output: /mnt/sda2/frankenmotion/outputs_amass/shared20_walking_20261009/imported_root.pt
+device: cuda
+hydra:
+  job:
+    chdir: false
+  run:
+    dir: /mnt/sda2/frankenmotion/outputs_amass/shared20_root_import_logs_20261009

@@ -1,0 +1,18 @@
+controller: with_root
+experiment: shared20_walking
+run_date: '20261009'
+output: /mnt/sda2/frankenmotion/outputs_amass/shared20_walking_20261009
+backbone: /home/psirobot/checkpoints/frankenmotion/frankenmotion.ckpt
+initial_root: ${output}/imported_root.pt
+train_manifest: /mnt/sda2/frankenmotion/outputs_amass/shared20_walking_data_20261009/train.json
+val_manifest: /mnt/sda2/frankenmotion/outputs_amass/shared20_walking_data_20261009/val.json
+cache_root: /home/psirobot/projects/frankenmotion
+skeleton: ${cache_root}/outputs_amass/transfer_charlie_20261008/snapshot/outputs_amass/franken_eleven_20261003/skeleton.npz
+resume: false
+stage2_overrides: []
+stage3_overrides: []
+hydra:
+  job:
+    chdir: false
+  run:
+    dir: ${output}/supervisor_hydra

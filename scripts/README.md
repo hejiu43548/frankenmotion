@@ -131,3 +131,12 @@ bash scripts/train_stage2.sh experiment=charlie20 run_date=20261009 "${DATA_ARGS
 此入口验证已审查的selection、缓存/PCA、源动作哈希，逐个比对真实事件裁剪并重算有符号转角；只替换turn，所有非turn记录（包括新增9类）原样保留。生成的train.json/val.json可直接传给三阶段的 `data.train_manifest` / `data.val_manifest`；`data.path_root` 必须保留base清单使用的cache路径根。缓存复用，不复制大动作文件；旧数据和结果不覆盖。
 
 Betail已修复的现有11类清单在 `/mnt/sda2/frankenmotion/outputs_amass/main_walking_turn_data_20261009`，总计9181 train/1146 val。它不冒充完整20类数据；准备好其余9类后，对完整base清单运行同一替换入口即可。正式默认仍为20类，缺失任务会报错。
+
+
+## Betail 完整20类流水线
+
+`config/prepare_amass20.yaml` 和 `scripts/prepare_amass20.py` 以修复后的11类清单为基础，追加main新增9类：遍历完整官方train/val标注，按main的caption规则选来源，优先使用对应动作的时间标注，长片段分成2–6秒真实窗口，不设每类上限，不复制填充帧。新9类使用原PCA和缓存CLIP；训练标签由实际裁剪FK重算。已有11类缓存仅解析相对路径，内容不改。新增类尚未逐条人工审核，march验证只有一个独立标注来源。
+
+`config/import_root.yaml` 和 `scripts/import_root.py` 可导入此前已重训的、与任务无关的root速度/转速分支：验证原始权重及代码哈希、全部参数和多个扩散时刻的前向逐位一致性，生成 `verified_external_root_v1` 导入文件。它仅可作为with_root阶段二的root初始化，保留原11类衍生root训练历史，不标成20类训练过的root，不接受旧TaskControl权重。
+
+`config/pipeline.yaml` 和 `scripts/run_stages.py` 顺序运行阶段二和三，独占pipeline锁；阶段二完成审计后从best.json选择权重并核验哈希，失败即停止衔接。GPU必须可用，不能用CUDA不可用的状态冒充启动成功。恢复前核查旧supervisor与子进程均已退出，再使用 `resume=true`；无检查点的部分初始化目录拒绝自动覆盖。监控通知进度保存在独立 `monitor_state.json`，不要改写supervisor持有的pipeline_state.json。

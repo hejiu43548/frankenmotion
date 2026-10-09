@@ -63,6 +63,22 @@ def verify_frozen(model, snapshot):
 
 
 def checkpoint_compatible(checkpoint, model, tasks, stage=None):
+    if checkpoint.get("format") == "verified_external_root_v1":
+        checks = checkpoint.get("import_checks", {})
+        if (
+            stage != 1
+            or model.kind != "charlie_root"
+            or checkpoint["controller_kind"] != model.kind
+            or checkpoint["backbone_sha256"] != model.backbone_sha256
+            or checkpoint["backbone_config"] != model.backbone_configuration
+            or not checks.get("parameters_exact")
+            or not checks.get("forward_bitwise_equal")
+            or not checkpoint.get("source", {}).get("checkpoint_sha256")
+        ):
+            raise ValueError(
+                "External root import is valid only for verified stage2 root initialization"
+            )
+        return
     if (
         checkpoint["controller_kind"] != model.kind
         or checkpoint["backbone_sha256"] != model.backbone_sha256
@@ -329,6 +345,7 @@ def _run_locked(config):
         validation=OmegaConf.to_container(config.validation, resolve=True),
         seed=config.seed,
         initial_sha256=file_sha256(config.initial) if config.initial else None,
+        initial_source=previous.get("source") if previous else None,
         data_sha256={
             "train": file_sha256(config.data.train_manifest),
             "val": file_sha256(config.data.val_manifest),
