@@ -1,0 +1,10 @@
+experiment: ???
+expected_iterations: ???
+expected_episodes: 40
+# Every entry: {iteration: integer, metrics: /absolute/path/to/metrics.json}
+candidates: ???
+output: ???
+hydra:
+  run:
+    dir: .
+  output_subdir: null

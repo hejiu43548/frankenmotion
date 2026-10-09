@@ -152,3 +152,21 @@ Explicit initial state and existing simulation integration
    follow_integration_audit.json records exact reproduction of 40 validation
    episodes each for scratch and SONIC+PPO, plus explicit-state API/CLI parity.
    All 14 real unit/integration tests passed. This is interface validation only.
+
+Validation-only checkpoint selection
+   RL_PYTHON scripts/select_tracker_checkpoint.py \
+     --config-dir ../experiments/tracker_rl_20261009 \
+     --config-name selection_extension_config output=NEW_SELECTION_JSON
+   The saved example lists all seven completed extension candidates and exactly
+   reproduces checkpoint8999 and its full ranking. Paths are machine-specific;
+   update them when moving artifacts. For each other run, supply the candidate
+   list and exact expected_iterations from final_selection_protocol.txt only
+   after all declared checkpoints have native validation results.
+   Selection rejects missing/duplicate candidates, test or perturbed metrics,
+   mismatched scenes/references/seeds/horizons, and changed policy bytes. Output
+   includes metrics/policy/contract/checkpoint hashes and refuses overwrite.
+   Historical screening contracts lack embedded policy hashes: those policies
+   are still checked directly against the stored evaluation hash, with the
+   legacy limitation recorded explicitly. Schema2 requires the embedded hash.
+   selection_script_audit.json records seven real candidates and six rejected
+   invalid inputs; tests/test_tracker_selection.py checks the tie-break order.

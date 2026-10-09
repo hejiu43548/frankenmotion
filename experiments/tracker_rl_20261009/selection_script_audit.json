@@ -1,0 +1,32 @@
+{
+  "real_candidates_verified": 7,
+  "ranking_exactly_matches_previous": true,
+  "selected_iteration": 8999,
+  "negative_cases": [
+    {
+      "case": "missing_candidate",
+      "rejected": "Candidate set does not exactly match the declared iterations"
+    },
+    {
+      "case": "duplicate_candidate",
+      "rejected": "Candidate set does not exactly match the declared iterations"
+    },
+    {
+      "case": "wrong_episode_count",
+      "rejected": "Missing, duplicated, or mismatched validation episodes"
+    },
+    {
+      "case": "test_split",
+      "rejected": "Selection requires unperturbed validation metrics"
+    },
+    {
+      "case": "perturbed_validation",
+      "rejected": "Selection requires unperturbed validation metrics"
+    },
+    {
+      "case": "wrong_policy_hash",
+      "rejected": "Policy changed after evaluation"
+    }
+  ],
+  "scope": "No test rollout loaded or executed; test split rejection uses an edited validation metadata copy."
+}
