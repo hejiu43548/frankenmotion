@@ -1,0 +1,35 @@
+{
+  "experiments": [
+    "scratch_drift_v1_20261010",
+    "scratch_drift_seed2_20261010"
+  ],
+  "seeds": [
+    51001,
+    51002
+  ],
+  "only_configuration_differences": [
+    "seed",
+    "experiment"
+  ],
+  "source_data_reward_termination_runner_versions_equal": true,
+  "optimizer_initial_state_empty": true,
+  "parameter_comparison": {
+    "actor_state_dict": {
+      "different_tensor_count": 8,
+      "max_abs_difference": 0.1714753806591034
+    },
+    "critic_state_dict": {
+      "different_tensor_count": 8,
+      "max_abs_difference": 0.15776057541370392
+    }
+  },
+  "initial_checkpoint_sha256": [
+    "3bc18cff93abe420beff4428695efbaa0da1e865100f3c23ecfc30ace3989158",
+    "cea58546d8949f9fe2d840ae70d4e4a563f2cdaf762f7644d86652b3960e4276"
+  ],
+  "initialization": [
+    "random; no teacher, distilled policy, expert action labels or pretrained checkpoint",
+    "random; no teacher, distilled policy, expert action labels or pretrained checkpoint"
+  ],
+  "scope": "Independent random parameter initialization verified; full second-seed training/evaluation pending."
+}
