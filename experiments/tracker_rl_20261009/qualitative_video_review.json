@@ -1,0 +1,520 @@
+{
+  "scope": "Visual inspection of10contact sheets:20task videos per selected model, generation seed43001, fixed times0.8/2.8/4.8s;120sampled video frames total. Earlier jump43002failure sequence inspected separately. Not every frame, not a quantitative slip/contact/jitter audit.",
+  "models": [
+    "scratch_seed1_selected",
+    "sonic_selected"
+  ],
+  "sheets_reviewed": [
+    "scratch_seed1_selected_0.jpg",
+    "scratch_seed1_selected_1.jpg",
+    "scratch_seed1_selected_2.jpg",
+    "scratch_seed1_selected_3.jpg",
+    "scratch_seed1_selected_4.jpg",
+    "sonic_selected_0.jpg",
+    "sonic_selected_1.jpg",
+    "sonic_selected_2.jpg",
+    "sonic_selected_3.jpg",
+    "sonic_selected_4.jpg"
+  ],
+  "observations": [
+    "Raise-hand/stretch/squat/turn and other sampled reference-dependent posture changes are visibly present; successful metrics do not mean exact pose matching.",
+    "Scratch jump43001 has much smaller visible elevation than reference at2.8s and a red held-terminal banner at4.8s; kick43001 has held-terminal banners at2.8/4.8s.",
+    "SONIC jump43001 is visibly airborne at2.8s and completes; the separately inspected43002jump terminates later in the jump.",
+    "lean43001reference includes a pronounced crouch/forward lean at2.8s. Task names are not a verified semantic-quality annotation.",
+    "No claim of absent foot slip or high-frequency jitter from sparse stills. These are qualitative descriptions only, not model-selection inputs."
+  ],
+  "sample_records": [
+    {
+      "model": "scratch_seed1_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_scratch_seed1_selected_43001/arm_circle_43001.mp4",
+      "sha256": "1f9df5a6976322f6efeb1982e92d1b16ea557bc69eb8199692d69223c62ffe58",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "scratch_seed1_selected_0.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_scratch_seed1_selected_43001/arm_circle_43001.mp4"
+    },
+    {
+      "model": "scratch_seed1_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_scratch_seed1_selected_43001/back_walk_43001.mp4",
+      "sha256": "b5503c9b8d284e79ee6326a6c9d3f1962785da5ed80efeef0dd6a0f6d28b686c",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "scratch_seed1_selected_0.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_scratch_seed1_selected_43001/back_walk_43001.mp4"
+    },
+    {
+      "model": "scratch_seed1_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_scratch_seed1_selected_43001/bow_43001.mp4",
+      "sha256": "c6a2c2e70231804c040c93c099c594b0187712c87ef3be487524b16d5c37ea53",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "scratch_seed1_selected_0.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_scratch_seed1_selected_43001/bow_43001.mp4"
+    },
+    {
+      "model": "scratch_seed1_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_scratch_seed1_selected_43001/clap_43001.mp4",
+      "sha256": "12fbe7333e9ae4eebe2918a3446a93e7f53e7ce7fddde404a5f5f98e7d8aa5ae",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "scratch_seed1_selected_0.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_scratch_seed1_selected_43001/clap_43001.mp4"
+    },
+    {
+      "model": "scratch_seed1_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_scratch_seed1_selected_43001/jog_43001.mp4",
+      "sha256": "d75ba2aec483f64fe987a2f4e828c9514b7da6fc9e5cc7e38e60b76b6f76448a",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "scratch_seed1_selected_1.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_scratch_seed1_selected_43001/jog_43001.mp4"
+    },
+    {
+      "model": "scratch_seed1_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_scratch_seed1_selected_43001/jump_43001.mp4",
+      "sha256": "f303268fa7f2fb8967f01175e455978573f302d6e9a5f0ffa1ec53dd7c40b89c",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "scratch_seed1_selected_1.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_scratch_seed1_selected_43001/jump_43001.mp4"
+    },
+    {
+      "model": "scratch_seed1_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_scratch_seed1_selected_43001/kick_43001.mp4",
+      "sha256": "95f67c0e26f0ceac5a2e33dd2244103ce4e4b096028d8740529c1d471e1f7dd0",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "scratch_seed1_selected_1.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_scratch_seed1_selected_43001/kick_43001.mp4"
+    },
+    {
+      "model": "scratch_seed1_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_scratch_seed1_selected_43001/lean_43001.mp4",
+      "sha256": "e1493368dd516ca0e2665ae368ec8b1af821fc0df159401f002a815be3a8157c",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "scratch_seed1_selected_1.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_scratch_seed1_selected_43001/lean_43001.mp4"
+    },
+    {
+      "model": "scratch_seed1_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_scratch_seed1_selected_43001/march_43001.mp4",
+      "sha256": "49ca12a5b41fee8e6abc0f0d90660ecdfb9aa79bdaf66587293e6e2775fc4155",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "scratch_seed1_selected_2.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_scratch_seed1_selected_43001/march_43001.mp4"
+    },
+    {
+      "model": "scratch_seed1_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_scratch_seed1_selected_43001/point_43001.mp4",
+      "sha256": "a2271a9264a5595b94674102a293ceffa3f23bf39e3385fd041ecaef5d6a98dc",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "scratch_seed1_selected_2.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_scratch_seed1_selected_43001/point_43001.mp4"
+    },
+    {
+      "model": "scratch_seed1_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_scratch_seed1_selected_43001/raise_hand_43001.mp4",
+      "sha256": "2f1e27afc51679183b6959da6171a9c53e2618da0f0d75d201947d02dc6e2120",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "scratch_seed1_selected_2.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_scratch_seed1_selected_43001/raise_hand_43001.mp4"
+    },
+    {
+      "model": "scratch_seed1_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_scratch_seed1_selected_43001/reach_43001.mp4",
+      "sha256": "567524b16e2e0702f4a797746bbb1cde6c47b93600f98146306eff77640b99b8",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "scratch_seed1_selected_2.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_scratch_seed1_selected_43001/reach_43001.mp4"
+    },
+    {
+      "model": "scratch_seed1_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_scratch_seed1_selected_43001/sidestep_43001.mp4",
+      "sha256": "0d7f73a64b1ab052e43fe44a4f524b0430a8b0132d7e17e6a7cf325329749262",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "scratch_seed1_selected_3.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_scratch_seed1_selected_43001/sidestep_43001.mp4"
+    },
+    {
+      "model": "scratch_seed1_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_scratch_seed1_selected_43001/squat_43001.mp4",
+      "sha256": "c2680b2d1ac786361b08b2e7f1af08471fd7d4de02c485645c3d398c5441aa5b",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "scratch_seed1_selected_3.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_scratch_seed1_selected_43001/squat_43001.mp4"
+    },
+    {
+      "model": "scratch_seed1_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_scratch_seed1_selected_43001/stretch_43001.mp4",
+      "sha256": "f619959aed98c5cdf83e0f7ba7bc693815b62217150181451132a42f4d7ec9eb",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "scratch_seed1_selected_3.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_scratch_seed1_selected_43001/stretch_43001.mp4"
+    },
+    {
+      "model": "scratch_seed1_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_scratch_seed1_selected_43001/strike_43001.mp4",
+      "sha256": "5350915a20b673cb8a0b268298c996b8c6395f879bb7e4c12b363b539cf37b34",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "scratch_seed1_selected_3.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_scratch_seed1_selected_43001/strike_43001.mp4"
+    },
+    {
+      "model": "scratch_seed1_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_scratch_seed1_selected_43001/turn_43001.mp4",
+      "sha256": "bad66d7d0074dec87dacdae56942eec3894d33425799518adba24a3964043322",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "scratch_seed1_selected_4.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_scratch_seed1_selected_43001/turn_43001.mp4"
+    },
+    {
+      "model": "scratch_seed1_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_scratch_seed1_selected_43001/twist_43001.mp4",
+      "sha256": "f57d8d0cd29d3380df7e4a7c3c4b6f39bcf4a6466d717458914091067dba2623",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "scratch_seed1_selected_4.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_scratch_seed1_selected_43001/twist_43001.mp4"
+    },
+    {
+      "model": "scratch_seed1_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_scratch_seed1_selected_43001/walk_43001.mp4",
+      "sha256": "788381d9feec074cdaaafb9604d03908228384110696aa815ebec76c43be9e0d",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "scratch_seed1_selected_4.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_scratch_seed1_selected_43001/walk_43001.mp4"
+    },
+    {
+      "model": "scratch_seed1_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_scratch_seed1_selected_43001/wave_43001.mp4",
+      "sha256": "12ea9a9ef3995fb4ae196b8b9c7a8f2b417ab2358f12b4ee468240e8fb4cb02f",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "scratch_seed1_selected_4.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_scratch_seed1_selected_43001/wave_43001.mp4"
+    },
+    {
+      "model": "sonic_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_sonic_selected_43001/arm_circle_43001.mp4",
+      "sha256": "19d46f7d6c4c41b9c4f8855e916e2561c220914a7afd25a9b92f78bd5e7ce5e0",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "sonic_selected_0.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_sonic_selected_43001/arm_circle_43001.mp4"
+    },
+    {
+      "model": "sonic_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_sonic_selected_43001/back_walk_43001.mp4",
+      "sha256": "992265cb9ccd03cb4021614d0c71198576b297a015fb3d7fda068d7648f900ec",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "sonic_selected_0.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_sonic_selected_43001/back_walk_43001.mp4"
+    },
+    {
+      "model": "sonic_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_sonic_selected_43001/bow_43001.mp4",
+      "sha256": "010472f62ee5d2f35c55029c2015a4be3c7f0fdbb58da598e7a9af402c9d3075",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "sonic_selected_0.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_sonic_selected_43001/bow_43001.mp4"
+    },
+    {
+      "model": "sonic_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_sonic_selected_43001/clap_43001.mp4",
+      "sha256": "363ffde462d7ec37d2dc84dfb2ab7237efcc1be985a0f8349ec3f5c223cf2d0f",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "sonic_selected_0.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_sonic_selected_43001/clap_43001.mp4"
+    },
+    {
+      "model": "sonic_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_sonic_selected_43001/jog_43001.mp4",
+      "sha256": "4b33a53e91af87ffa44fef8685f29a453e687eefb54a2648d23ad51f1e251741",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "sonic_selected_1.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_sonic_selected_43001/jog_43001.mp4"
+    },
+    {
+      "model": "sonic_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_sonic_selected_43001/jump_43001.mp4",
+      "sha256": "041950b9f161381b02adfe35d30556ca1b089a5be5db2f245b0f1b2ab37e1d46",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "sonic_selected_1.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_sonic_selected_43001/jump_43001.mp4"
+    },
+    {
+      "model": "sonic_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_sonic_selected_43001/kick_43001.mp4",
+      "sha256": "029bed2b5019d70441a690eacfbe18c6721c5baf3ade7f3a71804660f728ff08",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "sonic_selected_1.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_sonic_selected_43001/kick_43001.mp4"
+    },
+    {
+      "model": "sonic_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_sonic_selected_43001/lean_43001.mp4",
+      "sha256": "a9df1b3b9476fd4d2e6b026d7e4b10f0e7a90ba1a9619f1c3fc68798f0ecdc4e",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "sonic_selected_1.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_sonic_selected_43001/lean_43001.mp4"
+    },
+    {
+      "model": "sonic_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_sonic_selected_43001/march_43001.mp4",
+      "sha256": "a9c3463f7c78236b69b8a081345979d8341b2c2e335705febe555e1c2ad4b567",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "sonic_selected_2.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_sonic_selected_43001/march_43001.mp4"
+    },
+    {
+      "model": "sonic_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_sonic_selected_43001/point_43001.mp4",
+      "sha256": "837bb215b6626b44535281f9d8252f52ae42c9d211672e953ee14b76d8333ecf",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "sonic_selected_2.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_sonic_selected_43001/point_43001.mp4"
+    },
+    {
+      "model": "sonic_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_sonic_selected_43001/raise_hand_43001.mp4",
+      "sha256": "ecbd0f9a05f63e10ec6a88634916bbb152d2f85235639a605f4c43e2635b698b",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "sonic_selected_2.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_sonic_selected_43001/raise_hand_43001.mp4"
+    },
+    {
+      "model": "sonic_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_sonic_selected_43001/reach_43001.mp4",
+      "sha256": "ce951355113c95203db0f2a3fd4fb83896dae5866cec6dc7b848794ccb4d4559",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "sonic_selected_2.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_sonic_selected_43001/reach_43001.mp4"
+    },
+    {
+      "model": "sonic_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_sonic_selected_43001/sidestep_43001.mp4",
+      "sha256": "33b8579c048ce3fc781718626dc1962e1de01a8b8e55acf9e8326b35aefb3ffb",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "sonic_selected_3.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_sonic_selected_43001/sidestep_43001.mp4"
+    },
+    {
+      "model": "sonic_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_sonic_selected_43001/squat_43001.mp4",
+      "sha256": "852c36f85959f74627d43fa337a1c988d4b923121825505ce842ab630b8b81f0",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "sonic_selected_3.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_sonic_selected_43001/squat_43001.mp4"
+    },
+    {
+      "model": "sonic_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_sonic_selected_43001/stretch_43001.mp4",
+      "sha256": "5bda9a61ded67869245ec7009935675fcf390ceb50c79977c5d7043f8637b150",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "sonic_selected_3.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_sonic_selected_43001/stretch_43001.mp4"
+    },
+    {
+      "model": "sonic_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_sonic_selected_43001/strike_43001.mp4",
+      "sha256": "d19683def9b51c816eb7f6c454cbc6ff6fe1f4d9a32a4b08e2149da28132d4ed",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "sonic_selected_3.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_sonic_selected_43001/strike_43001.mp4"
+    },
+    {
+      "model": "sonic_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_sonic_selected_43001/turn_43001.mp4",
+      "sha256": "51ddf3085c618aec85c695acd4fe684087d677500b9b3316dc0fa4e8a906bb39",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "sonic_selected_4.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_sonic_selected_43001/turn_43001.mp4"
+    },
+    {
+      "model": "sonic_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_sonic_selected_43001/twist_43001.mp4",
+      "sha256": "53fb5317e11ecdf36e93af7bc473dc77cbf602fa648590634111cfdacee27aae",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "sonic_selected_4.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_sonic_selected_43001/twist_43001.mp4"
+    },
+    {
+      "model": "sonic_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_sonic_selected_43001/walk_43001.mp4",
+      "sha256": "99b23f213b06288e1aa3e8aeeebf6239ec2256c9315e7e9bc195a4fe82f48f73",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "sonic_selected_4.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_sonic_selected_43001/walk_43001.mp4"
+    },
+    {
+      "model": "sonic_selected",
+      "video": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/videos/test_sonic_selected_43001/wave_43001.mp4",
+      "sha256": "2641fe00c09749169e99f5c3d67a9fffe33272d6dc131fe2755e43034a9805fb",
+      "sample_times_s": [
+        0.8,
+        2.8,
+        4.8
+      ],
+      "sheet": "sonic_selected_4.jpg",
+      "local_video_relative_to_tracker_rl": "test_videos/test_sonic_selected_43001/wave_43001.mp4"
+    }
+  ],
+  "sheet_sha256": {
+    "scratch_seed1_selected_0.jpg": "68f4de1c6ed6c85e118fee34f770eb2b457b3b083ff619edd928413a0db119f7",
+    "scratch_seed1_selected_1.jpg": "16afbddb8d1563bae650b01bf8556f311c3920cdc012af61d14aee76a1a679c1",
+    "scratch_seed1_selected_2.jpg": "6a2372b484fd7d79db6891b40f271a24ac5e57838373cbb04815cd65ef40f13e",
+    "scratch_seed1_selected_3.jpg": "419aa6265c14ba48c841274306a3b9a1c40c717dc2a336949b8d25bd1e1bc50d",
+    "scratch_seed1_selected_4.jpg": "1f13f7a253aa8d05ed6d06bd9e929ddfd684e8c5960e5ac97f01ab70896d7a34",
+    "sonic_selected_0.jpg": "361fd441551b2aa4a8e5db3cc111176655e4c24a9efb974e7e6ffcaabb7dfc2e",
+    "sonic_selected_1.jpg": "1a0266aa34393933fbf5a2031c4ac08f2b12d75e0604372fa86ddea956f1b68e",
+    "sonic_selected_2.jpg": "1c752bd94ef6da1649d23956221a122bf087a653972c10c0d3bf7019fbd03192",
+    "sonic_selected_3.jpg": "a50f1d4e26ac0677bf2466729cc027c2743146b308c84c20c17f092819a45067",
+    "sonic_selected_4.jpg": "a3de10226cb7d2e8a61f914e025e05df2c131d45e561e24e32050ee038f55ec8"
+  }
+}

@@ -382,3 +382,6 @@ training_randomization_audit.json保存正式配置重建的push/COM/编码器�
 
 已选权重独立便携包核对
 portable_trackers包含最新follow运行时、两条路线的已选policy、场景及walk42001参考。复制到远程隔离目录并取消PYTHONPATH后，从干净CPU环境调用包内入口；两模型均复现298帧验证步行，状态/动作最大差0。首次打包遗漏SONIC伴随policy.json，隔离测试发现后已补齐，再次21文件哈希验证和推理通过。未修改训练、权重或评测规则。详见portable_selected_audit.json。
+
+定时画面质检（不参与选模）
+已检查seed43001的两个选中主模型，各20类参考，每段固定0.8/2.8/4.8秒，共120帧样本、10张contact sheet；另有先前jump43002失败序列。能看到参考相关的举手、伸展、下蹲、转身等变化。从零jump43001在2.8秒离地幅度明显弱于参考，4.8秒已是标注终止的保持帧；kick两后期样本也是标注的保持帧。SONIC jump43001在2.8秒可见离地且整段完成，但43002失败仍保留。稀疏静帧不足以判断足滑或高频抖动；不声称全视频逐帧质检。见qualitative_video_review.json和对应输出图。
