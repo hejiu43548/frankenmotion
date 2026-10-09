@@ -1,7 +1,12 @@
 {
-  "scope": "validation-only diagnosis; no threshold, reward, reference or policy change",
-  "termination_threshold_m": 0.25,
+  "scope": "Existing evaluation replay; no threshold, reward, reference or policy change",
   "original_episode_metrics_exactly_reproduced": true,
+  "input_metrics_sha256": {
+    "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_shared20_audited/metrics.json": "696061010f9ccd586e2cd12d523567c6dd81c3629064d84ad5f30cae152a09ef",
+    "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_sonic_official_mode0/metrics.json": "09b624677a50a97bc5bf10c09697c5e53203f65b3c553639bea56c30243ee487",
+    "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_scratch_drift1000/metrics.json": "cb50fd861b4890d851b2e8343e6f5f36e89c1c399dfdfe36203c88580bfd16a3",
+    "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_scratch_drift2000/metrics.json": "873b7729bf4b0a8ec3049e22aacb2c9e81ded6e165d31872d42b555fb491b8bf"
+  },
   "episodes": [
     {
       "experiment": "cpu_shared20_audited",

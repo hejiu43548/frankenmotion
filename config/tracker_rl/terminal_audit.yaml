@@ -1,0 +1,8 @@
+artifacts: /home/pku/frankenmotion/work/tracker_rl_20261009/artifacts
+evaluations: [cpu_shared20_audited, cpu_sonic_official_mode0, cpu_scratch_drift1000, cpu_scratch_drift2000]
+tasks: [jump, kick, strike]
+output: ???
+hydra:
+  run:
+    dir: .
+  output_subdir: null

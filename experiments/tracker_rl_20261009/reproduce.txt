@@ -119,3 +119,14 @@ Observation reconstruction audit
    Reconstructs raw current/future observations in native MuJoCo from actual
    GPU rollout states at several times across all validation clips. This checks
    observation semantics, not equivalence of the two physics integrators.
+
+Exact terminal-state diagnostic
+   RL_PYTHON scripts/audit_tracker_termination.py artifacts=ARTIFACTS \
+     evaluations=[EVALUATION_DIRECTORY_NAME] tasks=[jump,kick,strike] \
+     output=NEW_DIAGNOSTIC_JSON
+   Replays existing native metrics with their recorded policy and conditions;
+   requires every episode metric to match exactly before reporting post-step
+   ankle/wrist heights. Uses the same current-reference-index convention as the
+   evaluator. It does not relax termination or write training data. Saved config
+   paths must resolve on the machine running the audit. Default config uses only
+   validation evaluations; do not use test diagnostics while selecting a model.
