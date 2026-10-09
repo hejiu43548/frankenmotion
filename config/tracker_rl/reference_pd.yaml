@@ -1,0 +1,6 @@
+contract: ???
+output: ???
+hydra:
+  run:
+    dir: .
+  output_subdir: null

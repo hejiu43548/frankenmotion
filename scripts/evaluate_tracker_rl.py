@@ -17,6 +17,7 @@ from mjlab.rl import MjlabOnPolicyRunner
 from mjlab.rl import RslRlVecEnvWrapper
 from shared_motion.rl.environment import build_configuration
 from shared_motion.rl.environment import TrackingEnvironment
+from shared_motion.rl.residual import ReferenceResidualWrapper
 
 
 @hydra.main(
@@ -49,9 +50,12 @@ def main(configuration: DictConfig):
     environment = TrackingEnvironment(
         cfg=environment_configuration, device=configuration.device
     )
-    wrapper = RslRlVecEnvWrapper(
-        environment, clip_actions=agent_configuration.clip_actions
+    wrapper_type = (
+        ReferenceResidualWrapper
+        if configuration.get("reference_residual", False)
+        else RslRlVecEnvWrapper
     )
+    wrapper = wrapper_type(environment, clip_actions=agent_configuration.clip_actions)
     runner = MjlabOnPolicyRunner(
         wrapper, dataclasses.asdict(agent_configuration), device=configuration.device
     )
@@ -84,6 +88,11 @@ def main(configuration: DictConfig):
             break
         with torch.inference_mode():
             actions = policy(observations)
+            physical_actions = (
+                wrapper.to_environment_actions(actions)
+                if isinstance(wrapper, ReferenceResidualWrapper)
+                else actions
+            )
         errors = {
             "root_m": (command.anchor_pos_w - command.robot_anchor_pos_w).norm(dim=-1),
             "body_m": (command.body_pos_w - command.robot_body_pos_w)
@@ -93,7 +102,9 @@ def main(configuration: DictConfig):
             .square()
             .mean(dim=-1)
             .sqrt(),
-            "action_delta_squared": (actions - previous_actions).square().mean(dim=-1),
+            "action_delta_squared": (physical_actions - previous_actions)
+            .square()
+            .mean(dim=-1),
         }
         for name, values in errors.items():
             error_sums[name] += values * active
@@ -122,7 +133,7 @@ def main(configuration: DictConfig):
                 failure_names[index].append(name)
         completed |= newly_done & reference_end & ~failures
         active &= ~newly_done
-        previous_actions = actions
+        previous_actions = physical_actions
     rows = []
     for index in range(configuration.num_envs):
         record = metadata["records"][int(clip_ids[index])]

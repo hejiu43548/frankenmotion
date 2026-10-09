@@ -1,0 +1,6 @@
+defaults:
+  - train
+  - _self_
+experiment: reference_residual_v1
+preview_offsets: [5, 10, 20]
+reference_residual: true

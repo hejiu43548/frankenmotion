@@ -1,6 +1,7 @@
 """Resample GMR references and compute FK in the exact training robot model."""
 
-import argparse
+import hydra
+from omegaconf import DictConfig
 import hashlib
 import json
 from pathlib import Path
@@ -101,10 +102,10 @@ def convert(reference, model, contract):
     return arrays, qpos
 
 
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--root", required=True)
-    configuration = parser.parse_args()
+@hydra.main(
+    config_path="../config/tracker_rl", config_name="prepare_motion", version_base="1.3"
+)
+def main(configuration: DictConfig):
     root = Path(configuration.root)
     contract = json.loads((root / "scene/contract.json").read_text())
     model = mujoco.MjModel.from_binary_path(str(root / "scene/scene.mjb"))

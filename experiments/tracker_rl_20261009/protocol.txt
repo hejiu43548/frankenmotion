@@ -72,3 +72,20 @@ Pre-training engineering audit:
 - Formal runs: baseline_current_v2 then preview_future_v2; 400 environments,
   24 PPO steps/update, 3000 updates each. Validation at 500/1000/1500/2000/2500/2999.
   Preview offsets 5/10/20 at 50Hz (0.1/0.2/0.4s); end-of-clip clamped.
+
+Validation-guided structural experiment (2026-10-10):
+- The current-reference 3000-update run completed, with validation completion
+  77.5% but strict success 40%. Native shared20 comparison is 80% / 75%.
+  This is not an improvement. Locomotion drift motivates preview conditioning.
+- Additional reference-residual PPO uses reference joint positions plus learned
+  normalized corrections. Random initialization, identical nine reward terms,
+  actual motor actions retained in action history and action-rate reward.
+  No teacher weights, action labels, or specialized policy are involved.
+  Research: https://arxiv.org/abs/2509.20717 and https://arxiv.org/abs/1812.03201
+- Pure reference-position PD baseline on all 40 validation motions has zero
+  completion. Nominal reference angles alone do not explain potential RL gains.
+- Residual budget matches 3000 updates / 400 environments, preview5/10/20.
+  Same validation intervals; test remains untouched for checkpoint selection.
+- Native MuJoCo and Warp results are separated. Native termination uses refreshed
+  FK; upstream Warp termination uses kinematics stale by one physics substep.
+  All headline old/new comparisons will use the same native evaluator.

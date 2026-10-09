@@ -10,14 +10,16 @@ import os
 from pathlib import Path
 import unittest
 
-import mujoco
-import numpy as np
-from omegaconf import OmegaConf
-import torch
+if os.environ.get("TRACKER_RL_ARTIFACTS"):
+    import mujoco
+    import numpy as np
+    from omegaconf import OmegaConf
+    import torch
 
-from shared_motion.rl.environment import build_configuration
-from shared_motion.rl.environment import TrackingEnvironment
-from shared_motion.rl.motion import reference_preview
+    from shared_motion.rl.environment import build_configuration
+    from shared_motion.rl.environment import TrackingEnvironment
+    from shared_motion.rl.motion import reference_preview
+    from shared_motion.rl.residual import ReferenceResidualWrapper
 
 
 @unittest.skipUnless(
@@ -111,6 +113,20 @@ class TrackerIntegrationTests(unittest.TestCase):
             )
         self.assertTrue(
             all(len({row["task"] for row in rows}) == 20 for rows in records.values())
+        )
+
+    def test_zero_residual_targets_reference_without_changing_physical_rewards(self):
+        wrapper = ReferenceResidualWrapper(self.environment)
+        command = self.environment.command_manager.get_term("motion")
+        action = self.environment.action_manager.get_term("joint_pos")
+        reference = command.joint_pos.clone()
+        applied = wrapper.to_environment_actions(torch.zeros(40, 29, device="cuda:0"))
+        torch.testing.assert_close(applied * action.scale + action.offset, reference)
+        wrapper.step(torch.zeros_like(applied))
+        alive = ~self.environment.reset_terminated
+        self.assertTrue(bool(alive.any()))
+        torch.testing.assert_close(
+            self.environment.action_manager.action[alive], applied[alive]
         )
 
     def test_body_origin_velocity_matches_finite_difference(self):

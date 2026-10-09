@@ -1,0 +1,13 @@
+artifacts: /home/pku/frankenmotion/work/tracker_rl_20261009/artifacts
+scene: /home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/baseline_500/scene.mjb
+rollouts: ???
+output: ???
+label: Tracker
+split: val
+motion_seed: 42001
+width: 640
+height: 480
+hydra:
+  run:
+    dir: .
+  output_subdir: null

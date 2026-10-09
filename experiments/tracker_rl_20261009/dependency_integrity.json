@@ -1,0 +1,18 @@
+{
+  "mjlab": {
+    "version": "1.1.1",
+    "modified_python_files": []
+  },
+  "rsl-rl-lib": {
+    "version": "4.0.1",
+    "modified_python_files": []
+  },
+  "mujoco-warp": {
+    "version": "3.5.0",
+    "modified_python_files": []
+  },
+  "warp-lang": {
+    "version": "1.12.0",
+    "modified_python_files": []
+  }
+}

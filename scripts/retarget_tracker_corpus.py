@@ -1,6 +1,8 @@
 """Uniform GMR conversion of official references, without teacher-policy imports."""
 
-import argparse
+import hydra
+from omegaconf import DictConfig
+from omegaconf import OmegaConf
 from concurrent.futures import ProcessPoolExecutor
 import contextlib
 import hashlib
@@ -120,15 +122,11 @@ def convert_record(arguments):
     )
 
 
-def main():
-    parser = argparse.ArgumentParser()
-    parser.add_argument("--manifest", required=True)
-    parser.add_argument("--output", required=True)
-    parser.add_argument("--gmr", required=True)
-    parser.add_argument("--dependencies", required=True)
-    parser.add_argument("--skeleton", required=True)
-    parser.add_argument("--workers", type=int, default=4)
-    configuration = vars(parser.parse_args())
+@hydra.main(
+    config_path="../config/tracker_rl", config_name="retarget", version_base="1.3"
+)
+def main(settings: DictConfig):
+    configuration = OmegaConf.to_container(settings, resolve=True)
     output = Path(configuration["output"])
     output.mkdir(parents=True, exist_ok=False)
     records = json.loads(Path(configuration["manifest"]).read_text())

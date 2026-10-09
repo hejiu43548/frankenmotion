@@ -1,0 +1,15 @@
+artifacts: /home/pku/frankenmotion/work/tracker_rl_20261009/artifacts
+policy: ???
+policy_kind: rl
+contract: /home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/baseline_500/contract.json
+scene: /home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/baseline_500/scene.mjb
+legacy_contract: configs/release/inference_contract.json
+split: val
+output: ???
+workers: 2
+seed: 61001
+perturbation: 0.0
+hydra:
+  run:
+    dir: .
+  output_subdir: null

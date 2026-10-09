@@ -1,0 +1,5 @@
+root: /home/pku/frankenmotion/work/tracker_rl_20261009/artifacts
+hydra:
+  run:
+    dir: .
+  output_subdir: null
