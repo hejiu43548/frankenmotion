@@ -1,0 +1,151 @@
+{
+  "legacy_fields": {
+    "task_onehot": [
+      0,
+      12
+    ],
+    "intent_onehot": [
+      12,
+      16
+    ],
+    "task_value": 16,
+    "task_valid": 17,
+    "root_speed": 18,
+    "root_yaw_rate": 19,
+    "root_valid": [
+      20,
+      22
+    ],
+    "goal_distance": 22,
+    "goal_sin": 23,
+    "goal_cos": 24,
+    "goal_valid": 25,
+    "reach_height": 26,
+    "reach_height_valid": 27,
+    "time_features": [
+      28,
+      45
+    ],
+    "duration": 45
+  },
+  "new_task_onehot": {
+    "squat": 46,
+    "bow": 47,
+    "clap": 48,
+    "point": 49,
+    "stretch": 50,
+    "twist": 51,
+    "march": 52,
+    "jog": 53,
+    "arm_circle": 54
+  },
+  "task_order": [
+    "raise_hand",
+    "reach",
+    "strike",
+    "wave",
+    "turn",
+    "sidestep",
+    "back_walk",
+    "kick",
+    "jump",
+    "lean",
+    "walk",
+    "squat",
+    "bow",
+    "clap",
+    "point",
+    "stretch",
+    "twist",
+    "march",
+    "jog",
+    "arm_circle"
+  ],
+  "new_tasks": {
+    "squat": {
+      "pattern": "\\bsquat",
+      "unit": "m pelvis drop",
+      "bounds": [
+        0.1,
+        0.45
+      ],
+      "prompt": "A person squats down with both feet flat on the ground and then stands upright again."
+    },
+    "bow": {
+      "pattern": "\\bbow(?:ing|s)?\\b",
+      "unit": "rad forward torso angle",
+      "bounds": [
+        0.2,
+        0.9
+      ],
+      "prompt": "A person bows forward politely with straight legs and then returns upright."
+    },
+    "clap": {
+      "pattern": "\\bclap",
+      "unit": "m hand separation amplitude",
+      "bounds": [
+        0.2,
+        0.7
+      ],
+      "prompt": "A person stands in place and repeatedly claps both hands together in front of the chest."
+    },
+    "point": {
+      "pattern": "\\bpoint(?:ing|s)?\\b",
+      "unit": "m right wrist forward reach",
+      "bounds": [
+        0.25,
+        0.65
+      ],
+      "prompt": "A person stands still, extends the right arm forward to point at something, then lowers the arm."
+    },
+    "stretch": {
+      "pattern": "\\bstretch",
+      "unit": "m bilateral wrist elevation relative pelvis",
+      "bounds": [
+        0.5,
+        1.0
+      ],
+      "prompt": "A person stretches both arms high overhead, holds the stretch, and lowers both arms again."
+    },
+    "twist": {
+      "pattern": "\\btwist|\\brotat.*(?:torso|waist)|(?:torso|waist).*\\brotat",
+      "unit": "rad torso twist relative pelvis",
+      "bounds": [
+        0.15,
+        0.65
+      ],
+      "prompt": "A person stands with feet planted and twists the upper body left and right at the waist."
+    },
+    "march": {
+      "pattern": "\\bmarch",
+      "unit": "m ankle lift from standing",
+      "bounds": [
+        0.06,
+        0.22
+      ],
+      "prompt": "A person marches in place, alternately raising the left and right knees, and then stands still."
+    },
+    "jog": {
+      "pattern": "\\bjog|\\brun(?:ning)?\\b",
+      "unit": "m/s root path speed",
+      "bounds": [
+        0.8,
+        2.0
+      ],
+      "prompt": "A person jogs forward with a steady relaxed running gait."
+    },
+    "arm_circle": {
+      "pattern": "(?:arm|shoulder).*circl|circl.*(?:arm|shoulder)",
+      "unit": "m wrist vertical excursion",
+      "bounds": [
+        0.6,
+        1.3
+      ],
+      "prompt": "A person stands still and makes large continuous circles with both arms at the shoulders."
+    }
+  },
+  "normalization": "new task value = 2*(value-low)/(high-low)-1; task_valid=1; root_profile dummy bit 11=0; appended class indicator=1",
+  "input_dimensions": 55,
+  "range_endpoints": "half-open index ranges",
+  "important": "Legacy task_onehot remains 0..11; new class bits are appended, not contiguous with old bits."
+}

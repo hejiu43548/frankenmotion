@@ -1,0 +1,66 @@
+{
+  "created_utc": "2026-10-08T18:45:12.464714+00:00",
+  "files": {
+    "shared20_generator.pt": {
+      "source": "outputs_amass/expand20_20261009/shared20_v10/unified_02700.pt",
+      "path": "/home/pku/frankenmotion/outputs_amass/expand20_20261009/final_v10/models/shared20_generator.pt",
+      "sha256": "4d0c0907b9794122e346a5af4fa183662f900ca69b20ea9c20b169f0d569837b"
+    },
+    "shared20_tracker.pt": {
+      "source": "/home/pku/frankenmotion/outputs_amass/expand20_20261009/tracker20_v3/actor_4000.pt",
+      "path": "/home/pku/frankenmotion/outputs_amass/expand20_20261009/final_v10/models/shared20_tracker.pt",
+      "sha256": "f1f1fd4873ed3738119aa2651e63b6b252a55d13a1490b8fd8be2459d3e74a70"
+    },
+    "shared20_tracker.json": {
+      "source": "/home/pku/frankenmotion/outputs_amass/expand20_20261009/tracker20_v3/actor_4000.json",
+      "path": "/home/pku/frankenmotion/outputs_amass/expand20_20261009/final_v10/models/shared20_tracker.json",
+      "sha256": "df0ae002a8bd84bee619d436cd89ee880209c3597607c83adf197edfcd553945"
+    }
+  },
+  "selection": "V10 selected after standing-reference repair and V10 step900 development preview (clap/twist 6/6 physical completions); V8 was rejected after development semantic and physical regression. Tracker v3 step4000 selected globally on V7 development (171/180 versus165/180). All20 final testing uses fresh seeds109027200..202; no subsequent training on this test.",
+  "heldout_seeds": [
+    109027200,
+    109027201,
+    109027202
+  ],
+  "tasks": [
+    "raise_hand",
+    "reach",
+    "strike",
+    "wave",
+    "turn",
+    "sidestep",
+    "back_walk",
+    "kick",
+    "jump",
+    "lean",
+    "walk",
+    "squat",
+    "bow",
+    "clap",
+    "point",
+    "stretch",
+    "twist",
+    "march",
+    "jog",
+    "arm_circle"
+  ],
+  "architecture": {
+    "shared_controller_instances": 1,
+    "shared_tracker_instances": 1,
+    "per_task_checkpoint_switch": false,
+    "frozen_backbone_tensors_verified": 66,
+    "changed_backbone_tensors": 0,
+    "controller_input": 55,
+    "controller_width": 1024,
+    "tracker_input": 2350,
+    "tracker_output": 29,
+    "stateful_reset_verified": true
+  },
+  "limitations": [
+    "Completion is not semantic success.",
+    "Generated development demos are screened.",
+    "Sequential demos use generic interpolation and causal planar reference placement.",
+    "High-speed locomotion, jumping, sidestepping and large-amplitude new tasks remain experimental."
+  ]
+}

@@ -1,0 +1,13 @@
+{
+  "all20_command_features_exact": true,
+  "all20_controller_outputs_exact": true,
+  "ddim_reach_exact": true,
+  "adapter_training_two_steps_passed": true,
+  "tracker_training_two_steps_passed": true,
+  "sampler_tests": 3,
+  "weights_unchanged": true,
+  "tracker_source_eight_steps_exact": true,
+  "tracker_torchscript_export": true,
+  "physics_rollout_frames": 474,
+  "physics_max_absolute_qpos_difference": 0.0
+}

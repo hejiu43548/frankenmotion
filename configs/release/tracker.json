@@ -1,0 +1,15 @@
+{
+  "preview_offsets": [
+    5,
+    10,
+    20,
+    35,
+    50
+  ],
+  "input_dimensions": 2350,
+  "output_dimensions": 29,
+  "stateful": true,
+  "reset_required": true,
+  "training": "/home/pku/frankenmotion/outputs_amass/expand20_20261009/tracker20_v3",
+  "step": 4000
+}
