@@ -1,0 +1,29 @@
+{
+  "status": "agent_supplemented_boundaries_awaiting_user_review",
+  "reference": "https://digital-health-bonn.de/wp-content/uploads/2024/03/cg-2007-2.pdf#page=12",
+  "basis": "HDM05 scene05-01 script, actual training-source FK trajectories and pose contact sheets. Conservative interior intervals; not official published cut boundaries. Anatomical right is joint21, left20. No mirroring.",
+  "events": [
+    {"actor":"bk","take":"01","start":6.3,"end":9.5,"label":"wave right hand"},
+    {"actor":"bk","take":"01","start":11.2,"end":14.0,"label":"wave right arm"},
+    {"actor":"bk","take":"01","start":25.5,"end":28.9,"label":"wave both arms"},
+    {"actor":"bk","take":"02","start":4.0,"end":7.8,"label":"wave right hand"},
+    {"actor":"bk","take":"02","start":10.5,"end":14.5,"label":"wave right arm"},
+    {"actor":"bk","take":"02","start":29.4,"end":33.5,"label":"wave both arms"},
+    {"actor":"bk","take":"03","start":4.8,"end":7.8,"label":"wave right hand"},
+    {"actor":"bk","take":"03","start":10.0,"end":13.5,"label":"wave right arm"},
+    {"actor":"bk","take":"03","start":26.5,"end":31.0,"label":"wave both arms"},
+    {"actor":"dg","take":"01","start":3.2,"end":6.4,"label":"wave right hand"},
+    {"actor":"dg","take":"01","start":8.1,"end":12.2,"label":"wave right arm"},
+    {"actor":"dg","take":"01","start":25.1,"end":30.8,"label":"wave both arms"},
+    {"actor":"dg","take":"02","start":3.2,"end":6.4,"label":"wave right hand"},
+    {"actor":"dg","take":"02","start":7.5,"end":13.4,"label":"wave right arm"},
+    {"actor":"dg","take":"02","start":26.5,"end":32.5,"label":"wave both arms"},
+    {"actor":"tr","take":"02","start":4.4,"end":6.6,"label":"wave right hand"},
+    {"actor":"tr","take":"02","start":8.3,"end":11.3,"label":"wave right arm"},
+    {"actor":"tr","take":"02","start":22.0,"end":26.4,"label":"wave both arms"}
+  ],
+  "excluded_sources": [
+    {"family":"MPI_HDM05/dg/HDM_dg_05-01_03_120_poses","reason":"Existing test family; never used for admission tuning or training/rendering."},
+    {"family":"MPI_HDM05/tr/HDM_tr_05-01_03_120_poses","reason":"Recording name conflicts with BABEL and Frankenstein kicking/punching labels; do not infer wave from05-01 filename."}
+  ]
+}

@@ -1,0 +1,46 @@
+{
+  "current_task": "strike",
+  "status": "awaiting_user_review",
+  "source_directory": "data_processing/strike",
+  "data": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_strike_20261009_v3",
+  "review": "/Users/andy/Develop/frankenmotion/outputs_amass/task_data_review_20261009/strike_final/index.html",
+  "train_samples": 13,
+  "validation_samples": 1,
+  "training_started": false,
+  "next_task": "kick",
+  "queue": [
+    "strike",
+    "kick",
+    "sidestep",
+    "turn_left/right",
+    "point",
+    "march",
+    "jump"
+  ],
+  "gate": "User must review10 rendered TRAIN samples and approve before advancing. No approval inferred from silence.",
+  "tasks": {
+    "wave": {
+      "status": "provisionally_accepted",
+      "user_evidence": "先暂定吧",
+      "data": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_wave_20261009_review_v2",
+      "review": "/Users/andy/Develop/frankenmotion/outputs_amass/wave_source_review_20261009/final_review/index.html"
+    },
+    "strike": {
+      "status": "awaiting_user_review",
+      "scope": "right forward straight punch/jab",
+      "data": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_strike_20261009_v3",
+      "train_samples": 13,
+      "validation_samples": 1,
+      "user_approved": false,
+      "review": "/Users/andy/Develop/frankenmotion/outputs_amass/task_data_review_20261009/strike_final/index.html"
+    },
+    "kick": {
+      "status": "prioritized_pending"
+    },
+    "sidestep": {
+      "status": "prioritized_pending"
+    }
+  },
+  "current_data": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_strike_20261009_v3",
+  "audit_lists": "/mnt/sda2/frankenmotion/outputs_amass/task_source_audits_20261009_v4"
+}

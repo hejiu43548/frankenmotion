@@ -1,0 +1,56 @@
+[
+  {
+    "original_relative_path": "scripts/prepare_amass20.py",
+    "original_commit": "43bf05f",
+    "sha256": "f84f7c9c1191e20a69aa6ebf01aa79833a2b5eee19c378e406a63183bb43e184",
+    "archive_path": "data_processing/legacy/scripts/prepare_amass20.py"
+  },
+  {
+    "original_relative_path": "scripts/repair_turn_data.py",
+    "original_commit": "43bf05f",
+    "sha256": "6ea0df7612185f945b04bd01e196bfe2becc5b71e668e66dc4be54c5f428c817",
+    "archive_path": "data_processing/legacy/scripts/repair_turn_data.py"
+  },
+  {
+    "original_relative_path": "shared_motion/training/turn_data.py",
+    "original_commit": "43bf05f",
+    "sha256": "aee1dc6e6197dc55c87950e8901dd03b3a68f140d07e6e2d6587f7f56d3898eb",
+    "archive_path": "data_processing/legacy/shared_motion/training/turn_data.py"
+  },
+  {
+    "original_relative_path": "shared_motion/adapter/catalog.py",
+    "original_commit": "43bf05f",
+    "sha256": "1164b5c61266747a02843d6af32bd13ac69aba15cb94a0c6f62084b496c9eaa2",
+    "archive_path": "data_processing/legacy/shared_motion/adapter/catalog.py"
+  },
+  {
+    "original_relative_path": "shared_motion/adapter/schema.py",
+    "original_commit": "43bf05f",
+    "sha256": "0be2ee9c74c4d4d749361bf677a06d434125024790e6f5a121620150846fd33c",
+    "archive_path": "data_processing/legacy/shared_motion/adapter/schema.py"
+  },
+  {
+    "original_relative_path": "work/data_manifest/export_stage2_manifests.py",
+    "original_commit": "94d6e18",
+    "sha256": "fdf761445c8d60217fa5eddd6994c33fcded8ccd8d9b76be3a5279f39b1f848a",
+    "archive_path": "data_processing/legacy/work/data_manifest/export_stage2_manifests.py"
+  },
+  {
+    "original_relative_path": "work/unified_direct/prepare_data.py",
+    "original_commit": "94d6e18",
+    "sha256": "88296a64db4549929d1d8c9b61bfbdb6a998e682480e72559fc5b23d9fa5c034",
+    "archive_path": "data_processing/legacy/work/unified_direct/prepare_data.py"
+  },
+  {
+    "original_relative_path": "work/turn_admission/admit_walking_turn.py",
+    "original_commit": "94d6e18",
+    "sha256": "a06a1d92771e53404052b9b0b4addd6c976ef9c8ef853a59df4decac3b5c5188",
+    "archive_path": "data_processing/legacy/work/turn_admission/admit_walking_turn.py"
+  },
+  {
+    "original_relative_path": "work/walking_turn/prepare_data.py",
+    "original_commit": "94d6e18",
+    "sha256": "7e7361d876d0603d4da3b31ccf67e2f9c6a12ccb7b3a1489d7180b73529667f6",
+    "archive_path": "data_processing/legacy/work/walking_turn/prepare_data.py"
+  }
+]
