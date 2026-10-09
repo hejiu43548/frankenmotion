@@ -1,4 +1,22 @@
-REPRODUCTION NOTES (work in progress; final selected policy pending)
+REPRODUCTION NOTES — completed frozen experiments; final evidence in final_report_conclusions.json
+
+FINAL ENTRY POINTS
+- Start with outputs/tracker_rl/portable_trackers/README.txt for inference.
+- Final scratch runs: seed51001 and51002, num_envs=2000 iterations=6000,
+  preview_offsets=[5,10,20], training_drift_threshold=0.5, no resume.
+  Validation selected5999 and4000 respectively; report BOTH seeds.
+- Matched control: same51001 initialization and budget, threshold=null;
+  selected5999 is also the fixed terminal checkpoint.
+- Official SONIC new residual PPO: --config-name sonic_residual, seed51001,
+  num_envs=2000 iterations=3000, fixed official ONNX; selected2999.
+- Exact run configs/source/protocols live in completed_runs/*/training_report.
+  The original-source snapshots are authoritative for reported GPU training;
+  delivered refactored trainers have separate engineering audits, not a claim
+  of bitwise training equivalence.
+- For a new dataset use migration_guide.txt. Reuse the archived corpus/scene for
+  reproduction first. Instructions below retain initial screening runs too.
+- Final test_evidence contains16 evaluations (8 model/checkpoint identities x
+  plain/initial-velocity perturbation), not16 independent datasets.
 
 Use the repository source commit and requirements-tracker-rl.txt together.
 All commands below run from the repository root. Set experiment-specific paths

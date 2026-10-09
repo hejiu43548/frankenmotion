@@ -1,0 +1,81 @@
+{
+  "created_utc": "2026-10-09T22:30:22.850614+00:00",
+  "experiment": "scratch_no_drift_matched",
+  "selection_sha256": "bfb5eccdb2a167bc29e0325fb9d74617169f1ce5f209415337e08200f819465f",
+  "selected_iteration": 5999,
+  "terminal_aliases_selected": true,
+  "jobs": [
+    {
+      "label": "scratch_no_drift_selected",
+      "kind": "selected",
+      "perturbation": 0.0,
+      "configuration": {
+        "artifacts": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts",
+        "policy": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_no_drift_matched_5999/policy.pt",
+        "policy_kind": "rl",
+        "contract": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_no_drift_matched_5999/contract.json",
+        "scene": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_no_drift_matched_5999/scene.mjb",
+        "legacy_contract": "configs/release/inference_contract.json",
+        "split": "test",
+        "output": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_test_frozen_scratch_no_drift_selected_plain",
+        "workers": 2,
+        "seed": 61001,
+        "perturbation": 0.0
+      },
+      "command": [
+        "/home/pku/frankenmotion/work/mjlab_stable_env/bin/python",
+        "/home/pku/frankenmotion/work/tracker_rl_20261009/refactor_candidate/scripts/evaluate_tracker_cpu.py",
+        "artifacts=/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts",
+        "policy=/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_no_drift_matched_5999/policy.pt",
+        "policy_kind=rl",
+        "contract=/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_no_drift_matched_5999/contract.json",
+        "scene=/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_no_drift_matched_5999/scene.mjb",
+        "legacy_contract=configs/release/inference_contract.json",
+        "split=test",
+        "output=/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_test_frozen_scratch_no_drift_selected_plain",
+        "workers=2",
+        "seed=61001",
+        "perturbation=0.0"
+      ],
+      "policy_sha256": "aaf2dc0fc63d68052f436a19552da825209cd36c62ab54af01df9eb7d8f39492",
+      "validation_metrics_sha256": "0da016f39bec0ba27ffb7f8edf116e017bb3c8b556592212fc4e0cb0b64822c4"
+    },
+    {
+      "label": "scratch_no_drift_selected",
+      "kind": "selected",
+      "perturbation": 0.3,
+      "configuration": {
+        "artifacts": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts",
+        "policy": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_no_drift_matched_5999/policy.pt",
+        "policy_kind": "rl",
+        "contract": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_no_drift_matched_5999/contract.json",
+        "scene": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_no_drift_matched_5999/scene.mjb",
+        "legacy_contract": "configs/release/inference_contract.json",
+        "split": "test",
+        "output": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_test_frozen_scratch_no_drift_selected_perturb03",
+        "workers": 2,
+        "seed": 61001,
+        "perturbation": 0.3
+      },
+      "command": [
+        "/home/pku/frankenmotion/work/mjlab_stable_env/bin/python",
+        "/home/pku/frankenmotion/work/tracker_rl_20261009/refactor_candidate/scripts/evaluate_tracker_cpu.py",
+        "artifacts=/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts",
+        "policy=/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_no_drift_matched_5999/policy.pt",
+        "policy_kind=rl",
+        "contract=/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_no_drift_matched_5999/contract.json",
+        "scene=/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_no_drift_matched_5999/scene.mjb",
+        "legacy_contract=configs/release/inference_contract.json",
+        "split=test",
+        "output=/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_test_frozen_scratch_no_drift_selected_perturb03",
+        "workers=2",
+        "seed=61001",
+        "perturbation=0.3"
+      ],
+      "policy_sha256": "aaf2dc0fc63d68052f436a19552da825209cd36c62ab54af01df9eb7d8f39492",
+      "validation_metrics_sha256": "0da016f39bec0ba27ffb7f8edf116e017bb3c8b556592212fc4e0cb0b64822c4"
+    }
+  ],
+  "test_manifest_sha256": "8f1baecbb0ae62db73f596d021d83556e9fee682a442cb6438ba7c498c0b3767",
+  "script_sha256": "95c34447f14d7e4def698e549cb3efae85d1c62a3168f1cd73363e02d7c90d8b"
+}

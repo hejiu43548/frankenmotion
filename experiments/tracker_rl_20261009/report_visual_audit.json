@@ -1,0 +1,29 @@
+{
+  "pages": 18,
+  "all_pages_rendered": true,
+  "all_pages_visually_reviewed": true,
+  "unchanged_pages_pixel_identical_to_previous_review": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    10,
+    11,
+    12,
+    13
+  ],
+  "changed_pages_reviewed": [
+    9,
+    14,
+    15,
+    16,
+    17,
+    18
+  ],
+  "pdf_sha256": "ea9e34f12b50355f74af7aa807b4cd41c21c8b206df04c13f80965365db0b5a9",
+  "notes": "Removed orphan paragraph page; put references on their own page. No clipped tables, missing Chinese glyphs or overlapping figures observed."
+}

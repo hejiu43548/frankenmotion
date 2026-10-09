@@ -1,0 +1,22 @@
+{
+  "scope": "40 remaining model/task videos at seed43001, exactly3 fixed timestamps0.8/2.8/4.8s;10 full sheets manually inspected. Combined with previous40-video review gives80 videos/240 sampled frames. Not a full-frame review.",
+  "observations": [
+    "Seed2 reference-dependent arm_raise, stretch, turn, crouch behavior visible; jump/kick/point/strike sampled terminal holds have red labels.",
+    "No-drift back_walk visibly travels away from reference, jog and walk also deviate; survival alone is not path accuracy.",
+    "No-drift jump remains low relative to airborne reference; kick terminated hold is labeled.",
+    "Sparse samples cannot establish absence of foot-slip, high frequency jitter or all transition defects."
+  ],
+  "files": {
+    "diagnostics/remaining_qualitative_samples/scratch_seed2_selected_3.jpg": "5d26c0f5840e5ac9958920f9ce83d59b51877de451cf7b08918f66cb8878e755",
+    "diagnostics/remaining_qualitative_samples/scratch_seed2_selected_2.jpg": "e742919ce072d908c23e68ed95da58f80943546ebe5425dcd4523e827b8a7aac",
+    "diagnostics/remaining_qualitative_samples/scratch_seed2_selected_0.jpg": "c6a0efa1d1da5f223ebf1f7783d68219edf0ebe2f89a2cb49eb68597ba2e2a91",
+    "diagnostics/remaining_qualitative_samples/scratch_no_drift_selected_4.jpg": "a8182efd7b5bfb6638ef618b72c8c06e9e7f8df5ff051be92a031eff8efa7118",
+    "diagnostics/remaining_qualitative_samples/scratch_seed2_selected_1.jpg": "978a9a34c9256cb9ee0b42d731d02508707805c857944a1e1b2fe91ad56dc7e7",
+    "diagnostics/remaining_qualitative_samples/scratch_no_drift_selected_1.jpg": "d83285774df730e614a415f53a8301011e09b421e7b754ce14fa000504dfb351",
+    "diagnostics/remaining_qualitative_samples/scratch_no_drift_selected_0.jpg": "1ac367560344fe509b207c7f25ea75a8958c078c34b1dd633e0e5dc3f2c5c941",
+    "diagnostics/remaining_qualitative_samples/scratch_seed2_selected_4.jpg": "236b17ee95ff02e0f8e6ea21c7e842fcd2d3af49bafce4349346b8b42eb99885",
+    "diagnostics/remaining_qualitative_samples/scratch_no_drift_selected_2.jpg": "b7513d6ef7d9235ce786f8d35cf63e7b8149a3600b3f10ba3a21148f889e7299",
+    "diagnostics/remaining_qualitative_samples/scratch_no_drift_selected_3.jpg": "551fd7968c1e1a46ca06c0a96718bcce342cf4e30f5d065306477f87c3de6d1c",
+    "diagnostics/remaining_qualitative_samples/sample_manifest.json": "5d31587fe94d37c21e3b1339fb175335dbde4d465eec420362125a157bff4446"
+  }
+}

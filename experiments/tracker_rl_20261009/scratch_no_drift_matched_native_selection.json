@@ -1,0 +1,316 @@
+{
+  "experiment": "scratch_no_drift_matched_20261010",
+  "test_used": false,
+  "rule": "strict success, completion, lower failure-penalized torso-anchor error, earlier iteration",
+  "configuration": {
+    "experiment": "scratch_no_drift_matched_20261010",
+    "expected_iterations": [
+      500,
+      1000,
+      2000,
+      3000,
+      4000,
+      5000,
+      5999
+    ],
+    "expected_episodes": 40,
+    "candidates": [
+      {
+        "iteration": 500,
+        "metrics": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_no_drift_matched_500/metrics.json"
+      },
+      {
+        "iteration": 1000,
+        "metrics": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_no_drift_matched_1000/metrics.json"
+      },
+      {
+        "iteration": 2000,
+        "metrics": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_no_drift_matched_2000/metrics.json"
+      },
+      {
+        "iteration": 3000,
+        "metrics": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_no_drift_matched_3000/metrics.json"
+      },
+      {
+        "iteration": 4000,
+        "metrics": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_no_drift_matched_4000/metrics.json"
+      },
+      {
+        "iteration": 5000,
+        "metrics": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_no_drift_matched_5000/metrics.json"
+      },
+      {
+        "iteration": 5999,
+        "metrics": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_no_drift_matched_5999/metrics.json"
+      }
+    ],
+    "output": "/home/pku/frankenmotion/work/tracker_rl_20261009/scratch_no_drift_matched_native_selection.json"
+  },
+  "evaluation_conditions": {
+    "backend": "native MuJoCo; compare only with runs of this evaluator, separately from Warp",
+    "scene_sha256": "b2de7f56a2d11698383f9a6c870091737d8ec3cde4e87e636cb69181cb576602",
+    "references": {
+      "arm_circle:42001": "552f858c882062b0709f679d2a8967d2bc80c106833c0c5031557b49df046566",
+      "arm_circle:42002": "fb04589215854fb2dc6bf54fd6bdbbf68c6e68469f87064b6ffcd4349be5d6be",
+      "back_walk:42001": "9e95f777cff3990d1453f0823a6194b59c3491c917c85b601461c3966f06f925",
+      "back_walk:42002": "34d0a36556012ca447ce4e1e93a449c6c51264a01992562801a2fc6e929a50cc",
+      "bow:42001": "5e542369052e163077ff6a390fa749812945baed99c9c4e85abf698304033ec4",
+      "bow:42002": "479d58977f5c4849dfb183291dffccc370cc45ef2f0d2a6a58af16eeb95ea2bd",
+      "clap:42001": "d2ba7fd195eb64c7599f38413fb13936e3fd380aa68798ab0ec50a88372a9bf0",
+      "clap:42002": "62e51b8ab9efa722326cd6f86cfa50c8ac4f40d6cbaa013aabffe62d479b4a7f",
+      "jog:42001": "fcf3d50701897432efbb1c1a294ea4fb45ddc32c8685f55594937536050c68a2",
+      "jog:42002": "1462769861ec1831e0d5df3d599352f76e3dd39a92df13d5a18a8740f75f2c58",
+      "jump:42001": "e6bce570dab8de39596494ad8f4d2db7404dd762d61e13d553b3e9754d7753d0",
+      "jump:42002": "1b61468356a946467c28fa9391008963ddc9259b031b85bfe53f9e6634e7c703",
+      "kick:42001": "c43eb0bd28ec0e8a3700966e8d570c795e67c43ecd1a6455c037375bf122ea2f",
+      "kick:42002": "4437127c2c5b87dfe61260d03c8f54f7b1445eda0504b83dd056f9b9e5febfd6",
+      "lean:42001": "b1fcc5bb3bdb4829e9dd6cf6e25a6cd8b7da2bc9d71168194e43d4c1120905a7",
+      "lean:42002": "cef4d9056fc89c51d037f6983714325ce0216e115dd3656cda3b93114a7a8284",
+      "march:42001": "ad093622bdea1d914d030757d8bbdf140b3a52d7f1869ee4fadce62da7405697",
+      "march:42002": "f6e9b0026dfdff4322224c25994966eae7da9070caa349df925575aa004f0bb6",
+      "point:42001": "1ffe90c837c26288b706d66abf1ef3aca531645b3805cb6bf3872a34afacd205",
+      "point:42002": "0ebab7ffd03f5c988ea59fd2d84d9fb26d5cd116e88ffe5572333b58d628d698",
+      "raise_hand:42001": "e64bc3f8ade64c8edf6e2a5b64ce4022c18bb4137693cda4ef6641e6b3f18658",
+      "raise_hand:42002": "adae6a8f218ec6a524e14675170aa89ad116f7c3a0d0e907c490daa648884098",
+      "reach:42001": "a53722499bc1c12764c1bbc62320ec3625420743f93034b216e32d8cfea74cbb",
+      "reach:42002": "5ed978c1b1e7d45c2d1017444082f1c97915d345775ce251ce75302f6382b7ce",
+      "sidestep:42001": "fe8a63c4dcefc932083b5e72cb1956af056660b6e86478ec5b3da3a5239c9e58",
+      "sidestep:42002": "e0dac77be49374939278670fa3fa208beff18e2310ed181a14816e77ffa56e1e",
+      "squat:42001": "9d2da6978f0ead1687512bfd45c196bf940673f76f11a848d500963d5ae2bf26",
+      "squat:42002": "b9847fa8c94ee7025e198ab3a9493a1ba9616b025bd3b8e30c52ac404f945d05",
+      "stretch:42001": "fba16a1e1a02f8b806e21d73fcc6c3bf6f306de23fb8a9074b7b94496e1e9362",
+      "stretch:42002": "09efc7ced5038fb267aab24c03abfe067bb969f83ef5a96bc50a972acfb73ca9",
+      "strike:42001": "7e55f72d722ada72c5dc539b37977c4929407cac46ef89a65f60d3ad5fbe6b1a",
+      "strike:42002": "d0cc314a446a28951b82d59ac815e622e1a68a06f193724c24d22bf1452c2496",
+      "turn:42001": "da43ef5712eccbac696b10b18ebbcd1466a6f73ae7a476083a6dcc19e5b9c860",
+      "turn:42002": "572d876c80a75f0bc71f8937a3b2e2ff49d681770c025f27566a0420f2d43f62",
+      "twist:42001": "26712282e9e8931c1edbd2c9fc6928d590771839b5049c1a52b667fecac28543",
+      "twist:42002": "fde39d6c92d73b84e99fbc1fc31b48d2dc52724da0a6677c586983aeb8095a84",
+      "walk:42001": "6cdf34f34d789c791f3a76b15354dcc24d46828df060012994bb961b98f33661",
+      "walk:42002": "e3f9dc5cd5f8e98c9349446e9613672224abcecfe0bfca7a102dda1500ba3cb7",
+      "wave:42001": "925e45df3285d366aebd8c007f3b2bc0d50eab38c364b8b69f0935ba238ab5d7",
+      "wave:42002": "352d7ba731bd763274441a50a29a51c0cb725c2ff95e45eefe9c2ae8db0c7279"
+    },
+    "seed": 61001,
+    "horizons": {
+      "arm_circle:42001": 298,
+      "arm_circle:42002": 298,
+      "back_walk:42001": 298,
+      "back_walk:42002": 298,
+      "bow:42001": 298,
+      "bow:42002": 298,
+      "clap:42001": 298,
+      "clap:42002": 298,
+      "jog:42001": 298,
+      "jog:42002": 298,
+      "jump:42001": 298,
+      "jump:42002": 298,
+      "kick:42001": 298,
+      "kick:42002": 298,
+      "lean:42001": 298,
+      "lean:42002": 298,
+      "march:42001": 298,
+      "march:42002": 298,
+      "point:42001": 298,
+      "point:42002": 298,
+      "raise_hand:42001": 298,
+      "raise_hand:42002": 298,
+      "reach:42001": 298,
+      "reach:42002": 298,
+      "sidestep:42001": 298,
+      "sidestep:42002": 298,
+      "squat:42001": 298,
+      "squat:42002": 298,
+      "stretch:42001": 298,
+      "stretch:42002": 298,
+      "strike:42001": 298,
+      "strike:42002": 298,
+      "turn:42001": 298,
+      "turn:42002": 298,
+      "twist:42001": 298,
+      "twist:42002": 298,
+      "walk:42001": 298,
+      "walk:42002": 298,
+      "wave:42001": 298,
+      "wave:42002": 298
+    }
+  },
+  "selected": {
+    "iteration": 5999,
+    "metrics": {
+      "complete": 0.925,
+      "tracking_success": 0.65,
+      "root_m": 0.19685634802539598,
+      "body_m": 0.19975749371760512,
+      "joint_rad": 0.15037569590982663,
+      "root_m_failure_penalized": 0.2099120284662129,
+      "body_m_failure_penalized": 0.21259725784771866,
+      "joint_rad_failure_penalized": 0.18394780476313868,
+      "action_delta_squared": 0.01621699846234824
+    },
+    "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_no_drift_matched_5999/metrics.json",
+    "metrics_sha256": "0da016f39bec0ba27ffb7f8edf116e017bb3c8b556592212fc4e0cb0b64822c4",
+    "policy": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_no_drift_matched_5999/policy.pt",
+    "policy_sha256": "aaf2dc0fc63d68052f436a19552da825209cd36c62ab54af01df9eb7d8f39492",
+    "contract": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_no_drift_matched_5999/contract.json",
+    "contract_sha256": "17ac03f45c3493965011c8dbba5c3dea67396851691bfd71b9ac420192d49e7a",
+    "checkpoint_sha256": "d3715d2c9f785f903f06d3d33d0529cb0e0c79f7f718379ed59393136811bb88",
+    "legacy_contract_without_policy_hash": false
+  },
+  "ranking": [
+    {
+      "iteration": 5999,
+      "metrics": {
+        "complete": 0.925,
+        "tracking_success": 0.65,
+        "root_m": 0.19685634802539598,
+        "body_m": 0.19975749371760512,
+        "joint_rad": 0.15037569590982663,
+        "root_m_failure_penalized": 0.2099120284662129,
+        "body_m_failure_penalized": 0.21259725784771866,
+        "joint_rad_failure_penalized": 0.18394780476313868,
+        "action_delta_squared": 0.01621699846234824
+      },
+      "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_no_drift_matched_5999/metrics.json",
+      "metrics_sha256": "0da016f39bec0ba27ffb7f8edf116e017bb3c8b556592212fc4e0cb0b64822c4",
+      "policy": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_no_drift_matched_5999/policy.pt",
+      "policy_sha256": "aaf2dc0fc63d68052f436a19552da825209cd36c62ab54af01df9eb7d8f39492",
+      "contract": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_no_drift_matched_5999/contract.json",
+      "contract_sha256": "17ac03f45c3493965011c8dbba5c3dea67396851691bfd71b9ac420192d49e7a",
+      "checkpoint_sha256": "d3715d2c9f785f903f06d3d33d0529cb0e0c79f7f718379ed59393136811bb88",
+      "legacy_contract_without_policy_hash": false
+    },
+    {
+      "iteration": 5000,
+      "metrics": {
+        "complete": 0.95,
+        "tracking_success": 0.6,
+        "root_m": 0.19518327987447404,
+        "body_m": 0.19960351222966302,
+        "joint_rad": 0.15617242084070515,
+        "root_m_failure_penalized": 0.20942218951269376,
+        "body_m_failure_penalized": 0.2135039875169955,
+        "joint_rad_failure_penalized": 0.18345536461789283,
+        "action_delta_squared": 0.016798873669202193
+      },
+      "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_no_drift_matched_5000/metrics.json",
+      "metrics_sha256": "1f9eaa8bce39eceed874f257a59b5e9ee90de766e9fc8fbbc2f5d41cbb4c2f2d",
+      "policy": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_no_drift_matched_5000/policy.pt",
+      "policy_sha256": "4d6a4012aea99923c481c3aed1d1458e5bc3c4ff17617ce90db013d392674212",
+      "contract": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_no_drift_matched_5000/contract.json",
+      "contract_sha256": "2db9f49bd66d15a50494aa8acf77e01975be3179f4a2d84f2c5b69ba9321cc83",
+      "checkpoint_sha256": "7f77c9fd2e08f51162b5793312baa14a514d6e1d21d0556000b77da49fa01820",
+      "legacy_contract_without_policy_hash": false
+    },
+    {
+      "iteration": 4000,
+      "metrics": {
+        "complete": 0.875,
+        "tracking_success": 0.55,
+        "root_m": 0.22187689882658584,
+        "body_m": 0.22576375148074784,
+        "joint_rad": 0.1627332403688257,
+        "root_m_failure_penalized": 0.2520273427341132,
+        "body_m_failure_penalized": 0.25439240621245796,
+        "joint_rad_failure_penalized": 0.22157100385201903,
+        "action_delta_squared": 0.01906706641038603
+      },
+      "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_no_drift_matched_4000/metrics.json",
+      "metrics_sha256": "d69ece23f98dc6c7af2047c01f230f4c84b19a25c1643314bc083f9743a7c9ac",
+      "policy": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_no_drift_matched_4000/policy.pt",
+      "policy_sha256": "6ece6f7fa4a31904569245bfb3b28d928b439df20530fb9f90feb0a9d090d7d0",
+      "contract": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_no_drift_matched_4000/contract.json",
+      "contract_sha256": "3efcea3ef58d1c3954951b2bd7398473e6ff77644730827ed500309d3d69599e",
+      "checkpoint_sha256": "62a65f9d3d4b2ae965ca5d1ee7db0a93e75a616949b54422e96ecda6af3e6c62",
+      "legacy_contract_without_policy_hash": false
+    },
+    {
+      "iteration": 3000,
+      "metrics": {
+        "complete": 0.9,
+        "tracking_success": 0.525,
+        "root_m": 0.26004637455260815,
+        "body_m": 0.26580236185622197,
+        "joint_rad": 0.1710396828046719,
+        "root_m_failure_penalized": 0.2827372306647721,
+        "body_m_failure_penalized": 0.2884528506925658,
+        "joint_rad_failure_penalized": 0.22131836923090248,
+        "action_delta_squared": 0.014178154909752319
+      },
+      "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_no_drift_matched_3000/metrics.json",
+      "metrics_sha256": "ac59cc905cee3946da260faf7775a4c8aa5ee7692d5278d07d74227b39b63135",
+      "policy": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_no_drift_matched_3000/policy.pt",
+      "policy_sha256": "f22f968b7ffe45af0a8c649f130e61911fc7dbb27654a55544224f59bd8dfc7b",
+      "contract": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_no_drift_matched_3000/contract.json",
+      "contract_sha256": "5e7924af05db4d0f4c8d2b0d733a350a5ec130ba3ff7be8360549be4efe60568",
+      "checkpoint_sha256": "b836315f0b39eefe1a021297dfb6745cd4fbe3023384b813f8d3f93c39e2ac90",
+      "legacy_contract_without_policy_hash": false
+    },
+    {
+      "iteration": 2000,
+      "metrics": {
+        "complete": 0.85,
+        "tracking_success": 0.475,
+        "root_m": 0.27064260846319443,
+        "body_m": 0.28101229496869645,
+        "joint_rad": 0.18504669763806872,
+        "root_m_failure_penalized": 0.313819327967953,
+        "body_m_failure_penalized": 0.3228577368043722,
+        "joint_rad_failure_penalized": 0.26472991107490274,
+        "action_delta_squared": 0.01544158199764703
+      },
+      "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_no_drift_matched_2000/metrics.json",
+      "metrics_sha256": "7600af635296f63f2937e6e8fe60213d101e9853ae4f0a4b3267052e0fcbd705",
+      "policy": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_no_drift_matched_2000/policy.pt",
+      "policy_sha256": "88fdae8cad1f7b570c58a1dea8336ccf2599c4c30a5cb9f042bdcae21121f2b3",
+      "contract": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_no_drift_matched_2000/contract.json",
+      "contract_sha256": "addc9d1fda61648a2fe2d8a9da3916936faf2db1abb0d9dd6293473e017e2526",
+      "checkpoint_sha256": "d0b0896098f111afcff2311d09ce7e35b9d6c0ad639ef81d31c96bcbc6a8ff26",
+      "legacy_contract_without_policy_hash": false
+    },
+    {
+      "iteration": 1000,
+      "metrics": {
+        "complete": 0.8,
+        "tracking_success": 0.4,
+        "root_m": 0.26965713169403077,
+        "body_m": 0.2823530109666258,
+        "joint_rad": 0.218306621371085,
+        "root_m_failure_penalized": 0.317180195404011,
+        "body_m_failure_penalized": 0.3286560247383853,
+        "joint_rad_failure_penalized": 0.3044726401219491,
+        "action_delta_squared": 0.020198332536819553
+      },
+      "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_no_drift_matched_1000/metrics.json",
+      "metrics_sha256": "cf8089c8302f42f8c662c64932ebe99d85114e12102156546ae9233462dd0b5e",
+      "policy": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_no_drift_matched_1000/policy.pt",
+      "policy_sha256": "9051ef2b30c0ede404255c0f75bb9952bdcc6f27ba5a8810f7c361936288748e",
+      "contract": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_no_drift_matched_1000/contract.json",
+      "contract_sha256": "d8df9142da78fd2257394070c3727f98b94731c2928f396775925d036756c79f",
+      "checkpoint_sha256": "d930e5c3a736f73d39e7d3fd1383b314e306d9fa92e86973614b5422066dd993",
+      "legacy_contract_without_policy_hash": false
+    },
+    {
+      "iteration": 500,
+      "metrics": {
+        "complete": 0.5,
+        "tracking_success": 0.275,
+        "root_m": 0.1907311849369166,
+        "body_m": 0.2067947778751184,
+        "joint_rad": 0.22395954271670657,
+        "root_m_failure_penalized": 0.2715704364088062,
+        "body_m_failure_penalized": 0.2848063758195528,
+        "joint_rad_failure_penalized": 0.40323857076809766,
+        "action_delta_squared": 0.025401920092046764
+      },
+      "metrics_path": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/evaluation/cpu_native_scratch_no_drift_matched_500/metrics.json",
+      "metrics_sha256": "c9f20d2219e13e583a51fe8e992497acd2fa66d3c192e9134ecad65744f170e1",
+      "policy": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_no_drift_matched_500/policy.pt",
+      "policy_sha256": "e215b7201d2f08ebb706404500327e123f9ed65d375cd60c4a21d8bc93e1f0bb",
+      "contract": "/home/pku/frankenmotion/work/tracker_rl_20261009/artifacts/exports/native_scratch_no_drift_matched_500/contract.json",
+      "contract_sha256": "3f832a97250d14ff8eb782d3d17a471c95a90dc78becbee0ffee3496c9ea94b1",
+      "checkpoint_sha256": "43c5be206c6c02d6e2a57636bb113fa400bcfa9b41eebcafbfcfbe0c6565a21b",
+      "legacy_contract_without_policy_hash": false
+    }
+  ]
+}

@@ -1,0 +1,8 @@
+{
+  "returncode": 0,
+  "evaluations": 6,
+  "experiments": [
+    "scratch_drift_seed2",
+    "scratch_no_drift_matched"
+  ]
+}

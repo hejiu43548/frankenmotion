@@ -4,7 +4,7 @@
 
 服务器官方生成权重为 `/home/pku/frankenmotion/pretrained/official_20260910/frankenmotion.ckpt`，SHA256 为 `c9dca1988dd08dd9e2164ac4cf6ae8fece23011a6371e83d502cdfabe5352e18`。权重、SMPL 和仿真资产不放入 Git。
 
-当前研究同时评估随机初始化的共享 PPO tracker，以及冻结官方 SONIC mode0 基座、从零初始化残差头的在线 PPO。两条路线均不使用历史专项教师、教师动作数据或蒸馏损失。训练尚未完成，验证结果不能当作独立测试结论。协议、数据索引、来源审计和复现步骤见 [实验目录](experiments/tracker_rl_20261009/) 与 [复现说明](experiments/tracker_rl_20261009/reproduce.txt)。
+当前研究同时评估随机初始化的共享 PPO tracker，以及冻结官方 SONIC mode0 基座、从零初始化残差头的在线 PPO。两条路线均不使用历史专项教师、教师动作数据或蒸馏损失。预定训练与独立测试已完成：从零两个种子普通测试严格成功率为87.5%和82.5%（旧tracker为72.5%）；SONIC+PPO为92.5%（官方SONIC为77.5%）。匹配无偏离终止对照为57.5%。关节误差、失败动作和统计限制见最终报告，不能只看成功率。协议、数据索引、来源审计和复现步骤见 [实验目录](experiments/tracker_rl_20261009/) 与 [复现说明](experiments/tracker_rl_20261009/reproduce.txt)。
 
 ## 新 tracker 的 follow 接入
 
