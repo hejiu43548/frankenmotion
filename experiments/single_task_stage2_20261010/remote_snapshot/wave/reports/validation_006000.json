@@ -1,0 +1,68 @@
+{
+  "step": 6000,
+  "epoch": 0,
+  "validation_loss": 0.13302089273929596,
+  "scan": {
+    "step": 6000,
+    "tasks": [
+      {
+        "task": "wave",
+        "requested": [
+          0.07999999821186066,
+          0.09555555135011673,
+          0.1111111119389534,
+          0.12666666507720947,
+          0.14222222566604614,
+          0.15777777135372162,
+          0.1733333319425583,
+          0.18888889253139496,
+          0.20444443821907043,
+          0.2199999988079071
+        ],
+        "measured": [
+          0.10669421404600143,
+          0.1125028058886528,
+          0.13564102351665497,
+          0.16448791325092316,
+          0.19903260469436646,
+          0.149241641163826,
+          0.07868514209985733,
+          0.04244783893227577,
+          0.08092096447944641,
+          0.1297113299369812
+        ],
+        "mae": 0.06262405961751938,
+        "normalized_mae": 0.44731471155370983,
+        "keys": [
+          "wave_babel_act_cat_frame_Gestures_3_poses_75_116",
+          "wave_babel_act_cat_frame_Gestures_3_poses_75_116",
+          "wave_babel_act_cat_frame_Gestures_3_poses_75_116",
+          "wave_babel_act_cat_frame_Gestures_3_poses_75_116",
+          "wave_babel_act_cat_frame_Gestures_3_poses_75_116",
+          "wave_babel_act_cat_frame_Gestures_3_poses_75_116",
+          "wave_babel_act_cat_frame_Gestures_3_poses_75_116",
+          "wave_babel_act_cat_frame_Gestures_3_poses_75_116",
+          "wave_babel_act_cat_frame_Gestures_3_poses_75_116",
+          "wave_babel_act_cat_frame_Gestures_3_poses_75_116"
+        ],
+        "families": [
+          "HumanEva/S3/Gestures_3_poses",
+          "HumanEva/S3/Gestures_3_poses",
+          "HumanEva/S3/Gestures_3_poses",
+          "HumanEva/S3/Gestures_3_poses",
+          "HumanEva/S3/Gestures_3_poses",
+          "HumanEva/S3/Gestures_3_poses",
+          "HumanEva/S3/Gestures_3_poses",
+          "HumanEva/S3/Gestures_3_poses",
+          "HumanEva/S3/Gestures_3_poses",
+          "HumanEva/S3/Gestures_3_poses"
+        ],
+        "noise_seed": 1931
+      }
+    ],
+    "macro_normalized_mae": 0.44731471155370983,
+    "motion_archive": "/mnt/sda2/frankenmotion/outputs_amass/single_task_stage2_20261010/wave/artifacts/motions/scan_006000.npz",
+    "motion_sha256": "83e26adec6fad6eba7011f33c5d62b30869325cedb2c8e89f4cc4f74058bd93a",
+    "protocol": "fixed validation text per task, fixed seeds, pure-noise DDIM, requested root controls only"
+  }
+}

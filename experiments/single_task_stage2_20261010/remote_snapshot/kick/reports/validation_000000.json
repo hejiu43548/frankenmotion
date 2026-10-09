@@ -1,0 +1,68 @@
+{
+  "step": 0,
+  "epoch": 0,
+  "validation_loss": 0.13959257304668427,
+  "scan": {
+    "step": 0,
+    "tasks": [
+      {
+        "task": "kick",
+        "requested": [
+          0.25,
+          0.30000001192092896,
+          0.3499999940395355,
+          0.3999999761581421,
+          0.44999998807907104,
+          0.5,
+          0.550000011920929,
+          0.6000000238418579,
+          0.6499999761581421,
+          0.699999988079071
+        ],
+        "measured": [
+          0.8185897469520569,
+          0.8185897469520569,
+          0.8185897469520569,
+          0.8185897469520569,
+          0.8185897469520569,
+          0.8185897469520569,
+          0.8185897469520569,
+          0.8185897469520569,
+          0.8185897469520569,
+          0.8185897469520569
+        ],
+        "mae": 0.34358975291252136,
+        "normalized_mae": 0.7635327842500476,
+        "keys": [
+          "kick_13175_5_45",
+          "kick_13175_5_45",
+          "kick_13175_5_45",
+          "kick_13175_5_45",
+          "kick_13175_5_45",
+          "kick_13175_5_45",
+          "kick_13175_5_45",
+          "kick_13175_5_45",
+          "kick_13175_5_45",
+          "kick_13175_5_45"
+        ],
+        "families": [
+          "BMLmovi/Subject_77_F_MoSh/Subject_77_F_4_poses",
+          "BMLmovi/Subject_77_F_MoSh/Subject_77_F_4_poses",
+          "BMLmovi/Subject_77_F_MoSh/Subject_77_F_4_poses",
+          "BMLmovi/Subject_77_F_MoSh/Subject_77_F_4_poses",
+          "BMLmovi/Subject_77_F_MoSh/Subject_77_F_4_poses",
+          "BMLmovi/Subject_77_F_MoSh/Subject_77_F_4_poses",
+          "BMLmovi/Subject_77_F_MoSh/Subject_77_F_4_poses",
+          "BMLmovi/Subject_77_F_MoSh/Subject_77_F_4_poses",
+          "BMLmovi/Subject_77_F_MoSh/Subject_77_F_4_poses",
+          "BMLmovi/Subject_77_F_MoSh/Subject_77_F_4_poses"
+        ],
+        "noise_seed": 1935
+      }
+    ],
+    "macro_normalized_mae": 0.7635327842500476,
+    "motion_archive": "/mnt/sda2/frankenmotion/outputs_amass/single_task_stage2_20261010/kick/artifacts/motions/scan_000000.npz",
+    "motion_sha256": "7f717f8f5093ffefc808b20234f6128786abacf8d26db7c8e1b6d75b5dc97029",
+    "protocol": "fixed validation text per task, fixed seeds, pure-noise DDIM, requested root controls only"
+  }
+}

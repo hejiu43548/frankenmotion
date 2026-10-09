@@ -1,0 +1,68 @@
+{
+  "step": 3000,
+  "epoch": 0,
+  "validation_loss": 0.4409492611885071,
+  "scan": {
+    "step": 3000,
+    "tasks": [
+      {
+        "task": "strike",
+        "requested": [
+          1.5,
+          1.6111111640930176,
+          1.7222222089767456,
+          1.8333333730697632,
+          1.9444444179534912,
+          2.055555582046509,
+          2.1666667461395264,
+          2.277777671813965,
+          2.3888888359069824,
+          2.5
+        ],
+        "measured": [
+          0.6419840455055237,
+          1.1045575141906738,
+          1.7200747728347778,
+          2.1352479457855225,
+          2.548017740249634,
+          2.6200008392333984,
+          2.5328171253204346,
+          2.336258888244629,
+          2.1304898262023926,
+          2.3254640102386475
+        ],
+        "mae": 0.36942169070243835,
+        "normalized_mae": 0.36942169070243835,
+        "keys": [
+          "strike_6491_396_456",
+          "strike_6491_396_456",
+          "strike_6491_396_456",
+          "strike_6491_396_456",
+          "strike_6491_396_456",
+          "strike_6491_396_456",
+          "strike_6491_396_456",
+          "strike_6491_396_456",
+          "strike_6491_396_456",
+          "strike_6491_396_456"
+        ],
+        "families": [
+          "CMU/15/15_13_poses",
+          "CMU/15/15_13_poses",
+          "CMU/15/15_13_poses",
+          "CMU/15/15_13_poses",
+          "CMU/15/15_13_poses",
+          "CMU/15/15_13_poses",
+          "CMU/15/15_13_poses",
+          "CMU/15/15_13_poses",
+          "CMU/15/15_13_poses",
+          "CMU/15/15_13_poses"
+        ],
+        "noise_seed": 1930
+      }
+    ],
+    "macro_normalized_mae": 0.36942169070243835,
+    "motion_archive": "/mnt/sda2/frankenmotion/outputs_amass/single_task_stage2_20261010/strike/artifacts/motions/scan_003000.npz",
+    "motion_sha256": "0a3ca9b64971bcbce0763cf78fe8675e0c94b05cd32ba8b2e03aee6078eff11e",
+    "protocol": "fixed validation text per task, fixed seeds, pure-noise DDIM, requested root controls only"
+  }
+}

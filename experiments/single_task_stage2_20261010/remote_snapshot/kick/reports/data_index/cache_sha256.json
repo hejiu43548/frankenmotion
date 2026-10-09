@@ -1,0 +1,41 @@
+{
+  "train": {
+    "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/train_kick_6185_73_123.npz": "e61ad7a3d004b25037ac2b4ff8cd1f8d42adcde3646a3ea95450b368b878beab",
+    "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/train_kick_10450_4_44.npz": "ace3853804d618f7f4864f1cbc7bfa138f26b8025c2bdf94ad71f190d3195f7b",
+    "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/train_kick_5496_493_533.npz": "79573254c0e379a7bde3fdbc126f719eab4757299ea820670bd1b1900df0991f",
+    "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/train_kick_3621_1017_1077.npz": "dede21063c2a7c2c109211b1416b8cefa540ae54a98bda7f83c745c6203de0b0",
+    "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/train_kick_3621_1102_1142.npz": "1ab531042595d234ce8f8b2c857cacf897d01c63323c8f05784473a61e831116",
+    "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/train_kick_1349_1087_1147.npz": "256e7acde6fce4258a8886d63e33b1ec90d2821deef5d5b75a69723f16403294",
+    "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/train_kick_1349_1119_1179.npz": "2dc846814a3fa9feeb8bbb2229d11fc122a24a653cec3f873291c2d396c61251",
+    "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/train_kick_10269_1781_1841.npz": "ffbdc0eb97e4b9941830302f416789af624cd02350c141469a695613fcbf3e70",
+    "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/train_kick_10269_1847_1907.npz": "fdff1cca2f81cab2150f5655af673df64067d22ac17f7d2f84cd46082376f141",
+    "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/train_kick_11307_1552_1612.npz": "2696cbc6b728b548d0aa79b3ee941bc08c4845f7b33c451d4a34a0e7f1356655",
+    "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/train_kick_4799_177_237.npz": "6dd375b51ddcd124c075a545d4c9b0ade73fb4fa28de57ac856cfc4ce4b4f23c",
+    "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/train_kick_4799_222_262.npz": "ea82b85877102be8b562460d9bbe8fbe794ab0fb8f4b4b57c89f5ef79303fff3",
+    "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/train_kick_7715_576_636.npz": "dcce588f26c36015e98972b58a94079284ac76ecac368543bae0c808748717b5",
+    "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/train_kick_7715_625_685.npz": "d8da701c5c5848de943fc38a2c1a6def9fa978470f11ffe2e88e818febfb501a",
+    "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/train_kick_7381_249_289.npz": "58f7d112dfd983ada6c8985ee1b935ed6f0ee61164fe42425c3215a1ddca0e74",
+    "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/train_kick_1462_2_52.npz": "bca1cd523c1c1a4c3fbdf9eebd7da00dda98d49efa97f84963e99b692e2d8172",
+    "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/train_kick_11838_5_45.npz": "b17bde54cbdac1e240b300a08f25c201de30b7d6eea87e1da54bd144390fdeeb",
+    "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/train_kick_5900_1_61.npz": "43f066105df17bd79a742f89444d8fa934d14ea01648bb8853f5c15f8a57998b",
+    "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/train_kick_1056_2_52.npz": "b3b0d2bc8ba981cf8c1d322a719ace2082ee3ecaf0dfb6056b7cb1ce12abc8aa",
+    "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/train_kick_12963_4_54.npz": "eda36903aa50b033065cded059861b5512e12b6f4694e7775f3d0e65788e23a9",
+    "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/train_kick_6901_3_43.npz": "b5a6b29ef40ed0afc1b60234616c578e2516d111a59b2e3b909c6a867ee5bda6",
+    "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/train_kick_7384_2_42.npz": "2dfd74f2085bfdf36b65046f995523d363834246461d3de01a673fe68f40a346",
+    "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/train_kick_1856_0_60.npz": "e9f346b985538aed412421c1b312b310a3e3f8dd3625c4fa1d3fc8066126b717",
+    "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/train_kick_9978_6_66.npz": "31e6a5e9bab720243eccd37b9308a1bac9311d84483f81d83f33bd5b12f0aa99",
+    "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/train_kick_6783_2_42.npz": "2fc15cba20f038fb758a856ad5db138359f9e422b652962fcf1c796c0e419904",
+    "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/train_kick_8745_1_51.npz": "8f4de188fdeb29f726775b3fd37049f1ad64bce87ad9721b74cf2f4f322ee02b",
+    "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/train_kick_627_1_61.npz": "14f583f9d7c6831fe2f0035c53223bca90f3e7df86eb9d75ab3cb486048e970a",
+    "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/train_kick_9031_1_61.npz": "352b44817199a49cb13575dcb19c931eb2ece07ddd028ce72a09147a18b64056",
+    "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/train_kick_1673_2_62.npz": "d0fc04075bd388621576e3b1fa9dbc58a71ea7daf4cde4917ffd0ae7b04a0f58",
+    "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/train_kick_10997_10_70.npz": "273d25591fffa2d4537e6bad1c253bbfab404205f7f968c8ab3dd2e1325ab1cd",
+    "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/train_kick_3416_50_110.npz": "232517dd9053bfb46ab6db3d9611dd8277efa3f81798696c183d2befecb54dcc",
+    "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/train_kick_4969_10_70.npz": "dfcb3b7158589cdd6f490aa5c0c405e7ac2a716b23234b9f4ca3532597759733",
+    "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/train_kick_7657_249_289.npz": "92e686e1f50efd3267bcb523e8b2fd771acd29dce0ffc154913b694e0c7ea828"
+  },
+  "val": {
+    "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/val_kick_844_3_63.npz": "a8e587a909b345c838ba830a9a8ff67bcb52d2a276506c5c3e8765aa4ff28184",
+    "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/val_kick_13175_5_45.npz": "a13ecbf6a986fab1ab45214d2081a6a2eec8a49595d57e96ec6ccc2d83347cc1"
+  }
+}

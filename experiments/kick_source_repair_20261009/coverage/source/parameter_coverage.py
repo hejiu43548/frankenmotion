@@ -71,8 +71,7 @@ def main(config):
     output = Path(config.output)
     output.mkdir(parents=True, exist_ok=True)
     manifests = {
-        split: Path(config.dataset_directory) / f"{split}.json"
-        for split in ["train", "val"]
+        split: Path(config.dataset_directory) / f"{split}.json" for split in ["train", "val"]
     }
     records_by_split = {
         split: json.loads(path.read_text()) for split, path in manifests.items()

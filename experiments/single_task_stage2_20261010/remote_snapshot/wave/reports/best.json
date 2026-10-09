@@ -1,0 +1,6 @@
+{
+  "step": 10000,
+  "metric": 0.16128042978899818,
+  "checkpoint": "/mnt/sda2/frankenmotion/outputs_amass/single_task_stage2_20261010/wave/artifacts/checkpoint_010000.pt",
+  "sha256": "8f7f42c2220271f795f7d4b7c6076c2a79a40a8f9a7804d1bf2471c42c7ce720"
+}

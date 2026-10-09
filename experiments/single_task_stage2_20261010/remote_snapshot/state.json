@@ -1,0 +1,12 @@
+{
+  "state": "complete",
+  "pid": 2136093,
+  "completed": [
+    "wave",
+    "strike",
+    "kick"
+  ],
+  "active": null,
+  "stage": 2,
+  "child_pid": null
+}

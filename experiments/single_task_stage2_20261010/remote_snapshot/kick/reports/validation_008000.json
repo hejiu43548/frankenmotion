@@ -1,0 +1,68 @@
+{
+  "step": 8000,
+  "epoch": 0,
+  "validation_loss": 0.10118632763624191,
+  "scan": {
+    "step": 8000,
+    "tasks": [
+      {
+        "task": "kick",
+        "requested": [
+          0.25,
+          0.30000001192092896,
+          0.3499999940395355,
+          0.3999999761581421,
+          0.44999998807907104,
+          0.5,
+          0.550000011920929,
+          0.6000000238418579,
+          0.6499999761581421,
+          0.699999988079071
+        ],
+        "measured": [
+          0.04845423251390457,
+          0.12541207671165466,
+          0.25932779908180237,
+          0.4509904980659485,
+          0.6001640558242798,
+          0.683785080909729,
+          0.73170405626297,
+          0.705348789691925,
+          0.7107701301574707,
+          0.7318351864814758
+        ],
+        "mae": 0.1231403723359108,
+        "normalized_mae": 0.2736452718575796,
+        "keys": [
+          "kick_13175_5_45",
+          "kick_13175_5_45",
+          "kick_13175_5_45",
+          "kick_13175_5_45",
+          "kick_13175_5_45",
+          "kick_13175_5_45",
+          "kick_13175_5_45",
+          "kick_13175_5_45",
+          "kick_13175_5_45",
+          "kick_13175_5_45"
+        ],
+        "families": [
+          "BMLmovi/Subject_77_F_MoSh/Subject_77_F_4_poses",
+          "BMLmovi/Subject_77_F_MoSh/Subject_77_F_4_poses",
+          "BMLmovi/Subject_77_F_MoSh/Subject_77_F_4_poses",
+          "BMLmovi/Subject_77_F_MoSh/Subject_77_F_4_poses",
+          "BMLmovi/Subject_77_F_MoSh/Subject_77_F_4_poses",
+          "BMLmovi/Subject_77_F_MoSh/Subject_77_F_4_poses",
+          "BMLmovi/Subject_77_F_MoSh/Subject_77_F_4_poses",
+          "BMLmovi/Subject_77_F_MoSh/Subject_77_F_4_poses",
+          "BMLmovi/Subject_77_F_MoSh/Subject_77_F_4_poses",
+          "BMLmovi/Subject_77_F_MoSh/Subject_77_F_4_poses"
+        ],
+        "noise_seed": 1935
+      }
+    ],
+    "macro_normalized_mae": 0.2736452718575796,
+    "motion_archive": "/mnt/sda2/frankenmotion/outputs_amass/single_task_stage2_20261010/kick/artifacts/motions/scan_008000.npz",
+    "motion_sha256": "b1935a48576d1a4ca228ce838b88521a9293dec37dae6cf18783358dc6cf7011",
+    "protocol": "fixed validation text per task, fixed seeds, pure-noise DDIM, requested root controls only"
+  }
+}

@@ -1,0 +1,63 @@
+{
+  "step": 2000,
+  "tasks": [
+    {
+      "task": "kick",
+      "requested": [
+        0.25,
+        0.30000001192092896,
+        0.3499999940395355,
+        0.3999999761581421,
+        0.44999998807907104,
+        0.5,
+        0.550000011920929,
+        0.6000000238418579,
+        0.6499999761581421,
+        0.699999988079071
+      ],
+      "measured": [
+        0.6197655200958252,
+        0.649832010269165,
+        0.6767082810401917,
+        0.6979160308837891,
+        0.7105332016944885,
+        0.7185606956481934,
+        0.7332233190536499,
+        0.7595128417015076,
+        0.7929111123085022,
+        0.8295256495475769
+      ],
+      "mae": 0.24384887516498566,
+      "normalized_mae": 0.5418863892555237,
+      "keys": [
+        "kick_13175_5_45",
+        "kick_13175_5_45",
+        "kick_13175_5_45",
+        "kick_13175_5_45",
+        "kick_13175_5_45",
+        "kick_13175_5_45",
+        "kick_13175_5_45",
+        "kick_13175_5_45",
+        "kick_13175_5_45",
+        "kick_13175_5_45"
+      ],
+      "families": [
+        "BMLmovi/Subject_77_F_MoSh/Subject_77_F_4_poses",
+        "BMLmovi/Subject_77_F_MoSh/Subject_77_F_4_poses",
+        "BMLmovi/Subject_77_F_MoSh/Subject_77_F_4_poses",
+        "BMLmovi/Subject_77_F_MoSh/Subject_77_F_4_poses",
+        "BMLmovi/Subject_77_F_MoSh/Subject_77_F_4_poses",
+        "BMLmovi/Subject_77_F_MoSh/Subject_77_F_4_poses",
+        "BMLmovi/Subject_77_F_MoSh/Subject_77_F_4_poses",
+        "BMLmovi/Subject_77_F_MoSh/Subject_77_F_4_poses",
+        "BMLmovi/Subject_77_F_MoSh/Subject_77_F_4_poses",
+        "BMLmovi/Subject_77_F_MoSh/Subject_77_F_4_poses"
+      ],
+      "noise_seed": 1935
+    }
+  ],
+  "macro_normalized_mae": 0.5418863892555237,
+  "motion_archive": "/mnt/sda2/frankenmotion/outputs_amass/single_task_stage2_20261010/kick/artifacts/motions/scan_002000.npz",
+  "motion_sha256": "62c11eebfe51786fa47c8762fe2fbe1a8adbab2930106c3023abc5aca3bc40a4",
+  "protocol": "fixed validation text per task, fixed seeds, pure-noise DDIM, requested root controls only"
+}

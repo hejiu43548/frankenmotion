@@ -1,0 +1,100 @@
+[
+  {
+    "family": "BMLmovi/Subject_29_F_MoSh/Subject_29_F_20_poses",
+    "split": "val",
+    "babel_file": "extra_train.json",
+    "babel_sid": "844",
+    "babel_lid": "8d3fa681-b480-4ee6-95da-6f28dee6a007",
+    "seg_id": "c72fe50d-d4cf-4ab1-a0cf-032477f5d587",
+    "caption": "forward kick",
+    "source_label": {
+      "raw_label": "forward kick",
+      "proc_label": "forward kick",
+      "seg_id": "c72fe50d-d4cf-4ab1-a0cf-032477f5d587",
+      "act_cat": [
+        "kick"
+      ],
+      "start_t": 0,
+      "end_t": 3.27
+    },
+    "annotation_level": "single_action_sequence",
+    "duration_s": 3.27,
+    "source_kind": "babel_kick",
+    "key": "kick_844_3_63",
+    "task": "kick",
+    "task_id": 7,
+    "cache": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/val_kick_844_3_63.npz",
+    "cache_sha256": "a8e587a909b345c838ba830a9a8ff67bcb52d2a276506c5c3e8765aa4ff28184",
+    "motion_source": "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/motions/BMLmovi/Subject_29_F_MoSh/Subject_29_F_20_poses.npy",
+    "crop_start_frame_20fps": 3,
+    "crop_end_frame_20fps": 63,
+    "source_peak_frame_20fps": 21,
+    "local_peak_frame": 18,
+    "quantity": 0.7212712168693542,
+    "real_frames": 60,
+    "target_frames": 60,
+    "pad_frames": 0,
+    "metrics": {
+      "forward_excursion_m": 0.8970465660095215,
+      "ankle_lift_m": 0.4979488253593445,
+      "lateral_excursion_m": 0.06996215134859085,
+      "root_excursion_m": 0.12969191372394562,
+      "support_foot_excursion_m": 0.13774321973323822,
+      "heading_change_rad": 0.5961576700210571,
+      "left_kick_frames": [],
+      "source_metric_peak_frame": 18
+    },
+    "ready_for_training": true,
+    "manual_verified": false,
+    "review_status": "awaiting_user_review"
+  },
+  {
+    "family": "BMLmovi/Subject_77_F_MoSh/Subject_77_F_4_poses",
+    "split": "val",
+    "babel_file": "extra_train.json",
+    "babel_sid": "13175",
+    "babel_lid": "1e283136-6826-4c16-ba88-cabd10c60632",
+    "seg_id": "1dba0389-9470-491f-9a34-64bfb0f87693",
+    "caption": "kick",
+    "source_label": {
+      "raw_label": "kicking",
+      "proc_label": "kick",
+      "seg_id": "1dba0389-9470-491f-9a34-64bfb0f87693",
+      "act_cat": [
+        "kick"
+      ],
+      "start_t": 0,
+      "end_t": 3.97
+    },
+    "annotation_level": "single_action_sequence",
+    "duration_s": 3.97,
+    "source_kind": "babel_kick",
+    "key": "kick_13175_5_45",
+    "task": "kick",
+    "task_id": 7,
+    "cache": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/val_kick_13175_5_45.npz",
+    "cache_sha256": "a13ecbf6a986fab1ab45214d2081a6a2eec8a49595d57e96ec6ccc2d83347cc1",
+    "motion_source": "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/motions/BMLmovi/Subject_77_F_MoSh/Subject_77_F_4_poses.npy",
+    "crop_start_frame_20fps": 5,
+    "crop_end_frame_20fps": 45,
+    "source_peak_frame_20fps": 23,
+    "local_peak_frame": 18,
+    "quantity": 0.800858736038208,
+    "real_frames": 40,
+    "target_frames": 40,
+    "pad_frames": 0,
+    "metrics": {
+      "forward_excursion_m": 0.8088960647583008,
+      "ankle_lift_m": 0.8077188730239868,
+      "lateral_excursion_m": 0.2969232499599457,
+      "root_excursion_m": 0.0892023891210556,
+      "support_foot_excursion_m": 0.2523351013660431,
+      "heading_change_rad": 0.6428292989730835,
+      "left_kick_frames": [],
+      "source_metric_peak_frame": 18
+    },
+    "ready_for_training": true,
+    "manual_verified": false,
+    "review_status": "awaiting_user_review"
+  }
+]

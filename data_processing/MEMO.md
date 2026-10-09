@@ -4,7 +4,7 @@
 
 - wave：用户暂定通过；不是逐条样本验收。
 - strike：用户允许带已知缺陷暂定试用，并继续 kick。用户观察到部分片段仍有混合拳动作；保留该人工反馈，不用自动筛选通过反驳人工复核。
-- 用户随后明确：先清洗 kick，之后统一训练。当前不启动 strike 单任务或全任务训练。
+- 用户随后明确：先清洗 kick，之后统一训练。该决定已被 2026-10-10 的单任务阶段二试训请求更新，见下节。
 - 当前次序：kick → sidestep；随后处理 turn 左右标签交换、point、march、jump。每类仍需 10 条训练样本供复核。
 
 ## strike 已知缺陷
@@ -26,7 +26,7 @@
 
 - 当前处理进度：`review_state.json`。
 - strike 候选：Betail `/mnt/sda2/frankenmotion/outputs_amass/source_repair_strike_20261009_v3`。
-- 20 类逐条审计：Betail `/mnt/sda2/frankenmotion/outputs_amass/task_source_audits_20261009_v4`；其中审核状态是导出时快照，最新用户决定以本 memo 和 `review_state.json` 为准。
+- 20 类逐条审计：Betail `/mnt/sda2/frankenmotion/outputs_amass/task_source_audits_20261009_v5`；其中审核状态是导出时快照，最新用户决定以本 memo 和 `review_state.json` 为准。
 
 ## kick 候选监督缺口（待用户复核）
 
@@ -34,3 +34,11 @@
 - 目标0.25–0.70m中只有10条训练；10个等宽区间有5个空缺。两条验证均在目标范围之外，范围内验证为0。
 - 语义清洗不能自动产生低幅度动作。保留原始控制范围与此缺口，不用修改标签、重复样本或隐式幅度缩放凑监督。
 - 使用BABEL帧级kick和明确标记为单动作的序列；后者通过实际运动定位，不能称为原生帧级时间标注。
+
+## 2026-10-10 单任务试训授权
+
+用户明确要求分别对 wave、strike、kick 做单任务训练并查看命令响应，仅第二阶段。采用各自独立 TaskControl、相同冻结 backbone/root，三个任务各 10000 步、batch 8，每 1000 步固定 10 档命令扫描（50 DDIM）；不运行第一或第三阶段。kick 使用待人工复核的 33/2 候选，试训不代表语义验收通过。参数缺口、混合动作和验证样本稀少的限制仍成立。
+
+### 单任务阶段二结果
+
+三个任务均完成10000步；多种子MAE：wave 0.0592m、strike 0.3828m/s、kick 0.1565m，平均端点增益0.527/0.968/1.218。wave高段不稳定，strike中间档位回落，kick中高段饱和。说明命令已有影响，尚不能认为全范围稳定可控，亦不能据此单独确认数据覆盖的因果贡献。最终报告见`experiments/single_task_stage2_20261010/report.md`，复核页`http://127.0.0.1:50086/single_stage2/index.html`。本轮训练已结束，未开始stage3；kick语义复核状态不因试训而变成通过。

@@ -1,0 +1,63 @@
+{
+  "step": 8000,
+  "tasks": [
+    {
+      "task": "wave",
+      "requested": [
+        0.07999999821186066,
+        0.09555555135011673,
+        0.1111111119389534,
+        0.12666666507720947,
+        0.14222222566604614,
+        0.15777777135372162,
+        0.1733333319425583,
+        0.18888889253139496,
+        0.20444443821907043,
+        0.2199999988079071
+      ],
+      "measured": [
+        0.0715433731675148,
+        0.06839245557785034,
+        0.06198078766465187,
+        0.05567660182714462,
+        0.05095808953046799,
+        0.061836812645196915,
+        0.16182290017604828,
+        0.20201510190963745,
+        0.2042551040649414,
+        0.17975789308547974
+      ],
+      "mae": 0.04080132767558098,
+      "normalized_mae": 0.2914380548255784,
+      "keys": [
+        "wave_babel_act_cat_frame_Gestures_3_poses_75_116",
+        "wave_babel_act_cat_frame_Gestures_3_poses_75_116",
+        "wave_babel_act_cat_frame_Gestures_3_poses_75_116",
+        "wave_babel_act_cat_frame_Gestures_3_poses_75_116",
+        "wave_babel_act_cat_frame_Gestures_3_poses_75_116",
+        "wave_babel_act_cat_frame_Gestures_3_poses_75_116",
+        "wave_babel_act_cat_frame_Gestures_3_poses_75_116",
+        "wave_babel_act_cat_frame_Gestures_3_poses_75_116",
+        "wave_babel_act_cat_frame_Gestures_3_poses_75_116",
+        "wave_babel_act_cat_frame_Gestures_3_poses_75_116"
+      ],
+      "families": [
+        "HumanEva/S3/Gestures_3_poses",
+        "HumanEva/S3/Gestures_3_poses",
+        "HumanEva/S3/Gestures_3_poses",
+        "HumanEva/S3/Gestures_3_poses",
+        "HumanEva/S3/Gestures_3_poses",
+        "HumanEva/S3/Gestures_3_poses",
+        "HumanEva/S3/Gestures_3_poses",
+        "HumanEva/S3/Gestures_3_poses",
+        "HumanEva/S3/Gestures_3_poses",
+        "HumanEva/S3/Gestures_3_poses"
+      ],
+      "noise_seed": 1931
+    }
+  ],
+  "macro_normalized_mae": 0.2914380548255784,
+  "motion_archive": "/mnt/sda2/frankenmotion/outputs_amass/single_task_stage2_20261010/wave/artifacts/motions/scan_008000.npz",
+  "motion_sha256": "9bc8b4c0a27f83e564ea80310238a52f54e33ddffa1b42a83938a94bd28a457f",
+  "protocol": "fixed validation text per task, fixed seeds, pure-noise DDIM, requested root controls only"
+}

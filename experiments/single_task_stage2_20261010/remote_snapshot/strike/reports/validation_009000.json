@@ -1,0 +1,68 @@
+{
+  "step": 9000,
+  "epoch": 0,
+  "validation_loss": 0.6462379693984985,
+  "scan": {
+    "step": 9000,
+    "tasks": [
+      {
+        "task": "strike",
+        "requested": [
+          1.5,
+          1.6111111640930176,
+          1.7222222089767456,
+          1.8333333730697632,
+          1.9444444179534912,
+          2.055555582046509,
+          2.1666667461395264,
+          2.277777671813965,
+          2.3888888359069824,
+          2.5
+        ],
+        "measured": [
+          0.8391391634941101,
+          1.1625711917877197,
+          1.3895853757858276,
+          1.5841445922851562,
+          1.8554376363754272,
+          1.9609458446502686,
+          1.6970739364624023,
+          1.7419004440307617,
+          2.227457284927368,
+          2.2183425426483154
+        ],
+        "mae": 0.33234021067619324,
+        "normalized_mae": 0.33234021067619324,
+        "keys": [
+          "strike_6491_396_456",
+          "strike_6491_396_456",
+          "strike_6491_396_456",
+          "strike_6491_396_456",
+          "strike_6491_396_456",
+          "strike_6491_396_456",
+          "strike_6491_396_456",
+          "strike_6491_396_456",
+          "strike_6491_396_456",
+          "strike_6491_396_456"
+        ],
+        "families": [
+          "CMU/15/15_13_poses",
+          "CMU/15/15_13_poses",
+          "CMU/15/15_13_poses",
+          "CMU/15/15_13_poses",
+          "CMU/15/15_13_poses",
+          "CMU/15/15_13_poses",
+          "CMU/15/15_13_poses",
+          "CMU/15/15_13_poses",
+          "CMU/15/15_13_poses",
+          "CMU/15/15_13_poses"
+        ],
+        "noise_seed": 1930
+      }
+    ],
+    "macro_normalized_mae": 0.33234021067619324,
+    "motion_archive": "/mnt/sda2/frankenmotion/outputs_amass/single_task_stage2_20261010/strike/artifacts/motions/scan_009000.npz",
+    "motion_sha256": "e53550d4369039ab550a458752caf5e8079d95d82636f6deb3932f1891a16153",
+    "protocol": "fixed validation text per task, fixed seeds, pure-noise DDIM, requested root controls only"
+  }
+}
