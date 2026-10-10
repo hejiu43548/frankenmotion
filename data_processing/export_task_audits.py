@@ -56,7 +56,9 @@ def main():
         raise ValueError("Missing input caches; inspect cache index")
     (a.out / "cache_index.json").write_text(json.dumps(caches, indent=2) + "\n")
     tasks = sorted({r["task"] for rows in manifests.values() for r in rows})
-    assert len(tasks) == 20
+    assert len(tasks) in [19, 20]
+    if len(tasks) == 19:
+        assert "point" not in tasks and "reach" in tasks
     headers = [
         "task",
         "split",
@@ -152,7 +154,8 @@ def main():
                         babel_sid=r.get("babel_sid", ""),
                         seg_id=r.get("seg_id", ""),
                         original_event_label_json=json.dumps(
-                            r.get("source_label", {}), ensure_ascii=False
+                            r.get("source_label", r.get("label", {})),
+                            ensure_ascii=False,
                         ),
                         motion_source=r.get("motion_source", r.get("feature_path", "")),
                         task_review_status=status,
@@ -223,7 +226,9 @@ def main():
         manifest_sha256={s: sha(a.data / f"{s}.json") for s in manifests},
         script_sha256=sha(__file__),
         review_state=state,
-        all20_tasks_exported=True,
+        all20_tasks_exported=len(tasks) == 20,
+        all_active_tasks_exported=True,
+        active_task_count=len(tasks),
         total_rows=sum(map(len, manifests.values())),
         unique_caches_verified=len(caches),
         purpose="Exact audit lists; not semantic certification or training launch.",
@@ -236,7 +241,7 @@ def main():
         for r in summary
     )
     (a.out / "index.html").write_text(
-        '<!doctype html><meta charset="utf-8"><title>20任务训练数据审计</title><style>body{font:16px system-ui;max-width:1050px;margin:40px auto}td,th{padding:10px 24px;border-bottom:1px solid #ddd;text-align:left}</style><h1>20 个任务 · 训练数据审计</h1><p>每类独立列出训练/验证来源、时间区间、原始标签、幅度/速度、补帧、缓存哈希及审核状态。not_reviewed 表示尚未修复验收；provisionally_accepted 表示用户暂定通过。</p><table><tr><th>任务</th><th>训练</th><th>验证</th><th>审核状态</th></tr>'
+        '<!doctype html><meta charset="utf-8"><title>活动任务训练数据审计</title><style>body{font:16px system-ui;max-width:1050px;margin:40px auto}td,th{padding:10px 24px;border-bottom:1px solid #ddd;text-align:left}</style><h1>活动任务 · 训练数据审计</h1><p>每类独立列出训练/验证来源、时间区间、原始标签、幅度/速度、补帧、缓存哈希及审核状态。not_reviewed 表示尚未修复验收；provisionally_accepted 表示用户暂定通过。</p><table><tr><th>任务</th><th>训练</th><th>验证</th><th>审核状态</th></tr>'
         + links
         + "</table>"
     )

@@ -24,6 +24,11 @@ def reference_measure(skeleton, motion, task_indices, lengths):
         )
         if name == "turn":
             result = signed_turn(positions)
+        elif name == "march":
+            # Staged march now means stationary running; legacy release metrics
+            # keep their original first-frame standing baseline.
+            feet = positions[:, :, [7, 8], 2]
+            result = (feet.amax(1) - torch.quantile(feet, 0.05, dim=1)).mean(1)
         elif name in NEW:
             result = quantities(positions)[name]
         else:

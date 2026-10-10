@@ -1,0 +1,27 @@
+defaults:
+  - audit_point
+  - _self_
+output: /mnt/sda2/frankenmotion/outputs_amass/source_repair_reach_xyz_20261010_v2
+inspect_only: true
+rules:
+  maximum_initial_wrist_above_root_m: 0.15
+  maximum_left_wrist_above_root_m: 0.25
+  minimum_target_horizontal_from_shoulder_m: 0.20
+  minimum_raised_target_above_root_m: 0.20
+  minimum_approach_efficiency: 0.60
+  minimum_target_progress_fraction: 0.85
+  maximum_initial_arm_elevation_deg: 40.0
+  minimum_frames: 15
+  maximum_frames: 70
+  hold_frames: 5
+  maximum_hold_span_m: 0.06
+  maximum_hold_speed_m_s: 0.35
+  minimum_wrist_displacement_m: 0.16
+  minimum_arm_extension_m: 0.30
+  minimum_elbow_angle_deg: 125
+  maximum_root_excursion_m: 0.12
+  maximum_foot_excursion_m: 0.14
+  maximum_torso_tilt_rad: 0.45
+  maximum_left_wrist_displacement_m: 0.18
+  minimum_right_left_ratio: 1.4
+  maximum_heading_span_deg: 20

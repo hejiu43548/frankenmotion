@@ -13,6 +13,7 @@ from shared_motion.adapter.inputs import encode_control, make
 from shared_motion.adapter.model import command
 from shared_motion.adapter.network import SharedCommands, UnifiedControl
 from .adapters import RootControl, TaskControl
+from .reach import REACH_INDEX, REACH_POLICY, command_vectors, normalized_commands
 from .turn import TURN_NATIVE_SPEED, TURN_POLICY, TURN_RANGE
 from .catalog import COMMAND_RANGES, HUMAN_HEIGHT, ROOT_TASKS, TASK_NAMES
 
@@ -68,6 +69,8 @@ def create_shared_commands(base, phase, width=1024, zero_initialize=True):
             "The release SharedCommands requires four512-wide backbone layers"
         )
     controller = SharedCommands(width)
+    # Append XYZ fields without changing the legacy release controller class.
+    controller.encoder[0] = nn.Linear(58, width)
     if zero_initialize:
         for head in [*controller.residuals, controller.output]:
             nn.init.zeros_(head[-1].weight)
@@ -111,7 +114,7 @@ class ControlledDiffusion(nn.Module):
     def __init__(self, bundle, controller_config, phase):
         super().__init__()
         self.phase = phase
-        self.task_policy = dict(TURN_POLICY)
+        self.task_policy = dict(turn=TURN_POLICY, reach=REACH_POLICY)
         self.kind = (
             "charlie_root"
             if str(controller_config._target_).endswith("create_charlie_root")
@@ -183,19 +186,25 @@ class ControlledDiffusion(nn.Module):
         return clean, conditioning
 
     def requested_root(self, batch, commands, skeleton):
+        commands = command_vectors(commands, batch["task"])
+        scalar_commands = commands[:, 0]
         values = commands.new_zeros(len(commands), batch["mask"].shape[1], 2)
         supported = torch.isin(batch["task"], batch["task"].new_tensor(ROOT_TASKS))
         valid = batch["mask"] & supported[:, None]
         turning = batch["task"] == TASK_NAMES.index("turn")
         values[turning, :, 0] = TURN_NATIVE_SPEED
-        values[turning, :, 1] = -commands[turning, None] / (
+        values[turning, :, 1] = -scalar_commands[turning, None] / (
             (batch["lengths"][turning, None] - 1) / 20
         )
         walking = supported & ~turning
-        values[walking, :, 0] = commands[walking, None] * skeleton.height / HUMAN_HEIGHT
+        values[walking, :, 0] = (
+            scalar_commands[walking, None] * skeleton.height / HUMAN_HEIGHT
+        )
         return encode_control(values, valid)
 
     def unified_features(self, batch, commands, root_control, use_task):
+        commands = command_vectors(commands, batch["task"])
+        normalized = normalized_commands(commands, batch["task"], COMMAND_RANGES)
         frames = batch["mask"].shape[1]
         rows = []
         for sample_index, task_index in enumerate(batch["task"].tolist()):
@@ -203,14 +212,14 @@ class ControlledDiffusion(nn.Module):
             if use_task:
                 features = command(
                     TASK_NAMES[task_index],
-                    float(commands[sample_index]),
+                    float(commands[sample_index, 0]),
                     length,
                     commands.device,
                 )
                 if TASK_NAMES[task_index] == "turn":
                     features[:, :, 16] = (
                         2
-                        * (commands[sample_index] - TURN_RANGE[0])
+                        * (commands[sample_index, 0] - TURN_RANGE[0])
                         / (TURN_RANGE[1] - TURN_RANGE[0])
                         - 1
                     )
@@ -222,13 +231,19 @@ class ControlledDiffusion(nn.Module):
                 features = torch.nn.functional.pad(
                     make(
                         "root_profile",
-                        commands[sample_index : sample_index + 1],
+                        commands[sample_index : sample_index + 1, 0],
                         phase,
                         root_control[sample_index : sample_index + 1, :length],
                         frames=length,
                     ),
                     (0, 9),
                 )
+            spatial = features.new_zeros(1, features.shape[1], 3)
+            if use_task and task_index == REACH_INDEX:
+                features[:, :, 16] = 0
+                features[:, :, 17] = 1
+                spatial[:] = normalized[sample_index]
+            features = torch.cat([features, spatial], dim=-1)
             rows.append(torch.nn.functional.pad(features, (0, 0, 0, frames - length)))
         return torch.cat(rows)
 

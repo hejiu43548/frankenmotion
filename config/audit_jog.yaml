@@ -1,0 +1,12 @@
+project: /home/psirobot/projects/frankenmotion
+data: /mnt/sda2/frankenmotion/outputs_amass/source_repair_jump_20261010_v3
+trained_data: /mnt/sda2/frankenmotion/outputs_amass/shared20_clean5_stage2_20261010/data
+babel: /mnt/sda2/dataset/babel
+amass: /mnt/sda2/dataset/amass
+skeleton: ${project}/outputs_amass/transfer_charlie_20261008/snapshot/outputs_amass/franken_eleven_20261003/skeleton.npz
+output: /mnt/sda2/frankenmotion/outputs_amass/jog_data_audit_20261010
+hydra:
+  job:
+    chdir: false
+  run:
+    dir: ${output}/hydra

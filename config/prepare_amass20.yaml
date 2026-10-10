@@ -11,8 +11,12 @@ skeleton: ${cache_root}/outputs_amass/transfer_charlie_20261008/snapshot/outputs
 official_config: ${cache_root}/pretrained/official/config.json
 output: /mnt/sda2/frankenmotion/outputs_amass/shared20_walking_data_20261009
 workers: 4
+# jog/march must come from the paired category + gait admission pipeline.
+running_data: /mnt/sda2/frankenmotion/outputs_amass/source_repair_jog_straight_20261010_v3
 hydra:
   job:
     chdir: false
   run:
     dir: /mnt/sda2/frankenmotion/outputs_amass/shared20_prepare_logs_20261009
+
+reach_data: /mnt/sda2/frankenmotion/outputs_amass/source_repair_reach_xyz_20261010_v2

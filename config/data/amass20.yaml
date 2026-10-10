@@ -1,5 +1,5 @@
 # Turn rows must be exported by scripts/repair_turn_data.py (walking_turn_v2).
-# Keep all20 tasks; the existing repaired11-task manifest is not a substitute.
+# Nineteen active tasks; point is merged into XYZ reach. IDs retain the reserved point slot.
 train_manifest: ???
 val_manifest: ???
 skeleton: ???
@@ -20,7 +20,6 @@ tasks:
   - squat
   - bow
   - clap
-  - point
   - stretch
   - twist
   - march

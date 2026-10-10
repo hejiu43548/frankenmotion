@@ -1,7 +1,8 @@
-"""Charlie layer-residual adapters, with a configurable task embedding count.
+"""Layer-residual adapters with stable task IDs and three-component commands.
 
-Parameter names match the retrieved adapters. Only the task embedding grows
-from eleven to twenty rows; no phase encoding or motion output head is added.
+RootControl retains the imported scalar-root protocol. TaskControl accepts XYZ
+reach targets and masked scalar commands for the other eighteen active tasks.
+The retired point embedding slot is reserved; old task adapters are incompatible.
 """
 
 import torch
@@ -74,7 +75,7 @@ class TaskControl(nn.Module):
         width = root.base.latent_dim
         self.task = nn.Embedding(len(command_ranges), embedding_width)
         self.encoder = nn.Sequential(
-            nn.Linear(embedding_width + 1, bottleneck),
+            nn.Linear(embedding_width + 3, bottleneck),
             nn.SiLU(),
             nn.Linear(bottleneck, width),
         )
@@ -99,13 +100,10 @@ class TaskControl(nn.Module):
         ]
 
     def encoded(self, task_indices, commands):
-        ranges = commands.new_tensor(self.command_ranges)[task_indices]
-        normalized = (
-            (commands - ranges[:, 0]) / (ranges[:, 1] - ranges[:, 0]) * 2 - 1
-        ).clamp(-5, 5)
-        return self.encoder(
-            torch.cat([self.task(task_indices), normalized[:, None]], -1)
-        )
+        from .reach import normalized_commands
+
+        normalized = normalized_commands(commands, task_indices, self.command_ranges)
+        return self.encoder(torch.cat([self.task(task_indices), normalized], -1))
 
     def outputs(self, task_indices, commands):
         features = self.encoded(task_indices, commands)

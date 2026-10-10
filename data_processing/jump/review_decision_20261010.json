@@ -1,0 +1,31 @@
+{
+  "date": "2026-10-10",
+  "timezone": "Asia/Shanghai",
+  "user_evidence": "可以通过，之前的strike kick 也暂定通过",
+  "decisions": [
+    {
+      "task": "jump",
+      "status": "accepted",
+      "data": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_jump_20261010_v3",
+      "train_samples": 49,
+      "validation_samples": 8
+    },
+    {
+      "task": "strike",
+      "status": "provisionally_accepted_with_known_defects",
+      "data": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_strike_20261009_v3",
+      "train_samples": 13,
+      "validation_samples": 1
+    },
+    {
+      "task": "kick",
+      "status": "provisionally_accepted",
+      "data": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1",
+      "train_samples": 33,
+      "validation_samples": 2
+    }
+  ],
+  "known_defects_and_parameter_coverage_retained": true,
+  "training_authorized": false,
+  "training_started": false
+}

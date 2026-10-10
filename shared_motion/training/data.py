@@ -10,12 +10,17 @@ import torch
 from torch.nn import functional as functional
 
 from .catalog import TASK_NAMES
+from .reach import validate_reach_record
 from .model import file_sha256
 from .turn import require_turn_revision, validate_turn_record
 
 
 class MotionDataset:
     def __init__(self, manifest, split, tasks, path_root=None, deduplicate=False):
+        if "point" in tasks:
+            raise ValueError(
+                "point is merged into reach; configure the 19 active tasks"
+            )
         self.manifest = Path(manifest).resolve()
         root = Path(path_root).resolve() if path_root else self.manifest.parent
         records = json.loads(self.manifest.read_text())
@@ -89,6 +94,12 @@ class MotionDataset:
                     frames,
                     float(item["quantity"]),
                 )
+            if record["task"] == "reach":
+                validate_reach_record(
+                    record, self.cache_hashes[record["cache"]], frames, item["quantity"]
+                )
+            elif item["quantity"].ndim != 0:
+                raise ValueError("Non-reach tasks require scalar cache quantities")
             item["task"] = torch.tensor(task_index)
             self.items.append(item)
             self.groups.setdefault(task_index, []).append(record_index)
@@ -113,8 +124,24 @@ class MotionDataset:
             ).to(device)
             for name in ["motion", "local", "local_mask"]
         }
-        for name in ["tx", "quantity", "task"]:
+        for name in ["tx", "task"]:
             result[name] = torch.stack([item[name] for item in items]).to(device)
+        result["quantity"] = torch.stack(
+            [
+                (
+                    item["quantity"]
+                    if item["quantity"].shape == (3,)
+                    else torch.stack(
+                        [
+                            item["quantity"],
+                            item["quantity"].new_zeros(()),
+                            item["quantity"].new_zeros(()),
+                        ]
+                    )
+                )
+                for item in items
+            ]
+        ).to(device)
         result["lengths"] = lengths
         result["mask"] = torch.arange(120, device=device)[None] < lengths[:, None]
         return result

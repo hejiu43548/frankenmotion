@@ -1,5 +1,7 @@
 # Hydra 三阶段训练
 
+当前阶段协议更新（2026-10-10）：point已按用户要求并入reach，活动任务19类，旧point ID14保留禁用。reach命令为初始骨盆/身体坐标系右腕XYZ（米），例如 `task=reach 'command=[0.45,-0.2,0.3]'`；其他任务保持标量语义。新数据、命令编码和checkpoint协议不兼容旧标量reach模型；下方历史20类/55维说明仅适用于旧版本。当前尚未训练XYZ模型。细节见 [数据与接口迁移](../data_processing/point/README.md)。
+
 G1 仿真 demo 的入口、审计和复现脚本统一位于 [`demos/g1/scripts/`](../demos/g1/scripts/)，使用方法见 [demo 说明](../demos/g1/README.md)。
 
 新增训练默认覆盖 main 的20类任务；turn 使用已确认的 walking-turn v2 数据语义。没有并入独立 turn/spin 训练器或权重。旧 `shared_motion.adapter.infer` 和已发布 shared20 权重保持兼容。上游配置继续在 `configs/`；本次阶段训练配置按要求放在 **`config/`**。

@@ -72,3 +72,78 @@
 用户指定只修back_walk混入前走，其他暂不考虑。最新候选source_repair_back_walk_20261010_v2：156train/25val（137/22来源），来自最新shared20_clean5实际数据，其他19类逐条不变。先按身体朝向定位连续倒走，再裁2–6秒并重算速度；排除无合格倒走段、明显转身/侧向或弯腰的条目。原1253条中763条原速度非正；159个原记录保留为181窗口，其他1094条没有满足当前规则的区间。不要把所有剔除都归为纯前走。
 
 181缓存源切片完全相等、速度重算误差0，最大前向路径比例0.1985%，5回归测试和文本/划分核验通过。新文本walk backwards，旧整段描述仍保留审计。10个不同训练来源复核视频http://127.0.0.1:50086/back_walk/index.html；当前awaiting_user_review，未训练。完整报告experiments/back_walk_source_repair_20261010/report.md；审计task_source_audits_back_walk_20261010，11196行。其他任务暂缓。本轮不改变旧模型或现有demo工作。
+
+
+## 2026-10-10：jump 仅检查，准入限定平地双脚跳
+
+用户暂停 lean 移除，改为先检查 jump 的当前问题与数量；本轮未修改任何训练清单或任务编号。jump 与最新已完成的 shared20_clean5 训练记录逐条一致：759 train / 94 val，独立录制同数，HDM05 为16/6。旧 caption 正则加开头3秒裁剪缺乏事件准入，74条有 BABEL jump/hop 帧标签却完全落在当前裁剪之外。
+
+用户明确“仅平底双脚跳”，按平地双脚起跳并双脚落地理解；单脚跳、上下台阶/台子、开合跳、跳绳不符合。优先 HDM05 hopBothLegs 精确裁剪，其他来源以 BABEL act_cat 帧级标注配合实际起跳/落地准入；标签命中不等于有效数量。当前853条库存尚未完成该定义的逐事件验收，不能报告有效条数。报告experiments/jump_data_audit_20261010/report.md，复现data_processing/jump/audit_original.py与config/audit_jump.yaml；未开始清理或训练，back_walk复核状态不变。
+
+
+## 2026-10-10：jump平地双脚跳清理完成，等待10条训练样本复核
+
+用户明确授权清理、保留data_processing审计脚本并渲染10条，禁止训练。最新候选Betail source_repair_jump_20261010_v2：118train/16val，来自115/16录制。以source_repair_back_walk_20261010_v2为底，其他19类逐条不变，lean移除仍暂停。128个旧jump来源重裁剪，补入3个有BABEL类别的来源，725个旧来源未保留。
+
+必须act_cat=jump/hop；27条帧标注、107条单动作序列标注，后者使用运动补标边界。检查平地双脚支撑→近同步离地→共同腾空→近同步落地，拒绝单脚/台阶平台/绳跳/开合/扭转/混合类别；新增起点膝角145度门槛避免从深蹲起算跳高。HDM05首轮2条因缺直立起始基准被排除，最终0条，不声称验证了官方hopBothLegs cuts。8规则回归测试、134精确源切片/独立跳高/文本PCA及掩码核验通过，跳高误差1.77e-8；all20 family split隔离。
+
+训练实际0.108–0.465m，53/118在0.25–0.55m范围内，高端0.49–0.55缺监督；不改真实幅度或范围。10个不同TRAIN来源按跳高分层展示，20fps，准备/起跳/峰值/落地/结束关键帧已检查，待用户语义复核。视频http://127.0.0.1:50086/jump/index.html；脚本及报告data_processing/jump/README.md。未训练、不自动推进其他任务。旧v1为诊断版，当前v2为正式候选。
+
+
+## 2026-10-10：jump V3收紧为原地双脚跳，禁止方向跳
+
+用户指出jump left/right不能进入，要求落点统一。该新要求覆盖上一版允许水平位移的解释。V3排除left/right/forward/backward等方向文本、移动类别及矛盾旁证；检查首次双脚落地而非只看最后帧，防止跳出去后走回来。起跳基准/第一次落地/最终恢复的脚中心偏移≤8cm，每脚≤10cm，根终点≤10cm、全程水平偏移≤15cm，不修改真实轨迹。
+
+最终source_repair_jump_20261010_v3：49train/8val，47/8录制；相比V2的118/16进一步收紧。11帧标注+46单动作序列标注。实际中心最大7.571cm、每脚最大9.162cm；57精确源切片、独立跳高误差1.70e-8、文本与all20划分通过，11规则测试通过（含跳出后回归、单脚落点变化、方向词）。其余19类不变。训练0.130–0.465m，26/49在命令范围内，高端仍缺覆盖。
+
+新10训练视频已替换http://127.0.0.1:50086/jump/index.html，文件名带v3避免旧视频缓存；10不同录制、50关键帧已检查，待用户复核。逐条列表task_source_audits_jump_20261010_v3。没有训练；V1/V2保留为历史诊断，不作当前数据。
+
+
+## 2026-10-10：jump V3用户通过，strike/kick暂定通过
+
+用户明确“可以通过，之前的strike kick 也暂定通过”。jump原地双脚跳V3（49train/8val）标记accepted；strike V3（13/1）维持provisionally_accepted_with_known_defects；kick V1（33/2）改为provisionally_accepted。已保留strike混合拳、少样本和范围内验证缺口，以及kick/jump参数覆盖限制。没有把此次决定写成所有样本逐条人工验收或模型效果通过。
+
+当前队列清空，next_task=null，其他任务状态不变。继续遵守先不训练；本次未新增训练授权或启动训练。精确数据版本和用户原话记录于jump/review_decision_20261010.json。
+
+
+## 2026-10-10：jog仅检查完成，确认混入非跑步与错裁
+
+用户要求下一步检查jog脏数据，未要求启动训练。本轮834条（742train/92val，363/44录制）逐条哈希/精确源切片/FK速度重算通过，与已完成shared20_clean5训练数据相同。486条根路径速度<0.2m/s，只有169条在0.8–2m/s范围；低速包含原地跑，不全判非跑步。最终34条有run/jog帧标注但裁剪完全错过，22条多数时间walk无run，14条至少四分之一其他冲突动作无run；这些集合重叠。
+
+6诊断样本渲染并检查30关键帧，确认CMU31_09站立摆手、HDM dg01-04_02走路、EyesJapan moonwalk舞蹈、HDM dg01-03_02末尾Tpose误入jog；另有倒跑与正常跑步对照。BABEL两来源23条异常统一0–1s时间标签单列不参与精确统计，不能盲信act_cat时间边界。报告/脚本data_processing/jog/；视频http://127.0.0.1:50086/jog_audit/index.html。
+
+可信时间字段下本地BABEL可调查run/jog帧事件367/42，181/24来源，其中HDM88/19事件、38/7来源；只是候选库存未准入。当前完整数据仍source_repair_jump_20261010_v3，无清单替换，无训练。jump已通过、strike/kick暂定通过保持不变。jog状态audited_needs_repair，下一步未自动执行。
+
+
+## 2026-10-10：jog/march联合裁剪修复，等待预览复核
+
+用户要求正常移动跑步进jog、原地跑步进march。新完整数据source_repair_jog_march_20261010_v2：jog76train/21val（36/9录制），march29train/1val（28/1录制）；其余18类与jumpV3逐条相同。jump已通过、strike/kick暂定通过不变，lean移除仍暂停。本轮无训练。
+
+从1596个BABEL run/jog类别候选中，结合HDM优先、实际运动边界、双腿交替周期、腾空代理和支撑脚速度准入，再按连续前移/原地位移分流；低速不自动进入march。排除站立/走路/双脚跳/倒跑/侧跑/跑步机/明显滑动/混合动作，异常0–1秒标签23条隔离。HDM38条（jog36、march2），未获得官方cuts精确映射，不声称原生边界已核验；68帧标注+59单动作序列补边界。最终裁剪按实际脚离地活动去掉站立边缘，未补帧、重定时或修改轨迹。
+
+127缓存源切片精确、1340输入hash、独立quantity最大误差5.37e-7、文本/PCA/掩码、all20 family split隔离和无重复跨任务区间核验通过。15测试通过。当前阶段march量改为各脚踝峰值减各自5%支撑高度再平均，避免首帧摆腿相位偏差；legacy release和旧训练快照保留，不能混用指标。prepare_amass20必须导入带新语义版本/hash的两类数据，阻止旧正则重建回流。
+
+命令范围未变：jog0.8–2m/s，65train/20val在范围内，训练低端0.8–1.04缺覆盖；march0.06–0.22m仅5train/0val，唯一val为0.221502m。不能宣称已具备范围充分监督或泛化验证。各10不同TRAIN来源视频已渲染并检查共120关键帧（非127条逐帧人工验收）；复核http://127.0.0.1:50086/jog_march/index.html。脚本和报告data_processing/jog_march，所有状态awaiting_user_review。v1为诊断版，v2为本次候选。
+
+
+## 2026-10-10：jog收紧为直线跑步 V3
+
+用户指出ACCAD/Male2Running_c3d为直跑、其他多旋转。上一版身体相对前向门槛确实允许弧线，本次新增全程根轨迹直线度和朝向稳定性筛查，限于已通过V2步态准入的97个jog窗口内提取2秒以上连续直跑段，不把整份录制文件名当准入。净位移/路径≥0.985、偏离首尾直线≤12cm、平滑身体朝向跨度≤20度且首尾≤10度、行进方向跨度≤20度；使用全程跨度检查S弯和转出后转回。所有片段保留原轨迹，不矫直、不重定时。
+
+最终source_repair_jog_straight_20261010_v3：jog9train/2val（8/2录制），6条原窗口整段通过，另5条从原窗口裁出直跑段；86条无足够长合格直跑段。march29/1及其他18类逐条不变。保留7条HDM直段、ACCAD1、CMU1、BMLmovi1、BioMotion1；目录名run turn/change direction不自动放行。ACCAD保留Male2Running_c3d/C3 - run_poses的0–2.45秒。命令0.8–2m/s范围内6train/2val，训练1.170–3.635m/s，样本与覆盖均很少，不放宽规则凑数。
+
+20回归测试通过（新增弧线身体随转、S弯、原地身体转向、世界旋转平移不变性等）；11jog+30原march缓存核验、其他19类一致、全20类split隔离、文本PCA、独立量最大误差1.79e-7通过。所有9条jog训练样本展示（8个来源），未凑10条；视频http://127.0.0.1:50086/jog_straight/jog/index.html。状态awaiting_user_review，未训练。代码data_processing/jog_march/straight.py、straight_rules.py，配置config/jog_straight_repair.yaml，报告STRAIGHT_REVIEW.md。旧V2仅作历史。
+
+
+## 2026-10-10：jog和march用户通过
+
+用户明确“jog和march都可以通过了，除了数据量少都没问题”。jog直线V3（9train/2val，8/2录制）与march原地跑（29train/1val，28/1录制）均标记accepted；当前完整数据source_repair_jog_straight_20261010_v3。保留数据量少、jog范围内6/2和5个训练空档、march范围内5/0及唯一验证来源的限制。仅接受动作语义/复核结果，不表示所有原始片段逐帧验收或模型泛化通过。数据清单/缓存不改，决定另存jog_march/review_decision_20261010.json。队列清空，不自动推进其他任务，没有新增训练授权或启动训练；jump已通过、strike/kick暂定通过保持原样。
+
+
+## 2026-10-10：point合并入reach，统一XYZ目标
+
+用户明确选择“将 point 合并进 reach，统一改为 XYZ 控制”。旧point115/10中35条caption命中starting point等地点词，103条无可信point帧重叠（非全判错误）、11条错过来源point事件。旧reach301/47也是标量前伸，现两类重筛而非合并脏清单。最新source_repair_reach_xyz_20261010_v2保留21train/3val（19/3录制），含3条同HDM录制的不同目标。其他18类逐条不变，活动任务19，point编号14保留禁用、不挪其余ID。
+
+右腕XYZ以初始骨盆为原点，X前Y左Z上米；末尾5帧同一停留窗口均值，不取三轴独立极值。BABEL类别+实际右手接近/稳定目标、初始低手位/手臂≤40度、排除左/双臂/走动/收手与重复摆动；V1诊断后V2收紧起始手臂。24精确源切片、独立XYZ误差5.97e-8、文本PCA、19任务混批、划分及其他18类一致核验通过。相关25项测试通过；合成模型单元测试不等于启动AMASS训练。
+
+with_root与without_root编码、损失、数据加载、验证扫描和推理均接XYZ；旧scalar reach及旧阶段checkpoint显式拒绝。3D归一化盒不代表可达或已覆盖，free/scan只用真实target支持。训练XYZ约X0–.603、Y-.611–.100、Z-.004–.938，验证仅3来源且右前方为主，不能宣称三维泛化。10不同TRAIN样本/60关键时刻检查完成，http://127.0.0.1:50086/reach_xyz/index.html，待用户复核。未训练新模型，jog/march/jump已通过及strike/kick暂定状态保持；lean删除仍暂停。脚本和完整报告data_processing/point/。

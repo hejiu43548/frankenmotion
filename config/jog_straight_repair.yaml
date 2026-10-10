@@ -1,0 +1,12 @@
+defaults:
+  - jog_march_repair
+  - _self_
+base: /mnt/sda2/frankenmotion/outputs_amass/source_repair_jog_march_20261010_v2
+output: /mnt/sda2/frankenmotion/outputs_amass/source_repair_jog_straight_20261010_v3
+straight:
+  smooth_frames: 7
+  minimum_net_to_path_ratio: 0.985
+  maximum_line_deviation_m: 0.12
+  maximum_body_heading_span_deg: 20.0
+  maximum_body_heading_net_deg: 10.0
+  maximum_travel_direction_span_deg: 20.0

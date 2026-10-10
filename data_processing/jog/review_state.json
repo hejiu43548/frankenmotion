@@ -1,0 +1,272 @@
+{
+  "current_task": "jog",
+  "status": "audited_needs_repair",
+  "source_directory": "data_processing/jog",
+  "data": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_jump_20261010_v3",
+  "review": "/Users/andy/Develop/frankenmotion/outputs_amass/task_data_review_20261009/jog_audit/index.html",
+  "train_samples": 742,
+  "validation_samples": 92,
+  "training_started": false,
+  "next_task": null,
+  "queue": [],
+  "gate": "Jog inspection completed; manifests unchanged. No cleanup or training performed in this audit.",
+  "tasks": {
+    "wave": {
+      "status": "provisionally_accepted",
+      "user_evidence": "先暂定吧",
+      "data": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_wave_20261009_review_v2",
+      "review": "/Users/andy/Develop/frankenmotion/outputs_amass/wave_source_review_20261009/final_review/index.html"
+    },
+    "strike": {
+      "status": "provisionally_accepted_with_known_defects",
+      "scope": "right forward straight punch/jab",
+      "data": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_strike_20261009_v3",
+      "train_samples": 13,
+      "validation_samples": 1,
+      "user_approved": true,
+      "review": "/Users/andy/Develop/frankenmotion/outputs_amass/task_data_review_20261009/strike_final/index.html",
+      "user_evidence": "可以通过，之前的strike kick 也暂定通过",
+      "known_defects": [
+        "User-observed mixed punches remain",
+        "Only13train/1val and sparse parameter support",
+        "No validation support within1.5–2.5m/s command range"
+      ],
+      "review_history": [
+        {
+          "date": "2026-10-10",
+          "previous_status": "provisionally_accepted_with_known_defects",
+          "previous_user_evidence": "有部分混合了右拳，但是训练数据太少了，先训练试试吧，这个缺陷加入memo，继续kick",
+          "status": "provisionally_accepted_with_known_defects",
+          "user_evidence": "可以通过，之前的strike kick 也暂定通过"
+        }
+      ],
+      "approval_level": "provisional",
+      "review_date": "2026-10-10"
+    },
+    "kick": {
+      "status": "provisionally_accepted",
+      "data": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1",
+      "review": "/Users/andy/Develop/frankenmotion/outputs_amass/task_data_review_20261009/kick/index.html",
+      "train_samples": 33,
+      "validation_samples": 2,
+      "user_approved": true,
+      "parameter_coverage": {
+        "requested_range": [
+          0.25,
+          0.7
+        ],
+        "train_inside_range": 10,
+        "empty_train_bins": 5,
+        "bins": 10,
+        "val_inside_range": 0
+      },
+      "review_history": [
+        {
+          "date": "2026-10-10",
+          "previous_status": "awaiting_user_review",
+          "previous_user_evidence": null,
+          "status": "provisionally_accepted",
+          "user_evidence": "可以通过，之前的strike kick 也暂定通过"
+        }
+      ],
+      "approval_level": "provisional",
+      "user_evidence": "可以通过，之前的strike kick 也暂定通过",
+      "review_date": "2026-10-10"
+    },
+    "sidestep": {
+      "status": "provisionally_accepted",
+      "data": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_sidestep_20261010_v2",
+      "review": "/Users/andy/Develop/frankenmotion/outputs_amass/task_data_review_20261009/sidestep/index.html",
+      "train_samples": 34,
+      "validation_samples": 6,
+      "train_families": 10,
+      "val_families": 2,
+      "native_direction": "left",
+      "training_direction": "right",
+      "mirrored": true,
+      "boundary_status": "HDM05 script/motion supplemented boundaries; official cuts mapping unavailable (403)",
+      "user_approved": true,
+      "parameter_coverage": {
+        "requested_range": [
+          0.4,
+          1.0
+        ],
+        "train_range": [
+          0.5049563646316528,
+          0.9346804618835449
+        ],
+        "train_inside_range": 34,
+        "empty_train_bins": 2,
+        "bins": 10,
+        "val_inside_range": 6,
+        "bin_counts": {
+          "train": {
+            "samples": 34,
+            "inside_range": 34,
+            "bin_counts": [
+              0,
+              2,
+              1,
+              4,
+              5,
+              10,
+              6,
+              3,
+              3,
+              0
+            ],
+            "empty_bins": [
+              0,
+              9
+            ]
+          },
+          "val": {
+            "samples": 6,
+            "inside_range": 6,
+            "bin_counts": [
+              0,
+              1,
+              0,
+              1,
+              0,
+              4,
+              0,
+              0,
+              0,
+              0
+            ],
+            "empty_bins": [
+              0,
+              2,
+              4,
+              6,
+              7,
+              8,
+              9
+            ]
+          }
+        }
+      },
+      "user_evidence": "问题不大，单任务跑一下side step",
+      "parameter_coverage_previous_range": {
+        "requested_range": [
+          0.4,
+          1.2
+        ],
+        "train_range": [
+          0.5049563646,
+          0.9346804619
+        ],
+        "train_inside_range": 34,
+        "empty_train_bins": 4,
+        "bins": 10,
+        "val_inside_range": 6
+      },
+      "command_range_user_evidence": "收缩一下任务定义里这个任务的命令范围上限吧，到1即可"
+    },
+    "back_walk": {
+      "status": "awaiting_user_review",
+      "data": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_back_walk_20261010_v2",
+      "review": "/Users/andy/Develop/frankenmotion/outputs_amass/task_data_review_20261009/back_walk/index.html",
+      "train_samples": 156,
+      "validation_samples": 25,
+      "train_families": 137,
+      "val_families": 22,
+      "user_approved": false,
+      "scope": "Crop only existing back_walk source annotations; other19 records unchanged",
+      "original_nonpositive_labels": 763,
+      "forward_path_fraction_max": 0.0019843964837491512
+    },
+    "jump": {
+      "status": "accepted",
+      "data": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_jump_20261010_v3",
+      "review": "/Users/andy/Develop/frankenmotion/outputs_amass/task_data_review_20261009/jump/index.html",
+      "train_samples": 49,
+      "validation_samples": 8,
+      "train_families": 47,
+      "val_families": 8,
+      "user_approved": true,
+      "definition": "平地原地双脚起跳并落回起跳位置，排除左右及前后方向跳",
+      "other19_unchanged": true,
+      "source_priority": "HDM05 when verifiable; BABEL act_cat and actual flight/support cropping",
+      "hdm05_admitted": 0,
+      "frame_label_samples": 11,
+      "single_action_sequence_samples": 46,
+      "training_started": false,
+      "parameter_coverage": {
+        "requested_range": [
+          0.25,
+          0.55
+        ],
+        "train_range": [
+          0.1303833425,
+          0.4645838141
+        ],
+        "train_inside_range": 26,
+        "val_inside_range": 5,
+        "empty_train_bins": [
+          5,
+          8,
+          9
+        ]
+      },
+      "landing_center_tolerance_m": 0.08,
+      "each_foot_landing_tolerance_m": 0.1,
+      "maximum_actual_landing_center_offset_m": 0.0757119134,
+      "maximum_actual_each_foot_landing_offset_m": 0.0916161463,
+      "previous_data": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_jump_20261010_v2",
+      "review_history": [
+        {
+          "date": "2026-10-10",
+          "previous_status": "awaiting_user_review",
+          "previous_user_evidence": null,
+          "status": "accepted",
+          "user_evidence": "可以通过，之前的strike kick 也暂定通过"
+        }
+      ],
+      "approval_level": "accepted",
+      "user_evidence": "可以通过，之前的strike kick 也暂定通过",
+      "review_date": "2026-10-10"
+    },
+    "jog": {
+      "status": "audited_needs_repair",
+      "data": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_jump_20261010_v3",
+      "audit": "/mnt/sda2/frankenmotion/outputs_amass/jog_data_audit_20261010",
+      "review": "/Users/andy/Develop/frankenmotion/outputs_amass/task_data_review_20261009/jog_audit/index.html",
+      "train_samples": 742,
+      "validation_samples": 92,
+      "train_families": 363,
+      "val_families": 44,
+      "low_speed_below_0_2_m_s": 486,
+      "inside_command_range": 169,
+      "missed_frame_run_jog_events": 34,
+      "majority_walk_without_run": 22,
+      "user_approved": false,
+      "training_started": false,
+      "data_modified": false
+    }
+  },
+  "current_data": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_jump_20261010_v3",
+  "audit_lists": "/mnt/sda2/frankenmotion/outputs_amass/task_source_audits_jump_20261010_v3",
+  "training_plan": "2026-10-10 user corrected scope: all20 tasks together, five repaired datasets replacing prior versions, other15 retained.70000 steps Stage2-only; no Stage3.",
+  "training_experiment": "/mnt/sda2/frankenmotion/outputs_amass/shared20_clean5_stage2_20261010",
+  "training_status": "shared20_stage2_complete",
+  "other_tasks_deferred": true,
+  "scope_user_evidence": "下一步检查jog数据不干净，似乎混入了非跑步的数据",
+  "current_task_training_started": false,
+  "previous_training_experiment": "/mnt/sda2/frankenmotion/outputs_amass/single_task_stage2_20261010",
+  "previous_training_result": "experiments/single_task_stage2_20261010/report.md",
+  "training_active": false,
+  "training_result": "experiments/shared20_clean5_stage2_20261010/report.txt",
+  "training_review": null,
+  "training_scope_user_evidence": "我要的是训练20任务，只不过5个任务用新的干净数据。",
+  "demo_queue": "experiments/g1_demo_queue_20261010/state.json",
+  "training_checkpoint": {
+    "step": 58000,
+    "metric": 0.38172372258490045,
+    "checkpoint": "/mnt/sda2/frankenmotion/outputs_amass/shared20_clean5_stage2_20261010/artifacts/checkpoint_058000.pt",
+    "sha256": "1bcdb52664e3648a455ad4b938b7f404b309497b5ca1d8fb87c4236053b2712f"
+  },
+  "current_audit": "data_processing/jog/README.md",
+  "jump_previous_audit_lists": "/mnt/sda2/frankenmotion/outputs_amass/task_source_audits_back_walk_20261010"
+}

@@ -1,0 +1,81 @@
+{
+  "current_task": "reach",
+  "status": "awaiting_user_review",
+  "data": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_reach_xyz_20261010_v2",
+  "review": "/Users/andy/Develop/frankenmotion/outputs_amass/task_data_review_20261009/reach_xyz/index.html",
+  "training_started": false,
+  "scope_user_evidence": "将 point 合并进 reach，统一改为 XYZ 控制",
+  "tasks": {
+    "point": {
+      "status": "merged_into_reach",
+      "active": false,
+      "merged_into": "reach",
+      "former_task_id": 14,
+      "slot_reserved": true,
+      "user_evidence": "将 point 合并进 reach，统一改为 XYZ 控制",
+      "previous_train_samples": 115,
+      "previous_validation_samples": 10,
+      "audit": "data_processing/point/README.md"
+    },
+    "reach": {
+      "status": "awaiting_user_review",
+      "data": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_reach_xyz_20261010_v2",
+      "review": "/Users/andy/Develop/frankenmotion/outputs_amass/task_data_review_20261009/reach_xyz/index.html",
+      "semantic_revision": "right_wrist_xyz_v1",
+      "definition": "右腕伸向初始骨盆/身体坐标系XYZ目标并在末尾短暂停留",
+      "train_samples": 21,
+      "validation_samples": 3,
+      "train_families": 19,
+      "val_families": 3,
+      "previous_train_samples": 301,
+      "previous_validation_samples": 47,
+      "user_approved": false,
+      "training_started": false,
+      "coverage": {
+        "train": {
+          "samples": 21,
+          "families": 19,
+          "xyz_min_m": [
+            0.00043772318167611957,
+            -0.6112536787986755,
+            -0.0043108342215418816
+          ],
+          "xyz_max_m": [
+            0.6028681993484497,
+            0.09993685781955719,
+            0.9380284547805786
+          ],
+          "inside_normalization_box": 21,
+          "source_kinds": {
+            "hdm05_babel": 3,
+            "babel": 18
+          }
+        },
+        "val": {
+          "samples": 3,
+          "families": 3,
+          "xyz_min_m": [
+            0.333801805973053,
+            -0.23792758584022522,
+            0.03498511388897896
+          ],
+          "xyz_max_m": [
+            0.574506402015686,
+            -0.1278577297925949,
+            0.6630870699882507
+          ],
+          "inside_normalization_box": 3,
+          "source_kinds": {
+            "babel": 3
+          }
+        }
+      },
+      "known_limitations": [
+        "Only 21 train / 3 val; sparse 3D spatial coverage",
+        "Three HDM clips share one training recording",
+        "New model not trained; legacy scalar checkpoints incompatible"
+      ],
+      "other18_unchanged": true
+    }
+  }
+}

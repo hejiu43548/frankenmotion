@@ -1,5 +1,9 @@
 # Strike: right-forward straight punch/jab
 
+2026-10-10: user reaffirmed provisional acceptance of V3 (13train/1val).
+Known mixed-punch defects and parameter-coverage limitations remain recorded.
+This approval does not authorize new training.
+
 User-confirmed scope: **only right-hand forward straight punches and jabs**.
 Hooks, uppercuts, side punches, left punches and mixed kicking actions are excluded.
 This changes source selection only, preserving the existing velocity metric.

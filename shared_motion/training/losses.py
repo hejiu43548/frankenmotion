@@ -3,7 +3,14 @@
 import torch
 from torch.nn import functional as functional
 
-from .catalog import COMMAND_RANGES, TASK_NAMES, command_error, measure
+from .catalog import (
+    ACTIVE_TASK_NAMES,
+    COMMAND_RANGES,
+    TASK_NAMES,
+    command_error,
+    measure_commands,
+)
+from .reach import command_bounds, command_vectors, dimension_mask, REACH_INDEX
 from .model import root_signals, smooth_profile, training_root
 
 
@@ -53,7 +60,17 @@ class LossRecipe:
             else predicted - requested
         )
 
-    def command_loss(self, error):
+    def command_loss(self, error, task_indices=None):
+        if task_indices is not None:
+            mask = dimension_mask(task_indices).to(error)
+            terms = (
+                error.square()
+                if self.command_kind == "mse"
+                else functional.smooth_l1_loss(
+                    error, torch.zeros_like(error), reduction="none"
+                )
+            )
+            return ((terms * mask).sum(-1) / mask.sum(-1)).mean()
         if self.command_kind == "mse":
             return error.square().mean()
         return functional.smooth_l1_loss(error, torch.zeros_like(error))
@@ -114,12 +131,12 @@ class LossRecipe:
             ).mean()
         command_term = raw.new_zeros(())
         if self.command_weight and self.mode != "root":
-            ranges = raw.new_tensor(COMMAND_RANGES)[batch["task"]]
-            measured = measure(skeleton, raw, batch["task"], batch["lengths"])
+            ranges = command_bounds(raw, batch["task"], COMMAND_RANGES)
+            measured = measure_commands(skeleton, raw, batch["task"], batch["lengths"])
             error = self.difference(measured, batch["quantity"], batch["task"]) / (
-                ranges[:, 1] - ranges[:, 0]
+                ranges[..., 1] - ranges[..., 0]
             )
-            command_term = self.command_loss(error)
+            command_term = self.command_loss(error, batch["task"])
         loss = (
             self.reconstruction * reconstruction
             + self.command_weight * command_term
@@ -134,6 +151,7 @@ class LossRecipe:
         )
 
     def free(self, model, reference, skeleton, batch, commands, seeds):
+        commands = command_vectors(commands, batch["task"])
         with torch.no_grad():
             anchor = reference.sample(
                 batch, commands, skeleton, seeds, self.ddim_steps, self.reference_mode
@@ -143,13 +161,13 @@ class LossRecipe:
         target_positions = skeleton(anchor)
         mask = batch["mask"]
         transition = mask[:, 1:]
-        ranges = raw.new_tensor(COMMAND_RANGES)[batch["task"]]
+        ranges = command_bounds(raw, batch["task"], COMMAND_RANGES)
         error = self.difference(
-            measure(skeleton, raw, batch["task"], batch["lengths"]),
+            measure_commands(skeleton, raw, batch["task"], batch["lengths"]),
             commands,
             batch["task"],
-        ) / (ranges[:, 1] - ranges[:, 0])
-        command_term = self.command_loss(error)
+        ) / (ranges[..., 1] - ranges[..., 0])
+        command_term = self.command_loss(error, batch["task"])
         relative = (positions - positions[:, :, :1]) - (
             target_positions - target_positions[:, :, :1]
         )
@@ -200,15 +218,28 @@ class LossRecipe:
         retain = raw.new_zeros(())
         if self.retain_weight:
             # Replay all20 command types, independent of the sampled minibatch class.
+            replay_names = [
+                name
+                for name in ACTIVE_TASK_NAMES
+                if name != "reach" or (batch["task"] == REACH_INDEX).any()
+            ]
             replay = {
-                name: value[:1].expand(len(TASK_NAMES), *value.shape[1:])
+                name: value[:1].expand(len(replay_names), *value.shape[1:])
                 for name, value in batch.items()
             }
-            replay["task"] = torch.arange(len(TASK_NAMES), device=raw.device)
-            bounds = raw.new_tensor(COMMAND_RANGES)
-            replay_commands = bounds[:, 0] + torch.rand(
-                len(TASK_NAMES), device=raw.device
-            ) * (bounds[:, 1] - bounds[:, 0])
+            replay["task"] = torch.tensor(
+                [TASK_NAMES.index(name) for name in replay_names], device=raw.device
+            )
+            from .turn import sample_commands
+
+            replay_commands = sample_commands(
+                replay, COMMAND_RANGES, TASK_NAMES.index("turn")
+            )
+            reach_rows = batch["task"] == REACH_INDEX
+            if reach_rows.any():
+                replay_commands[replay["task"] == REACH_INDEX] = batch["quantity"][
+                    reach_rows
+                ][0]
             with torch.no_grad():
                 targets = reference.controller_outputs(
                     replay, replay_commands, skeleton
@@ -276,7 +307,7 @@ class LossRecipe:
                     prototype = (
                         prototype
                         + 25
-                        * (gap - (0.12 + commands[sample_index] * pattern))
+                        * (gap - (0.12 + commands[sample_index, 0] * pattern))
                         .square()
                         .mean()
                     )

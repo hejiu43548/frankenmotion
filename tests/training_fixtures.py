@@ -8,7 +8,9 @@ import numpy as np
 import torch
 from torch import nn
 
-from shared_motion.training.catalog import TASK_NAMES
+from shared_motion.training.catalog import ACTIVE_TASK_NAMES, TASK_NAMES
+from shared_motion.training.reach import REACH_REVISION, target_xyz
+from shared_motion.training.geometry import Skeleton
 from shared_motion.training.turn import TURN_REVISION
 
 
@@ -77,7 +79,7 @@ def make_data(root):
     )
     for split in ["train", "val"]:
         rows = []
-        for task_index, name in enumerate(TASK_NAMES):
+        for name in ACTIVE_TASK_NAMES:
             motion = np.zeros((120, 205), np.float32)
             motion[:, 0] = 0.9
             motion[:, 4:136] = np.tile([1, 0, 0, 0, 1, 0], 22)
@@ -90,7 +92,13 @@ def make_data(root):
                 local=np.zeros((120, 408), np.float32),
                 local_mask=np.ones((120, 408), bool),
                 tx=np.zeros(512, np.float32),
-                quantity=np.float32(0.5),
+                quantity=(
+                    target_xyz(
+                        Skeleton(root / "skeleton.npz")(torch.from_numpy(motion)[None])
+                    )[0].numpy()
+                    if name == "reach"
+                    else np.float32(0.5)
+                ),
             )
             rows.append(
                 dict(
@@ -102,6 +110,17 @@ def make_data(root):
                     target_frames=120,
                 )
             )
+        reach = next(row for row in rows if row["task"] == "reach")
+        with np.load(reach["cache"]) as archive:
+            target = archive["quantity"].tolist()
+        reach.update(
+            semantic_revision=REACH_REVISION,
+            target_xyz_m=target,
+            quantity=target,
+            real_frames=120,
+            pad_frames=0,
+            cache_sha256=hashlib.sha256(Path(reach["cache"]).read_bytes()).hexdigest(),
+        )
         turn = next(row for row in rows if row["task"] == "turn")
         turn.update(
             turn_source_revision=TURN_REVISION,
