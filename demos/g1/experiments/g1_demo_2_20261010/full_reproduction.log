@@ -1,0 +1,38 @@
+/home/psirobot/miniconda3/envs/atomic/lib/python3.11/site-packages/torch/nn/modules/transformer.py:385: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+walk generated 120 frames
+wave generated 119 frames
+bow generated 40 frames
+turn generated 48 frames
+[2026-10-10 02:47:39,446][OpenGL.acceleratesupport][INFO] - No OpenGL_accelerate module loaded: No module named 'OpenGL_accelerate'
+retarget walk_2010.npz height 0.7675797139951095 0.8059352124086959
+retarget walk_2011.npz height 0.7739860785818167 0.8059180100186275
+retarget walk_2012.npz height 0.7678863481580286 0.8010195723507575
+retarget walk_2013.npz height 0.7676299837519114 0.8102538086639637
+retarget walk_2014.npz height 0.7767765986014922 0.8113419335962311
+retarget walk_2015.npz height 0.7696844567792076 0.8069227180347215
+retarget wave_2010.npz height 0.7920476095584191 0.8302880127855058
+retarget wave_2011.npz height 0.7687763877546491 0.8334895184499549
+retarget wave_2012.npz height 0.7897883850915353 0.8410365000923152
+retarget wave_2013.npz height 0.7730991055736495 0.842706795100552
+retarget wave_2014.npz height 0.7740132876559431 0.8014878351986298
+retarget wave_2015.npz height 0.7804845744116334 0.8194328855197199
+retarget bow_2010.npz height 0.77682227860107 0.7841253198753777
+retarget bow_2011.npz height 0.7848667030991795 0.7903422499657654
+retarget bow_2012.npz height 0.7784183336468747 0.8002798279616014
+retarget bow_2013.npz height 0.7896811253447115 0.7974868253255473
+retarget bow_2014.npz height 0.7817298886666951 0.7862910145104528
+retarget bow_2015.npz height 0.7719445987754406 0.7924250177550476
+retarget turn_2010.npz height 0.7751767202984745 0.8278139119413824
+retarget turn_2011.npz height 0.7517486438181302 0.8207983782341015
+retarget turn_2012.npz height 0.7538562998706297 0.805636254912455
+retarget turn_2013.npz height 0.7582504291726685 0.8175857765636728
+retarget turn_2014.npz height 0.7507992463447629 0.8128451271900647
+retarget turn_2015.npz height 0.7405360141787332 0.8111098113178028
+[2026-10-10 02:47:48,833][OpenGL.acceleratesupport][INFO] - No OpenGL_accelerate module loaded: No module named 'OpenGL_accelerate'
+full_reproduction_01 {'complete': True, 'fall_time': None, 'frames': 1492, 'duration': 29.82, 'root_height_min': 0.737479908573583, 'root_end': [-0.13945437218758253, -0.14859815104971036, 0.7862133887828496], 'root_planar_error_final': 0.5564630514270915, 'contact_count': 0, 'state_resets': 1, 'qpos_overwrites_during_rollout': 0, 'controller': 'official SONIC ONNX; frozen encoder/decoder; 1751/994 obs; native torque PD'}
+{"complete": true, "return_distance_m": 0.20378648732834403, "return_threshold_m": 0.3, "heading_error_deg": 1.8211868419583652, "heading_threshold_deg": 15.0, "return_pass": true, "heading_pass": true, "root_height_min_m": 0.737479908573583, "root_reference_rmse_m": 0.4442905049336998, "joint_reference_rmse_rad": 0.41418268888924753, "max_joint_limit_violation_rad": 0.0, "max_torque_limit_ratio": 1.0, "nonfoot_ground_contacts": 0, "unsupported_seconds": 0.02, "max_penetration_m": 0.0036192417919491916, "mean_contact_slip_m_s": 0.009146334337344993, "peak_contact_slip_m_s": 1.960156349499154}
+[2026-10-10 02:48:09,575][OpenGL.acceleratesupport][INFO] - No OpenGL_accelerate module loaded: No module named 'OpenGL_accelerate'
+{"wave": {"left": {"local_range_xyz_m": [0.43483069761916715, 0.4267236947523063, 0.48919698608730333], "local_height_max_m": 0.5344833039125484, "lateral_peaks_s": [5.98, 7.18, 8.440000000000001, 9.42], "lateral_troughs_s": [5.24, 6.6, 7.74, 8.82]}, "right": {"local_range_xyz_m": [0.4065951081541188, 0.4544509415112484, 0.4239166396077688], "local_height_max_m": 0.5635442409330705, "lateral_peaks_s": [5.24, 6.68, 7.9, 8.780000000000001], "lateral_troughs_s": [5.88, 7.16, 8.32, 9.36]}}, "final_hold": {"start_s": 27.82, "seconds": 2.0, "root_drift_m": 0.013446793512920847, "support_min_N": 324.0460478690474, "unsupported_seconds": 0.0}}
+[2026-10-10 02:48:11,260][OpenGL.acceleratesupport][INFO] - No OpenGL_accelerate module loaded: No module named 'OpenGL_accelerate'
+Result: /mnt/sda2/frankenmotion/outputs_amass/g1_demo_2_20261010/reproductions/full_reproduction_01/attempts/full_reproduction_01

@@ -1,0 +1,92 @@
+[
+  {
+    "label": "Overview 1",
+    "frame": 0,
+    "time_s": 0.0,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "label": "Overview 2",
+    "frame": 106,
+    "time_s": 2.12,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "label": "Overview 3",
+    "frame": 213,
+    "time_s": 4.26,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "label": "Overview 4",
+    "frame": 320,
+    "time_s": 6.4,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "label": "Overview 5",
+    "frame": 426,
+    "time_s": 8.52,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "label": "Overview 6",
+    "frame": 532,
+    "time_s": 10.64,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "label": "Overview 7",
+    "frame": 639,
+    "time_s": 12.78,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "label": "Overview 8",
+    "frame": 746,
+    "time_s": 14.92,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "label": "Overview 9",
+    "frame": 852,
+    "time_s": 17.04,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "label": "Overview 10",
+    "frame": 958,
+    "time_s": 19.16,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "label": "Overview 11",
+    "frame": 1065,
+    "time_s": 21.3,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "label": "Overview 12",
+    "frame": 1172,
+    "time_s": 23.44,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "label": "Overview 13",
+    "frame": 1278,
+    "time_s": 25.56,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "label": "Overview 14",
+    "frame": 1384,
+    "time_s": 27.68,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "label": "Overview 15",
+    "frame": 1491,
+    "time_s": 29.82,
+    "source": "actual.npz:qpos"
+  }
+]

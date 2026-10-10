@@ -1,0 +1,15 @@
+{
+  "pelvis_tilt_max_deg": 15.661903507890019,
+  "unsupported_control_intervals_s": [
+    18.94,
+    18.96,
+    19.240000000000002,
+    19.26,
+    19.28
+  ],
+  "mean_torque_saturation_fraction": 0.002557875991581674,
+  "support_min_control_N": 61.52199292527286,
+  "video_frames_expected": 1492,
+  "video_fps": 50,
+  "video_duration_s": 29.84
+}

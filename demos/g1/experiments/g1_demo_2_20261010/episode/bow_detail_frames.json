@@ -1,0 +1,17 @@
+[
+  {
+    "frame": 565,
+    "time_s": 11.3,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "frame": 654,
+    "time_s": 13.08,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "frame": 807,
+    "time_s": 16.14,
+    "source": "actual.npz:qpos"
+  }
+]

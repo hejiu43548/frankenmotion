@@ -1,0 +1,14 @@
+{
+  "demo": 2,
+  "status": "implemented_and_child_verified_awaiting_parent_review",
+  "child_thread_id": "01a121f5-e783-70c1-be76-98fe21308085",
+  "parent_thread_id": "01a1219b-bbd2-73f3-b5ae-9334981b496e",
+  "local_report": "/Users/andy/.codex/worktrees/7a7d/frankenmotion/experiments/g1_demo_2_20261010/report.txt",
+  "remote_root": "betail:/mnt/sda2/frankenmotion/outputs_amass/g1_demo_2_20261010",
+  "selected_attempt": "return_heading_final",
+  "local_video": "/Users/andy/.codex/visualizations/2026/10/09/01a121f5-e783-70c1-be76-98fe21308085/demo2_continuous.mp4",
+  "return_distance_m": 0.20378648732834403,
+  "heading_error_deg": 1.8211868419583652,
+  "full_reproduction": "full_reproduction_01,24human+24retarget+6physics arrays exact",
+  "demo3_started": false
+}

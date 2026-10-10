@@ -1,0 +1,47 @@
+[
+  {
+    "attempt": "symmetric_first",
+    "return_distance_m": 0.13879381952820524,
+    "heading_error_deg": 2.2705808982319264,
+    "unsupported_seconds": 0.042,
+    "complete": true,
+    "return_pass": true,
+    "peak_contact_slip_m_s": 2.1730966788094297,
+    "transition_excursions_m": [
+      0.011370134315058619,
+      0.0023018163871262754,
+      0.030404168989669612
+    ],
+    "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_3_20261010/attempts/symmetric_first/config.yaml"
+  },
+  {
+    "attempt": "slower_turn",
+    "return_distance_m": 0.24649070432404052,
+    "heading_error_deg": 0.9575294302151393,
+    "unsupported_seconds": 0.058,
+    "complete": true,
+    "return_pass": true,
+    "peak_contact_slip_m_s": 1.6609626591479256,
+    "transition_excursions_m": [
+      0.007258140617391152,
+      0.00539089602493355,
+      0.020027508835467226
+    ],
+    "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_3_20261010/attempts/slower_turn/config.yaml"
+  },
+  {
+    "attempt": "longer_bridge",
+    "return_distance_m": 0.3603349483659994,
+    "heading_error_deg": 0.8579193131384849,
+    "unsupported_seconds": 0.044,
+    "complete": true,
+    "return_pass": false,
+    "peak_contact_slip_m_s": 2.252277076439099,
+    "transition_excursions_m": [
+      0.006928523659662048,
+      0.004820100278577784,
+      0.021995792197836976
+    ],
+    "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_3_20261010/attempts/longer_bridge/config.yaml"
+  }
+]

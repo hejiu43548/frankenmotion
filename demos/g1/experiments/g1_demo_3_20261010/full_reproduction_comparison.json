@@ -1,0 +1,236 @@
+{
+  "generated": [
+    {
+      "file": "turn_2010.npz",
+      "max_errors": {
+        "motion": 0.0,
+        "positions": 0.0,
+        "quaternions": 0.0,
+        "fps": 0.0,
+        "human_height": 0.0
+      }
+    },
+    {
+      "file": "turn_2011.npz",
+      "max_errors": {
+        "motion": 0.0,
+        "positions": 0.0,
+        "quaternions": 0.0,
+        "fps": 0.0,
+        "human_height": 0.0
+      }
+    },
+    {
+      "file": "turn_2012.npz",
+      "max_errors": {
+        "motion": 0.0,
+        "positions": 0.0,
+        "quaternions": 0.0,
+        "fps": 0.0,
+        "human_height": 0.0
+      }
+    },
+    {
+      "file": "turn_2013.npz",
+      "max_errors": {
+        "motion": 0.0,
+        "positions": 0.0,
+        "quaternions": 0.0,
+        "fps": 0.0,
+        "human_height": 0.0
+      }
+    },
+    {
+      "file": "turn_2014.npz",
+      "max_errors": {
+        "motion": 0.0,
+        "positions": 0.0,
+        "quaternions": 0.0,
+        "fps": 0.0,
+        "human_height": 0.0
+      }
+    },
+    {
+      "file": "turn_2015.npz",
+      "max_errors": {
+        "motion": 0.0,
+        "positions": 0.0,
+        "quaternions": 0.0,
+        "fps": 0.0,
+        "human_height": 0.0
+      }
+    },
+    {
+      "file": "walk_2010.npz",
+      "max_errors": {
+        "motion": 0.0,
+        "positions": 0.0,
+        "quaternions": 0.0,
+        "fps": 0.0,
+        "human_height": 0.0
+      }
+    },
+    {
+      "file": "walk_2011.npz",
+      "max_errors": {
+        "motion": 0.0,
+        "positions": 0.0,
+        "quaternions": 0.0,
+        "fps": 0.0,
+        "human_height": 0.0
+      }
+    },
+    {
+      "file": "walk_2012.npz",
+      "max_errors": {
+        "motion": 0.0,
+        "positions": 0.0,
+        "quaternions": 0.0,
+        "fps": 0.0,
+        "human_height": 0.0
+      }
+    },
+    {
+      "file": "walk_2013.npz",
+      "max_errors": {
+        "motion": 0.0,
+        "positions": 0.0,
+        "quaternions": 0.0,
+        "fps": 0.0,
+        "human_height": 0.0
+      }
+    },
+    {
+      "file": "walk_2014.npz",
+      "max_errors": {
+        "motion": 0.0,
+        "positions": 0.0,
+        "quaternions": 0.0,
+        "fps": 0.0,
+        "human_height": 0.0
+      }
+    },
+    {
+      "file": "walk_2015.npz",
+      "max_errors": {
+        "motion": 0.0,
+        "positions": 0.0,
+        "quaternions": 0.0,
+        "fps": 0.0,
+        "human_height": 0.0
+      }
+    }
+  ],
+  "retarget": [
+    {
+      "file": "turn_2010.npz",
+      "max_errors": {
+        "qpos": 0.0,
+        "fps": 0.0
+      }
+    },
+    {
+      "file": "turn_2011.npz",
+      "max_errors": {
+        "qpos": 0.0,
+        "fps": 0.0
+      }
+    },
+    {
+      "file": "turn_2012.npz",
+      "max_errors": {
+        "qpos": 0.0,
+        "fps": 0.0
+      }
+    },
+    {
+      "file": "turn_2013.npz",
+      "max_errors": {
+        "qpos": 0.0,
+        "fps": 0.0
+      }
+    },
+    {
+      "file": "turn_2014.npz",
+      "max_errors": {
+        "qpos": 0.0,
+        "fps": 0.0
+      }
+    },
+    {
+      "file": "turn_2015.npz",
+      "max_errors": {
+        "qpos": 0.0,
+        "fps": 0.0
+      }
+    },
+    {
+      "file": "walk_2010.npz",
+      "max_errors": {
+        "qpos": 0.0,
+        "fps": 0.0
+      }
+    },
+    {
+      "file": "walk_2011.npz",
+      "max_errors": {
+        "qpos": 0.0,
+        "fps": 0.0
+      }
+    },
+    {
+      "file": "walk_2012.npz",
+      "max_errors": {
+        "qpos": 0.0,
+        "fps": 0.0
+      }
+    },
+    {
+      "file": "walk_2013.npz",
+      "max_errors": {
+        "qpos": 0.0,
+        "fps": 0.0
+      }
+    },
+    {
+      "file": "walk_2014.npz",
+      "max_errors": {
+        "qpos": 0.0,
+        "fps": 0.0
+      }
+    },
+    {
+      "file": "walk_2015.npz",
+      "max_errors": {
+        "qpos": 0.0,
+        "fps": 0.0
+      }
+    }
+  ],
+  "physics": {
+    "qpos": {
+      "equal": true,
+      "max_error": 0.0
+    },
+    "qvel": {
+      "equal": true,
+      "max_error": 0.0
+    },
+    "body_pos": {
+      "equal": true,
+      "max_error": 0.0
+    },
+    "reference": {
+      "equal": true,
+      "max_error": 0.0
+    },
+    "peak_actuator_force": {
+      "equal": true,
+      "max_error": 0.0
+    },
+    "telemetry": {
+      "equal": true,
+      "max_error": 0.0
+    }
+  }
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "label": "Transition 1 | before",
+    "frame": 291,
+    "time_s": 5.82,
+    "data": "actual.npz:qpos"
+  },
+  {
+    "label": "Transition 1 | middle",
+    "frame": 327,
+    "time_s": 6.54,
+    "data": "actual.npz:qpos"
+  },
+  {
+    "label": "Transition 1 | after",
+    "frame": 363,
+    "time_s": 7.26,
+    "data": "actual.npz:qpos"
+  },
+  {
+    "label": "Transition 2 | before",
+    "frame": 475,
+    "time_s": 9.5,
+    "data": "actual.npz:qpos"
+  },
+  {
+    "label": "Transition 2 | middle",
+    "frame": 511,
+    "time_s": 10.22,
+    "data": "actual.npz:qpos"
+  },
+  {
+    "label": "Transition 2 | after",
+    "frame": 547,
+    "time_s": 10.94,
+    "data": "actual.npz:qpos"
+  }
+]

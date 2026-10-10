@@ -1,0 +1,110 @@
+/home/psirobot/miniconda3/envs/atomic/lib/python3.11/site-packages/torch/nn/modules/transformer.py:385: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+walk generated 120 frames
+kick generated 60 frames
+strike generated 60 frames
+[2026-10-10 02:29:45,835][OpenGL.acceleratesupport][INFO] - No OpenGL_accelerate module loaded: No module named 'OpenGL_accelerate'
+retarget walk_1010.npz height 0.7707725631585379 0.8108543807806492
+retarget walk_1011.npz height 0.7722725019397528 0.8067388515331767
+retarget walk_1012.npz height 0.7683471979367935 0.806254778421119
+retarget walk_1013.npz height 0.7691607404745262 0.8050273160727455
+retarget walk_1014.npz height 0.7724283211313552 0.8098935708270885
+retarget walk_1015.npz height 0.7724383560590647 0.8110528360521154
+retarget kick_1010.npz height 0.7754596919678916 0.7920530714496586
+retarget kick_1011.npz height 0.7815164559291287 0.8041455179542366
+retarget kick_1012.npz height 0.7745656362631367 0.7869186983690052
+retarget kick_1013.npz height 0.7779257939694494 0.7948341352882818
+retarget kick_1014.npz height 0.8180440631017836 0.8500076542768222
+retarget kick_1015.npz height 0.7860345242574033 0.8233643209182004
+retarget strike_1010.npz height 0.7514705335467363 0.7796205606028632
+retarget strike_1011.npz height 0.7596722129913555 0.7809684679386063
+retarget strike_1012.npz height 0.7104931595680088 0.7851067590194066
+retarget strike_1013.npz height 0.7559477191754758 0.7838164381852758
+retarget strike_1014.npz height 0.7408105189055771 0.772978425926082
+retarget strike_1015.npz height 0.7531446991738633 0.7792096674974015
+[2026-10-10 02:29:51,928][OpenGL.acceleratesupport][INFO] - No OpenGL_accelerate module loaded: No module named 'OpenGL_accelerate'
+frozen_full_check_20261010 {'complete': True, 'fall_time': None, 'frames': 727, 'duration': 14.52, 'root_height_min': 0.7321415164106956, 'root_end': [1.88017069114277, 0.012630532856589683, 0.7678677796354247], 'root_planar_error_final': 0.46677783579700993, 'contact_count': 211, 'state_resets': 1, 'qpos_overwrites_during_rollout': 0, 'controller': 'official SONIC ONNX; frozen encoder/decoder; 1751/994 obs; native torque PD'}
+[2026-10-10 02:29:59,920][OpenGL.acceleratesupport][INFO] - No OpenGL_accelerate module loaded: No module named 'OpenGL_accelerate'
+{
+  "continuous_physics": true,
+  "initialization_count": 1,
+  "reset_at_transitions": false,
+  "physics_timestep_s": 0.002,
+  "control_timestep_s": 0.02,
+  "duration_s": 14.52,
+  "complete": true,
+  "fall_time": null,
+  "pelvis_height_min_m": 0.7321415164106956,
+  "pelvis_tilt_max_deg": 23.017553693684384,
+  "robot_nonfoot_ground_contact_count": 0,
+  "maximum_joint_limit_violation_rad": 0.0,
+  "maximum_actuator_force_over_limit_Nm": 0.0,
+  "mean_torque_saturation_fraction": 0.00461195022323549,
+  "maximum_contact_penetration_m": 0.0063905456906980795,
+  "support_contact_slip_mean_m_s": 0.008203340002962349,
+  "support_contact_slip_p95_m_s": 0.020407396276123306,
+  "support_contact_slip_peak_m_s": 1.8209990613935696,
+  "no_support_control_frames": 0,
+  "joint_tracking_rmse_rad": 0.12633148596063248,
+  "root_planar_reference_rmse_m": 0.29584801457970955,
+  "root_planar_error_final_m": 0.46677783579700993,
+  "bag_mass_kg": 7.05,
+  "bag_inertia_kg_m2": [
+    0.8483566633858183,
+    0.8483566633858183,
+    0.07601571215935964
+  ],
+  "bag_center_of_mass_peak_displacement_m": 0.19369816356208014,
+  "bag_swing_peak_deg": 12.092921092198916,
+  "contacts": {
+    "kick_foot": {
+      "count": 115,
+      "first_s": 8.209999999999411,
+      "last_s": 8.50799999999951,
+      "peak_force_N": 97.73826219977562,
+      "normal_impulse_Ns": 3.704986755828877,
+      "active_substeps": 115,
+      "maximum_penetration_m": 0.004388184439364284
+    },
+    "right_hand": {
+      "count": 96,
+      "first_s": 11.632000000000554,
+      "last_s": 11.822000000000617,
+      "peak_force_N": 146.6213869198312,
+      "normal_impulse_Ns": 9.739081998664455,
+      "active_substeps": 96,
+      "maximum_penetration_m": 0.0063905456906980795
+    },
+    "incidental_wrist_forearm": {
+      "count": 0
+    }
+  },
+  "hand_contact_events": [
+    {
+      "count": 96,
+      "first_s": 11.632000000000554,
+      "last_s": 11.822000000000617,
+      "peak_force_N": 146.6213869198312,
+      "normal_impulse_Ns": 9.739081998664455,
+      "active_substeps": 96,
+      "maximum_penetration_m": 0.0063905456906980795
+    }
+  ],
+  "unsupported_physics_steps": 3,
+  "unsupported_physics_steps_after_initial_0_1s": 0,
+  "acceptance": {
+    "walk_approach": true,
+    "foot_contact": true,
+    "hand_contact": true,
+    "bag_response": true,
+    "no_fall": true,
+    "support_each_control_frame": true,
+    "planted_foot_transition_excursion": true,
+    "joint_limits": true,
+    "no_nonfoot_ground_contact": true,
+    "torque_limits": true,
+    "no_reference_pose_jump": true
+  }
+}
+[2026-10-10 02:30:01,163][OpenGL.acceleratesupport][INFO] - No OpenGL_accelerate module loaded: No module named 'OpenGL_accelerate'
+Result: /mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/reproductions/frozen_full_check_20261010/attempts/frozen_full_check_20261010

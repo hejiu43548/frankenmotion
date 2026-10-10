@@ -1,0 +1,34 @@
+# Demo1: generation is pinned; controller assets are independently audited.
+phase: generate
+generation_device: cpu
+output: /mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010
+frozen_code: /mnt/sda2/frankenmotion/code/shared20_clean5_stage2_0344b7c
+training_config: /mnt/sda2/frankenmotion/outputs_amass/shared20_clean5_stage2_20261010/reports/config.yaml
+checkpoint: /mnt/sda2/frankenmotion/outputs_amass/shared20_clean5_stage2_20261010/artifacts/checkpoint_058000.pt
+checkpoint_sha256: 1bcdb52664e3648a455ad4b938b7f404b309497b5ca1d8fb87c4236053b2712f
+manifest: /mnt/sda2/frankenmotion/outputs_amass/shared20_clean5_stage2_20261010/data/val.json
+snapshot: /mnt/sda2/frankenmotion/outputs_amass/transfer_charlie_20261008/snapshot
+robot_xml: /home/psirobot/projects/motion-sonic-smpl-vs-g1-20260928/official_execution/gear_sonic/data/assets/robot_description/mjcf/g1_29dof_rev_1_0.xml
+policy: /home/psirobot/projects/motion-g1-demo-20261001/run01/assets/policy
+selection: [walk_1010, kick_1013, strike_1011]
+attempt: demo1_final
+transition_seconds: 1.2
+bag: [2.48, 0.08]
+floor_solref: 0.008
+floor_friction: 1.0
+kick_recovery: true
+kick_speed: 1.0
+source_ranges:
+  walk: [0, 5.95]
+  kick: [1.7, 2.95]
+  strike: [0, 2.2]
+seeds: [1010, 1011, 1012, 1013, 1014, 1015]
+segments:
+  - {task: walk, key: '12921', command: 0.35}
+  - {task: kick, key: kick_844_3_63, command: 0.55}
+  - {task: strike, key: strike_6491_396_456, command: 2.5}
+hydra:
+  job:
+    chdir: false
+  run:
+    dir: ${output}/hydra/${now:%Y%m%d_%H%M%S}

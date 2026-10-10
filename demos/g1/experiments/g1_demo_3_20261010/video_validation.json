@@ -1,0 +1,18 @@
+{
+  "path": "/Users/andy/.codex/visualizations/2026/10/09/01a12205-2e36-7910-932b-42f9932a1d36/demo3_continuous.mp4",
+  "sha256": "11162120175233094fb271845152de10ea86c89821c9b3a26ae53998a9de2050",
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "50/1",
+        "duration": "18.300000",
+        "nb_frames": "915"
+      }
+    ]
+  },
+  "visual_review": "Inspected 37 video-derived samples at 2fps, 12 turn frames, 9 transition frames and start/end views. Both moving left half-turns, two walk intervals and supported bridges/hold visible. Not claiming every video frame manually inspected."
+}

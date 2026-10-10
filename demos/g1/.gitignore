@@ -1,0 +1,8 @@
+__pycache__/
+*.pyc
+*.mp4
+*.npz
+*.pt
+*.onnx
+# Keep the small reproduction transcripts alongside the reports.
+!experiments/**/*.log

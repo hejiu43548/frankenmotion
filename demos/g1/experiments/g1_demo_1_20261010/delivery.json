@@ -1,0 +1,21 @@
+{
+  "demo": 1,
+  "status": "ready_for_parent_review",
+  "thread_id": "01a121d3-c8c6-75d0-af34-72fc69a988b2",
+  "parent_thread_id": "01a1219b-bbd2-73f3-b5ae-9334981b496e",
+  "local_report": "/Users/andy/.codex/worktrees/7a7d/frankenmotion/experiments/g1_demo_1_20261010/report.txt",
+  "video_local": "/Users/andy/.codex/visualizations/2026/10/09/01a121d3-c8c6-75d0-af34-72fc69a988b2/demo1_continuous.mp4",
+  "video_sha256": "3c41529c320296afdb8e842cdae9a69e4dd073c381f08f01747dc8606f5461bb",
+  "remote_root": "betail:/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010",
+  "remote_final": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/attempts/demo1_final",
+  "frozen_candidate": "recovery_v3",
+  "checkpoint_sha256": "1bcdb52664e3648a455ad4b938b7f404b309497b5ca1d8fb87c4236053b2712f",
+  "physical_duration_s": 14.52,
+  "video_frames": 727,
+  "parent_independent_approval": false,
+  "demo2_started": false,
+  "full_reproduction": "scripts/reproduce_g1_demo.sh full frozen_full_check_20261010",
+  "review_command": "scripts/reproduce_g1_demo.sh physics parent_review_unique_name",
+  "parent_notified": true,
+  "parent_notification_tool": "send_message_to_thread confirmed"
+}

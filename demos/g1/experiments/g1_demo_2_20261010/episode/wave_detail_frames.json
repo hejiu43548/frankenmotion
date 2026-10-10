@@ -1,0 +1,47 @@
+[
+  {
+    "frame": 260,
+    "time_s": 5.2,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "frame": 288,
+    "time_s": 5.76,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "frame": 315,
+    "time_s": 6.3,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "frame": 342,
+    "time_s": 6.84,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "frame": 370,
+    "time_s": 7.4,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "frame": 397,
+    "time_s": 7.94,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "frame": 425,
+    "time_s": 8.5,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "frame": 453,
+    "time_s": 9.06,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "frame": 480,
+    "time_s": 9.6,
+    "source": "actual.npz:qpos"
+  }
+]

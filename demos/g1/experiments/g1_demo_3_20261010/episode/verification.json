@@ -1,0 +1,307 @@
+{
+  "boundaries": [
+    {
+      "time_s": 3.0,
+      "reference_joint_step_rad": 0.0037022208678005215,
+      "actual_joint_step_rad": 0.019640802401957397,
+      "actual_root_step_m": 0.007674918726270284,
+      "actual_velocity_step_rad_s": 0.5089815944688151
+    },
+    {
+      "time_s": 4.2,
+      "reference_joint_step_rad": 0.00012276075351974614,
+      "actual_joint_step_rad": 0.011042309906821202,
+      "actual_root_step_m": 0.002604013279500548,
+      "actual_velocity_step_rad_s": 0.3993408150002381
+    },
+    {
+      "time_s": 7.54,
+      "reference_joint_step_rad": 0.002773121910270099,
+      "actual_joint_step_rad": 0.036904436739945534,
+      "actual_root_step_m": 0.004816270684884399,
+      "actual_velocity_step_rad_s": 0.49421610099046354
+    },
+    {
+      "time_s": 8.74,
+      "reference_joint_step_rad": 0.0008190151403724977,
+      "actual_joint_step_rad": 0.006847971120753499,
+      "actual_root_step_m": 0.003275209773349515,
+      "actual_velocity_step_rad_s": 0.11924418836520612
+    },
+    {
+      "time_s": 11.74,
+      "reference_joint_step_rad": 0.0037022208678005215,
+      "actual_joint_step_rad": 0.018283857047949714,
+      "actual_root_step_m": 0.007925805367668144,
+      "actual_velocity_step_rad_s": 0.1886479831523884
+    },
+    {
+      "time_s": 12.94,
+      "reference_joint_step_rad": 0.00012276075000100528,
+      "actual_joint_step_rad": 0.006841447343342244,
+      "actual_root_step_m": 0.0010272811322885435,
+      "actual_velocity_step_rad_s": 0.3080171319529721
+    }
+  ],
+  "final_hold": {
+    "start_s": 16.28,
+    "seconds": 2.0,
+    "root_drift_m": 0.027640724161441064,
+    "support_min_N": 312.1270609742278,
+    "unsupported_seconds": 0.0,
+    "maximum_distance_from_start_m": 0.1497933446389088,
+    "heading_drift_deg": 0.8695097055765552,
+    "maximum_root_excursion_m": 0.05750206016944723,
+    "final_root_speed_m_s": 0.016767141695799584
+  },
+  "torso_pitch_max_deg": 17.50468479841378,
+  "joint_rmse_by_name": {
+    "left_hip_pitch_joint": 0.19128507755536073,
+    "left_hip_roll_joint": 0.12326846328835178,
+    "left_hip_yaw_joint": 0.1444550172260925,
+    "left_knee_joint": 0.31701554819763417,
+    "left_ankle_pitch_joint": 0.11698507892255836,
+    "left_ankle_roll_joint": 0.07239381279212091,
+    "right_hip_pitch_joint": 0.1783127716905888,
+    "right_hip_roll_joint": 0.1703821040729943,
+    "right_hip_yaw_joint": 0.11669638787758545,
+    "right_knee_joint": 0.33674940437581363,
+    "right_ankle_pitch_joint": 0.10284521494733566,
+    "right_ankle_roll_joint": 0.11864581720084758,
+    "waist_yaw_joint": 0.18492740211870756,
+    "waist_roll_joint": 0.03770208000137361,
+    "waist_pitch_joint": 0.02010829084917601,
+    "left_shoulder_pitch_joint": 0.16342865258664846,
+    "left_shoulder_roll_joint": 0.1177592568744471,
+    "left_shoulder_yaw_joint": 0.0811327283108733,
+    "left_elbow_joint": 0.1326124286029805,
+    "left_wrist_roll_joint": 0.12348498324170289,
+    "left_wrist_pitch_joint": 0.05536705423910573,
+    "left_wrist_yaw_joint": 0.03451257333986215,
+    "right_shoulder_pitch_joint": 0.20277426797972312,
+    "right_shoulder_roll_joint": 0.09343475781801767,
+    "right_shoulder_yaw_joint": 0.10669308989998108,
+    "right_elbow_joint": 0.16730326777402077,
+    "right_wrist_roll_joint": 0.10203671067402428,
+    "right_wrist_pitch_joint": 0.040517303141411665,
+    "right_wrist_yaw_joint": 0.06413629007500625
+  },
+  "reference_return_distance_m": 0.10753412342413696,
+  "layers": [
+    {
+      "name": "walk_out",
+      "source": "walk_2010",
+      "human_sha256": "478344166f76f6dc52461f04fc8fc30be40fb71be6f141f7033c2bb4116c961e",
+      "retarget_sha256": "520cb2b929a9f0871f113a62ea0f5b00e749ebec3c60a635214723a7984ca77e",
+      "pelvis_relative_fk_mean_error_m": [
+        0.10664550752897925,
+        0.10500672788476771,
+        0.07164673779841459,
+        0.0688593506385933
+      ],
+      "body_order": [
+        "left_ankle",
+        "right_ankle",
+        "left_wrist",
+        "right_wrist"
+      ],
+      "human_yaw_change_deg": 10.522882461547852,
+      "retarget_yaw_change_deg": 10.089567243980007
+    },
+    {
+      "name": "turn_left_1",
+      "source": "turn_2014",
+      "human_sha256": "7f4d1ad361744dcb6edc7535511ff6b6b7953fd5ef615f39ad5908606bd26a8d",
+      "retarget_sha256": "34c9de07127f1f31a58af9793df160bbbcb971921a6227834c66eeb08d3abe17",
+      "pelvis_relative_fk_mean_error_m": [
+        0.09728966376490704,
+        0.09464530142565385,
+        0.0711431213497082,
+        0.07379559508081608
+      ],
+      "body_order": [
+        "left_ankle",
+        "right_ankle",
+        "left_wrist",
+        "right_wrist"
+      ],
+      "human_yaw_change_deg": 185.47943115234375,
+      "retarget_yaw_change_deg": 178.5389127318804
+    },
+    {
+      "name": "walk_back",
+      "source": "walk_2010",
+      "human_sha256": "478344166f76f6dc52461f04fc8fc30be40fb71be6f141f7033c2bb4116c961e",
+      "retarget_sha256": "520cb2b929a9f0871f113a62ea0f5b00e749ebec3c60a635214723a7984ca77e",
+      "pelvis_relative_fk_mean_error_m": [
+        0.10664550752897925,
+        0.10500672788476771,
+        0.07164673779841459,
+        0.0688593506385933
+      ],
+      "body_order": [
+        "left_ankle",
+        "right_ankle",
+        "left_wrist",
+        "right_wrist"
+      ],
+      "human_yaw_change_deg": 10.522882461547852,
+      "retarget_yaw_change_deg": 10.089567243980007
+    },
+    {
+      "name": "turn_left_2",
+      "source": "turn_2014",
+      "human_sha256": "7f4d1ad361744dcb6edc7535511ff6b6b7953fd5ef615f39ad5908606bd26a8d",
+      "retarget_sha256": "34c9de07127f1f31a58af9793df160bbbcb971921a6227834c66eeb08d3abe17",
+      "pelvis_relative_fk_mean_error_m": [
+        0.09728966376490704,
+        0.09464530142565385,
+        0.0711431213497082,
+        0.07379559508081608
+      ],
+      "body_order": [
+        "left_ankle",
+        "right_ankle",
+        "left_wrist",
+        "right_wrist"
+      ],
+      "human_yaw_change_deg": 185.47943115234375,
+      "retarget_yaw_change_deg": 178.5389127318804
+    }
+  ],
+  "attempts": [
+    {
+      "attempt": "longer_bridge",
+      "complete": true,
+      "return_distance_m": 0.3603349483659994,
+      "heading_error_deg": 0.8579193131384849,
+      "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_3_20261010/attempts/longer_bridge/config.yaml"
+    },
+    {
+      "attempt": "slower_turn",
+      "complete": true,
+      "return_distance_m": 0.24649070432404052,
+      "heading_error_deg": 0.9575294302151393,
+      "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_3_20261010/attempts/slower_turn/config.yaml"
+    },
+    {
+      "attempt": "symmetric_first",
+      "complete": true,
+      "return_distance_m": 0.13879381952820524,
+      "heading_error_deg": 2.2705808982319264,
+      "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_3_20261010/attempts/symmetric_first/config.yaml"
+    }
+  ],
+  "source_checks": {
+    "g1_demo.py": "56bfe664f5d8fa9520eb98bad3dd2a5aca17e20e769a1dae8e94c52e31137dab",
+    "g1_demo3.py": "b509038091c12f33449cd64bef9e7c509475c698d19aac3a4c212b56aba281bc",
+    "g1_demo3_evidence.py": "84195718b929a5564da387db733ccd39959c3be71cdc8398c5dad483022865f7",
+    "g1_demo3_pipeline.py": "dacbed8c99dfea629c1ab88d2be7c820b4b88ddacdfee16bd9fb480848cd983d",
+    "g1_demo3_verify.py": "2b85d1eaff3dd897e8c2f6a8f7651e69a16f568e88557dbadad665d07e7a5b12",
+    "g1_demo_physics.py": "b8957362a04e297ae2ddd08f9eb6913cfac7f299d96a67f2a1d7f3ce9337c6e9"
+  },
+  "runtime": {
+    "python": "3.11.11",
+    "generation_device": "cpu",
+    "generation_batch_size": 6,
+    "seeds": [
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015
+    ],
+    "ddim_steps": 50,
+    "packages": {
+      "torch": "2.6.0+cu124",
+      "numpy": "1.26.4",
+      "scipy": "1.17.1",
+      "mujoco": "3.3.7",
+      "mink": "1.1.0",
+      "daqp": "0.10.3",
+      "onnxruntime": "1.31.0",
+      "imageio": "2.38.1",
+      "imageio-ffmpeg": "0.6.0",
+      "Pillow": "12.3.0"
+    }
+  },
+  "support_convention": "unsupported: total normal foot force < 5 N at a 2 ms physics step; transition force values are 20 ms averages",
+  "coordinate_convention": "G1 local +X is forward, +Y is left, +Z is up. World positive yaw is counterclockwise/left. Training turn command is negative for left; generation FK and retarget preserve its actual positive world yaw.",
+  "unsupported_control_intervals": [
+    {
+      "start_s": 5.94,
+      "unsupported_substeps": 1,
+      "minimum_support_N": 0.0
+    },
+    {
+      "start_s": 6.08,
+      "unsupported_substeps": 1,
+      "minimum_support_N": 0.0
+    },
+    {
+      "start_s": 6.1,
+      "unsupported_substeps": 8,
+      "minimum_support_N": 0.0
+    },
+    {
+      "start_s": 6.12,
+      "unsupported_substeps": 1,
+      "minimum_support_N": 0.0
+    },
+    {
+      "start_s": 14.54,
+      "unsupported_substeps": 1,
+      "minimum_support_N": 0.0
+    },
+    {
+      "start_s": 14.68,
+      "unsupported_substeps": 2,
+      "minimum_support_N": 0.0
+    },
+    {
+      "start_s": 14.7,
+      "unsupported_substeps": 1,
+      "minimum_support_N": 0.0
+    },
+    {
+      "start_s": 14.84,
+      "unsupported_substeps": 4,
+      "minimum_support_N": 0.0
+    },
+    {
+      "start_s": 14.86,
+      "unsupported_substeps": 2,
+      "minimum_support_N": 0.0
+    }
+  ],
+  "acceptance": {
+    "thresholds": {
+      "actual_return_m": 0.3,
+      "final_heading_error_deg": 15,
+      "minimum_final_hold_s": 2
+    },
+    "actual_return_distance_m": 0.13879381952820524,
+    "final_heading_error_deg": 2.2705808982319264,
+    "actual_turn_angles_deg": {
+      "turn_left_1": 177.40639134010044,
+      "turn_left_2": 175.99022699045162
+    },
+    "checks": {
+      "exactly_four_segments": true,
+      "completed_without_fall": true,
+      "return_distance": true,
+      "final_heading": true,
+      "two_distinct_left_turns": true,
+      "total_full_left_rotation": true,
+      "supported_transitions": true,
+      "supported_final_hold": true,
+      "remains_near_start_during_hold": true,
+      "bounded_torque": true,
+      "no_joint_limit_violation": true,
+      "no_nonfoot_floor_contact": true,
+      "finite_states": true
+    },
+    "passed": true
+  }
+}

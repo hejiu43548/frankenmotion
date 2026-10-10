@@ -1,0 +1,1 @@
+../demos/g1/scripts/reproduce_g1_demo3.sh

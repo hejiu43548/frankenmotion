@@ -1,0 +1,257 @@
+{
+  "method": "Geometry-only mj_forward of saved ACTUAL qpos at 50Hz; forces come separately from original 500Hz physical result.json.",
+  "contacts": [
+    {
+      "time_s": 8.22,
+      "geom_id": 37,
+      "geom_name": "",
+      "body": "right_ankle_roll_link",
+      "contact_position": [
+        2.400584283376512,
+        0.1672939570579702,
+        0.26296242418696286
+      ],
+      "distance_m": -0.004348355221040545
+    },
+    {
+      "time_s": 8.24,
+      "geom_id": 37,
+      "geom_name": "",
+      "body": "right_ankle_roll_link",
+      "contact_position": [
+        2.4039134519726777,
+        0.1669636409942409,
+        0.2632075740214648
+      ],
+      "distance_m": -0.0023552055367584146
+    },
+    {
+      "time_s": 8.32,
+      "geom_id": 37,
+      "geom_name": "",
+      "body": "right_ankle_roll_link",
+      "contact_position": [
+        2.416718167774221,
+        0.169756033539537,
+        0.27709968052072836
+      ],
+      "distance_m": -0.0007494482549488257
+    },
+    {
+      "time_s": 8.36,
+      "geom_id": 37,
+      "geom_name": "",
+      "body": "right_ankle_roll_link",
+      "contact_position": [
+        2.4230244270376926,
+        0.16609468012280995,
+        0.2808144136253517
+      ],
+      "distance_m": -0.00027455038730211934
+    },
+    {
+      "time_s": 8.38,
+      "geom_id": 37,
+      "geom_name": "",
+      "body": "right_ankle_roll_link",
+      "contact_position": [
+        2.4265528101449556,
+        0.1631383491985833,
+        0.2814709056518588
+      ],
+      "distance_m": -4.168729424769424e-06
+    },
+    {
+      "time_s": 8.4,
+      "geom_id": 37,
+      "geom_name": "",
+      "body": "right_ankle_roll_link",
+      "contact_position": [
+        2.4304695207417195,
+        0.15960818666703172,
+        0.28221790528955004
+      ],
+      "distance_m": -0.00017618700708399437
+    },
+    {
+      "time_s": 8.42,
+      "geom_id": 37,
+      "geom_name": "",
+      "body": "right_ankle_roll_link",
+      "contact_position": [
+        2.4349677885726453,
+        0.15537937109895095,
+        0.28237315406545055
+      ],
+      "distance_m": -0.000200346315171962
+    },
+    {
+      "time_s": 8.44,
+      "geom_id": 37,
+      "geom_name": "",
+      "body": "right_ankle_roll_link",
+      "contact_position": [
+        2.439860276502803,
+        0.15055539317523797,
+        0.28238079780976594
+      ],
+      "distance_m": -0.0002032308545394934
+    },
+    {
+      "time_s": 8.46,
+      "geom_id": 37,
+      "geom_name": "",
+      "body": "right_ankle_roll_link",
+      "contact_position": [
+        2.445094976092171,
+        0.14520622295960076,
+        0.28222817846935555
+      ],
+      "distance_m": -0.00021622170861693157
+    },
+    {
+      "time_s": 8.48,
+      "geom_id": 37,
+      "geom_name": "",
+      "body": "right_ankle_roll_link",
+      "contact_position": [
+        2.450516608326002,
+        0.13960063860988164,
+        0.2819498458725671
+      ],
+      "distance_m": -0.00017887803930305424
+    },
+    {
+      "time_s": 8.5,
+      "geom_id": 37,
+      "geom_name": "",
+      "body": "right_ankle_roll_link",
+      "contact_position": [
+        2.4560670799973203,
+        0.1337398510728325,
+        0.28154065840636017
+      ],
+      "distance_m": -0.00010840715172560911
+    },
+    {
+      "time_s": 11.64,
+      "geom_id": 77,
+      "geom_name": "right_palm_collision",
+      "body": "right_wrist_yaw_link",
+      "contact_position": [
+        2.319691620060638,
+        0.05504000375089876,
+        1.1563617443891314
+      ],
+      "distance_m": -0.00601889546288048
+    },
+    {
+      "time_s": 11.66,
+      "geom_id": 77,
+      "geom_name": "right_palm_collision",
+      "body": "right_wrist_yaw_link",
+      "contact_position": [
+        2.321254776114319,
+        0.057436058756148684,
+        1.1575311278760672
+      ],
+      "distance_m": -0.005053130766753261
+    },
+    {
+      "time_s": 11.68,
+      "geom_id": 77,
+      "geom_name": "right_palm_collision",
+      "body": "right_wrist_yaw_link",
+      "contact_position": [
+        2.3235394286675266,
+        0.05886845794612788,
+        1.157099827119263
+      ],
+      "distance_m": -0.002684450263621768
+    },
+    {
+      "time_s": 11.700000000000001,
+      "geom_id": 77,
+      "geom_name": "right_palm_collision",
+      "body": "right_wrist_yaw_link",
+      "contact_position": [
+        2.3272760286965726,
+        0.06038295069688182,
+        1.1558765742288972
+      ],
+      "distance_m": -0.0014314746961512637
+    },
+    {
+      "time_s": 11.72,
+      "geom_id": 77,
+      "geom_name": "right_palm_collision",
+      "body": "right_wrist_yaw_link",
+      "contact_position": [
+        2.3324125763480765,
+        0.061615975229474124,
+        1.154956581372311
+      ],
+      "distance_m": -0.0010311497421303661
+    },
+    {
+      "time_s": 11.74,
+      "geom_id": 77,
+      "geom_name": "right_palm_collision",
+      "body": "right_wrist_yaw_link",
+      "contact_position": [
+        2.3385475817302637,
+        0.06296901235832428,
+        1.1546522783711133
+      ],
+      "distance_m": -0.0010195005252058298
+    },
+    {
+      "time_s": 11.76,
+      "geom_id": 77,
+      "geom_name": "right_palm_collision",
+      "body": "right_wrist_yaw_link",
+      "contact_position": [
+        2.345269486793619,
+        0.06524119026238567,
+        1.1539127607927036
+      ],
+      "distance_m": -0.0010610844619399762
+    },
+    {
+      "time_s": 11.78,
+      "geom_id": 77,
+      "geom_name": "right_palm_collision",
+      "body": "right_wrist_yaw_link",
+      "contact_position": [
+        2.3530991605525915,
+        0.0664487118361162,
+        1.153721763488878
+      ],
+      "distance_m": -0.0010903017500768775
+    },
+    {
+      "time_s": 11.8,
+      "geom_id": 77,
+      "geom_name": "right_palm_collision",
+      "body": "right_wrist_yaw_link",
+      "contact_position": [
+        2.361262930935152,
+        0.0682589951552694,
+        1.1527555811270305
+      ],
+      "distance_m": -0.0008017996480868539
+    },
+    {
+      "time_s": 11.82,
+      "geom_id": 77,
+      "geom_name": "right_palm_collision",
+      "body": "right_wrist_yaw_link",
+      "contact_position": [
+        2.369630443574133,
+        0.06914192062571317,
+        1.152427983620811
+      ],
+      "distance_m": -8.527710488959173e-05
+    }
+  ]
+}

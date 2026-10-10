@@ -1,0 +1,101 @@
+{
+  "design": "Repeat the same walk and moving half-turn at heading pi. A half-turn reverses both walk displacement and turn displacement. Support-foot alignment bridges create a residual; measure rather than force it to zero.",
+  "reference_endpoint_xy_m": [
+    -0.10616577581145858,
+    0.017100168038608088
+  ],
+  "reference_closure_m": 0.10753412342413696,
+  "intervals": [
+    {
+      "kind": "segments",
+      "name": "walk_out",
+      "interval_s": [
+        0.0,
+        3.0
+      ],
+      "reference_displacement_xy_m": [
+        0.8030180135667763,
+        -0.12082037419833146
+      ],
+      "reference_yaw_change_deg": -9.93923337957349e-17
+    },
+    {
+      "kind": "segments",
+      "name": "turn_left_1",
+      "interval_s": [
+        4.2,
+        7.54
+      ],
+      "reference_displacement_xy_m": [
+        0.49961869881457655,
+        0.39746940803186864
+      ],
+      "reference_yaw_change_deg": 180.0
+    },
+    {
+      "kind": "segments",
+      "name": "walk_back",
+      "interval_s": [
+        8.74,
+        11.74
+      ],
+      "reference_displacement_xy_m": [
+        -0.8030180135667763,
+        0.12082037419833158
+      ],
+      "reference_yaw_change_deg": 0.0
+    },
+    {
+      "kind": "segments",
+      "name": "turn_left_2",
+      "interval_s": [
+        12.94,
+        16.28
+      ],
+      "reference_displacement_xy_m": [
+        -0.4996186988145766,
+        -0.3974694080318686
+      ],
+      "reference_yaw_change_deg": 180.0
+    },
+    {
+      "kind": "transitions",
+      "name": "walk_out to turn_left_1",
+      "interval_s": [
+        3.0,
+        4.2
+      ],
+      "reference_displacement_xy_m": [
+        -0.16572941342104464,
+        0.13422363639192508
+      ],
+      "reference_yaw_change_deg": 4.87022435599101e-15
+    },
+    {
+      "kind": "transitions",
+      "name": "turn_left_1 to walk_back",
+      "interval_s": [
+        7.54,
+        8.74
+      ],
+      "reference_displacement_xy_m": [
+        -0.10616577581145847,
+        0.01710016803860792
+      ],
+      "reference_yaw_change_deg": 5.088887490341627e-14
+    },
+    {
+      "kind": "transitions",
+      "name": "walk_back to turn_left_2",
+      "interval_s": [
+        11.74,
+        12.94
+      ],
+      "reference_displacement_xy_m": [
+        0.16572941342104458,
+        -0.13422363639192508
+      ],
+      "reference_yaw_change_deg": 0.0
+    }
+  ]
+}

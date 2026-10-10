@@ -1,0 +1,164 @@
+{
+  "segments": [
+    {
+      "name": "walk_out",
+      "start": 0.0,
+      "end": 3.0
+    },
+    {
+      "name": "turn_left_1",
+      "start": 4.2,
+      "end": 7.54
+    },
+    {
+      "name": "walk_back",
+      "start": 8.74,
+      "end": 11.74
+    },
+    {
+      "name": "turn_left_2",
+      "start": 12.94,
+      "end": 16.28
+    }
+  ],
+  "transitions": [
+    {
+      "start": 3.0,
+      "end": 4.2,
+      "from_name": "walk_out",
+      "to_name": "turn_left_1",
+      "planted_foot": "right",
+      "maximum_reference_plant_error_m": 3.128161418675709e-06
+    },
+    {
+      "start": 7.54,
+      "end": 8.74,
+      "from_name": "turn_left_1",
+      "to_name": "walk_back",
+      "planted_foot": "right",
+      "maximum_reference_plant_error_m": 6.674689385511808e-05
+    },
+    {
+      "start": 11.74,
+      "end": 12.94,
+      "from_name": "walk_back",
+      "to_name": "turn_left_2",
+      "planted_foot": "right",
+      "maximum_reference_plant_error_m": 3.1281611567846143e-06
+    }
+  ],
+  "transformations": [
+    {
+      "name": "walk_out",
+      "source": "walk_2010",
+      "source_crop_frames": [
+        0,
+        60
+      ],
+      "source_fps": 20,
+      "output_fps": 50,
+      "speed": 1.0,
+      "normalized_yaw_rad": -1.5454798863341643,
+      "normalized_translation_xy": [
+        -0.020086342564064063,
+        0.0011649805778502441
+      ],
+      "heading_correction_deg": -15.797035097354138,
+      "target_yaw_deg": 0,
+      "reverse_recovery": false,
+      "heading_profile_deg": null,
+      "reverse_prefix": false,
+      "stationary_feet": false,
+      "stationary_max_position_error_m": null
+    },
+    {
+      "name": "turn_left_1",
+      "source": "turn_2014",
+      "source_crop_frames": [
+        0,
+        47
+      ],
+      "source_fps": 20,
+      "output_fps": 50,
+      "speed": 0.7,
+      "normalized_yaw_rad": -1.34036206168232,
+      "normalized_translation_xy": [
+        -0.009882895034080791,
+        -0.005376424966245246
+      ],
+      "heading_correction_deg": 0.9860362273871601,
+      "target_yaw_deg": 180,
+      "reverse_recovery": false,
+      "heading_profile_deg": null,
+      "reverse_prefix": false,
+      "stationary_feet": false,
+      "stationary_max_position_error_m": null,
+      "world_yaw_rad": -5.551115123125783e-17,
+      "world_translation": [
+        0.6372886001457316,
+        0.013403262193593612,
+        -0.026607059135112982
+      ]
+    },
+    {
+      "name": "walk_back",
+      "source": "walk_2010",
+      "source_crop_frames": [
+        0,
+        60
+      ],
+      "source_fps": 20,
+      "output_fps": 50,
+      "speed": 1.0,
+      "normalized_yaw_rad": -1.5454798863341643,
+      "normalized_translation_xy": [
+        -0.020086342564064063,
+        0.0011649805778502441
+      ],
+      "heading_correction_deg": -15.797035097354138,
+      "target_yaw_deg": 0,
+      "reverse_recovery": false,
+      "heading_profile_deg": null,
+      "reverse_prefix": false,
+      "stationary_feet": false,
+      "stationary_max_position_error_m": null,
+      "world_yaw_rad": 3.141592653589793,
+      "world_translation": [
+        1.0307415231488497,
+        0.4279728382640702,
+        -0.021863864167151824
+      ]
+    },
+    {
+      "name": "turn_left_2",
+      "source": "turn_2014",
+      "source_crop_frames": [
+        0,
+        47
+      ],
+      "source_fps": 20,
+      "output_fps": 50,
+      "speed": 0.7,
+      "normalized_yaw_rad": -1.34036206168232,
+      "normalized_translation_xy": [
+        -0.009882895034080791,
+        -0.005376424966245246
+      ],
+      "heading_correction_deg": 0.9860362273871601,
+      "target_yaw_deg": 180,
+      "reverse_recovery": false,
+      "heading_profile_deg": null,
+      "reverse_prefix": false,
+      "stationary_feet": false,
+      "stationary_max_position_error_m": null,
+      "world_yaw_rad": 3.141592653589793,
+      "world_translation": [
+        0.393452923003118,
+        0.4145695760704767,
+        -0.04847092330226478
+      ]
+    }
+  ],
+  "endpoint_ease_seconds": 0.3,
+  "final_hold_seconds": 2.0
+}

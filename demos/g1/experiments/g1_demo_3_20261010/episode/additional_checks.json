@@ -1,0 +1,29 @@
+{
+  "turns": [
+    {
+      "name": "turn_left_1",
+      "net_left_deg": 177.40639134010044,
+      "left_positive_variation_deg": 190.64732027698483,
+      "right_negative_variation_deg": 13.240928936884394,
+      "minimum_relative_yaw_deg": -7.54255222285689,
+      "maximum_relative_yaw_deg": 178.91157918940806
+    },
+    {
+      "name": "turn_left_2",
+      "net_left_deg": 175.99022699045162,
+      "left_positive_variation_deg": 189.0950952638771,
+      "right_negative_variation_deg": 13.104868273425495,
+      "minimum_relative_yaw_deg": -8.726622729948131,
+      "maximum_relative_yaw_deg": 176.59828943158914
+    }
+  ],
+  "shared_source_identical_to_demo1": {
+    "g1_demo.py": "56bfe664f5d8fa9520eb98bad3dd2a5aca17e20e769a1dae8e94c52e31137dab",
+    "g1_demo_physics.py": "b8957362a04e297ae2ddd08f9eb6913cfac7f299d96a67f2a1d7f3ce9337c6e9"
+  },
+  "body_forward_axis": "Pelvis rotation matrix column 0 is local +X/forward; atan2(world_y,world_x) increases in both observed turns.",
+  "human_authorization_verified": {
+    "parent_thread": "01a1219b-bbd2-73f3-b5ae-9334981b496e",
+    "message_id": "01a121a8-e2ac-7eb2-8c2d-c50f11abc1b7"
+  }
+}

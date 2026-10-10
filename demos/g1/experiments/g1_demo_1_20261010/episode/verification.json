@@ -1,0 +1,479 @@
+{
+  "physics_reproduction": {
+    "qpos": {
+      "max_absolute_difference": 0.0,
+      "array_equal": true
+    },
+    "qvel": {
+      "max_absolute_difference": 0.0,
+      "array_equal": true
+    },
+    "body_pos": {
+      "max_absolute_difference": 0.0,
+      "array_equal": true
+    },
+    "reference": {
+      "max_absolute_difference": 0.0,
+      "array_equal": true
+    },
+    "peak_actuator_force": {
+      "max_absolute_difference": 0.0,
+      "array_equal": true
+    },
+    "telemetry": {
+      "max_absolute_difference": 0.0,
+      "array_equal": true
+    }
+  },
+  "generation_reproduction": [
+    {
+      "file": "kick_1010.npz",
+      "max_absolute_difference": 0.0,
+      "source_sha256": "a2e92530dbf937ac0fe0c3c063f8f46d60af7a6f397f640a9f03a1117aa144a0"
+    },
+    {
+      "file": "kick_1011.npz",
+      "max_absolute_difference": 0.0,
+      "source_sha256": "b1354162a392b0d0d9a6e1e60ca12907ee90fbd39f9849bd86002299b7c64087"
+    },
+    {
+      "file": "kick_1012.npz",
+      "max_absolute_difference": 0.0,
+      "source_sha256": "dcdb4e8e3732d9aa2bc4c59d242d151934cca828021385c3466ea154b4340153"
+    },
+    {
+      "file": "kick_1013.npz",
+      "max_absolute_difference": 0.0,
+      "source_sha256": "0a93b733cb31b0a317e538828a1f71ede73144362716645811d41da6629cbc4e"
+    },
+    {
+      "file": "kick_1014.npz",
+      "max_absolute_difference": 0.0,
+      "source_sha256": "e0fd1237d885abf12c06cf43d80222067b20291d8ce24121bc11888ba80cc707"
+    },
+    {
+      "file": "kick_1015.npz",
+      "max_absolute_difference": 0.0,
+      "source_sha256": "3d22362ba7ae85deccb7fbcb86a6af93c359ad23642e31d885c9b66ce7926131"
+    },
+    {
+      "file": "strike_1010.npz",
+      "max_absolute_difference": 0.0,
+      "source_sha256": "7014f285a94b08bce1d4153ac98c96e4752da21772ae33078af7238915bdf972"
+    },
+    {
+      "file": "strike_1011.npz",
+      "max_absolute_difference": 0.0,
+      "source_sha256": "0ecc1fca466522aeeee706965b76d0b14dedcf762aa3523ed16a60d4310e284b"
+    },
+    {
+      "file": "strike_1012.npz",
+      "max_absolute_difference": 0.0,
+      "source_sha256": "182c809a560e300ffbce44a15a7a4e2372370a94be7898dbad90822b2a66a483"
+    },
+    {
+      "file": "strike_1013.npz",
+      "max_absolute_difference": 0.0,
+      "source_sha256": "83b9beace5131485081818fdeeed7cac1ad855a4c08b9d4eb12366559c37467e"
+    },
+    {
+      "file": "strike_1014.npz",
+      "max_absolute_difference": 0.0,
+      "source_sha256": "33f390be1536a37af6eb871b04d98ab664566105b754b21f545fa52602b13d96"
+    },
+    {
+      "file": "strike_1015.npz",
+      "max_absolute_difference": 0.0,
+      "source_sha256": "03db759a6cb232e6e910abc3215cdd55e2cdd370e12bbe529f85a19184158cef"
+    },
+    {
+      "file": "walk_1010.npz",
+      "max_absolute_difference": 0.0,
+      "source_sha256": "12bc34b4fb2cac43872bfb0acfdf1fe167dcdce40c9fc3210c828aee6da101b6"
+    },
+    {
+      "file": "walk_1011.npz",
+      "max_absolute_difference": 0.0,
+      "source_sha256": "19d3671f60a399d08c094fb706227d2f8b6e4abef13a46784d02e10e4e447c23"
+    },
+    {
+      "file": "walk_1012.npz",
+      "max_absolute_difference": 0.0,
+      "source_sha256": "2e7d05e1947de0c94562440064502a4873d1b045c58a556b7edf78ba38b64242"
+    },
+    {
+      "file": "walk_1013.npz",
+      "max_absolute_difference": 0.0,
+      "source_sha256": "3a4932152c2ff04a3bfb4ad950d7b9bc76c104a602d995fed7e9e7ede7880f78"
+    },
+    {
+      "file": "walk_1014.npz",
+      "max_absolute_difference": 0.0,
+      "source_sha256": "680504073da39aeac187008404bdb7936973d3a05007f8f2a568585ea179d3c7"
+    },
+    {
+      "file": "walk_1015.npz",
+      "max_absolute_difference": 0.0,
+      "source_sha256": "bc3b18da8e88f69be61ec13cd270f55772c380b30399ca4d1b12cc04c66214d1"
+    }
+  ],
+  "retarget_reproduction": [
+    {
+      "file": "kick_1010.npz",
+      "max_absolute_difference": 0.0
+    },
+    {
+      "file": "kick_1011.npz",
+      "max_absolute_difference": 0.0
+    },
+    {
+      "file": "kick_1012.npz",
+      "max_absolute_difference": 0.0
+    },
+    {
+      "file": "kick_1013.npz",
+      "max_absolute_difference": 0.0
+    },
+    {
+      "file": "kick_1014.npz",
+      "max_absolute_difference": 0.0
+    },
+    {
+      "file": "kick_1015.npz",
+      "max_absolute_difference": 0.0
+    },
+    {
+      "file": "strike_1010.npz",
+      "max_absolute_difference": 0.0
+    },
+    {
+      "file": "strike_1011.npz",
+      "max_absolute_difference": 0.0
+    },
+    {
+      "file": "strike_1012.npz",
+      "max_absolute_difference": 0.0
+    },
+    {
+      "file": "strike_1013.npz",
+      "max_absolute_difference": 0.0
+    },
+    {
+      "file": "strike_1014.npz",
+      "max_absolute_difference": 0.0
+    },
+    {
+      "file": "strike_1015.npz",
+      "max_absolute_difference": 0.0
+    },
+    {
+      "file": "walk_1010.npz",
+      "max_absolute_difference": 0.0
+    },
+    {
+      "file": "walk_1011.npz",
+      "max_absolute_difference": 0.0
+    },
+    {
+      "file": "walk_1012.npz",
+      "max_absolute_difference": 0.0
+    },
+    {
+      "file": "walk_1013.npz",
+      "max_absolute_difference": 0.0
+    },
+    {
+      "file": "walk_1014.npz",
+      "max_absolute_difference": 0.0
+    },
+    {
+      "file": "walk_1015.npz",
+      "max_absolute_difference": 0.0
+    }
+  ],
+  "layers": [
+    {
+      "name": "walk_1010",
+      "human": {
+        "task": "walk",
+        "seed": 1010,
+        "command": 0.35,
+        "frames": 120,
+        "caption": "A person walks forward for four steps and then stops.",
+        "text_cache": "/home/psirobot/projects/frankenmotion/outputs_amass/unified_direct_20261008/data/cache/val_walk_12921.npz",
+        "text_cache_sha256": "9aae5ce648b19bf6b49d39e80d1ce0ba7b4a6bfcdf0f00590eb66497dac7702d",
+        "file": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/generated/walk_1010.npz",
+        "sha256": "12bc34b4fb2cac43872bfb0acfdf1fe167dcdce40c9fc3210c828aee6da101b6",
+        "checkpoint_sha256": "1bcdb52664e3648a455ad4b938b7f404b309497b5ca1d8fb87c4236053b2712f"
+      },
+      "retarget_file": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/retarget/walk_1010.npz",
+      "retarget_sha256": "e57208231e41328cf5ecca692d7fbd7c33f181a1ff65e9dd67c04c506b5f8d7a",
+      "pelvis_relative_FK_error_mean_m": [
+        0.11857911033444624,
+        0.11886497682405264,
+        0.07410019051610622,
+        0.0680067901534482
+      ],
+      "pelvis_relative_FK_error_body_order": [
+        "left_toe",
+        "right_toe",
+        "left_wrist",
+        "right_wrist"
+      ],
+      "retarget_root_displacement_m": [
+        0.44192066030916793,
+        -2.131324596389622,
+        -0.0025210108930279196
+      ],
+      "source_frames": 120,
+      "source_fps": 20.0
+    },
+    {
+      "name": "kick_1013",
+      "human": {
+        "task": "kick",
+        "seed": 1013,
+        "command": 0.55,
+        "frames": 60,
+        "caption": "forward kick",
+        "text_cache": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1/cache/val_kick_844_3_63.npz",
+        "text_cache_sha256": "a8e587a909b345c838ba830a9a8ff67bcb52d2a276506c5c3e8765aa4ff28184",
+        "file": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/generated/kick_1013.npz",
+        "sha256": "0a93b733cb31b0a317e538828a1f71ede73144362716645811d41da6629cbc4e",
+        "checkpoint_sha256": "1bcdb52664e3648a455ad4b938b7f404b309497b5ca1d8fb87c4236053b2712f"
+      },
+      "retarget_file": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/retarget/kick_1013.npz",
+      "retarget_sha256": "555724f65b5ca3e6ed7820428fc49e8fffeec22856257b713267dbc4e0a6db5c",
+      "pelvis_relative_FK_error_mean_m": [
+        0.12165168523734565,
+        0.12525471482890463,
+        0.09968080767083325,
+        0.08824404912311148
+      ],
+      "pelvis_relative_FK_error_body_order": [
+        "left_toe",
+        "right_toe",
+        "left_wrist",
+        "right_wrist"
+      ],
+      "retarget_root_displacement_m": [
+        0.009244210175836948,
+        -0.06764647831015108,
+        0.002635563821207332
+      ],
+      "source_frames": 60,
+      "source_fps": 20.0
+    },
+    {
+      "name": "strike_1011",
+      "human": {
+        "task": "strike",
+        "seed": 1011,
+        "command": 2.5,
+        "frames": 60,
+        "caption": "right punch series",
+        "text_cache": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_strike_20261009_v3/cache/val_strike_6491_396_456.npz",
+        "text_cache_sha256": "aedb4f59649b6dc34444ba802e8b700dd5a7019929febac4e201254ccbd70766",
+        "file": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/generated/strike_1011.npz",
+        "sha256": "0ecc1fca466522aeeee706965b76d0b14dedcf762aa3523ed16a60d4310e284b",
+        "checkpoint_sha256": "1bcdb52664e3648a455ad4b938b7f404b309497b5ca1d8fb87c4236053b2712f"
+      },
+      "retarget_file": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/retarget/strike_1011.npz",
+      "retarget_sha256": "8e526a7dd71549a5825b200f51a7337ad0bcb8310d145f743d4d5ce56f01e904",
+      "pelvis_relative_FK_error_mean_m": [
+        0.09470935267997288,
+        0.10761198850223483,
+        0.1536943626541221,
+        0.1385507362548565
+      ],
+      "pelvis_relative_FK_error_body_order": [
+        "left_toe",
+        "right_toe",
+        "left_wrist",
+        "right_wrist"
+      ],
+      "retarget_root_displacement_m": [
+        0.2304873632272944,
+        -0.17417725880627336,
+        -0.007863078984394534
+      ],
+      "source_frames": 60,
+      "source_fps": 20.0
+    }
+  ],
+  "attempts": [
+    {
+      "attempt": "bag_v1",
+      "complete": true,
+      "duration_s": 15.72,
+      "foot_contact": true,
+      "hand_contact": true,
+      "unsupported_control_frames": null,
+      "result": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/attempts/bag_v1/result.json",
+      "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/attempts/bag_v1/config.yaml"
+    },
+    {
+      "attempt": "bag_v2",
+      "complete": true,
+      "duration_s": 13.280000000000001,
+      "foot_contact": false,
+      "hand_contact": true,
+      "unsupported_control_frames": 2,
+      "result": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/attempts/bag_v2/result.json",
+      "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/attempts/bag_v2/config.yaml"
+    },
+    {
+      "attempt": "bag_v3",
+      "complete": true,
+      "duration_s": 13.280000000000001,
+      "foot_contact": true,
+      "hand_contact": true,
+      "unsupported_control_frames": 2,
+      "result": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/attempts/bag_v3/result.json",
+      "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/attempts/bag_v3/config.yaml"
+    },
+    {
+      "attempt": "bag_v4",
+      "complete": true,
+      "duration_s": 13.48,
+      "foot_contact": true,
+      "hand_contact": true,
+      "unsupported_control_frames": 3,
+      "result": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/attempts/bag_v4/result.json",
+      "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/attempts/bag_v4/config.yaml"
+    },
+    {
+      "attempt": "bag_v5",
+      "complete": true,
+      "duration_s": 13.280000000000001,
+      "foot_contact": true,
+      "hand_contact": true,
+      "unsupported_control_frames": 3,
+      "result": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/attempts/bag_v5/result.json",
+      "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/attempts/bag_v5/config.yaml"
+    },
+    {
+      "attempt": "demo1_final",
+      "complete": true,
+      "duration_s": 14.52,
+      "foot_contact": true,
+      "hand_contact": true,
+      "unsupported_control_frames": 0,
+      "result": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/attempts/demo1_final/result.json",
+      "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/attempts/demo1_final/config.yaml"
+    },
+    {
+      "attempt": "demo1_verification",
+      "complete": true,
+      "duration_s": 14.52,
+      "foot_contact": true,
+      "hand_contact": true,
+      "unsupported_control_frames": 0,
+      "result": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/attempts/demo1_verification/result.json",
+      "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/attempts/demo1_verification/config.yaml"
+    },
+    {
+      "attempt": "final_v1",
+      "complete": true,
+      "duration_s": 13.280000000000001,
+      "foot_contact": true,
+      "hand_contact": true,
+      "unsupported_control_frames": 3,
+      "result": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/attempts/final_v1/result.json",
+      "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/attempts/final_v1/config.yaml"
+    },
+    {
+      "attempt": "free_v1",
+      "complete": true,
+      "duration_s": 15.72,
+      "foot_contact": false,
+      "hand_contact": false,
+      "unsupported_control_frames": null,
+      "result": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/attempts/free_v1/result.json",
+      "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/attempts/free_v1/config.yaml"
+    },
+    {
+      "attempt": "recovery_v1",
+      "complete": true,
+      "duration_s": 14.52,
+      "foot_contact": true,
+      "hand_contact": false,
+      "unsupported_control_frames": 0,
+      "result": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/attempts/recovery_v1/result.json",
+      "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/attempts/recovery_v1/config.yaml"
+    },
+    {
+      "attempt": "recovery_v2",
+      "complete": true,
+      "duration_s": 14.52,
+      "foot_contact": true,
+      "hand_contact": true,
+      "unsupported_control_frames": 2,
+      "result": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/attempts/recovery_v2/result.json",
+      "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/attempts/recovery_v2/config.yaml"
+    },
+    {
+      "attempt": "recovery_v3",
+      "complete": true,
+      "duration_s": 14.52,
+      "foot_contact": true,
+      "hand_contact": true,
+      "unsupported_control_frames": 0,
+      "result": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/attempts/recovery_v3/result.json",
+      "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/attempts/recovery_v3/config.yaml"
+    },
+    {
+      "attempt": "recovery_v4",
+      "complete": true,
+      "duration_s": 15.16,
+      "foot_contact": true,
+      "hand_contact": true,
+      "unsupported_control_frames": 3,
+      "result": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/attempts/recovery_v4/result.json",
+      "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/attempts/recovery_v4/config.yaml"
+    },
+    {
+      "attempt": "verification_v1",
+      "complete": true,
+      "duration_s": 13.280000000000001,
+      "foot_contact": true,
+      "hand_contact": true,
+      "unsupported_control_frames": 3,
+      "result": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/attempts/verification_v1/result.json",
+      "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/attempts/verification_v1/config.yaml"
+    }
+  ],
+  "source_checks": {
+    "g1_demo.py": {
+      "sha256": "56bfe664f5d8fa9520eb98bad3dd2a5aca17e20e769a1dae8e94c52e31137dab",
+      "single_letter_names": []
+    },
+    "g1_demo_audit.py": {
+      "sha256": "8d53ce23536f426f5b34c0d134ea6e218f4d4df2cfc0871d79ff599f1a124e0c",
+      "single_letter_names": []
+    },
+    "g1_demo_physics.py": {
+      "sha256": "b8957362a04e297ae2ddd08f9eb6913cfac7f299d96a67f2a1d7f3ce9337c6e9",
+      "single_letter_names": []
+    }
+  },
+  "runtime": {
+    "python": "3.11.11",
+    "generation_device": "cpu",
+    "physics_device": "cpu",
+    "rendering": "EGL",
+    "packages": {
+      "torch": "2.6.0+cu124",
+      "numpy": "1.26.4",
+      "scipy": "1.17.1",
+      "mujoco": "3.3.7",
+      "mink": "1.1.0",
+      "daqp": "0.10.3",
+      "onnxruntime": "1.31.0",
+      "imageio": "2.38.1",
+      "imageio-ffmpeg": "0.6.0",
+      "Pillow": "12.3.0"
+    }
+  },
+  "sampling_warning": "CPU and CUDA use distinct random streams for identical integer seeds. Initial auto-device verification differed; explicit generation_device=cpu reproduces all 18 original arrays exactly."
+}

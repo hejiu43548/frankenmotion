@@ -1,0 +1,67 @@
+{
+  "segments": [
+    {
+      "name": "walk_1010",
+      "start": 0.0,
+      "end": 5.94
+    },
+    {
+      "name": "kick_1013",
+      "start": 7.140000000000001,
+      "end": 9.620000000000001
+    },
+    {
+      "name": "strike_1011",
+      "start": 10.82,
+      "end": 13.02
+    }
+  ],
+  "transitions": [
+    {
+      "start": 5.94,
+      "end": 7.140000000000001,
+      "planted_foot": "left",
+      "maximum_reference_plant_error_m": 0.0002806893138539581,
+      "source_transform_translation": [
+        2.0718731949969644,
+        0.4195299716218648,
+        -0.009031545655875065
+      ],
+      "source_transform_yaw": 0.3344382895457443
+    },
+    {
+      "start": 9.620000000000001,
+      "end": 10.82,
+      "planted_foot": "left",
+      "maximum_reference_plant_error_m": 4.867867647070085e-05,
+      "source_transform_translation": [
+        2.0962110594578576,
+        0.1963376172937794,
+        -0.012654369198903722
+      ],
+      "source_transform_yaw": 0.3344382895457443
+    }
+  ],
+  "endpoint_ease_seconds": 0.3,
+  "final_hold_seconds": 1.5,
+  "selection": [
+    "walk_1010",
+    "kick_1013",
+    "strike_1011"
+  ],
+  "kick_recovery": true,
+  "source_ranges": {
+    "walk": [
+      0,
+      5.95
+    ],
+    "kick": [
+      1.7,
+      2.95
+    ],
+    "strike": [
+      0,
+      2.2
+    ]
+  }
+}

@@ -1,0 +1,59 @@
+{
+  "attempts": [
+    {
+      "attempt": "curved_return25",
+      "complete": true,
+      "return_distance_m": 0.4377043360276079,
+      "heading_error_deg": 8.762041575903462,
+      "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_2_20261010/attempts/curved_return25/config.yaml"
+    },
+    {
+      "attempt": "initial",
+      "complete": true,
+      "return_distance_m": 1.6846792955117078,
+      "heading_error_deg": 67.38457323556428,
+      "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_2_20261010/attempts/initial/config.yaml"
+    },
+    {
+      "attempt": "return_heading_final",
+      "complete": true,
+      "return_distance_m": 0.20378648732834403,
+      "heading_error_deg": 1.8211868419583652,
+      "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_2_20261010/attempts/return_heading_final/config.yaml"
+    },
+    {
+      "attempt": "return_profile50",
+      "complete": true,
+      "return_distance_m": 0.3906691644770275,
+      "heading_error_deg": 6.407491910660067,
+      "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_2_20261010/attempts/return_profile50/config.yaml"
+    },
+    {
+      "attempt": "shorter_out40",
+      "complete": true,
+      "return_distance_m": 0.12760314413581794,
+      "heading_error_deg": 31.380197171070407,
+      "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_2_20261010/attempts/shorter_out40/config.yaml"
+    },
+    {
+      "attempt": "stationary_turn2014",
+      "complete": true,
+      "return_distance_m": 0.6878504122200066,
+      "heading_error_deg": 8.395923719690034,
+      "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_2_20261010/attempts/stationary_turn2014/config.yaml"
+    }
+  ],
+  "reasons": {
+    "initial": "Stable but first generated turn only ~62 degrees; wave heading drift. Return1.685m/67.38deg.",
+    "stationary_turn2014": "Double-foot reference constraints and near180-degree source turn; lateral turn displacement leaves0.688m miss.",
+    "curved_return25": "Extra25deg gradual turn correction and reverse bow prefix;0.438m miss; discarded in favor of near180-degree turn.",
+    "return_profile50": "Near180-degree turn; return heading profile [0,50,50,0];0.391m miss.",
+    "shorter_out40": "Shortened outward walk, slowed turn and40-degree return curvature;0.128m return but31.38deg final heading error.",
+    "return_heading_final": "Final return profile [0,40,40,-30];0.204m return and1.82deg final heading; full reproduction exact."
+  },
+  "repaired_tool_errors": [
+    "EGL must be set before importing MuJoCo; fixed in independent pipeline.",
+    "Installed SciPy Rotation.from_euler batched single-axis angles require [N,1]; fixed.",
+    "NFS cp reported timestamp-preservation warnings; source contents copied and independently SHA-verified."
+  ]
+}

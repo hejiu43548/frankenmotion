@@ -1,0 +1,322 @@
+{
+  "wave": {
+    "left": {
+      "local_range_xyz_m": [
+        0.43483069761916715,
+        0.4267236947523063,
+        0.48919698608730333
+      ],
+      "local_height_max_m": 0.5344833039125484,
+      "lateral_peaks_s": [
+        5.98,
+        7.18,
+        8.440000000000001,
+        9.42
+      ],
+      "lateral_troughs_s": [
+        5.24,
+        6.6,
+        7.74,
+        8.82
+      ]
+    },
+    "right": {
+      "local_range_xyz_m": [
+        0.4065951081541188,
+        0.4544509415112484,
+        0.4239166396077688
+      ],
+      "local_height_max_m": 0.5635442409330705,
+      "lateral_peaks_s": [
+        5.24,
+        6.68,
+        7.9,
+        8.780000000000001
+      ],
+      "lateral_troughs_s": [
+        5.88,
+        7.16,
+        8.32,
+        9.36
+      ]
+    }
+  },
+  "boundaries": [
+    {
+      "time_s": 3.0,
+      "reference_joint_step_rad": 0.0037022208678005215,
+      "actual_joint_step_rad": 0.025271979378332615,
+      "actual_root_step_m": 0.00778581508374186,
+      "actual_velocity_step_rad_s": 0.1322248864115709
+    },
+    {
+      "time_s": 4.2,
+      "reference_joint_step_rad": 0.0003521838481901629,
+      "actual_joint_step_rad": 0.03218190233518403,
+      "actual_root_step_m": 0.0005930239957556876,
+      "actual_velocity_step_rad_s": 0.5096799258995725
+    },
+    {
+      "time_s": 10.1,
+      "reference_joint_step_rad": 0.01588274441375659,
+      "actual_joint_step_rad": 0.02334526547101065,
+      "actual_root_step_m": 0.0005414021363356459,
+      "actual_velocity_step_rad_s": 0.48193296543049946
+    },
+    {
+      "time_s": 11.299999999999999,
+      "reference_joint_step_rad": 0.00033524785873134677,
+      "actual_joint_step_rad": 0.010403106404583529,
+      "actual_root_step_m": 0.0019289366030765627,
+      "actual_velocity_step_rad_s": 0.23000507261438768
+    },
+    {
+      "time_s": 16.14,
+      "reference_joint_step_rad": 0.0002647197307696636,
+      "actual_joint_step_rad": 0.005056154752353714,
+      "actual_root_step_m": 0.00038139913289721795,
+      "actual_velocity_step_rad_s": 0.19338835853596567
+    },
+    {
+      "time_s": 17.34,
+      "reference_joint_step_rad": 0.00013160369973896913,
+      "actual_joint_step_rad": 0.017924477145730477,
+      "actual_root_step_m": 0.005014336681926431,
+      "actual_velocity_step_rad_s": 0.48197171057810334
+    },
+    {
+      "time_s": 20.68,
+      "reference_joint_step_rad": 0.002773121910270099,
+      "actual_joint_step_rad": 0.045999069194293855,
+      "actual_root_step_m": 0.0051398049974680955,
+      "actual_velocity_step_rad_s": 0.822721238617109
+    },
+    {
+      "time_s": 21.88,
+      "reference_joint_step_rad": 0.0006916830323623821,
+      "actual_joint_step_rad": 0.005342154566745139,
+      "actual_root_step_m": 0.0012100996414572997,
+      "actual_velocity_step_rad_s": 0.25732338386178394
+    }
+  ],
+  "final_hold": {
+    "start_s": 27.82,
+    "seconds": 2.0,
+    "root_drift_m": 0.013446793512920847,
+    "support_min_N": 324.0460478690474,
+    "unsupported_seconds": 0.0
+  },
+  "torso_pitch_max_deg": 29.195380434949318,
+  "joint_rmse_by_name": {
+    "left_hip_pitch_joint": 0.1265500393674194,
+    "left_hip_roll_joint": 0.09203629288378158,
+    "left_hip_yaw_joint": 0.10997448746151532,
+    "left_knee_joint": 0.2549900878286454,
+    "left_ankle_pitch_joint": 0.11958331671622482,
+    "left_ankle_roll_joint": 0.05004203598198,
+    "right_hip_pitch_joint": 0.19377588346748173,
+    "right_hip_roll_joint": 0.1144565272921008,
+    "right_hip_yaw_joint": 0.12527077181788457,
+    "right_knee_joint": 0.2708272690018087,
+    "right_ankle_pitch_joint": 0.08609674878095563,
+    "right_ankle_roll_joint": 0.08618843110385428,
+    "waist_yaw_joint": 0.11299741612132592,
+    "waist_roll_joint": 0.0271107375305687,
+    "waist_pitch_joint": 0.053354678099347255,
+    "left_shoulder_pitch_joint": 0.9905332502358473,
+    "left_shoulder_roll_joint": 0.15271214432778255,
+    "left_shoulder_yaw_joint": 1.0582555045990976,
+    "left_elbow_joint": 0.24003378935898015,
+    "left_wrist_roll_joint": 0.26142452164758695,
+    "left_wrist_pitch_joint": 0.13448637913519332,
+    "left_wrist_yaw_joint": 0.15426377239293887,
+    "right_shoulder_pitch_joint": 1.0015297509069674,
+    "right_shoulder_roll_joint": 0.1434134736785544,
+    "right_shoulder_yaw_joint": 1.1093150212631508,
+    "right_elbow_joint": 0.2720868160641898,
+    "right_wrist_roll_joint": 0.16975714802346348,
+    "right_wrist_pitch_joint": 0.11529240913755817,
+    "right_wrist_yaw_joint": 0.15169616218191345
+  },
+  "reference_return_distance_m": 0.6693741653140983,
+  "layers": [
+    {
+      "name": "walk_out",
+      "source": "walk_2010",
+      "human_sha256": "478344166f76f6dc52461f04fc8fc30be40fb71be6f141f7033c2bb4116c961e",
+      "retarget_sha256": "520cb2b929a9f0871f113a62ea0f5b00e749ebec3c60a635214723a7984ca77e",
+      "pelvis_relative_fk_mean_error_m": [
+        0.10664550752897925,
+        0.10500672788476771,
+        0.07164673779841459,
+        0.0688593506385933
+      ],
+      "body_order": [
+        "left_ankle",
+        "right_ankle",
+        "left_wrist",
+        "right_wrist"
+      ],
+      "human_yaw_change_deg": 10.522882461547852,
+      "retarget_yaw_change_deg": 10.089567243980007
+    },
+    {
+      "name": "wave",
+      "source": "wave_2010",
+      "human_sha256": "ec50842f251938d464485cebb3330b3fc8ba61471922b762f37c9801f1412fe5",
+      "retarget_sha256": "6dd54b03e99bcf7b0bc1db55547e10c86bb6763b977bf407670043de0b532cb8",
+      "pelvis_relative_fk_mean_error_m": [
+        0.10637265280099646,
+        0.1078470034530958,
+        0.24407155450111992,
+        0.22916686742144912
+      ],
+      "body_order": [
+        "left_ankle",
+        "right_ankle",
+        "left_wrist",
+        "right_wrist"
+      ],
+      "human_yaw_change_deg": 52.50340270996094,
+      "retarget_yaw_change_deg": 48.20963047383594
+    },
+    {
+      "name": "bow",
+      "source": "bow_2010",
+      "human_sha256": "bf5a1459759aef3a60132462256f4a035161ca5258062d0f4f4562d4da12675b",
+      "retarget_sha256": "68a5048b96dbcc9b4303e35a891f05fece22d8dd97fc124a353a50151057d443",
+      "pelvis_relative_fk_mean_error_m": [
+        0.10491894942433314,
+        0.10558129381093131,
+        0.06531958239124314,
+        0.0521919769798594
+      ],
+      "body_order": [
+        "left_ankle",
+        "right_ankle",
+        "left_wrist",
+        "right_wrist"
+      ],
+      "human_yaw_change_deg": 12.71039867401123,
+      "retarget_yaw_change_deg": 10.736956439328141
+    },
+    {
+      "name": "turn",
+      "source": "turn_2014",
+      "human_sha256": "7f4d1ad361744dcb6edc7535511ff6b6b7953fd5ef615f39ad5908606bd26a8d",
+      "retarget_sha256": "34c9de07127f1f31a58af9793df160bbbcb971921a6227834c66eeb08d3abe17",
+      "pelvis_relative_fk_mean_error_m": [
+        0.09728966376490704,
+        0.09464530142565385,
+        0.0711431213497082,
+        0.07379559508081608
+      ],
+      "body_order": [
+        "left_ankle",
+        "right_ankle",
+        "left_wrist",
+        "right_wrist"
+      ],
+      "human_yaw_change_deg": 185.47943115234375,
+      "retarget_yaw_change_deg": 178.5389127318804
+    },
+    {
+      "name": "walk_back",
+      "source": "walk_2011",
+      "human_sha256": "b53350d4eb6ab08096e4ebbf7fe3f5e89156868fcc02ab563964b92095b89496",
+      "retarget_sha256": "d389869b5a0890afc2e73ce9a8a6275da4c570401784e3f8e79acc4e16e53bb3",
+      "pelvis_relative_fk_mean_error_m": [
+        0.10648928366531497,
+        0.10584976709806174,
+        0.07111284127267563,
+        0.07022166648464466
+      ],
+      "body_order": [
+        "left_ankle",
+        "right_ankle",
+        "left_wrist",
+        "right_wrist"
+      ],
+      "human_yaw_change_deg": 17.22317123413086,
+      "retarget_yaw_change_deg": 12.65792452017193
+    }
+  ],
+  "attempts": [
+    {
+      "attempt": "curved_return25",
+      "complete": true,
+      "return_distance_m": 0.4377043360276079,
+      "heading_error_deg": 8.762041575903462,
+      "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_2_20261010/attempts/curved_return25/config.yaml"
+    },
+    {
+      "attempt": "initial",
+      "complete": true,
+      "return_distance_m": 1.6846792955117078,
+      "heading_error_deg": 67.38457323556428,
+      "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_2_20261010/attempts/initial/config.yaml"
+    },
+    {
+      "attempt": "return_heading_final",
+      "complete": true,
+      "return_distance_m": 0.20378648732834403,
+      "heading_error_deg": 1.8211868419583652,
+      "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_2_20261010/attempts/return_heading_final/config.yaml"
+    },
+    {
+      "attempt": "return_profile50",
+      "complete": true,
+      "return_distance_m": 0.3906691644770275,
+      "heading_error_deg": 6.407491910660067,
+      "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_2_20261010/attempts/return_profile50/config.yaml"
+    },
+    {
+      "attempt": "shorter_out40",
+      "complete": true,
+      "return_distance_m": 0.12760314413581794,
+      "heading_error_deg": 31.380197171070407,
+      "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_2_20261010/attempts/shorter_out40/config.yaml"
+    },
+    {
+      "attempt": "stationary_turn2014",
+      "complete": true,
+      "return_distance_m": 0.6878504122200066,
+      "heading_error_deg": 8.395923719690034,
+      "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_2_20261010/attempts/stationary_turn2014/config.yaml"
+    }
+  ],
+  "source_checks": {
+    "g1_demo.py": "56bfe664f5d8fa9520eb98bad3dd2a5aca17e20e769a1dae8e94c52e31137dab",
+    "g1_demo2.py": "37740bf0c5b6367f91197016c0c5b6ce839f1487fc01d87af085ed69916ea017",
+    "g1_demo2_evidence.py": "d2bcbb85af18a33c04f32d5a2262781d99a4a05504488005a3fab8d6f2fabafc",
+    "g1_demo2_pipeline.py": "c2ab21d26ec20fa5eb1c05ca2b54307f02b45dca95eb3dd8dd15cd6c0ac8dd57",
+    "g1_demo2_verify.py": "0181851c4fc4f851b6f5a73f0ecefa821babf966cc2c4ec52b5ccce04a166d6d",
+    "g1_demo_physics.py": "b8957362a04e297ae2ddd08f9eb6913cfac7f299d96a67f2a1d7f3ce9337c6e9"
+  },
+  "runtime": {
+    "python": "3.11.11",
+    "generation_device": "cpu",
+    "generation_batch_size": 6,
+    "seeds": [
+      2010,
+      2011,
+      2012,
+      2013,
+      2014,
+      2015
+    ],
+    "ddim_steps": 50,
+    "packages": {
+      "torch": "2.6.0+cu124",
+      "numpy": "1.26.4",
+      "scipy": "1.17.1",
+      "mujoco": "3.3.7",
+      "mink": "1.1.0",
+      "daqp": "0.10.3",
+      "onnxruntime": "1.31.0",
+      "imageio": "2.38.1",
+      "imageio-ffmpeg": "0.6.0",
+      "Pillow": "12.3.0"
+    }
+  }
+}
