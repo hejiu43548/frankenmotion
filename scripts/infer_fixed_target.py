@@ -125,7 +125,11 @@ def main(config):
             policy_checkpoint["config"]["radius_frames"],
         )
         joints = skeleton(corrected)
-        wrist = joints[0, event_frames[0], 20 + hand]
+        wrist = (
+            joints[0, -5:, 20 + hand].mean(0)
+            if audit["task"] == "reach"
+            else joints[0, event_frames[0], 20 + hand]
+        )
         metrics = fixed_metrics(joints, target, hands, event_frames, audit["task"])
     output = Path(config.output)
     output.parent.mkdir(parents=True, exist_ok=True)

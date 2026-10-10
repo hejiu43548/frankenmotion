@@ -104,7 +104,7 @@ def fixed_metrics(joints, world_target, hands, event_frames, task, fps=20):
 
     No target follows the pelvis; no best-frame selection replaces event error.
     Strike speed is measured toward the fixed target before the scheduled event.
-    Reach dwell uses five consecutive frames within 10 cm in the event window.
+    Reach uses the final five-frame mean, dwell within 10 cm, and hold speed.
     These are kinematic checks, not physical-contact certification.
     """
     if task not in ("reach", "strike"):
