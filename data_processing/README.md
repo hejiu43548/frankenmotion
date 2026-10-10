@@ -4,15 +4,15 @@ Keep task selection, temporal cropping, label reconstruction, admission checks,
 and review rendering here. Processing never launches training. Each repair writes
 a new dataset directory and preserves every other task's records exactly.
 
-Current source-repair scope (2026-10-10): **back_walk only**. Crop continuous
-backward motion within existing source annotations, remove forward phases and
-reject records with no valid segment. Candidate156train/25val; ten TRAIN reviews
-are pending. Other task records are preserved and other repairs are deferred.
-No training is started by this repair. Scripts/policy are in back_walk/ and
-config/back_walk_repair.yaml. Earlier sidestep data was provisionally accepted;
-its current command range is0.4–1.0m. `review_state.json` tracks current work.
+Current work (2026-10-10): **point merged into reach XYZ; awaiting data review**.
+There are19 active tasks with stable IDs (point slot14 retired). New reach has
+21 train /3 val from19 /3 recordings; other18 tasks are unchanged. See
+[point/README.md](point/README.md) for crop rules, XYZ coordinates, command schema,
+checkpoint compatibility, source audit and10 training videos. Current full data:
+source_repair_reach_xyz_20261010_v2. Jog/march/jump remain accepted;
+strike/kick remain provisional. No training experiment was launched.
 
-`export_task_audits.py` exports all20 tasks separately as exact train/val JSON,
+`export_task_audits.py` exports all active tasks separately (currently19) as exact train/val JSON,
 human-readable CSV and an HTML index, preserving crop bounds, quantities, captions,
 source families, split membership, cache hashes and task review status. Exporting
 an unreviewed task's list does not certify its semantics.
