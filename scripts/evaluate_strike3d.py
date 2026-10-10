@@ -16,6 +16,12 @@ from scripts.train_strike3d import load_items, make_batch
 from shared_motion.training.geometry import Skeleton
 from shared_motion.training.reach3d_geometry import wrist_positions_in_body_frame
 from shared_motion.training.reach3d_model import ReachDiffusion
+from shared_motion.training.strike_residual_policy import (
+    StrikeResidualPolicy,
+    observations,
+    apply_residual,
+)
+from shared_motion.training.model import file_sha256
 
 
 @hydra.main(
@@ -40,6 +46,17 @@ def main(config):
         raise ValueError("Backbone mismatch")
     model.load_adapter(checkpoint["adapter"])
     skeleton = Skeleton(training.skeleton).to(config.device)
+    arm_policy = None
+    if config.arm_policy:
+        arm_checkpoint = torch.load(
+            config.arm_policy, map_location="cpu", weights_only=False
+        )
+        if arm_checkpoint["initial_sha256"] != file_sha256(config.checkpoint):
+            raise ValueError(
+                "Arm policy must use its exact frozen generation checkpoint"
+            )
+        arm_policy = StrikeResidualPolicy().to(config.device).eval()
+        arm_policy.load_state_dict(arm_checkpoint["policy"], strict=True)
     output = Path(config.output)
     output.mkdir(parents=True, exist_ok=True)
     records = []
@@ -53,11 +70,21 @@ def main(config):
         lower, upper = targets.min(0), targets.max(0)
         requests = []
         for grid_index, fractions in enumerate(
-            itertools.product([0.2, 0.5, 0.8], repeat=3)
+            itertools.product(config.grid_fractions, repeat=3)
         ):
             target = lower + np.asarray(fractions) * (upper - lower)
             if np.linalg.norm(targets - target, axis=1).min() >= 0.04:
-                requests.append((0, f"hole_{grid_index:02d}", target.tolist()))
+                for template_index in config.template_indices:
+                    if not 0 <= template_index < len(items):
+                        raise ValueError(
+                            "Template index is outside the selected source split"
+                        )
+                    request_key = (
+                        f"hole_{grid_index:02d}"
+                        if len(config.template_indices) == 1
+                        else f"template{template_index}_hole_{grid_index:02d}"
+                    )
+                    requests.append((template_index, request_key, target.tolist()))
     elif config.target_mode != "source":
         raise ValueError("Unknown target mode")
     for index, request_key, target in requests:
@@ -78,6 +105,18 @@ def main(config):
                 enabled=enabled,
             )
             with torch.no_grad():
+                if enabled and arm_policy is not None:
+                    state = observations(
+                        generated, batch["positions"], batch["event_frames"], skeleton
+                    )
+                    generated = apply_residual(
+                        generated,
+                        arm_policy.mean(state),
+                        batch["event_frames"],
+                        skeleton,
+                        arm_checkpoint["config"]["max_angle"],
+                        arm_checkpoint["config"]["radius_frames"],
+                    )
                 joints = skeleton(generated)
                 wrists = wrist_positions_in_body_frame(joints[..., :22, :])
                 measured = wrists[
@@ -134,6 +173,9 @@ def main(config):
         split=config.split,
         samples=len(requests),
         target_mode=config.target_mode,
+        arm_policy=str(config.arm_policy),
+        grid_fractions=list(config.grid_fractions),
+        template_indices=list(config.template_indices),
         seeds=list(config.seeds),
         summary=summary,
         records=records,

@@ -1,0 +1,19 @@
+runs:
+  - label: Official
+    directory: /home/pku/frankenmotion/work/strike3d_20261010/evaluation_sft10k_holes
+    mode: official
+  - label: Supervised
+    directory: /home/pku/frankenmotion/work/strike3d_20261010/evaluation_sft10k_holes
+    mode: adapter
+  - label: Supervised + RL
+    directory: /home/pku/frankenmotion/work/strike3d_20261010/evaluation_rl5k_holes
+    mode: adapter
+request: hole_01
+seed_index: 0
+skeleton: /home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/skeleton.npz
+output: /home/pku/frankenmotion/work/strike3d_20261010/comparison_hole01_seed9200.mp4
+hydra:
+  job:
+    chdir: false
+  run:
+    dir: /home/pku/frankenmotion/work/strike3d_20261010/render_hydra

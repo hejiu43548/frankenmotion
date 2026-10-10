@@ -23,9 +23,12 @@ def load_items(directory, split):
     rows = json.loads((Path(directory) / f"{split}.json").read_text())
     items = []
     for row in rows:
-        if file_sha256(row["cache"]) != row["rebuilt_cache_sha256"]:
+        cache_path = Path(row["cache"])
+        if not cache_path.is_file():
+            cache_path = Path(directory) / "cache" / cache_path.name
+        if file_sha256(cache_path) != row["rebuilt_cache_sha256"]:
             raise ValueError("Rebuilt source cache hash mismatch")
-        with np.load(row["cache"], allow_pickle=False) as archive:
+        with np.load(cache_path, allow_pickle=False) as archive:
             items.append(
                 {
                     name: torch.from_numpy(np.asarray(archive[name]).copy())

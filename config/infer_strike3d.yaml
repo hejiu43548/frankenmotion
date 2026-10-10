@@ -1,0 +1,15 @@
+generator: /home/pku/frankenmotion/work/strike3d_20261010/supervised10k_seed84001/final.pt
+policy: /home/pku/frankenmotion/work/strike3d_20261010/arm_ppo_seed86001/final.pt
+backbone_checkpoint: /home/pku/frankenmotion/pretrained/official_20260910/frankenmotion.ckpt
+skeleton: /home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/skeleton.npz
+text_template: /home/pku/frankenmotion/work/strike3d_20261010/data/text_template.npz
+target: [0.59, -0.20, 0.58]
+seed: 51000
+steps: 50
+device: cuda
+output: /home/pku/frankenmotion/work/strike3d_20261010/inference_demo.npz
+hydra:
+  job:
+    chdir: false
+  run:
+    dir: /home/pku/frankenmotion/work/strike3d_20261010/inference_hydra

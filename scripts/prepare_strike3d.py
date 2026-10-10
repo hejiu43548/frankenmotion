@@ -156,6 +156,14 @@ def main(config):
             json.dumps([row for row in prepared if row["split"] == split], indent=2)
             + "\n"
         )
+    with np.load(prepared[0]["cache"], allow_pickle=False) as archive:
+        np.savez(
+            output / "text_template.npz",
+            **{
+                name: archive[name]
+                for name in ["tx", "local", "local_mask", "event_frames"]
+            },
+        )
     targets = np.array(
         [row["target_xyz_m"] for row in prepared if row["split"] == "train"]
     )

@@ -1,4 +1,7 @@
 target_mode: source
+arm_policy: null
+grid_fractions: [0.2, 0.5, 0.8]
+template_indices: [0]
 checkpoint: /home/pku/frankenmotion/work/strike3d_20261010/supervised_seed84001/final.pt
 output: /home/pku/frankenmotion/work/strike3d_20261010/evaluation_sft1000_train
 split: train
