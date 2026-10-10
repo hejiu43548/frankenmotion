@@ -1,0 +1,22 @@
+defaults:
+  - backbone: official
+  - _self_
+backbone:
+  checkpoint: /home/pku/frankenmotion/pretrained/official_20260910/frankenmotion.ckpt
+data: /home/pku/frankenmotion/work/strike3d_20261010/data
+skeleton: /home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/skeleton.npz
+output: /home/pku/frankenmotion/work/strike3d_20261010/supervised_seed84001
+seed: 84001
+initial: null
+steps: 1000
+batch_size: 2
+learning_rate: 0.0001
+endpoint_weight: 1.0
+checkpoint_every: 250
+log_every: 50
+device: cuda
+hydra:
+  job:
+    chdir: false
+  run:
+    dir: ${output}/hydra

@@ -1,0 +1,24 @@
+initial: /home/pku/frankenmotion/work/strike3d_20261010/supervised_seed84001/final.pt
+output: /home/pku/frankenmotion/work/strike3d_20261010/rl_scaled_seed85001
+seed: 85001
+iterations: 1000
+group_size: 4
+ddim_steps: 20
+eta: 0.5
+learning_rate: 0.000001
+clip_range: 0.2
+replay_weight: 0.2
+endpoint_weight: 1.0
+reward_scale_m: 0.15
+minimum_target_separation_m: 0.04
+maximum_root_excursion_m: 0.4
+minimum_peak_wrist_speed: 0.8
+maximum_peak_wrist_speed: 8.0
+device: cuda
+hydra:
+  job:
+    chdir: false
+  run:
+    dir: ${output}/hydra
+update_epochs: 2
+policy_gradient_scale: 12300.0

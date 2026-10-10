@@ -1,0 +1,12 @@
+target_mode: source
+checkpoint: /home/pku/frankenmotion/work/strike3d_20261010/supervised_seed84001/final.pt
+output: /home/pku/frankenmotion/work/strike3d_20261010/evaluation_sft1000_train
+split: train
+seeds: [8200, 8201, 8202, 8203]
+device: cuda
+steps: 50
+hydra:
+  job:
+    chdir: false
+  run:
+    dir: ${output}/hydra

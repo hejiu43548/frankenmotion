@@ -1,0 +1,12 @@
+root: /home/pku/frankenmotion
+source_manifest_directory: /home/pku/frankenmotion/work/strike3d_20261010/source_indices
+output: /home/pku/frankenmotion/work/strike3d_20261010/data
+skeleton: /home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/skeleton.npz
+clip_checkpoint: /home/pku/.cache/clip/ViT-B-32.pt
+pca_seed: 1234
+endpoint_after_peak_frames: 8
+hydra:
+  job:
+    chdir: false
+  run:
+    dir: ${output}/hydra
