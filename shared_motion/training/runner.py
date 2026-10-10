@@ -12,7 +12,14 @@ import numpy as np
 from omegaconf import OmegaConf
 import torch
 
-from .catalog import COMMAND_RANGES, TASK_NAMES, command_error, measure
+from .catalog import (
+    ACTIVE_TASK_NAMES,
+    COMMAND_RANGES,
+    TASK_NAMES,
+    command_error,
+    measure_commands,
+)
+from .reach import REACH_INDEX, command_vectors, command_bounds, dimension_mask
 from .data import MotionDataset, StatefulSampler, assert_disjoint
 from .geometry import Skeleton
 from .model import build_model, file_sha256
@@ -88,7 +95,9 @@ def checkpoint_compatible(checkpoint, model, tasks, stage=None):
             "Checkpoint controller/backbone/task catalog does not match config"
         )
     if checkpoint.get("task_policy") != model.task_policy:
-        raise ValueError("Checkpoint task semantics differ: walking_turn_v2 required")
+        raise ValueError(
+            "Checkpoint task/command semantics differ; current XYZ reach protocol required"
+        )
     if checkpoint["backbone_config"] != model.backbone_configuration:
         raise ValueError(
             "Checkpoint backbone architecture/schedule config does not match"
@@ -160,12 +169,37 @@ def scan(model, skeleton, dataset, config, artifact_path, step):
     measured_values = []
     for task_name in config.data.tasks:
         task_index = TASK_NAMES.index(task_name)
-        commands = torch.linspace(
-            *COMMAND_RANGES[task_index],
-            config.validation.points,
-            device=config.runtime.device,
-        )
-        selected = scan_indices(dataset, task_index, commands, TASK_NAMES.index("turn"))
+        if task_index == REACH_INDEX:
+            pool = sorted(
+                dataset.groups[task_index], key=lambda index: dataset.rows[index]["key"]
+            )
+            selected = [
+                pool[index]
+                for index in np.linspace(
+                    0,
+                    len(pool) - 1,
+                    min(len(pool), config.validation.points),
+                    dtype=int,
+                )
+            ]
+            commands = torch.stack(
+                [dataset.items[index]["quantity"] for index in selected]
+            ).to(config.runtime.device)
+        else:
+            scalar_commands = torch.linspace(
+                *COMMAND_RANGES[task_index],
+                config.validation.points,
+                device=config.runtime.device,
+            )
+            selected = scan_indices(
+                dataset, task_index, scalar_commands, TASK_NAMES.index("turn")
+            )
+            commands = command_vectors(
+                scalar_commands,
+                torch.full(
+                    (len(scalar_commands),), task_index, device=scalar_commands.device
+                ),
+            )
         batch = dataset.batch(selected, config.runtime.device)
         motion = model.sample(
             batch,
@@ -174,18 +208,30 @@ def scan(model, skeleton, dataset, config, artifact_path, step):
             [config.validation.noise_seed + task_index] * len(commands),
             config.validation.ddim_steps,
         )
-        measured = measure(skeleton, motion, batch["task"], batch["lengths"])
+        measured = measure_commands(skeleton, motion, batch["task"], batch["lengths"])
         errors = command_error(measured, commands, batch["task"]).abs()
         if not torch.isfinite(motion).all() or not torch.isfinite(errors).all():
             raise RuntimeError("Nonfinite generation scan")
-        bounds = COMMAND_RANGES[task_index]
+        bounds = command_bounds(commands, batch["task"], COMMAND_RANGES)
+        active = dimension_mask(batch["task"]).to(errors)
+        normalized_error = (
+            (errors / (bounds[..., 1] - bounds[..., 0]) * active).sum(-1)
+            / active.sum(-1)
+        ).mean()
+        position_error = torch.linalg.vector_norm(errors, dim=-1)
         tasks.append(
             dict(
                 task=task_name,
                 requested=commands.tolist(),
                 measured=measured.tolist(),
-                mae=float(errors.mean()),
-                normalized_mae=float(errors.mean()) / (bounds[1] - bounds[0]),
+                mae=float(position_error.mean()),
+                normalized_mae=float(normalized_error),
+                metric=(
+                    "XYZ Euclidean distance (m)"
+                    if task_index == REACH_INDEX
+                    else "scalar absolute error"
+                ),
+                command_dimension=3 if task_index == REACH_INDEX else 1,
                 keys=[dataset.rows[index]["key"] for index in selected],
                 families=[dataset.rows[index]["family"] for index in selected],
                 noise_seed=config.validation.noise_seed + task_index,
@@ -245,7 +291,7 @@ def audit_scans(report_path, skeleton, device):
             task_indices = torch.tensor(archive["task"], device=device)
             lengths = torch.tensor(archive["lengths"], device=device)
             with torch.no_grad():
-                recomputed = measure(skeleton, motion, task_indices, lengths)
+                recomputed = measure_commands(skeleton, motion, task_indices, lengths)
             expected = torch.tensor(archive["measured"], device=device)
             error = float(command_error(recomputed, expected, task_indices).abs().max())
             if error > 1e-5:
@@ -299,7 +345,7 @@ def _run_locked(config):
         )
     if len(set(config.data.tasks)) != len(config.data.tasks) or set(
         config.data.tasks
-    ) - set(TASK_NAMES):
+    ) - set(ACTIVE_TASK_NAMES):
         raise ValueError("Unsupported or duplicate task catalog")
     if config.validation.points < 2 or not 2 <= config.validation.ddim_steps <= 100:
         raise ValueError("Scans need >=2 command points and 2..100 DDIM steps")
@@ -367,7 +413,7 @@ def _run_locked(config):
     sampler = StatefulSampler(training, config.seed, config.stage.index == 1)
     protocol = dict(
         controller_kind=model.kind,
-        task_policy=TURN_POLICY,
+        task_policy=model.task_policy,
         stage=config.stage.index,
         backbone_sha256=model.backbone_sha256,
         backbone_config=OmegaConf.to_container(config.backbone, resolve=True),
@@ -451,7 +497,7 @@ def _run_locked(config):
             protocol=protocol,
             execution_lineage=execution_lineage,
             controller_kind=model.kind,
-            task_policy=TURN_POLICY,
+            task_policy=model.task_policy,
             stage=config.stage.index,
             backbone_sha256=model.backbone_sha256,
             backbone_config=OmegaConf.to_container(config.backbone, resolve=True),

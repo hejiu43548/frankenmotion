@@ -12,7 +12,12 @@ import torch
 
 from shared_motion.adapter.network import SharedCommands
 from shared_motion.training.adapters import RootControl, TaskControl
-from shared_motion.training.catalog import COMMAND_RANGES, TASK_NAMES, measure
+from shared_motion.training.catalog import (
+    ACTIVE_TASK_NAMES,
+    COMMAND_RANGES,
+    TASK_NAMES,
+    measure_commands,
+)
 from shared_motion.training.data import MotionDataset, StatefulSampler, assert_disjoint
 from shared_motion.training.geometry import Skeleton
 from shared_motion.training.model import (
@@ -98,7 +103,7 @@ class StagedTrainingTest(unittest.TestCase):
         for controller in ["with_root", "without_root"]:
             for stage in [1, 2, 3]:
                 config = composed(stage, controller)
-                self.assertEqual(len(config.data.tasks), 20)
+                self.assertEqual(len(config.data.tasks), 19)
                 self.assertNotIn("spin", config.data.tasks)
                 self.assertEqual(config.stage.index, stage)
             for loss in ["free_generation", "main_replay", "command_only"]:
@@ -122,7 +127,7 @@ class StagedTrainingTest(unittest.TestCase):
                 for parameter in task.parameters()
                 if parameter.requires_grad
             ),
-            597888,
+            598144,
         )
         self.assertEqual(
             sum(parameter.numel() for parameter in SharedCommands(1024).parameters()),
@@ -131,14 +136,16 @@ class StagedTrainingTest(unittest.TestCase):
         for controller in ["with_root", "without_root"]:
             config = self.config(2, controller, "unused")
             model = build_model(config, "task").eval()
-            dataset = MotionDataset(self.data / "train.json", "train", TASK_NAMES)
-            batch = dataset.batch(list(range(20)), "cpu")
+            dataset = MotionDataset(
+                self.data / "train.json", "train", ACTIVE_TASK_NAMES
+            )
+            batch = dataset.batch(list(range(19)), "cpu")
             skeleton = Skeleton(self.data / "skeleton.npz")
             commands = batch["quantity"]
             with torch.no_grad():
-                generated = model.sample(batch, commands, skeleton, list(range(20)), 2)
+                generated = model.sample(batch, commands, skeleton, list(range(19)), 2)
                 baseline = model.sample(
-                    batch, commands, skeleton, list(range(20)), 2, "backbone"
+                    batch, commands, skeleton, list(range(19)), 2, "backbone"
                 )
                 self.assertTrue(torch.equal(generated, baseline))
                 poisoned = dict(
@@ -149,12 +156,14 @@ class StagedTrainingTest(unittest.TestCase):
                 self.assertTrue(
                     torch.equal(
                         generated,
-                        model.sample(poisoned, commands, skeleton, list(range(20)), 2),
+                        model.sample(poisoned, commands, skeleton, list(range(19)), 2),
                     )
                 )
             self.assertEqual(
-                measure(skeleton, generated, batch["task"], batch["lengths"]).shape,
-                (20,),
+                measure_commands(
+                    skeleton, generated, batch["task"], batch["lengths"]
+                ).shape,
+                (19, 3),
             )
 
     def test_manifest_missing_tasks_and_leakage(self):
@@ -164,21 +173,21 @@ class StagedTrainingTest(unittest.TestCase):
             json.dumps([row for row in records if row["task"] != "arm_circle"])
         )
         with self.assertRaisesRegex(ValueError, "Missing train task"):
-            MotionDataset(incomplete, "train", TASK_NAMES)
-        dataset = MotionDataset(self.data / "train.json", "train", TASK_NAMES)
+            MotionDataset(incomplete, "train", ACTIVE_TASK_NAMES)
+        dataset = MotionDataset(self.data / "train.json", "train", ACTIVE_TASK_NAMES)
         with self.assertRaisesRegex(ValueError, "leakage"):
             assert_disjoint(dataset, dataset)
         sampler = StatefulSampler(dataset, 31)
         first = sampler.batches(7)
         state = sampler.state_dict()
-        expected = sampler.batches(33)
+        expected = sampler.batches(31)
         restored = StatefulSampler(dataset, 0)
         restored.load_state_dict(state)
-        self.assertEqual(expected, restored.batches(33))
+        self.assertEqual(expected, restored.batches(31))
         indices = first[0] + expected[0]
         counts = {
             name: sum(dataset.rows[index]["task"] == name for index in indices)
-            for name in TASK_NAMES
+            for name in ACTIVE_TASK_NAMES
         }
         self.assertEqual(set(counts.values()), {2})
 

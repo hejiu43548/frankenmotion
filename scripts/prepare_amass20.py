@@ -17,7 +17,7 @@ import torch
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 from shared_motion.adapter.catalog import NEW
-from shared_motion.training.catalog import TASK_NAMES, measure
+from shared_motion.training.catalog import ACTIVE_TASK_NAMES, TASK_NAMES, measure
 from shared_motion.training.geometry import Skeleton
 from shared_motion.training.model import file_sha256
 from shared_motion.training.runner import save_json
@@ -107,10 +107,38 @@ def load_running_records(directory, split):
     return rows
 
 
+def load_reach_records(directory, split):
+    from shared_motion.training.reach import REACH_REVISION
+
+    if not directory:
+        raise ValueError("Set reach_data to a verified XYZ reach repair")
+    rows = [
+        record
+        for record in json.loads((Path(directory) / f"{split}.json").read_text())
+        if record["task"] == "reach"
+    ]
+    if not rows:
+        raise ValueError("Missing XYZ reach records")
+    for record in rows:
+        if (
+            record.get("semantic_revision") != REACH_REVISION
+            or record.get("split") != split
+            or len(record.get("target_xyz_m", [])) != 3
+        ):
+            raise ValueError("Legacy scalar reach data rejected")
+        if file_sha256(record["cache"]) != record.get("cache_sha256"):
+            raise ValueError("Reach cache hash mismatch")
+    return rows
+
+
 @hydra.main(version_base="1.3", config_path="../config", config_name="prepare_amass20")
 def main(config):
     running = {
         split: load_running_records(config.get("running_data"), split)
+        for split in ["train", "val"]
+    }
+    reaching = {
+        split: load_reach_records(config.get("reach_data"), split)
         for split in ["train", "val"]
     }
     output = Path(config.output).resolve()
@@ -140,7 +168,7 @@ def main(config):
         for key in split_ids[split]:
             annotation = annotations[key]
             for task, definition in NEW.items():
-                if task in ["jog", "march"]:
+                if task in ["jog", "march", "point"]:
                     continue
                 if not re.search(
                     definition["pattern"], annotation["caption_label"], re.I
@@ -317,23 +345,37 @@ def main(config):
             )
     totals = {}
     for split in ["train", "val"]:
-        original = json.loads(Path(config[f"base_{split}"]).read_text())
+        original = [
+            record
+            for record in json.loads(Path(config[f"base_{split}"]).read_text())
+            if record["task"] not in ["reach", "point"]
+        ]
         # Preserve existing11 classes exactly, except resolving their relative cache paths.
         for record in original:
             cache = Path(record["cache"])
             record["cache"] = str(
                 cache if cache.is_absolute() else Path(config.cache_root) / cache
             )
-        additions = [
-            record for record in accepted if record["split"] == split
-        ] + running[split]
+        additions = (
+            [record for record in accepted if record["split"] == split]
+            + running[split]
+            + reaching[split]
+        )
         rows = original + additions
         counts = Counter(record["task"] for record in rows)
-        if set(counts) != set(TASK_NAMES):
-            raise ValueError(f"Missing tasks in {split}: {set(TASK_NAMES)-set(counts)}")
+        if set(counts) != set(ACTIVE_TASK_NAMES):
+            raise ValueError(
+                f"Missing tasks in {split}: {set(ACTIVE_TASK_NAMES)-set(counts)}"
+            )
         save_json(output / f"{split}.json", rows)
         totals[split] = dict(counts)
-    all_new = accepted + running["train"] + running["val"]
+    all_new = (
+        accepted
+        + running["train"]
+        + running["val"]
+        + reaching["train"]
+        + reaching["val"]
+    )
     save_json(output / "new9_index.json", all_new)
     save_json(
         output / "running_provenance.json",
@@ -373,7 +415,7 @@ def main(config):
             conversion_source_sha256=file_sha256(config.conversion_module),
             source_sha256=file_sha256(__file__),
             limitations=[
-                "Seven added tasks use legacy caption/time selection; jog/march require repaired category/gait records.",
+                "Six added tasks use legacy selection; jog/march require repaired gait records; point is merged into XYZ reach.",
                 "Global captions can describe a broader sequence; no generated templates.",
                 "Running validation source counts and limitations are inherited from running_data; windows are not independent sources.",
             ],

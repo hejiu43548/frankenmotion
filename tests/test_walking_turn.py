@@ -9,6 +9,7 @@ import unittest
 import torch
 
 from shared_motion.training.catalog import (
+    ACTIVE_TASK_NAMES,
     COMMAND_RANGES,
     TASK_NAMES,
     command_error,
@@ -28,7 +29,7 @@ class WalkingTurnTest(unittest.TestCase):
     def test_signed_angles_root_conditions_and_directional_text(self):
         with tempfile.TemporaryDirectory() as directory:
             root = make_data(directory)
-            data = MotionDataset(root / "train.json", "train", TASK_NAMES)
+            data = MotionDataset(root / "train.json", "train", ACTIVE_TASK_NAMES)
             turn_index = TASK_NAMES.index("turn")
             commands = torch.tensor([-3.4, 3.4])
             indices = scan_indices(data, turn_index, commands, turn_index)
@@ -47,7 +48,7 @@ class WalkingTurnTest(unittest.TestCase):
                 places=5,
             )
             for _ in range(5):
-                sampled = sample_commands(batch, COMMAND_RANGES, turn_index)
+                sampled = sample_commands(batch, COMMAND_RANGES, turn_index)[:, 0]
                 self.assertTrue(torch.equal(sampled.sign(), commands.sign()))
                 self.assertTrue((sampled.abs() >= 0.35).all())
                 self.assertTrue((sampled.abs() <= 3.5).all())
@@ -73,7 +74,7 @@ class WalkingTurnTest(unittest.TestCase):
                     backbone_sha256=model.backbone_sha256,
                     tasks=TASK_NAMES,
                 )
-                with self.assertRaisesRegex(ValueError, "task semantics differ"):
+                with self.assertRaisesRegex(ValueError, "semantics differ"):
                     checkpoint_compatible(legacy, model, TASK_NAMES)
 
     def test_reject_legacy_sources_and_preserve_other_tasks(self):
@@ -87,16 +88,16 @@ class WalkingTurnTest(unittest.TestCase):
             path = root / "legacy.json"
             path.write_text(json.dumps(old))
             with self.assertRaisesRegex(ValueError, "Unverified/legacy turn source"):
-                MotionDataset(path, "train", TASK_NAMES)
+                MotionDataset(path, "train", ACTIVE_TASK_NAMES)
             with self.assertRaisesRegex(ValueError, "Unverified/legacy turn source"):
-                MotionDataset(path, "train", TASK_NAMES, deduplicate=True)
+                MotionDataset(path, "train", ACTIVE_TASK_NAMES, deduplicate=True)
             damaged = copy.deepcopy(rows)
             next(row for row in damaged if row["task"] == "turn")[
                 "cache_sha256"
             ] = "wrong"
             path.write_text(json.dumps(damaged))
             with self.assertRaisesRegex(ValueError, "cache hash"):
-                MotionDataset(path, "train", TASK_NAMES)
+                MotionDataset(path, "train", ACTIVE_TASK_NAMES)
         nonturn = dict(task="squat", split="train", extra={"keep": "verbatim"})
         old_turn = dict(task="turn", split="train")
         replacement = [dict(task="turn", split="train", id="moving")]

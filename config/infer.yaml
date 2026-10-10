@@ -6,7 +6,7 @@ checkpoint: ???
 text_cache: ???
 skeleton: ???
 task: reach
-command: 0.4
+command: [0.4, -0.2, 0.2] # reach XYZ metres; scalar commands for other tasks
 seed: 0
 ddim_steps: 50
 device: cuda

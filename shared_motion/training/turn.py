@@ -86,13 +86,20 @@ def scan_indices(dataset, task_index, commands, turn_index):
 
 
 def sample_commands(batch, command_ranges, turn_index):
-    bounds = batch["motion"].new_tensor(command_ranges)[batch["task"]]
-    commands = bounds[:, 0] + torch.rand(len(bounds), device=bounds.device) * (
-        bounds[:, 1] - bounds[:, 0]
+    from .reach import REACH_INDEX, command_bounds, command_vectors, dimension_mask
+
+    quantities = command_vectors(batch["quantity"], batch["task"])
+    bounds = command_bounds(quantities, batch["task"], command_ranges)
+    commands = bounds[..., 0] + torch.rand_like(quantities) * (
+        bounds[..., 1] - bounds[..., 0]
     )
+    commands *= dimension_mask(batch["task"])
     turning = batch["task"] == turn_index
     magnitudes = TURN_MIN_MAGNITUDE + torch.rand(
-        int(turning.sum()), device=bounds.device
+        int(turning.sum()), device=commands.device
     ) * (TURN_RANGE[1] - TURN_MIN_MAGNITUDE)
-    commands[turning] = magnitudes * batch["quantity"][turning].sign()
+    commands[turning, 0] = magnitudes * quantities[turning, 0].sign()
+    # Real target support only; a Cartesian bounding box is not a reachable workspace.
+    reaching = batch["task"] == REACH_INDEX
+    commands[reaching] = quantities[reaching]
     return commands

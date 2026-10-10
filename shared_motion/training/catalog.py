@@ -8,6 +8,8 @@ from shared_motion.adapter.kinematics import quantity
 from .turn import TURN_RANGE, signed_turn
 
 TASK_NAMES = TASKS + list(NEW)
+# Stable checkpoint IDs; retired point slot is reserved, never sampled.
+ACTIVE_TASK_NAMES = [name for name in TASK_NAMES if name != "point"]
 ADDITIONAL_TASK_DEFINITIONS = {
     name: dict(definition) for name, definition in NEW.items()
 }
@@ -108,3 +110,24 @@ def measure(skeleton, motion, task_indices, lengths):
     for grouped_index, sample_index in enumerate(order):
         inverse_order[sample_index] = grouped_index
     return torch.cat(measured)[inverse_order]
+
+
+def measure_commands(skeleton, motion, task_indices, lengths):
+    """Return XYZ for reach and [scalar,0,0] for every other active task."""
+    from .reach import REACH_INDEX, RETIRED_POINT_INDEX, target_xyz
+
+    if (task_indices == RETIRED_POINT_INDEX).any():
+        raise ValueError("point is merged into reach")
+    output = motion.new_zeros(len(motion), 3)
+    scalar_indices = (task_indices != REACH_INDEX).nonzero(as_tuple=True)[0]
+    if len(scalar_indices):
+        output[scalar_indices, 0] = measure(
+            skeleton,
+            motion[scalar_indices],
+            task_indices[scalar_indices],
+            lengths[scalar_indices],
+        )
+    for index in (task_indices == REACH_INDEX).nonzero(as_tuple=True)[0].tolist():
+        positions = skeleton(motion[index : index + 1, : int(lengths[index])])
+        output[index] = target_xyz(positions)[0]
+    return output
