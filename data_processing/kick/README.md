@@ -2,8 +2,8 @@
 
 Current candidate: Betail
 `/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1`.
-It contains33train/2val events across28/2 original recordings; user review is
-pending. Other19 task records are unchanged, including provisionally accepted
+It contains33train/2val events across28/2 original recordings; user review was
+provisionally accepted on2026-10-10. Parameter-coverage limitations remain. Other19 task records are unchanged, including provisionally accepted
 wave and strike. No training has started.
 
 Run the Hydra-configured tools from the repository root:
