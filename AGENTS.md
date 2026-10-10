@@ -81,3 +81,6 @@ feat|doc|refactor|fix|chore(scope): digest
 detail
 ```
 格式
+- 只有具有长期使用意义的脚本才放置到scripts文件夹，否则应该放到.codex的临时工作区，实验记录也是同理，除了用户指定的大规模重新训练外，其余
+小型的实验不需要记录到experiments
+- 复现数据筛选的代码需要保存到data_processing中，方便复现和代码写作

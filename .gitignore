@@ -64,3 +64,4 @@ __pycache__/
 outputs_training/
 experiments/**/run.lock
 experiments/**/train.log
+.codex/
