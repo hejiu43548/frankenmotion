@@ -1,0 +1,20 @@
+{
+  "checked_at": "2026-10-09T10:52:33.546777+00:00",
+  "checkpoint_step": 20000,
+  "checkpoint_sha256": "ab1904b714e29c0c5019d2b2f9b7b4664bb3a632a604ace04e46922f1c57a452",
+  "optimizer_steps": [
+    20000
+  ],
+  "seen_training_records": 12030,
+  "total_training_records": 12030,
+  "frozen_root_matches_import": true,
+  "finite_adapter": true,
+  "source_initial_and_manifest_hashes_verified": true,
+  "new_rollouts_recomputed": 200,
+  "max_quantity_error": 1.6689300537109375e-06,
+  "max_mae_json_discrepancy": 1.7881393432617188e-07,
+  "recomputed_macro_normalized_mae": 0.5183664739977241,
+  "fixed_texts_seeds_commands_verified": true,
+  "prior_audit": "monitor_scan_audit_010000.json",
+  "cumulative_audited_rollouts": 600
+}

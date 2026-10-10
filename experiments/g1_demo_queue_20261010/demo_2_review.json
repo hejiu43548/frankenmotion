@@ -1,0 +1,331 @@
+{
+  "demo": 2,
+  "decision": "accepted_with_documented_limitations",
+  "reviewed_at": "2026-10-09T18:54:35.083390+00:00",
+  "reviewer_thread_id": "01a1219b-bbd2-73f3-b5ae-9334981b496e",
+  "child_thread_id": "01a121f5-e783-70c1-be76-98fe21308085",
+  "scope": "One calibrated continuous G1 episode: walk toward viewer/greeting area,wave,bow,recover,moving left turn,and curved walk back near the initial position.",
+  "independent_work": {
+    "reproduction_command": "bash scripts/reproduce_g1_demo2.sh physics parent_review_20261010_0253",
+    "reproduction_directory": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_2_20261010/attempts/parent_review_20261010_0253",
+    "array_comparisons": {
+      "qpos": {
+        "equal": true,
+        "max_abs_difference": 0.0
+      },
+      "qvel": {
+        "equal": true,
+        "max_abs_difference": 0.0
+      },
+      "body_pos": {
+        "equal": true,
+        "max_abs_difference": 0.0
+      },
+      "reference": {
+        "equal": true,
+        "max_abs_difference": 0.0
+      },
+      "peak_actuator_force": {
+        "equal": true,
+        "max_abs_difference": 0.0
+      },
+      "telemetry": {
+        "equal": true,
+        "max_abs_difference": 0.0
+      }
+    },
+    "assets_hashes_verified": 78,
+    "controller_source_hashes_verified": 2,
+    "delivery_hashes_verified": 69,
+    "shared_physics_generation_unchanged_from_demo1": true,
+    "visual_review": "Inspected full-episode video-derived samples at2fps (60frames),12 transition-before/middle/after frames,9 wave closeups and3 upright/peak/recovered bow frames. Inspected repeated arm greeting,forward trunk bow,left moving turn and curved return;not claiming real-time viewing of every frame.",
+    "video_path": "/Users/andy/.codex/visualizations/2026/10/09/01a121f5-e783-70c1-be76-98fe21308085/demo2_continuous.mp4",
+    "video_sha256": "1c24467a54850e37dcd5a1a347e8b3303ba4388d32f54f504474b30592312c28",
+    "video_frames": 1492,
+    "video_fps": 50,
+    "code_review": [
+      "g1_demo2 entry uses previously verified pinned generation and unchanged actual physics controller loop",
+      "compose applies declared crops,speeds,reference-only yaw profile,stationary foot IK and reversed bow prefix;five requested action segments,not hidden extra walk/turn",
+      "four quintic support-foot bridges;FK qpos writes are confined to separate reference-solving state",
+      "continuous simulator still updates only clipped joint torques after one initialization;no physical root overrides,teleports,external force or segment resets",
+      "audit measures return from ACTUAL first/last qpos,heading against initial+pi,semantics by ACTUAL body/FK,not reference closure"
+    ]
+  },
+  "independent_measurements": {
+    "hashes.json_verified_count": 78,
+    "controller_source_hashes.json_verified_count": 2,
+    "delivery_hashes_verified_count": 69,
+    "reproduction_directory": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_2_20261010/attempts/parent_review_20261010_0253",
+    "return_distance_m": 0.20378648732834403,
+    "heading_error_deg": 1.8211868419583652,
+    "transitions": [
+      {
+        "interval_s": [
+          3.0,
+          4.2
+        ],
+        "foot_excursion_m": 0.006235060080029698,
+        "min_support_N": 280.84260405688383,
+        "unsupported_substeps": 0
+      },
+      {
+        "interval_s": [
+          10.1,
+          11.299999999999999
+        ],
+        "foot_excursion_m": 0.0017110836783276414,
+        "min_support_N": 290.6091447514536,
+        "unsupported_substeps": 0
+      },
+      {
+        "interval_s": [
+          16.14,
+          17.34
+        ],
+        "foot_excursion_m": 0.007092935030436107,
+        "min_support_N": 270.7947562485642,
+        "unsupported_substeps": 0
+      },
+      {
+        "interval_s": [
+          20.68,
+          21.88
+        ],
+        "foot_excursion_m": 0.002583505222849098,
+        "min_support_N": 274.4685476007571,
+        "unsupported_substeps": 0
+      }
+    ],
+    "wave": {
+      "lateral_peaks": 4,
+      "lateral_troughs": 4,
+      "right_wrist_lateral_range_m": 0.4544509415112484
+    },
+    "bow_pitch_start_peak_end_deg": [
+      -0.08289431194867006,
+      29.1953804349493,
+      1.1683998515087093
+    ],
+    "hold_drift_m": 0.013446793512920847,
+    "unsupported_substeps": 10,
+    "shared_physics_generation_unchanged_from_demo1": true
+  },
+  "metrics": {
+    "complete": true,
+    "return_distance_m": 0.20378648732834403,
+    "return_threshold_m": 0.3,
+    "heading_error_deg": 1.8211868419583652,
+    "heading_threshold_deg": 15.0,
+    "return_pass": true,
+    "heading_pass": true,
+    "root_height_min_m": 0.737479908573583,
+    "root_reference_rmse_m": 0.4442905049336998,
+    "joint_reference_rmse_rad": 0.41418268888924753,
+    "max_joint_limit_violation_rad": 0.0,
+    "max_torque_limit_ratio": 1.0,
+    "nonfoot_ground_contacts": 0,
+    "unsupported_seconds": 0.02,
+    "max_penetration_m": 0.0036192417919491916,
+    "mean_contact_slip_m_s": 0.009146334337344993,
+    "peak_contact_slip_m_s": 1.960156349499154,
+    "segments": [
+      {
+        "name": "walk_out",
+        "interval_s": [
+          0.0,
+          3.0
+        ],
+        "actual_displacement_xy": [
+          0.5305848140716158,
+          0.04745131790591116
+        ],
+        "actual_path_m": 0.778464549926406,
+        "yaw_change_deg": 13.207510604241637,
+        "wrist_relative_range_xyz": [
+          0.1488486710162302,
+          0.08753682624854245,
+          0.03187265920639216
+        ],
+        "wrist_relative_height_max": -0.040358776561615704,
+        "torso_pitch_deg": [
+          3.4555241598441437,
+          8.861282400260608,
+          4.19586367163568
+        ],
+        "support_min_N": 240.31599164482708,
+        "unsupported_seconds": 0.0
+      },
+      {
+        "name": "wave",
+        "interval_s": [
+          4.2,
+          10.1
+        ],
+        "actual_displacement_xy": [
+          -0.00973146711671835,
+          -0.01423995604124148
+        ],
+        "actual_path_m": 0.5931006445435528,
+        "yaw_change_deg": -1.9205094428912892,
+        "wrist_relative_range_xyz": [
+          0.4065951081541188,
+          0.4544509415112484,
+          0.4239166396077688
+        ],
+        "wrist_relative_height_max": 0.5635442409330705,
+        "torso_pitch_deg": [
+          -0.1863930046632788,
+          5.294189318697432,
+          1.9840081881656986
+        ],
+        "support_min_N": 277.54648894080634,
+        "unsupported_seconds": 0.0
+      },
+      {
+        "name": "bow",
+        "interval_s": [
+          11.3,
+          16.14
+        ],
+        "actual_displacement_xy": [
+          0.022525653061934547,
+          0.011385427276606241
+        ],
+        "actual_path_m": 0.1370199456320844,
+        "yaw_change_deg": -1.141550686031732,
+        "wrist_relative_range_xyz": [
+          0.03622708408292005,
+          0.039740979431154594,
+          0.05411899733246968
+        ],
+        "wrist_relative_height_max": -0.03526130056170229,
+        "torso_pitch_deg": [
+          -0.08289431194866385,
+          29.195380434949318,
+          1.1683998515087057
+        ],
+        "support_min_N": 319.8839710181246,
+        "unsupported_seconds": 0.0
+      },
+      {
+        "name": "turn",
+        "interval_s": [
+          17.34,
+          20.68
+        ],
+        "actual_displacement_xy": [
+          -0.01143267935231268,
+          0.7060945712498714
+        ],
+        "actual_path_m": 1.0321137275827001,
+        "yaw_change_deg": 182.37773781888902,
+        "wrist_relative_range_xyz": [
+          0.3408939462844944,
+          0.22431372921442408,
+          0.11446926533196786
+        ],
+        "wrist_relative_height_max": -0.0037995837199463235,
+        "torso_pitch_deg": [
+          12.772526966650357,
+          17.43239270229403,
+          6.753273402304166
+        ],
+        "support_min_N": 61.52199292527286,
+        "unsupported_seconds": 0.02
+      },
+      {
+        "name": "walk_back",
+        "interval_s": [
+          21.88,
+          27.82
+        ],
+        "actual_displacement_xy": [
+          -0.5323721719754388,
+          -1.013588157834925
+        ],
+        "actual_path_m": 1.4467950822467943,
+        "yaw_change_deg": -11.523576171395678,
+        "wrist_relative_range_xyz": [
+          0.14792860304878336,
+          0.09240171785570214,
+          0.04751984795390854
+        ],
+        "wrist_relative_height_max": -0.020958430373570206,
+        "torso_pitch_deg": [
+          1.6830401569746174,
+          10.305140793357435,
+          1.8370057113547964
+        ],
+        "support_min_N": 257.4492457988274,
+        "unsupported_seconds": 0.0
+      }
+    ],
+    "transitions": [
+      {
+        "start": 3.0,
+        "end": 4.2,
+        "from_name": "walk_out",
+        "to_name": "wave",
+        "planted_foot": "right",
+        "maximum_reference_plant_error_m": 3.449331347206716e-05,
+        "actual_plant_excursion_m": 0.006235060080029698,
+        "support_min_N": 280.84260405688383,
+        "unsupported_seconds": 0.0,
+        "peak_joint_velocity_rad_s": 2.8983192583184985
+      },
+      {
+        "start": 10.1,
+        "end": 11.299999999999999,
+        "from_name": "wave",
+        "to_name": "bow",
+        "planted_foot": "right",
+        "maximum_reference_plant_error_m": 2.33869268502837e-05,
+        "actual_plant_excursion_m": 0.0017110836783276414,
+        "support_min_N": 290.6091447514536,
+        "unsupported_seconds": 0.0,
+        "peak_joint_velocity_rad_s": 9.029591572342994
+      },
+      {
+        "start": 16.14,
+        "end": 17.34,
+        "from_name": "bow",
+        "to_name": "turn",
+        "planted_foot": "right",
+        "maximum_reference_plant_error_m": 1.5716819560674435e-05,
+        "actual_plant_excursion_m": 0.007092935030436107,
+        "support_min_N": 270.7947562485642,
+        "unsupported_seconds": 0.0,
+        "peak_joint_velocity_rad_s": 4.590698875272363
+      },
+      {
+        "start": 20.68,
+        "end": 21.88,
+        "from_name": "turn",
+        "to_name": "walk_back",
+        "planted_foot": "right",
+        "maximum_reference_plant_error_m": 7.017345628804254e-05,
+        "actual_plant_excursion_m": 0.002583505222849098,
+        "support_min_N": 274.4685476007571,
+        "unsupported_seconds": 0.0,
+        "peak_joint_velocity_rad_s": 2.0672197704234625
+      }
+    ]
+  },
+  "thresholds": {
+    "actual_return_distance_m": 0.3,
+    "actual_reverse_heading_error_deg": 15,
+    "transition_support_foot_excursion_m": 0.03
+  },
+  "limitations": [
+    "Selected and open-loop-calibrated episode,not general arbitrary-command/seed return guarantee.",
+    "Outward distance0.53m and curved return;does not retrace identical straight line.",
+    "Generated motion references explicitly corrected:wave/bow stationary-feet IK,yaw drift removal,bow reversed prefix,return heading profile[0,40,40,-30]deg.No claim of untouched generation.",
+    "Broad two-arm greeting with fixed hands,not finger articulation;29deg bow has shallow double peak.",
+    "10physics substeps(20ms)below5N support during turn;all4 transitions supported with no unsupported substeps.",
+    "Actual reference root RMSE0.444m,final error0.556m,joint RMSE0.414rad;shoulder error about1rad.This accepts visible task behavior and actual return,not precise reference tracking.",
+    "Contact slip peak1.960m/s and soft penetration3.619mm remain.",
+    "Wave command0.3m exceeds original0.08–0.22m request bounds;successful selected greeting is not amplitude-control generalization validation.",
+    "Uses previously disclosed frozen native SONIC1751/994 in place of unavailable2350released tracker."
+  ],
+  "next_demo_authorized": 3
+}

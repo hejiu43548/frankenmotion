@@ -1,0 +1,33 @@
+FrankenMotion 三个 G1 Demo 最终验收（2026-10-10，Asia/Shanghai）
+
+训练：完整20任务，仅wave/strike/kick/sidestep/turn替换清洗数据；10897训练记录全部使用，70000步Stage2完成。71次扫描、14200条rollout及冻结/重算审计通过。
+全部demo同一checkpoint：betail:/mnt/sda2/frankenmotion/outputs_amass/shared20_clean5_stage2_20261010/artifacts/checkpoint_058000.pt
+SHA256：1bcdb52664e3648a455ad4b938b7f404b309497b5ca1d8fb87c4236053b2712f
+兼容生成代码：/mnt/sda2/frankenmotion/code/shared20_clean5_stage2_0344b7c
+
+Demo1 walk→kick→strike：连续14.52s。足/手真实沙袋接触峰97.74/146.62N，冲量3.705/9.739Ns；沙袋最大质心位移0.1937m。无跌倒，切换有支撑。
+视频：/Users/andy/.codex/visualizations/2026/10/09/01a121d3-c8c6-75d0-af34-72fc69a988b2/demo1_continuous.mp4
+Demo2 walk→wave→bow→turn→walk：连续29.82s。实际回归误差0.203786m，反向朝向误差1.821187deg，实际鞠躬约29.2deg。四次切换均有支撑，无跌倒。
+视频：/Users/andy/.codex/visualizations/2026/10/09/01a121f5-e783-70c1-be76-98fe21308085/demo2_continuous.mp4
+Demo3 walk→turn left→walk→turn left：连续18.28s。实际回归误差0.138794m，初始朝向误差2.270581deg；两次左转177.406/175.990deg。保持2s全过程距起点<=0.149793m。三次切换有支撑，无跌倒。
+视频：/Users/andy/.codex/visualizations/2026/10/09/01a12205-2e36-7910-932b-42f9932a1d36/demo3_continuous.mp4
+
+父对话独立审查：三个demo逐一复跑连续物理仿真、逐数组比对、检查代码/资产哈希/量化日志，检查全程采样画面及关键切换/动作帧。六组关键物理数组均完全一致。结论为accepted_with_documented_limitations；详见本目录demo_1_review.json、demo_2_review.json、demo_3_review.json。
+
+复现：在/Users/andy/.codex/worktrees/7a7d/frankenmotion执行以下命令（为每次复跑指定全新名称，保留已有结果）：
+bash scripts/reproduce_g1_demo.sh physics YOUR_UNIQUE_NAME
+bash scripts/reproduce_g1_demo2.sh physics YOUR_UNIQUE_NAME
+bash scripts/reproduce_g1_demo3.sh physics YOUR_UNIQUE_NAME
+各入口支持full替代physics，重做生成/GMR/物理；具体约定以每项report.txt为准。
+配置：config/g1_demo.yaml、config/g1_demo2.yaml、config/g1_demo3.yaml；每项episode/code保存冻结副本。
+各项报告：experiments/g1_demo_1_20261010/report.txt、experiments/g1_demo_2_20261010/report.txt、experiments/g1_demo_3_20261010/report.txt。
+大文件：betail:/mnt/sda2/frankenmotion/outputs_amass/g1_demo_N_20261010，N=1,2,3；原生成人体、GMR、组合参考、实际物理及失败试验均保留。
+
+资产：官方FrankenMotion底座/home/psirobot/checkpoints/frankenmotion/frankenmotion.ckpt；GMR来自transfer_charlie_20261008快照；G1模型为gear_sonic g1_29dof_rev_1_0.xml。各项episode/hashes.json和controller_source_hashes.json保存精确来源和SHA。
+控制器使用此前披露的原生SONIC v1.1 encoder1751/decoder994/29关节，路径/home/psirobot/projects/motion-g1-demo-20261001/run01/assets/policy，替代缺失的released2350 tracker。
+
+局限：是选seed并显式校准参考动作的单场景demo，不能推论任意命令/种子均成功。保留裁剪、重采样、方向校正、支撑脚IK等处理记录。参考跟踪RMSE与瞬时滑移仍较明显；Demo2/3转弯累计20/42ms低支撑，Demo3第三个过渡支撑脚偏移3.04cm。手为固定手模型；未验证实体机器人。全部为真实连续力矩控制物理仿真，无切换reset或物理根位置强制覆盖。
+
+队列状态completed；automation frankenmotion已设置PAUSED并读取配置核实。
+
+2026-10-10 后续Demo2修复已独立验收：phase_return_final。回程桥停顿0.52s→0，回归误差18.33cm、朝向误差0.3356度；峰值滑移2.554m/s高于原版。新版视频与旧版独立保留。新版报告：/Users/andy/.codex/worktrees/7a7d/frankenmotion/demos/g1/experiments/g1_demo_2_phase_20261010/report.txt；父验收：/Users/andy/.codex/worktrees/7a7d/frankenmotion/demos/g1/experiments/g1_demo_2_phase_20261010/parent_review.json。复现：bash demos/g1/scripts/reproduce_g1_demo2_phase.sh physics UNIQUE_NAME。原三项队列不重启。

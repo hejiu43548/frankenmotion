@@ -1,0 +1,56 @@
+[
+  {
+    "label": "Transition 1 before",
+    "frame": 159,
+    "time_s": 3.18,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "label": "Transition 1 middle",
+    "frame": 170,
+    "time_s": 3.4,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "label": "Transition 1 after",
+    "frame": 181,
+    "time_s": 3.62,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "label": "Transition 2 before",
+    "frame": 304,
+    "time_s": 6.08,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "label": "Transition 2 middle",
+    "frame": 315,
+    "time_s": 6.3,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "label": "Transition 2 after",
+    "frame": 326,
+    "time_s": 6.52,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "label": "Transition 3 before",
+    "frame": 394,
+    "time_s": 7.88,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "label": "Transition 3 middle",
+    "frame": 405,
+    "time_s": 8.1,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "label": "Transition 3 after",
+    "frame": 416,
+    "time_s": 8.32,
+    "source": "actual.npz:qpos"
+  }
+]

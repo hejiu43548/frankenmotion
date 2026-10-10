@@ -1,0 +1,29 @@
+{
+  "thresholds": {
+    "actual_return_m": 0.3,
+    "final_heading_error_deg": 15,
+    "minimum_final_hold_s": 2
+  },
+  "actual_return_distance_m": 0.03687618035234461,
+  "final_heading_error_deg": 2.0397915010392444,
+  "actual_turn_angles_deg": {
+    "turn_left_1": 179.11608990793067,
+    "turn_left_2": 177.40551916071067
+  },
+  "checks": {
+    "exactly_four_segments": true,
+    "completed_without_fall": true,
+    "return_distance": true,
+    "final_heading": true,
+    "two_distinct_left_turns": true,
+    "total_full_left_rotation": true,
+    "supported_transitions": true,
+    "supported_final_hold": true,
+    "remains_near_start_during_hold": true,
+    "bounded_torque": true,
+    "no_joint_limit_violation": true,
+    "no_nonfoot_floor_contact": true,
+    "finite_states": true
+  },
+  "passed": true
+}

@@ -1,0 +1,17 @@
+{
+  "sha256": "1c24467a54850e37dcd5a1a347e8b3303ba4388d32f54f504474b30592312c28",
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "50/1",
+        "duration": "29.840000",
+        "nb_frames": "1492"
+      }
+    ]
+  },
+  "sample_fps": 2
+}

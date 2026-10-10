@@ -1,0 +1,18 @@
+{
+  "complete": true,
+  "fall_time": null,
+  "frames": 646,
+  "duration": 12.9,
+  "root_height_min": 0.7300757102900957,
+  "root_end": [
+    -0.007384542261519307,
+    -0.03612922934365584,
+    0.7794207970128205
+  ],
+  "root_planar_error_final": 0.07880297491775852,
+  "contact_count": 0,
+  "contacts": [],
+  "state_resets": 1,
+  "qpos_overwrites_during_rollout": 0,
+  "controller": "official SONIC ONNX; frozen encoder/decoder; 1751/994 obs; native torque PD"
+}

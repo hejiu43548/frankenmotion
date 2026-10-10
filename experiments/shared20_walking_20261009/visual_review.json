@@ -1,0 +1,38 @@
+{
+  "review_scope": "Skeleton videos generated for63 command samples across20 tasks (3 per class, turn6), plus start/middle/end contact sheets inspected for all20; dense playback not claimed. Full200 rollouts quantified. No skinned mesh, contact labels or naturalness benchmark.",
+  "naturalness_passed": false,
+  "findings": [
+    "Turn moves while rotating, but requested speed remains inaccurate: MAE0.22215m/s at selected7700. Visible poses/paths suggest foot sliding; no claim of ground-truth contact detection.",
+    "Sidestep displacement follows requests well (MAE0.02260m), but feet and root follow largely parallel paths; the step-and-plant pattern is weak in reviewed frames.",
+    "Walk/back_walk/jog have median fractions1.0 with BOTH ankle horizontal speeds above0.1m/s. This is a descriptive sliding warning, not a contact-classification metric.",
+    "March has median net root translation1.430m over fixed validation clips; it is not consistently stationary marching. Only one independent validation caption source exists for this class.",
+    "Squat/bow/clap have recognizable gross pose changes in reviewed frames. Point high command remains undershot. Arm-circle/stretch scalar amplitude alone does not certify a complete circular/stretch sequence.",
+    "Upper-body tasks also drift: median root net displacement twist0.561m, stretch0.421m, raise_hand0.374m. No extra root conditions or corrective transforms were added."
+  ],
+  "best_step": 7700,
+  "best_checkpoint_sha256": "ff5ec6f3f2a7113d158bd7da31a30d2035f098b7e9de3746ef83e3b2e86c81b8",
+  "render_manifest": "render_manifest.json",
+  "reviewed_contact_sheets": [
+    "arm_circle_contact.png",
+    "back_walk_contact.png",
+    "bow_contact.png",
+    "clap_contact.png",
+    "jog_contact.png",
+    "jump_contact.png",
+    "kick_contact.png",
+    "lean_contact.png",
+    "march_contact.png",
+    "point_contact.png",
+    "raise_hand_contact.png",
+    "reach_contact.png",
+    "sidestep_contact.png",
+    "squat_contact.png",
+    "stretch_contact.png",
+    "strike_contact.png",
+    "turn_left_contact.png",
+    "turn_right_contact.png",
+    "twist_contact.png",
+    "walk_contact.png",
+    "wave_contact.png"
+  ]
+}

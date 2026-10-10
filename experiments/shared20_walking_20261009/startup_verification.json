@@ -1,0 +1,28 @@
+{
+  "verified_at": "2026-10-09T09:41:42.399924+00:00",
+  "state": "stage2_running",
+  "supervisor_pid": 1653354,
+  "stage2_pid": 1653399,
+  "observed_step": 760,
+  "stage2_steps": 70000,
+  "stage3_steps": 8800,
+  "train_records": 12030,
+  "val_records": 1505,
+  "initial_scan_rollouts": 200,
+  "initial_scan_ddim_steps": 50,
+  "initial_macro_normalized_mae": 0.637806723350632,
+  "trainable_task_parameters": 597888,
+  "source_hashes_match": true,
+  "gpu_preflight": {
+    "stage2_batch40": true,
+    "stage3_batch20": true,
+    "stage3_training_ddim10": true,
+    "finite_adapter": true,
+    "steps_per_stage": 1,
+    "evaluation_ddim_steps": 2,
+    "production_evaluation_ddim_steps": 50
+  },
+  "automation_id": "frankenmotion",
+  "automation_status": "ACTIVE",
+  "automation_interval_minutes": 10
+}

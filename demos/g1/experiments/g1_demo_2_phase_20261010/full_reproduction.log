@@ -1,0 +1,96 @@
+/home/psirobot/miniconda3/envs/atomic/lib/python3.11/site-packages/torch/nn/modules/transformer.py:385: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+walk generated 120 frames
+wave generated 119 frames
+bow generated 40 frames
+turn generated 48 frames
+[2026-10-10 11:24:03,358][OpenGL.acceleratesupport][INFO] - No OpenGL_accelerate module loaded: No module named 'OpenGL_accelerate'
+retarget walk_2010.npz height 0.7675797139951095 0.8059352124086959
+retarget walk_2011.npz height 0.7739860785818167 0.8059180100186275
+retarget walk_2012.npz height 0.7678863481580286 0.8010195723507575
+retarget walk_2013.npz height 0.7676299837519114 0.8102538086639637
+retarget walk_2014.npz height 0.7767765986014922 0.8113419335962311
+retarget walk_2015.npz height 0.7696844567792076 0.8069227180347215
+retarget wave_2010.npz height 0.7920476095584191 0.8302880127855058
+retarget wave_2011.npz height 0.7687763877546491 0.8334895184499549
+retarget wave_2012.npz height 0.7897883850915353 0.8410365000923152
+retarget wave_2013.npz height 0.7730991055736495 0.842706795100552
+retarget wave_2014.npz height 0.7740132876559431 0.8014878351986298
+retarget wave_2015.npz height 0.7804845744116334 0.8194328855197199
+retarget bow_2010.npz height 0.77682227860107 0.7841253198753777
+retarget bow_2011.npz height 0.7848667030991795 0.7903422499657654
+retarget bow_2012.npz height 0.7784183336468747 0.8002798279616014
+retarget bow_2013.npz height 0.7896811253447115 0.7974868253255473
+retarget bow_2014.npz height 0.7817298886666951 0.7862910145104528
+retarget bow_2015.npz height 0.7719445987754406 0.7924250177550476
+retarget turn_2010.npz height 0.7751767202984745 0.8278139119413824
+retarget turn_2011.npz height 0.7517486438181302 0.8207983782341015
+retarget turn_2012.npz height 0.7538562998706297 0.805636254912455
+retarget turn_2013.npz height 0.7582504291726685 0.8175857765636728
+retarget turn_2014.npz height 0.7507992463447629 0.8128451271900647
+retarget turn_2015.npz height 0.7405360141787332 0.8111098113178028
+[2026-10-10 11:24:12,770][OpenGL.acceleratesupport][INFO] - No OpenGL_accelerate module loaded: No module named 'OpenGL_accelerate'
+phase_full_repeat {'complete': True, 'fall_time': None, 'frames': 1333, 'duration': 26.64, 'root_height_min': 0.7355806706865311, 'root_end': [0.13266915415373562, 0.12647808668380728, 0.78488356742512], 'root_planar_error_final': 0.3876739177951167, 'contact_count': 0, 'state_resets': 1, 'qpos_overwrites_during_rollout': 0, 'controller': 'official SONIC ONNX; frozen encoder/decoder; 1751/994 obs; native torque PD'}
+{"complete": true, "return_distance_m": 0.1832970563731571, "return_threshold_m": 0.3, "heading_error_deg": 0.33557501914705457, "heading_threshold_deg": 15.0, "return_pass": true, "heading_pass": true, "root_height_min_m": 0.7355806706865311, "root_reference_rmse_m": 0.46973926139971695, "joint_reference_rmse_rad": 0.43490654438531884, "max_joint_limit_violation_rad": 0.0, "max_torque_limit_ratio": 1.0, "nonfoot_ground_contacts": 0, "unsupported_seconds": 0.014, "max_penetration_m": 0.0032363331947318453, "mean_contact_slip_m_s": 0.006472611315782647, "peak_contact_slip_m_s": 2.5536711177486753}
+[2026-10-10 11:24:33,323][OpenGL.acceleratesupport][INFO] - No OpenGL_accelerate module loaded: No module named 'OpenGL_accelerate'
+{"wave": {"left": {"local_range_xyz_m": [0.4367115462052322, 0.4266916543999746, 0.4885424055300662], "local_height_max_m": 0.5348886661423243, "lateral_peaks_s": [7.48, 8.7, 9.940000000000001, 10.82], "lateral_troughs_s": [6.720000000000001, 8.16, 9.24, 10.32]}, "right": {"local_range_xyz_m": [0.4044081043066414, 0.4590537762874793, 0.4283699832747445], "local_height_max_m": 0.5637537785606935, "lateral_peaks_s": [6.74, 8.18, 9.4, 10.280000000000001], "lateral_troughs_s": [7.38, 8.66, 9.82, 10.9]}}, "final_hold": {"start_s": 24.64, "seconds": 2.0, "root_drift_m": 0.025151800616292307, "support_min_N": 311.988974754429, "unsupported_seconds": 0.0}}
+{
+  "checks": {
+    "return_bridge_supported": true,
+    "no_return_bridge_pause": true,
+    "nearby_pause_under_80ms": true,
+    "compact_return_bridge": true,
+    "return_heading_range_reduced": true
+  },
+  "return_motion": {
+    "interval_s": [
+      21.74,
+      24.64
+    ],
+    "yaw_start_end_deg": [
+      210.79416998097577,
+      179.85074163594732
+    ],
+    "yaw_min_max_deg": [
+      172.98576189310407,
+      213.80988316056454
+    ],
+    "yaw_range_deg": 40.82412126746047,
+    "final_distance_m": 0.1832970563731571,
+    "net_walk_distance_m": 1.0471764568159116,
+    "path_m": 1.3245982416998903,
+    "final_hold_drift_m": 0.025151800616292307
+  },
+  "transition": {
+    "from_name": "turn",
+    "to_name": "walk_back",
+    "interval_s": [
+      21.54,
+      21.74
+    ],
+    "foot_fore_aft_gap_start_end_m": [
+      0.11701639030551209,
+      0.07016430556574951
+    ],
+    "maximum_fore_aft_gap_m": 0.11701639030551209,
+    "root_speed_min_mean_m_s": [
+      0.15138430642185358,
+      0.3202367701482954
+    ],
+    "swing_forward_velocity_min_max_m_s": [
+      0.4783150899449945,
+      1.056715269014537
+    ],
+    "swing_forward_travel_m": 0.2002529893171191,
+    "swing_backward_travel_m": -0.0,
+    "wide_stance_pause_s": 0.0,
+    "stationary_pause_s": 0.0,
+    "nearby_longest_wide_stance_pause_s": 0.0,
+    "nearby_longest_stationary_pause_s": 0.0,
+    "support_min_N": 245.82522627747116,
+    "unsupported_seconds": 0.0
+  }
+}
+[2026-10-10 11:24:34,989][OpenGL.acceleratesupport][INFO] - No OpenGL_accelerate module loaded: No module named 'OpenGL_accelerate'
+{"reproduction_arrays_equal": true, "return_distance_m": 0.1832970563731571, "heading_error_deg": 0.33557501914705457, "phase_checks": {"return_bridge_supported": true, "no_return_bridge_pause": true, "nearby_pause_under_80ms": true, "compact_return_bridge": true, "return_heading_range_reduced": true}}
+Result: /mnt/sda2/frankenmotion/outputs_amass/g1_demo_2_20261010/reproductions/phase_full_repeat/attempts/phase_full_repeat

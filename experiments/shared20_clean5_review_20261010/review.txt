@@ -1,0 +1,83 @@
+20任务三档视频检查（2026-10-10）
+
+检查点：/mnt/sda2/frankenmotion/outputs_amass/shared20_clean5_stage2_20261010/artifacts/checkpoint_058000.pt
+SHA256：1bcdb52664e3648a455ad4b938b7f404b309497b5ca1d8fb87c4236053b2712f
+完整20类训练，仅五类替换清洗版本；此次显示58000步best，非旧五类模型。
+
+按过去方式每任务低/中/高并排，turn左右分别三档，共21视频/63动作。非turn选择10点扫描的0/4/9；中档是历史离散点，非精确区间中点。turn每方向选择小/中/大绝对角，左负右正。sidestep新范围0.4–1.0m。
+使用此检查点已有纯噪声DDIM扫描存档，固定文本、固定噪声、不重新挑seed，不做重定位/稳定/落地或姿态修正；人体FK，非G1控制仿真。所有视频20fps、帧数与SHA已检查。
+已人工检查每组6个覆盖全程的骨架帧（共378个单档画面）；所有200条FK量重新计算，最大与存档差1.90735e-6。没有声称逐帧看完所有视频。
+
+重点：jump/jog明显未达命令；raise_hand/reach/clap/arm_circle档位响应很弱；wave/kick不单调；turn左右存在不同偏差。bow/stretch的三档幅度相对较好，但这不等于自然性或接触通过。
+
+raise_hand：抬臂可辨，但低中高姿态接近，实测仅0.673→0.723m，低档明显过高。
+  请求：0.350, 0.528, 0.750 m；实测：0.673, 0.690, 0.723 m
+reach：末段伸臂可辨，前段也有抬臂；幅度响应被压缩，高档0.55m只达到0.361m。
+  请求：0.250, 0.383, 0.550 m；实测：0.282, 0.317, 0.361 m
+strike：出拳和收回可辨，三档速度明显分开；低档偏慢，高档伴随较明显腿部/根运动，需注意足部漂移。
+  请求：1.500, 1.944, 2.500 m/s；实测：1.035, 1.760, 2.306 m/s
+wave：有手臂摆动，高档还带另一侧手臂外展；中档0.111m小于低档0.133m，响应不单调。
+  请求：0.080, 0.142, 0.220 m；实测：0.133, 0.111, 0.247 m
+turn_left：左转方向可辨，但小角请求-0.389rad实际-1.541rad，明显过转；大角又不足。
+  请求：-0.389, -1.944, -3.500 rad；实测：-1.541, -2.485, -3.020 rad
+turn_right：有右转和行进；中高档明显转角不足，3.5rad只达到1.917rad，并伴随抬臂。
+  请求：0.389, 1.944, 3.500 rad；实测：0.157, 1.031, 1.917 rad
+sidestep：侧移和分腿后收回可辨，三档位移递增；整体不足0.322/0.561/0.770m，低脚漂移代理较高。
+  请求：0.400, 0.667, 1.000 m；实测：0.322, 0.561, 0.770 m
+back_walk：后移和交替迈步可辨，但速度全面偏低，0.9m/s只达到0.350m/s；足部漂移风险高。
+  请求：0.350, 0.594, 0.900 m/s；实测：0.163, 0.210, 0.350 m/s
+kick：低档幅度小，中高档踢腿明显；中档0.45m却达到0.727m，与高档0.735m几乎相同，且时序不同。
+  请求：0.250, 0.450, 0.700 m；实测：0.235, 0.727, 0.735 m
+jump：抽帧主要是小幅屈腿/踏步，没有清楚的高跳；请求0.25–0.55m，实测仅0.005–0.025m，明显未达标。
+  请求：0.250, 0.383, 0.550 m；实测：0.005, 0.012, 0.025 m
+lean：身体倾斜变化有响应，但伴随迈步和转动；三档均未达到请求角度。
+  请求：0.400, 0.622, 0.900 rad；实测：0.265, 0.418, 0.591 rad
+walk：连续迈步和前移可辨，高档位移增加；速度范围压缩，1.1m/s只达到0.805m/s，低脚漂移仍存在。
+  请求：0.500, 0.767, 1.100 m/s；实测：0.562, 0.650, 0.805 m/s
+squat：下蹲和起身清楚，三档深度递增；整体蹲得过深，低档0.10m实际0.270m。
+  请求：0.100, 0.256, 0.450 m；实测：0.270, 0.444, 0.539 m
+bow：躬身与恢复可辨，三档俯身幅度清楚；中高档较接近请求，低档偏大，仍有腿部/根漂移。
+  请求：0.200, 0.511, 0.900 rad；实测：0.325, 0.518, 0.932 rad
+clap：双手向胸前靠拢后放下可辨，但低中档幅度接近；这些抽帧不能确认每次掌部真实相碰。
+  请求：0.200, 0.422, 0.700 m；实测：0.504, 0.520, 0.603 m
+point：伸臂指向可辨；低档与中高档姿态差异较大，整体前伸量不足，高档0.65m实测0.464m。
+  请求：0.250, 0.428, 0.650 m；实测：0.134, 0.373, 0.464 m
+stretch：双臂展开/上伸差异清楚；幅度跟随较好，实测0.442/0.660/0.980m，但仍伴随躯干和根运动。
+  请求：0.500, 0.722, 1.000 m；实测：0.442, 0.660, 0.980 m
+twist：躯干旋转伴随迈步可辨，中高档幅度接近；低档过大，十点中只有6个相邻区间递增。
+  请求：0.150, 0.372, 0.650 rad；实测：0.365, 0.540, 0.557 rad
+march：高档抬脚更明显，但低中档抬脚不足，且伴随明显行进/朝向漂移；不应当作稳定原地踏步。
+  请求：0.060, 0.131, 0.220 m；实测：0.008, 0.054, 0.169 m
+jog：有交替跑步姿态，但实测移动速度仅0.116/0.161/0.254m/s，远低于0.8/1.333/2.0m/s请求。
+  请求：0.800, 1.333, 2.000 m/s；实测：0.116, 0.161, 0.254 m/s
+arm_circle：手臂较大范围运动可辨，但三档几乎重合；高度范围指标不能证明完整连续画圈，幅度控制很弱。
+  请求：0.600, 0.911, 1.300 m；实测：1.038, 1.053, 1.074 m
+
+全部十点指标（不是三点误差）：
+raise_hand: MAE=0.1505 m, normalizedMAE=0.3762, endpointGain=0.126, lowFootDriftProxy=2.5%
+reach: MAE=0.0849 m, normalizedMAE=0.2831, endpointGain=0.264, lowFootDriftProxy=9.7%
+strike: MAE=0.2306 m/s, normalizedMAE=0.2306, endpointGain=1.271, lowFootDriftProxy=55.7%
+wave: MAE=0.0308 m, normalizedMAE=0.2202, endpointGain=0.809, lowFootDriftProxy=3.2%
+turn: MAE=0.7725 rad, normalizedMAE=0.1104, endpointGain=0.705, lowFootDriftProxy=66.8%
+sidestep: MAE=0.1317 m, normalizedMAE=0.2195, endpointGain=0.748, lowFootDriftProxy=64.5%
+back_walk: MAE=0.3884 m/s, normalizedMAE=0.7061, endpointGain=0.341, lowFootDriftProxy=73.5%
+kick: MAE=0.1585 m, normalizedMAE=0.3522, endpointGain=1.112, lowFootDriftProxy=49.3%
+jump: MAE=0.3862 m, normalizedMAE=1.2872, endpointGain=0.069, lowFootDriftProxy=72.0%
+lean: MAE=0.2191 rad, normalizedMAE=0.4383, endpointGain=0.654, lowFootDriftProxy=72.6%
+walk: MAE=0.1424 m/s, normalizedMAE=0.2373, endpointGain=0.405, lowFootDriftProxy=53.9%
+squat: MAE=0.1626 m, normalizedMAE=0.4645, endpointGain=0.767, lowFootDriftProxy=54.4%
+bow: MAE=0.0428 rad, normalizedMAE=0.0612, endpointGain=0.868, lowFootDriftProxy=30.7%
+clap: MAE=0.1249 m, normalizedMAE=0.2498, endpointGain=0.199, lowFootDriftProxy=5.3%
+point: MAE=0.1070 m, normalizedMAE=0.2674, endpointGain=0.825, lowFootDriftProxy=4.1%
+stretch: MAE=0.0505 m, normalizedMAE=0.1010, endpointGain=1.075, lowFootDriftProxy=34.1%
+twist: MAE=0.1357 rad, normalizedMAE=0.2714, endpointGain=0.386, lowFootDriftProxy=66.6%
+march: MAE=0.0722 m, normalizedMAE=0.4513, endpointGain=1.004, lowFootDriftProxy=77.8%
+jog: MAE=1.2259 m/s, normalizedMAE=1.0216, endpointGain=0.116, lowFootDriftProxy=100.0%
+arm_circle: MAE=0.1998 m, normalizedMAE=0.2854, endpointGain=0.051, lowFootDriftProxy=52.6%
+
+低脚漂移代理沿用此前audit_sliding算法：低脚、低垂直速度、持续>=0.15s，候选支撑内保守水平速度>0.10m/s。没有接触真值，不能视为物理滑步率。端点增益只量化命令范围响应，不能替代完整语义或自然性；turn左右使用不同的固定验证文本。
+复现：在Betail使用review目录code/scripts/render_stage2_review.py（Hydra配置code/config/render_stage2_review.yaml），PYTHONPATH=/tmp/frankenmotion_hydra_deps；Python /home/psirobot/projects/frankenmotion/.venv_unified/bin/python，需指定新的output防止覆盖。
+源码：/Users/andy/.codex/worktrees/7a7d/frankenmotion/scripts/render_stage2_review.py
+本机视频目录：/Users/andy/Develop/frankenmotion/outputs_amass/shared20_clean5_review_20261010
+Betail目录：/mnt/sda2/frankenmotion/outputs_amass/shared20_clean5_review_20261010
+未改训练、权重、数据或自动监控。

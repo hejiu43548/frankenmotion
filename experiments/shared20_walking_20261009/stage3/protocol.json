@@ -1,0 +1,158 @@
+{
+  "controller_kind": "charlie_root",
+  "task_policy": {
+    "revision": "walking_turn_v2",
+    "task": "walking while turning; translation required",
+    "angle": "signed unwrapped radians; positive right, negative left",
+    "range_rad": [
+      -3.5,
+      3.5
+    ],
+    "native_speed_m_s": 0.7448640465736389,
+    "speed_source": "median over591 admitted TRAIN event crops only",
+    "training_magnitude_range_rad": [
+      0.35,
+      3.5
+    ],
+    "training_direction": "match source turn direction",
+    "spin_added": false
+  },
+  "stage": 3,
+  "backbone_sha256": "c9dca1988dd08dd9e2164ac4cf6ae8fece23011a6371e83d502cdfabe5352e18",
+  "backbone_config": {
+    "_target_": "shared_motion.training.model.load_official_backbone",
+    "checkpoint": "/home/psirobot/checkpoints/frankenmotion/frankenmotion.ckpt",
+    "expected_sha256": "c9dca1988dd08dd9e2164ac4cf6ae8fece23011a6371e83d502cdfabe5352e18",
+    "timesteps": 100,
+    "denoiser": {
+      "_target_": "src.model.backbones.frankenmotion.TransformerDenoiser",
+      "nfeats": 613,
+      "tx_dim": 512,
+      "latent_dim": 512,
+      "ff_size": 2048,
+      "num_layers": 4,
+      "num_heads": 8,
+      "dropout": 0.1,
+      "activation": "gelu",
+      "nb_registers": 0
+    },
+    "schedule": {
+      "_target_": "src.model.schedule.cosine.CosineBetaSchedule",
+      "s": 0.008
+    }
+  },
+  "tasks": [
+    "raise_hand",
+    "reach",
+    "strike",
+    "wave",
+    "turn",
+    "sidestep",
+    "back_walk",
+    "kick",
+    "jump",
+    "lean",
+    "walk",
+    "squat",
+    "bow",
+    "clap",
+    "point",
+    "stretch",
+    "twist",
+    "march",
+    "jog",
+    "arm_circle"
+  ],
+  "loss": {
+    "_target_": "shared_motion.training.losses.LossRecipe",
+    "mode": "free",
+    "command_kind": "huber",
+    "command_weight": 1.0,
+    "pose_weight": 2.0,
+    "velocity_excess_weight": 0.002,
+    "support_weight": 0.01,
+    "reference_mode": "root_only",
+    "ddim_steps": 10
+  },
+  "controller": {
+    "_target_": "shared_motion.training.model.create_charlie_root",
+    "bottleneck": 128,
+    "embedding_width": 32
+  },
+  "schedule": {
+    "index": 3,
+    "initial": "outputs_training/shared20_walking_20261009/stage2/best.pt",
+    "epochs": null,
+    "steps": 8800,
+    "patience": 0,
+    "min_delta": 0.0,
+    "batch_size": 20,
+    "accumulate": 1,
+    "learning_rate": 3e-05,
+    "weight_decay": 0.01,
+    "clip": 1.0,
+    "root_dropout": 0.0,
+    "eval_every": 1100
+  },
+  "validation": {
+    "seed": 7331,
+    "noise_seed": 1928,
+    "batch_size": 20,
+    "points": 10,
+    "ddim_steps": 50,
+    "supervised_loss": {
+      "_target_": "shared_motion.training.losses.LossRecipe",
+      "mode": "supervised",
+      "command_kind": "huber",
+      "reconstruction": 1.0,
+      "root_feature_weight": 5.0,
+      "command_weight": 0.2,
+      "speed_weight": 0.1,
+      "yaw_weight": 0.1
+    }
+  },
+  "seed": 20261011,
+  "initial_sha256": "e20894eb01fea5a366d4beb8187b086c256386ffced2b3b3d28c85d347920285",
+  "initial_source": null,
+  "data_sha256": {
+    "train": "3b621109c37c5f1c804a078ea4150bada31ce91f74b6971a035028b1f4746b39",
+    "val": "d74bbba22ea8807f8d3a0e82a8f3eb45437a8c1e914be3dfe523111b3c578793"
+  },
+  "cache_sha256": {
+    "train": "5d62241f938d79181781f8893b41462abaa4b44b853c756bae89f582d16cdeb2",
+    "val": "df4cf9e7491753c8db0ac008375cb4683f8308e53bf7c124d8ebbad7d948b4ef"
+  },
+  "skeleton_sha256": "f6454fbe22bd135f7de84af8a02a9e633a2a971e7dbc5f03ba577668735e15b9",
+  "sources": {
+    "shared_motion/training/adapters.py": "3d4c45bc4a2fc8e82aaceba1f19a7b15c566aa6323c518a41a7f8b6e8224a2ff",
+    "shared_motion/training/catalog.py": "c8d9164c8551c9cf42a6eb037619b1588d94d676c63d239e560134e262bd5afc",
+    "shared_motion/training/data.py": "4a850c921b652125e1794e29d9a1cd310b2c18e878f16eeaade89a5721815364",
+    "shared_motion/training/geometry.py": "63cb2ef34a82bd1c1e11172761375c0f6b3c37449487d4b656cdaf24196d81e5",
+    "shared_motion/training/losses.py": "e7b498a257d850c4834672a8ee07825bc473d31ee2d12b260d8f33c8dc98ddb0",
+    "shared_motion/training/model.py": "8cc4a2566fe8b06ba2d674ada1be7ff2098f5169b235ed18d14821d20681733f",
+    "shared_motion/training/runner.py": "73473a4c061ac2d22951a987403c9700fa11dd7f4bcdcc9a589e66445fa40e91",
+    "shared_motion/training/turn.py": "a41091f71a832c0adc2da7ab266388982de3182842090dce260372adca914e77",
+    "shared_motion/training/turn_data.py": "aee1dc6e6197dc55c87950e8901dd03b3a68f140d07e6e2d6587f7f56d3898eb",
+    "shared_motion/training/__init__.py": "6ab08a39c309e9127fb3ebf8c705710d824fc677376b4e762dc55743c86a0a3c",
+    "shared_motion/adapter/catalog.py": "1164b5c61266747a02843d6af32bd13ac69aba15cb94a0c6f62084b496c9eaa2",
+    "shared_motion/adapter/infer.py": "d2fd2d3914be0dcc394169fefdd012df6cff60d22236429a659ee42fe87c2344",
+    "shared_motion/adapter/inputs.py": "fe6aa9ca4a2e4b58b323060009c5b8479a902685753930b43abf7e8edf65c4c2",
+    "shared_motion/adapter/kinematics.py": "cd62ae41bed0c87a8060e43a777d838ffa5371e1509e215298de43920e69c21c",
+    "shared_motion/adapter/model.py": "0470a4ba99fcb9aa926c69fb7ae9ce261a1d00f099c568ca9241c6b8021771b4",
+    "shared_motion/adapter/network.py": "2d80af1972f251c28931806d25b71676bdec705a9461a3a455cb1aa74740c140",
+    "shared_motion/adapter/sampling.py": "3a0e6cd9ba6a5cee24678d3dc9d8f0bab0e268a0df8973fd9fbadf712669c5c3",
+    "shared_motion/adapter/schema.py": "0be2ee9c74c4d4d749361bf677a06d434125024790e6f5a121620150846fd33c",
+    "shared_motion/adapter/train.py": "27e94b3922aceabc9ad0b6f52915a8652f10193cb98c1809420ce9cdf45feb3f",
+    "shared_motion/adapter/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "scripts/train.py": "f32967034d9c540a975ce4f2565ca11c8b7df964fc05ae789ff9a326e447e080",
+    "src/model/backbones/frankenmotion.py": "40ab8f144d5da26dd7418952d77ee2f908ae3ef1d67b2c024644737e1b63885e",
+    "src/model/backbones/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/model/backbones/modules/positional_encoding.py": "83a338b8f7f08af863f1485b09d9a6b1684180e34e2d09d5bbeff52458aef239",
+    "src/model/backbones/modules/text_encoder.py": "93417f212b695ec199f84279cadf64cb8f351a4725b3328d17fd4254226df431",
+    "src/model/backbones/modules/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/model/schedule/cosine.py": "c4d05cc1ef0c79d1913afe6722be4c8c2a1221ef83eb9f359a2a69579d7a1648",
+    "src/model/schedule/__init__.py": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "src/tools/geometry.py": "42b3c74a0a1522a19d25f036c9b7bc2355b65d43803fb52df24d66e7df1ab8ee"
+  },
+  "trainable_parameters": 597888
+}

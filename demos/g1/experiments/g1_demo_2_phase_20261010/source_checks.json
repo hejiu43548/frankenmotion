@@ -1,0 +1,22 @@
+{
+  "demos/g1/scripts/g1_demo2_phase_audit.py": {
+    "sha256": "84138dbd1c94610916e895b8cc6f532635ca79a8dc497d92ee2e3ce144ca9a83",
+    "single_letter_identifiers": []
+  },
+  "demos/g1/scripts/g1_demo2_phase.py": {
+    "sha256": "cbdb51cd15dbb65d169fcae288b79e8c929741e7fafb55f429cb9a6a6950e0b3",
+    "single_letter_identifiers": []
+  },
+  "demos/g1/scripts/g1_demo2_phase_pipeline.py": {
+    "sha256": "3df807a23fc2f039a633304a61c5a71dfcf79bf2345bdb7b8d98a6bbff70f9a3",
+    "single_letter_identifiers": []
+  },
+  "demos/g1/scripts/g1_demo2_phase_evidence.py": {
+    "sha256": "33eda181a4b35e74007becf9b1959f166594d927d8c99739ca4cb04e2ee28e22",
+    "single_letter_identifiers": []
+  },
+  "demos/g1/scripts/g1_demo2_gait.py": {
+    "sha256": "37c1aeb9254d9377fe377359b604d0dd2c9b7e43c01c048c2c2c3303ee8efae8",
+    "single_letter_identifiers": []
+  }
+}

@@ -1,0 +1,45 @@
+{
+  "trials": [
+    {
+      "attempt": "phase_initial",
+      "return_distance_m": 0.03687618035234461,
+      "heading_error_deg": 2.0397915010392444,
+      "unsupported_seconds": 0.032,
+      "return_pass": true,
+      "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_3_20261010/attempts/phase_initial/config.yaml"
+    },
+    {
+      "attempt": "phase_advance",
+      "return_distance_m": 0.32428163230885715,
+      "heading_error_deg": 0.7313703907498103,
+      "unsupported_seconds": 0.046,
+      "return_pass": false,
+      "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_3_20261010/attempts/phase_advance/config.yaml"
+    },
+    {
+      "attempt": "phase_advance12",
+      "return_distance_m": 0.19817628405418036,
+      "heading_error_deg": 0.9013483598663741,
+      "unsupported_seconds": 0.044,
+      "return_pass": true,
+      "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_3_20261010/attempts/phase_advance12/config.yaml"
+    },
+    {
+      "attempt": "phase_advance16",
+      "return_distance_m": 0.18662617362665726,
+      "heading_error_deg": 1.6082210697150912,
+      "unsupported_seconds": 0.044,
+      "return_pass": true,
+      "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_3_20261010/attempts/phase_advance16/config.yaml"
+    },
+    {
+      "attempt": "phase_matched_final",
+      "return_distance_m": 0.03687618035234461,
+      "heading_error_deg": 2.0397915010392444,
+      "unsupported_seconds": 0.032,
+      "return_pass": true,
+      "config": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_3_20261010/attempts/phase_matched_final/config.yaml"
+    }
+  ],
+  "pre_simulation_failure": "Initial phase resampling at3.3s hit floating-point Slerp endpoint overflow; fixed with clamped sample times, numerical regression added. No physical rollout was produced by that failed invocation."
+}

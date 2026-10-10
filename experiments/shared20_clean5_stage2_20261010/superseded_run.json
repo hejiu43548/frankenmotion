@@ -1,0 +1,22 @@
+{
+  "reason": "User correction: train all 20 tasks, replacing only five tasks with repaired data. Five-task-only run was an assistant scope error.",
+  "recorded_at": "2026-10-09T17:16:02.830601+00:00",
+  "pid": 2220894,
+  "prior_status": {
+    "state": "training",
+    "stage": 2,
+    "step": 13960,
+    "epoch": 0,
+    "pid": 2220894,
+    "loss": 0.08678100258111954,
+    "metrics": {
+      "reconstruction": 0.08494768291711807,
+      "command": 0.004070872440934181,
+      "speed": 0.002356568817049265,
+      "yaw": 0.007834906689822674
+    }
+  },
+  "verified_command": "/home/psirobot/projects/frankenmotion/.venv_unified/bin/python -u /mnt/sda2/frankenmotion/code/clean5_stage2_0344b7c/scripts/train.py stage=stage2 controller=with_root experiment=clean5 run_date=20261010 seed=20261011 initial=/mnt/sda2/frankenmotion/outputs_amass/shared20_walking_20261009/imported_root.pt stage.initial=/mnt/sda2/frankenmotion/outputs_amass/shared20_walking_20261009/imported_root.pt backbone.checkpoint=/home/psirobot/checkpoints/frankenmotion/frankenmotion.ckpt data.train_manifest=/mnt/sda2/frankenmotion/outputs_amass/clean5_stage2_20261010/data/train.json data.val_manifest=/mnt/sda2/frankenmotion/outputs_amass/clean5_stage2_20261010/data/val.json data.path_root=/home/psirobot/projects/frankenmotion data.skeleton=/home/psirobot/projects/frankenmotion/outputs_amass/transfer_charlie_20261008/snapshot/outputs_amass/franken_eleven_20261003/skeleton.npz data.tasks=[wave,strike,kick,sidestep,turn] stage.steps=70000 stage.batch_size=40 stage.eval_every=1000 validation.points=10 validation.ddim_steps=50 paths.report=/mnt/sda2/frankenmotion/outputs_amass/clean5_stage2_20261010/reports paths.artifacts=/mnt/sda2/frankenmotion/outputs_amass/clean5_stage2_20261010/artifacts ",
+  "process_exited": true,
+  "replacement_run": "/mnt/sda2/frankenmotion/outputs_amass/shared20_clean5_stage2_20261010"
+}

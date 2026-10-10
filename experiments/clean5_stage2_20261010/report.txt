@@ -1,0 +1,16 @@
+SUPERSEDED: incorrect five-task-only scope. Stopped after user correction. Use ../shared20_clean5_stage2_20261010/report.txt. Historical startup record follows.
+
+Five-task shared Stage 2 retraining started on Betail, 2026-10-10 01:08 Asia/Shanghai.
+
+Authorized tasks: wave, strike, kick, sidestep, turn. Exact reviewed subsets: 716 train / 96 val. Other 15 tasks excluded. Semantic limitations recorded in the prior data review remain; training approval does not assert every sample is clean.
+
+New code snapshot: /mnt/sda2/frankenmotion/code/clean5_stage2_0344b7c (commit 0344b7c). Sidestep command range is 0.4–1.0 m. Existing base/root frozen; shared TaskControl initialized anew. Root has not been retrained on these five tasks.
+
+Run: /mnt/sda2/frankenmotion/outputs_amass/clean5_stage2_20261010
+PID: 2220894. Stage 2 only, 70000 steps, batch 40 (8 per task), lr 1e-4, wd 1e-6, clip 2, root dropout .15; unchanged supervised objective. Every 1000 steps: full validation loss plus 50 fixed generation rollouts (5 tasks x 10 commands, 50 DDIM). No Stage 3 process or supervisor was launched.
+
+Data preflight: all 812 caches verified; train/val families disjoint; source manifest hashes pinned; FK quantity maximum discrepancy 2.63e-6. First 1000-step checkpoint: all 716 train records sampled; optimizer step 1000; root bitwise unchanged; 21 task tensors changed; source and manifest hashes verified. First 100 rollouts independently audited, maximum discrepancy 2.39e-7.
+
+First 1000 steps including evaluation: 33.64 seconds. Extrapolated full duration: 39.2 minutes; estimated operational duration 40–45 minutes, subject to later throughput and contention. Training was still running at the last saved status. This is startup verification, not a completion or quality claim.
+
+Reproduction: launch.json contains the exact command, working directory and dependency environment. planned_config.yaml and reports/config.yaml pin settings. Explicit resume must use the same source/config/output with runtime.resume=<run>/artifacts/latest.pt after confirming the existing process is stopped; never re-launch concurrently. Data/provenance and source_snapshot pin all inputs. No recurring monitor was created.

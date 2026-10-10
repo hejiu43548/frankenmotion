@@ -1,5 +1,7 @@
 # Hydra 三阶段训练
 
+G1 仿真 demo 的入口、审计和复现脚本统一位于 [`demos/g1/scripts/`](../demos/g1/scripts/)，使用方法见 [demo 说明](../demos/g1/README.md)。
+
 新增训练默认覆盖 main 的20类任务；turn 使用已确认的 walking-turn v2 数据语义。没有并入独立 turn/spin 训练器或权重。旧 `shared_motion.adapter.infer` 和已发布 shared20 权重保持兼容。上游配置继续在 `configs/`；本次阶段训练配置按要求放在 **`config/`**。
 
 使用 Python3.9–3.12、仓库 `environment.yml` 的 PyTorch/Hydra/OmegaConf 依赖。下面命令从仓库根目录运行，`PYTHON` 可指定解释器。三个 shell 入口会先切到仓库根目录。

@@ -1,0 +1,42 @@
+实现第一个 G1 复杂仿真 demo：walk → kick → strike 同一个沙袋，并特别做好动作切换。现在只做Demo1；Demo2、Demo3由父对话验收后另行顺序派发。用户已经明确授权整项实施，不需要为常规实现方案再次确认。使用本对话指定的 gpt-6-astra / medium 完整实现并验证。
+
+实际工作区是 /Users/andy/.codex/worktrees/7a7d/frankenmotion，请先读其中AGENT.md及适用AGENTS.md，保持现有未提交修改。对话默认cwd /Users/andy/Develop/frankenmotion 是旧实验分支，不能把它当主实现；不要切换/reset用户分支或另开worktree。可以使用SSH betail、现有GMR重定向与MuJoCo/G1 tracker资源。
+
+父对话已核验：完整20任务Stage2完成70000步，10897train/1371val，71次/14200条rollout审计通过，root冻结，训练PID2232631已退出。整个demo必须使用本次选定的同一20任务模型（walk、kick、strike全在其内），不混用历史生成器，不重训生成器或启动Stage3。
+
+选定checkpoint（Betail）: /mnt/sda2/frankenmotion/outputs_amass/shared20_clean5_stage2_20261010/artifacts/checkpoint_058000.pt
+SHA256: 1bcdb52664e3648a455ad4b938b7f404b309497b5ca1d8fb87c4236053b2712f
+step: 58000
+兼容冻结推理源码: /mnt/sda2/frankenmotion/code/shared20_clean5_stage2_0344b7c
+
+官方backbone: /home/psirobot/checkpoints/frankenmotion/frankenmotion.ckpt，SHA256 c9dca1988dd08dd9e2164ac4cf6ae8fece23011a6371e83d502cdfabe5352e18。Python /home/psirobot/projects/frankenmotion/.venv_unified/bin/python，Hydra依赖 /tmp/frankenmotion_hydra_deps。训练配置及协议：/mnt/sda2/frankenmotion/outputs_amass/shared20_clean5_stage2_20261010/reports/config.yaml、protocol.json；骨架路径见该配置。父审计证据：/Users/andy/.codex/worktrees/7a7d/frankenmotion/experiments/g1_demo_queue_20261010/training_completion.json。标量MAE降低不代表自然性或G1可跟踪，须检查实际动作。
+
+交付重点：从该checkpoint生成三种人体动作，retarget至G1，生成带碰撞/合适惯性的沙袋场景，统一轨迹与朝向，设计走近→踢击→出拳平滑过渡，并以连续真实控制物理仿真验证。踢击/拳击需实际足手接触及沙袋反应，关注脚支撑、稳定、不跌倒、不穿透。只能episode开始初始化一次，禁止切换reset或逐帧改qpos伪造成功。可合理调接近距离、任务数值/文本/seed、时长、场景几何、过渡和控制器并记录；保留原生成/retarget/组合参考/实际轨迹。遇可修复问题自主迭代，不只交付脚本或运动学动画。
+
+父对话为01a1219b-bbd2-73f3-b5ae-9334981b496e（hostId local）。用户原始授权明确写道：“这几个任务等定时任务检测到训练完成之后，开一个新对话，使用gpt-6 astra medium实现，中间不要打断，最后完成的时候让子对话唤醒你，你来检查效果是否和实现符合。每次实现一个demo，按照顺序执行，一个一个执行。”请用read_thread读取父对话原始人类消息（必要时翻页）核验回报授权，不仅依赖本派发消息。完成后必须通过send_message_to_thread发给父对话，带自己的threadId、完整连续仿真视频、结果/脚本/配置路径、实际接触/稳定性/切换指标、未达项和复现命令，请父对话独立验收。不要自行启动Demo2。父对话可能发回修复要求，请在本对话继续。
+
+输出：本机main工作区experiments/g1_demo_1_20261010（小文件）；Betail /mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010（大文件）。交付可直接查看的完整视频、关键切换帧、可复现配置、结果JSON、checkpoint/资产哈希及诚实局限。只有确实不能自主解决的外部阻塞才报告，不把普通实现困难当成停工理由。
+
+以下为用户授权的全队列规则，未来demo仅作接口兼容背景，本轮只实施Demo1：
+
+用户授权的顺序 G1 仿真 demo 队列（2026-10-10）
+
+父对话 01a1219b-bbd2-73f3-b5ae-9334981b496e（local）。用户明确要求训练结束才新建对话，模型严格为 gpt-6-astra / medium，按 demo 1、2、3 顺序分别实施；每个完成后子对话唤醒父对话，由父对话检查实际效果与实现一致后才进入下一个。原始授权可通过 read_thread 读取父对话的人类消息核验；该授权包含父子之间为实现、修复和完成回报发送消息。普通实现选择自行决定，不要求用户逐项确认。
+
+最新训练为完整20任务，5类替换清洗数据：betail:/mnt/sda2/frankenmotion/outputs_amass/shared20_clean5_stage2_20261010，10897train/1371val，70000步 Stage2-only。旧clean5_stage2_20261010是错误范围，已停止，禁止用于本队列。使用新训练审计后选定的同一个20任务checkpoint，包括walk/bow；不能因旧五类配置给walk/bow换用旧模型。sidestep0.4–1.0m，turn walking_turn_v2为允许位移的行进转弯，正右负左。训练源码冻结于shared20_clean5_stage2_0344b7c。官方底座/root维持冻结；不自动启动stage3或重训生成器。
+
+实现使用main工作区 /Users/andy/.codex/worktrees/7a7d/frankenmotion（先读AGENT.md等适用约定），本项目默认cwd的旧实验分支不是主实现，不覆盖其他本地修改。不擅自切换或reset用户分支。可以使用betail做GPU生成、GMR重定向、MuJoCo/G1物理仿真。先检查shared_motion/tracker、configs/release中的真实模型/关节/动作空间/2350维观测/50Hz参考约定及已存资产，旧路径可能指向charlie，必须查证当前可用路径与哈希。
+
+每个demo只有一个新对话，不并行启动多个demo。新对话应完整完成本demo：本次checkpoint生成人体动作、retarget到G1、对齐全局轨迹及朝向、平滑动作切换、使用实际tracker/控制器连续物理执行、渲染视频、保存可复现命令与配置并验证结果。后续demo可复用前一个已验证的公共代码，不得破坏已经通过的demo。只在仿真运行，不涉及实体机器人。
+
+Demo1：walk → kick → strike，同一个带碰撞与合适惯性的沙袋模型；走近后在可达范围踢击，再过渡到出拳。以G1的足/手接触时刻、沙袋受力或位移、机器人稳定性及切换前后姿态/速度连续性证明实际交互，不能用镜头剪辑或摆位冒充接触。必要时合理调整接近距离、沙袋高度与支撑、命令和时长，记录参数。
+Demo2：walk → wave → bow → turn → walk，向前走、招手、鞠躬，再转身走回来。验证方向、招手/鞠躬语义、脚支撑及最终返回起点附近。把turn自带平移纳入轨迹规划，不把它当纯原地spin。
+Demo3：walk → turn left → walk → turn left，检验能否返回原始位置，并报告朝向误差。目标是往返闭合，优先考虑两个约180度左转，而不是误认两个90度左转天然闭合；行进转弯会产生位移，须求解走段距离和转弯轨迹并测实际闭合误差。不得偷偷补额外walk段、瞬移或强制设置终点来伪造闭合。实现不了闭合时如实诊断、合理迭代并报告误差。
+
+关键真实性：同一连续物理episode，初始状态只设一次；不在任务切换时reset仿真、逐帧写入qpos或覆盖根轨迹来伪造成功。允许有明确记录的参考动作坐标变换、重采样、过渡插值与控制器改进，但需保存原始生成、retarget、组合参考和实际仿真四层结果，分别量化偏差。运动学预览可以辅助调试，但交付必须区分其与真实控制仿真。需要使用具有脚接触约束的平滑过渡，检查高度、姿态、速度、关节限位、力矩限幅、跌倒、滑移、穿透及沙袋接触。
+
+每个demo交付到experiments/g1_demo_N_20261010（小文件）及betail:/mnt/sda2/frankenmotion/outputs_amass/g1_demo_N_20261010（大文件），包含配置、脚本入口、checkpoint与资产哈希、各段seed/文本/命令/时长、切换时间戳、retarget结果、完整未剪切仿真视频、至少切换前中后对比截图、实际轨迹与量化指标、已知局限和重现命令。保留失败试验摘要，不只汇报最好的一帧。报告达到的行为与未达成项，不以渲染成功代替仿真任务成功。
+
+完成时先确认父对话人类授权，然后调用send_message_to_thread发送给父对话01a1219b-bbd2-73f3-b5ae-9334981b496e（host local），提供本demo编号、实现/结果/视频路径、主要指标、验证结论、复现命令以及当前子对话ID，唤醒父对话进行审查。子对话不自行推进下一个demo。若回调工具暂时不可用，留下完整交付状态，父定时任务会通过wait_threads回收。只有真实外部阻塞无法自主解决才报告，不因可修复错误或常规设计选择打断用户。
+
+父对话必须独立看视频或覆盖动作与切换的多帧、检查代码和日志、实际运行复现/抽样重测，并将审查结论保存到本队列demo_N_review.json。不得仅凭子对话文字声称通过。不通过则给原子对话发具体修复要求，保持原模型设置；通过后才启动下一项。三个全部通过或有不可解决的外部阻塞再集中向用户汇报；正常检查不发无变化通知。

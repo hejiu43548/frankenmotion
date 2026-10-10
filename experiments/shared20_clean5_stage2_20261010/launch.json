@@ -1,0 +1,38 @@
+{
+  "command": [
+    "/home/psirobot/projects/frankenmotion/.venv_unified/bin/python",
+    "-u",
+    "/mnt/sda2/frankenmotion/code/shared20_clean5_stage2_0344b7c/scripts/train.py",
+    "stage=stage2",
+    "controller=with_root",
+    "experiment=shared20_clean5",
+    "run_date=20261010",
+    "seed=20261011",
+    "initial=/mnt/sda2/frankenmotion/outputs_amass/shared20_walking_20261009/imported_root.pt",
+    "stage.initial=/mnt/sda2/frankenmotion/outputs_amass/shared20_walking_20261009/imported_root.pt",
+    "backbone.checkpoint=/home/psirobot/checkpoints/frankenmotion/frankenmotion.ckpt",
+    "data.train_manifest=/mnt/sda2/frankenmotion/outputs_amass/shared20_clean5_stage2_20261010/data/train.json",
+    "data.val_manifest=/mnt/sda2/frankenmotion/outputs_amass/shared20_clean5_stage2_20261010/data/val.json",
+    "data.path_root=/home/psirobot/projects/frankenmotion",
+    "data.skeleton=/home/psirobot/projects/frankenmotion/outputs_amass/transfer_charlie_20261008/snapshot/outputs_amass/franken_eleven_20261003/skeleton.npz",
+    "data.tasks=[raise_hand,reach,strike,wave,turn,sidestep,back_walk,kick,jump,lean,walk,squat,bow,clap,point,stretch,twist,march,jog,arm_circle]",
+    "stage.steps=70000",
+    "stage.batch_size=40",
+    "stage.eval_every=1000",
+    "validation.points=10",
+    "validation.ddim_steps=50",
+    "paths.report=/mnt/sda2/frankenmotion/outputs_amass/shared20_clean5_stage2_20261010/reports",
+    "paths.artifacts=/mnt/sda2/frankenmotion/outputs_amass/shared20_clean5_stage2_20261010/artifacts"
+  ],
+  "cwd": "/mnt/sda2/frankenmotion/code/shared20_clean5_stage2_0344b7c",
+  "environment": {
+    "PYTHONPATH": "/tmp/frankenmotion_hydra_deps:/mnt/sda2/frankenmotion/code/shared20_clean5_stage2_0344b7c"
+  },
+  "stage": 2,
+  "stage3_enabled": false,
+  "state": "launched",
+  "output": "/mnt/sda2/frankenmotion/outputs_amass/shared20_clean5_stage2_20261010",
+  "pid": 2232631,
+  "started_at": "2026-10-09T17:17:05.737248+00:00",
+  "scope": "20 tasks; five repaired, other fifteen unchanged; fresh TaskControl initialization"
+}

@@ -1,0 +1,233 @@
+/home/psirobot/miniconda3/envs/atomic/lib/python3.11/site-packages/torch/nn/modules/transformer.py:385: UserWarning: enable_nested_tensor is True, but self.use_nested_tensor is False because encoder_layer.norm_first was True
+  warnings.warn(
+walk generated 120 frames
+turn generated 120 frames
+[2026-10-10 11:28:06,979][OpenGL.acceleratesupport][INFO] - No OpenGL_accelerate module loaded: No module named 'OpenGL_accelerate'
+retarget walk_2010.npz height 0.7675797139951095 0.8059352124086959
+retarget walk_2011.npz height 0.7739860785818167 0.8059180100186275
+retarget walk_2012.npz height 0.7678863481580286 0.8010195723507575
+retarget walk_2013.npz height 0.7676299837519114 0.8102538086639637
+retarget walk_2014.npz height 0.7767765986014922 0.8113419335962311
+retarget walk_2015.npz height 0.7696844567792076 0.8069227180347215
+retarget turn_2010.npz height 0.7618077407938935 0.8238567829263905
+retarget turn_2011.npz height 0.7695876885252656 0.8346338974702503
+retarget turn_2012.npz height 0.7491837707258336 0.8225006359729135
+retarget turn_2013.npz height 0.7781886458825983 0.8359838900112122
+retarget turn_2014.npz height 0.7688808139722164 0.8320985750689156
+retarget turn_2015.npz height 0.7751533061660623 0.8360347583716605
+[2026-10-10 11:28:12,873][OpenGL.acceleratesupport][INFO] - No OpenGL_accelerate module loaded: No module named 'OpenGL_accelerate'
+native_full_repeat {'complete': True, 'fall_time': None, 'frames': 761, 'duration': 15.200000000000001, 'root_height_min': 0.7197868426555705, 'root_end': [-0.11992717753302365, -0.024484753603824592, 0.7747496484652574], 'root_planar_error_final': 0.08016558714848664, 'contact_count': 0, 'state_resets': 1, 'qpos_overwrites_during_rollout': 0, 'controller': 'official SONIC ONNX; frozen encoder/decoder; 1751/994 obs; native torque PD'}
+{"complete": true, "fall_time": null, "actual_start_xyz": [0.0, 0.0, 0.7992376781254921], "actual_end_xyz": [-0.11992717753302365, -0.024484753603824592, 0.7747496484652574], "actual_path_m": 9.84300768795524, "reference_return_distance_m": 0.09517017675806716, "total_yaw_change_deg": 353.71749419718043, "root_reference_final_error_m": 0.08016558714848664, "maximum_pelvis_tilt_deg": 9.468122805024201, "mean_torque_saturation_fraction": 0.010362976406533575, "return_distance_m": 0.12240110730739887, "return_threshold_m": 0.3, "heading_error_deg": 6.2825058028195695, "heading_threshold_deg": 15.0, "return_pass": true, "heading_pass": true, "root_height_min_m": 0.7197868426555705, "root_reference_rmse_m": 0.4256356187016638, "joint_reference_rmse_rad": 0.16574170418595874, "max_joint_limit_violation_rad": 0.0, "max_torque_limit_ratio": 1.0, "nonfoot_ground_contacts": 0, "unsupported_seconds": 0.002, "max_penetration_m": 0.004155329749012036, "mean_contact_slip_m_s": 0.009502018096739388, "peak_contact_slip_m_s": 1.7321517210816877}
+[2026-10-10 11:28:19,484][OpenGL.acceleratesupport][INFO] - No OpenGL_accelerate module loaded: No module named 'OpenGL_accelerate'
+{"final_hold": {"start_s": 13.2, "seconds": 2.0, "root_drift_m": 0.1897104171880142, "support_min_N": 260.37913832111735, "unsupported_seconds": 0.0, "maximum_distance_from_start_m": 0.28553644629603925, "heading_drift_deg": 5.419078721246331, "maximum_root_excursion_m": 0.2509678795274673, "final_root_speed_m_s": 0.0057653660231189105}}
+{"passed": true, "scope": "Each main segment equals one contiguous native GMR crop at original timing, with only constant world yaw/translation and 20-to-50Hz interpolation. Segment-boundary bridges and terminal hold are separate.", "segments": [{"name": "walk_out", "max_joint_error_rad": 0.0, "max_root_error_m": 1.3877787807814457e-16, "max_orientation_error_rad": 4.99986505935532e-16}, {"name": "turn_left_1", "max_joint_error_rad": 0.0, "max_root_error_m": 1.3322676295501878e-15, "max_orientation_error_rad": 5.59614036512063e-16}, {"name": "walk_back", "max_joint_error_rad": 0.0, "max_root_error_m": 4.440892098500626e-16, "max_orientation_error_rad": 3.0722241715516967e-16}, {"name": "turn_left_2", "max_joint_error_rad": 0.0, "max_root_error_m": 8.881784197001252e-16, "max_orientation_error_rad": 5.587513499920549e-16}]}
+{
+  "baseline": {
+    "attempt": "symmetric_first",
+    "definitions": {
+      "wide_fore_aft_gap_m": 0.25,
+      "stationary_root_speed_below_m_s": 0.12,
+      "stationary_both_foot_speed_below_m_s": 0.25,
+      "nearby_margin_s": 0.2
+    },
+    "transitions": [
+      {
+        "from_name": "walk_out",
+        "to_name": "turn_left_1",
+        "interval_s": [
+          3.0,
+          4.2
+        ],
+        "foot_fore_aft_gap_start_end_m": [
+          0.28153243495495933,
+          0.2948316978980188
+        ],
+        "maximum_fore_aft_gap_m": 0.2948316978980188,
+        "root_speed_min_mean_m_s": [
+          0.028298268464640657,
+          0.14886820781194174
+        ],
+        "swing_forward_velocity_min_max_m_s": [
+          -0.06761539674420378,
+          0.13768979024678524
+        ],
+        "swing_forward_travel_m": 0.0196604079970893,
+        "swing_backward_travel_m": 0.036138172906139396,
+        "wide_stance_pause_s": 0.42,
+        "stationary_pause_s": 0.42,
+        "nearby_longest_wide_stance_pause_s": 0.34,
+        "nearby_longest_stationary_pause_s": 0.34,
+        "support_min_N": 292.01241010070305,
+        "unsupported_seconds": 0.0
+      },
+      {
+        "from_name": "turn_left_1",
+        "to_name": "walk_back",
+        "interval_s": [
+          7.54,
+          8.74
+        ],
+        "foot_fore_aft_gap_start_end_m": [
+          0.11259701961246316,
+          0.07644844401680102
+        ],
+        "maximum_fore_aft_gap_m": 0.11365639275688319,
+        "root_speed_min_mean_m_s": [
+          0.013546356338739528,
+          0.10648097174208859
+        ],
+        "swing_forward_velocity_min_max_m_s": [
+          -0.04579728513861856,
+          0.40000854897778887
+        ],
+        "swing_forward_travel_m": 0.026155366499365056,
+        "swing_backward_travel_m": 0.010227929243482493,
+        "wide_stance_pause_s": 0.0,
+        "stationary_pause_s": 0.72,
+        "nearby_longest_wide_stance_pause_s": 0.0,
+        "nearby_longest_stationary_pause_s": 0.46,
+        "support_min_N": 308.1478462313729,
+        "unsupported_seconds": 0.0
+      },
+      {
+        "from_name": "walk_back",
+        "to_name": "turn_left_2",
+        "interval_s": [
+          11.74,
+          12.94
+        ],
+        "foot_fore_aft_gap_start_end_m": [
+          0.2861699635299468,
+          0.2799459642428564
+        ],
+        "maximum_fore_aft_gap_m": 0.2861699635299468,
+        "root_speed_min_mean_m_s": [
+          0.02619066056419933,
+          0.17637589371484466
+        ],
+        "swing_forward_velocity_min_max_m_s": [
+          -0.10115750414554371,
+          0.34602641230233905
+        ],
+        "swing_forward_travel_m": 0.03867521953014542,
+        "swing_backward_travel_m": 0.030214028439903996,
+        "wide_stance_pause_s": 0.4,
+        "stationary_pause_s": 0.4,
+        "nearby_longest_wide_stance_pause_s": 0.28,
+        "nearby_longest_stationary_pause_s": 0.28,
+        "support_min_N": 227.41475349662988,
+        "unsupported_seconds": 0.0
+      }
+    ]
+  },
+  "candidate": {
+    "attempt": "native_full_repeat",
+    "definitions": {
+      "wide_fore_aft_gap_m": 0.25,
+      "stationary_root_speed_below_m_s": 0.12,
+      "stationary_both_foot_speed_below_m_s": 0.25,
+      "nearby_margin_s": 0.2
+    },
+    "transitions": [
+      {
+        "from_name": "walk_out",
+        "to_name": "turn_left_1",
+        "interval_s": [
+          0.8,
+          1.0
+        ],
+        "foot_fore_aft_gap_start_end_m": [
+          0.045202973131434045,
+          0.24452444463812056
+        ],
+        "maximum_fore_aft_gap_m": 0.24452444463812056,
+        "root_speed_min_mean_m_s": [
+          0.3819648756493929,
+          0.48782090821078017
+        ],
+        "swing_forward_velocity_min_max_m_s": [
+          0.8946381022263045,
+          1.3993542973555737
+        ],
+        "swing_forward_travel_m": 0.25717122015054744,
+        "swing_backward_travel_m": -0.0,
+        "wide_stance_pause_s": 0.0,
+        "stationary_pause_s": 0.0,
+        "nearby_longest_wide_stance_pause_s": 0.0,
+        "nearby_longest_stationary_pause_s": 0.0,
+        "support_min_N": 306.1898225543051,
+        "unsupported_seconds": 0.0
+      },
+      {
+        "from_name": "turn_left_1",
+        "to_name": "walk_back",
+        "interval_s": [
+          6.5,
+          6.7
+        ],
+        "foot_fore_aft_gap_start_end_m": [
+          0.24333404908861753,
+          0.13458034862992863
+        ],
+        "maximum_fore_aft_gap_m": 0.2504189906788302,
+        "root_speed_min_mean_m_s": [
+          0.5029590348428411,
+          0.7102910228491764
+        ],
+        "swing_forward_velocity_min_max_m_s": [
+          -0.06474702556641418,
+          1.0866275559099126
+        ],
+        "swing_forward_travel_m": 0.04163189226898791,
+        "swing_backward_travel_m": 0.0020030938025628413,
+        "wide_stance_pause_s": 0.0,
+        "stationary_pause_s": 0.0,
+        "nearby_longest_wide_stance_pause_s": 0.0,
+        "nearby_longest_stationary_pause_s": 0.0,
+        "support_min_N": 225.48309473199592,
+        "unsupported_seconds": 0.0
+      },
+      {
+        "from_name": "walk_back",
+        "to_name": "turn_left_2",
+        "interval_s": [
+          7.5,
+          7.7
+        ],
+        "foot_fore_aft_gap_start_end_m": [
+          0.04345712527120375,
+          0.22366719853875253
+        ],
+        "maximum_fore_aft_gap_m": 0.22366719853875253,
+        "root_speed_min_mean_m_s": [
+          0.32859988601915197,
+          0.44655138114794807
+        ],
+        "swing_forward_velocity_min_max_m_s": [
+          0.8137178061545355,
+          1.2796596986308553
+        ],
+        "swing_forward_travel_m": 0.23248331217192944,
+        "swing_backward_travel_m": -0.0,
+        "wide_stance_pause_s": 0.0,
+        "stationary_pause_s": 0.0,
+        "nearby_longest_wide_stance_pause_s": 0.0,
+        "nearby_longest_stationary_pause_s": 0.0,
+        "support_min_N": 307.99519356826374,
+        "unsupported_seconds": 0.0
+      }
+    ]
+  },
+  "improvement_checks": {
+    "all_transitions_keep_support": true,
+    "no_wide_stance_pause": true,
+    "no_stationary_bridge": true,
+    "compact_feet_during_bridges": false,
+    "nearby_pause_below_80ms": true,
+    "both_walk_turn_root_speeds_above_20cm_s": true
+  },
+  "passed": false
+}
+[2026-10-10 11:28:20,925][OpenGL.acceleratesupport][INFO] - No OpenGL_accelerate module loaded: No module named 'OpenGL_accelerate'
+{"reproduction_arrays_equal": true, "acceptance": {"thresholds": {"actual_return_m": 0.3, "final_heading_error_deg": 15, "minimum_final_hold_s": 2}, "actual_return_distance_m": 0.12240110730739887, "final_heading_error_deg": 6.2825058028195695, "actual_turn_angles_deg": {"turn_left_1": 170.85981190233122, "turn_left_2": 169.48116420132612}, "checks": {"exactly_four_segments": true, "completed_without_fall": true, "return_distance": true, "final_heading": true, "two_distinct_left_turns": true, "total_full_left_rotation": true, "supported_transitions": true, "supported_final_hold": true, "remains_near_start_during_hold": true, "bounded_torque": true, "no_joint_limit_violation": true, "no_nonfoot_floor_contact": true, "finite_states": true}, "passed": true}}
+Result: /mnt/sda2/frankenmotion/outputs_amass/g1_demo_3_native_radius_20261010/candidates/max_left/reproductions/native_full_repeat/attempts/native_full_repeat

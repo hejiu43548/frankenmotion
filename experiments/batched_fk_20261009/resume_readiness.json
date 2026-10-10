@@ -1,0 +1,20 @@
+{
+  "passed": true,
+  "checks": {
+    "adapter": true,
+    "optimizer": true,
+    "sampler": true,
+    "rng": true,
+    "step": true,
+    "best": true,
+    "best_step": true,
+    "stale": true,
+    "protocol": true,
+    "execution_lineage": true,
+    "parent_unchanged": true
+  },
+  "parent_checkpoint": "/mnt/sda2/frankenmotion/outputs_amass/shared20_walking_20261009/stage2/checkpoint_020000.pt",
+  "parent_sha256": "ab1904b714e29c0c5019d2b2f9b7b4664bb3a632a604ace04e46922f1c57a452",
+  "optimizer_step": 20002,
+  "scope": "Real official model/full20 data: old-source checkpoint20000 migrated; continuous2 updates vs1 update+resume1 exactly identical"
+}

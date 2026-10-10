@@ -1,0 +1,18 @@
+{
+  "path": "/Users/andy/.codex/visualizations/2026/10/09/01a12205-2e36-7910-932b-42f9932a1d36/demo3_native_wide_continuous.mp4",
+  "sha256": "abcbe2a556eed462bced87ff2d06e51cc38cdef26223f78cbd0de3e0c2f08142",
+  "probe": {
+    "programs": [],
+    "stream_groups": [],
+    "streams": [
+      {
+        "width": 1280,
+        "height": 720,
+        "r_frame_rate": "50/1",
+        "duration": "15.220000",
+        "nb_frames": "761"
+      }
+    ]
+  },
+  "visual_review": "Inspected video-derived 3fps samples spanning both broad turns, all transitions and final hold, plus recorded-state transition triplets. Not a claim of manually viewing every frame."
+}

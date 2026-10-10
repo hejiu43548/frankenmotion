@@ -1,0 +1,228 @@
+{
+  "segments": [
+    {
+      "name": "walk_out",
+      "start": 0.0,
+      "end": 4.5
+    },
+    {
+      "name": "wave",
+      "start": 5.7,
+      "end": 11.6
+    },
+    {
+      "name": "bow",
+      "start": 12.799999999999999,
+      "end": 17.64
+    },
+    {
+      "name": "turn",
+      "start": 18.84,
+      "end": 21.54
+    },
+    {
+      "name": "walk_back",
+      "start": 21.74,
+      "end": 24.64
+    }
+  ],
+  "transitions": [
+    {
+      "start": 4.5,
+      "end": 5.7,
+      "from_name": "walk_out",
+      "to_name": "wave",
+      "bridge_method": "stationary_quintic",
+      "planted_foot": "right",
+      "maximum_reference_plant_error_m": 7.412204984020007e-05
+    },
+    {
+      "start": 11.6,
+      "end": 12.799999999999999,
+      "from_name": "wave",
+      "to_name": "bow",
+      "bridge_method": "stationary_quintic",
+      "planted_foot": "right",
+      "maximum_reference_plant_error_m": 2.338692673048876e-05
+    },
+    {
+      "start": 17.64,
+      "end": 18.84,
+      "from_name": "bow",
+      "to_name": "turn",
+      "bridge_method": "stationary_quintic",
+      "planted_foot": "right",
+      "maximum_reference_plant_error_m": 6.617088253113907e-05
+    },
+    {
+      "start": 21.54,
+      "end": 21.74,
+      "from_name": "turn",
+      "to_name": "walk_back",
+      "bridge_method": "phase_matched_hermite",
+      "planted_foot": "right",
+      "maximum_reference_plant_error_m": 3.368687548432253e-05
+    }
+  ],
+  "transformations": [
+    {
+      "name": "walk_out",
+      "source": "walk_2010",
+      "source_crop_frames": [
+        0,
+        90
+      ],
+      "source_fps": 20,
+      "output_fps": 50,
+      "speed": 1.0,
+      "normalized_yaw_rad": -1.5454798863341643,
+      "normalized_translation_xy": [
+        -0.020086342564064063,
+        0.0011649805778502441
+      ],
+      "heading_correction_deg": -7.022031782299991,
+      "target_yaw_deg": 0,
+      "reverse_recovery": false,
+      "heading_profile_deg": null,
+      "reverse_prefix": false,
+      "stationary_feet": false,
+      "stationary_max_position_error_m": null
+    },
+    {
+      "name": "wave",
+      "source": "wave_2010",
+      "source_crop_frames": [
+        0,
+        118
+      ],
+      "source_fps": 20,
+      "output_fps": 50,
+      "speed": 1.0,
+      "normalized_yaw_rad": -1.4980561645941957,
+      "normalized_translation_xy": [
+        -0.017125173317180675,
+        0.005443397425620226
+      ],
+      "heading_correction_deg": 0.0,
+      "target_yaw_deg": null,
+      "reverse_recovery": false,
+      "heading_profile_deg": null,
+      "reverse_prefix": false,
+      "stationary_feet": true,
+      "stationary_max_position_error_m": 1.7036175878178128e-05,
+      "world_yaw_rad": -4.597017211338539e-17,
+      "world_translation": [
+        1.6235195113703627,
+        0.07489677644863402,
+        -0.01641034828720225
+      ]
+    },
+    {
+      "name": "bow",
+      "source": "bow_2010",
+      "source_crop_frames": [
+        0,
+        39
+      ],
+      "source_fps": 20,
+      "output_fps": 50,
+      "speed": 0.8,
+      "normalized_yaw_rad": -1.5777335247065392,
+      "normalized_translation_xy": [
+        -0.010628526412793578,
+        0.0007167718866463686
+      ],
+      "heading_correction_deg": 0.0,
+      "target_yaw_deg": null,
+      "reverse_recovery": false,
+      "heading_profile_deg": null,
+      "reverse_prefix": true,
+      "stationary_feet": true,
+      "stationary_max_position_error_m": 7.392418606914919e-06,
+      "world_yaw_rad": -1.222980050563649e-16,
+      "world_translation": [
+        1.6057503631184136,
+        0.10781928969432526,
+        -0.004852217052903122
+      ]
+    },
+    {
+      "name": "turn",
+      "source": "turn_2014",
+      "source_crop_frames": [
+        9,
+        47
+      ],
+      "source_fps": 20,
+      "output_fps": 50,
+      "speed": 0.7,
+      "normalized_yaw_rad": -1.425582364993156,
+      "normalized_translation_xy": [
+        0.38675032911911256,
+        -0.03341307749649153
+      ],
+      "heading_correction_deg": 31.182479267203576,
+      "target_yaw_deg": 215,
+      "reverse_recovery": false,
+      "heading_profile_deg": null,
+      "reverse_prefix": false,
+      "stationary_feet": false,
+      "stationary_max_position_error_m": null,
+      "world_yaw_rad": -9.90960785651751e-17,
+      "world_translation": [
+        1.6159837473738763,
+        0.047540053233140436,
+        -0.017193749767028952
+      ]
+    },
+    {
+      "name": "walk_back",
+      "source": "walk_2010",
+      "source_crop_frames": [
+        34,
+        92
+      ],
+      "source_fps": 20,
+      "output_fps": 50,
+      "speed": 1.0,
+      "normalized_yaw_rad": -1.5214855547964867,
+      "normalized_translation_xy": [
+        0.05044080246027772,
+        -0.024344285057015098
+      ],
+      "heading_correction_deg": -41.96315934050667,
+      "target_yaw_deg": -35,
+      "reverse_recovery": false,
+      "heading_profile_deg": null,
+      "reverse_prefix": false,
+      "stationary_feet": false,
+      "stationary_max_position_error_m": null,
+      "world_yaw_rad": -2.530727415391778,
+      "world_translation": [
+        1.473253753741541,
+        0.2863394368307986,
+        -0.018142780629439588
+      ]
+    }
+  ],
+  "phase_selection": {
+    "from_name": "turn",
+    "to_name": "walk_back",
+    "candidate_count": 5,
+    "score": 0.8543597692233882,
+    "outgoing_frame": 47,
+    "incoming_frame": 34,
+    "support_index": 1,
+    "fore_aft_gaps_m": [
+      0.1494302604680015,
+      0.03960427209554351
+    ],
+    "swing_forward_speeds_m_s": [
+      1.4498259580335882,
+      0.86597952484604
+    ]
+  },
+  "endpoint_ease_seconds": 0.3,
+  "moving_boundary_eased": false,
+  "final_hold_seconds": 2.0
+}

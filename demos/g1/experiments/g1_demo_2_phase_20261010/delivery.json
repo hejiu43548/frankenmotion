@@ -1,0 +1,24 @@
+{
+  "status": "implemented_and_verified",
+  "original_demo2_entry_unchanged": true,
+  "selected_attempt": "phase_return_final",
+  "return_distance_m": 0.1832970563731571,
+  "heading_error_deg": 0.33557501914705457,
+  "full_reproduction_arrays_equal": true,
+  "video": "/Users/andy/.codex/visualizations/2026/10/09/01a121f5-e783-70c1-be76-98fe21308085/demo2_phase_continuous.mp4",
+  "video_sha256": "9c1ec04639a3d997e3b0957102b9d2e77a00bb73b9c260fecd15da1413a59e8c",
+  "video_frames": 1333,
+  "video_fps": 50,
+  "video_duration_s": 26.66,
+  "physics_duration_s": 26.64,
+  "tests_passed": [
+    "Hermite endpoint values/velocities",
+    "3.30s resampling roundoff",
+    "Black",
+    "AST names",
+    "bash syntax",
+    "Hydra config resolution",
+    "frozen source matches workspace",
+    "old Demo2 files match HEAD"
+  ]
+}

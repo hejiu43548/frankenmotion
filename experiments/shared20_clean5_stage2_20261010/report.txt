@@ -1,0 +1,23 @@
+COMPLETED AND PARENT-VERIFIED,2026-10-10 02:00 Asia/Shanghai.
+All20 tasks reached70000 optimizer steps.10897/10897 training samples used;71 scans/14200 rollouts audited,max quantity discrepancy2.1458e-6. Backbone/root frozen; parent verified selected/final root bitwise equals initialization,source/data hashes and optimizer70000. Training PID2232631 exited.
+Selected shared checkpoint: artifacts/checkpoint_058000.pt; SHA256 1bcdb52664e3648a455ad4b938b7f404b309497b5ca1d8fb87c4236053b2712f. Macro normalized MAE: initial0.706188,selected0.381724,final0.415743. Scalar error does not certify naturalness or G1 tracking.
+Demo1 dispatched using gpt-6-astra/medium to local thread01a121d3-c8c6-75d0-af34-72fc69a988b2. Only Demo1 active; parent independent review precedes Demo2. Queue experiments/g1_demo_queue_20261010/state.json. Automation remains ACTIVE for serial coordination.
+
+Historical startup record follows:
+
+Corrected full-20-task Stage 2 retraining, 2026-10-10 01:17 Asia/Shanghai.
+
+The assistant incorrectly launched a five-task-only run. User clarified: train all20 tasks, replacing only five with repaired data. Wrong run PID2220894 was verified and stopped at last reported step13960; its results remain under clean5_stage2_20261010 and must not initialize or trigger this workflow.
+
+Correct run: betail:/mnt/sda2/frankenmotion/outputs_amass/shared20_clean5_stage2_20261010
+PID2232631. Source snapshot shared20_clean5_stage2_0344b7c, commit0344b7c. Stage2-only,70000steps,batch40 (2/task),eval every1000 with200rollouts at50DDIM. All20 tasks use one shared freshly initialized TaskControl; official backbone/imported root frozen. No resume from wrong five-task model; no Stage3.
+
+Full exact source manifests: source_repair_sidestep_20261010_v2. 10897train/1371val. Wave45/3,strike13/1,kick33/2,sidestep34/6,turn591/84. Other15 task records exactly unchanged from shared20_walking_data_20261009. All12268 caches loaded and FK quantities recomputed; max error2.63e-6. Family splits disjoint. Sidestep0.4–1.0m in current source.
+
+At checkpoint3000: all20 tasks sampled;10068/10897 distinct records seen,all repaired-task samples seen,optimizer step3000,root bitwise unchanged,21 task tensors updated,source/data hashes checked. Independently audited1000 saved rollouts,max discrepancy1.91e-6. Current status during startup audit4540. This is a running experiment,not a completion claim.
+
+Measured3000 steps including evaluations110.06sec; extrapolation42.8min,operational estimate45–50min from01:17 start. Timing may vary.
+
+Automation frankenmotion updated to ACTIVE,5-minute heartbeat bound to parent01a1219b-bbd2-73f3-b5ae-9334981b496e. It monitors only this corrected20-task run. After step70000 plus completion audit it creates sequential local project chats using gpt-6-astra/medium:1 walk-kick-strike sandbag;2 walk-wave-bow-turn-walk return;3 walk-leftturn-walk-leftturn closure. Each child wakes parent for independent effect/code review before next demo. Queue and detailed requirements: experiments/g1_demo_queue_20261010/state.json and worker_instructions.txt. No demo chat is created before training completion. No routine user confirmation; only genuine external blockers need intervention.
+
+Exact command/environment in launch.json; data/provenance.json,source_snapshot.json and reports/protocol.json pin input and source hashes. Explicit resume requires the original process stopped and the same command/config/output plus runtime.resume=<this run>/artifacts/latest.pt. Never restart wrong/old runs. Previous automation was backed up before replacing stale instructions.

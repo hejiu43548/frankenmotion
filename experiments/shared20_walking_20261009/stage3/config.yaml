@@ -1,0 +1,104 @@
+backbone:
+  _target_: shared_motion.training.model.load_official_backbone
+  checkpoint: /home/psirobot/checkpoints/frankenmotion/frankenmotion.ckpt
+  expected_sha256: c9dca1988dd08dd9e2164ac4cf6ae8fece23011a6371e83d502cdfabe5352e18
+  timesteps: 100
+  denoiser:
+    _target_: src.model.backbones.frankenmotion.TransformerDenoiser
+    nfeats: 613
+    tx_dim: 512
+    latent_dim: 512
+    ff_size: 2048
+    num_layers: 4
+    num_heads: 8
+    dropout: 0.1
+    activation: gelu
+    nb_registers: 0
+  schedule:
+    _target_: src.model.schedule.cosine.CosineBetaSchedule
+    s: 0.008
+controller:
+  _target_: shared_motion.training.model.create_charlie_root
+  bottleneck: 128
+  embedding_width: 32
+data:
+  train_manifest: /mnt/sda2/frankenmotion/outputs_amass/shared20_walking_data_20261009/train.json
+  val_manifest: /mnt/sda2/frankenmotion/outputs_amass/shared20_walking_data_20261009/val.json
+  skeleton: /home/psirobot/projects/frankenmotion/outputs_amass/transfer_charlie_20261008/snapshot/outputs_amass/franken_eleven_20261003/skeleton.npz
+  path_root: /home/psirobot/projects/frankenmotion
+  tasks:
+  - raise_hand
+  - reach
+  - strike
+  - wave
+  - turn
+  - sidestep
+  - back_walk
+  - kick
+  - jump
+  - lean
+  - walk
+  - squat
+  - bow
+  - clap
+  - point
+  - stretch
+  - twist
+  - march
+  - jog
+  - arm_circle
+loss:
+  _target_: shared_motion.training.losses.LossRecipe
+  mode: free
+  command_kind: huber
+  command_weight: 1.0
+  pose_weight: 2.0
+  velocity_excess_weight: 0.002
+  support_weight: 0.01
+  reference_mode: root_only
+  ddim_steps: 10
+stage:
+  index: 3
+  initial: outputs_training/shared20_walking_20261009/stage2/best.pt
+  epochs: null
+  steps: 8800
+  patience: 0
+  min_delta: 0.0
+  batch_size: 20
+  accumulate: 1
+  learning_rate: 3.0e-05
+  weight_decay: 0.01
+  clip: 1.0
+  root_dropout: 0.0
+  eval_every: 1100
+experiment: shared20_walking
+run_date: 20261009
+seed: 20261011
+initial: /mnt/sda2/frankenmotion/outputs_amass/shared20_walking_20261009_perf/stage2/checkpoint_050000.pt
+artifact_root: outputs_training
+paths:
+  report: /mnt/sda2/frankenmotion/outputs_amass/shared20_walking_20261009_perf/reports/stage3
+  artifacts: /mnt/sda2/frankenmotion/outputs_amass/shared20_walking_20261009_perf/stage3
+runtime:
+  device: cuda
+  threads: 4
+  resume: null
+  resume_migration: null
+  stop_after: null
+  checkpoint_every: 1000
+  log_every: 20
+validation:
+  seed: 7331
+  noise_seed: 1928
+  batch_size: 20
+  points: 10
+  ddim_steps: 50
+  supervised_loss:
+    _target_: shared_motion.training.losses.LossRecipe
+    mode: supervised
+    command_kind: huber
+    reconstruction: 1.0
+    root_feature_weight: 5.0
+    command_weight: 0.2
+    speed_weight: 0.1
+    yaw_weight: 0.1

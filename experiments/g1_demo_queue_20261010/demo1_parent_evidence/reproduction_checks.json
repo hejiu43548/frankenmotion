@@ -1,0 +1,263 @@
+{
+  "hashes.json_verified_count": 81,
+  "controller_source_hashes.json_verified_count": 2,
+  "delivery_hashes_verified_count": 8,
+  "array_comparisons": {
+    "qpos": {
+      "equal": true,
+      "max_abs_difference": 0.0
+    },
+    "qvel": {
+      "equal": true,
+      "max_abs_difference": 0.0
+    },
+    "body_pos": {
+      "equal": true,
+      "max_abs_difference": 0.0
+    },
+    "reference": {
+      "equal": true,
+      "max_abs_difference": 0.0
+    },
+    "peak_actuator_force": {
+      "equal": true,
+      "max_abs_difference": 0.0
+    },
+    "telemetry": {
+      "equal": true,
+      "max_abs_difference": 0.0
+    }
+  },
+  "metrics": {
+    "continuous_physics": true,
+    "initialization_count": 1,
+    "reset_at_transitions": false,
+    "physics_timestep_s": 0.002,
+    "control_timestep_s": 0.02,
+    "duration_s": 14.52,
+    "complete": true,
+    "fall_time": null,
+    "pelvis_height_min_m": 0.7321415164106956,
+    "pelvis_tilt_max_deg": 23.017553693684384,
+    "robot_nonfoot_ground_contact_count": 0,
+    "maximum_joint_limit_violation_rad": 0.0,
+    "maximum_actuator_force_over_limit_Nm": 0.0,
+    "mean_torque_saturation_fraction": 0.00461195022323549,
+    "maximum_contact_penetration_m": 0.0063905456906980795,
+    "support_contact_slip_mean_m_s": 0.008203340002962349,
+    "support_contact_slip_p95_m_s": 0.020407396276123306,
+    "support_contact_slip_peak_m_s": 1.8209990613935696,
+    "no_support_control_frames": 0,
+    "joint_tracking_rmse_rad": 0.12633148596063248,
+    "root_planar_reference_rmse_m": 0.29584801457970955,
+    "root_planar_error_final_m": 0.46677783579700993,
+    "bag_mass_kg": 7.05,
+    "bag_inertia_kg_m2": [
+      0.8483566633858183,
+      0.8483566633858183,
+      0.07601571215935964
+    ],
+    "bag_center_of_mass_peak_displacement_m": 0.19369816356208014,
+    "bag_swing_peak_deg": 12.092921092198916,
+    "contacts": {
+      "kick_foot": {
+        "count": 115,
+        "first_s": 8.209999999999411,
+        "last_s": 8.50799999999951,
+        "peak_force_N": 97.73826219977562,
+        "normal_impulse_Ns": 3.704986755828877,
+        "active_substeps": 115,
+        "maximum_penetration_m": 0.004388184439364284
+      },
+      "right_hand": {
+        "count": 96,
+        "first_s": 11.632000000000554,
+        "last_s": 11.822000000000617,
+        "peak_force_N": 146.6213869198312,
+        "normal_impulse_Ns": 9.739081998664455,
+        "active_substeps": 96,
+        "maximum_penetration_m": 0.0063905456906980795
+      },
+      "incidental_wrist_forearm": {
+        "count": 0
+      }
+    },
+    "hand_contact_events": [
+      {
+        "count": 96,
+        "first_s": 11.632000000000554,
+        "last_s": 11.822000000000617,
+        "peak_force_N": 146.6213869198312,
+        "normal_impulse_Ns": 9.739081998664455,
+        "active_substeps": 96,
+        "maximum_penetration_m": 0.0063905456906980795
+      }
+    ],
+    "transitions": [
+      {
+        "start": 5.94,
+        "end": 7.140000000000001,
+        "planted_foot": "left",
+        "maximum_reference_plant_error_m": 0.0002806893138539581,
+        "source_transform_translation": [
+          2.0718731949969644,
+          0.4195299716218648,
+          -0.009031545655875065
+        ],
+        "source_transform_yaw": 0.3344382895457443,
+        "reference_joint_step_max_rad": 0.0644161982104752,
+        "actual_joint_step_max_rad": 0.030308397517703072,
+        "actual_root_step_max_m": 0.007528356026876903,
+        "actual_joint_velocity_max_rad_s": 1.58324343483047,
+        "actual_left_ankle_planar_excursion_m": 0.012278317204082047,
+        "actual_min_support_N": 279.5430612987529,
+        "actual_contact_slip_mean_m_s": 0.007761811733319279,
+        "actual_contact_slip_peak_m_s": 0.3869271230035078,
+        "boundaries": [
+          {
+            "time_s": 5.94,
+            "reference_joint_step_rad": 0.0001706335792697744,
+            "actual_joint_step_rad": 0.007814654755698591,
+            "actual_joint_velocity_change_rad_s": 0.185624377059956
+          },
+          {
+            "time_s": 7.140000000000001,
+            "reference_joint_step_rad": 0.0001845204984569082,
+            "actual_joint_step_rad": 0.015679252208876643,
+            "actual_joint_velocity_change_rad_s": 0.24176997460642724
+          }
+        ]
+      },
+      {
+        "start": 9.620000000000001,
+        "end": 10.82,
+        "planted_foot": "left",
+        "maximum_reference_plant_error_m": 4.867867647070085e-05,
+        "source_transform_translation": [
+          2.0962110594578576,
+          0.1963376172937794,
+          -0.012654369198903722
+        ],
+        "source_transform_yaw": 0.3344382895457443,
+        "reference_joint_step_max_rad": 0.05154738487648952,
+        "actual_joint_step_max_rad": 0.06683635972207647,
+        "actual_root_step_max_m": 0.01035535174631233,
+        "actual_joint_velocity_max_rad_s": 3.2799249646220447,
+        "actual_left_ankle_planar_excursion_m": 0.002448560099524285,
+        "actual_min_support_N": 276.2966394462717,
+        "actual_contact_slip_mean_m_s": 0.011126021324804775,
+        "actual_contact_slip_peak_m_s": 1.4329777865172362,
+        "boundaries": [
+          {
+            "time_s": 9.620000000000001,
+            "reference_joint_step_rad": 0.0007903356492777736,
+            "actual_joint_step_rad": 0.014152738388955866,
+            "actual_joint_velocity_change_rad_s": 0.28024159929200376
+          },
+          {
+            "time_s": 10.82,
+            "reference_joint_step_rad": 0.0001601423631827914,
+            "actual_joint_step_rad": 0.011957192420617602,
+            "actual_joint_velocity_change_rad_s": 0.935661784249703
+          }
+        ]
+      }
+    ],
+    "segments": [
+      {
+        "name": "walk_1010",
+        "start": 0.0,
+        "end": 5.94,
+        "actual_root_displacement_m": [
+          1.8454729439091089,
+          0.274585621390697,
+          0.006239160453952786
+        ],
+        "joint_tracking_rmse_rad": 0.10765725655594907,
+        "bag_com_max_displacement_m": 0.0
+      },
+      {
+        "name": "kick_1013",
+        "start": 7.140000000000001,
+        "end": 9.620000000000001,
+        "actual_root_displacement_m": [
+          0.16061785912259952,
+          -0.11980074104448629,
+          -0.0029006056326487117
+        ],
+        "joint_tracking_rmse_rad": 0.1618344876082161,
+        "bag_com_max_displacement_m": 0.08867480111053662
+      },
+      {
+        "name": "strike_1011",
+        "start": 10.82,
+        "end": 13.02,
+        "actual_root_displacement_m": [
+          -0.007965608887394282,
+          0.006409103719944478,
+          -0.0005209810771052981
+        ],
+        "joint_tracking_rmse_rad": 0.14252521597951762,
+        "bag_com_max_displacement_m": 0.19369816356208014
+      }
+    ],
+    "known_limitations": [
+      "Released 2350-input shared20 tracker and compiled scene were absent on Betail; native frozen SONIC v1.1 ONNX (1751 encoder/994 decoder) was used with its checked observation and PD contract.",
+      "SONIC tracks poses/orientation without absolute root-position feedback; actual planar path differs from composed reference.",
+      "Seeds and geometry were screened in simulation; this is one demonstrated episode, not a general task-success benchmark.",
+      "Support contact is constrained in the reference, but actual contact shows brief impact slip and finite solver penetration; see measured values.",
+      "Wrist/forearm contact is measured separately from the distal hand; rejected development versions had incidental guard contact.",
+      "Video is an uncut replay of saved physical states, not a kinematic-reference animation."
+    ],
+    "unsupported_physics_steps": 3,
+    "unsupported_physics_steps_after_initial_0_1s": 0,
+    "acceptance": {
+      "walk_approach": true,
+      "foot_contact": true,
+      "hand_contact": true,
+      "bag_response": true,
+      "no_fall": true,
+      "support_each_control_frame": true,
+      "planted_foot_transition_excursion": true,
+      "joint_limits": true,
+      "no_nonfoot_ground_contact": true,
+      "torque_limits": true,
+      "no_reference_pose_jump": true
+    }
+  },
+  "independent_contact_summary": {
+    "right_ankle_roll_link": {
+      "first_s": 8.209999999999411,
+      "last_s": 8.50799999999951,
+      "max_force_N": 97.73826219977562,
+      "impulse_Ns": 3.704986755828879
+    },
+    "right_wrist_yaw_link": {
+      "first_s": 11.632000000000554,
+      "last_s": 11.822000000000617,
+      "max_force_N": 146.6213869198312,
+      "impulse_Ns": 9.739081998664455
+    }
+  },
+  "independent_transition_summary": [
+    {
+      "interval_s": [
+        5.94,
+        7.140000000000001
+      ],
+      "ankle_excursion_m": 0.012278317204082047,
+      "min_support_N": 279.5430612987529
+    },
+    {
+      "interval_s": [
+        9.620000000000001,
+        10.82
+      ],
+      "ankle_excursion_m": 0.002448560099524285,
+      "min_support_N": 276.2966394462717
+    }
+  ],
+  "initial_only_unsupported_substeps": 3,
+  "reproduction_directory": "/mnt/sda2/frankenmotion/outputs_amass/g1_demo_1_20261010/attempts/parent_review_20261010_0237",
+  "reproduced_video_sha256": "8976301cfec23f682acf2b71d0fe8a3a0b10883e69b056194ec89eee460181b6"
+}

@@ -1,0 +1,1161 @@
+{
+  "dataset_directory": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_sidestep_20261010_v2",
+  "manifests": {
+    "train": {
+      "path": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_sidestep_20261010_v2/train.json",
+      "sha256": "89551a8221c7c796cce2df14a6eafa5bec24ac3322434945db45fb924d20e8a3",
+      "count": 10897,
+      "matches_existing_audit": true
+    },
+    "val": {
+      "path": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_sidestep_20261010_v2/val.json",
+      "sha256": "4ae872d8f48e2ca8579f188869f21f271c4a9e8c09a7b742a52e756e43122928",
+      "count": 1371,
+      "matches_existing_audit": true
+    }
+  },
+  "tasks": [
+    {
+      "task": "raise_hand",
+      "source_manifest_directory": "/mnt/sda2/frankenmotion/outputs_amass/shared20_walking_data_20261009",
+      "splits": {
+        "train": {
+          "samples": 940,
+          "recordings": 940,
+          "datasets": {
+            "ACCAD": 10,
+            "BMLhandball": 10,
+            "BMLmovi": 284,
+            "BioMotionLab_NTroje": 29,
+            "CMU": 129,
+            "DFaust_67": 14,
+            "EKUT": 7,
+            "Eyes_Japan_Dataset": 79,
+            "KIT": 321,
+            "MPI_HDM05": 16,
+            "MPI_Limits": 6,
+            "MPI_mosh": 14,
+            "SFU": 3,
+            "SSM_synced": 4,
+            "TCD_handMocap": 1,
+            "TotalCapture": 9,
+            "Transitions_mocap": 4
+          },
+          "source_kinds": {
+            "not_manually_verified; caption matching only; target is measured crop quantity": 940
+          },
+          "annotation_levels": {
+            "unspecified": 940
+          },
+          "padding_samples": 76,
+          "quantity_min": -0.20993143320083618,
+          "quantity_max": 0.9996015429496765,
+          "exact_match_to_source_task_records": true
+        },
+        "val": {
+          "samples": 122,
+          "recordings": 122,
+          "datasets": {
+            "BMLmovi": 25,
+            "BioMotionLab_NTroje": 6,
+            "CMU": 16,
+            "DFaust_67": 1,
+            "Eyes_Japan_Dataset": 14,
+            "KIT": 52,
+            "MPI_HDM05": 4,
+            "MPI_Limits": 1,
+            "MPI_mosh": 1,
+            "SSM_synced": 1,
+            "Transitions_mocap": 1
+          },
+          "source_kinds": {
+            "not_manually_verified; caption matching only; target is measured crop quantity": 122
+          },
+          "annotation_levels": {
+            "unspecified": 122
+          },
+          "padding_samples": 7,
+          "quantity_min": -0.08790111541748047,
+          "quantity_max": 0.9561646580696106,
+          "exact_match_to_source_task_records": true
+        }
+      },
+      "review_status": "not_reviewed"
+    },
+    {
+      "task": "reach",
+      "source_manifest_directory": "/mnt/sda2/frankenmotion/outputs_amass/shared20_walking_data_20261009",
+      "splits": {
+        "train": {
+          "samples": 301,
+          "recordings": 301,
+          "datasets": {
+            "ACCAD": 2,
+            "BMLhandball": 1,
+            "BMLmovi": 51,
+            "BioMotionLab_NTroje": 10,
+            "CMU": 55,
+            "DFaust_67": 1,
+            "EKUT": 6,
+            "Eyes_Japan_Dataset": 22,
+            "KIT": 128,
+            "MPI_HDM05": 15,
+            "MPI_Limits": 3,
+            "MPI_mosh": 1,
+            "TCD_handMocap": 2,
+            "TotalCapture": 4
+          },
+          "source_kinds": {
+            "not_manually_verified; caption matching only; target is measured crop quantity": 301
+          },
+          "annotation_levels": {
+            "unspecified": 301
+          },
+          "padding_samples": 12,
+          "quantity_min": -0.2820357382297516,
+          "quantity_max": 0.7593684792518616,
+          "exact_match_to_source_task_records": true
+        },
+        "val": {
+          "samples": 47,
+          "recordings": 47,
+          "datasets": {
+            "BMLmovi": 5,
+            "BioMotionLab_NTroje": 3,
+            "CMU": 7,
+            "Eyes_Japan_Dataset": 9,
+            "KIT": 20,
+            "MPI_HDM05": 2,
+            "MPI_mosh": 1
+          },
+          "source_kinds": {
+            "not_manually_verified; caption matching only; target is measured crop quantity": 47
+          },
+          "annotation_levels": {
+            "unspecified": 47
+          },
+          "padding_samples": 1,
+          "quantity_min": -0.0989866852760315,
+          "quantity_max": 0.7363501191139221,
+          "exact_match_to_source_task_records": true
+        }
+      },
+      "review_status": "not_reviewed"
+    },
+    {
+      "task": "strike",
+      "source_manifest_directory": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_strike_20261009_v3",
+      "splits": {
+        "train": {
+          "samples": 13,
+          "recordings": 10,
+          "datasets": {
+            "CMU": 6,
+            "DFaust_67": 1,
+            "Eyes_Japan_Dataset": 1,
+            "HumanEva": 1,
+            "MPI_HDM05": 4
+          },
+          "source_kinds": {
+            "hdm05_babel_punch_frame": 4,
+            "babel_punch_frame": 9
+          },
+          "annotation_levels": {
+            "unspecified": 13
+          },
+          "padding_samples": 0,
+          "quantity_min": 1.7876924276351929,
+          "quantity_max": 4.375228404998779,
+          "exact_match_to_source_task_records": true
+        },
+        "val": {
+          "samples": 1,
+          "recordings": 1,
+          "datasets": {
+            "CMU": 1
+          },
+          "source_kinds": {
+            "babel_punch_frame": 1
+          },
+          "annotation_levels": {
+            "unspecified": 1
+          },
+          "padding_samples": 0,
+          "quantity_min": 4.861846446990967,
+          "quantity_max": 4.861846446990967,
+          "exact_match_to_source_task_records": true
+        }
+      },
+      "review_status": "provisionally_accepted_with_known_defects"
+    },
+    {
+      "task": "wave",
+      "source_manifest_directory": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_wave_20261009_review_v2",
+      "splits": {
+        "train": {
+          "samples": 45,
+          "recordings": 32,
+          "datasets": {
+            "BMLmovi": 1,
+            "BioMotionLab_NTroje": 1,
+            "CMU": 11,
+            "Eyes_Japan_Dataset": 8,
+            "HumanEva": 1,
+            "KIT": 15,
+            "MPI_HDM05": 8
+          },
+          "source_kinds": {
+            "hdm05_script_supplement": 7,
+            "babel_act_cat_frame": 38
+          },
+          "annotation_levels": {
+            "unspecified": 45
+          },
+          "padding_samples": 0,
+          "quantity_min": 0.043761610984802246,
+          "quantity_max": 0.3118343949317932,
+          "exact_match_to_source_task_records": true
+        },
+        "val": {
+          "samples": 3,
+          "recordings": 2,
+          "datasets": {
+            "HumanEva": 1,
+            "KIT": 2
+          },
+          "source_kinds": {
+            "babel_act_cat_frame": 3
+          },
+          "annotation_levels": {
+            "unspecified": 3
+          },
+          "padding_samples": 0,
+          "quantity_min": 0.09316985309123993,
+          "quantity_max": 0.26075732707977295,
+          "exact_match_to_source_task_records": true
+        }
+      },
+      "review_status": "provisionally_accepted"
+    },
+    {
+      "task": "turn",
+      "source_manifest_directory": "/mnt/sda2/frankenmotion/outputs_amass/main_walking_turn_data_20261009",
+      "splits": {
+        "train": {
+          "samples": 591,
+          "recordings": 387,
+          "datasets": {
+            "ACCAD": 5,
+            "BMLmovi": 22,
+            "BioMotionLab_NTroje": 46,
+            "CMU": 127,
+            "EKUT": 3,
+            "Eyes_Japan_Dataset": 87,
+            "HumanEva": 1,
+            "KIT": 197,
+            "MPI_HDM05": 37,
+            "SFU": 22,
+            "TotalCapture": 44
+          },
+          "source_kinds": {
+            "legacy_caption_selection": 591
+          },
+          "annotation_levels": {
+            "unspecified": 591
+          },
+          "padding_samples": 0,
+          "quantity_min": -3.5207581520080566,
+          "quantity_max": 3.418303966522217,
+          "exact_match_to_source_task_records": true
+        },
+        "val": {
+          "samples": 84,
+          "recordings": 52,
+          "datasets": {
+            "BioMotionLab_NTroje": 2,
+            "CMU": 18,
+            "Eyes_Japan_Dataset": 25,
+            "KIT": 27,
+            "MPI_HDM05": 2,
+            "SFU": 2,
+            "TotalCapture": 8
+          },
+          "source_kinds": {
+            "legacy_caption_selection": 84
+          },
+          "annotation_levels": {
+            "unspecified": 84
+          },
+          "padding_samples": 0,
+          "quantity_min": -3.1559457778930664,
+          "quantity_max": 3.4129977226257324,
+          "exact_match_to_source_task_records": true
+        }
+      },
+      "review_status": "not_reviewed",
+      "review_note": "walking_turn_v2 event admission and exact crop/FK verification completed; not included in the recent per-task user acceptance list."
+    },
+    {
+      "task": "sidestep",
+      "source_manifest_directory": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_sidestep_20261010_v2",
+      "splits": {
+        "train": {
+          "samples": 34,
+          "recordings": 10,
+          "datasets": {
+            "MPI_HDM05": 34
+          },
+          "source_kinds": {
+            "hdm05_walkLeft_script_supplement_mirrored": 34
+          },
+          "annotation_levels": {
+            "script_and_motion_supplement": 34
+          },
+          "padding_samples": 0,
+          "quantity_min": 0.5049563646316528,
+          "quantity_max": 0.9346804618835449,
+          "exact_match_to_source_task_records": true
+        },
+        "val": {
+          "samples": 6,
+          "recordings": 2,
+          "datasets": {
+            "MPI_HDM05": 6
+          },
+          "source_kinds": {
+            "hdm05_walkLeft_script_supplement_mirrored": 6
+          },
+          "annotation_levels": {
+            "script_and_motion_supplement": 6
+          },
+          "padding_samples": 0,
+          "quantity_min": 0.4898574948310852,
+          "quantity_max": 0.7498615384101868,
+          "exact_match_to_source_task_records": true
+        }
+      },
+      "review_status": "provisionally_accepted"
+    },
+    {
+      "task": "back_walk",
+      "source_manifest_directory": "/mnt/sda2/frankenmotion/outputs_amass/shared20_walking_data_20261009",
+      "splits": {
+        "train": {
+          "samples": 1118,
+          "recordings": 1118,
+          "datasets": {
+            "ACCAD": 19,
+            "BMLhandball": 5,
+            "BMLmovi": 103,
+            "BioMotionLab_NTroje": 130,
+            "CMU": 175,
+            "DFaust_67": 1,
+            "EKUT": 18,
+            "Eyes_Japan_Dataset": 128,
+            "KIT": 425,
+            "MPI_HDM05": 58,
+            "MPI_Limits": 1,
+            "MPI_mosh": 1,
+            "SFU": 5,
+            "SSM_synced": 1,
+            "TotalCapture": 8,
+            "Transitions_mocap": 40
+          },
+          "source_kinds": {
+            "not_manually_verified; caption matching only; target is measured crop quantity": 1118
+          },
+          "annotation_levels": {
+            "unspecified": 1118
+          },
+          "padding_samples": 323,
+          "quantity_min": -0.7188660502433777,
+          "quantity_max": 1.064525842666626,
+          "exact_match_to_source_task_records": true
+        },
+        "val": {
+          "samples": 135,
+          "recordings": 135,
+          "datasets": {
+            "ACCAD": 2,
+            "BMLmovi": 17,
+            "BioMotionLab_NTroje": 9,
+            "CMU": 21,
+            "EKUT": 2,
+            "Eyes_Japan_Dataset": 17,
+            "KIT": 55,
+            "MPI_HDM05": 6,
+            "SFU": 1,
+            "TotalCapture": 1,
+            "Transitions_mocap": 4
+          },
+          "source_kinds": {
+            "not_manually_verified; caption matching only; target is measured crop quantity": 135
+          },
+          "annotation_levels": {
+            "unspecified": 135
+          },
+          "padding_samples": 41,
+          "quantity_min": -0.6685249209403992,
+          "quantity_max": 0.45938968658447266,
+          "exact_match_to_source_task_records": true
+        }
+      },
+      "review_status": "not_reviewed"
+    },
+    {
+      "task": "kick",
+      "source_manifest_directory": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_kick_20261009_v1",
+      "splits": {
+        "train": {
+          "samples": 33,
+          "recordings": 28,
+          "datasets": {
+            "BMLmovi": 9,
+            "BioMotionLab_NTroje": 17,
+            "CMU": 5,
+            "Eyes_Japan_Dataset": 1,
+            "MPI_HDM05": 1
+          },
+          "source_kinds": {
+            "hdm05_babel_kick": 1,
+            "babel_kick": 32
+          },
+          "annotation_levels": {
+            "frame": 15,
+            "single_action_sequence": 18
+          },
+          "padding_samples": 0,
+          "quantity_min": 0.43355271220207214,
+          "quantity_max": 1.0443962812423706,
+          "exact_match_to_source_task_records": true
+        },
+        "val": {
+          "samples": 2,
+          "recordings": 2,
+          "datasets": {
+            "BMLmovi": 2
+          },
+          "source_kinds": {
+            "babel_kick": 2
+          },
+          "annotation_levels": {
+            "single_action_sequence": 2
+          },
+          "padding_samples": 0,
+          "quantity_min": 0.7212712168693542,
+          "quantity_max": 0.800858736038208,
+          "exact_match_to_source_task_records": true
+        }
+      },
+      "review_status": "awaiting_user_review"
+    },
+    {
+      "task": "jump",
+      "source_manifest_directory": "/mnt/sda2/frankenmotion/outputs_amass/shared20_walking_data_20261009",
+      "splits": {
+        "train": {
+          "samples": 759,
+          "recordings": 759,
+          "datasets": {
+            "ACCAD": 16,
+            "BMLmovi": 154,
+            "BioMotionLab_NTroje": 106,
+            "CMU": 202,
+            "DFaust_67": 37,
+            "Eyes_Japan_Dataset": 57,
+            "KIT": 102,
+            "MPI_HDM05": 16,
+            "MPI_mosh": 19,
+            "SFU": 12,
+            "SSM_synced": 6,
+            "TotalCapture": 3,
+            "Transitions_mocap": 29
+          },
+          "source_kinds": {
+            "not_manually_verified; caption matching only; target is measured crop quantity": 759
+          },
+          "annotation_levels": {
+            "unspecified": 759
+          },
+          "padding_samples": 78,
+          "quantity_min": 0.0,
+          "quantity_max": 0.6708387732505798,
+          "exact_match_to_source_task_records": true
+        },
+        "val": {
+          "samples": 94,
+          "recordings": 94,
+          "datasets": {
+            "BMLmovi": 20,
+            "BioMotionLab_NTroje": 16,
+            "CMU": 23,
+            "DFaust_67": 7,
+            "Eyes_Japan_Dataset": 10,
+            "KIT": 6,
+            "MPI_HDM05": 6,
+            "SSM_synced": 2,
+            "Transitions_mocap": 4
+          },
+          "source_kinds": {
+            "not_manually_verified; caption matching only; target is measured crop quantity": 94
+          },
+          "annotation_levels": {
+            "unspecified": 94
+          },
+          "padding_samples": 11,
+          "quantity_min": 0.0,
+          "quantity_max": 0.5739061236381531,
+          "exact_match_to_source_task_records": true
+        }
+      },
+      "review_status": "not_reviewed"
+    },
+    {
+      "task": "lean",
+      "source_manifest_directory": "/mnt/sda2/frankenmotion/outputs_amass/shared20_walking_data_20261009",
+      "splits": {
+        "train": {
+          "samples": 346,
+          "recordings": 346,
+          "datasets": {
+            "ACCAD": 5,
+            "BMLhandball": 3,
+            "BMLmovi": 22,
+            "BioMotionLab_NTroje": 18,
+            "CMU": 106,
+            "DFaust_67": 8,
+            "EKUT": 16,
+            "Eyes_Japan_Dataset": 52,
+            "KIT": 87,
+            "MPI_HDM05": 11,
+            "MPI_Limits": 2,
+            "MPI_mosh": 12,
+            "SFU": 2,
+            "TotalCapture": 2
+          },
+          "source_kinds": {
+            "not_manually_verified; caption matching only; target is measured crop quantity": 346
+          },
+          "annotation_levels": {
+            "unspecified": 346
+          },
+          "padding_samples": 12,
+          "quantity_min": -0.3714367747306824,
+          "quantity_max": 2.0467283725738525,
+          "exact_match_to_source_task_records": true
+        },
+        "val": {
+          "samples": 49,
+          "recordings": 49,
+          "datasets": {
+            "BMLhandball": 1,
+            "BMLmovi": 1,
+            "BioMotionLab_NTroje": 1,
+            "CMU": 20,
+            "EKUT": 3,
+            "Eyes_Japan_Dataset": 5,
+            "KIT": 16,
+            "MPI_HDM05": 1,
+            "TotalCapture": 1
+          },
+          "source_kinds": {
+            "not_manually_verified; caption matching only; target is measured crop quantity": 49
+          },
+          "annotation_levels": {
+            "unspecified": 49
+          },
+          "padding_samples": 0,
+          "quantity_min": -0.20228096842765808,
+          "quantity_max": 2.1715970039367676,
+          "exact_match_to_source_task_records": true
+        }
+      },
+      "review_status": "not_reviewed"
+    },
+    {
+      "task": "walk",
+      "source_manifest_directory": "/mnt/sda2/frankenmotion/outputs_amass/shared20_walking_data_20261009",
+      "splits": {
+        "train": {
+          "samples": 3868,
+          "recordings": 3868,
+          "datasets": {
+            "ACCAD": 65,
+            "BMLhandball": 3,
+            "BMLmovi": 81,
+            "BioMotionLab_NTroje": 928,
+            "CMU": 545,
+            "DFaust_67": 1,
+            "EKUT": 176,
+            "Eyes_Japan_Dataset": 222,
+            "HumanEva": 5,
+            "KIT": 1670,
+            "MPI_HDM05": 97,
+            "MPI_Limits": 1,
+            "MPI_mosh": 3,
+            "SFU": 12,
+            "SSM_synced": 1,
+            "TCD_handMocap": 1,
+            "TotalCapture": 21,
+            "Transitions_mocap": 36
+          },
+          "source_kinds": {
+            "not_manually_verified; caption matching only; target is measured crop quantity": 3868
+          },
+          "annotation_levels": {
+            "unspecified": 3868
+          },
+          "padding_samples": 1535,
+          "quantity_min": 0.0017780144698917866,
+          "quantity_max": 1.6445125341415405,
+          "exact_match_to_source_task_records": true
+        },
+        "val": {
+          "samples": 469,
+          "recordings": 469,
+          "datasets": {
+            "ACCAD": 1,
+            "BMLmovi": 10,
+            "BioMotionLab_NTroje": 92,
+            "CMU": 78,
+            "EKUT": 23,
+            "Eyes_Japan_Dataset": 31,
+            "KIT": 214,
+            "MPI_HDM05": 12,
+            "SFU": 1,
+            "TotalCapture": 2,
+            "Transitions_mocap": 5
+          },
+          "source_kinds": {
+            "not_manually_verified; caption matching only; target is measured crop quantity": 469
+          },
+          "annotation_levels": {
+            "unspecified": 469
+          },
+          "padding_samples": 199,
+          "quantity_min": 0.01250768918544054,
+          "quantity_max": 1.0983878374099731,
+          "exact_match_to_source_task_records": true
+        }
+      },
+      "review_status": "not_reviewed"
+    },
+    {
+      "task": "squat",
+      "source_manifest_directory": "/mnt/sda2/frankenmotion/outputs_amass/shared20_walking_data_20261009",
+      "splits": {
+        "train": {
+          "samples": 313,
+          "recordings": 188,
+          "datasets": {
+            "ACCAD": 5,
+            "BMLmovi": 31,
+            "BioMotionLab_NTroje": 42,
+            "CMU": 79,
+            "Eyes_Japan_Dataset": 41,
+            "KIT": 72,
+            "MPI_HDM05": 23,
+            "MPI_Limits": 2,
+            "MPI_mosh": 14,
+            "SSM_synced": 3,
+            "Transitions_mocap": 1
+          },
+          "source_kinds": {
+            "timed matching body/action annotation": 257,
+            "global-caption match; no timed matching label": 56
+          },
+          "annotation_levels": {
+            "unspecified": 313
+          },
+          "padding_samples": 0,
+          "quantity_min": 3.331899642944336e-05,
+          "quantity_max": 0.6576539278030396,
+          "exact_match_to_source_task_records": true
+        },
+        "val": {
+          "samples": 44,
+          "recordings": 27,
+          "datasets": {
+            "ACCAD": 1,
+            "BioMotionLab_NTroje": 5,
+            "CMU": 14,
+            "Eyes_Japan_Dataset": 4,
+            "KIT": 10,
+            "MPI_HDM05": 8,
+            "MPI_mosh": 2
+          },
+          "source_kinds": {
+            "timed matching body/action annotation": 42,
+            "global-caption match; no timed matching label": 2
+          },
+          "annotation_levels": {
+            "unspecified": 44
+          },
+          "padding_samples": 0,
+          "quantity_min": 0.0004572272300720215,
+          "quantity_max": 0.5628407597541809,
+          "exact_match_to_source_task_records": true
+        }
+      },
+      "review_status": "not_reviewed"
+    },
+    {
+      "task": "bow",
+      "source_manifest_directory": "/mnt/sda2/frankenmotion/outputs_amass/shared20_walking_data_20261009",
+      "splits": {
+        "train": {
+          "samples": 95,
+          "recordings": 53,
+          "datasets": {
+            "ACCAD": 2,
+            "BMLmovi": 1,
+            "BioMotionLab_NTroje": 1,
+            "CMU": 20,
+            "EKUT": 4,
+            "Eyes_Japan_Dataset": 51,
+            "KIT": 15,
+            "MPI_mosh": 1
+          },
+          "source_kinds": {
+            "timed matching body/action annotation": 87,
+            "global-caption match; no timed matching label": 8
+          },
+          "annotation_levels": {
+            "unspecified": 95
+          },
+          "padding_samples": 0,
+          "quantity_min": -0.12704171240329742,
+          "quantity_max": 1.8292216062545776,
+          "exact_match_to_source_task_records": true
+        },
+        "val": {
+          "samples": 30,
+          "recordings": 12,
+          "datasets": {
+            "CMU": 3,
+            "Eyes_Japan_Dataset": 19,
+            "KIT": 8
+          },
+          "source_kinds": {
+            "global-caption match; no timed matching label": 8,
+            "timed matching body/action annotation": 22
+          },
+          "annotation_levels": {
+            "unspecified": 30
+          },
+          "padding_samples": 0,
+          "quantity_min": -0.03419021517038345,
+          "quantity_max": 1.716967225074768,
+          "exact_match_to_source_task_records": true
+        }
+      },
+      "review_status": "not_reviewed"
+    },
+    {
+      "task": "clap",
+      "source_manifest_directory": "/mnt/sda2/frankenmotion/outputs_amass/shared20_walking_data_20261009",
+      "splits": {
+        "train": {
+          "samples": 151,
+          "recordings": 113,
+          "datasets": {
+            "BMLmovi": 66,
+            "CMU": 7,
+            "DFaust_67": 1,
+            "Eyes_Japan_Dataset": 27,
+            "KIT": 33,
+            "MPI_HDM05": 16,
+            "MPI_mosh": 1
+          },
+          "source_kinds": {
+            "timed matching body/action annotation": 140,
+            "global-caption match; no timed matching label": 11
+          },
+          "annotation_levels": {
+            "unspecified": 151
+          },
+          "padding_samples": 0,
+          "quantity_min": 0.017928361892700195,
+          "quantity_max": 1.3197195529937744,
+          "exact_match_to_source_task_records": true
+        },
+        "val": {
+          "samples": 20,
+          "recordings": 15,
+          "datasets": {
+            "BMLmovi": 10,
+            "CMU": 1,
+            "Eyes_Japan_Dataset": 6,
+            "KIT": 3
+          },
+          "source_kinds": {
+            "timed matching body/action annotation": 20
+          },
+          "annotation_levels": {
+            "unspecified": 20
+          },
+          "padding_samples": 0,
+          "quantity_min": 0.3518589735031128,
+          "quantity_max": 1.354728102684021,
+          "exact_match_to_source_task_records": true
+        }
+      },
+      "review_status": "not_reviewed"
+    },
+    {
+      "task": "point",
+      "source_manifest_directory": "/mnt/sda2/frankenmotion/outputs_amass/shared20_walking_data_20261009",
+      "splits": {
+        "train": {
+          "samples": 115,
+          "recordings": 69,
+          "datasets": {
+            "BMLmovi": 27,
+            "BioMotionLab_NTroje": 4,
+            "CMU": 32,
+            "EKUT": 2,
+            "Eyes_Japan_Dataset": 10,
+            "KIT": 29,
+            "MPI_HDM05": 2,
+            "TCD_handMocap": 6,
+            "TotalCapture": 3
+          },
+          "source_kinds": {
+            "timed matching body/action annotation": 81,
+            "global-caption match; no timed matching label": 34
+          },
+          "annotation_levels": {
+            "unspecified": 115
+          },
+          "padding_samples": 0,
+          "quantity_min": 0.008188486099243164,
+          "quantity_max": 0.8309130668640137,
+          "exact_match_to_source_task_records": true
+        },
+        "val": {
+          "samples": 10,
+          "recordings": 6,
+          "datasets": {
+            "BMLmovi": 4,
+            "CMU": 3,
+            "Eyes_Japan_Dataset": 3
+          },
+          "source_kinds": {
+            "timed matching body/action annotation": 8,
+            "global-caption match; no timed matching label": 2
+          },
+          "annotation_levels": {
+            "unspecified": 10
+          },
+          "padding_samples": 0,
+          "quantity_min": 0.12983012199401855,
+          "quantity_max": 0.5985397100448608,
+          "exact_match_to_source_task_records": true
+        }
+      },
+      "review_status": "not_reviewed"
+    },
+    {
+      "task": "stretch",
+      "source_manifest_directory": "/mnt/sda2/frankenmotion/outputs_amass/shared20_walking_data_20261009",
+      "splits": {
+        "train": {
+          "samples": 779,
+          "recordings": 266,
+          "datasets": {
+            "ACCAD": 4,
+            "BMLmovi": 66,
+            "BioMotionLab_NTroje": 217,
+            "CMU": 145,
+            "DFaust_67": 5,
+            "Eyes_Japan_Dataset": 70,
+            "KIT": 99,
+            "MPI_HDM05": 34,
+            "MPI_Limits": 42,
+            "MPI_mosh": 44,
+            "SFU": 5,
+            "SSM_synced": 2,
+            "TotalCapture": 45,
+            "Transitions_mocap": 1
+          },
+          "source_kinds": {
+            "timed matching body/action annotation": 641,
+            "global-caption match; no timed matching label": 138
+          },
+          "annotation_levels": {
+            "unspecified": 779
+          },
+          "padding_samples": 0,
+          "quantity_min": -0.5990781784057617,
+          "quantity_max": 1.0562341213226318,
+          "exact_match_to_source_task_records": true
+        },
+        "val": {
+          "samples": 74,
+          "recordings": 30,
+          "datasets": {
+            "ACCAD": 1,
+            "BMLmovi": 5,
+            "BioMotionLab_NTroje": 20,
+            "CMU": 25,
+            "Eyes_Japan_Dataset": 5,
+            "KIT": 18
+          },
+          "source_kinds": {
+            "global-caption match; no timed matching label": 5,
+            "timed matching body/action annotation": 69
+          },
+          "annotation_levels": {
+            "unspecified": 74
+          },
+          "padding_samples": 0,
+          "quantity_min": -0.07988810539245605,
+          "quantity_max": 1.014808177947998,
+          "exact_match_to_source_task_records": true
+        }
+      },
+      "review_status": "not_reviewed"
+    },
+    {
+      "task": "twist",
+      "source_manifest_directory": "/mnt/sda2/frankenmotion/outputs_amass/shared20_walking_data_20261009",
+      "splits": {
+        "train": {
+          "samples": 184,
+          "recordings": 99,
+          "datasets": {
+            "BMLmovi": 8,
+            "BioMotionLab_NTroje": 29,
+            "CMU": 71,
+            "DFaust_67": 2,
+            "Eyes_Japan_Dataset": 22,
+            "KIT": 12,
+            "MPI_HDM05": 2,
+            "MPI_Limits": 3,
+            "MPI_mosh": 30,
+            "SSM_synced": 1,
+            "Transitions_mocap": 4
+          },
+          "source_kinds": {
+            "timed matching body/action annotation": 162,
+            "global-caption match; no timed matching label": 22
+          },
+          "annotation_levels": {
+            "unspecified": 184
+          },
+          "padding_samples": 0,
+          "quantity_min": 0.01088559627532959,
+          "quantity_max": 2.498075246810913,
+          "exact_match_to_source_task_records": true
+        },
+        "val": {
+          "samples": 26,
+          "recordings": 11,
+          "datasets": {
+            "BMLmovi": 2,
+            "CMU": 10,
+            "Eyes_Japan_Dataset": 5,
+            "KIT": 4,
+            "TotalCapture": 3,
+            "Transitions_mocap": 2
+          },
+          "source_kinds": {
+            "timed matching body/action annotation": 19,
+            "global-caption match; no timed matching label": 7
+          },
+          "annotation_levels": {
+            "unspecified": 26
+          },
+          "padding_samples": 0,
+          "quantity_min": 0.06986618041992188,
+          "quantity_max": 1.4499070644378662,
+          "exact_match_to_source_task_records": true
+        }
+      },
+      "review_status": "not_reviewed"
+    },
+    {
+      "task": "march",
+      "source_manifest_directory": "/mnt/sda2/frankenmotion/outputs_amass/shared20_walking_data_20261009",
+      "splits": {
+        "train": {
+          "samples": 42,
+          "recordings": 20,
+          "datasets": {
+            "CMU": 34,
+            "EKUT": 3,
+            "MPI_HDM05": 4,
+            "TCD_handMocap": 1
+          },
+          "source_kinds": {
+            "timed matching body/action annotation": 38,
+            "global-caption match; no timed matching label": 4
+          },
+          "annotation_levels": {
+            "unspecified": 42
+          },
+          "padding_samples": 0,
+          "quantity_min": 0.000555872917175293,
+          "quantity_max": 0.669000506401062,
+          "exact_match_to_source_task_records": true
+        },
+        "val": {
+          "samples": 2,
+          "recordings": 1,
+          "datasets": {
+            "SFU": 2
+          },
+          "source_kinds": {
+            "global-caption match; no timed matching label": 2
+          },
+          "annotation_levels": {
+            "unspecified": 2
+          },
+          "padding_samples": 0,
+          "quantity_min": 0.3324965238571167,
+          "quantity_max": 0.48235905170440674,
+          "exact_match_to_source_task_records": true
+        }
+      },
+      "review_status": "not_reviewed"
+    },
+    {
+      "task": "jog",
+      "source_manifest_directory": "/mnt/sda2/frankenmotion/outputs_amass/shared20_walking_data_20261009",
+      "splits": {
+        "train": {
+          "samples": 742,
+          "recordings": 363,
+          "datasets": {
+            "ACCAD": 11,
+            "BMLmovi": 171,
+            "BioMotionLab_NTroje": 342,
+            "CMU": 69,
+            "DFaust_67": 5,
+            "EKUT": 5,
+            "Eyes_Japan_Dataset": 10,
+            "HumanEva": 21,
+            "KIT": 40,
+            "MPI_HDM05": 50,
+            "MPI_Limits": 4,
+            "MPI_mosh": 1,
+            "SFU": 9,
+            "TotalCapture": 1,
+            "Transitions_mocap": 3
+          },
+          "source_kinds": {
+            "timed matching body/action annotation": 696,
+            "global-caption match; no timed matching label": 46
+          },
+          "annotation_levels": {
+            "unspecified": 742
+          },
+          "padding_samples": 0,
+          "quantity_min": 0.02550601027905941,
+          "quantity_max": 3.629791498184204,
+          "exact_match_to_source_task_records": true
+        },
+        "val": {
+          "samples": 92,
+          "recordings": 44,
+          "datasets": {
+            "ACCAD": 2,
+            "BMLmovi": 24,
+            "BioMotionLab_NTroje": 41,
+            "CMU": 3,
+            "DFaust_67": 1,
+            "HumanEva": 3,
+            "KIT": 4,
+            "MPI_HDM05": 12,
+            "SSM_synced": 1,
+            "Transitions_mocap": 1
+          },
+          "source_kinds": {
+            "timed matching body/action annotation": 86,
+            "global-caption match; no timed matching label": 6
+          },
+          "annotation_levels": {
+            "unspecified": 92
+          },
+          "padding_samples": 0,
+          "quantity_min": 0.058822281658649445,
+          "quantity_max": 2.0452468395233154,
+          "exact_match_to_source_task_records": true
+        }
+      },
+      "review_status": "not_reviewed"
+    },
+    {
+      "task": "arm_circle",
+      "source_manifest_directory": "/mnt/sda2/frankenmotion/outputs_amass/shared20_walking_data_20261009",
+      "splits": {
+        "train": {
+          "samples": 428,
+          "recordings": 151,
+          "datasets": {
+            "BMLhandball": 2,
+            "BMLmovi": 1,
+            "BioMotionLab_NTroje": 88,
+            "CMU": 90,
+            "DFaust_67": 6,
+            "Eyes_Japan_Dataset": 104,
+            "HumanEva": 2,
+            "KIT": 64,
+            "MPI_HDM05": 32,
+            "MPI_Limits": 3,
+            "SFU": 7,
+            "SSM_synced": 1,
+            "TotalCapture": 26,
+            "Transitions_mocap": 2
+          },
+          "source_kinds": {
+            "global-caption match; no timed matching label": 320,
+            "timed matching body/action annotation": 108
+          },
+          "annotation_levels": {
+            "unspecified": 428
+          },
+          "padding_samples": 0,
+          "quantity_min": 0.002208501100540161,
+          "quantity_max": 1.851954698562622,
+          "exact_match_to_source_task_records": true
+        },
+        "val": {
+          "samples": 61,
+          "recordings": 22,
+          "datasets": {
+            "BioMotionLab_NTroje": 16,
+            "CMU": 10,
+            "Eyes_Japan_Dataset": 14,
+            "KIT": 12,
+            "MPI_HDM05": 3,
+            "SFU": 2,
+            "TotalCapture": 4
+          },
+          "source_kinds": {
+            "global-caption match; no timed matching label": 43,
+            "timed matching body/action annotation": 18
+          },
+          "annotation_levels": {
+            "unspecified": 61
+          },
+          "padding_samples": 0,
+          "quantity_min": 0.02048283815383911,
+          "quantity_max": 1.2576277256011963,
+          "exact_match_to_source_task_records": true
+        }
+      },
+      "review_status": "not_reviewed"
+    }
+  ],
+  "checks": {
+    "missing_caches": [],
+    "unique_caches": 12268,
+    "cross_split_families": [],
+    "all20_tasks": true
+  },
+  "review_state_source": "/Users/andy/.codex/worktrees/7a7d/frankenmotion/data_processing/review_state.json",
+  "review_state_sha256": "f781be59680267f06377a56725ff0af877614ac96b35e5befb23f06e002c788b",
+  "review_date": "2026-10-10 Asia/Shanghai",
+  "training_started_by_this_request": false
+}

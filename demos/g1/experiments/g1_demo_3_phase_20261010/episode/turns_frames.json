@@ -1,0 +1,74 @@
+[
+  {
+    "label": "turn_left_1",
+    "frame": 175,
+    "time_s": 3.5,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "label": "turn_left_1",
+    "frame": 202,
+    "time_s": 4.04,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "label": "turn_left_1",
+    "frame": 229,
+    "time_s": 4.58,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "label": "turn_left_1",
+    "frame": 256,
+    "time_s": 5.12,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "label": "turn_left_1",
+    "frame": 283,
+    "time_s": 5.66,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "label": "turn_left_1",
+    "frame": 310,
+    "time_s": 6.2,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "label": "turn_left_2",
+    "frame": 410,
+    "time_s": 8.2,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "label": "turn_left_2",
+    "frame": 437,
+    "time_s": 8.74,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "label": "turn_left_2",
+    "frame": 464,
+    "time_s": 9.28,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "label": "turn_left_2",
+    "frame": 491,
+    "time_s": 9.82,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "label": "turn_left_2",
+    "frame": 518,
+    "time_s": 10.36,
+    "source": "actual.npz:qpos"
+  },
+  {
+    "label": "turn_left_2",
+    "frame": 545,
+    "time_s": 10.9,
+    "source": "actual.npz:qpos"
+  }
+]

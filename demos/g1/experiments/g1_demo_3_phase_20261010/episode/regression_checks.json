@@ -1,0 +1,19 @@
+{
+  "symmetric_first vs phase_legacy_regression": {
+    "qpos": true,
+    "qvel": true,
+    "body_pos": true,
+    "reference": true,
+    "peak_actuator_force": true,
+    "telemetry": true
+  },
+  "phase_initial vs phase_matched_final": {
+    "qpos": true,
+    "qvel": true,
+    "body_pos": true,
+    "reference": true,
+    "peak_actuator_force": true,
+    "telemetry": true
+  },
+  "baseline_actual_sha256": "9aa637af58d526ce2a7d0a479112d2448efc5a6c1702df69df961196dcdb2e9b"
+}

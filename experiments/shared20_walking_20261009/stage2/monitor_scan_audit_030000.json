@@ -1,0 +1,15 @@
+{
+  "checkpoint_step": 30000,
+  "checkpoint_sha256": "e6a0b90eb0dd4a179ec8244f2cb98e7fdfdc23041351938de6cce6ac60495a2b",
+  "optimizer_steps": [
+    30000
+  ],
+  "seen_training_records": 12030,
+  "new_rollouts_recomputed": 200,
+  "max_quantity_error": 2.0265579223632812e-06,
+  "max_mae_json_discrepancy": 1.1920928955078125e-07,
+  "recomputed_macro_normalized_mae": 0.48630568783049577,
+  "fixed_texts_seeds_commands_verified": true,
+  "cumulative_audited_rollouts": 800,
+  "prior_audit": "monitor_scan_audit_020000.json"
+}

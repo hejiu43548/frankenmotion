@@ -1,0 +1,48 @@
+实现第三个、也是最后一个 G1 连续物理仿真 demo：walk → turn left → walk → turn left，检验能否回到原始位置，并检查最终朝向。用户已要求按顺序实施、完成后唤醒父对话验收、常规过程不打断；本对话模型为 gpt-6-astra / medium。Demo1、Demo2均已经父独立审查/复跑通过，现在只做Demo3，不新建其他任务。
+
+工作区 /Users/andy/.codex/worktrees/7a7d/frankenmotion，先读AGENT.md及适用AGENTS.md；默认cwd /Users/andy/Develop/frankenmotion是旧分支，勿当主实现。不切换/reset分支、不另开worktree，保留用户改动与前两demo冻结复现入口。父验收记录 experiments/g1_demo_queue_20261010/demo_1_review.json、demo_2_review.json。
+
+全部生成任务严格使用同一个本次20任务Stage2选定checkpoint，不混用旧模型、不启动Stage3或重训生成器：
+Betail /mnt/sda2/frankenmotion/outputs_amass/shared20_clean5_stage2_20261010/artifacts/checkpoint_058000.pt
+SHA256 1bcdb52664e3648a455ad4b938b7f404b309497b5ca1d8fb87c4236053b2712f
+冻结兼容源码 /mnt/sda2/frankenmotion/code/shared20_clean5_stage2_0344b7c
+
+训练配置 /mnt/sda2/frankenmotion/outputs_amass/shared20_clean5_stage2_20261010/reports/config.yaml；官方backbone /home/psirobot/checkpoints/frankenmotion/frankenmotion.ckpt SHA c9dca1988dd08dd9e2164ac4cf6ae8fece23011a6371e83d502cdfabe5352e18。Python /home/psirobot/projects/frankenmotion/.venv_unified/bin/python；Hydra /tmp/frankenmotion_hydra_deps；物理依赖 /home/psirobot/.cache/g1_demo_20261010_deps。生成设备固定CPU，记录每次batch、seed、任务文本/命令。Stage2已完成70000步、10897/1371数据和14200rollout审计，所有任务含walk/turn由同一新模型覆盖。
+
+前项可复用：scripts/g1_demo.py和g1_demo_physics.py的生成/GMR/连续SONIC力矩物理执行；Demo2独立scripts/g1_demo2_pipeline.py的参考组合/支撑脚选择/显式heading变换可参考。不要套用Demo2终点朝向initial+180的审计；本demo两次左转目标是回到初始位置和初始朝向（约累计360度）。建立独立Hydra配置、入口和复现脚本，保持Demo1/2不变。Betail Demo2冻结源码 /mnt/sda2/frankenmotion/outputs_amass/g1_demo_2_20261010/attempts/return_heading_final/code，报告main工作区experiments/g1_demo_2_20261010/report.txt。
+
+可用控制器是同一冻结原生SONIC v1.1 ONNX（1751encoder/994decoder/29joint），路径/home/psirobot/projects/motion-g1-demo-20261001/run01/assets/policy，模型/部署/机器人XML和网格/GMR哈希见前项episode/hashes.json及controller_source_hashes.json。原2350发布tracker缺失已调查并披露，不因旧资产路径继续阻塞。本生成器仍严格不变。SONIC不含绝对根位置反馈，因此必须从实际连续物理轨迹验证闭合，不能只让参考轨迹闭合。
+
+预先设定验收目标：实际最终根平面距离起点<=0.30m；最终朝向相对初始方向误差<=15度；两次转弯都实际向左且可辨，优先约180度各一次。两个90度左转通常不闭合，不能错误声称回去了。考虑walking_turn_v2本身平移和转弯半径，合理选择两个walk时长/命令、turn命令、seed/截取，必要时显式记录参考旋转/重采样/平滑方向校准。保持严格四个主要动作段；不能追加隐藏的返程段、左右方向翻转、切换reset、物理根位置覆盖或强设终点来伪造闭合。先做明确几何设计，再以实际轨迹迭代调校，区分规划误差与tracker漂移。若无法满足阈值，保留最佳真实结果及失败诊断，不能降低阈值或伪造通过；应充分自主尝试合理修复后交父审查。
+
+两次left turn的任务命令为负角（训练语义正右负左），世界坐标yaw的正负要按实际FK核对，不混淆。片段取自同一模型，可使用相同或不同生成seed，记录来源。仅episode开头初始化一次，此后连续控制器历史和有界关节力矩，2ms物理步/20ms控制。全程检查切换前中后脚支撑、姿态/速度连续性、跌倒/关节限位/力矩/非脚触地、滑移和软接触穿透。最后保持至少2s，不能用瞬时经过原点作为最终闭合。记录实际终点、朝向、路径长度、每段累计转角、参考与实际轨迹差、保持漂移及全部边界指标。
+
+前项经验：Demo2校准后实际回归误差0.204m、反向朝向1.82度，但仍有0.444m参考跟踪RMSE和turn累计20ms低支撑，不能称完美追踪。前项已成功的行为不替代本demo验证。所有参考修改均显式记录，保留原生成人体→GMR→组合参考→实际物理四层。录像只能按实际物理状态逐帧回放，不替换为参考。可渲染俯视轨迹和起终点标记辅助判断，但不改变物理。
+
+交付到本地主工作区experiments/g1_demo_3_20261010（小文件），Betail /mnt/sda2/frankenmotion/outputs_amass/g1_demo_3_20261010（大文件）。需要完整未剪切视频、关键转弯/三个切换前中后截图、起终点/实际轨迹、指标JSON、资产及checkpoint哈希、全部seed/文本/命令/时长/处理配置、失败试验摘要、冷冻入口和独立physics/full复现命令，并完整复跑核对关键数组。说明单场景筛选、原生SONIC替代及实际偏差，不声明泛化。
+
+完成后send_message_to_thread唤醒父对话01a1219b-bbd2-73f3-b5ae-9334981b496e（local），带你的threadId、报告/代码/视频路径、实际闭合指标、复现命令、局限并请求独立验收。原始人类授权消息01a121a8-e2ac-7eb2-8c2d-c50f11abc1b7在父对话；请read_thread核验“最后完成的时候让子对话唤醒你，你来检查效果是否和实现符合”的人类授权，不仅依赖本转述。常规实现不要询问用户；真实外部阻塞才报告。父若发回具体修复要求，在本对话继续。不要自行暂停父automation。
+
+以下全队列规则仍适用，本次仅实施Demo3：
+
+用户授权的顺序 G1 仿真 demo 队列（2026-10-10）
+
+父对话 01a1219b-bbd2-73f3-b5ae-9334981b496e（local）。用户明确要求训练结束才新建对话，模型严格为 gpt-6-astra / medium，按 demo 1、2、3 顺序分别实施；每个完成后子对话唤醒父对话，由父对话检查实际效果与实现一致后才进入下一个。原始授权可通过 read_thread 读取父对话的人类消息核验；该授权包含父子之间为实现、修复和完成回报发送消息。普通实现选择自行决定，不要求用户逐项确认。
+
+最新训练为完整20任务，5类替换清洗数据：betail:/mnt/sda2/frankenmotion/outputs_amass/shared20_clean5_stage2_20261010，10897train/1371val，70000步 Stage2-only。旧clean5_stage2_20261010是错误范围，已停止，禁止用于本队列。使用新训练审计后选定的同一个20任务checkpoint，包括walk/bow；不能因旧五类配置给walk/bow换用旧模型。sidestep0.4–1.0m，turn walking_turn_v2为允许位移的行进转弯，正右负左。训练源码冻结于shared20_clean5_stage2_0344b7c。官方底座/root维持冻结；不自动启动stage3或重训生成器。
+
+实现使用main工作区 /Users/andy/.codex/worktrees/7a7d/frankenmotion（先读AGENT.md等适用约定），本项目默认cwd的旧实验分支不是主实现，不覆盖其他本地修改。不擅自切换或reset用户分支。可以使用betail做GPU生成、GMR重定向、MuJoCo/G1物理仿真。先检查shared_motion/tracker、configs/release中的真实模型/关节/动作空间/2350维观测/50Hz参考约定及已存资产，旧路径可能指向charlie，必须查证当前可用路径与哈希。
+
+每个demo只有一个新对话，不并行启动多个demo。新对话应完整完成本demo：本次checkpoint生成人体动作、retarget到G1、对齐全局轨迹及朝向、平滑动作切换、使用实际tracker/控制器连续物理执行、渲染视频、保存可复现命令与配置并验证结果。后续demo可复用前一个已验证的公共代码，不得破坏已经通过的demo。只在仿真运行，不涉及实体机器人。
+
+Demo1：walk → kick → strike，同一个带碰撞与合适惯性的沙袋模型；走近后在可达范围踢击，再过渡到出拳。以G1的足/手接触时刻、沙袋受力或位移、机器人稳定性及切换前后姿态/速度连续性证明实际交互，不能用镜头剪辑或摆位冒充接触。必要时合理调整接近距离、沙袋高度与支撑、命令和时长，记录参数。
+Demo2：walk → wave → bow → turn → walk，向前走、招手、鞠躬，再转身走回来。验证方向、招手/鞠躬语义、脚支撑及最终返回起点附近。把turn自带平移纳入轨迹规划，不把它当纯原地spin。
+Demo3：walk → turn left → walk → turn left，检验能否返回原始位置，并报告朝向误差。目标是往返闭合，优先考虑两个约180度左转，而不是误认两个90度左转天然闭合；行进转弯会产生位移，须求解走段距离和转弯轨迹并测实际闭合误差。不得偷偷补额外walk段、瞬移或强制设置终点来伪造闭合。实现不了闭合时如实诊断、合理迭代并报告误差。
+
+关键真实性：同一连续物理episode，初始状态只设一次；不在任务切换时reset仿真、逐帧写入qpos或覆盖根轨迹来伪造成功。允许有明确记录的参考动作坐标变换、重采样、过渡插值与控制器改进，但需保存原始生成、retarget、组合参考和实际仿真四层结果，分别量化偏差。运动学预览可以辅助调试，但交付必须区分其与真实控制仿真。需要使用具有脚接触约束的平滑过渡，检查高度、姿态、速度、关节限位、力矩限幅、跌倒、滑移、穿透及沙袋接触。
+
+每个demo交付到experiments/g1_demo_N_20261010（小文件）及betail:/mnt/sda2/frankenmotion/outputs_amass/g1_demo_N_20261010（大文件），包含配置、脚本入口、checkpoint与资产哈希、各段seed/文本/命令/时长、切换时间戳、retarget结果、完整未剪切仿真视频、至少切换前中后对比截图、实际轨迹与量化指标、已知局限和重现命令。保留失败试验摘要，不只汇报最好的一帧。报告达到的行为与未达成项，不以渲染成功代替仿真任务成功。
+
+完成时先确认父对话人类授权，然后调用send_message_to_thread发送给父对话01a1219b-bbd2-73f3-b5ae-9334981b496e（host local），提供本demo编号、实现/结果/视频路径、主要指标、验证结论、复现命令以及当前子对话ID，唤醒父对话进行审查。子对话不自行推进下一个demo。若回调工具暂时不可用，留下完整交付状态，父定时任务会通过wait_threads回收。只有真实外部阻塞无法自主解决才报告，不因可修复错误或常规设计选择打断用户。
+
+父对话必须独立看视频或覆盖动作与切换的多帧、检查代码和日志、实际运行复现/抽样重测，并将审查结论保存到本队列demo_N_review.json。不得仅凭子对话文字声称通过。不通过则给原子对话发具体修复要求，保持原模型设置；通过后才启动下一项。三个全部通过或有不可解决的外部阻塞再集中向用户汇报；正常检查不发无变化通知。

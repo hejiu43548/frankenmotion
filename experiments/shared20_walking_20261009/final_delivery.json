@@ -1,0 +1,165 @@
+{
+  "checked_at": "2026-10-09T12:11:59.141912+00:00",
+  "training_complete": true,
+  "all_training_processes_exited": true,
+  "stage2_rollouts_verified": 1600,
+  "stage3_rollouts_verified": 1800,
+  "best": {
+    "step": 7700,
+    "metric": 0.07772308039041517,
+    "checkpoint": "/mnt/sda2/frankenmotion/outputs_amass/shared20_walking_20261009_perf/stage3/checkpoint_007700.pt",
+    "sha256": "ff5ec6f3f2a7113d158bd7da31a30d2035f098b7e9de3746ef83e3b2e86c81b8"
+  },
+  "rendered_videos": [
+    {
+      "name": "arm_circle.mp4",
+      "frames": 97,
+      "width": 1440,
+      "height": 820,
+      "sha256": "6226d231a5a7a6be410ea1c16ff0a40d98dfed8f8b4ed074de85634f6c2e7543"
+    },
+    {
+      "name": "back_walk.mp4",
+      "frames": 120,
+      "width": 1440,
+      "height": 820,
+      "sha256": "dcc765c632bc3a1cccce20399e97d3727dc6c52e9fd2eebdb83bd61e61f3276c"
+    },
+    {
+      "name": "bow.mp4",
+      "frames": 81,
+      "width": 1440,
+      "height": 820,
+      "sha256": "86c3eb8fd108c3aca465671a33aab35f557f689d4cade37fe88be9dcb22262b4"
+    },
+    {
+      "name": "clap.mp4",
+      "frames": 69,
+      "width": 1440,
+      "height": 820,
+      "sha256": "069a3d01d6695adbe4308ca43c680a972859ffcf587f69c1a82cbb2ef6174a23"
+    },
+    {
+      "name": "jog.mp4",
+      "frames": 100,
+      "width": 1440,
+      "height": 820,
+      "sha256": "6409860131b8e90daf21e662520b8a56327ec06065db6ce74eb252781c99139d"
+    },
+    {
+      "name": "jump.mp4",
+      "frames": 60,
+      "width": 1440,
+      "height": 820,
+      "sha256": "e485104197e95ef25565eddc4a49c7e9019dbea1fccdfd3cfcbc6ff81764605c"
+    },
+    {
+      "name": "kick.mp4",
+      "frames": 60,
+      "width": 1440,
+      "height": 820,
+      "sha256": "1897976e307bbb7ef17cec86f87a552248f7f42d37af3b0eb45d6351e519dc1f"
+    },
+    {
+      "name": "lean.mp4",
+      "frames": 60,
+      "width": 1440,
+      "height": 820,
+      "sha256": "00023776b2bcb1333c3517a597a1fb69f601fbfef677b220b990f2fccc691911"
+    },
+    {
+      "name": "march.mp4",
+      "frames": 111,
+      "width": 1440,
+      "height": 820,
+      "sha256": "f683d336a92c5fade82541d59dc87b6466b1fb9d2b475e28e23eab04b63e93bc"
+    },
+    {
+      "name": "point.mp4",
+      "frames": 40,
+      "width": 1440,
+      "height": 820,
+      "sha256": "c867322cc14f5a7145cdd1b2572ef8dd8fea211c4521adfa030cc3432a0feb14"
+    },
+    {
+      "name": "raise_hand.mp4",
+      "frames": 60,
+      "width": 1440,
+      "height": 820,
+      "sha256": "a23ac3067c5351ddf56d760198ff624b8940f1d5282467083a1b097a97e1acbb"
+    },
+    {
+      "name": "reach.mp4",
+      "frames": 60,
+      "width": 1440,
+      "height": 820,
+      "sha256": "53ab57727c5168327bad4f93edff1001dbb509a5e70e033b51a508bd6d178d72"
+    },
+    {
+      "name": "sidestep.mp4",
+      "frames": 120,
+      "width": 1440,
+      "height": 820,
+      "sha256": "a49c9871e158fce9083d0040a18c164f6f5e5193aa6417be49d3cc76e838d7ea"
+    },
+    {
+      "name": "squat.mp4",
+      "frames": 40,
+      "width": 1440,
+      "height": 820,
+      "sha256": "02010cef2ebab89ecd24a454111cbd60613c2d3ba397dbdaab2caf00dcd487be"
+    },
+    {
+      "name": "stretch.mp4",
+      "frames": 105,
+      "width": 1440,
+      "height": 820,
+      "sha256": "4047f70768d230619027736d15609b63f14417e1dfaf85573dc089b220390cac"
+    },
+    {
+      "name": "strike.mp4",
+      "frames": 60,
+      "width": 1440,
+      "height": 820,
+      "sha256": "176a6a9a961e6d8c9d2312cfb76c41650b7e4a9a1a526a4cacb4c169ec99694e"
+    },
+    {
+      "name": "turn_left.mp4",
+      "frames": 63,
+      "width": 1440,
+      "height": 820,
+      "sha256": "9ddb2315143e5410f43af36894b6a4e112fa2f8c4be0417d667ba14dc1ca91d8"
+    },
+    {
+      "name": "turn_right.mp4",
+      "frames": 94,
+      "width": 1440,
+      "height": 820,
+      "sha256": "0d8d796d2dce68f57a05e09c988fdcaee55399516a28beebcd97b7991fb62738"
+    },
+    {
+      "name": "twist.mp4",
+      "frames": 65,
+      "width": 1440,
+      "height": 820,
+      "sha256": "a1c5cbfae605567a1086e4c329dccfe0deb16365035affc0ec9b2e8c6e3be27c"
+    },
+    {
+      "name": "walk.mp4",
+      "frames": 120,
+      "width": 1440,
+      "height": 820,
+      "sha256": "6f62b24f8af4d71daa1b5a2c3199ca6dd7262b780bfe7fbeb6f5e64481d67d33"
+    },
+    {
+      "name": "wave.mp4",
+      "frames": 120,
+      "width": 1440,
+      "height": 820,
+      "sha256": "e013633902284203f5408068c88ca33f6aa4689a3a58da90db9e798c14d75cd7"
+    }
+  ],
+  "visual_review": "/mnt/sda2/frankenmotion/outputs_amass/shared20_walking_20261009_perf/review_best_007700/visual_review.json",
+  "naturalness_passed": false,
+  "automated_work_complete": true
+}

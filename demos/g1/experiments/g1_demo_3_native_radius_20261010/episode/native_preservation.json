@@ -1,0 +1,30 @@
+{
+  "passed": true,
+  "scope": "Each main segment equals one contiguous native GMR crop at original timing, with only constant world yaw/translation and 20-to-50Hz interpolation. Segment-boundary bridges and terminal hold are separate.",
+  "segments": [
+    {
+      "name": "walk_out",
+      "max_joint_error_rad": 0.0,
+      "max_root_error_m": 1.3877787807814457e-16,
+      "max_orientation_error_rad": 4.99986505935532e-16
+    },
+    {
+      "name": "turn_left_1",
+      "max_joint_error_rad": 0.0,
+      "max_root_error_m": 1.3322676295501878e-15,
+      "max_orientation_error_rad": 5.59614036512063e-16
+    },
+    {
+      "name": "walk_back",
+      "max_joint_error_rad": 0.0,
+      "max_root_error_m": 4.440892098500626e-16,
+      "max_orientation_error_rad": 3.0722241715516967e-16
+    },
+    {
+      "name": "turn_left_2",
+      "max_joint_error_rad": 0.0,
+      "max_root_error_m": 8.881784197001252e-16,
+      "max_orientation_error_rad": 5.587513499920549e-16
+    }
+  ]
+}

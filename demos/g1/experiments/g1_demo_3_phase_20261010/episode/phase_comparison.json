@@ -1,0 +1,207 @@
+{
+  "baseline": {
+    "attempt": "symmetric_first",
+    "definitions": {
+      "wide_fore_aft_gap_m": 0.25,
+      "stationary_root_speed_below_m_s": 0.12,
+      "stationary_both_foot_speed_below_m_s": 0.25,
+      "nearby_margin_s": 0.2
+    },
+    "transitions": [
+      {
+        "from_name": "walk_out",
+        "to_name": "turn_left_1",
+        "interval_s": [
+          3.0,
+          4.2
+        ],
+        "foot_fore_aft_gap_start_end_m": [
+          0.28153243495495933,
+          0.2948316978980188
+        ],
+        "maximum_fore_aft_gap_m": 0.2948316978980188,
+        "root_speed_min_mean_m_s": [
+          0.028298268464640657,
+          0.14886820781194174
+        ],
+        "swing_forward_velocity_min_max_m_s": [
+          -0.06761539674420378,
+          0.13768979024678524
+        ],
+        "swing_forward_travel_m": 0.0196604079970893,
+        "swing_backward_travel_m": 0.036138172906139396,
+        "wide_stance_pause_s": 0.42,
+        "stationary_pause_s": 0.42,
+        "nearby_longest_wide_stance_pause_s": 0.34,
+        "nearby_longest_stationary_pause_s": 0.34,
+        "support_min_N": 292.01241010070305,
+        "unsupported_seconds": 0.0
+      },
+      {
+        "from_name": "turn_left_1",
+        "to_name": "walk_back",
+        "interval_s": [
+          7.54,
+          8.74
+        ],
+        "foot_fore_aft_gap_start_end_m": [
+          0.11259701961246316,
+          0.07644844401680102
+        ],
+        "maximum_fore_aft_gap_m": 0.11365639275688319,
+        "root_speed_min_mean_m_s": [
+          0.013546356338739528,
+          0.10648097174208859
+        ],
+        "swing_forward_velocity_min_max_m_s": [
+          -0.04579728513861856,
+          0.40000854897778887
+        ],
+        "swing_forward_travel_m": 0.026155366499365056,
+        "swing_backward_travel_m": 0.010227929243482493,
+        "wide_stance_pause_s": 0.0,
+        "stationary_pause_s": 0.72,
+        "nearby_longest_wide_stance_pause_s": 0.0,
+        "nearby_longest_stationary_pause_s": 0.46,
+        "support_min_N": 308.1478462313729,
+        "unsupported_seconds": 0.0
+      },
+      {
+        "from_name": "walk_back",
+        "to_name": "turn_left_2",
+        "interval_s": [
+          11.74,
+          12.94
+        ],
+        "foot_fore_aft_gap_start_end_m": [
+          0.2861699635299468,
+          0.2799459642428564
+        ],
+        "maximum_fore_aft_gap_m": 0.2861699635299468,
+        "root_speed_min_mean_m_s": [
+          0.02619066056419933,
+          0.17637589371484466
+        ],
+        "swing_forward_velocity_min_max_m_s": [
+          -0.10115750414554371,
+          0.34602641230233905
+        ],
+        "swing_forward_travel_m": 0.03867521953014542,
+        "swing_backward_travel_m": 0.030214028439903996,
+        "wide_stance_pause_s": 0.4,
+        "stationary_pause_s": 0.4,
+        "nearby_longest_wide_stance_pause_s": 0.28,
+        "nearby_longest_stationary_pause_s": 0.28,
+        "support_min_N": 227.41475349662988,
+        "unsupported_seconds": 0.0
+      }
+    ]
+  },
+  "candidate": {
+    "attempt": "phase_matched_final",
+    "definitions": {
+      "wide_fore_aft_gap_m": 0.25,
+      "stationary_root_speed_below_m_s": 0.12,
+      "stationary_both_foot_speed_below_m_s": 0.25,
+      "nearby_margin_s": 0.2
+    },
+    "transitions": [
+      {
+        "from_name": "walk_out",
+        "to_name": "turn_left_1",
+        "interval_s": [
+          3.3,
+          3.5
+        ],
+        "foot_fore_aft_gap_start_end_m": [
+          0.047097089318949674,
+          0.08966429380019773
+        ],
+        "maximum_fore_aft_gap_m": 0.09379068536829,
+        "root_speed_min_mean_m_s": [
+          0.28502329996372017,
+          0.3321979782806124
+        ],
+        "swing_forward_velocity_min_max_m_s": [
+          -0.017863826501054864,
+          1.0905460745671245
+        ],
+        "swing_forward_travel_m": 0.07070466081969132,
+        "swing_backward_travel_m": 0.0003572765300210973,
+        "wide_stance_pause_s": 0.0,
+        "stationary_pause_s": 0.0,
+        "nearby_longest_wide_stance_pause_s": 0.0,
+        "nearby_longest_stationary_pause_s": 0.0,
+        "support_min_N": 303.20218702421755,
+        "unsupported_seconds": 0.0
+      },
+      {
+        "from_name": "turn_left_1",
+        "to_name": "walk_back",
+        "interval_s": [
+          6.2,
+          6.4
+        ],
+        "foot_fore_aft_gap_start_end_m": [
+          0.0945945539940592,
+          0.06734785166715423
+        ],
+        "maximum_fore_aft_gap_m": 0.0945945539940592,
+        "root_speed_min_mean_m_s": [
+          0.21153541393763312,
+          0.31266282343464824
+        ],
+        "swing_forward_velocity_min_max_m_s": [
+          -0.0016084642590371504,
+          1.1385383364574009
+        ],
+        "swing_forward_travel_m": 0.13868280111226233,
+        "swing_backward_travel_m": 3.216928518074301e-05,
+        "wide_stance_pause_s": 0.0,
+        "stationary_pause_s": 0.0,
+        "nearby_longest_wide_stance_pause_s": 0.0,
+        "nearby_longest_stationary_pause_s": 0.04,
+        "support_min_N": 185.19845438474312,
+        "unsupported_seconds": 0.0
+      },
+      {
+        "from_name": "walk_back",
+        "to_name": "turn_left_2",
+        "interval_s": [
+          8.0,
+          8.2
+        ],
+        "foot_fore_aft_gap_start_end_m": [
+          0.04704966277368704,
+          0.08916640042417925
+        ],
+        "maximum_fore_aft_gap_m": 0.09199879617461766,
+        "root_speed_min_mean_m_s": [
+          0.29149981359047383,
+          0.33779665978312345
+        ],
+        "swing_forward_velocity_min_max_m_s": [
+          -0.014123610081981444,
+          1.0933893106783779
+        ],
+        "swing_forward_travel_m": 0.06935135431484098,
+        "swing_backward_travel_m": 0.00034699699222219646,
+        "wide_stance_pause_s": 0.0,
+        "stationary_pause_s": 0.0,
+        "nearby_longest_wide_stance_pause_s": 0.0,
+        "nearby_longest_stationary_pause_s": 0.0,
+        "support_min_N": 303.7563368313753,
+        "unsupported_seconds": 0.0
+      }
+    ]
+  },
+  "improvement_checks": {
+    "all_transitions_keep_support": true,
+    "no_wide_stance_pause": true,
+    "no_stationary_bridge": true,
+    "compact_feet_during_bridges": true,
+    "nearby_pause_below_80ms": true,
+    "both_walk_turn_root_speeds_above_20cm_s": true
+  },
+  "passed": true
+}

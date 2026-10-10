@@ -1,0 +1,302 @@
+{
+  "baseline": {
+    "attempt": "return_heading_final",
+    "definitions": {
+      "wide_fore_aft_gap_m": 0.25,
+      "stationary_root_speed_below_m_s": 0.12,
+      "stationary_both_foot_speed_below_m_s": 0.25,
+      "nearby_margin_s": 0.2
+    },
+    "transitions": [
+      {
+        "from_name": "walk_out",
+        "to_name": "wave",
+        "interval_s": [
+          3.0,
+          4.2
+        ],
+        "foot_fore_aft_gap_start_end_m": [
+          0.2838285250674013,
+          0.02156329369258296
+        ],
+        "maximum_fore_aft_gap_m": 0.2838285250674013,
+        "root_speed_min_mean_m_s": [
+          0.01071276362604827,
+          0.1753352432064237
+        ],
+        "swing_forward_velocity_min_max_m_s": [
+          -0.05773333205942026,
+          1.101638864068513
+        ],
+        "swing_forward_travel_m": 0.24036076604796638,
+        "swing_backward_travel_m": 0.0031591272186501347,
+        "wide_stance_pause_s": 0.02,
+        "stationary_pause_s": 0.48,
+        "nearby_longest_wide_stance_pause_s": 0.02,
+        "nearby_longest_stationary_pause_s": 0.36,
+        "support_min_N": 280.84260405688383,
+        "unsupported_seconds": 0.0
+      },
+      {
+        "from_name": "wave",
+        "to_name": "bow",
+        "interval_s": [
+          10.1,
+          11.3
+        ],
+        "foot_fore_aft_gap_start_end_m": [
+          0.038103342651771,
+          0.029229682904328716
+        ],
+        "maximum_fore_aft_gap_m": 0.038103342651771,
+        "root_speed_min_mean_m_s": [
+          0.02616630361986045,
+          0.09179920597328116
+        ],
+        "swing_forward_velocity_min_max_m_s": [
+          -0.0135313637601501,
+          0.013529851654777185
+        ],
+        "swing_forward_travel_m": 0.0015308368230459663,
+        "swing_backward_travel_m": 0.002687122200593309,
+        "wide_stance_pause_s": 0.0,
+        "stationary_pause_s": 0.96,
+        "nearby_longest_wide_stance_pause_s": 0.0,
+        "nearby_longest_stationary_pause_s": 0.56,
+        "support_min_N": 290.6091447514536,
+        "unsupported_seconds": 0.0
+      },
+      {
+        "from_name": "bow",
+        "to_name": "turn",
+        "interval_s": [
+          16.14,
+          17.34
+        ],
+        "foot_fore_aft_gap_start_end_m": [
+          0.040576326833134155,
+          0.3053830459340214
+        ],
+        "maximum_fore_aft_gap_m": 0.3110831032245588,
+        "root_speed_min_mean_m_s": [
+          0.00949240915970629,
+          0.13152388807025878
+        ],
+        "swing_forward_velocity_min_max_m_s": [
+          -1.1297171328830382,
+          0.007861877750608544
+        ],
+        "swing_forward_travel_m": 0.0001572375550121709,
+        "swing_backward_travel_m": 0.22469969941712253,
+        "wide_stance_pause_s": 0.0,
+        "stationary_pause_s": 0.66,
+        "nearby_longest_wide_stance_pause_s": 0.04,
+        "nearby_longest_stationary_pause_s": 0.76,
+        "support_min_N": 270.7947562485642,
+        "unsupported_seconds": 0.0
+      },
+      {
+        "from_name": "turn",
+        "to_name": "walk_back",
+        "interval_s": [
+          20.68,
+          21.88
+        ],
+        "foot_fore_aft_gap_start_end_m": [
+          0.10919507108184731,
+          0.029282573354153657
+        ],
+        "maximum_fore_aft_gap_m": 0.1157414250057225,
+        "root_speed_min_mean_m_s": [
+          0.00962169652376358,
+          0.12669658464296935
+        ],
+        "swing_forward_velocity_min_max_m_s": [
+          -0.044324408237658375,
+          0.6967638124135566
+        ],
+        "swing_forward_travel_m": 0.07326204613723927,
+        "swing_backward_travel_m": 0.010806619147479686,
+        "wide_stance_pause_s": 0.0,
+        "stationary_pause_s": 0.52,
+        "nearby_longest_wide_stance_pause_s": 0.0,
+        "nearby_longest_stationary_pause_s": 0.44,
+        "support_min_N": 274.4685476007571,
+        "unsupported_seconds": 0.0
+      }
+    ]
+  },
+  "candidate": {
+    "attempt": "phase_return_final",
+    "definitions": {
+      "wide_fore_aft_gap_m": 0.25,
+      "stationary_root_speed_below_m_s": 0.12,
+      "stationary_both_foot_speed_below_m_s": 0.25,
+      "nearby_margin_s": 0.2
+    },
+    "transitions": [
+      {
+        "from_name": "walk_out",
+        "to_name": "wave",
+        "interval_s": [
+          4.5,
+          5.7
+        ],
+        "foot_fore_aft_gap_start_end_m": [
+          0.12193224361858566,
+          0.03760307296643897
+        ],
+        "maximum_fore_aft_gap_m": 0.12193224361858566,
+        "root_speed_min_mean_m_s": [
+          0.05713356051999897,
+          0.20274320008137914
+        ],
+        "swing_forward_velocity_min_max_m_s": [
+          -0.038227475082954175,
+          0.7452375629451122
+        ],
+        "swing_forward_travel_m": 0.164920273447411,
+        "swing_backward_travel_m": 0.0064213935817978365,
+        "wide_stance_pause_s": 0.0,
+        "stationary_pause_s": 0.1,
+        "nearby_longest_wide_stance_pause_s": 0.0,
+        "nearby_longest_stationary_pause_s": 0.28,
+        "support_min_N": 298.7612359733906,
+        "unsupported_seconds": 0.0
+      },
+      {
+        "from_name": "wave",
+        "to_name": "bow",
+        "interval_s": [
+          11.6,
+          12.8
+        ],
+        "foot_fore_aft_gap_start_end_m": [
+          0.021755927194658922,
+          0.02917924014589408
+        ],
+        "maximum_fore_aft_gap_m": 0.03360666267226591,
+        "root_speed_min_mean_m_s": [
+          0.0336990139901344,
+          0.09376316714600341
+        ],
+        "swing_forward_velocity_min_max_m_s": [
+          -0.023606564679197143,
+          0.0172784232371353
+        ],
+        "swing_forward_travel_m": 0.001883115428854584,
+        "swing_backward_travel_m": 0.0033260086402699903,
+        "wide_stance_pause_s": 0.0,
+        "stationary_pause_s": 0.9,
+        "nearby_longest_wide_stance_pause_s": 0.0,
+        "nearby_longest_stationary_pause_s": 0.58,
+        "support_min_N": 286.16158887178074,
+        "unsupported_seconds": 0.0
+      },
+      {
+        "from_name": "bow",
+        "to_name": "turn",
+        "interval_s": [
+          17.64,
+          18.84
+        ],
+        "foot_fore_aft_gap_start_end_m": [
+          0.01727038141998248,
+          0.008888277249660053
+        ],
+        "maximum_fore_aft_gap_m": 0.0182286552937874,
+        "root_speed_min_mean_m_s": [
+          0.00962418169349198,
+          0.07463065856676651
+        ],
+        "swing_forward_velocity_min_max_m_s": [
+          -0.0030073271590331544,
+          0.026249423919321176
+        ],
+        "swing_forward_travel_m": 0.006794705598641836,
+        "swing_backward_travel_m": 0.00042240654232404674,
+        "wide_stance_pause_s": 0.0,
+        "stationary_pause_s": 1.1,
+        "nearby_longest_wide_stance_pause_s": 0.0,
+        "nearby_longest_stationary_pause_s": 1.3,
+        "support_min_N": 315.9407128341844,
+        "unsupported_seconds": 0.0
+      },
+      {
+        "from_name": "turn",
+        "to_name": "walk_back",
+        "interval_s": [
+          21.54,
+          21.74
+        ],
+        "foot_fore_aft_gap_start_end_m": [
+          0.11701639030551209,
+          0.07016430556574951
+        ],
+        "maximum_fore_aft_gap_m": 0.11701639030551209,
+        "root_speed_min_mean_m_s": [
+          0.15138430642185358,
+          0.3202367701482954
+        ],
+        "swing_forward_velocity_min_max_m_s": [
+          0.4783150899449945,
+          1.056715269014537
+        ],
+        "swing_forward_travel_m": 0.2002529893171191,
+        "swing_backward_travel_m": -0.0,
+        "wide_stance_pause_s": 0.0,
+        "stationary_pause_s": 0.0,
+        "nearby_longest_wide_stance_pause_s": 0.0,
+        "nearby_longest_stationary_pause_s": 0.0,
+        "support_min_N": 245.82522627747116,
+        "unsupported_seconds": 0.0
+      }
+    ]
+  },
+  "return_baseline": {
+    "interval_s": [
+      21.88,
+      27.82
+    ],
+    "yaw_start_end_deg": [
+      195.47147127057275,
+      183.9478950991771
+    ],
+    "yaw_min_max_deg": [
+      183.9478950991771,
+      253.75317080438876
+    ],
+    "yaw_range_deg": 69.80527570521167,
+    "final_distance_m": 0.20378648732834403,
+    "net_walk_distance_m": 1.1448934811575455,
+    "path_m": 1.4467950822467943,
+    "final_hold_drift_m": 0.013446793512920847
+  },
+  "return_candidate": {
+    "interval_s": [
+      21.74,
+      24.64
+    ],
+    "yaw_start_end_deg": [
+      210.79416998097577,
+      179.85074163594732
+    ],
+    "yaw_min_max_deg": [
+      172.98576189310407,
+      213.80988316056454
+    ],
+    "yaw_range_deg": 40.82412126746047,
+    "final_distance_m": 0.1832970563731571,
+    "net_walk_distance_m": 1.0471764568159116,
+    "path_m": 1.3245982416998903,
+    "final_hold_drift_m": 0.025151800616292307
+  },
+  "improvement_checks": {
+    "return_bridge_supported": true,
+    "no_return_bridge_pause": true,
+    "nearby_pause_under_80ms": true,
+    "compact_return_bridge": true,
+    "return_heading_range_reduced": true
+  },
+  "passed": true
+}

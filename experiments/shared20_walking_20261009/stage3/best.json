@@ -1,0 +1,6 @@
+{
+  "step": 7700,
+  "metric": 0.07772308039041517,
+  "checkpoint": "/mnt/sda2/frankenmotion/outputs_amass/shared20_walking_20261009_perf/stage3/checkpoint_007700.pt",
+  "sha256": "ff5ec6f3f2a7113d158bd7da31a30d2035f098b7e9de3746ef83e3b2e86c81b8"
+}

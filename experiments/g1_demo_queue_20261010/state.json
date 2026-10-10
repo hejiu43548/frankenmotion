@@ -1,0 +1,122 @@
+{
+  "version": 1,
+  "parent_thread_id": "01a1219b-bbd2-73f3-b5ae-9334981b496e",
+  "parent_host_id": "local",
+  "project_id": "b0dd78c7-0c80-46e4-afbb-6b01f78967fa",
+  "automation_id": "frankenmotion",
+  "phase": "completed",
+  "training_run": "/mnt/sda2/frankenmotion/outputs_amass/shared20_clean5_stage2_20261010",
+  "training_pid_at_launch": 2232631,
+  "code_root": "/mnt/sda2/frankenmotion/code/shared20_clean5_stage2_0344b7c",
+  "workspace": "/Users/andy/.codex/worktrees/7a7d/frankenmotion",
+  "model": "gpt-6-astra",
+  "thinking": "medium",
+  "selected_checkpoint": {
+    "step": 58000,
+    "metric": 0.38172372258490045,
+    "checkpoint": "/mnt/sda2/frankenmotion/outputs_amass/shared20_clean5_stage2_20261010/artifacts/checkpoint_058000.pt",
+    "sha256": "1bcdb52664e3648a455ad4b938b7f404b309497b5ca1d8fb87c4236053b2712f"
+  },
+  "active_demo": null,
+  "demos": [
+    {
+      "number": 1,
+      "sequence": [
+        "walk",
+        "kick",
+        "strike"
+      ],
+      "name": "G1走近沙袋踢击出拳",
+      "status": "accepted",
+      "thread_id": "01a121d3-c8c6-75d0-af34-72fc69a988b2",
+      "host_id": "local",
+      "dispatched_at": "2026-10-09T18:01:40.474428+00:00",
+      "model": "gpt-6-astra",
+      "thinking": "medium",
+      "wait_cursor": "242ab024-4d9e-4113-aa7a-1cb20286c932:9",
+      "last_observed_status": "idle",
+      "last_checked_at": "2026-10-09T18:34:46.600332+00:00",
+      "last_progress": "Parent independently accepted physical sandbag foot/hand contact and supported transitions; see demo_1_review.json.",
+      "review_file": "/Users/andy/.codex/worktrees/7a7d/frankenmotion/experiments/g1_demo_queue_20261010/demo_1_review.json",
+      "accepted_at": "2026-10-09T18:37:48.213745+00:00"
+    },
+    {
+      "number": 2,
+      "sequence": [
+        "walk",
+        "wave",
+        "bow",
+        "turn",
+        "walk"
+      ],
+      "name": "G1走近招手鞠躬返回",
+      "status": "accepted",
+      "thread_id": "01a121f5-e783-70c1-be76-98fe21308085",
+      "host_id": "local",
+      "dispatched_at": "2026-10-09T18:38:56.520970+00:00",
+      "model": "gpt-6-astra",
+      "thinking": "medium",
+      "wait_cursor": "6a5f1744-767a-448f-9737-5266b2dbfb2c:5",
+      "last_observed_status": "idle",
+      "last_checked_at": "2026-10-09T18:49:45.133661+00:00",
+      "last_progress": "Parent accepted phase repair after independent physics reproduction and visual/metric checks: bridge pause0.52s→0, return0.183297m, heading0.335575deg. Higher peak slip explicitly retained.",
+      "review_file": "/Users/andy/.codex/worktrees/7a7d/frankenmotion/experiments/g1_demo_queue_20261010/demo_2_review.json",
+      "accepted_at": "2026-10-09T18:54:35.083390+00:00",
+      "revision_reviews": [
+        {
+          "revision": "phase_return_final",
+          "decision": "accepted_with_documented_limitations",
+          "review_file": "/Users/andy/.codex/worktrees/7a7d/frankenmotion/demos/g1/experiments/g1_demo_2_phase_20261010/parent_review.json",
+          "accepted_at": "2026-10-10T03:32:22.142498+00:00"
+        }
+      ],
+      "latest_accepted_revision": "phase_return_final"
+    },
+    {
+      "number": 3,
+      "sequence": [
+        "walk",
+        "turn_left",
+        "walk",
+        "turn_left"
+      ],
+      "name": "G1两次左转返回原点",
+      "status": "accepted",
+      "thread_id": "01a12205-2e36-7910-932b-42f9932a1d36",
+      "host_id": "local",
+      "dispatched_at": "2026-10-09T18:55:36.689967+00:00",
+      "model": "gpt-6-astra",
+      "thinking": "medium",
+      "wait_cursor": "68944b41-93a2-43b8-a361-2823a28bed6c:4",
+      "last_observed_status": "idle",
+      "last_checked_at": "2026-10-09T19:06:08.804092+00:00",
+      "last_progress": "Parent independently reproduced physics, checked all asset/delivery hashes and visual samples; accepted 0.138794m return and2.270581deg heading with documented limitations.",
+      "review_file": "/Users/andy/.codex/worktrees/7a7d/frankenmotion/experiments/g1_demo_queue_20261010/demo_3_review.json",
+      "accepted_at": "2026-10-09T19:06:08.804092+00:00"
+    }
+  ],
+  "human_authorization": {
+    "create_threads": true,
+    "parent_to_child_messages_for_implementation_and_repair": true,
+    "child_to_parent_completion_wakeup": true,
+    "sequential_parent_review_before_next": true,
+    "no_routine_confirmation": true,
+    "source_parent_thread": "01a1219b-bbd2-73f3-b5ae-9334981b496e",
+    "exact_user_quote": "这几个任务等定时任务检测到训练完成之后，开一个新对话，使用gpt-6 astra medium实现，中间不要打断，最后完成的时候让子对话唤醒你，你来检查效果是否和实现符合。每次实现一个demo，按照顺序执行，一个一个执行。"
+  },
+  "superseded_run": "/mnt/sda2/frankenmotion/outputs_amass/clean5_stage2_20261010",
+  "last_training_check": {
+    "checked_at": "2026-10-09T18:00:49.377974+00:00",
+    "state": "complete",
+    "step": 70000,
+    "process_alive": false,
+    "failure_present": false,
+    "completion_audit_present": true,
+    "scan_count": 71,
+    "protocol_and_manifests_verified": true
+  },
+  "training_complete_verified_at": "2026-10-09T18:00:49.377974+00:00",
+  "completed_at": "2026-10-09T19:06:08.804092+00:00",
+  "automation_status": "PAUSED",
+  "automation_paused_verified_at": "2026-10-09T19:06:28.825442+00:00"
+}

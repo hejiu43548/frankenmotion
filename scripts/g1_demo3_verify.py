@@ -1,1 +1,0 @@
-../demos/g1/scripts/g1_demo3_verify.py

@@ -1,0 +1,3 @@
+run: /mnt/sda2/frankenmotion/outputs_amass/shared20_walking_20261009_perf
+skeleton: /home/psirobot/projects/frankenmotion/outputs_amass/transfer_charlie_20261008/snapshot/outputs_amass/franken_eleven_20261003/skeleton.npz
+output: /mnt/sda2/frankenmotion/outputs_amass/shared20_sliding_audit_20261009

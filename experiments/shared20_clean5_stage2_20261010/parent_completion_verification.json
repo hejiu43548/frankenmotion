@@ -1,0 +1,38 @@
+{
+  "verified_at": "2026-10-09T18:00:49.377974+00:00",
+  "training_run": "/mnt/sda2/frankenmotion/outputs_amass/shared20_clean5_stage2_20261010",
+  "code_root": "/mnt/sda2/frankenmotion/code/shared20_clean5_stage2_0344b7c",
+  "training_status": {
+    "state": "complete",
+    "stage": 2,
+    "step": 70000,
+    "epoch": 0,
+    "best_metric": 0.38172372258490045
+  },
+  "process_exited": true,
+  "completion_audit": {
+    "rollouts": 14200,
+    "max_quantity_error": 2.1457672119140625e-06,
+    "frozen_parameters_verified": true,
+    "unique_training_records_seen": 10897,
+    "training_records": 10897,
+    "best_step": 58000
+  },
+  "selected_checkpoint": {
+    "step": 58000,
+    "metric": 0.38172372258490045,
+    "checkpoint": "/mnt/sda2/frankenmotion/outputs_amass/shared20_clean5_stage2_20261010/artifacts/checkpoint_058000.pt",
+    "sha256": "1bcdb52664e3648a455ad4b938b7f404b309497b5ca1d8fb87c4236053b2712f"
+  },
+  "scan_count": 71,
+  "all20_tasks_verified": true,
+  "manifest_and_source_hashes_verified": true,
+  "optimizer_steps": [
+    70000
+  ],
+  "selected_and_final_root_bitwise_unchanged": true,
+  "initial_macro_normalized_mae": 0.7061881768889455,
+  "final_macro_normalized_mae": 0.41574341992432357,
+  "selected_step": 58000,
+  "quality_caveat": "Completion and scalar metrics do not certify naturalness or G1 tracking; demo implementation must inspect and test."
+}

@@ -1,0 +1,10 @@
+run: /mnt/sda2/frankenmotion/outputs_amass/shared20_clean5_stage2_20261010
+code_root: /mnt/sda2/frankenmotion/code/shared20_clean5_stage2_0344b7c
+output: /mnt/sda2/frankenmotion/outputs_amass/shared20_clean5_review_20261010
+checkpoint_sha256: 1bcdb52664e3648a455ad4b938b7f404b309497b5ca1d8fb87c4236053b2712f
+step: 58000
+hydra:
+  job:
+    chdir: false
+  run:
+    dir: ${output}/hydra

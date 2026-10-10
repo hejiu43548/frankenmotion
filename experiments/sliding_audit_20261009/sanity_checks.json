@@ -1,0 +1,10 @@
+{
+  "passed": true,
+  "checks": [
+    "stationary_zero_speed",
+    "rigid_translation_1_m_s",
+    "global_translation_invariance",
+    "stationary_toe_allows_ankle_rolling",
+    "no_support_returns_null"
+  ]
+}

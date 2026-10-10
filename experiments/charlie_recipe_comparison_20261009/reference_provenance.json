@@ -1,0 +1,7 @@
+{
+  "original_name": "RootControl与早期Adapter训练报告.md",
+  "sha256": "f89f6e59554ea36bcbe540792336277adb5fc6a741abc8757c65b0c265ede737",
+  "historical_code_root": "/Users/andy/Develop/frankenmotion/outputs_amass/transfer_charlie_20261008/snapshot/outputs_amass/franken_eleven_20261003/code",
+  "current_commit": "43bf05f",
+  "scope": "Document and retrieved historical source compared with actual current protocols; no historical checkpoints re-evaluated, no retraining."
+}

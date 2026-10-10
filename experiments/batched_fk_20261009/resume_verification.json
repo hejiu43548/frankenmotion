@@ -1,0 +1,14 @@
+{
+  "checked_at": "2026-10-09T11:19:43.085939+00:00",
+  "step": 33000,
+  "checkpoint_sha256": "541cbb3635bb7c83b4c3f9495ea72e6870fed167705b5acac2bfb56cb4796ddd",
+  "optimizer_steps_continuous": true,
+  "root_frozen_exact": true,
+  "finite_adapter": true,
+  "sources_verified": true,
+  "all_training_records_seen": 12030,
+  "parent_unchanged": true,
+  "old_processes_exited": true,
+  "new_pids_verified": true,
+  "lineage_verified": true
+}

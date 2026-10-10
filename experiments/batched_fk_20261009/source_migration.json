@@ -1,0 +1,12 @@
+{
+  "parent_checkpoint": "/mnt/sda2/frankenmotion/outputs_amass/shared20_walking_20261009/stage2/checkpoint_030000.pt",
+  "parent_checkpoint_sha256": "e6a0b90eb0dd4a179ec8244f2cb98e7fdfdc23041351938de6cce6ac60495a2b",
+  "parent_step": 30000,
+  "parent_report": "/mnt/sda2/frankenmotion/outputs_amass/shared20_walking_20261009/reports/stage2",
+  "evidence": "/mnt/sda2/frankenmotion/outputs_amass/shared20_walking_20261009/monitor_tools/batching_readiness.json",
+  "evidence_sha256": "473477007cef203746934046f5a3a732b801a61145bf519f1db378db3a1ac3f5",
+  "parent_run": "/mnt/sda2/frankenmotion/outputs_amass/shared20_walking_20261009",
+  "destination_run": "/mnt/sda2/frankenmotion/outputs_amass/shared20_walking_20261009_perf",
+  "code_commit": "43bf05f",
+  "reason": "User-authorized source-only batching optimization at evaluated30000 boundary; all recipe/data/optimizer/RNG state inherited"
+}

@@ -1,0 +1,58 @@
+Demo3 步态相位衔接优化（2026-10-10）
+
+结果：采用 phase_matched_final，保留原 symmetric_first 冻结版本作对照。
+完整连续物理 episode 12.90 秒，646 状态，50 Hz 控制/2 ms 物理步；仍然只有 walk → turn left → walk → turn left 四个主动作，最后保持2秒。未修改人体生成模型、SONIC控制器或物理执行循环，未增加返程段、重置或覆盖物理根位置。
+
+与原版比较：
+                                      原版             相位版
+实际最终距起点                         0.138794 m       0.036876 m
+最终朝向相对初始误差                   2.270581°        2.039792°
+三处过渡时长                           各1.20 s         各0.20 s
+两处 walk→turn 内最大双脚前后间距       0.295/0.286 m    0.094/0.092 m
+两处 walk→turn 内叉腿停顿累计           0.42/0.40 s      0/0 s
+两处 walk→turn 内最小根平移速度         0.028/0.026 m/s  0.285/0.291 m/s
+全程低支撑时间                         42 ms            32 ms
+平面根参考RMSE                         0.322274 m       0.275715 m
+平均接触滑移速度                       0.015746 m/s     0.018860 m/s
+峰值接触滑移速度                       2.173097 m/s     2.439858 m/s
+
+停顿指标定义：根平面速度<0.12m/s，且双脚平面速度均<0.25m/s；同时双脚沿骨盆水平朝向的前后间距>0.25m时，计为“叉腿停顿”。逐帧以20ms统计；它是辅助诊断，不等同于人类对自然度的完整评价。三个新版过渡均无上述静止停顿，前后各0.2s范围中最长静止段分别0、0.04、0秒。脚步仍有动态减速，不能声称严格恒速摆腿。
+
+方法
+1. 对同一已冻结模型的原始GMR序列做FK，计算双脚骨盆相对位置、世界速度及足高。依据水平速度和相对足高估计支撑脚，提取摆脚向前速度与双脚前后间距。这是离线参考相位匹配，并非在线接触反馈控制器。
+2. 在明确配置窗口内寻找支撑脚相同、摆脚均向前、双脚前后间距<=0.18m的成对帧，按足部姿态差、速度差和前后间距打分。候选和选取结果写入composition.json。没有仅缩短旧版叉腿插值。
+3. 选中 walk2010 的3.30s（帧66）接 turn2014 的0.45s（帧9）：右脚支撑、左脚前摆，原始参考摆脚向前速度约2.116/2.048m/s。turn结束2.35s（帧47）接回程walk的1.70s（帧34），同为右支撑/左前摆。返回walk也截止3.30s；第二次turn复用同一裁剪。这样去除了回程walk原来开始的静止前缀。
+4. 内部边界取消0.3s缓停；仅episode开始和最终结束保留缓入缓出。0.2s桥使用具有两端速度的Hermite根/关节/足部插值、四元数Slerp，以及有界腿部IK保持支撑脚参考位置。IK后不保证所有关节严格C1，实际速度/位移连续性另行测量。
+5. 为保持四段几何关系，walk净参考yaw归零、每次turn净参考yaw设为+180°。本版所需平滑heading修正分别约-3.168°、-3.818°、-1.793°、-3.818°；旋转参考根增量和姿态，未交换左右或镜像。训练负角命令仍为左转。参考终点残差0.066037m，未强制归零。
+
+实际轨迹
+walk_out 0.00–3.30s；桥3.30–3.50s；turn_left_1 3.50–6.20s；桥6.20–6.40s；walk_back 6.40–8.00s；桥8.00–8.20s；turn_left_2 8.20–10.90s；hold10.90–12.90s。
+初始根XY=[0,0]，最终XY=[-0.00738454,-0.03612923]m。两次实际净左转179.116090°、177.405519°；全程净yaw+357.960208°。实际路径长3.595158m。
+最后2s净漂移0.051654m，最大距起点0.084568m，最终根速度0.001264m/s；最终精度不是瞬时经过原点的结果。
+
+支撑与局限
+无跌倒、非脚触地、关节限位越界；力矩正常限幅。最小骨盆高度0.730076m、最大倾斜13.808646°，最大软接触穿透3.096mm。三个桥均0低支撑子步，最小20ms平均支撑力约303/185/304N，支撑脚踝平面位移约5.28/45.62/4.27mm。中间turn→walk桥实际支撑脚位移较原版增大到约4.6cm，非完全固定；低支撑32ms仍出现在转弯中。接触滑移均值和峰值也略高，不能声称所有物理指标都改善。完整指标见episode/metrics.json、verification.json与phase_comparison.json。
+仍是单场景/选定种子验证，使用已披露原生SONIC1751/994替代缺失的2350tracker；无泛化或实体机器人结论。原版独立父验收记录不自动适用于本次修改；本版完成了实现者的复跑、数值和视觉核对。
+
+尝试与选择
+phase_initial：相位匹配+0.20s速度桥，返回0.036876m/朝向2.039792°；实际桥内身体持续移动，最大摆脚向后轨迹量不到0.4mm。选中并以当前代码重跑，冻结为phase_matched_final。
+phase_advance：桥中推进后续动作0.20s，返回0.324282m，超过0.30m目标；未选。
+phase_advance12：推进0.12s，返回0.198176m/0.901348°；未选。
+phase_advance16：推进0.16s，返回0.186626m/1.608221°；未选。
+推进版本用于检查直接连续推进的效果，最终选用不消耗后续帧的短相位桥，在已消除叉腿停顿的同时保留更好的位置精度。四组实际数据均保留；没有放宽0.30m/15°标准。
+最初的3.30s采样发现浮点末端越界，增加仅相位版使用的Slerp时间网格截断；对应数值回归测试已加入。
+
+模型与验证
+checkpoint仍为shared20_clean5_stage2_20261010/artifacts/checkpoint_058000.pt，SHA256 1bcdb52664e3648a455ad4b938b7f404b309497b5ca1d8fb87c4236053b2712f。CPU生成、每类batch6、seeds2010–2015、50DDIM，walk0.5/turn-pi命令，文本及全部原生成人体和GMR来源沿用原报告。
+完整复跑phase_full_repeat重新生成12个人体样本、12个GMR序列并连续物理执行。生成/GMR全部数值字段与参考、实际qpos/qvel/body_pos/力矩/遥测逐元素完全一致；见full_reproduction_comparison.json。两项数值测试通过（Hermite两端位置/速度、3.30s浮点采样边界）。旧版phase_legacy_regression与symmetric_first全部关键实际数组也完全一致。未修改Demo1/2生成、仿真代码。
+
+入口与产物
+当前实现：demos/g1/scripts/g1_demo3_pipeline.py、g1_demo3_phase.py、g1_demo3_phase_audit.py；独立配置demos/g1/config/g1_demo3_phase.yaml。原始配置g1_demo3.yaml继续保留旧版行为。
+从仓库根目录：
+  bash demos/g1/scripts/reproduce_g1_demo3_phase.sh physics phase_review_unique
+  bash demos/g1/scripts/reproduce_g1_demo3_phase.sh full phase_full_review_unique
+复现脚本使用下面的冻结code路径，并核对关键数组、任务接受指标和相位改善指标，拒绝覆盖已有episode。
+Betail：/mnt/sda2/frankenmotion/outputs_amass/g1_demo_3_20261010/attempts/phase_matched_final
+其中code/是冻结实现；reference.npz、actual.npz、continuous.mp4、phase_comparison.json等保留。
+本地完整未剪切实际物理视频：/Users/andy/.codex/visualizations/2026/10/09/01a12205-2e36-7910-932b-42f9932a1d36/demo3_phase_continuous.mp4
+本地报告/关键帧：demos/g1/experiments/g1_demo_3_phase_20261010；episode/transitions.jpg含三个切换前中后，turns.jpg覆盖两次左转，trajectory.png和start_end.jpg展示闭合与实际姿态。
