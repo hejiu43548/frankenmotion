@@ -80,7 +80,16 @@ def main(config):
         for item_index in indices:
             hand = int(items[item_index]["hands"])
             support = targets[[int(item["hands"]) == hand for item in items]]
-            requested.append(sampler.uniform(support.min(0), support.max(0)))
+            if audit["task"] == "reach":
+                anchor = support[sampler.integers(len(support))]
+                neighbors = support[
+                    np.linalg.norm(support - anchor, axis=1)
+                    <= config.local_target_radius_m
+                ]
+                neighbor = neighbors[sampler.integers(len(neighbors))]
+                requested.append(anchor + sampler.random() * (neighbor - anchor))
+            else:
+                requested.append(sampler.uniform(support.min(0), support.max(0)))
         requested = np.array(requested)
         batch["positions"] = torch.tensor(
             requested, device=config.device, dtype=torch.float32

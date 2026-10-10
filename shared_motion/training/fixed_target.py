@@ -115,6 +115,8 @@ def fixed_metrics(joints, world_target, hands, event_frames, task, fps=20):
     frame_ids = torch.arange(joints.shape[1], device=joints.device)[None]
     window = (frame_ids - event_frames[:, None]).abs() <= 8
     errors = distances[indices, event_frames]
+    if task == "reach":
+        errors = (wrists[:, -5:].mean(1) - world_target).norm(dim=-1)
     min_error = distances.masked_fill(~window, float("inf")).min(-1).values
     velocity = (wrists[:, 1:] - wrists[:, :-1]) * fps
     direction = torch.nn.functional.normalize(
@@ -126,7 +128,12 @@ def fixed_metrics(joints, world_target, hands, event_frames, task, fps=20):
     )
     approach_speed = approach.masked_fill(~pre_event, -float("inf")).max(-1).values
     within = (distances < 0.1) & window
-    dwell = within.unfold(1, 5, 1).all(-1).any(-1)
+    dwell = (
+        (distances[:, -5:] < 0.1).all(-1)
+        if task == "reach"
+        else within.unfold(1, 5, 1).all(-1).any(-1)
+    )
+    hold_speed = velocity[:, -4:].norm(dim=-1).mean(-1)
     root_excursion = (joints[:, :, 0] - joints[:, :1, 0]).norm(dim=-1).max(-1).values
     peak_speed = velocity.norm(dim=-1).max(-1).values
     # Re-use a predeclared quality gate, rather than modifying rewards after eval.
@@ -134,13 +141,18 @@ def fixed_metrics(joints, world_target, hands, event_frames, task, fps=20):
     strict = (
         (errors < 0.1)
         & quality
-        & ((approach_speed >= 0.8) if task == "strike" else dwell)
+        & (
+            (approach_speed >= 0.8)
+            if task == "strike"
+            else dwell & (hold_speed <= 0.35)
+        )
     )
     return dict(
         error_m=errors,
         window_min_error_m=min_error,
         approach_speed_m_s=approach_speed,
         dwell_5_frames=dwell,
+        final_hold_speed_m_s=hold_speed,
         root_excursion_m=root_excursion,
         peak_wrist_speed_m_s=peak_speed,
         strict_pass=strict,

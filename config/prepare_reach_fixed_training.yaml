@@ -1,0 +1,12 @@
+index: ???
+review_state: data_processing/point/review_state.json
+output: ???
+pca: ???
+skeleton: ???
+clip_checkpoint: ???
+official_config: ???
+hydra:
+  job:
+    chdir: false
+  run:
+    dir: ${output}/hydra

@@ -93,6 +93,34 @@ def main(config):
                             target.tolist(),
                         )
                     )
+    elif config.target_mode == "interpolation":
+        if config.split != "train":
+            raise ValueError("Interpolation support must use training records only")
+        requests = []
+        targets = np.array([row["target_xyz_m"] for row in rows])
+        for template_index, item in enumerate(items):
+            distances = np.linalg.norm(targets - targets[template_index], axis=1)
+            eligible = [
+                index
+                for index, other in enumerate(items)
+                if index != template_index
+                and int(other["hands"]) == int(item["hands"])
+                and 0.04 < distances[index] <= config.local_target_radius_m
+            ]
+            if not eligible:
+                continue
+            neighbor_index = min(eligible, key=lambda index: distances[index])
+            for fraction in config.interpolation_fractions:
+                target = targets[template_index] + fraction * (
+                    targets[neighbor_index] - targets[template_index]
+                )
+                requests.append(
+                    (
+                        template_index,
+                        f"template{template_index}_interp_{int(fraction*100):02d}",
+                        target.tolist(),
+                    )
+                )
     elif config.target_mode != "source":
         raise ValueError("Unknown target_mode")
     output = Path(config.output)
@@ -160,6 +188,17 @@ def main(config):
                     event_frames=batch["event_frames"].cpu().numpy(),
                     seeds=np.array(config.seeds),
                 )
+                admission = [None] * len(generated)
+                if audit["task"] == "reach":
+                    from data_processing.point.repair import crop_metrics
+
+                    rules = OmegaConf.load(
+                        Path(__file__).resolve().parents[1]
+                        / "config/reach_xyz_repair.yaml"
+                    ).rules
+                    for sample_index, positions in enumerate(joints.cpu().numpy()):
+                        _, reasons = crop_metrics(positions, rules)
+                        admission[sample_index] = reasons
                 for sample_index, seed in enumerate(config.seeds):
                     records.append(
                         dict(
@@ -167,6 +206,13 @@ def main(config):
                             mode=mode,
                             seed=int(seed),
                             hand=int(batch["hands"][sample_index]),
+                            source_admission_failures=admission[sample_index],
+                            quality_pass=bool(metrics["strict_pass"][sample_index])
+                            and (
+                                admission[sample_index] == []
+                                if audit["task"] == "reach"
+                                else True
+                            ),
                             target_world_m=world_target,
                             **{
                                 name: value[sample_index].item()
@@ -186,6 +232,7 @@ def main(config):
                 np.mean([record["error_m"] < 0.1 for record in selected])
             ),
             strict_pass=float(np.mean([record["strict_pass"] for record in selected])),
+            quality_pass=float(np.mean([record["quality_pass"] for record in selected])),
         )
     result = dict(
         target_frame="fixed_world",

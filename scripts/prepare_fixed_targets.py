@@ -41,7 +41,12 @@ def main(config):
             event = int(item["event_frames"])
             if hand not in (0, 1) or not 0 <= event < len(joints):
                 raise ValueError("Reviewed hand/event is missing or invalid")
-            target_world = joints[event, 20 + hand]
+            if config.task == "reach":
+                target_world = joints[-5:, 20 + hand].mean(0)
+                event = len(joints) - 3
+                item["event_frames"] = torch.tensor(event)
+            else:
+                target_world = joints[event, 20 + hand]
             initial_origin = joints[0, 0]
             initial_basis = body_basis(joints[0])
             relative = initial_basis.T @ (target_world - initial_origin)

@@ -247,7 +247,7 @@ def main(config):
                     continue
             motion = np.load(path)
             with torch.no_grad():
-                joints = skeleton(torch.from_numpy(motion)[None])[0].numpy()
+                joints = skeleton(torch.from_numpy(motion).float()[None])[0].numpy()
             sources[family] = (path, motion, joints)
             provenance[str(path)] = file_sha256(path)
             provenance[str(raw)] = file_sha256(raw)
@@ -310,7 +310,7 @@ def main(config):
         )
         clip = motion[begin:end].copy()
         with torch.no_grad():
-            cropped = skeleton(torch.from_numpy(clip)[None])
+            cropped = skeleton(torch.from_numpy(clip).float()[None])
             target = target_xyz(cropped)[0].numpy()
         occupied[family].append((begin, end))
         key = (

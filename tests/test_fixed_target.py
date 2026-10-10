@@ -29,7 +29,7 @@ class FixedTargetTests(ArmResidualTests):
         joints = self.skeleton(self.motion)
         indices = torch.arange(2)
         target = joints[indices, self.frames, 20 + hands].clone()
-        metrics = fixed_metrics(joints, target, hands, self.frames, "reach")
+        metrics = fixed_metrics(joints, target, hands, self.frames, "strike")
         torch.testing.assert_close(metrics["error_m"], torch.zeros(2))
         state = fixed_observations(
             self.motion, target, self.frames, hands, self.skeleton
@@ -45,3 +45,21 @@ class FixedTargetTests(ArmResidualTests):
         self.assertGreater(
             float((after[indices, self.frames, 20 + hands] - target).norm()), 0.01
         )
+
+    def test_reach_uses_final_hold_mean_and_stationary_world_target(self):
+        joints = self.skeleton(self.motion)
+        hands = torch.tensor([0, 1])
+        indices = torch.arange(2)
+        target = joints[indices, -1, 20 + hands].clone()
+        for offset in range(5):
+            joints[indices, -5 + offset, 20 + hands] = target + (offset - 2) * 0.001
+        metrics = fixed_metrics(joints, target, hands, torch.tensor([27, 27]), "reach")
+        torch.testing.assert_close(
+            metrics["error_m"], torch.zeros(2), atol=1e-6, rtol=0
+        )
+        self.assertTrue(metrics["dwell_5_frames"].all())
+        shifted = joints + torch.tensor([0.5, 0.0, 0.0])
+        shifted_metrics = fixed_metrics(
+            shifted, target, hands, torch.tensor([27, 27]), "reach"
+        )
+        torch.testing.assert_close(shifted_metrics["error_m"], torch.full((2,), 0.5))

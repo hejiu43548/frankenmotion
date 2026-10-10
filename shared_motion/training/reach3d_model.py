@@ -134,6 +134,20 @@ class ReachDiffusion(nn.Module):
             measured = wrists[
                 torch.arange(len(motion), device=motion.device), frames, batch["hands"]
             ]
+            if batch.get("hold_frames", 0):
+                hold_frames = int(batch["hold_frames"])
+                hold_indices = (
+                    batch["mask"].sum(1)[:, None]
+                    - hold_frames
+                    + torch.arange(hold_frames, device=motion.device)[None]
+                )
+                if torch.any(hold_indices < 0):
+                    raise ValueError("Insufficient real frames for target hold")
+                measured = wrists[
+                    torch.arange(len(motion), device=motion.device)[:, None],
+                    hold_indices,
+                    batch["hands"][:, None],
+                ].mean(1)
             endpoint = (measured - batch["positions"]).square().sum(-1).mean()
         metrics = {"reconstruction": reconstruction.detach()}
         if endpoint_weight:

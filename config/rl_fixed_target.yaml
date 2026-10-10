@@ -10,6 +10,7 @@ clip_range: 0.2
 max_angle: 0.35
 radius_frames: 12
 reward_scale_m: 0.15
+local_target_radius_m: 0.25
 ddim_steps: 20
 device: cuda
 hydra:

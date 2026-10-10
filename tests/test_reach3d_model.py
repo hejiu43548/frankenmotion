@@ -133,6 +133,29 @@ class ReachDiffusionTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             self.model.load_adapter(invalid)
 
+    def test_fixed_world_hold_supervision_respects_valid_lengths(self):
+        batch = dict(self.batch)
+        batch["event_frames"] = torch.tensor([1, 1])
+        batch["positions"] = torch.tensor([[4.0, 0.0, 0.0], [2.0, 0.0, 0.0]])
+        batch["hold_frames"] = 3
+
+        def metric_skeleton(motion):
+            joints = motion.new_zeros(2, 6, 22, 3)
+            joints[:, :, [20, 21], 0] = torch.arange(6, dtype=motion.dtype)[None, :, None]
+            return joints
+
+        loss, metrics = self.model.supervised_loss(
+            batch,
+            torch.Generator().manual_seed(91),
+            metric_skeleton,
+            1.0,
+            "fixed_world",
+        )
+        torch.testing.assert_close(
+            metrics["endpoint_squared_meters"], torch.tensor(0.0)
+        )
+        self.assertTrue(torch.isfinite(loss))
+
     def test_invalid_masks_and_sampling_inputs_rejected(self):
         invalid = dict(self.batch)
         invalid["mask"] = self.batch["mask"].clone()

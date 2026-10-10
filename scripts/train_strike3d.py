@@ -125,6 +125,8 @@ def main(config):
     for step in range(1, config.steps + 1):
         indices = sampler.integers(0, len(items), size=config.batch_size).tolist()
         batch = make_batch(items, indices, config.device)
+        if audit.get("task") == "reach":
+            batch["hold_frames"] = 5
         optimizer.zero_grad(set_to_none=True)
         loss, metrics = model.supervised_loss(
             batch, generator, skeleton, config.endpoint_weight, target_frame

@@ -6,6 +6,8 @@ target_mode: grid
 grid_fractions: [0.15, 0.4, 0.65, 0.9]
 template_indices: [0, 5]
 min_train_distance_m: 0.04
+local_target_radius_m: 0.25
+interpolation_fractions: [0.35, 0.65]
 seeds: [39200, 39201, 39202, 39203]
 steps: 20
 device: cuda
