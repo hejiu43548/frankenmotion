@@ -1,7 +1,0 @@
-{
-  "parent_thread_id": "01a1219b-bbd2-73f3-b5ae-9334981b496e",
-  "human_message_id": "01a121a8-e2ac-7eb2-8c2d-c50f11abc1b7",
-  "verified_via": "read_thread, original human message retrieved in this chat",
-  "quote": "中间不要打断，最后完成的时候让子对话唤醒你，你来检查效果是否和实现符合。每次实现一个demo，按照顺序执行，一个一个执行。",
-  "child_thread_id": "01a121f5-e783-70c1-be76-98fe21308085"
-}

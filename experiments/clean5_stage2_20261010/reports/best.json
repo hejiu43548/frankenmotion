@@ -1,6 +1,0 @@
-{
-  "step": 2000,
-  "metric": 0.2884651545139532,
-  "checkpoint": "/mnt/sda2/frankenmotion/outputs_amass/clean5_stage2_20261010/artifacts/checkpoint_002000.pt",
-  "sha256": "473c578043426a937f11bbe989d4c1c5c4f8f7a05936bbac12a2dc37a05e2e9d"
-}

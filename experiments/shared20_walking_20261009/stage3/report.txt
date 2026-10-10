@@ -1,7 +1,0 @@
-Stage 3 completed at optimizer step 8800.
-Controller: charlie_root
-Best evaluation step: 7700; metric: 0.07772308039041517
-Frozen parameters and saved rollout quantities verified.
-Command error alone does not certify natural motion.
-See config.yaml, protocol.json, data_index/, completion_audit.json and best.json.
-Large artifacts: /mnt/sda2/frankenmotion/outputs_amass/shared20_walking_20261009_perf/stage3

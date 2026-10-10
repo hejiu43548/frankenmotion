@@ -1,9 +1,0 @@
-{
-  "checked_videos": 10,
-  "distinct_train_families": 10,
-  "video_hashes_verified": true,
-  "frames_inspected_per_video": 4,
-  "observation": "Paired poses show opening/closing lateral steps and reversed anatomical travel; no user approval inferred.",
-  "scope": "sidestep only, others deferred",
-  "user_review": "pending"
-}

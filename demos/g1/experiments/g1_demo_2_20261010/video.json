@@ -1,9 +1,0 @@
-{
-  "path": "/Users/andy/.codex/visualizations/2026/10/09/01a121f5-e783-70c1-be76-98fe21308085/demo2_continuous.mp4",
-  "sha256": "1c24467a54850e37dcd5a1a347e8b3303ba4388d32f54f504474b30592312c28",
-  "frames": 1492,
-  "fps": 50,
-  "duration_s": 29.84,
-  "physics_duration_s": 29.82,
-  "note": "Includes frame at t=0; no cuts, every saved physical state rendered exactly once."
-}

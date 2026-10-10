@@ -1,7 +1,0 @@
-Stage 3 completed at optimizer step 2.
-Controller: charlie_root
-Best evaluation step: 0; metric: 0.9779759744206907
-Frozen parameters and saved rollout quantities verified.
-Command error alone does not certify natural motion.
-See config.yaml, protocol.json, data_index/, completion_audit.json and best.json.
-Large artifacts: /mnt/sda2/frankenmotion/outputs_amass/hydra_pipeline_validation_20261009/with_root_stage3_artifacts

@@ -1,3 +1,7 @@
+# Custom Rules
+experiments/
+
+
 # Python
 __pycache__/
 *.py[cod]

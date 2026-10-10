@@ -1,8 +1,0 @@
-{
-  "rollouts": 1600,
-  "max_quantity_error": 1.7881393432617188e-06,
-  "frozen_parameters_verified": true,
-  "unique_training_records_seen": 12030,
-  "training_records": 12030,
-  "best_step": 50000
-}
