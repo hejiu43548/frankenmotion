@@ -55,7 +55,13 @@ def observations(motion, target, event_frames, skeleton):
 
 
 def apply_residual(
-    motion, raw_action, event_frames, skeleton, max_angle=0.35, radius_frames=12
+    motion,
+    raw_action,
+    event_frames,
+    skeleton,
+    max_angle=0.35,
+    radius_frames=12,
+    hands=None,
 ):
     if (
         raw_action.shape != (len(motion), 9)
@@ -74,10 +80,21 @@ def apply_residual(
     delta = raw_action.tanh().reshape(len(motion), 3, 3) * max_angle
     corrections = axis_angle_to_matrix(delta[:, None] * envelope[:, :, None, None])
     corrected = motion.clone()
-    for control_index, joint_index in enumerate(CONTROL_JOINTS):
-        updated = rotations[:, :, joint_index] @ corrections[:, :, control_index]
-        corrected[:, :, 4 + 6 * joint_index : 4 + 6 * (joint_index + 1)] = (
-            matrix_to_rotation_6d(updated)
+    if hands is None:
+        hands = torch.ones(len(motion), device=motion.device, dtype=torch.long)
+    if hands.shape != (len(motion),) or torch.any((hands < 0) | (hands > 1)):
+        raise ValueError("hands must contain 0=left or 1=right for each sequence")
+    corrected_features = corrected[..., 4:136].reshape(*motion.shape[:2], 22, 6)
+    batch_indices = torch.arange(len(motion), device=motion.device)
+    control = torch.tensor([[13, 16, 18], [14, 17, 19]], device=motion.device)[hands]
+    for control_index in range(3):
+        joint_indices = control[:, control_index]
+        updated = (
+            rotations[batch_indices, :, joint_indices]
+            @ corrections[:, :, control_index]
+        )
+        corrected_features[batch_indices, :, joint_indices] = matrix_to_rotation_6d(
+            updated
         )
     # Keep the redundant 23 joint-position channels consistent with corrected FK.
     joints = skeleton(corrected)

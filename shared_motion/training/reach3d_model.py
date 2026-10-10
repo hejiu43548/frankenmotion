@@ -65,7 +65,14 @@ class ReachDiffusion(nn.Module):
     def decode_motion(self, normalized_motion):
         return normalized_motion * (self.std[:205] + 1e-12) + self.mean[:205]
 
-    def supervised_loss(self, batch, generator, skeleton=None, endpoint_weight=0.0):
+    def supervised_loss(
+        self,
+        batch,
+        generator,
+        skeleton=None,
+        endpoint_weight=0.0,
+        target_frame="instantaneous_body",
+    ):
         """Uniform-timestep x0 reconstruction of real observations.
 
         Optional endpoint supervision uses the reviewed event frame shared by all
@@ -118,7 +125,12 @@ class ReachDiffusion(nn.Module):
             if torch.any((frames < 0) | (frames >= batch["mask"].sum(1))):
                 raise ValueError("Event frame lies outside its valid source window")
             joints = skeleton(self.decode_motion(prediction))[..., :22, :]
-            wrists = wrist_positions_in_body_frame(joints)
+            if target_frame == "fixed_world":
+                wrists = joints[..., [20, 21], :]
+            elif target_frame == "instantaneous_body":
+                wrists = wrist_positions_in_body_frame(joints)
+            else:
+                raise ValueError("Unknown target frame")
             measured = wrists[
                 torch.arange(len(motion), device=motion.device), frames, batch["hands"]
             ]

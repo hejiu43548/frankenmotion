@@ -1,0 +1,9 @@
+defaults:
+  - train_strike3d
+  - _self_
+target_frame: fixed_world
+steps: 10000
+checkpoint_every: 10000
+log_every: 1000
+dataset_directory: ???
+data: ${dataset_directory}

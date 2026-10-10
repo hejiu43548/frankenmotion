@@ -1,0 +1,19 @@
+initial: ???
+output: ???
+seed: 86001
+iterations: 1500
+conditions_per_batch: 4
+actions_per_condition: 8
+update_epochs: 4
+learning_rate: 0.0003
+clip_range: 0.2
+max_angle: 0.35
+radius_frames: 12
+reward_scale_m: 0.15
+ddim_steps: 20
+device: cuda
+hydra:
+  job:
+    chdir: false
+  run:
+    dir: ${output}/hydra

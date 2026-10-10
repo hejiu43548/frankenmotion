@@ -85,6 +85,14 @@ def main(config):
     if {row["family"] for row in rows} & {row["family"] for row in validation_rows}:
         raise ValueError("Source family leakage")
     audit = json.loads((Path(config.data) / "audit.json").read_text())
+    target_frame = config.get("target_frame", "instantaneous_body")
+    checkpoint_format = (
+        "fixed_world_adapter_v1"
+        if target_frame == "fixed_world"
+        else "strike_xyz_residual_v1"
+    )
+    if audit.get("target_frame", "instantaneous_body") != target_frame:
+        raise ValueError("Dataset target frame does not match training")
     model = ReachDiffusion(
         instantiate(config.backbone),
         audit["train_target_center"],
@@ -95,7 +103,7 @@ def main(config):
     if config.initial:
         initial = torch.load(config.initial, map_location="cpu", weights_only=False)
         if (
-            initial.get("format") != "strike_xyz_residual_v1"
+            initial.get("format") != checkpoint_format
             or initial["backbone_sha256"] != model.backbone_sha256
         ):
             raise ValueError("Expected this experiment's strike residual checkpoint")
@@ -119,7 +127,7 @@ def main(config):
         batch = make_batch(items, indices, config.device)
         optimizer.zero_grad(set_to_none=True)
         loss, metrics = model.supervised_loss(
-            batch, generator, skeleton, config.endpoint_weight
+            batch, generator, skeleton, config.endpoint_weight, target_frame
         )
         if not torch.isfinite(loss):
             raise FloatingPointError("Nonfinite strike training loss")
@@ -143,7 +151,7 @@ def main(config):
             print(json.dumps(record), flush=True)
         if step % config.checkpoint_every == 0 or step == config.steps:
             checkpoint = dict(
-                format="strike_xyz_residual_v1",
+                format=checkpoint_format,
                 initial_sha256=initial_sha256,
                 step=step,
                 adapter=model.adapter_state(),

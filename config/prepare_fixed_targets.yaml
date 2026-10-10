@@ -1,0 +1,9 @@
+input: ???
+output: ???
+skeleton: ???
+task: strike
+hydra:
+  job:
+    chdir: false
+  run:
+    dir: ${output}/hydra

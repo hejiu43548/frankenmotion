@@ -1,0 +1,16 @@
+checkpoint: ???
+policy: null
+output: ???
+split: train
+target_mode: grid
+grid_fractions: [0.15, 0.4, 0.65, 0.9]
+template_indices: [0, 5]
+min_train_distance_m: 0.04
+seeds: [39200, 39201, 39202, 39203]
+steps: 20
+device: cuda
+hydra:
+  job:
+    chdir: false
+  run:
+    dir: ${output}/hydra

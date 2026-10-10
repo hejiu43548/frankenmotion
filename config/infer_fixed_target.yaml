@@ -1,0 +1,19 @@
+generator: ???
+policy: ???
+backbone_checkpoint: /home/pku/frankenmotion/pretrained/official_20260910/frankenmotion.ckpt
+skeleton: /home/pku/frankenmotion/outputs_amass/franken_eleven_20261003/skeleton.npz
+text_template: ???
+output: ???
+target_frame: world
+target: [0.65, -0.2, 1.5]
+initial_pelvis_world: [0.0, 0.0, 0.95]
+initial_yaw_radians: 0.0
+hand: right
+seed: 51000
+steps: 20
+device: cuda
+hydra:
+  job:
+    chdir: false
+  run:
+    dir: ${output}_hydra
