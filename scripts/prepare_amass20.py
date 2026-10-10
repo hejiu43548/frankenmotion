@@ -78,8 +78,41 @@ def event_windows(annotation, pattern, frames):
     return windows
 
 
+def load_running_records(directory, split):
+    """Do not regenerate these two tasks from caption regular expressions."""
+    if not directory:
+        raise ValueError("Set running_data to a verified jog_march repair output")
+    path = Path(directory) / f"{split}.json"
+    rows = [
+        record
+        for record in json.loads(path.read_text())
+        if record["task"] in ["jog", "march"]
+    ]
+    if {record["task"] for record in rows} != {"jog", "march"}:
+        raise ValueError(f"Missing repaired jog/march records in {path}")
+    revisions = dict(jog="straight_running_v2", march="stationary_running_v1")
+    for record in rows:
+        if (
+            record.get("split") != split
+            or record.get("semantic_revision") != revisions[record["task"]]
+        ):
+            raise ValueError("Legacy regex-only running data is not admissible")
+        cache = Path(record["cache"])
+        if (
+            not cache.is_absolute()
+            or not cache.is_file()
+            or file_sha256(cache) != record.get("cache_sha256")
+        ):
+            raise ValueError(f"Invalid repaired running cache: {cache}")
+    return rows
+
+
 @hydra.main(version_base="1.3", config_path="../config", config_name="prepare_amass20")
 def main(config):
+    running = {
+        split: load_running_records(config.get("running_data"), split)
+        for split in ["train", "val"]
+    }
     output = Path(config.output).resolve()
     output.mkdir(parents=True, exist_ok=False)
     torch.set_num_threads(2)
@@ -107,6 +140,8 @@ def main(config):
         for key in split_ids[split]:
             annotation = annotations[key]
             for task, definition in NEW.items():
+                if task in ["jog", "march"]:
+                    continue
                 if not re.search(
                     definition["pattern"], annotation["caption_label"], re.I
                 ):
@@ -289,14 +324,28 @@ def main(config):
             record["cache"] = str(
                 cache if cache.is_absolute() else Path(config.cache_root) / cache
             )
-        additions = [record for record in accepted if record["split"] == split]
+        additions = [
+            record for record in accepted if record["split"] == split
+        ] + running[split]
         rows = original + additions
         counts = Counter(record["task"] for record in rows)
         if set(counts) != set(TASK_NAMES):
             raise ValueError(f"Missing tasks in {split}: {set(TASK_NAMES)-set(counts)}")
         save_json(output / f"{split}.json", rows)
         totals[split] = dict(counts)
-    save_json(output / "new9_index.json", accepted)
+    all_new = accepted + running["train"] + running["val"]
+    save_json(output / "new9_index.json", all_new)
+    save_json(
+        output / "running_provenance.json",
+        {
+            "directory": str(config.running_data),
+            "manifest_sha256": {
+                split: file_sha256(Path(config.running_data) / f"{split}.json")
+                for split in running
+            },
+            "policy": "Imported category and gait verified records; no regex admission for jog or march",
+        },
+    )
     save_json(output / "rejected.json", rejected)
     save_json(
         output / "source_hashes.json",
@@ -315,7 +364,7 @@ def main(config):
         dict(
             state="complete",
             counts=totals,
-            accepted_new9=len(accepted),
+            accepted_new9=len(all_new),
             rejected=len(rejected),
             sample_cap=None,
             split_family_isolation=True,
@@ -324,9 +373,9 @@ def main(config):
             conversion_source_sha256=file_sha256(config.conversion_module),
             source_sha256=file_sha256(__file__),
             limitations=[
-                "New9 use main caption patterns plus timed windows when available; no exhaustive manual semantic review.",
+                "Seven added tasks use legacy caption/time selection; jog/march require repaired category/gait records.",
                 "Global captions can describe a broader sequence; no generated templates.",
-                "march validation has one original caption-matched annotation; windows do not increase independent source count.",
+                "Running validation source counts and limitations are inherited from running_data; windows are not independent sources.",
             ],
         ),
     )

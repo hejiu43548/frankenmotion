@@ -1,0 +1,223 @@
+{
+  "current_task": null,
+  "status": "accepted",
+  "data": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_jog_straight_20261010_v3",
+  "review": "/Users/andy/Develop/frankenmotion/outputs_amass/task_data_review_20261009/jog_straight/jog/index.html",
+  "training_started": false,
+  "scope_user_evidence": "jog和march都可以通过了，除了数据量少都没问题",
+  "tasks": {
+    "jog": {
+      "status": "accepted",
+      "data": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_jog_straight_20261010_v3",
+      "review": "/Users/andy/Develop/frankenmotion/outputs_amass/task_data_review_20261009/jog_straight/jog/index.html",
+      "definition": "连续直线向前跑步；排除弧线、绕圈、转向",
+      "semantic_revision": "straight_running_v2",
+      "train_samples": 9,
+      "validation_samples": 2,
+      "train_families": 8,
+      "val_families": 2,
+      "source_kinds": {
+        "hdm05_babel_running": 7,
+        "babel_running": 4
+      },
+      "parameter_coverage": {
+        "requested_range": [
+          0.8,
+          2.0
+        ],
+        "train": {
+          "samples": 9,
+          "families": 8,
+          "range": [
+            1.1695550680160522,
+            3.634742021560669
+          ],
+          "inside_range": 6,
+          "bin_counts": [
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            1,
+            2,
+            0,
+            1
+          ],
+          "empty_bins": [
+            0,
+            1,
+            2,
+            4,
+            8
+          ]
+        },
+        "val": {
+          "samples": 2,
+          "families": 2,
+          "range": [
+            1.4994337558746338,
+            1.6570510864257812
+          ],
+          "inside_range": 2,
+          "bin_counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            1,
+            0,
+            0
+          ],
+          "empty_bins": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            6,
+            8,
+            9
+          ]
+        }
+      },
+      "previous_data": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_jog_march_20261010_v2",
+      "previous_counts": {
+        "train": 76,
+        "val": 21
+      },
+      "user_approved": true,
+      "training_started": false,
+      "other19_unchanged": true,
+      "displayed_train_samples": 9,
+      "displayed_train_families": 8,
+      "review_history": [
+        {
+          "date": "2026-10-10",
+          "previous_status": "awaiting_user_review",
+          "status": "accepted",
+          "user_evidence": "jog和march都可以通过了，除了数据量少都没问题"
+        }
+      ],
+      "approval_level": "accepted",
+      "review_date": "2026-10-10",
+      "user_evidence": "jog和march都可以通过了，除了数据量少都没问题",
+      "approval_scope": "User accepted motion semantics from review; small dataset and coverage limitations retained. No training authorization.",
+      "known_limitations": [
+        "Only 9 train / 2 val clips from 8 / 2 recordings",
+        "Only 6 train / 2 val within 0.8–2m/s; 5 of 10 train command bins empty"
+      ]
+    },
+    "march": {
+      "status": "accepted",
+      "data": "/mnt/sda2/frankenmotion/outputs_amass/source_repair_jog_march_20261010_v2",
+      "review": "/Users/andy/Develop/frankenmotion/outputs_amass/task_data_review_20261009/jog_march/march/index.html",
+      "train_samples": 29,
+      "validation_samples": 1,
+      "train_families": 28,
+      "val_families": 1,
+      "definition": "原地交替跑步，排除站立、踏步和走路",
+      "semantic_revision": "stationary_running_v1",
+      "source_kinds": {
+        "hdm05_babel_running": 2,
+        "babel_running": 28
+      },
+      "annotation_levels": {
+        "frame": 8,
+        "single_action_sequence": 22
+      },
+      "parameter_coverage": {
+        "requested_range": [
+          0.06,
+          0.22
+        ],
+        "train": {
+          "samples": 29,
+          "families": 28,
+          "range": [
+            0.14755022525787354,
+            0.4781067371368408
+          ],
+          "inside_range": 5,
+          "bin_counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            1,
+            0,
+            2,
+            1,
+            1
+          ],
+          "empty_bins": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            6
+          ]
+        },
+        "val": {
+          "samples": 1,
+          "families": 1,
+          "range": [
+            0.22150203585624695,
+            0.22150203585624695
+          ],
+          "inside_range": 0,
+          "bin_counts": [
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0,
+            0
+          ],
+          "empty_bins": [
+            0,
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9
+          ]
+        }
+      },
+      "user_approved": true,
+      "training_started": false,
+      "other18_unchanged": true,
+      "known_limitations": [
+        "Only one validation source",
+        "Only 5 train and 0 val records inside unchanged 0.06–0.22 m command range",
+        "Current staged ankle-lift metric uses per-foot fifth-percentile support baseline; incompatible with historical first-frame metric"
+      ],
+      "review_history": [
+        {
+          "date": "2026-10-10",
+          "previous_status": "awaiting_user_review",
+          "status": "accepted",
+          "user_evidence": "jog和march都可以通过了，除了数据量少都没问题"
+        }
+      ],
+      "approval_level": "accepted",
+      "review_date": "2026-10-10",
+      "user_evidence": "jog和march都可以通过了，除了数据量少都没问题",
+      "approval_scope": "User accepted motion semantics from review; small dataset and coverage limitations retained. No training authorization."
+    }
+  }
+}
