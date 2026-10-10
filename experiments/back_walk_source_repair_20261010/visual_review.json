@@ -1,0 +1,8 @@
+{
+  "videos": 10,
+  "distinct_training_families": 10,
+  "sha256_verified": true,
+  "frames_inspected_per_video": 3,
+  "observations": "All10 sampled source clips show backwards stepping at the inspected poses; some retain ordinary arm gestures. Not an exhaustive semantic certification.",
+  "user_review": "pending"
+}

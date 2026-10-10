@@ -1,0 +1,27 @@
+{
+  "base": "/mnt/sda2/frankenmotion/outputs_amass/shared20_clean5_stage2_20261010/data",
+  "original_counts": {
+    "train": 1118,
+    "val": 135
+  },
+  "counts": {
+    "train": 156,
+    "val": 25
+  },
+  "families": {
+    "train": 137,
+    "val": 22
+  },
+  "original_nonpositive_labels": 763,
+  "original_forward_contaminated": 1078,
+  "accepted_original_records": 159,
+  "original_records_rejected": 1094,
+  "maximum_forward_path_fraction": 0.0019843964837491512,
+  "other19_tasks_unchanged": true,
+  "training_started": false,
+  "limitations": [
+    "Direction and bilateral ankle motion verify cropping, not complete semantic purity.",
+    "Canonical backward caption replaces whole-sequence descriptions that may mention forward phases; originals remain auditable.",
+    "No new source families, mirroring, time reversal, amplitude scaling or padding."
+  ]
+}

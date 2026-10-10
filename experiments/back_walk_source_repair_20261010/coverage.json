@@ -1,0 +1,46 @@
+{
+  "requested_range": [
+    0.35,
+    0.9
+  ],
+  "splits": {
+    "train": {
+      "samples": 156,
+      "families": 137,
+      "minimum": 0.2276977300643921,
+      "maximum": 1.2611857652664185,
+      "inside_range": 127,
+      "bin_counts": [
+        12,
+        15,
+        20,
+        38,
+        14,
+        13,
+        4,
+        3,
+        2,
+        6
+      ]
+    },
+    "val": {
+      "samples": 25,
+      "families": 22,
+      "minimum": 0.21146339178085327,
+      "maximum": 1.0359383821487427,
+      "inside_range": 16,
+      "bin_counts": [
+        2,
+        2,
+        3,
+        4,
+        0,
+        2,
+        2,
+        1,
+        0,
+        0
+      ]
+    }
+  }
+}

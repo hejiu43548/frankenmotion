@@ -4,14 +4,13 @@ Keep task selection, temporal cropping, label reconstruction, admission checks,
 and review rendering here. Processing never launches training. Each repair writes
 a new dataset directory and preserves every other task's records exactly.
 
-Current scope (2026-10-10): **sidestep only**, using HDM05 non-crossing
-walkLeft phases and rightward mirrors for the existing right-only quantity.
-All other tasks are deferred by the user. Wave and strike remain provisionally
-accepted; kick is not silently marked approved by the request to move on.
-The wave/strike/kick stage2 diagnostics are complete. Sidestep was provisionally
-accepted on2026-10-10 and its single-task stage2 diagnostic is now authorized.
-Each repaired task requires10 rendered training samples for user review;
-`review_state.json` records the current scope and gate.
+Current source-repair scope (2026-10-10): **back_walk only**. Crop continuous
+backward motion within existing source annotations, remove forward phases and
+reject records with no valid segment. Candidate156train/25val; ten TRAIN reviews
+are pending. Other task records are preserved and other repairs are deferred.
+No training is started by this repair. Scripts/policy are in back_walk/ and
+config/back_walk_repair.yaml. Earlier sidestep data was provisionally accepted;
+its current command range is0.4–1.0m. `review_state.json` tracks current work.
 
 `export_task_audits.py` exports all20 tasks separately as exact train/val JSON,
 human-readable CSV and an HTML index, preserving crop bounds, quantities, captions,

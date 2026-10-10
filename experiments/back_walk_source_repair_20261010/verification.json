@@ -1,0 +1,15 @@
+{
+  "cache_count": 181,
+  "source_crops_exact": true,
+  "quantity_max_error": 0.0,
+  "other19_tasks_unchanged": true,
+  "split_isolation": true,
+  "loader_counts": {
+    "train": 156,
+    "val": 25
+  },
+  "videos": 10,
+  "fps": 20,
+  "video_frames_verified": true,
+  "user_review": "pending"
+}

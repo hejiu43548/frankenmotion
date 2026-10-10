@@ -66,3 +66,9 @@
 用户要求将sidestep上限降至1，现任务定义改为0.4–1.0m，下限、右向语义与真实监督量不变。34train/6val仍全部落在新范围。当前范围见shared_motion/adapter/schema.py，由20任务catalog继承；最新分箱统计见review_state.json。历史数据审计、训练配置、图表和已冻结代码快照保留原0.4–1.2m，本次未重训或重评。
 
 实现注意：该范围也参与TaskControl命令归一化。因此旧sidestep检查点应继续使用其冻结43bf05f代码与原归一化，不可直接用新版归一化加载后声称与旧响应曲线可比。之后采用新范围的训练应使用更新后的代码快照；现有sidestep_stage2.yaml里的code_root仍记录已完成试验的旧快照，不应当作新试验模板直接复用。
+
+## 2026-10-10：仅back_walk裁剪修复
+
+用户指定只修back_walk混入前走，其他暂不考虑。最新候选source_repair_back_walk_20261010_v2：156train/25val（137/22来源），来自最新shared20_clean5实际数据，其他19类逐条不变。先按身体朝向定位连续倒走，再裁2–6秒并重算速度；排除无合格倒走段、明显转身/侧向或弯腰的条目。原1253条中763条原速度非正；159个原记录保留为181窗口，其他1094条没有满足当前规则的区间。不要把所有剔除都归为纯前走。
+
+181缓存源切片完全相等、速度重算误差0，最大前向路径比例0.1985%，5回归测试和文本/划分核验通过。新文本walk backwards，旧整段描述仍保留审计。10个不同训练来源复核视频http://127.0.0.1:50086/back_walk/index.html；当前awaiting_user_review，未训练。完整报告experiments/back_walk_source_repair_20261010/report.md；审计task_source_audits_back_walk_20261010，11196行。其他任务暂缓。本轮不改变旧模型或现有demo工作。
